@@ -40,6 +40,9 @@
 | 비전투 3회 목표·5회 상한·다음 PC | [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate) |
 | 짧은 독립 이동·실제 병렬 시간 충돌 | [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync) |
 | 대표 행동·자유 선언 | [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) |
+| 풍부한 장면·플레이어 대사 | [PLAYABLE_NARRATIVE_RENDERING](06-play.md#playable_narrative_rendering) · [CINEMATIC_ACTION_CONTINUITY](06-play.md#cinematic_action_continuity) |
+| NPC의 자연스러운 대답 | [NPC_INTERACTION_VOICE_COMPACT](05-world.md#npc_interaction_voice_compact) |
+| 읽을 수 있는 기사·공고·편지 본문 | [IN_WORLD_DOCUMENT_HANDOUT](05-world.md#in_world_document_handout) |
 | 일반 HUD | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
 | HUD 아이콘·수치표·소지품 배치 | [HUD_VISUAL_STYLE](06-play.md#hud_visual_style) |
 | 업무를 목적 단위로 처리 | [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis) |

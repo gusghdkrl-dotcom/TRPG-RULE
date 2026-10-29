@@ -167,11 +167,38 @@
 | 1회 만에 방문 목적 종료 또는 명시 패스 | 공허한 선택으로 3회 채우지 않고 일찍 인계 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
 | 3인 모두 대기 가능, 방금 P1 서비스 완료 | 오래 기다린 P2/P3부터 순서 배정, 의사 미제출만으로 제외하지 않음 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
 | 12분 이동인데 다른 PC의 대응이 4분 시점에 필요 | 짧아도 실제 동기화/중단 우선, 12분 전체 확정 금지 | PARALLEL_TIMELINE_SYNC / LONG_ACTION_EARLIEST_INTERRUPTION | 일치 |
-| 같은 Spotlight 누적 15분/16분, 다른 충돌 없음 | 15분까지 독립 처리 가능, 16분 구간은 다른 PC 선언 기회 필요 | PARALLEL_TIMELINE_SYNC | 일치 |
+| 통상 이동 15분/16분/25분, 다른 충돌 없음 | 시간 수치만으로 병렬 선언을 요구하지 않고 이동 완료, 다른 PC 행동 자동 실행 없음 | PARALLEL_TIMELINE_SYNC | 일치 |
 | 같은 시간에 5분 작업·12분 이동을 이미 선언 | 첫 5분 뒤 이동 5/12분, 잔여7분만 처리, 총17분으로 합산하지 않음 | PARALLEL_TIMELINE_SYNC | 일치 |
 | 대기 PC가 아무 작업도 선언하지 않은 짧은 독립 구간 | 세계 시간만 경과, 미선언 조사 성과·휴식 회복·소모 없음 | STANDBY_PC_NO_AUTOPILOT | 일치 |
 | 저장/재개 시 Spotlight 4회 및 열린 판정 보존 | 횟수 초기화나 결과 재실행 없이 해당 단계로 재개 | STATE_IDENTITY / SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
 | 기존 개인 장면 기록이 있는 캠페인에 현행 패치 적용 | 실제 공개 사실만 공통 지식으로 사용, verified 원문/과거 결과 유지 | STATE_COMPATIBILITY | 일치 |
+
+## 서술·자료·선택 UI·이동 연속성 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 첫 장소·중요 대화·공포 발견 | 충분한 감각·동작·대사로 장면화, 짧은 상태 보고로 대체하지 않음 | PLAYABLE_NARRATIVE_RENDERING / TURN_RESPONSE_BUDGET | 일치 |
+| 플레이어가 직접 대사를 입력 | 의미·말투를 보존한 직접화법과 NPC의 실제 반응을 본문에 포함 | CINEMATIC_ACTION_CONTINUITY | 일치 |
+| 승인 현황을 묻는다고 선언 | 해당 질문만 직접화법 가능, 추가 협박·약속·비밀 공개 없음 | CINEMATIC_ACTION_CONTINUITY | 일치 |
+| 공장으로 돌아간다는 이동만 선언 | 도착과 현재 상황까지, 감독관에게 설명/질문한 것으로 처리하지 않음 | ROUTINE_MOVEMENT_FAST_PATH | 일치 |
+| 정상 행동권을 돌려줌 | 번호·아이콘·대상 — 할 일 행과 4번 직접 행동 표시 | GUIDED_ACTION_RETURN | 일치 |
+| 가능한 접근이 2개뿐 | 1/2와 4번만 표시 가능, 빈 선택을 새 사실로 채우지 않음 | GUIDED_ACTION_RETURN | 일치 |
+| 열려 있는 d100 판정·A/B Gate | 전용 입력 우선, 일반 행동 메뉴를 동시에 붙이지 않음 | GUIDED_ACTION_RETURN / PLAYER_INPUT_NAMESPACE_ROUTER | 일치 |
+| 승인 절차 알아보기 선택 | 표시한 문의 범위만 시도, 계약/결제/성공 자동 확정 없음 | GUIDED_ACTION_RETURN | 일치 |
+| 두 기록의 인원 불일치 발견 | 각 본문에 실제 인원·대상·날짜/단위를 제시, 차이 요약만 하지 않음 | IN_WORLD_DOCUMENT_HANDOUT | 일치 |
+| 짧은 공고 또는 접수증 읽기 | 실제 읽을 수 있는 전문 우선, 매체에 맞는 문체 사용 | IN_WORLD_DOCUMENT_HANDOUT | 일치 |
+| 장부 일부만 읽었고 뒷면은 미확인 | 읽은 범위 발췌만 제공, 숨은 부분/손상 문자 창작 없음 | IN_WORLD_DOCUMENT_HANDOUT | 일치 |
+| 같은 자료 재열람·새 채팅 복원 | 기존 evidence ref의 동일 원문·숫자·손상 범위 사용 | IN_WORLD_DOCUMENT_HANDOUT / STATE_SCHEMA | 일치 |
+| 의미 조건만 고정되고 최초 문장은 미정 | 기존 의미·수량 관계 안에서 구체화 후 고정, 새 정답/사건 추가 없음 | IN_WORLD_DOCUMENT_HANDOUT | 일치 |
+| 이미 정한 핵심 숫자가 현재 유실 | 새 숫자로 채우지 않고 필요한 상태 복구 | IN_WORLD_DOCUMENT_HANDOUT / STATE_ACCESS_ROUTER | 일치 |
+| NPC에게 과거 사건을 질문 | 인물의 실제 경험·목적에 맞게 답변, 검증 안내/면책 논평 없음 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+| NPC가 실제로 모르는 질문 | 짧고 자연스러운 무지 표현 가능, 모르는 사실 창작/자동 해설 없음 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+| 플레이어가 근거·확정 여부를 메타로 질문 | 공개 근거 안에서 사실/가설/결론 구분 가능, 비공개 정답 대조 없음 | PLAYER_HYPOTHESIS_NARRATIVE_BOUNDARY | 일치 |
+| 25분 통상 이동, 다른 선택과 실제 충돌 없음 | 이동 한 응답, 대기 PC에게 자료 재조사 강제/자동 실행 없음 | PARALLEL_TIMELINE_SYNC / STANDBY_PC_NO_AUTOPILOT | 일치 |
+| 공유 차량 사용 순서 충돌 또는 다음 날까지 생략이 다른 PC 선택을 지움 | 실제 충돌 이유와 해당 선택만 수집, 시간 분 수가 단독 Trigger가 되지 않음 | PARALLEL_TIMELINE_SYNC | 일치 |
+| 동시 선언을 실제로 받았고 두 PC 결과가 존재 | 시간은 중복 없이 추적, 한 본문에 다른 장소의 조사/이동 정산 장면을 섞지 않음 | PARALLEL_TIMELINE_SYNC / ACTIVE_POV | 일치 |
+| 승인 미접수 사실을 이미 아는 상태로 같은 문의 반복 | 완료된 확인을 압축, 승인 조작 없이 실제 가능한 다른 접근/목적 제공 | CINEMATIC_ELLIPSIS | 일치 |
+| 일반 채팅에 실제 클릭 버튼 기능 없음 | 번호 행 표시, 가짜 HTML/링크/클릭 성공 주장 없음 | GUIDED_ACTION_RETURN | 일치 |
 
 ## 미실행
 

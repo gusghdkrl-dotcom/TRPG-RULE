@@ -160,6 +160,7 @@
 | INVESTIGATOR_PROFILE_PLAY_ENGINE | [04-setup.md](../rules/04-setup.md#investigator_profile_play_engine) |
 | INVESTIGATOR_ROLEPLAY_DNA | [04-setup.md](../rules/04-setup.md#investigator_roleplay_dna) |
 | INVESTIGATOR_VISUAL_HANDOUT_TEMPLATE | [08-visual.md](../rules/08-visual.md#investigator_visual_handout_template) |
+| IN_WORLD_DOCUMENT_HANDOUT | [05-world.md](../rules/05-world.md#in_world_document_handout) |
 | IRREVERSIBLE_WORLD_STATE | [05-world.md](../rules/05-world.md#irreversible_world_state) |
 | JOKER_PROFESSION_CANDIDATE | [04-setup.md](../rules/04-setup.md#joker_profession_candidate) |
 | KEEPER_SCENE_SELECTION | [06-play.md](../rules/06-play.md#keeper_scene_selection) |
