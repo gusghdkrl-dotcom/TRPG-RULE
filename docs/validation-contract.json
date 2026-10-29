@@ -318,5 +318,55 @@
       "이미 들은 이상 사건",
       "숨은 원인·정답·미래 결과"
     ]
+  },
+  {
+    "rule": "START_SETTINGS_GATE",
+    "contains": [
+      "정수 1~100",
+      "시작 시드",
+      "인지도",
+      "이야기 규모",
+      "배제할 세계관",
+      "단독 `1`",
+      "웹 검색",
+      "원작 A~F 선택",
+      "완성된 입력에 다시 확인",
+      "기존 캠페인 복원"
+    ]
+  },
+  {
+    "rule": "GENERATION_RNG_SEPARATION",
+    "contains": [
+      "START_SETTINGS_GATE 완료 뒤에만",
+      "start_seed",
+      "rng_queue",
+      "실제 시드 기반 난수 도구"
+    ],
+    "excludes": [
+      "시드를 주지 않아도"
+    ]
+  },
+  {
+    "rule": "WORLD_HOMAGE_DNA",
+    "contains": [
+      "플레이어가 선택한 인지도"
+    ],
+    "excludes": [
+      "homage_tier_seed"
+    ]
+  },
+  {
+    "rule": "HOMAGE_DRAFT_SELECTION",
+    "contains": [
+      "START_SETTINGS_GATE",
+      "PC 생성으로 간다"
+    ]
+  },
+  {
+    "rule": "STORY_SCALE",
+    "contains": [
+      "플레이어가 명시적으로",
+      "미입력을 사건으로 채우지"
+    ]
   }
 ]

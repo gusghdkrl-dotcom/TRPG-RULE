@@ -19,6 +19,7 @@
 | SAN 노출 | [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) |
 | 전투·총기·추격 | [COMBAT_ORDER](03-danger.md#combat_order) |
 | 일반 턴 조회·도구·출력 최소화 | [TURN_RESPONSE_BUDGET](01-core.md#turn_response_budget) |
+| 시작 입력·필수 값 누락·설정 대기 | [START_SETTINGS_GATE](04-setup.md#start_settings_gate) |
 | 시작 인원 1~3명 확정 | [PARTICIPANT_COUNT_SETUP](04-setup.md#participant_count_setup) |
 | 새 캠페인 전체 순서 | [CAMPAIGN_SETUP_PIPELINE](04-setup.md#campaign_setup_pipeline) |
 | 원작 후보 A~F | [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) |

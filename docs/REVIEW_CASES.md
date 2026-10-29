@@ -4,7 +4,7 @@
 
 | 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
 |---|---|---|---|
-| 원작 미지정으로 시작 | 실제 작품 후보 A~F만 제시, PC/사건 생성은 선택 뒤 | HOMAGE_DRAFT_SELECTION | 일치 |
+| 시작 설정 전체 유효, 원작 미지정 | 실제 작품 후보 A~F만 제시, PC/사건 생성은 선택 뒤 | START_SETTINGS_GATE / HOMAGE_DRAFT_SELECTION | 일치 |
 | 2인 중 P1 생성만 끝남 | P2를 먼저 완료한 뒤 세계 생성 | SEQUENTIAL_PROFILE_GENERATION | 일치 |
 | 원작에 자연스러운 PC의 과거 연결 | 세계 확정 전 선택적으로 반영, 다른 PC의 참여 경로도 확인 | WORLD_PC_INPUT | 일치 |
 | PC가 사건을 추리한 뒤 정답 변경 | 확정 진실을 바꾸지 않고 실제 증거로 검증 | HIDDEN_TRUTH_ENGINE | 일치 |
@@ -39,10 +39,10 @@
 
 | 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
 |---|---|---|---|
-| 인원 미정으로 시작 | 1~3명을 묻고 대기, 원작/PC/난수 생성 전 | PARTICIPANT_COUNT_SETUP | 일치 |
+| 인원 미정으로 시작 | 다른 누락 시작 설정과 함께 1~3명을 묻고 대기, 원작/PC/난수 생성 전 | START_SETTINGS_GATE / PARTICIPANT_COUNT_SETUP | 일치 |
 | 0명·4명·소수 인원 입력 | 유효한 1/2/3 선택을 요청, 기본 2명으로 대체하지 않음 | PARTICIPANT_COUNT_SETUP | 일치 |
-| 1명 확정 | P1만 생성, 빈 동료나 PC 인계 대기 없음 | PARTICIPANT_COUNT_SETUP | 일치 |
-| 3명 확정 | P1/P2/P3 모두 생성 후 세계 생성, 실제 세 슬롯의 참여·정보·행동권 유지 | PARTICIPANT_COUNT_SETUP / CAMPAIGN_SETUP_PIPELINE | 일치 |
+| 시작 설정 전체와 원작 확정, 1명 | P1만 생성, 빈 동료나 PC 인계 대기 없음 | PARTICIPANT_COUNT_SETUP | 일치 |
+| 시작 설정 전체와 원작 확정, 3명 | P1/P2/P3 모두 생성 후 세계 생성, 실제 세 슬롯의 참여·정보·행동권 유지 | PARTICIPANT_COUNT_SETUP / CAMPAIGN_SETUP_PIPELINE | 일치 |
 | 3인 저장을 새 채팅에서 로드 | 저장된 세 슬롯과 Focus를 복원, 인원 선택/세계를 새로 만들지 않음 | STATE_IDENTITY / STATE_RESUME | 일치 |
 | 광고 납품·보수 수령 완료 | 첫 목적 완료 경계에서 실제 사건 접점과 다음 접근을 제시 | SCENE_PACING_GATE | 일치 |
 | 30턴에 수상한 건물과 며칠 뒤 약속만 있음 | 사건 입구 제공 기준 미달, 구체적 충돌·이해관계·현재 접근이 필요 | SCENE_PACING_GATE | 일치 |
@@ -74,6 +74,23 @@
 | 모든 피해 원인을 막고 안전하게 떠남 | 무손실 성공 인정, 새로운 추격/납치나 자동 HP/SAN 차감 없음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
 | P1은 도주하고 P2는 아직 차단 가능 | P2의 유효한 행동을 처리한 뒤 실제 세계 결과로 판단 | ENDING_FINALIZATION_GATE | 일치 |
 | 저장 후 재개, 미래 피해 조건은 아직 미충족 | 예정 위험을 확정 사망으로 바꾸지 않고 기존 실제 손실도 재적용하지 않음 | STATE_SCHEMA / STATE_INTEGRITY | 일치 |
+
+## 플레이어 시작 설정 추가 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 새 게임 요청만 입력 | 시작 양식 전체 제시, 필수 입력 대기 중 웹 검색·생성 없음 | START_SETTINGS_GATE | 일치 |
+| 인원 질문에 1만 답함 | 1인만 보존, 시드·인지도·규모·배제 누락을 묻고 원작 대기 | START_SETTINGS_GATE / PLAYER_INPUT_NAMESPACE_ROUTER | 일치 |
+| 여러 빈칸 양식 뒤 단독 2 | 대상 항목 확인, 여러 필드에 동시에 2를 적용하지 않음 | PLAYER_INPUT_NAMESPACE_ROUTER | 일치 |
+| 시드 0/101/소수 또는 미입력 | 오류 항목만 재입력 요청, 키퍼 대체 난수 생성 없음 | START_SETTINGS_GATE | 일치 |
+| 시드 두 개가 모두 1 또는 모두 100 | 각각 유효한 별도 입력으로 수용, 임의 중복 회피 없음 | START_SETTINGS_GATE | 일치 |
+| 인지도·규모가 비어 있음 | 기본/사건으로 자동 채우지 않고 대기 | HOMAGE_TIER / STORY_SCALE | 일치 |
+| 필수 양식 완성, 선택 항목 빈칸 | 추가 확인 없이 A~F 단계, PC는 원작 선택 후 생성, 사전 관계는 서로 모름 | START_SETTINGS_GATE / HOMAGE_DRAFT_SELECTION | 일치 |
+| 배제 세계관 빈칸/없음 | 빈칸은 미응답, 명시적 없음은 유효한 선택 | START_SETTINGS_GATE | 일치 |
+| 핵심 시드 25와 크툴루가 아닌 장르 직접 지정 | 직접 지정 장르 우선, 시드만으로 크툴루 강제 없음 | D100_PARADIGM_GENERATION / CTHULHU_OVERRIDE | 일치 |
+| 직접 지정 작품이 배제 세계관과 충돌 | 조건 조정 질문 후 대기, 임의 대체/배제 삭제 없음 | START_SETTINGS_GATE | 일치 |
+| 직접 원작은 지정했지만 필수 설정 미완성 | 나머지 입력 대기, 완료 후 후보를 생략하고 원작 확정 | START_SETTINGS_GATE / HOMAGE_DRAFT_SELECTION | 일치 |
+| 저장된 캠페인을 새 채팅에서 재개 | 저장 설정·현재 단계를 복원, 새 시드/장르/초기 입력 강제 없음 | STATE_SCHEMA / STATE_RESUME | 일치 |
 
 ## 미실행
 

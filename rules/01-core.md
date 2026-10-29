@@ -64,7 +64,7 @@ AI 측 1dN(1≤N≤100)은 큐의 다음 M(1..100)을 소비한다. L=floor(100/
 
 플레이어 입력의 의미는 문자/숫자 자체가 아니라 **현재 열린 담당 규칙과 pending state**가 먼저 결정한다.
 1. 열린 Roll/Push/Luck/SAN/Combat/Chase/Madness/기타 진행 중 절차가 있으면 그 담당 규칙이 기대하는 입력을 먼저 해석한다. 일반 행동 메뉴가 이를 가로채지 않는다.
-2. Setup 인원 대기에서는 1/2/3을 참가 인원으로만 처리한다. 인원이 확정된 뒤 Setup의 Homage·Profession Draft는 A~F, Stat·Specialty Draft는 A/B/C를 해당 단계의 로컬 선택으로 해석한다. PLAY Handoff 의미로 읽지 않는다.
+2. Setup 설정 대기에서는 START_SETTINGS_GATE의 현재 질문 대상과 필드명을 먼저 확인한다. 인원만 물었다면 1/2/3은 인원만 확정하며 시드·인지도·규모의 응답으로 복사하지 않는다. 여러 항목을 물은 뒤 단독 숫자가 오면 대상 항목을 확인한다. 시작 설정 전체가 확정된 뒤 Setup의 Homage·Profession Draft는 A~F, Stat·Specialty Draft는 A/B/C를 해당 단계의 로컬 선택으로 해석한다. PLAY Handoff 의미로 읽지 않는다.
 3. `focus_mode=handoff_wait/reaction_wait`의 신규 Gate는 정확한 단독 입력 `A`가 시간 정지 activation이다. Meta 요청은 pending을 유지한다.
 4. `focus_mode=visual_choice_wait`의 신규 Gate는 `A=텍스트/다음 진행`, `B=비주얼`이다. 둘 다 시간 정지다.
 5. 열린 진행 중 절차/Gate가 없는 **Normal Action Return**에서만 `action_menu_pending{}`의 정확한 단독 입력 `1/2/3`을 해당 대표 Intent 선택으로, `4`를 `직접 행동을 자유문장으로 입력`하는 시간 정지 안내로 해석한다. `2시간 기다린다`, `1층으로 간다`, d100 값처럼 숫자가 문장의 일부이거나 다른 담당 규칙이 기대하는 값이면 메뉴 선택으로 해석하지 않는다.

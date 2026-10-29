@@ -295,6 +295,7 @@
 | STARTING_VISUAL_BASELINE | [08-visual.md](../rules/08-visual.md#starting_visual_baseline) |
 | START_BRIEFING_FOG | [04-setup.md](../rules/04-setup.md#start_briefing_fog) |
 | START_MAP_HANDOUT_GATE | [08-visual.md](../rules/08-visual.md#start_map_handout_gate) |
+| START_SETTINGS_GATE | [04-setup.md](../rules/04-setup.md#start_settings_gate) |
 | STATE_AUTHORITY | [07-state.md](../rules/07-state.md#state_authority) |
 | STATE_CADENCE | [07-state.md](../rules/07-state.md#state_cadence) |
 | STATE_COMMIT | [07-state.md](../rules/07-state.md#state_commit) |
