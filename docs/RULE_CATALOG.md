@@ -79,6 +79,7 @@
 | DIEGETIC_PROFILING | [02-checks.md](../rules/02-checks.md#diegetic_profiling) |
 | DIEGETIC_SAN_RECOVERY | [03-danger.md](../rules/03-danger.md#diegetic_san_recovery) |
 | DIFFICULTY_ASSIGNMENT | [02-checks.md](../rules/02-checks.md#difficulty_assignment) |
+| DIRECTOR_WRITER_KEEPER_CONVERGENCE | [06-play.md](../rules/06-play.md#director_writer_keeper_convergence) |
 | DISTINCTIVE_EQUIPMENT_AFFORDANCE | [05-world.md](../rules/05-world.md#distinctive_equipment_affordance) |
 | DRAMATIC_SPINE | [05-world.md](../rules/05-world.md#dramatic_spine) |
 | DRAMATIC_SPINE_SCENE_PACING | [06-play.md](../rules/06-play.md#dramatic_spine_scene_pacing) |

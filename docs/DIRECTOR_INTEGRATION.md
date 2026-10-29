@@ -1,0 +1,44 @@
+# 통합 연출 지침 반영 기록
+
+반영일: 2026-10-30. 사용자 첨부 DIRECTOR_WRITER_KEEPER_CONVERGENCE 전체를 게임 진행에 적용한다. 별도의 게임 서버·감독/작가 모델 호출·연출 점수를 추가하지 않는다.
+
+## 인스트럭션 우선 배치
+
+첨부문은 LF 줄바꿈 기준 8,303자로, 그 자체가 7,800자 한도를 넘는다. PROJECT_INSTRUCTIONS는 13개 항목과 최종 원칙을 빠짐없이 압축해 맨 앞에 배치하고 최소 운영 규칙·상황별 라우팅을 뒤에 둔 **7,788자**다. 전체 원문과 대비 예시는 [진행 룰북](../rules/06-play.md#director_writer_keeper_convergence)에 보존했다. 첨부의 CRLF를 LF로 바꾸고 줄 끝 공백·첫 두 제목의 단계만 정리했으며 원문 뒤에 현행 실행 연결을 덧붙였다.
+
+| 첨부 항목 | 인스트럭션 적용 | 기존 실행과 연결 |
+|---|---|---|
+| 1. 키퍼·감독·소설가 | 같은 사건의 인과·제시·체험을 담당 | CORE_WORKFLOW, PC 선택은 CORE_AGENCY |
+| 2. 장면 목적 | 경험·관여·변화·새 판단, 평온도 유효 | CINEMATIC_ELLIPSIS, SAFE_INTERLUDE_AND_ENRICHMENT |
+| 3. 카메라 | Establishing/Close-up/Sound/Movement/Pause/Cut | 관측 범위·실제 조사·인계 입력 보존 |
+| 4. 공포 | 불안·서스펜스·충격·여파, 순서/비율 비고정 | 실제 SAN/위험 규칙·세계 인과 우선 |
+| 5. 소설적 서술 | Show, Don't Tell, Positive Anchor, 감각 1~2개, 상황별 리듬 | PLAYABLE_NARRATIVE_RENDERING, CINEMATIC_MISE_EN_SCENE |
+| 6. 인물·대화 | 인물별 경험/목적, 실제 PC 발화, 주도권 | NPC_INTERACTION_VOICE_COMPACT, NPC_REPLY_AGENCY_GATE |
+| 7. 연속성과 편집 | 변화에서 이어 쓰고 반복 도입/강제 반전 방지 | 열린 판정·선택을 건너뛰지 않음 |
+| 8. Spotlight | 3회 목표·5회 상한, 경험 차이와 인과 | 인계 A·한 응답 한 PC, 파티 공통 지식 유지 |
+| 9. 선택과 반응 | 실패·우회·예상 밖 해결의 실제 결과 | 기존 Butterfly/NPC/World/Inventory/Promise 사용 |
+| 10. 분량 | 의미 있는 확장과 압축, 900~1,600자는 참고 | 자료·PC 대사·판정·UI·HUD 형식 유지 |
+| 11. 행동권 | 직접 결과 완결 후 새 판단에 반환 | 정상 행동 메뉴와 전용 입력 계약 유지 |
+| 12. 품질 | 8개 기준을 작성 제약으로 사용 | 추가 도구·점수·평가 출력 없음 |
+| 13. 보정·최종 원칙 | 실제 사물/동작/말로 체험, 선택이 세계를 바꿈 | 예시 물건/인물은 실제 캠페인에 자동 생성하지 않음 |
+
+## 기존 지침 원문 이동
+
+기준은 커밋 `8a833530774fb8a4b38e313c0030d057a766ef8b`의 PROJECT_INSTRUCTIONS다. 제목을 제외한 본문 32개 블록을 전부 추적했다. 8개는 인스트럭션에 그대로 남겼고 24개, 합계 4,899자는 담당 룰북의 기존 절로 원문 그대로 옮겼다. 기존 요약을 새로운 판정 수치나 버전별 Override로 만들지 않았다.
+
+| 이관 대상 | 현재 담당 문서/절의 예 |
+|---|---|
+| 게임 목표·주도권·공개 지식·조회 재사용 | 01-core의 CORE_ZERO_HOMAGE_EXPERIENCE_GATE / CORE_AGENCY / CORE_VISIBILITY / ACTIVE_PLAY_ROUTING_FIREWALL |
+| 시작 입력·생성 순서·APP/직업·원작 구현·정본 | 04-setup의 START_SETTINGS_GATE / CAMPAIGN_SETUP_PIPELINE / PC_APPEARANCE_FROM_APP / HOMAGE_SIGNATURE_FREEZE / GENERATION_FREEZE |
+| NPC 발화 원칙 | 05-world의 NPC_INTERACTION_VOICE_COMPACT |
+| 장면·대사·교대·선택·HUD 상세 | 06-play의 각 기존 담당 절 |
+| DB 접근·영속 저장 상세 | 07-state의 STATE_ACCESS_ROUTER / STATE_AUTHORITY |
+| 웹 이미지 사용 | 08-visual의 WEB_VISUAL_REFERENCE |
+
+각 블록의 원본 순번·길이·SHA-256·목적지 및 첨부 원문 hash는 [이관 기록](instruction-relocation-2026-10-30.json)에 있다. 이번 반영에서 각 블록이 목적지 본문에 정확히 일치하고, 전체 첨부가 지정한 형식 정리 외에는 바뀌지 않았음을 검사했다.
+
+## 적용과 검증의 범위
+
+프로젝트 지침과 소스를 함께 최신 ZIP으로 교체한다. 이미 업로드된 구판은 GitHub 변경으로 자동 갱신되지 않는다. 문서판은 통합 연출판 2026-10-30이며 운영 DB 스키마/세이브의 버전을 바꾸지 않는다. 새 지침을 적용한다고 기존 세계·PC·판정 결과를 다시 생성하지 않는다.
+
+문서·원문 보존·라우팅·배포 파일 검증은 실제 AI의 문체 품질·행동권 준수·응답 시간이나 Supabase 실행 검증을 대신하지 않는다. 일반 턴 조회 최소화와 시작/30턴 전체 복기는 기존 계약을 유지한다.

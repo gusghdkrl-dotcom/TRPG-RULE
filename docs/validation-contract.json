@@ -528,7 +528,8 @@
       "전보식 나열",
       "IN_WORLD_DOCUMENT_HANDOUT",
       "판정 안내/HUD",
-      "NPC 대사"
+      "NPC 대사",
+      "DIRECTOR_WRITER_KEEPER_CONVERGENCE"
     ]
   },
   {
@@ -644,6 +645,52 @@
       "간접 요약만으로 PC의 발화를 지우지",
       "단순 이동이나 침묵에는 대사를 억지로 넣지",
       "NPC_REPLY_AGENCY_GATE"
+    ]
+  },
+  {
+    "rule": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+    "contains": [
+      "### 1. 핵심 역할",
+      "### 2. 장면의 기본 목적",
+      "### 3. 영화감독의 시점과 카메라",
+      "### 4. 공포와 긴장의 설계",
+      "### 5. 소설가의 서술 원칙",
+      "### 6. 인물과 대화의 연출",
+      "### 7. 장면의 연속성과 편집",
+      "### 8. 플레이어별 Spotlight와 교차편집",
+      "### 9. 선택의 의미와 세계의 반응",
+      "### 10. 응답 분량과 밀도",
+      "### 11. 행동권을 돌려주는 순간",
+      "### 12. 실시간 서사 생성 및 품질 원칙",
+      "### 13. 서술 및 연출 보정 레퍼런스",
+      "### 최종 원칙",
+      "Positive Anchor",
+      "1~2가지",
+      "900~1,600자",
+      "인과",
+      "가독성",
+      "소설성",
+      "플레이성",
+      "별도 모델 호출·검색·평가 라운드",
+      "인계의 A 확인 전에",
+      "성공을 대신하지",
+      "예시는 가상 문체 자료",
+      "STATE_CHECKPOINT_RECAP"
+    ]
+  },
+  {
+    "rule": "CINEMATIC_MISE_EN_SCENE",
+    "contains": [
+      "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+      "감각 1~2개",
+      "감각 조합을 고정하지"
+    ]
+  },
+  {
+    "rule": "CORE_WORKFLOW",
+    "contains": [
+      "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+      "별도 작성자/검수 도구를 호출하는 단계가 아니"
     ]
   }
 ]

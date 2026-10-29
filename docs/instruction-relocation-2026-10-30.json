@@ -1,0 +1,174 @@
+{
+  "date": "2026-10-30",
+  "source_commit": "8a833530774fb8a4b38e313c0030d057a766ef8b",
+  "source_file": "PROJECT_INSTRUCTIONS.md",
+  "source_sha256": "a1fcb34134abd68317efbce979b1e9421af59ac048f640b24faa56ab7deabb4a",
+  "source_content_blocks": 32,
+  "retained_block_indices": [
+    5,
+    7,
+    10,
+    11,
+    13,
+    14,
+    16,
+    26
+  ],
+  "moved_blocks": [
+    {
+      "index": 0,
+      "characters": 127,
+      "sha256": "332edbcdd8da672617285ed693960758e23d07d3a50d2ce6428baa20779f6380",
+      "destination": "rules/01-core.md#core_zero_homage_experience_gate"
+    },
+    {
+      "index": 1,
+      "characters": 149,
+      "sha256": "6278a9e8b01b0feb985427ab679b0a8af48c2f7345844e0232b31f25185c94d4",
+      "destination": "rules/07-state.md#state_access_router"
+    },
+    {
+      "index": 2,
+      "characters": 180,
+      "sha256": "f3131daa9c5cfe1f401c4d3a46390b2508c1755ce51f82ff82613ef8693d5812",
+      "destination": "rules/01-core.md#core_zero_homage_experience_gate"
+    },
+    {
+      "index": 3,
+      "characters": 127,
+      "sha256": "91a5b9079016694fe8aa1d72688e0ab9f1ef24cfb6a7d412505d0e1781ce1f3e",
+      "destination": "rules/06-play.md#playable_narrative_rendering"
+    },
+    {
+      "index": 4,
+      "characters": 161,
+      "sha256": "3eb33b733f0c9135b56e25ce5389a04375efbaff54868305539d15922cc13440",
+      "destination": "rules/06-play.md#cinematic_action_continuity"
+    },
+    {
+      "index": 6,
+      "characters": 136,
+      "sha256": "b12e82c02920d04b09816326ae7055da7144c4c52ecf2f3151995fe275a63eb6",
+      "destination": "rules/05-world.md#npc_interaction_voice_compact"
+    },
+    {
+      "index": 8,
+      "characters": 143,
+      "sha256": "ffd84b9d703f426eae01a921d14393740a043c706a62eabbf7171170b51d6a1e",
+      "destination": "rules/06-play.md#multi_pc_spotlight_contract"
+    },
+    {
+      "index": 9,
+      "characters": 348,
+      "sha256": "c711746388140dc748dec8f364b716434e199ea1beb35ab9b67c4471e59fd29d",
+      "destination": "rules/04-setup.md#start_settings_gate"
+    },
+    {
+      "index": 12,
+      "characters": 167,
+      "sha256": "366bbd441f32496194ba0bb4ad6986bae38d9fe8a91879e05b8bca47e64672a1",
+      "destination": "rules/01-core.md#active_play_routing_firewall"
+    },
+    {
+      "index": 15,
+      "characters": 303,
+      "sha256": "b3e328519b0be95dbfd031bc549ba1148ca03e52ae380e00a5d5b921719a4077",
+      "destination": "rules/07-state.md#state_access_router"
+    },
+    {
+      "index": 17,
+      "characters": 138,
+      "sha256": "5f90683b656896db5b397f4e7a1df3c621bf9ef6e598e7ae2e8c1325f3c462ae",
+      "destination": "rules/01-core.md#core_agency"
+    },
+    {
+      "index": 18,
+      "characters": 178,
+      "sha256": "f4543888e6102ca78c525374d71aa83df7e28c65c17c6df0fb61a82905a58582",
+      "destination": "rules/06-play.md#scene_pacing_gate"
+    },
+    {
+      "index": 19,
+      "characters": 149,
+      "sha256": "64efd6c76c93938c51e257a0da06bc5b57d8d82b1ded476e1d18ee5435ba2e12",
+      "destination": "rules/06-play.md#guided_action_return"
+    },
+    {
+      "index": 20,
+      "characters": 162,
+      "sha256": "c2137849ae43cf080a75869a2dca85d296b062adfdb8419c1c381e231daa9735",
+      "destination": "rules/01-core.md#core_visibility"
+    },
+    {
+      "index": 21,
+      "characters": 149,
+      "sha256": "36c28ead777b59f79ae51f336af7cc6d999dfeb6d5dcafb449b15a158cd7f9c0",
+      "destination": "rules/01-core.md#core_visibility"
+    },
+    {
+      "index": 22,
+      "characters": 176,
+      "sha256": "61b9a1bcf9f1a683186c4288487372314198fbc9a0aa1c18170150bf9344f855",
+      "destination": "rules/04-setup.md#generation_freeze"
+    },
+    {
+      "index": 23,
+      "characters": 288,
+      "sha256": "29e0594f899027d285039c79f54c7c480bdeafc5c24ebbe802b699950df60374",
+      "destination": "rules/04-setup.md#homage_signature_freeze"
+    },
+    {
+      "index": 24,
+      "characters": 312,
+      "sha256": "da8ee714cb47937ddf441617ab01d250a4848983b314ff717de6057cb0dfb642",
+      "destination": "rules/04-setup.md#campaign_setup_pipeline"
+    },
+    {
+      "index": 25,
+      "characters": 239,
+      "sha256": "8fe594fa776d35b7ca1c428d3506470233723d23ff8efbef7f58abd9eb95d07e",
+      "destination": "rules/04-setup.md#pc_appearance_from_app"
+    },
+    {
+      "index": 27,
+      "characters": 313,
+      "sha256": "71683cbcda557a40a112339929284a2cb51a9bbc43ada0a574f320ebd3367a81",
+      "destination": "rules/07-state.md#state_authority"
+    },
+    {
+      "index": 28,
+      "characters": 233,
+      "sha256": "fc735c8a77e7a6d3f4dd03bb5e0abaa3150fe3e13ba796e68fe267dbd2a076ce",
+      "destination": "rules/06-play.md#spotlight_fairness_commit_gate"
+    },
+    {
+      "index": 29,
+      "characters": 349,
+      "sha256": "fd832d13b4a136a79b093df6edccba2399b588fa6e0dca329fab143f5d3c2369",
+      "destination": "rules/06-play.md#playable_narrative_rendering"
+    },
+    {
+      "index": 30,
+      "characters": 127,
+      "sha256": "4cd64d1fb04ad275c72c365da95e6858df36c2da83b4d1203dd17d0409091cc6",
+      "destination": "rules/08-visual.md#web_visual_reference"
+    },
+    {
+      "index": 31,
+      "characters": 245,
+      "sha256": "3ca1a67ca092262677b039405c304d4b6e5d188aa87d69a069d87b33b7065bac",
+      "destination": "rules/06-play.md#hud_visual_style"
+    }
+  ],
+  "directive": {
+    "source_characters": 8303,
+    "source_sha256": "574b4874e0c97d2375dbc8475cb8e3e47c172edcb7bff879145e84ad7a4728cf",
+    "destination": "rules/06-play.md#director_writer_keeper_convergence",
+    "normalization": "CRLF normalized to LF; trailing line whitespace removed; first heading changed from # to ## and subtitle from ## to ###. All original wording preserved; execution links follow the original block.",
+    "source_bytes": 18855,
+    "source_characters_raw": 8516,
+    "lf_normalized_sha256": "9be8554afeab126558ebb5c3f344e1d57bb2442e542ae1d6e46765097c76fe00",
+    "canonical_block_sha256": "5071e685191f90d77bd272bee535bafce06fa3764132d6f421b2223795629ab0"
+  },
+  "project_instruction_characters": 7788
+}

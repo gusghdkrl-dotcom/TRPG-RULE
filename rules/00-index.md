@@ -1,6 +1,6 @@
 # 규칙 색인
 
-규칙판: 플레이 개선판 2026-10-30. 실행 파일은 이 폴더의 Markdown 문서다. 과거 문서·개발 일지를 검색 정본으로 사용하지 않는다.
+규칙판: 통합 연출판 2026-10-30. 실행 파일은 이 폴더의 Markdown 문서다. 과거 문서·개발 일지를 검색 정본으로 사용하지 않는다.
 
 ## 조회 순서
 
@@ -8,6 +8,7 @@
 
 | 상황 | 읽을 규칙 |
 |---|---|
+| 키퍼·감독·소설가 통합 연출·서사·보정 예시 | [DIRECTOR_WRITER_KEEPER_CONVERGENCE](06-play.md#director_writer_keeper_convergence); 인스트럭션 우선 기준과 연결 |
 | 이번 입력과 열린 절차부터 확인 | [CORE_WORKFLOW](01-core.md#core_workflow) |
 | 확인된 짧은 이동 | [ROUTINE_MOVEMENT_FAST_PATH](06-play.md#routine_movement_fast_path) |
 | 일상 행동·판정 필요 여부 | [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate) |

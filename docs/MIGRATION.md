@@ -4,6 +4,8 @@
 
 ## 파일 교체
 
+통합 연출판에서는 인스트럭션의 우선순위와 본문 위치가 바뀌었다. PROJECT_INSTRUCTIONS와 sources 10개를 함께 교체하고, 이전 판에서 읽은 본문을 같은 판의 캐시로 재사용하지 않는다. 기존 지침 24개 블록은 담당 룰북에 원문 그대로 이관했으며 첨부 13개 원칙의 전체 원문은 06-play의 DIRECTOR_WRITER_KEEPER_CONVERGENCE에 있다. [반영/이관 기록](DIRECTOR_INTEGRATION.md)을 참고한다. 기존 캠페인의 진실·선택·대기·검증 저장을 소급 변경하거나 실제 DB schema version을 올리는 패치는 아니다.
+
 | 이전 파일 | 현재 위치/처리 |
 |---|---|
 | PROJECT_INSTRUCTIONS_SETUP_ORDER_ROUTER_A24.txt | PROJECT_INSTRUCTIONS.md |
