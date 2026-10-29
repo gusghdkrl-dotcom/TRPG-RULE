@@ -78,10 +78,23 @@ def export():
     (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침\nsources/*.md → 최신 프로젝트 소스\nSTART_GAME.md → 시작할 때 채팅에 입력\n기존 TXT·구판·개발 일지·감사 문서는 소스에서 제외하세요.\nSupabase 커넥터 연결과 실제 저장 검증은 별도입니다.\n')
     manifest={str(p.relative_to(target)):__import__('hashlib').sha256(p.read_bytes()).hexdigest() for p in sorted(target.rglob('*')) if p.is_file()}
     (target/'SHA256.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
-    archive=ROOT/'build/TRPG-RULE-project.zip'
+    archive=ROOT/'dist/TRPG-RULE-project.zip'
+    archive.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
         for p in sorted(target.rglob('*')):
-            if p.is_file():z.write(p,p.relative_to(target))
+            if p.is_file():
+                # Fixed metadata keeps identical sources identical across exports.
+                info=zipfile.ZipInfo(p.relative_to(target).as_posix(),date_time=(1980,1,1,0,0,0))
+                info.compress_type=zipfile.ZIP_DEFLATED
+                info.create_system=3
+                info.external_attr=0o100644 << 16
+                z.writestr(info,p.read_bytes())
+    with zipfile.ZipFile(archive) as z:
+        if z.testzip() is not None:raise SystemExit('Exported ZIP failed integrity check')
+        for name,digest in manifest.items():
+            if __import__('hashlib').sha256(z.read(name)).hexdigest()!=digest:
+                raise SystemExit(f'Exported ZIP hash mismatch: {name}')
+    shutil.copyfile(archive,ROOT/'build/TRPG-RULE-project.zip')
     print(f'Exported {archive}; {len(manifest)} files + manifest')
 
 def stats():

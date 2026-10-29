@@ -6,6 +6,8 @@ AI 키퍼가 원작 테마에 맞는 세계를 만들고, 플레이어가 PC의 
 
 ## 사용
 
+**[최신 게임용 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/TRPG-RULE-project.zip)** — 이 주소는 유지하며, 룰북 패치 때 같은 파일을 갱신한다. 압축을 풀고 아래 순서대로 설정한다. GitHub 변경이 기존 ChatGPT 프로젝트에 자동 반영되지는 않으므로 프로젝트 파일도 교체해야 한다.
+
 1. [PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)를 프로젝트 지침에 넣는다.
 2. [rules/00-index.md](rules/00-index.md)와 `rules/01-core.md`부터 `rules/09-notebook.md`까지의 **현재 파일 10개**를 프로젝트 소스로 올린다. 이전 TXT·구판·개발 문서와 함께 올리지 않는다.
 3. 연결된 Supabase의 실제 프로젝트/함수 권한을 확인한다. 저장 절차는 [상태 문서](rules/07-state.md)에 있다. 공개 수첩 연결은 선택 사항이다.
@@ -38,7 +40,7 @@ python3 scripts/rulebook.py stats
 python3 scripts/rulebook.py export
 ```
 
-export는 `build/TRPG-RULE-project.zip`과 `build/project-pack/`을 생성한다. `sources/`의 10개 파일만 프로젝트 소스로 올리고, 지침과 시작 입력은 별도로 사용한다. 개발 일지·변환 감사·구판은 묶음에 포함하지 않는다.
+export는 GitHub 배포용 `dist/TRPG-RULE-project.zip`을 갱신하고, 로컬용 `build/TRPG-RULE-project.zip`과 `build/project-pack/`도 생성한다. `sources/`의 10개 파일만 프로젝트 소스로 올리고, 지침과 시작 입력은 별도로 사용한다. 개발 일지·변환 감사·구판은 묶음에 포함하지 않는다. ZIP 손상과 manifest의 SHA-256을 검사하며, 같은 입력으로 다시 생성하면 같은 ZIP을 만든다.
 
 ## 편집
 
