@@ -153,6 +153,7 @@
 | INVENTORY | [05-world.md](../rules/05-world.md#inventory) |
 | INVENTORY_SLOT_SCALE | [05-world.md](../rules/05-world.md#inventory_slot_scale) |
 | INVENTORY_SLOT_STABILITY | [05-world.md](../rules/05-world.md#inventory_slot_stability) |
+| INVESTIGATION_SKILL_ROUTING | [02-checks.md](../rules/02-checks.md#investigation_skill_routing) |
 | INVESTIGATION_STALL_GUARD | [05-world.md](../rules/05-world.md#investigation_stall_guard) |
 | INVESTIGATOR_DEPTH_PROTOCOL | [04-setup.md](../rules/04-setup.md#investigator_depth_protocol) |
 | INVESTIGATOR_DNA_CONSOLIDATION | [04-setup.md](../rules/04-setup.md#investigator_dna_consolidation) |
@@ -310,6 +311,7 @@
 | STATE_RECOVERY | [07-state.md](../rules/07-state.md#state_recovery) |
 | STATE_RESUME | [07-state.md](../rules/07-state.md#state_resume) |
 | STATE_SCHEMA | [07-state.md](../rules/07-state.md#state_schema) |
+| STATE_WORKING_CONTEXT | [07-state.md](../rules/07-state.md#state_working_context) |
 | STAT_BOUNDARY | [02-checks.md](../rules/02-checks.md#stat_boundary) |
 | STAT_DRAFT_GENERATION | [04-setup.md](../rules/04-setup.md#stat_draft_generation) |
 | STAT_THEME_FUSION | [04-setup.md](../rules/04-setup.md#stat_theme_fusion) |

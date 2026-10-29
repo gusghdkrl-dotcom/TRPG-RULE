@@ -39,6 +39,7 @@ START_GAME 양식에서 **핵심 시드·시작 시드(각 1~100), 인원(1~3명
 | `docs/REVIEW_CASES.md` | 대표 상황의 문서상 결과 대조 |
 | `docs/DECISIONS.md` | 확정한 방향과 다음 설계에서 판단할 항목 |
 | `docs/PLAY_OPTIONS.md` | 프로젝트 방식과 대안 비교 |
+| `docs/STATE_FLOW.md` | 룰북·비공개 작업 상태·DB 조회 구분과 실제 기억의 한계 |
 | `docs/MIGRATION.md` | 구판 교체·기존 세이브·서버 연동 주의점 |
 | `DEVLOG.md` | 변경 이유·내용·검증 결과 |
 

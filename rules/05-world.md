@@ -544,6 +544,7 @@ NPC/기관은 자기 Agenda·업무·이해관계에서 실제 요청/의뢰를 
 
 세계가 살아 있다는 것은 PC의 입력에 잘 반응하는 것뿐 아니라 **PC가 보지 않을 때도 기존 원인으로 먼저 움직이는 것**을 포함한다.
 - 실제 timeline이 진행될 때마다 전체 세계를 재계산하지 않고, 그 경과 시간에 조건/시간창이 바뀔 수 있는 `No-Intervention Baseline / NPC Agenda·Ordinary Life / Threat / 환경·시설 / Butterfly / Promise·Prepared Payoff`만 국소 검사한다.
+- 이 검사는 STATE_WORKING_CONTEXT의 세계 진행 색인과 로드된 해당 상태에서 수행한다. 현재 장소 밖의 활성 원인도 포함하며, DB 조회를 줄인다는 이유로 미발견 사건을 멈추지 않는다. 필요한 색인/조건이 실제 없을 때만 STATE_ACCESS_ROUTER로 복구한다. 현재 자료가 있으면 매번 DB에 확인하지 않는다.
 - 이미 확정된 행위자·원인·조건·접근·자원으로 예정된 다음 행동이 due가 되었고 PC의 이전 행동으로 불가능해지지 않았다면 **그 결과를 정확히 한 번 반영**한다. 카메라가 다른 장소에 있다는 이유로 미룰 수 없다. 반대로 PC가 원인이나 조건을 바꿨다면 취소·지연·우회·다른 결과로 재경로화한다.
 - 같은 경과 구간에 복수 Driver가 due이면 **(1) 더 이른 diegetic effective time → (2) 명시적 causal prerequisite가 되는 Driver → (3) 확정된 `resolution_order`** 순으로 결정적으로 처리한다. 단 어떤 Driver도 아직 미충족인 causal prerequisite보다 먼저 반영하지 않는다. 저장된 effective time이 prerequisite보다 앞서도록 모순되면 해당 Driver는 prerequisite가 실제 충족되는 가장 이른 시점까지 보류/재계산하며, 사전 생성 단계에서 발견되면 확정 전에 모순을 수정한다. 각 반영 뒤 다음 Driver는 갱신된 실제 세계 상태에서 required/cancel 조건을 다시 확인한다.
 - `resolution_order`는 Driver가 **처음 active set에 들어갈 때** `world_momentum.driver_order_seq`의 다음 단조 증가 정수를 부여해 확정하고 이후 바꾸지 않는다. 게임플레이 난수를 소비하지 않으며 극적 편의를 위한 재정렬·재굴림은 금지한다. 진짜 동시이고 서로 독립이면 순서가 결과를 바꾸지 않아야 하며, 결과가 바뀔 수 있다면 위 prerequisite/order 계약으로 결정한다.

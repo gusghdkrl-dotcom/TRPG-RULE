@@ -2,6 +2,33 @@
 
 검토일: 2026-10-29. 아래는 현재 문서의 절차·수치·참조를 읽고 대조한 결과다. AI 플레이 세션이나 외부 서버 실행 결과가 아니다. 자동 검사는 rulebook.py check가 수행하는 정적 검증과 validation-contract.json의 핵심 조건이다.
 
+## 판정 조회·비공개 작업 상태 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 신문 합본에서 기록 탐색, 규칙/PC 시트/탐색 조건 모두 있음 | DB 조회 0회, 실제 난관이면 자료조사 요청 | INVESTIGATION_SKILL_ROUTING | 일치 |
+| PC 시트/조건은 있지만 판정 규칙 본문만 없음 | 해당 룰북 절만 조회, DB로 규칙을 찾지 않음 | ACTIVE_PLAY_ROUTING_FIREWALL | 일치 |
+| 과거 제도의 의미를 전문적으로 해석 | 역사 적용 검토, 단지 오래된 종이라는 이유로 기능 선택하지 않음 | INVESTIGATION_SKILL_ROUTING | 일치 |
+| 찾은 읽을 수 있는 공고를 다시 읽음 | 찾기/역사 판정을 자동 추가하지 않고 같은 원문 제공 | INVESTIGATION_SKILL_ROUTING / IN_WORLD_DOCUMENT_HANDOUT | 일치 |
+| 허락은 받았지만 관련 기록 탐색에 실제 난관 존재 | 접근과 탐색 분리, 시간만 충분하다고 무조건 성공 처리하지 않음 | FICTION_FIRST_ROLL_TRIGGER_GATE / INVESTIGATION_SKILL_ROUTING | 일치 |
+| 자료조사 값 유실, 역사 값만 있음 | 역사 값을 복사하거나 유리한 기능으로 대체하지 않고 필요한 시트 값 복구 | INVESTIGATION_SKILL_ROUTING / STATE_ACCESS_ROUTER | 일치 |
+| 판정 요청에 필요한 조건은 있고 성공 후 읽을 전문만 현재 없음 | 전문 복구를 선행 조건으로 만들지 않고 굴림 요청, 실제 읽을 때 복구 | INVESTIGATION_SKILL_ROUTING | 일치 |
+| 판정 조건/실패 결과 자체를 결정할 핵심 상태가 없음 | 해당 범위부터 복구하고 의존하는 판정은 보류 | INVESTIGATION_SKILL_ROUTING | 일치 |
+| 현재 NPC 목적·지식·관계가 이미 로드됨 | 비공개라는 이유로 DB 재조회하지 않고 인물답게 반응 | STATE_WORKING_CONTEXT | 일치 |
+| 미발견 증거의 배치·발견 조건·원문이 이미 로드됨 | DB 없이 실제 발견 조건 처리, 발견 전 원문 공개 없음 | STATE_WORKING_CONTEXT | 일치 |
+| 다른 장소의 Driver가 시간 경과 구간에 발동 | 현재 색인/상태로 결과 1회 반영, 현재 PC가 못 보면 비공개 유지 | WORLD_INITIATIVE_EXECUTION | 일치 |
+| 세계 진행 색인이나 필요한 조건이 유실됨 | 사건 없음으로 간주하지 않고 필요한 범위 복구 | STATE_WORKING_CONTEXT | 일치 |
+| Supabase에 저장됐지만 현재 모델 문맥에는 없는 사실 | 자동 인지를 주장하지 않고 현재 의존하는 값만 복구 | STATE_WORKING_CONTEXT | 일치 |
+| 부분 조회 API는 없고 exact snapshot 로드만 지원 | 같은 snapshot 한 번에서 여러 필요한 값을 가져와 재사용 | STATE_ACCESS_ROUTER | 일치 |
+| 저장본 이후 미저장 HP/시간/NPC 변경이 있음 | 오래된 snapshot으로 덮어쓰지 않음, 검증 불가능한 동적 누락은 보류 | STATE_WORKING_CONTEXT / STATE_INTEGRITY | 일치 |
+| 현재 장면 요약만 남았는데 full checkpoint 저장 시점 | 원문+검증 가능한 변경분에서 전체 구성, 원격 세계/NPC 누락 금지 | STATE_WORKING_CONTEXT / STATE_COMMIT | 일치 |
+| 판정 결과 처리와 30턴 저장 경계가 겹침 | 안전 경계에서 정상 저장 검증, 무조건 DB 0회로 생략하지 않음 | STATE_ACCESS_ROUTER / STATE_CADENCE | 일치 |
+| 실제 비공개 실행 저장 공간이 없는 클라이언트 | 영구 비밀 메모리 보장을 하지 않고 공개 본문/수첩에 비밀 기록 금지 | STATE_WORKING_CONTEXT | 일치 |
+| 사용자가 실시간으로 한 시간 채팅을 멈춤 | 현실 시간만으로 별도 세계 실행 스레드가 있다고 주장하지 않음 | STATE_WORKING_CONTEXT | 일치 |
+| 오류 복구/속도 개선 명목의 checkpoint delete | 명시적 삭제 지시가 없으면 호출하지 않음 | STATE_ACCESS_ROUTER | 일치 |
+
+## 기존 기능 대조
+
 | 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
 |---|---|---|---|
 | 시작 설정 전체 유효, 원작 미지정 | 실제 작품 후보 A~F만 제시, PC/사건 생성은 선택 뒤 | START_SETTINGS_GATE / HOMAGE_DRAFT_SELECTION | 일치 |

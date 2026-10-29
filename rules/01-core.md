@@ -75,13 +75,16 @@ AI 측 1dN(1≤N≤100)은 큐의 다음 M(1..100)을 소비한다. L=floor(100/
 ## ACTIVE_PLAY_ROUTING_FIREWALL
 
 조회 범위는 현재 선언과 상태가 실제 요구하는 규칙으로 제한한다.
+- 먼저 질문을 나눈다. `어떤 기능/판정인가`는 룰북, `이 PC의 수치/이 장소의 사실은 무엇인가`는 현재 GM_STATE, `현재 문맥에 없는 확정 상태를 어디서 복원하는가`는 Supabase다. 규칙 조회 실패를 DB 검색으로 대체하지 않는다.
 - 일상 대화·명백한 관찰·이미 해결된 절차: 현재 상태로 직접 반응한다.
 - 불확실성이 있으면 [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate)을 확인한다.
+- 문헌 찾기·읽기·시대 해석은 [INVESTIGATION_SKILL_ROUTING](02-checks.md#investigation_skill_routing)으로 구분한다. 기능 선정이나 d100 요청 자체는 저장소 접근 사유가 아니다.
 - 실제 굴림이 필요하면 해당 판정 규칙을 적용한다.
 - 결과가 SAN·전투·추격·시간·증거·저장 조건을 만들었을 때 해당 규칙만 추가한다.
 - 확인된 경로의 짧은 이동은 [ROUTINE_MOVEMENT_FAST_PATH](06-play.md#routine_movement_fast_path)를 먼저 적용한다. 장면 인계나 Supabase 조회를 기본 준비 단계로 붙이지 않는다.
 - Supabase 접근 여부는 [STATE_ACCESS_ROUTER](07-state.md#state_access_router)의 실제 조건으로만 결정한다. 룰북 파일 검색과 게임 상태 DB 조회를 같은 작업으로 취급하지 않는다.
 - 새 게임 생성과 저장 구현 전체를 매 일반 턴 다시 읽지 않는다. 현재 대화에 남아 확인 가능한 동일 규칙판 본문은 재사용하고, 상실·불확실·변경된 부분만 다시 조회한다. 이미 확인한 본문과 작업 상태로 해결되면 규칙 검색 0회·DB 조회 0회로 진행한다.
+- 이번 응답에 필요하지 않은 결과 원문·전체 NPC 이력·원격 지역 정보를 선행 조회하지 않는다. 장면에 진입하거나 시간이 흐를 때 필요한 비공개 인과는 [STATE_WORKING_CONTEXT](07-state.md#state_working_context)의 유지 범위에서 확인한다. 처리 과정의 규칙 확인 예고를 일반 PLAY 본문에 반복하지 않고 필요한 판정/장면부터 제공한다. 실제 복구로 진행이 막히면 비밀을 노출하지 않는 짧은 상태 안내만 한다.
 
 ## TURN_RESPONSE_BUDGET
 

@@ -136,7 +136,9 @@
       "orphan pending",
       "최신 hash-valid verified",
       "열린 판정",
-      "새 비밀"
+      "새 비밀",
+      "STATE_WORKING_CONTEXT",
+      "세계 진행 색인"
     ]
   },
   {
@@ -468,7 +470,12 @@
       "미저장 HP·시간·위치·난수",
       "부모 검증은 저장 경계",
       "저장 없는 테스트",
-      "commit/verify/exact read-back"
+      "commit/verify/exact read-back",
+      "현재 필요한 상태 필드/ref 또는 저장 작업",
+      "규칙 확인만으로는 없음",
+      "부분 조회가 실제 지원되지 않으면",
+      "별도 명시적 삭제 지시",
+      "기능 선정·판정 요청/굴림 결과"
     ]
   },
   {
@@ -548,6 +555,49 @@
       "검증 안내·면책 문구를 사용하지",
       "모르는 것을 꾸며 답하지",
       "플레이어의 추리를 대신 평가하지"
+    ]
+  },
+  {
+    "rule": "INVESTIGATION_SKILL_ROUTING",
+    "contains": [
+      "선언한 작업",
+      "`자료조사`가 기본",
+      "역사 40만 보인다고 자료조사도 40",
+      "찾기에 성공했다고 반드시 역사 판정",
+      "필요한 상태 값이 없을 때만",
+      "판정 요청의 선행 조회"
+    ]
+  },
+  {
+    "rule": "STATE_WORKING_CONTEXT",
+    "contains": [
+      "실제 로드/생성한 게임 데이터",
+      "추론 과정 자체를 게임 데이터의 저장 장소로 간주하지",
+      "현재 장소 밖도 포함한 활성 Driver",
+      "문맥에서 빠질 수",
+      "별도 숨은 메모장을 유지한다고 주장하지",
+      "공개 답변·HUD·수첩·프로젝트 소스·GitHub",
+      "과거 snapshot을 현재 전체 상태로 덮어쓰지",
+      "작업 범위 밖까지 포함한 full snapshot",
+      "현실 시간에 자동 실행되는 백그라운드 프로세스"
+    ]
+  },
+  {
+    "rule": "ACTIVE_PLAY_ROUTING_FIREWALL",
+    "contains": [
+      "규칙 조회 실패를 DB 검색으로 대체하지",
+      "INVESTIGATION_SKILL_ROUTING",
+      "기능 선정이나 d100 요청 자체는 저장소 접근 사유가 아니",
+      "STATE_WORKING_CONTEXT"
+    ]
+  },
+  {
+    "rule": "WORLD_INITIATIVE_EXECUTION",
+    "contains": [
+      "STATE_WORKING_CONTEXT",
+      "현재 장소 밖의 활성 원인도 포함",
+      "필요한 색인/조건이 실제 없을 때만",
+      "그 결과를 정확히 한 번 반영"
     ]
   }
 ]

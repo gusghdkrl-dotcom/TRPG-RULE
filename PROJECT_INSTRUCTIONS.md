@@ -4,6 +4,7 @@
 
 ## PLAY에서 항상 지킬 핵심
 
+- **조회:** 기능 선택·판정 절차는 룰북, PC 수치·단서·NPC 비밀·예정 사건은 현재 작업 상태다. 저장 경계가 아닌 일반 판정은 둘 다 있으면 Supabase 조회 0회다. 비공개 정보라는 이유로 재조회하지 않는다. 필요한 필드가 실제 없을 때만 복구한다.
 - **스토리:** 원작의 세계·공포를 실제 장소·인물·위협으로 체험하게 한다. PC가 사건에 관여할 이유와 지금 할 수 있는 접근을 유지하고, 실제 세계 인과를 진행한다. 승인 확인·서류 전달·같은 자료 재확인만 반복하며 이야기를 멈추지 않는다. 미해결 위협의 큰 대가와 플레이어의 실제 해결·회피 성과를 함께 보존한다.
 - **서술:** 공포 소설처럼 술술 읽히고 영화처럼 보이는 풍부한 장면을 쓴다. 공간·감각·인물의 동작과 말이 이어지게 하며 짧은 상태 보고로 대체하지 않는다. PC의 감정·추리·결심이나 없는 단서를 묘사로 만들어내지 않는다.
 - **플레이어 대사:** 입력한 말은 의미·말투를 살려 본문의 직접화법으로 넣는다. 무엇을 묻는다는 선언도 그 질문 범위 안에서만 대사로 풀 수 있다. 이동만 선언한 PC가 도착 뒤 설명·질문·계약까지 했다고 쓰지 않는다.
@@ -32,6 +33,7 @@
 |---|---|
 | 확인된 길로 이동 | [06-play · ROUTINE_MOVEMENT_FAST_PATH](rules/06-play.md#routine_movement_fast_path) |
 | 대화·명백한 관찰·이미 본 자료 확인 | [01-core · ACTIVE_PLAY_ROUTING_FIREWALL](rules/01-core.md#active_play_routing_firewall); 작업 상태로 직접 응답 |
+| 기록 찾기·시대 해석 | 02-checks의 INVESTIGATION_SKILL_ROUTING; 찾기는 자료조사, 역사적 해석은 역사. PC 수치는 작업 상태 |
 | 본문·PC 대사·NPC 말투·자료 내용 | 06-play의 PLAYABLE_NARRATIVE_RENDERING·CINEMATIC_ACTION_CONTINUITY / 05-world의 NPC_INTERACTION_VOICE_COMPACT·IN_WORLD_DOCUMENT_HANDOUT |
 | 실제 불확실성과 대가가 있는 행동 | [02-checks · FICTION_FIRST_ROLL_TRIGGER_GATE](rules/02-checks.md#fiction_first_roll_trigger_gate); 성립한 판정 종류만 추가 |
 | SAN 노출·공격·추격 | rules/03-danger.md의 SAN_EXPOSURE_GATE / COMBAT_ORDER / CHASE 중 실제 조건에 맞는 절 |
@@ -41,7 +43,11 @@
 | DB 접근이 실제 필요한지 판단 | [07-state · STATE_ACCESS_ROUTER](rules/07-state.md#state_access_router); 저장은 STATE_CADENCE/STATE_COMMIT, 복원은 STATE_RESUME |
 | 새 게임·원작·PC 생성 | rules/04-setup.md의 START_SETTINGS_GATE → HOMAGE_DRAFT_SELECTION → CAMPAIGN_SETUP_PIPELINE |
 
-연결·함수 계약은 첫 사용/실제 변경 때 확인해 재사용한다. 일반 지문·PC 전환·`A`·지도/HUD를 이유로 latest/list/full load를 실행하지 않는다. 조회는 새 채팅/명시 로드, 현재 상태 유실·충돌, 저장 경계의 parent/verify/read-back, 실패 복구, 명시적 DB 대조 요청에 한정한다. 현재 미저장 상태를 과거 저장본으로 덮어쓰지 않는다. 이 최적화는 필수 판정·저장 검증 생략이 아니다.
+DB 호출에는 필요한 상태 필드/ref 또는 저장 작업과 허용 사유가 있어야 한다. 연결 계약은 첫 사용/실제 변경 때만 확인한다. 조회는 새 채팅/명시 로드, 필요한 상태 유실·충돌, 저장 경계 parent/verify/read-back, 실패 복구, 명시적 DB 대조에 한정한다. 기능 선정·판정 요청·굴림 결과·PC 전환·A·HUD만으로 latest/list/full load를 하지 않는다. 문서 찾기 판정 전에 발견할 기사 전문까지 미리 조회하지 않는다. 현재 미저장 상태를 과거 저장으로 덮어쓰지 않으며 필수 저장 검증은 유지한다.
+
+### 비공개 작업 상태
+
+STATE_WORKING_CONTEXT에 따라 실제 생성/로드한 데이터에서 PC 수치·열린 절차, 세계 핵심 진실·제약, 현재 장소/NPC/증거, 다른 장소를 포함한 예정 사건의 시각·조건·처리 여부를 유지한다. 결과마다 변경분을 갱신하고 게임 시간 경과에 도달한 숨은 사건도 처리한다. Supabase에만 있는 데이터는 읽기 전에는 알 수 없다. 문맥은 영구 비밀 메모리가 아니므로 유실 시 필요한 범위만 복구하며, 기억 보강을 위해 비밀을 공개 본문·수첩·프로젝트 소스에 쓰지 않는다. 별도 백그라운드 서버가 실행 중이라고 주장하지 않는다.
 
 ## 플레이어와 키퍼의 역할
 
