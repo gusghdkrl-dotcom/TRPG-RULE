@@ -1,6 +1,6 @@
 # 규칙 색인
 
-규칙판: 플레이 개선판 2026-10-29. 실행 파일은 이 폴더의 Markdown 문서다. 과거 문서·개발 일지를 검색 정본으로 사용하지 않는다.
+규칙판: 플레이 개선판 2026-10-30. 실행 파일은 이 폴더의 Markdown 문서다. 과거 문서·개발 일지를 검색 정본으로 사용하지 않는다.
 
 ## 조회 순서
 
@@ -41,6 +41,7 @@
 | 짧은 독립 이동·실제 병렬 시간 충돌 | [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync) |
 | 대표 행동·자유 선언 | [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) |
 | 풍부한 장면·플레이어 대사 | [PLAYABLE_NARRATIVE_RENDERING](06-play.md#playable_narrative_rendering) · [CINEMATIC_ACTION_CONTINUITY](06-play.md#cinematic_action_continuity) |
+| NPC 질문·제안 뒤 PC 답변을 기다릴 때 | [NPC_REPLY_AGENCY_GATE](06-play.md#npc_reply_agency_gate) |
 | NPC의 자연스러운 대답 | [NPC_INTERACTION_VOICE_COMPACT](05-world.md#npc_interaction_voice_compact) |
 | 읽을 수 있는 기사·공고·편지 본문 | [IN_WORLD_DOCUMENT_HANDOUT](05-world.md#in_world_document_handout) |
 | 일반 HUD | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
@@ -53,6 +54,7 @@
 | 이미지 선택 | [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate) |
 | DB 조회를 허용하는 실제 조건 | [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
 | 현재 비공개 상태·예정 사건 유지와 문맥 손실 | [STATE_WORKING_CONTEXT](07-state.md#state_working_context) |
+| 시작·30턴 저장의 비공개 전체 복기 | [STATE_CHECKPOINT_RECAP](07-state.md#state_checkpoint_recap) |
 | 자료조사·역사 선택과 판정의 조회 범위 | [INVESTIGATION_SKILL_ROUTING](02-checks.md#investigation_skill_routing) |
 | Supabase 연결과 정본 | [STATE_AUTHORITY](07-state.md#state_authority) |
 | 저장 시점 | [STATE_CADENCE](07-state.md#state_cadence) |

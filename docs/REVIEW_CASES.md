@@ -1,6 +1,31 @@
 # 대표 상황의 규칙 대조
 
-검토일: 2026-10-29. 아래는 현재 문서의 절차·수치·참조를 읽고 대조한 결과다. AI 플레이 세션이나 외부 서버 실행 결과가 아니다. 자동 검사는 rulebook.py check가 수행하는 정적 검증과 validation-contract.json의 핵심 조건이다.
+검토일: 2026-10-30. 아래는 현재 문서의 절차·수치·참조를 읽고 대조한 결과다. AI 플레이 세션이나 외부 서버 실행 결과가 아니다. 자동 검사는 rulebook.py check가 수행하는 정적 검증과 validation-contract.json의 핵심 조건이다.
+
+## 저장 경계 복기·NPC 응답 주도권 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 게임 시작 저장 검증 뒤 첫 장면 직전 | 같은 verified 전체 원문으로 비공개 상태 복기, 별도 추가 저장 없음 | STATE_CHECKPOINT_RECAP | 일치 |
+| Scene Turn 30 도달, 판정이 아직 열림 | 기존 첫 안전 경계로 저장/복기 연기, 굴림을 중단하거나 대신 실행하지 않음 | STATE_CADENCE / STATE_CHECKPOINT_RECAP | 일치 |
+| 30/60 기준선을 한 번에 넘긴 시간 생략 | 현재 전체 상태로 저장/복기 1회, 과거 턴별 스냅샷 생성 없음 | STATE_CHECKPOINT_RECAP | 일치 |
+| 현재 장면 밖 NPC의 비밀·미발견 증거가 존재 | 전체 namespace/registry 대조에 포함, 현재 장면 요약만으로 대체하지 않음 | STATE_CHECKPOINT_RECAP | 일치 |
+| 저장 verify와 read-back으로 전체 같은 version 원문 확보 | 같은 응답 재사용, 복기용 latest/list/full load 추가 없음 | STATE_COMMIT / STATE_CHECKPOINT_RECAP | 일치 |
+| 읽기 응답은 성공이나 state 본문이 잘림 | 전체 복기 성공을 주장하지 않고 기존 검증/복구 경로로 누락 해소 | STATE_CHECKPOINT_RECAP | 일치 |
+| 이미 처리한 숨은 사건·난수·SAN 결과가 복기 대상 | 읽고 대조만 함, 시간/난수/피해 재실행 없음 | STATE_CHECKPOINT_RECAP | 일치 |
+| full snapshot을 복기하며 다음 조건 정리 | 미래 30턴 사건·PC 답변 선행 확정 없음, 원문 유지 | STATE_CHECKPOINT_RECAP | 일치 |
+| 비공개 복기를 마친 공개 응답 | 비밀/예정 사건/난수 미출력, 실제 저장 성공/실패만 최소 안내 | STATE_CHECKPOINT_RECAP | 일치 |
+| 일반 31~59턴, 필요한 규칙/작업 상태가 남음 | 관련 범위만 재사용, 전체 복기와 DB 조회 반복 없음 | STATE_WORKING_CONTEXT / STATE_ACCESS_ROUTER | 일치 |
+| 저장 사이 필수 동적 상태가 유실됨 | 60턴까지 무조건 기다리거나 창작하지 않고 한정 복구 | STATE_CHECKPOINT_RECAP / STATE_ACCESS_ROUTER | 일치 |
+| 새 채팅에서 verified 원문 복원 | 확보한 원문으로 같은 복기, 추가 저장/새 장면 재생성 없음 | STATE_RESUME | 일치 |
+| 이동만 선언, 도착 후 NPC가 방문 목적을 물음 | 질문까지 묘사 후 PC 선택 반환, 자동 설명·절차 문의 없음 | NPC_REPLY_AGENCY_GATE | 일치 |
+| 큰 목표는 일감 찾기, NPC가 점검 수락을 요구 | 큰 목표로 수락을 추정하지 않고 응답 대기 | NPC_REPLY_AGENCY_GATE | 일치 |
+| 플레이어가 질문 문장을 직접 입력 | 실제 PC 직접 대사와 NPC 반응 재현, 간접 요약만 출력하지 않음 | CINEMATIC_ACTION_CONTINUITY | 일치 |
+| 수리 의뢰가 있는지 묻는다고만 선언 | 선언한 문의를 직접 대사로 표현, 새 가격/능력 확약 없음 | CINEMATIC_ACTION_CONTINUITY | 일치 |
+| 여러 집의 단순 거절 뒤 의미 있는 새 제안 | 반복 거절은 압축, 실제 PC 문의를 들려주고 새 제안에서 멈춤 | NPC_REPLY_AGENCY_GATE / CINEMATIC_ELLIPSIS | 일치 |
+| 구체 질문/답변을 이미 선언했는데 NPC 인사 단계가 추가됨 | 이미 선언한 발화를 다시 입력받는 빈 절차 없이 재현, 새 질문만 대기 | NPC_REPLY_AGENCY_GATE | 일치 |
+| 이동/침묵만 선언하고 별도 발화 없음 | PC 대사를 넣으려고 새 말/의도를 창작하지 않음 | CINEMATIC_ACTION_CONTINUITY | 일치 |
+| NPC 질문 대기 중 저장·복기·다른 PC 인계 | 질문/원래 목적/미실행 범위 보존, 저장 성공이 수락이 되지 않음 | STATE_IDENTITY / NPC_REPLY_AGENCY_GATE | 일치 |
 
 ## 판정 조회·비공개 작업 상태 대조
 

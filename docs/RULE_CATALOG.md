@@ -206,6 +206,7 @@
 | NPC_CONTRADICTORY_HUMANITY | [05-world.md](../rules/05-world.md#npc_contradictory_humanity) |
 | NPC_INTERACTION_VOICE_COMPACT | [05-world.md](../rules/05-world.md#npc_interaction_voice_compact) |
 | NPC_ORDINARY_LIFE_AND_NO_INTERVENTION_BASELINE | [05-world.md](../rules/05-world.md#npc_ordinary_life_and_no_intervention_baseline) |
+| NPC_REPLY_AGENCY_GATE | [06-play.md](../rules/06-play.md#npc_reply_agency_gate) |
 | NPC_SANITY | [05-world.md](../rules/05-world.md#npc_sanity) |
 | NPC_STATS | [05-world.md](../rules/05-world.md#npc_stats) |
 | NPC_STORY_CONTINUITY_ROUTING | [05-world.md](../rules/05-world.md#npc_story_continuity_routing) |
@@ -304,6 +305,7 @@
 | STATE_ACCESS_ROUTER | [07-state.md](../rules/07-state.md#state_access_router) |
 | STATE_AUTHORITY | [07-state.md](../rules/07-state.md#state_authority) |
 | STATE_CADENCE | [07-state.md](../rules/07-state.md#state_cadence) |
+| STATE_CHECKPOINT_RECAP | [07-state.md](../rules/07-state.md#state_checkpoint_recap) |
 | STATE_COMMIT | [07-state.md](../rules/07-state.md#state_commit) |
 | STATE_COMPATIBILITY | [07-state.md](../rules/07-state.md#state_compatibility) |
 | STATE_IDENTITY | [07-state.md](../rules/07-state.md#state_identity) |

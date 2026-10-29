@@ -120,7 +120,9 @@
       "SHA-256",
       "pending",
       "verify",
-      "exact read-back"
+      "exact read-back",
+      "STATE_CHECKPOINT_RECAP",
+      "같은 데이터를 중복 조회하지"
     ]
   },
   {
@@ -138,7 +140,8 @@
       "열린 판정",
       "새 비밀",
       "STATE_WORKING_CONTEXT",
-      "세계 진행 색인"
+      "세계 진행 색인",
+      "STATE_CHECKPOINT_RECAP"
     ]
   },
   {
@@ -535,7 +538,9 @@
       "[4] ✍️ 직접 행동",
       "공개 라벨에 없던",
       "그 전용 입력이 우선",
-      "action_menu_pending"
+      "action_menu_pending",
+      "NPC_REPLY_AGENCY_GATE",
+      "PC의 질문을 직접화법"
     ]
   },
   {
@@ -579,7 +584,9 @@
       "공개 답변·HUD·수첩·프로젝트 소스·GitHub",
       "과거 snapshot을 현재 전체 상태로 덮어쓰지",
       "작업 범위 밖까지 포함한 full snapshot",
-      "현실 시간에 자동 실행되는 백그라운드 프로세스"
+      "현실 시간에 자동 실행되는 백그라운드 프로세스",
+      "Scene Turn 30/60/90",
+      "전체 복기를 반복하지"
     ]
   },
   {
@@ -598,6 +605,45 @@
       "현재 장소 밖의 활성 원인도 포함",
       "필요한 색인/조건이 실제 없을 때만",
       "그 결과를 정확히 한 번 반영"
+    ]
+  },
+  {
+    "rule": "STATE_CHECKPOINT_RECAP",
+    "contains": [
+      "게임 시작과 Scene Turn 30/60/90",
+      "현재 장면 밖의 모든 비공개 요소까지",
+      "같은 version의 verified exact read-back 결과를 그대로 사용",
+      "별도 latest/list/load를 호출하지",
+      "새 채팅 STATE_RESUME",
+      "본문이 잘렸다면",
+      "미래 사건 결과를 확정하지",
+      "원문을 간략한 요약으로 대체 저장하지",
+      "사건·난수·SAN·피해·시간을 다시 적용하지",
+      "지문/HUD/수첩/프로젝트 소스로 출력하지",
+      "무손실 기억이 보장됐다고 주장하지"
+    ]
+  },
+  {
+    "rule": "NPC_REPLY_AGENCY_GATE",
+    "contains": [
+      "새 답변·의사·동의가 필요한 질문이나 제안",
+      "무슨 일로 오셨습니까",
+      "거기서 멈춘다",
+      "포괄적 위임이 아니",
+      "이미 선언했다면",
+      "첫 실제 문의와 의미 있는 상대",
+      "근거 없는 후속 발화를 삭제",
+      "미답 질문은 보존"
+    ]
+  },
+  {
+    "rule": "CINEMATIC_ACTION_CONTINUITY",
+    "contains": [
+      "직접 입력한 대사",
+      "질문/설명/일감 문의",
+      "간접 요약만으로 PC의 발화를 지우지",
+      "단순 이동이나 침묵에는 대사를 억지로 넣지",
+      "NPC_REPLY_AGENCY_GATE"
     ]
   }
 ]
