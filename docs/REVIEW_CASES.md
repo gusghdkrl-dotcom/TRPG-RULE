@@ -58,6 +58,23 @@
 | 20초 목표와 필수 저장 검증이 충돌 | 검증을 끝내며 저장 턴의 시간은 별도로 측정 | TURN_RESPONSE_BUDGET / STATE_COMMIT | 일치 |
 | 새 텍스트·이미지 프로필 생성 | 붙들고 있는 것·연기 참고 없음, 배우 외형과 태그는 유지 | FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT / GOLD_START_PROFILE_REFERENCE | 일치 |
 
+## 원작 체험·실패 대가 추가 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 작품명·복장만 다르고 사건의 작동·대응이 같음 | 원작 구현 실패, 확정 전에 실제 세계 ref·상호작용·결과를 다시 연결 | HOMAGE_SIGNATURE_FREEZE | 일치 |
+| 원작의 핵심 설정을 확인할 수 없음 | 원작 사실을 꾸며내지 않고 생성 시 확인, 각색과 원작 근거 구분 | FULL_DIVE_CROSS_ANALYSIS | 일치 |
+| PC가 실종 의뢰를 받고 조사하러 옴 | 이미 알고 온 사건·의뢰를 처음부터 제공, 생업 장면 강제 없음 | START_BRIEFING_FOG / INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| 실패해도 보수만 못 받는 중심 사건 | 중대한 손실 요건 미달, 세계 확정 전 수정 | CAUSAL_ENDGAME_PRECOMMIT | 일치 |
+| 중심 진실이 과거의 무서운 일화로만 끝남 | 현재 위협·피해와 개입 필요성이 없으면 생성 검토 실패 | HIDDEN_TRUTH_HORROR_PAYLOAD_GATE | 일치 |
+| 흑막을 알아냈지만 실제 진행은 막지 않음 | 지식 획득과 위협 차단을 분리하고 조건에 따라 피해 진행 | CAUSAL_ENDGAME_PRECOMMIT / SCENARIO_CAUSAL_PROGRESS_MODEL | 일치 |
+| 원작상 살해 불가능한 존재에 대응 | 봉쇄·지연·구조·격리·탈출 등 성립하는 대응 허용, 정면전 강제 없음 | CAUSAL_ENDGAME_PRECOMMIT | 일치 |
+| PC는 탈출했으나 마을의 위협은 미해결 | 생존과 사건 해결을 분리, 실제 발생 손실과 잔존 위험을 보존 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 일부 주민을 구조하고 철수 | 구조 성과 인정, 미해결 부분의 실제 대가만 정산 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE / ENDING_RESULT_VECTOR | 일치 |
+| 모든 피해 원인을 막고 안전하게 떠남 | 무손실 성공 인정, 새로운 추격/납치나 자동 HP/SAN 차감 없음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| P1은 도주하고 P2는 아직 차단 가능 | P2의 유효한 행동을 처리한 뒤 실제 세계 결과로 판단 | ENDING_FINALIZATION_GATE | 일치 |
+| 저장 후 재개, 미래 피해 조건은 아직 미충족 | 예정 위험을 확정 사망으로 바꾸지 않고 기존 실제 손실도 재적용하지 않음 | STATE_SCHEMA / STATE_INTEGRITY | 일치 |
+
 ## 미실행
 
 - 전체 새 캠페인 생성부터 실제 Supabase 저장·verify·exact load·새 채팅 복원.

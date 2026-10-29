@@ -263,5 +263,60 @@
     "excludes": [
       "cadence와 연결하지"
     ]
+  },
+  {
+    "rule": "HOMAGE_SIGNATURE_FREEZE",
+    "contains": [
+      "5~7개",
+      "원작에서의 구체적 근거",
+      "상호작용",
+      "동일한 창고",
+      "관련 장면에서만"
+    ]
+  },
+  {
+    "rule": "HIDDEN_TRUTH_HORROR_PAYLOAD_GATE",
+    "contains": [
+      "현재 진행 중인 위협",
+      "중대한 손실",
+      "소급 변경하지"
+    ]
+  },
+  {
+    "rule": "CAUSAL_ENDGAME_PRECOMMIT",
+    "contains": [
+      "중대한 대가",
+      "각 PC",
+      "인지 경로",
+      "신격 살해",
+      "방지/잔존/진행 중",
+      "HP/SAN을 자동 차감하지",
+      "소급 삽입하지"
+    ]
+  },
+  {
+    "rule": "NO_CLEAN_EXIT_HORROR_ARCHITECTURE",
+    "contains": [
+      "미해결 사건의 대가",
+      "깨끗한 퇴로",
+      "한 PC의 철수",
+      "무손실 성공",
+      "남겨둘 대상"
+    ]
+  },
+  {
+    "rule": "ENDING_RESULT_VECTOR",
+    "contains": [
+      "이미 발생한 손실",
+      "실제로 막거나 줄인 손실",
+      "진행 중인 위험"
+    ]
+  },
+  {
+    "rule": "START_BRIEFING_FOG",
+    "contains": [
+      "이미 들은 이상 사건",
+      "숨은 원인·정답·미래 결과"
+    ]
   }
 ]

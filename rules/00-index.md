@@ -24,6 +24,9 @@
 | 원작 후보 A~F | [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) |
 | PC 특성+Luck 후보 | [STAT_DRAFT_GENERATION](04-setup.md#stat_draft_generation) |
 | 직업·기능 시작값 | [PC_SKILL_START_VALUES](04-setup.md#pc_skill_start_values) |
+| 원작 특징을 실제 세계에 구현 | [HOMAGE_SIGNATURE_FREEZE](04-setup.md#homage_signature_freeze) |
+| 실패·방치의 중대한 손실 설계 | [CAUSAL_ENDGAME_PRECOMMIT](04-setup.md#causal_endgame_precommit) |
+| 도주와 남겨진 대가 | [NO_CLEAN_EXIT_HORROR_ARCHITECTURE](05-world.md#no_clean_exit_horror_architecture) |
 | 세계의 PC 설정 활용 | [WORLD_PC_INPUT](04-setup.md#world_pc_input) |
 | 생성 후 검증 | [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
 | 비공개 세계·NPC 시간 진행 | [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) |
