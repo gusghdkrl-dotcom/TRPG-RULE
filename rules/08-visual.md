@@ -44,8 +44,8 @@
 
 ## SCENE_VISUALIZATION_CAST_CONTINUITY
 
-플레이어가 현재 상황을 `이미지로 보여줘 / 시각화해줘 / 장면을 그려줘`처럼 명시적으로 요청하면, 사용 가능한 이미지 생성 기능으로 **현재 장면의 실제 세계 상태를 시각화**한다.
-- 장면에 등장하는 PC는 최종 프로필에 확정된 배우 레퍼런스와 외형을 우선 시각 기준으로 사용한다. NPC도 사전 확정된 배우/외형 레퍼런스가 있으면 동일하게 적용한다.
+플레이어가 현재 상황을 `이미지로 보여줘 / 시각화해줘 / 장면을 그려줘`처럼 요청하면 필요한 정확도를 구분한다. 현재 PC/사건의 실제 장면을 그리는 요청은 사용 가능한 이미지 생성 기능으로 정본을 재현한다. 직업·풍경·상황 예시는 [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference)에 따라 실제 웹 자료로 보완할 수 있다.
+- 장면에 등장하는 PC는 [PC_APPEARANCE_FROM_APP](04-setup.md#pc_appearance_from_app)로 확정한 APP 반영 외형과 배우 레퍼런스를 함께 사용한다. APP 수치만 쓰고 이미지를 일률적으로 미화하거나 평범하게 만들지 않는다. NPC도 사전 확정된 배우/외형 레퍼런스가 있으면 동일하게 적용한다.
 - 배우 레퍼런스는 단순 이름 장식이 아니라 얼굴형·인상·헤어·체격 등 캐릭터의 시각적 연속성을 유지하기 위한 기준이다. 현재 캐릭터의 나이, 시대 의상, 직업 복장, 상처·피·오염, 들고 있는 장비와 위치는 **현재 GM_STATE의 실제 상태**를 우선한다.
 - 배우 레퍼런스가 없는 인물은 이미 확정된 외형 묘사를 사용한다. 시각화할 때마다 임의로 다른 얼굴·체격·민족적 특징으로 재설계하지 않는다.
 - 동일 PC/NPC를 후속 이미지에서 다시 그릴 때 이미 확정된 외형 특징을 유지한다. 실제 변장, 부상, 복장 교체, 시간 경과가 있을 때만 그 부분을 바꾼다.
@@ -53,6 +53,7 @@
 
 ## VISUALIZATION_CANON_BOUNDARY
 
+- 웹 참고 이미지는 [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference)의 reference_only 자료다. 아래의 생성 그림 부수 요소 수용 규칙을 웹 사진에 적용해 게임 사실을 새로 만들지 않는다.
 - 생성형 시각화는 현재 GM_STATE와 정보 공개 범위를 우선 재현한다. 사전 정본에 없던 이미지 모델의 부수 표현은 이미지에 보였다는 이유만으로 비공개 진실, Evidence, 자원, 통로, 위협 약점, 비공개 인물·공간이 되지 않는다.
 - 플레이어가 이미지의 평범한 부수 요소를 실제로 지목해 상호작용하려 하면, 시대·장소·Homage·Foundation·현재 세계 상태와 자연스럽고 기존 정본·정보 공개 범위와 충돌하지 않는 범위에서 **평범한 세계 세부로 받아들여 정상 플레이할 수 있다.** 한번 플레이 결과에 사용되어 확정된 사실은 소급 삭제하지 않는다.
 - 깨진 글자, 명백한 시대·구조 모순, 정보 공개 범위 침범 요소는 비정본 시각 표현으로 취급한다.
@@ -61,8 +62,9 @@
 ## EVENT_DRIVEN_VISUAL_ROUTER
 
 목적: 이미지 시스템이 일반 Turn 응답시간을 늘리지 않도록 **Event가 있을 때만** Visual 담당 규칙을 활성화한다.
-- Visual Event는 다음 다섯 경우뿐이다: `final_profile_frozen`, `location_id_changed`, `major_visual_state_changed`, `ending_state_finalized`, `explicit_visual_request`.
-- 위 Event가 없으면 이번 응답에서 Visual priority, 과거 이미지, 전체 장소 목록, 인물 외형 목록을 재검토하지 않고 즉시 SKIP한다. 일반 대화·판정·탐사·전투 행동마다 `그림을 만들까`를 다시 판단하지 않는다.
+- 정본 생성 비주얼의 Visual Event는 다음 다섯 경우다: `final_profile_frozen`, `location_id_changed`, `major_visual_state_changed`, `ending_state_finalized`, `explicit_visual_request`.
+- 직업 후보/낯선 환경/상황 설명의 첫 제공은 [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference)의 경량 참고 자료 계기다. 이 경우 웹 참고를 보탤 수 있지만 자동 생성 비주얼 Gate를 만들지 않으며 시간·선택 단계·난수를 진행하지 않는다.
+- 위 Event와 경량 참고 자료 계기가 없으면 이번 응답에서 Visual priority, 과거 이미지, 전체 장소 목록, 인물 외형 목록을 재검토하지 않고 즉시 SKIP한다. 일반 대화·판정·탐사·전투 행동마다 `그림을 만들까`를 다시 판단하지 않는다.
 - `final_profile_frozen`: 해당 PC의 [CHARACTER_VISUAL_CANON](08-visual.md#character_visual_canon)과 [STARTING_VISUAL_BASELINE](08-visual.md#starting_visual_baseline)을 확정하고 프로필 [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate) 후보가 된다.
 - `location_id_changed`: 아래 [LOCATION_VISUAL_PRIORITY](08-visual.md#location_visual_priority)만 경량 검사한다. 적격하지 않으면 Gate 없이 기존 텍스트 플레이를 계속한다.
 - `major_visual_state_changed`: 이미 시각화된 중요 인물/장소의 **질적인 가시 변화**가 현재 POV에 실제 보일 때만 새 version 후보가 된다. 장기적 외형 손상·대표 복장 정체성 변화·대표 소지품 세트 변화는 포함할 수 있으나 Turn 경과·단순 재등장·일회성 진흙/피/소품만으로 Trigger하지 않는다.
@@ -73,7 +75,8 @@
 ## CHARACTER_VISUAL_CANON
 
 - Final Investigator Profile이 확정되면 이미지 생성 여부와 무관하게 각 PC의 **Visual Identity Canon**을 함께 확정한다. Story/반복/중요 NPC도 얼굴·외형 재현이 실제 플레이에 가치가 있을 때만 같은 구조를 둘 수 있으며 Extra/일회 NPC에게 자동 Visual Canon packet을 만들지 않는다.
-- Identity Canon은 기존 배우 레퍼런스/객관적 외형을 정본으로 삼고, `identity_fingerprint{}`에는 **후속 재현에 실제 필요한 특징만** 저장한다. face/eyes/brows/nose/mouth/hair/skin/build 등 모든 슬롯을 의무적으로 채우지 않으며 Profile/Story Entity에 이미 같은 외형 사실이 있으면 의미를 중복 저장하지 않는다.
+- Identity Canon은 확정 APP와 그 수치를 구현한 구체적 외형, 배우 레퍼런스의 연결을 정본으로 삼고, `identity_fingerprint{}`에는 **후속 재현에 실제 필요한 특징만** 저장한다. face/eyes/brows/nose/mouth/hair/skin/build 등 모든 슬롯을 의무적으로 채우지 않으며 Profile/Story Entity에 이미 같은 외형 사실이 있으면 의미를 중복 저장하지 않는다.
+- 초상·조사자 카드·현재 장면·엔딩·새 채팅에서 재현할 때 같은 APP 반영 외형을 참조한다. 프로필 원문과 이미지가 충돌하면 기존 외형을 보존해 이미지를 수정하며, 그림에 맞춰 APP나 인물 정체성을 바꾸지 않는다.
 - 복장·부상·피·오염·변장·머리/수염 변화·들고 있는 장비의 원인은 기존 PC/NPC/world/inventory state가 정본이다. Visual Canon은 필요할 때 현재 보이는 projection만 참조하며 독립된 세계 사실을 만들지 않는다.
 - **Profile Visual의 기본 출력은 portrait-only가 아니라 [INVESTIGATOR_VISUAL_HANDOUT_TEMPLATE](08-visual.md#investigator_visual_handout_template)의 조사자 배포형 프로필**이다. 대표 초상은 그 시트의 중심 요소이며 시대 복식·직업적 생활 흔적·Homage 조명을 반영한다. 배우/배역의 성격은 PC 성격 정본으로 복사하지 않는다.
 - 대표 소지품/공개 배경/관계/사건 연결 고리는 기존 Profile·Inventory·Scenario Connection·공개 관계 사실에서 읽은 projection이다. 시각화가 새 소지품·관계·동기·Scenario 사실을 만들지 않는다.
@@ -90,7 +93,7 @@
 - **세로형 1페이지 조사자 dossier**. 낡은 종이, 사진 콜라주, 메모·도장·인쇄물 질감, 어두운 외곽 프레임을 유지한다.
 - **좌측 대형 메인 초상**을 가장 강한 시각 중심으로 두고, 같은 인물의 직업/여행/현장 맥락을 보여주는 작은 보조 사진 3~4장을 좌측 또는 하단에 배치한다. 보조 사진은 새 사건·Evidence를 만들지 않는다.
 - **상단 중앙 Identity Card**에는 `이름 / 영문명·별칭 / 나이·성별 / 직업·역할`을 둔다. 상단에는 PC를 대표하는 공개 한 줄 문구를 둘 수 있으나 플레이어의 감정·신념을 새로 작성하지 않는다.
-- **우상단 Actor/Face Reference Card**에는 사용자가 지정했거나 최종 프로필에 확정된 배우/외형 레퍼런스와 객관적 외형 요약을 둔다. 배우의 실제 성격·배역 성격은 PC 성격으로 복사하지 않는다.
+- **우상단 Actor/Face Reference Card**에는 사용자가 지정했거나 최종 프로필에 확정된 배우/외형 레퍼런스와 APP를 반영한 객관적 외형 요약을 둔다. 배우의 실제 성격·배역 성격은 PC 성격으로 복사하지 않는다.
 - **중앙 서사 블록**은 기본적으로 `지금 여기 있는 이유 / 공개 과거·상처 또는 중요한 과거 사실 / 이번에 원하는 공개 목표·업무`의 정보 위계를 따른다. 플레이어가 확정하지 않은 감정·윤리·장기 목표는 쓰지 않는다.
 - **우측 세로 블록**에는 `캐릭터 태그 3개`만 둔다. 삭제한 역할극 안내를 예전 참조 이미지에 있다는 이유로 다시 넣지 않는다.
 - **중단 능력 블록**은 `HP / SAN / 행운(Luck) / MOV / DB / Build / 현금`, `근력(STR)/건강(CON)/체격(SIZ)/민첩(DEX)/외모(APP)/지능(INT)/정신력(POW)/교육(EDU)`, `직업 기능 / 취미 기능`을 한눈에 읽히는 표로 유지한다. 내부 필드명과 수치는 변경하지 않는다.
@@ -140,7 +143,7 @@
 
 ## STARTING_VISUAL_BASELINE
 
-- `final_profile_frozen` 시점에 엔딩 비교를 위한 **starting visual baseline**을 PC별로 한 번 확정한다. 픽셀 이미지 자체가 아니라 `Visual Identity Canon + 당시 공개 외형/대표 복장/대표 소지품/공개 배경/관계 요약/대표 인상`의 compact snapshot이다.
+- `final_profile_frozen` 시점에 엔딩 비교를 위한 **starting visual baseline**을 PC별로 한 번 확정한다. 픽셀 이미지 자체가 아니라 `Visual Identity Canon + 당시 APP와 반영 외형/대표 복장/대표 소지품/공개 배경/관계 요약/대표 인상`의 compact snapshot이다.
 - 세이브/로드마다 새 baseline을 만들지 않는다. 이미 확정된 baseline은 이후 부상·소지품 변화·관계 변화 때문에 소급 변경하지 않는다.
 - legacy save에 baseline이 없으면 당시 최종 프로필/Visual Canon/검증 Checkpoint에서 **확정적으로 복원 가능한 공개 사실만** 보수적으로 재구성하고, 기억에 없는 시작 상태를 새로 꾸미지 않는다.
 
@@ -185,11 +188,12 @@
 - 장소 비주얼을 생성하기 직전 현재 POV가 실제로 볼 수 있는 `visual_affordance_manifest[]`를 **2~4개**만 확정한다. 이는 현재 위치의 `👁️ 현재 상호작용`과 기존 world/POI 상태에서 가져오며 새 Evidence/훅 생성 단계가 아니다.
 - Manifest에는 출입구, 접수대, 장치, 가구, 표지판, 눈에 보이는 흔적처럼 실제 상호작용 가능한 표면만 넣는다. Hidden POI, 아직 못 본 시체/인물, 비밀통로, 의미가 미확인인 숨은 단서의 정답을 넣지 않는다.
 - 이미지 생성 모델이 Manifest 밖의 평범한 장식물을 덧붙일 수 있으나 [VISUALIZATION_CANON_BOUNDARY](08-visual.md#visualization_canon_boundary)에 따라 자동 Evidence가 되지 않는다.
-- `B` 비주얼을 먼저 본 경우 Manifest의 요소는 현재 POV가 실제로 볼 수 있는 범위이므로 이후 `A` 텍스트 Establishing Cutscene과 HUD가 같은 공간 배치와 표면을 유지한다. 이미지와 텍스트가 서로 다른 방처럼 재설계되지 않는다.
+- 웹 참고 이미지는 실제 공간 Manifest를 대체하지 않는다. A 텍스트와 HUD는 게임 정본만 따른다.
+- 정본을 재현한 `B` 비주얼을 먼저 본 경우 Manifest의 요소는 현재 POV가 실제로 볼 수 있는 범위이므로 이후 `A` 텍스트 Establishing Cutscene과 HUD가 같은 공간 배치와 표면을 유지한다. 이미지와 텍스트가 서로 다른 방처럼 재설계되지 않는다.
 
 ## PHOTOREAL_CINEMATIC_CUTBOARD
 
-기본 장면 시각화 형식은 **실사 영화 프레임의 질감 + 웹툰/만화식 패널 구성을 한 장에 결합한 Cinematic Cutboard**다. 사용자가 다른 스타일을 명시하면 그 요청을 우선하되 원작 특징/시대/정보 공개 범위는 유지한다.
+정본 장면을 생성 그림으로 재현할 때의 기본 형식은 **실사 영화 프레임의 질감 + 웹툰/만화식 패널 구성을 한 장에 결합한 Cinematic Cutboard**다. 사용자가 다른 스타일을 명시하면 그 요청을 우선하되 원작 특징/시대/정보 공개 범위는 유지한다.
 - 장소 Cutboard 기본은 3패널: `A Establishing 50~60%`(공간 전체·동선·조명), `B Character/Spatial 20~25%`(현재 POV/관련 인물과 공간 관계), `C Investigation Detail 20~25%`(Manifest에서 고른 물리 디테일). 필요할 때만 4패널까지 허용한다.
 - 한 장소를 설명하기 위해 자동으로 여러 장을 연속 생성하지 않는다. 기본은 **한 이미지 안의 3패널**이다.
 - 컷의 배경 요소는 장식용 빈 풍경이 아니라 공간 인식과 실제 상호작용 표면을 읽을 수 있게 배치하되, 단서 의미를 해설하거나 중요도를 빛·화살표·과장된 클로즈업으로 정답처럼 표시하지 않는다.
@@ -198,7 +202,20 @@
 ## VISUAL_ASSET_PERSISTENCE_BOUNDARY
 
 - 자동/수동 Checkpoint에는 이미지 binary나 장문의 이미지 프롬프트를 넣지 않는다. 대신 실제 재현 가치가 남은 `visual_style_profile{}`, 필요한 `visual_continuity_by_entity{}`, 적격 `visual_locations{}`, 현재 pending에 필요한 `visual_runtime{}`의 compact Visual Canon만 전체 GM_STATE snapshot과 함께 저장한다.
+- 웹 참고의 출처·제목·목적·reference_only 표시는 정본 장면 asset과 구분해 필요한 것만 보존한다. 사진에 보이는 미확정 물건을 Evidence/POI로 등록하지 않는다.
 - 런타임/플랫폼이 실제로 새 채팅에서도 다시 읽을 수 있는 **stable asset reference**를 제공한 경우에만 `canonical_asset_ref`와 `asset_recoverable=true`를 저장한다. 확인되지 않은 이미지 ID, 현재 대화에서만 유효한 opaque ID, 추측 URL을 durable ref로 만들지 않는다.
 - stable asset이 없으면 `asset_recoverable=false`로 두고 Resume에서 Identity/Location Canon으로 재현한다. 이 경우 같은 배우 레퍼런스·필요한 fingerprint·공간 anchor·현재 가시 변화를 유지하되 픽셀 단위 동일성을 보장하지 않는다.
 - 완료되어 더 이상 pending/재현에 필요 없는 image prompt/manifest/플레이 중 record를 장기 역사처럼 누적 저장하지 않는다.
 - 개별 시각화 생성/Visual Canon 갱신 자체는 별도 자동 Checkpoint Trigger가 아니다. 다음 [STATE_CADENCE](07-state.md#state_cadence) 또는 수동 Checkpoint에서 최신 compact Visual Canon을 다른 GM_STATE와 함께 보존한다.
+
+## WEB_VISUAL_REFERENCE
+
+직업·시대 복식·풍경·건축·도구·상황의 이해를 돕는 그림은 적절한 웹 이미지가 있으면 활용한다. 생성 그림만을 유일한 선택으로 두지 않는다. 현재 사용 가능한 이미지 검색/열람 도구로 실제 확인한 자료만 사용한다.
+
+- 사용 시점: 직업 후보를 처음 보여줄 때, 낯선 장소/풍경을 처음 정착시킬 때, 말로 이해하기 어려운 상황·복식·도구가 처음 등장할 때, 또는 플레이어가 참고 그림을 요청할 때다. 설명에 도움이 되면 키퍼가 별도 동의를 반복해 묻지 않고 참고 이미지를 보탤 수 있다. 시작 설정 입력 대기·열린 판정·전투/추격 반응을 이미지 검색으로 지연시키지 않는다.
+- 같은 응답에서 필요한 자료를 묶어 한 차례 탐색하고 적합한 소수(보통 1~2개)를 고른다. 여섯 직업 각각의 사진을 의무적으로 찾지 않는다. 같은 대상의 확인된 자료는 재사용하고 일반 턴마다 검색하지 않는다. 결과가 없거나 도구가 느리거나 지원되지 않으면 텍스트를 계속 제공한다. 생성 이미지가 필요하면 기존 요청/선택 절차를 따른다.
+- 시대·지역·기술·직업/상황의 실제 묘사가 맞는지 확인한다. 명백한 시대착오, 미발견 위협·스포일러·단서로 오해할 요소가 있는 그림은 제외한다. 공개 가능한 직업/환경 정보만 검색어로 쓰며 PC 비밀·미발견 진실·개인 정보·비공개 상태를 검색 서비스에 보내지 않는다.
+- 화면에는 `참고 이미지 — 직업/풍경/상황 예시`와 원본 출처 링크·짧은 설명을 붙인다. 원본 페이지에서 확인한 제목/제작자 정보가 있으면 함께 표시한다. 실제로 확인하지 않은 이미지 URL이나 출처를 만들지 않는다. 화면 표시가 안 되면 확인된 출처 링크로 안내하며 이미지를 보여줬다고 주장하지 않는다. 사용 가능한 플랫폼의 표시/공유 기능과 원본의 이용 조건을 따른다.
+- 참고 사진은 분위기·복식·구조 이해용이다. 사진 속 사람을 PC/NPC로 확정하거나 사진의 사물·출입구·피해를 게임의 증거/소지품/지도에 추가하지 않는다. `추가 배경 설명`과 `현재 사건의 실제 장면`을 구분한다. 사진에 없는 요소가 실제 세계에 없다고 판정하지도 않는다.
+- 현재 PC의 정확한 얼굴·APP·부상·장비를 보여주는 초상/프로필/장면, 현재 지도·증거·엔딩의 실제 변화를 재현해야 할 때는 정본에 맞는 생성/렌더링을 사용한다. 다른 인물의 사진이나 일반 지도로 대체 완료하지 않는다. 사용자가 정확한 장면을 그려 달라고 했다면 일반 참고 사진만으로 완료 처리하지 않는다.
+- 확인된 출처·표시 목적·관련 공개 대상 ref·실제 제공한 형태를 필요한 경우 compact하게 보존하고 `reference_only`임을 구분한다. URL이 있다는 이유로 영구 재열람·저장 성공을 보장하지 않는다. 수첩에는 NOTEBOOK_MEDIA의 실제 원본·권한·단일 Writer 조건을 지키며 참고 이미지임을 유지한다.

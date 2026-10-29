@@ -93,6 +93,25 @@
 | 저장된 캠페인을 새 채팅에서 재개 | 저장 설정·현재 단계를 복원, 새 시드/장르/초기 입력 강제 없음 | STATE_SCHEMA / STATE_RESUME | 일치 |
 | 인지도만 보충하는 후속 답변에서 기존 배제 목록 생략 | 이미 지정한 배제는 유지, 생략을 선택 해제로 처리하지 않음 | START_SETTINGS_GATE | 일치 |
 
+## APP·웹 참고·직업 대비 추가 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 기본정보 입력 완료, 특성 Draft 미선택 | 지정 외형만 보존하고 자동 배우/최종 얼굴은 APP 확정 뒤 완성 | BASIC_INFO_ACTOR_COMMIT | 일치 |
+| 같은 생성 조건에서 APP35와 APP80 | 각 수치의 시각적 차이를 묘사하며 판정 보너스·강제 부상은 추가하지 않음 | PC_APPEARANCE_FROM_APP | 일치 |
+| 플레이어가 배우·나이·얼굴 특징 지정 | 지정 요소 보존, 미정 세부에 APP 반영, 수치 재굴림 없음 | PC_APPEARANCE_FROM_APP | 일치 |
+| 같은 PC의 프로필·장면·엔딩·새 채팅 그림 | APP를 반영한 동일 외형을 재사용하고 실제 부상/복장 변화만 반영 | CHARACTER_VISUAL_CANON | 일치 |
+| 구판 PC의 배우·외형이 이미 확정됨 | 패치만으로 소급 미화/재선정하지 않음 | BASIC_INFO_ACTOR_COMMIT | 일치 |
+| 낯선 직업·풍경·상황을 처음 설명 | 적합한 웹 자료를 출처·참고 표시와 함께 활용, 매 턴 검색하지 않음 | WEB_VISUAL_REFERENCE | 일치 |
+| 참고 풍경 사진에 게임에 없는 문이 있음 | 실제 출입구/단서로 등록하지 않고 게임 정본을 유지 | WEB_VISUAL_REFERENCE / VISUALIZATION_CANON_BOUNDARY | 일치 |
+| 검색/이미지 표시 도구가 없거나 적합한 결과 없음 | 텍스트를 이어가고 실제 확인된 링크만 안내, 이미지 제공 성공 가장 없음 | WEB_VISUAL_REFERENCE | 일치 |
+| 정확한 PC 초상·현재 지도 요청 | 다른 인물 사진·일반 지도로 대체 완료하지 않음 | WEB_VISUAL_REFERENCE | 일치 |
+| A 경기장 관리인, B 프로 선수/감독 | 같은 산업이어도 업무·권한·위상이 다른 유효한 대비 | PROFESSION_SIX_CHOICE | 일치 |
+| A 경비원, B 유명 CEO의 경비 보조 | B가 실제 특별 역할이 아니므로 공개 전 보정 | PROFESSION_MULTILAYER_GENERATOR / PROFESSION_SIX_CHOICE | 일치 |
+| 원작에 성립하는 왕/고위직을 선택 | 실제 권한·책임을 유지하고 타 PC 행동권 및 기존 기능 수치 적용 | PROFESSION_SIX_CHOICE | 일치 |
+| C/D 또는 E/F에서 선수·고위직 후보 발생 | 테마 대비/자유형 요건을 지키면 허용, B 외 슬롯을 실무자로 제한하지 않음 | PROFESSION_SIX_CHOICE / JOKER_PROFESSION_CANDIDATE | 일치 |
+| 기존 공개 직업 Draft/선택 PC에 패치 적용 | 조용히 재추첨하거나 직업을 변경하지 않음 | PROFESSION_SIX_CHOICE | 일치 |
+
 ## 미실행
 
 - 전체 새 캠페인 생성부터 실제 Supabase 저장·verify·exact load·새 채팅 복원.

@@ -478,9 +478,9 @@ Normal Action Return에서 자유행동을 대체하지 않고 현재 Scene의 *
 - 프로필 Gate면 pending을 해제하고 이미 생성된 다음 PC의 최종 카드 배부 또는 전원 공개정보 공유·설정 저장 검증 단계로 진행한다.
 - 엔딩 Gate면 pending을 해제하고 기존 Campaign Finalization/종료 처리를 그대로 재개한다. 엔딩 결과을 다시 계산하지 않는다.
 [INPUT B — VISUAL]
-- `B`도 시간 정지다. 사용 가능한 이미지 생성 기능으로 pending Visual Packet만 시각화하고 세계 상태·시간·행동권·종결 상태을 진행하지 않는다.
-- `kind=investigator_profile`이면 [INVESTIGATOR_VISUAL_HANDOUT_TEMPLATE](08-visual.md#investigator_visual_handout_template), `kind=ending_evolution`이면 [EPILOGUE_CHARACTER_EVOLUTION_HANDOUT](08-visual.md#epilogue_character_evolution_handout), 장면/장소면 기존 Cutboard/Location Visual 정본을 사용한다.
-- 이미지 생성 뒤 `visual_choice_wait`를 유지한다. 사용자는 `A`로 텍스트 컷씬/다음 Setup/종료 처리를 계속한다. 같은 `visual_version`의 자동 `B` 생성은 1회만 수행하고, 추가 재생성은 플레이어가 명시 요청한 경우에만 허용한다.
+- `B`도 시간 정지다. pending이 현재 PC/지도/증거/실제 장면/엔딩 변화의 정확한 재현이면 이미지 생성/렌더링으로 해당 Visual Packet만 시각화한다. 풍경·상황 이해를 위한 참고로 충분한 경우는 [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference)에 따라 웹 이미지를 참고 표시와 함께 제공할 수 있다. 세계 상태·시간·행동권·종결 상태를 진행하지 않는다.
+- 정본 생성/렌더링에서는 `kind=investigator_profile`이면 [INVESTIGATOR_VISUAL_HANDOUT_TEMPLATE](08-visual.md#investigator_visual_handout_template), `kind=ending_evolution`이면 [EPILOGUE_CHARACTER_EVOLUTION_HANDOUT](08-visual.md#epilogue_character_evolution_handout), 장면/장소면 기존 Cutboard/Location Visual 정본을 사용한다.
+- 생성 또는 참고 이미지 제공 뒤 `visual_choice_wait`를 유지한다. 사용자는 `A`로 텍스트 컷씬/다음 Setup/종료 처리를 계속한다. 같은 `visual_version`의 자동 `B` 생성은 1회만 수행하고, 추가 재생성은 플레이어가 명시 요청한 경우에만 허용한다.
 - 이미지 출력 자체가 새 Evidence/POI/NPC/통로/위협/자원/보상/비공개 진실을 생성하지 않는다.
 [META]
 - Meta 요청은 답한 뒤 Gate를 유지한다. 패치 이전 숫자 pending은 저장 규칙 [STATE_COMPATIBILITY](07-state.md#state_compatibility)만 처리한다.
@@ -524,7 +524,7 @@ Normal Action Return에서 자유행동을 대체하지 않고 현재 Scene의 *
 3. **다른 PC 새 Normal 전환**: outgoing Scene 완결 → [NORMAL_HANDOFF_GATE](06-play.md#normal_handoff_gate) 지목/`A` 안내 → 예약 PC Handoff HUD.
 4. **다른 PC 긴급 Reaction**: outgoing 직접 결과 완결 → [REACTION_SCENE_HANDOFF](06-play.md#reaction_scene_handoff) 지목/`A` 안내 → target Handoff HUD.
 5. **Handoff/Reaction `A` 활성화**: 예약 PC Establishing/Re-entry Scene을 렌더링 → 필요한 Normal Action Return 또는 Reaction/Roll Request → 해당 PC Bottom HUD. `A`와 재정착은 Turn/Spotlight service/세계 시간을 소비하지 않는다.
-6. **Visual Choice**: 적격 Event에서 직접 결과를 안전 컷까지 완결 → [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate)의 `A/B` 안내 → Gate HUD가 필요한 Play 상황이면 새 장소 정보 없이 기존 정보 공개 범위 projection만 표시. `A` 뒤 텍스트 Establishing Cutscene+Action+Active HUD, `B`는 이미지 생성만 하고 Gate 유지.
+6. **Visual Choice**: 적격 Event에서 직접 결과를 안전 컷까지 완결 → [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate)의 `A/B` 안내 → Gate HUD가 필요한 Play 상황이면 새 장소 정보 없이 기존 정보 공개 범위 projection만 표시. `A` 뒤 텍스트 Establishing Cutscene+Action+Active HUD, `B`는 적격 비주얼/참고 이미지 제공만 하고 Gate 유지.
 - 일반 게임의 시네마틱 지문·NPC 대사·플레이어 선언의 재렌더는 **일반 Markdown 본문**으로 렌더링하며 fenced code block을 사용하지 않는다. 판정 요청, 행동권, Handoff 문구, HUD, 룰 해설은 시네마틱 본문과 명확히 구분한다. 장면 속 문서·방송·표지판은 문단·인용·표식 등 자연스러운 Markdown으로 표현한다.
 - 한 응답 한 Active POV/한 장소를 유지하고, 판정 후 Keeper 계산 로그를 출력하지 않는다. Shared Scene Exchange는 같은 장면 안의 Focus 교환일 뿐 두 번째 장소/Scene을 렌더링하는 예외가 아니다. `A` 뒤 공개된 장면 정보는 같은 응답 Active HUD에 즉시 투영한다.
 

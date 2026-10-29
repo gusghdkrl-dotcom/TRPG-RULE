@@ -24,6 +24,8 @@
 | 새 캠페인 전체 순서 | [CAMPAIGN_SETUP_PIPELINE](04-setup.md#campaign_setup_pipeline) |
 | 원작 후보 A~F | [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) |
 | PC 특성+Luck 후보 | [STAT_DRAFT_GENERATION](04-setup.md#stat_draft_generation) |
+| APP 반영 외형·확정 시점 | [PC_APPEARANCE_FROM_APP](04-setup.md#pc_appearance_from_app) |
+| 직업 A 일상/B 특별·고위 대비 | [PROFESSION_SIX_CHOICE](04-setup.md#profession_six_choice) |
 | 직업·기능 시작값 | [PC_SKILL_START_VALUES](04-setup.md#pc_skill_start_values) |
 | 원작 특징을 실제 세계에 구현 | [HOMAGE_SIGNATURE_FREEZE](04-setup.md#homage_signature_freeze) |
 | 실패·방치의 중대한 손실 설계 | [CAUSAL_ENDGAME_PRECOMMIT](04-setup.md#causal_endgame_precommit) |
@@ -41,6 +43,7 @@
 | 초반 30턴·진행 정체·페이싱 | [SCENE_PACING_GATE](06-play.md#scene_pacing_gate) |
 | 챕터·전체 엔딩 | [ENDING_FINALIZATION_GATE](06-play.md#ending_finalization_gate) |
 | 지도 열람·이동 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) |
+| 직업·풍경·상황 웹 참고 | [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference) |
 | 이미지 선택 | [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate) |
 | Supabase 연결과 정본 | [STATE_AUTHORITY](07-state.md#state_authority) |
 | 저장 시점 | [STATE_CADENCE](07-state.md#state_cadence) |

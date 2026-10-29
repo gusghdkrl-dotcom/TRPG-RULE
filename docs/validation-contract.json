@@ -376,5 +376,71 @@
       "플레이어가 명시적으로",
       "미입력을 사건으로 채우지"
     ]
+  },
+  {
+    "rule": "BASIC_INFO_ACTOR_COMMIT",
+    "contains": [
+      "APP가 확정된 뒤",
+      "PC_APPEARANCE_FROM_APP",
+      "소급 재선정하지"
+    ],
+    "excludes": [
+      "기본정보 단계에서 PC 외형"
+    ]
+  },
+  {
+    "rule": "PC_APPEARANCE_FROM_APP",
+    "contains": [
+      "선택된 APP 수치",
+      "39 이하",
+      "80 이상",
+      "후속 그림",
+      "특성을 재굴리거나",
+      "자동 의미하지"
+    ]
+  },
+  {
+    "rule": "CHARACTER_VISUAL_CANON",
+    "contains": [
+      "확정 APP",
+      "같은 APP 반영 외형",
+      "그림에 맞춰 APP나 인물 정체성을 바꾸지"
+    ]
+  },
+  {
+    "rule": "PROFESSION_SIX_CHOICE",
+    "contains": [
+      "A — 일상 생업",
+      "B — 특별·고위 역할",
+      "CEO",
+      "왕",
+      "기능 7개",
+      "동등하게 보장",
+      "기존 확정 PC 직업"
+    ],
+    "excludes": [
+      "기본 직업 A/B"
+    ]
+  },
+  {
+    "rule": "PROFESSION_DNA",
+    "contains": [
+      "프로선수/감독",
+      "기업경영/사업소유",
+      "최고경영자·소유주",
+      "군주·통치자"
+    ]
+  },
+  {
+    "rule": "WEB_VISUAL_REFERENCE",
+    "contains": [
+      "참고 이미지",
+      "원본 출처 링크",
+      "정확한 장면",
+      "reference_only",
+      "일반 턴마다 검색하지",
+      "PC 비밀",
+      "텍스트를 계속 제공"
+    ]
   }
 ]

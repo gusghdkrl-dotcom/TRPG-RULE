@@ -220,6 +220,7 @@
 | PARTIAL_VICTORY_AND_FAILURE_WITH_PROGRESS | [05-world.md](../rules/05-world.md#partial_victory_and_failure_with_progress) |
 | PARTICIPANT_COUNT_SETUP | [04-setup.md](../rules/04-setup.md#participant_count_setup) |
 | PARTY_DIVERSITY_GUARD | [04-setup.md](../rules/04-setup.md#party_diversity_guard) |
+| PC_APPEARANCE_FROM_APP | [04-setup.md](../rules/04-setup.md#pc_appearance_from_app) |
 | PC_DERIVED_STATS | [04-setup.md](../rules/04-setup.md#pc_derived_stats) |
 | PC_INVOLVEMENT_COLLISION_GATE | [05-world.md](../rules/05-world.md#pc_involvement_collision_gate) |
 | PC_KNOWN_BACKSTORY_DISCLOSURE | [04-setup.md](../rules/04-setup.md#pc_known_backstory_disclosure) |
@@ -332,6 +333,7 @@
 | VISUAL_AFFORDANCE_MANIFEST | [08-visual.md](../rules/08-visual.md#visual_affordance_manifest) |
 | VISUAL_ASSET_PERSISTENCE_BOUNDARY | [08-visual.md](../rules/08-visual.md#visual_asset_persistence_boundary) |
 | VISUAL_CHOICE_GATE | [06-play.md](../rules/06-play.md#visual_choice_gate) |
+| WEB_VISUAL_REFERENCE | [08-visual.md](../rules/08-visual.md#web_visual_reference) |
 | WORLD_FORCED_RESPONSE_FOCUS | [06-play.md](../rules/06-play.md#world_forced_response_focus) |
 | WORLD_HOMAGE_DNA | [04-setup.md](../rules/04-setup.md#world_homage_dna) |
 | WORLD_INITIATIVE_EXECUTION | [05-world.md](../rules/05-world.md#world_initiative_execution) |
