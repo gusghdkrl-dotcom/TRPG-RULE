@@ -109,8 +109,21 @@
 | A 경기장 관리인, B 프로 선수/감독 | 같은 산업이어도 업무·권한·위상이 다른 유효한 대비 | PROFESSION_SIX_CHOICE | 일치 |
 | A 경비원, B 유명 CEO의 경비 보조 | B가 실제 특별 역할이 아니므로 공개 전 보정 | PROFESSION_MULTILAYER_GENERATOR / PROFESSION_SIX_CHOICE | 일치 |
 | 원작에 성립하는 왕/고위직을 선택 | 실제 권한·책임을 유지하고 타 PC 행동권 및 기존 기능 수치 적용 | PROFESSION_SIX_CHOICE | 일치 |
-| C/D 또는 E/F에서 선수·고위직 후보 발생 | 테마 대비/자유형 요건을 지키면 허용, B 외 슬롯을 실무자로 제한하지 않음 | PROFESSION_SIX_CHOICE / JOKER_PROFESSION_CANDIDATE | 일치 |
+| C/D 또는 E/F에서 선수·고위직 후보 발생 | C/D는 테마 생활권·테마 특별 하나씩, E/F는 지위 조합 자유 | PROFESSION_SIX_CHOICE / JOKER_PROFESSION_CANDIDATE | 일치 |
 | 기존 공개 직업 Draft/선택 PC에 패치 적용 | 조용히 재추첨하거나 직업을 변경하지 않음 | PROFESSION_SIX_CHOICE | 일치 |
+
+## 직업 쌍 구성 정정 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| A CEO, B 경비원 | 특별·생활권 하나씩이므로 허용, 문자별 역할 고정 없음 | PROFESSION_SIX_CHOICE | 일치 |
+| A/B가 모두 생활권 또는 모두 특별 | 공개 전 해당 쌍의 배정 조건에 맞게 국소 보정, C/D로 수량 대체 불가 | PROFESSION_MULTILAYER_GENERATOR | 일치 |
+| 왕실 테마에서 C 왕, D 궁궐 수문군 | 테마 특별·테마 생활권 하나씩이며 실제 업무도 테마와 연결되므로 허용 | PROFESSION_SIX_CHOICE | 일치 |
+| C/D가 모두 테마 생활권 또는 모두 테마 특별 | 테마 적합성만으로 통과하지 않고 각 역할 하나씩 보장 | PROFESSION_MULTILAYER_GENERATOR | 일치 |
+| C/D 중 하나가 테마풍 이름만 있고 실제 업무는 테마와 무관 | 공개 테마·무대·사회 구조와의 업무 연결을 갖추도록 공개 전 보정 | PROFESSION_SIX_CHOICE | 일치 |
+| A/B는 생활권→특별, C/D는 특별→생활권으로 배정 | 두 쌍의 순서는 독립이며 기존 생성 난수 묶음 사용, 플레이어 굴림 소비 없음 | PROFESSION_MULTILAYER_GENERATOR | 일치 |
+| E/F가 모두 특별 역할 | 직업·업무 다양성과 세계 적합성을 지키면 허용, 쌍별 지위 할당 강제 없음 | JOKER_PROFESSION_CANDIDATE | 일치 |
+| 구판 후보가 이미 공개됐고 새 채팅에서 재개 | 기존 문자·직함·카테고리 보존, 새 규칙은 미공개 신규 후보에 적용 | PROFESSION_SIX_CHOICE | 일치 |
 
 ## 미실행
 

@@ -25,7 +25,7 @@
 | 원작 후보 A~F | [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) |
 | PC 특성+Luck 후보 | [STAT_DRAFT_GENERATION](04-setup.md#stat_draft_generation) |
 | APP 반영 외형·확정 시점 | [PC_APPEARANCE_FROM_APP](04-setup.md#pc_appearance_from_app) |
-| 직업 A 일상/B 특별·고위 대비 | [PROFESSION_SIX_CHOICE](04-setup.md#profession_six_choice) |
+| 직업 A/B 생활권·특별, C/D 테마 생활권·테마 특별 | [PROFESSION_SIX_CHOICE](04-setup.md#profession_six_choice) |
 | 직업·기능 시작값 | [PC_SKILL_START_VALUES](04-setup.md#pc_skill_start_values) |
 | 원작 특징을 실제 세계에 구현 | [HOMAGE_SIGNATURE_FREEZE](04-setup.md#homage_signature_freeze) |
 | 실패·방치의 중대한 손실 설계 | [CAUSAL_ENDGAME_PRECOMMIT](04-setup.md#causal_endgame_precommit) |
