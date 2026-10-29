@@ -1,0 +1,3226 @@
+[
+  {
+    "original_id": "SETUP_OWNER_READBACK_ROUTER_A24",
+    "original_line_normalized": 8,
+    "source_sha256": "7f4c7e05adb0987f15e146910e19d9a95c833412dedb7ea818dd0bb036a0972b",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "RUNTIME_DOC_ROUTER_A26_DETAIL",
+    "original_line_normalized": 12,
+    "source_sha256": "622495d0e8c781ee29ae3d58d6c653aa8b45cf8feb65c6ce730de6c009c40062",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "INSTRUCTION_RUNTIME_ROUTING_RC7",
+    "original_line_normalized": 19,
+    "source_sha256": "ff11126ffc18bb3a63e6f27fc46f7aa23b5a6d963fafa53e1932f926db10cae8",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "RC14_LEAN_CORE_INTEGRATED_SCOPE_A13",
+    "original_line_normalized": 23,
+    "source_sha256": "61197d3a9bf3d2ffc0ec2fbba3b1e76ff3c17f7795209c15aeefbd5d4804f999",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "CAUSAL_PROGRESS_GUIDED_ACTION_SPECIALTY_PATCH_A13",
+    "original_line_normalized": 29,
+    "source_sha256": "1ebd0a158b8f33b9e8db28d6be3dea730e5031229e35e6a18933e89bbfc37b7e",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "CORE_ZERO_HOMAGE_EXPERIENCE_GATE_A13",
+    "original_line_normalized": 37,
+    "source_sha256": "7e5243f6f2ef7474e063df2d354bc6076056244bcfe724cf6ae981d1224d74b2",
+    "action": "재작성",
+    "destination": "01-core.md#core_zero_homage_experience_gate",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "PROJECT_INSTRUCTIONS_CONSTITUTION_ROUTER_HANDOFF_A13",
+    "original_line_normalized": 44,
+    "source_sha256": "19fcdf50ce75596c3cb6f32373878734b132ea327b9b6ae09838567183d9d25b",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "RUNTIME_STABILIZATION_AUTHORITY_A13 — ACTIVE CANON GATE",
+    "original_line_normalized": 52,
+    "source_sha256": "8a98b8dda86a5f09692beb38b08632498d49cb02793e7ea6da980546e61d06d6",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "RC14_COMPATIBILITY_FIREWALL_A13",
+    "original_line_normalized": 65,
+    "source_sha256": "e5d58d58afcfb4c5417d9d5d693a02b054e9407f7ad317f3d252e23d3cb899cb",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "DESTINY_DICE_QUEUE",
+    "original_line_normalized": 77,
+    "source_sha256": "fe3f9d80e10c0f043de0799b10ad69330a01e07966f551258340efe8142ecfab",
+    "action": "정리·이동",
+    "destination": "01-core.md#destiny_dice_queue",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "AI_BONUS_PENALTY_DICE",
+    "original_line_normalized": 84,
+    "source_sha256": "3937682e7e2365284fb8cdd800cbc9f7605b9f0374dfef21dc67680b39a094a9",
+    "action": "정리·이동",
+    "destination": "01-core.md#ai_bonus_penalty_dice",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GENERIC_DICE_CONVERSION",
+    "original_line_normalized": 91,
+    "source_sha256": "6138cc9d59ae88e16d03956e288df581982220a23143e545666f06fa3fee187a",
+    "action": "통합",
+    "destination": "AI_DIE_MAPPING_VERSION",
+    "reason": "규칙 통합: AI_DIE_MAPPING_VERSION_A19"
+  },
+  {
+    "original_id": "AI_DIE_MAPPING_VERSION_A19",
+    "original_line_normalized": 97,
+    "source_sha256": "433cd068bbc72526daf57e32058215a9edb9500c0b3fc8fb2262367b090a245c",
+    "action": "재작성",
+    "destination": "01-core.md#ai_die_mapping_version",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "RC7_PRETURN_FOCUS_EXTENSION",
+    "original_line_normalized": 118,
+    "source_sha256": "5f72f991553190821c870900878c1693f3613269ca68aa30a82410c05ec3f784",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "PLAYER_INPUT_NAMESPACE_ROUTER_A13",
+    "original_line_normalized": 124,
+    "source_sha256": "84eefc76171d58f8e667135530b78c5d102489e3acb35c29e0cb3b7ed7b5549c",
+    "action": "정리·이동",
+    "destination": "01-core.md#player_input_namespace_router",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PRETURN_SPOTLIGHT_SCHEDULER_EXTENSION_A13",
+    "original_line_normalized": 134,
+    "source_sha256": "68afec121c88df52cc761d262d845c4593378eadf04a4b64899a85985e6f7372",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "ACTIVE_PLAY_ROUTING_FIREWALL_A13",
+    "original_line_normalized": 143,
+    "source_sha256": "2517b37c06ea55ae89f8556a839fad87497eb6110f52e29fb1afb6eeece532d2",
+    "action": "재작성",
+    "destination": "01-core.md#active_play_routing_firewall",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "PRETURN_FAST_MANDATORY_ROUTING_EXTENSION_A13",
+    "original_line_normalized": 155,
+    "source_sha256": "85f532bf83cb4c8aa66b1e9358c46b707160cf5f221c8ca8c1ca36c4c5784f97",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "ROUTING_COMMIT_GATE_A13",
+    "original_line_normalized": 161,
+    "source_sha256": "041521ecf9efb101dfddd2a2c6a99328b5932b440c2f2c2274c66679f3ece868",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "FAST_RUNTIME",
+    "original_line_normalized": 171,
+    "source_sha256": "3009958bb7c9b9ae2b9b1d5c438852b67cc55aa418288c21c173c03ec642d4ea",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "규칙 통합: CORE_WORKFLOW"
+  },
+  {
+    "original_id": "D100_PARADIGM_GENERATION",
+    "original_line_normalized": 209,
+    "source_sha256": "218daff3ee2bbed6d6d7a17a6d788366abe1baa724073bfa6c35749ff8cb58db",
+    "action": "정리·이동",
+    "destination": "04-setup.md#d100_paradigm_generation",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "START_BRIEFING_FOG",
+    "original_line_normalized": 215,
+    "source_sha256": "2c65ff977aaa20bb92e63cd77ce4ab5ed1fe29bf303f667cd4602cf1693e606e",
+    "action": "정리·이동",
+    "destination": "04-setup.md#start_briefing_fog",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FULL_DIVE_CROSS_ANALYSIS",
+    "original_line_normalized": 228,
+    "source_sha256": "3be05c8797cae65d7b547d83806c6760877eabe74aafdf863acacfb07f9ec70b",
+    "action": "정리·이동",
+    "destination": "04-setup.md#full_dive_cross_analysis",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "WORLD_RULE_OVERRIDE",
+    "original_line_normalized": 240,
+    "source_sha256": "74d9fa80f9748310002a74f005094593432db1c676ce6a26530869eee94997a2",
+    "action": "정리·이동",
+    "destination": "04-setup.md#world_rule_override",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GENRE_IS_NOT_RULESET",
+    "original_line_normalized": 247,
+    "source_sha256": "1029202033ffc394e738d467c5f54d255603d704b8a63a3e76ee747f9e4294ca",
+    "action": "정리·이동",
+    "destination": "04-setup.md#genre_is_not_ruleset",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GENRE_TABLE",
+    "original_line_normalized": 251,
+    "source_sha256": "f0cbd5ba742013b955068ba122add92dd83bd584b03f2ec13545be4620704853",
+    "action": "정리·이동",
+    "destination": "04-setup.md#genre_table",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ADAPTATION_GRAMMAR_ROUTING_A13",
+    "original_line_normalized": 265,
+    "source_sha256": "b537c9bd0c7a40e2f4a933802ab8da143af81a1ff162932838816c0aaea03fd6",
+    "action": "정리·이동",
+    "destination": "04-setup.md#adaptation_grammar_routing",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ADAPTATION_GRAMMAR_A13",
+    "original_line_normalized": 269,
+    "source_sha256": "167f5362c133eec0d93982dc229d4524227df9ec410951746190da33ace4eede",
+    "action": "정리·이동",
+    "destination": "04-setup.md#adaptation_grammar",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CTHULHU_OVERRIDE",
+    "original_line_normalized": 285,
+    "source_sha256": "254970cc07ec29c7c7364892fcd467a40589d540b7fb4cdf95b718d368ed0024",
+    "action": "재작성",
+    "destination": "04-setup.md#cthulhu_override",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "CTHULHU_SOURCE_UNIT_ROUTING_A13",
+    "original_line_normalized": 294,
+    "source_sha256": "621a4c2fc44a8f6c0c5d9fb009fb1b3f4a9c8e7951b0c3cf112bb9917f73c0cb",
+    "action": "정리·이동",
+    "destination": "04-setup.md#cthulhu_source_unit_routing",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HOMAGE_TIER",
+    "original_line_normalized": 304,
+    "source_sha256": "4e7f7fb6b569cd3ca0e413e480be05f3cc4713e4b0d43c63091560a9dff23c73",
+    "action": "정리·이동",
+    "destination": "04-setup.md#homage_tier",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HIDDEN_TRUTH_ENGINE",
+    "original_line_normalized": 310,
+    "source_sha256": "a2ca4d4af1a2b8290805019f6bae5a71af838c0610669026d054858592014881",
+    "action": "재작성",
+    "destination": "04-setup.md#hidden_truth_engine",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "HIDDEN_TRUTH_HORROR_PAYLOAD_GATE_A13",
+    "original_line_normalized": 322,
+    "source_sha256": "92c312487e0e8f39b35a7363d8abe92429cf3f80295c04c86b3535eed2e6b7bb",
+    "action": "정리·이동",
+    "destination": "04-setup.md#hidden_truth_horror_payload_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HORROR_DEFLATION_GUARD_A13",
+    "original_line_normalized": 331,
+    "source_sha256": "2f697658733f77a433b2be58c22ee4927d6cab4608847ba635c59706cfe9b08b",
+    "action": "정리·이동",
+    "destination": "04-setup.md#horror_deflation_guard",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "original_line_normalized": 339,
+    "source_sha256": "aff5fbfee5477d317301865cf92228941de80d732fafaabb64ff312f8f829322",
+    "action": "정리·이동",
+    "destination": "04-setup.md#investigator_depth_protocol",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FICTION_FIRST_ROLL_TRIGGER_GATE_A13",
+    "original_line_normalized": 349,
+    "source_sha256": "7577344c2241510f970ddecf625ce46ed17356e8452d4a9ec4c1d30f151f39a5",
+    "action": "재작성",
+    "destination": "02-checks.md#fiction_first_roll_trigger_gate",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "FICTION_FIRST_FAST_DECISION_VIEW_A13",
+    "original_line_normalized": 363,
+    "source_sha256": "65c6269ede1b4e5ca72181a7818ddb85a163a740ea9cd4632a978ea990f86600",
+    "action": "통합",
+    "destination": "FICTION_FIRST_ROLL_TRIGGER_GATE",
+    "reason": "규칙 통합: FICTION_FIRST_ROLL_TRIGGER_GATE_A13"
+  },
+  {
+    "original_id": "PLAYER_D100",
+    "original_line_normalized": 376,
+    "source_sha256": "6c5fa02554654ef9bc11c2e37226cd360cd78eeea968b2daa2b29a8c6036aeb1",
+    "action": "정리·이동",
+    "destination": "02-checks.md#player_d100",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CHARACTERISTIC_VS_SKILL",
+    "original_line_normalized": 381,
+    "source_sha256": "8ede7dcc10a53fa735e0be7f9da6ff802ff0a4011dbac855f1402f99454a9106",
+    "action": "정리·이동",
+    "destination": "02-checks.md#characteristic_vs_skill",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "STAT_BOUNDARY",
+    "original_line_normalized": 388,
+    "source_sha256": "a96310ffcfcdcea69e9338d9ff280ef529d5b287128fbf6a9b0ebc4efafd8218",
+    "action": "정리·이동",
+    "destination": "02-checks.md#stat_boundary",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CORE_CHARACTERISTIC_REFERENCE",
+    "original_line_normalized": 393,
+    "source_sha256": "b203ca6be97c56a99d47c41a8e2b2f94aadb8a9feb157e271a0218bbc24749f8",
+    "action": "재작성",
+    "destination": "02-checks.md#core_characteristic_reference",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "SUCCESS_LEVELS",
+    "original_line_normalized": 409,
+    "source_sha256": "b3f208be74e477d9c62425fffbe57cdcf5ab9822b9ed1aca761f2ccc382b88b8",
+    "action": "정리·이동",
+    "destination": "02-checks.md#success_levels",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAYER_FACING_ROLL_RESULT_RENDER_A13",
+    "original_line_normalized": 422,
+    "source_sha256": "c4e2e0e16d48fc33761130847749a1e5e1d23850fc135f3e44545622cb5f38ca",
+    "action": "정리·이동",
+    "destination": "02-checks.md#player_facing_roll_result_render",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "BONUS_PENALTY_DICE",
+    "original_line_normalized": 428,
+    "source_sha256": "75ed4345f6cfd4e81ee3fa89ae0e93e1115b91a1b792a8fdc82032614fefc47e",
+    "action": "정리·이동",
+    "destination": "02-checks.md#bonus_penalty_dice",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PUSHED_ROLL",
+    "original_line_normalized": 436,
+    "source_sha256": "2d927540352ff9e63522870814b46798d1d14ca24622877b1c8537f7d851cef2",
+    "action": "정리·이동",
+    "destination": "02-checks.md#pushed_roll",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GENERIC_OPPOSED_ROLL",
+    "original_line_normalized": 445,
+    "source_sha256": "d60e9e8b78a2721c69c99c935ae3f639466613363cab69ce3ecd49baa39f5fd4",
+    "action": "정리·이동",
+    "destination": "02-checks.md#generic_opposed_roll",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LUCK_ROLL",
+    "original_line_normalized": 454,
+    "source_sha256": "f8b95c69824ac0682228d2cc1f6c33866414c89828925e0e2689605dffd96cd9",
+    "action": "정리·이동",
+    "destination": "02-checks.md#luck_roll",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DIFFICULTY_ASSIGNMENT",
+    "original_line_normalized": 462,
+    "source_sha256": "15c94af8fa18d99a29822b4bef856301324234f9fe05de14932426ad588e0ec4",
+    "action": "정리·이동",
+    "destination": "02-checks.md#difficulty_assignment",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL",
+    "original_line_normalized": 469,
+    "source_sha256": "e0c859a96db0933bc58a7c098ad134320cc7d79cade60e5ef5d0abbcf373f168",
+    "action": "정리·이동",
+    "destination": "02-checks.md#impossible_actions_and_rule_of_cool",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CORE_CLUE_FAIL_FORWARD",
+    "original_line_normalized": 474,
+    "source_sha256": "ade7d6e4d02ae87483e2dfb2c96f3e82578df3ce792528cfa4147538accb3265",
+    "action": "정리·이동",
+    "destination": "02-checks.md#core_clue_fail_forward",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DIEGETIC_PROFILING",
+    "original_line_normalized": 480,
+    "source_sha256": "c1bdbb73800685724c33a7b3a5aeaa1bcc04a862c90d492f5fcacfc29e92f2d9",
+    "action": "정리·이동",
+    "destination": "02-checks.md#diegetic_profiling",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DAMAGE_BONUS_AND_BUILD",
+    "original_line_normalized": 486,
+    "source_sha256": "4c0356491c758e547dbe119b00d9aeed7557d529feb3fb0308aa7a19cd4b35cf",
+    "action": "정리·이동",
+    "destination": "02-checks.md#damage_bonus_and_build",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HP_AND_DEATH",
+    "original_line_normalized": 498,
+    "source_sha256": "225a1c37f23461d354ef581a22fac4bab416a2f1aa8ed165091761186bfaa1f1",
+    "action": "정리·이동",
+    "destination": "02-checks.md#hp_and_death",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "WOUNDS",
+    "original_line_normalized": 509,
+    "source_sha256": "a401d632c3032f7737fe4db0db2cf7c754ac29296c130ab9ba1366b74a45dc55",
+    "action": "정리·이동",
+    "destination": "02-checks.md#wounds",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HEALING",
+    "original_line_normalized": 516,
+    "source_sha256": "3b1494d61021e6731f823bac42f27575f464ff887de5f6914ef64fc33414f34b",
+    "action": "정리·이동",
+    "destination": "02-checks.md#healing",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LUCK_SPENDING",
+    "original_line_normalized": 524,
+    "source_sha256": "3eb40bda3d92f695995c2edcc96cf141e94f13b3b2d399a1c685ee4fcaeb9003",
+    "action": "정리·이동",
+    "destination": "02-checks.md#luck_spending",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "MP_RESOURCE_ROLE_RC7",
+    "original_line_normalized": 530,
+    "source_sha256": "7d6ee77e517d6a0d8f922138295db62a2885374cadcdb26287eb63ab909ebf38",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "사용자 지정 삭제: MP 또는 영구 성장 종속 기능"
+  },
+  {
+    "original_id": "CAUSAL_SAFETY_AND_SOUND_A13",
+    "original_line_normalized": 541,
+    "source_sha256": "e1eb661bce0924e9bb48688c5289fe2a9b9d255a03725174a32f524fb53dadb7",
+    "action": "정리·이동",
+    "destination": "05-world.md#causal_safety_and_sound",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FRAGMENTED_BREADCRUMBS",
+    "original_line_normalized": 547,
+    "source_sha256": "cdd2f45054a4fe78c959edb107fdffca6bc9823d88d435f59cf8f3db25d7f177",
+    "action": "정리·이동",
+    "destination": "05-world.md#fragmented_breadcrumbs",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OBJECTIVE_EVIDENCE_ONLY",
+    "original_line_normalized": 552,
+    "source_sha256": "cbf8aab309850d5a7c67eb1fd3cefb0b4368618ea8f168a9d2dc80dd01be4ba1",
+    "action": "정리·이동",
+    "destination": "05-world.md#objective_evidence_only",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "EPISTEMIC_LAYERS",
+    "original_line_normalized": 556,
+    "source_sha256": "410b4af594f7e84c1b90244558a0e7f242343ae9cb40ec5efc73638c9cf7e8a5",
+    "action": "정리·이동",
+    "destination": "05-world.md#epistemic_layers",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAYER_HYPOTHESIS_NARRATIVE_BOUNDARY_A13",
+    "original_line_normalized": 566,
+    "source_sha256": "4c1a4bf81b9802bb1fb6d021ca50ae282ce01b970416e671730c08701bc31f6d",
+    "action": "정리·이동",
+    "destination": "05-world.md#player_hypothesis_narrative_boundary",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NATURAL_LANGUAGE_READING",
+    "original_line_normalized": 574,
+    "source_sha256": "25632b0691e6998689ad30de99f816fabf633ac964522463fb55b64ad1cb3978",
+    "action": "정리·이동",
+    "destination": "05-world.md#natural_language_reading",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FLASHBACK_CAUSALITY",
+    "original_line_normalized": 580,
+    "source_sha256": "7e053b7df8783c63118693d47f22394c783f5e02f3714aae41e0eab293bf966b",
+    "action": "재작성",
+    "destination": "05-world.md#flashback_causality",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "INVENTORY",
+    "original_line_normalized": 585,
+    "source_sha256": "ee2c8da796bbfa35e358ae14f30fae21d1758e583c06ec411d5ecd6a7d48b5fe",
+    "action": "정리·이동",
+    "destination": "05-world.md#inventory",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PERSONAL_CASH_LEDGER_A13",
+    "original_line_normalized": 593,
+    "source_sha256": "f610a9e011125aff77d4d73ea2c1b729d3ba362ae2a30c2fb4a86de6096ca4ee",
+    "action": "정리·이동",
+    "destination": "05-world.md#personal_cash_ledger",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ECONOMY_ANCHOR_GATE_A13",
+    "original_line_normalized": 604,
+    "source_sha256": "d95312dcc995266ef6c736d42fbbbd22c2cddd4413afb08b632ae18c8592e246",
+    "action": "정리·이동",
+    "destination": "05-world.md#economy_anchor_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INVENTORY_SLOT_STABILITY",
+    "original_line_normalized": 614,
+    "source_sha256": "d4b2c0f8c851192a7a34710c6fbe6294cb1cc0cd5c23871cf540e443ea302fa7",
+    "action": "정리·이동",
+    "destination": "05-world.md#inventory_slot_stability",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INVENTORY_SLOT_SCALE",
+    "original_line_normalized": 619,
+    "source_sha256": "cc3076b53427e53aa8d5ffa54b7d963242f39f8e1bff8e6074a0064f5610bda6",
+    "action": "정리·이동",
+    "destination": "05-world.md#inventory_slot_scale",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NESTED_INVENTORY_CONTENTS_A13",
+    "original_line_normalized": 626,
+    "source_sha256": "7407003ccdbe8fef4caf8a9fc81ac0f2528bf805b424c5b69938efaa3eba350c",
+    "action": "정리·이동",
+    "destination": "05-world.md#nested_inventory_contents",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENE_POI_SURFACE_A13",
+    "original_line_normalized": 634,
+    "source_sha256": "f69d30c32138948cfb0c272c6791b19663adbec41f8dc03c2414f7b5d999f4ae",
+    "action": "정리·이동",
+    "destination": "05-world.md#scene_poi_surface",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CLUE_FUNCTION",
+    "original_line_normalized": 641,
+    "source_sha256": "2b39bb6ea70650d78bb09f6fb43de6a12d6038c64bbd3e6141dd9c83c4429b6c",
+    "action": "정리·이동",
+    "destination": "05-world.md#clue_function",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INVESTIGATION_STALL_GUARD",
+    "original_line_normalized": 650,
+    "source_sha256": "3a1e0d5fabe8e1498f0bdc2205f34f6b7f27e692d45e1fcbaec8f3c2e742ac09",
+    "action": "정리·이동",
+    "destination": "05-world.md#investigation_stall_guard",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "MAP_RUNTIME_INTERACTION_A15",
+    "original_line_normalized": 660,
+    "source_sha256": "69939531ab59c2ca89c3fb1a79f9d537d8c6688123baf5d495ae6acde152aac8",
+    "action": "재작성",
+    "destination": "08-visual.md#map_runtime_interaction",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "MAP_RUNTIME_INTERACTION_FUNCTIONAL_EXTENSION_A15",
+    "original_line_normalized": 668,
+    "source_sha256": "a824f53311c7a8c4fd29d44936812bc2022f809926c794ca69c0e1abf6f28750",
+    "action": "통합",
+    "destination": "MAP_RUNTIME_INTERACTION",
+    "reason": "규칙 통합: MAP_RUNTIME_INTERACTION_A15"
+  },
+  {
+    "original_id": "DISTINCTIVE_EQUIPMENT_AFFORDANCE_A13",
+    "original_line_normalized": 680,
+    "source_sha256": "0e392e97e306551b6894d805d44f58ead88d003b79acbdd4fc36184946070e1f",
+    "action": "정리·이동",
+    "destination": "05-world.md#distinctive_equipment_affordance",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SAN_CORE",
+    "original_line_normalized": 689,
+    "source_sha256": "dd44e218e96509aabcc28c3f3f1806a9fff9ac7f9035628efd89a730b7d6fb80",
+    "action": "정리·이동",
+    "destination": "03-danger.md#san_core",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CTHULHU_MYTHOS_SKILL",
+    "original_line_normalized": 697,
+    "source_sha256": "4fb0300220f24d486d9339560fbc03161faf60a5b2378ecd3be23e29c70a49cf",
+    "action": "정리·이동",
+    "destination": "03-danger.md#cthulhu_mythos_skill",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SAN_ROLL",
+    "original_line_normalized": 706,
+    "source_sha256": "64889000a8bffc19b0bec4a0dad0fb753e71583e0712e7cfd491a447cd38165f",
+    "action": "정리·이동",
+    "destination": "03-danger.md#san_roll",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCALED_SANITY_LOSS",
+    "original_line_normalized": 711,
+    "source_sha256": "fd13173f979edbd4c385f6196333862f07ea7d8b34d8da1d6b11453eff06b8da",
+    "action": "정리·이동",
+    "destination": "03-danger.md#scaled_sanity_loss",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INSANITY_CONDITIONS",
+    "original_line_normalized": 717,
+    "source_sha256": "5bc709885b7f4473672631d5dd58ac6cc38ce0292759fde1b6c4cc41c8f7def8",
+    "action": "정리·이동",
+    "destination": "03-danger.md#insanity_conditions",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "BOUTS_OF_MADNESS",
+    "original_line_normalized": 724,
+    "source_sha256": "9503cb8954bb7a929660851da46d851655cfa4ea9622791662240ce47630e22d",
+    "action": "정리·이동",
+    "destination": "03-danger.md#bouts_of_madness",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "UNDERLYING_INSANITY",
+    "original_line_normalized": 740,
+    "source_sha256": "e0e26897572f4e6fae1d81b82e03fb6374c7420201406c3600e62d348a82296c",
+    "action": "정리·이동",
+    "destination": "03-danger.md#underlying_insanity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DIEGETIC_SAN_RECOVERY",
+    "original_line_normalized": 746,
+    "source_sha256": "615d76b0a46997942283423efed3772788358c29a1e85df8be666af7dd8be47a",
+    "action": "정리·이동",
+    "destination": "03-danger.md#diegetic_san_recovery",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CINEMATIC_ENCOUNTER",
+    "original_line_normalized": 758,
+    "source_sha256": "259500bddda9083879fb4570b64f09d49c66c3a214fcdc144ec1dfedd40db980",
+    "action": "정리·이동",
+    "destination": "03-danger.md#cinematic_encounter",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "COMBAT_ORDER",
+    "original_line_normalized": 763,
+    "source_sha256": "07a8fac40178630bf290e47635e07574b51f4b3639c457028e2b6e97fc51d98c",
+    "action": "정리·이동",
+    "destination": "03-danger.md#combat_order",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DAMAGE",
+    "original_line_normalized": 769,
+    "source_sha256": "9742fc1b1451f1133dc5861609c1643f6dd1afd9fb3a9c71b4bae9d8f7c002ed",
+    "action": "정리·이동",
+    "destination": "03-danger.md#damage",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "THREAT_TIERS",
+    "original_line_normalized": 784,
+    "source_sha256": "dd8342360c9f8a94311e0d70563aa2995995cb858207360ae99c45a8b34fef71",
+    "action": "정리·이동",
+    "destination": "03-danger.md#threat_tiers",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "MELEE_OPPOSED",
+    "original_line_normalized": 790,
+    "source_sha256": "17c882f96442e3afe722c907a4eb9ddf11e6c0259ce362628ca138d147e0cf3f",
+    "action": "정리·이동",
+    "destination": "03-danger.md#melee_opposed",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FIGHTING_MANEUVERS",
+    "original_line_normalized": 799,
+    "source_sha256": "3708d3f2fcee30f592834af04fd2a9b02a4b02c2c73907f8f8bf165ea86c367a",
+    "action": "정리·이동",
+    "destination": "03-danger.md#fighting_maneuvers",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OUTNUMBERED",
+    "original_line_normalized": 807,
+    "source_sha256": "2e801d7dcdbc9c6dd5c11f785d2206221ccdc9c7293f18d5803f0196de37259a",
+    "action": "정리·이동",
+    "destination": "03-danger.md#outnumbered",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FIREARMS",
+    "original_line_normalized": 812,
+    "source_sha256": "9fbfd293b604f1aa3747b57e6157ad86c325917be67035888eefdc3cdbc83374",
+    "action": "정리·이동",
+    "destination": "03-danger.md#firearms",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CHASE_FICTION_FIRST_A13",
+    "original_line_normalized": 819,
+    "source_sha256": "95f499d417845fde4c6554e7d4c49d21a3206fa611aab99ecbe2db37213ba3c6",
+    "action": "정리·이동",
+    "destination": "03-danger.md#chase_fiction_first",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CHASE",
+    "original_line_normalized": 827,
+    "source_sha256": "a2e0f0431879f7ec680c85f41e01c870728532574cc8c259ebd270f0a9c329d0",
+    "action": "정리·이동",
+    "destination": "03-danger.md#chase",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "EXTREME_HAZARDS",
+    "original_line_normalized": 834,
+    "source_sha256": "8b1ecb26c5f18f84ca025008f99142fe52c3c7b1e2adbe86b05eb36879982130",
+    "action": "정리·이동",
+    "destination": "03-danger.md#extreme_hazards",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CAUSAL_MULTI_PHASE_THREAT_A13",
+    "original_line_normalized": 844,
+    "source_sha256": "1d183ade62640f5129d0bc9b1943b4c1d0087dc90323c9aa4453cd0306b91a8f",
+    "action": "정리·이동",
+    "destination": "03-danger.md#causal_multi_phase_threat",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SEQUENTIAL_PROFILE_GENERATION_A13",
+    "original_line_normalized": 854,
+    "source_sha256": "dcbe0c34ef031cda74bea476602625dc458f1db68e96ea7863f23e770868464b",
+    "action": "재작성",
+    "destination": "04-setup.md#sequential_profile_generation",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "BASIC_INFO_ACTOR_COMMIT_A25",
+    "original_line_normalized": 861,
+    "source_sha256": "1654fbf1cb0c9b55a64b0f4ca04210a97a343ae324957ac07ceda9502035bf98",
+    "action": "정리·이동",
+    "destination": "04-setup.md#basic_info_actor_commit",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROFILE_CONNECTION_COMMIT_ORDER_A13",
+    "original_line_normalized": 869,
+    "source_sha256": "593529d16f6dde71470cc9d353e33ba593c3a064ebcc9e26d198f60ba51d0d2e",
+    "action": "통합",
+    "destination": "CAMPAIGN_SETUP_PIPELINE",
+    "reason": "규칙 통합: CAMPAIGN_SETUP_PIPELINE_A13"
+  },
+  {
+    "original_id": "PC_KNOWN_BACKSTORY_DISCLOSURE",
+    "original_line_normalized": 878,
+    "source_sha256": "18466a5b4adb81c22bc1c129f3854dcf08add9335dda6e341629b21d0edaf243",
+    "action": "정리·이동",
+    "destination": "04-setup.md#pc_known_backstory_disclosure",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ROLEPLAY_ANCHOR_AGENCY",
+    "original_line_normalized": 884,
+    "source_sha256": "ea3dd73fbf0a30fd5e8cfd276b64ae1761bbc4d344e9d0e585546c33494b94b3",
+    "action": "정리·이동",
+    "destination": "04-setup.md#roleplay_anchor_agency",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT_A13",
+    "original_line_normalized": 898,
+    "source_sha256": "13166abe9b54c97e56859624d036eee2f95d7698ec64e9b4dea271328cb99907",
+    "action": "재작성",
+    "destination": "04-setup.md#final_investigator_profile_output_contract",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "INVESTIGATOR_PROFILE_PLAY_ENGINE_A13",
+    "original_line_normalized": 1005,
+    "source_sha256": "547407b76dd9eb8d9b03e3ac59dff51c08f4569cb60d2dd34baa292526de5b99",
+    "action": "정리·이동",
+    "destination": "04-setup.md#investigator_profile_play_engine",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NAME_GENERATION_LOCK",
+    "original_line_normalized": 1017,
+    "source_sha256": "84ec54890b22d5d51dde83ad3be959baf253972d30cf938ede70d9c7a412b59c",
+    "action": "정리·이동",
+    "destination": "04-setup.md#name_generation_lock",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DEFAULT_STRANGERS_AND_PC_EMOTIONAL_AGENCY",
+    "original_line_normalized": 1030,
+    "source_sha256": "064ad3c584105cd384cb66475f863ce030350c25f66b29bfe1b6a2f928fa3c88",
+    "action": "정리·이동",
+    "destination": "04-setup.md#default_strangers_and_pc_emotional_agency",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "STAT_DRAFT_GENERATION_A13",
+    "original_line_normalized": 1036,
+    "source_sha256": "c651c5a738d3097fd02b8bb3c4bc18a9c16bf0910cfc00ab8b9582b884b99341",
+    "action": "재작성",
+    "destination": "04-setup.md#stat_draft_generation",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "PC_DERIVED_STATS",
+    "original_line_normalized": 1049,
+    "source_sha256": "4b0902743ff59607de5b4080e67f19de522bfc9a1a9caa218cf942e34de044d2",
+    "action": "재작성",
+    "destination": "04-setup.md#pc_derived_stats",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "STAT_THEME_FUSION",
+    "original_line_normalized": 1062,
+    "source_sha256": "650c442e4582e10ea4b38905467cc93b717a400e3cf50619493addc44f037e24",
+    "action": "정리·이동",
+    "destination": "04-setup.md#stat_theme_fusion",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "COMPANION_COUNT",
+    "original_line_normalized": 1069,
+    "source_sha256": "6da954432e8021691c2ee71cb6da715c7561b4cb54544b1bd02fa7cfcaf6caef",
+    "action": "정리·이동",
+    "destination": "05-world.md#companion_count",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "COMPANION_STAGING_AND_PUBLIC_INTRO",
+    "original_line_normalized": 1075,
+    "source_sha256": "635d9d06817c71c7c899a80ebb3ed716a9b1623a3785ee0b07259b7af250159e",
+    "action": "정리·이동",
+    "destination": "05-world.md#companion_staging_and_public_intro",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "STORY_NPC",
+    "original_line_normalized": 1108,
+    "source_sha256": "dbd1cc7f0ed66ce42edf6821a749d02f8a447a3335ec2a36901e8b4679374734",
+    "action": "정리·이동",
+    "destination": "05-world.md#story_npc",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NPC_AGENDA_AND_SECRECY_A13",
+    "original_line_normalized": 1113,
+    "source_sha256": "e65f094ea1aa84fa9bc0505b35f085225df2bec5cf49756866f342c676c5b258",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_agenda_and_secrecy",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NPC_CONTRADICTORY_HUMANITY",
+    "original_line_normalized": 1120,
+    "source_sha256": "d47754cb5e741b5d672f884f7891a14bc3d1ef069b4267617323f709fb4fa75a",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_contradictory_humanity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "TESTIMONY",
+    "original_line_normalized": 1125,
+    "source_sha256": "a69192d1962ddf05b6d48c855671811025b526991cea30db2447f5b86e35a655",
+    "action": "정리·이동",
+    "destination": "05-world.md#testimony",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NPC_STATS",
+    "original_line_normalized": 1130,
+    "source_sha256": "dce3a292c809e59ea13bad9b8851318f9159330c755d14121e8aebcdf8bb5638",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_stats",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NPC_SANITY",
+    "original_line_normalized": 1136,
+    "source_sha256": "6ecbed81c22041c9ce81b88584d91e0e4f857fd24fc9ca10005697476e4af7f5",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_sanity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "RELATIONSHIP_AND_NPC_MEMORY_A13",
+    "original_line_normalized": 1140,
+    "source_sha256": "44825355c32588f0af34c0f5939071b655bf69cff0b98b47fd9f1d3b8b74aa43",
+    "action": "정리·이동",
+    "destination": "05-world.md#relationship_and_npc_memory",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DURABLE_STORY_CONTINUITY_A13",
+    "original_line_normalized": 1149,
+    "source_sha256": "7c24cc9d757f2c3ce535b0314119d75af2a9dce1def6a4a84cb49580c12bbaea",
+    "action": "정리·이동",
+    "destination": "05-world.md#durable_story_continuity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NPC_INTERACTION_VOICE_COMPACT_RC14_A13",
+    "original_line_normalized": 1159,
+    "source_sha256": "859ef96ce785578594e9f2bb9835ce40fc6670418effc737e062e0233124b3c0",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_interaction_voice_compact",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NPC_AGENDA_INTERVENTION",
+    "original_line_normalized": 1169,
+    "source_sha256": "e30f0a63afe3feb1d20ae05cfe856034459c349ac89781920f752e215e337bf0",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_agenda_intervention",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NPC_AUTO_ASSIST",
+    "original_line_normalized": 1175,
+    "source_sha256": "d36b53d7584279a0f7554e69936dc3c7fc41777b30f95bd7a8642de11ca64804",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_auto_assist",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NO_SOCIAL_PING_HINT_DISPENSER",
+    "original_line_normalized": 1179,
+    "source_sha256": "e7848ad53ccb647a782690a047df8768b5f0da2e80e9d0905d66d2d5ba67576b",
+    "action": "정리·이동",
+    "destination": "05-world.md#no_social_ping_hint_dispenser",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DEATH_AND_INHERITANCE",
+    "original_line_normalized": 1185,
+    "source_sha256": "5f978c74f20be061693ad7b53312cab1ae05efb63329749aca3e109a56e409bf",
+    "action": "정리·이동",
+    "destination": "05-world.md#death_and_inheritance",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INSTITUTION_ACCESS_STATE_A13",
+    "original_line_normalized": 1196,
+    "source_sha256": "299a6bbce43e133a8a2cc6b28fb32d6c9658eaa9de452c15816eb10f5adaecb7",
+    "action": "정리·이동",
+    "destination": "05-world.md#institution_access_state",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ENDING_TRIGGER",
+    "original_line_normalized": 1206,
+    "source_sha256": "4496b21a8c5cc13fb8d226a3cfb6710c7f38182d9d9b051af49053f57c7591aa",
+    "action": "통합",
+    "destination": "ENDING_FINALIZATION_GATE",
+    "reason": "규칙 통합: ENDING_FINALIZATION_GATE_A13"
+  },
+  {
+    "original_id": "ENDING_FINALIZATION_GATE_A13",
+    "original_line_normalized": 1212,
+    "source_sha256": "2bfa2f651c097d5917751370d78d609c6fc372237e203f61ab83699fc6bab85a",
+    "action": "재작성",
+    "destination": "06-play.md#ending_finalization_gate",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "TERMINAL_PREFINALIZATION_AND_POSTRUN_ARCHIVE_A20",
+    "original_line_normalized": 1250,
+    "source_sha256": "67e1be596bef2ed4b422384891415b8d6baded048f37f6de62f25ea1dec789d3",
+    "action": "통합",
+    "destination": "ENDING_FINALIZATION_GATE",
+    "reason": "규칙 통합: ENDING_FINALIZATION_GATE_A13"
+  },
+  {
+    "original_id": "PLAYER_PROFILE_FINALIZATION_INTEGRITY_OVERRIDE_A13",
+    "original_line_normalized": 1258,
+    "source_sha256": "eafa320e2e12a33fac82a6fbe3b5acd31d93b99ecc296ec874a9fef1224d3b98",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "사용자 지정 삭제: MP 또는 영구 성장 종속 기능"
+  },
+  {
+    "original_id": "TRUTH_COMPREHENSION_FRAME_RC14_A13",
+    "original_line_normalized": 1267,
+    "source_sha256": "a013868882bbfdd9a505225532b3a38bd03a343aff8a3957fe6728f8a35a011e",
+    "action": "정리·이동",
+    "destination": "06-play.md#truth_comprehension_frame",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ENDING_RESULT_VECTOR",
+    "original_line_normalized": 1276,
+    "source_sha256": "99eb3ab7ade170881372e91109c71afb2fd04c7bc0c88bbdef2c6107c123cf24",
+    "action": "정리·이동",
+    "destination": "06-play.md#ending_result_vector",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "UNIQUE_ENDING_TITLE",
+    "original_line_normalized": 1287,
+    "source_sha256": "c6bf1e93c182b52239e3a5d4a9488e2b76f5120aef205729c65b05d02a95e42b",
+    "action": "정리·이동",
+    "destination": "06-play.md#unique_ending_title",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ENDING_PRESENTATION_RC7",
+    "original_line_normalized": 1292,
+    "source_sha256": "06a30c30769ad0aafd53d0d271fb9af583376e127427d1c1ad148ef8ed0d3b7a",
+    "action": "정리·이동",
+    "destination": "06-play.md#ending_presentation",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ENDING_CHARACTER_EVOLUTION_VISUAL_GATE_A13",
+    "original_line_normalized": 1299,
+    "source_sha256": "e88104257b55ecf40b1e62f4c44b72a757a17ca34f4d4da3a20db559c650e6a6",
+    "action": "정리·이동",
+    "destination": "06-play.md#ending_character_evolution_visual_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OPTIONAL_POST_CREDITS_VIEWS",
+    "original_line_normalized": 1307,
+    "source_sha256": "4a28602684bbe68956a975122762f6aa8a7bda93924d7968d7b80d85ca859846",
+    "action": "정리·이동",
+    "destination": "06-play.md#optional_post_credits_views",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "POST_CREDITS_HIDDEN_TRUTH_INTEGRITY_A13",
+    "original_line_normalized": 1316,
+    "source_sha256": "ea0e6b1948f1d408397f0fe7fb62b60210fd3b781b526e65471996c954b490b3",
+    "action": "정리·이동",
+    "destination": "06-play.md#post_credits_hidden_truth_integrity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CINEMATIC_ACTION_CONTINUITY_A13",
+    "original_line_normalized": 1328,
+    "source_sha256": "8507161234a9eb4c5436c875db290bed8950f80700439c159b6cf8fc0ad996b8",
+    "action": "정리·이동",
+    "destination": "06-play.md#cinematic_action_continuity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAYABLE_NARRATIVE_RENDERING_A13",
+    "original_line_normalized": 1337,
+    "source_sha256": "0c52daaed4dc8ca329842ca98eed9d9a8203386a5e3a3948e025bacfb073a587",
+    "action": "정리·이동",
+    "destination": "06-play.md#playable_narrative_rendering",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FREEFORM_PLAYER_DECLARATION",
+    "original_line_normalized": 1359,
+    "source_sha256": "6112aed4c17c1113cd561809341dbcd6961005e3678a68c4f63b2174508a298e",
+    "action": "정리·이동",
+    "destination": "06-play.md#freeform_player_declaration",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CALM_BEFORE_STORM",
+    "original_line_normalized": 1367,
+    "source_sha256": "e5b16a402071202d8d293c9cc39473294e7435ebcfbb9e1d4a82334554d5fee8",
+    "action": "정리·이동",
+    "destination": "06-play.md#calm_before_storm",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SURVIVAL_CALM_BEFORE_STORM_ROUTING",
+    "original_line_normalized": 1373,
+    "source_sha256": "ec7dfec3d3f091a1ce00a86e4eaa038724e3bd0c713e1101d59fa880cbf45421",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "장기 생존·거점·Block/Day 전용 분기 삭제"
+  },
+  {
+    "original_id": "BUILDUP_GOALS",
+    "original_line_normalized": 1378,
+    "source_sha256": "073e13b6ccff0dd0193e9788037a20796d7d455eacd40e2dce1353e4c4a9d8d9",
+    "action": "정리·이동",
+    "destination": "06-play.md#buildup_goals",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CINEMATIC_MISE_EN_SCENE",
+    "original_line_normalized": 1384,
+    "source_sha256": "5cffbf883353e9a517e4fa8ea30b45a8ba0370e28c56ba729600e8d2f9731852",
+    "action": "정리·이동",
+    "destination": "06-play.md#cinematic_mise_en_scene",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LORE_DRIVEN_PUZZLES",
+    "original_line_normalized": 1391,
+    "source_sha256": "82ae86ea763b4657b56d9a7719f99a9df40ee6a8c742cefa2d0e0aef9310426e",
+    "action": "정리·이동",
+    "destination": "06-play.md#lore_driven_puzzles",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DEDUCTION_TIME_FREEZE_A13",
+    "original_line_normalized": 1396,
+    "source_sha256": "877802e39d6cb42d290bb314e895b9d17378bfd12a59e51b107dbbc08045e922",
+    "action": "재작성",
+    "destination": "06-play.md#deduction_time_freeze",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "INCITING_INCIDENT",
+    "original_line_normalized": 1402,
+    "source_sha256": "61087b764f0effbd34c73d573b881869a8ca88f10b63fe1c945927775cd9b117",
+    "action": "정리·이동",
+    "destination": "06-play.md#inciting_incident",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CAUSAL_DILEMMA",
+    "original_line_normalized": 1406,
+    "source_sha256": "4a99b8b8630931d49e2a5d9218f094cd6b89efd57d7cf4488a4056a6dad0538d",
+    "action": "정리·이동",
+    "destination": "06-play.md#causal_dilemma",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "QUIET_AFTERMATH_BEAT",
+    "original_line_normalized": 1412,
+    "source_sha256": "d096e9f510975122050a3e93b2447eed846e0e5ad42a8e0e37db789d984692b5",
+    "action": "정리·이동",
+    "destination": "06-play.md#quiet_aftermath_beat",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CHOICE_COLLISION",
+    "original_line_normalized": 1417,
+    "source_sha256": "27f00c70a1eb5e7e02a0dab8b8ac7614ced56a8f2555070b6d8a1246e9c76b17",
+    "action": "정리·이동",
+    "destination": "06-play.md#choice_collision",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DRAMATIC_SPINE_SCENE_PACING_A13",
+    "original_line_normalized": 1422,
+    "source_sha256": "446f9187ce0496707bcf4dea5c0b4fcbb837a6ea310c7bf4fd6f2267c6fd9543",
+    "action": "정리·이동",
+    "destination": "06-play.md#dramatic_spine_scene_pacing",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENE_PACING_GATE_RC14_A13",
+    "original_line_normalized": 1434,
+    "source_sha256": "1336ad031cbabdf4b59221f4b7e677339fc4a5fdc7aa3a8dc93836844beeaac4",
+    "action": "재작성",
+    "destination": "06-play.md#scene_pacing_gate",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "SOFT_SUDDEN_DEATH_PACING_A25",
+    "original_line_normalized": 1483,
+    "source_sha256": "c09113b34ed423f56a38b2e8e50ad4d313e49d6f337834e882b05ea4f1f74244",
+    "action": "정리·이동",
+    "destination": "06-play.md#soft_sudden_death_pacing",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CAUSAL_PROGRESS_PACING_BRIDGE_A13",
+    "original_line_normalized": 1492,
+    "source_sha256": "adc29ea84c8ef0bc93223cc18922cb7fe86798dae38c9f11303178c0c50b771e",
+    "action": "정리·이동",
+    "destination": "06-play.md#causal_progress_pacing_bridge",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CINEMATIC_ELLIPSIS_A13",
+    "original_line_normalized": 1504,
+    "source_sha256": "066fbd9daaffc4157762ac6ef58f2f7e8bcd530b2ca5f4cd0bbf065f954e9c92",
+    "action": "정리·이동",
+    "destination": "06-play.md#cinematic_ellipsis",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "KEEPER_SCENE_SELECTION_A13",
+    "original_line_normalized": 1513,
+    "source_sha256": "ecf1c107576820f5919c7a6943991ca0ae1344ed530bbe76d76c362f8fbe0e91",
+    "action": "정리·이동",
+    "destination": "06-play.md#keeper_scene_selection",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SAFE_INTERLUDE_AND_ENRICHMENT_A13",
+    "original_line_normalized": 1530,
+    "source_sha256": "59ae32e0100d35077e399409499b65c3d256e4ac979fb4194080b6a6b61cae58",
+    "action": "정리·이동",
+    "destination": "06-play.md#safe_interlude_and_enrichment",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "RETURN_SETTLEMENT_CONTINUITY_A13",
+    "original_line_normalized": 1541,
+    "source_sha256": "b71b1417c77f59a7d7cdc49ade8bdfbe224f18c25faede4def847659da404676",
+    "action": "정리·이동",
+    "destination": "06-play.md#return_settlement_continuity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAY_PHASE_UNIFICATION_A13",
+    "original_line_normalized": 1548,
+    "source_sha256": "c25e048b95713a361f29817ca0b2f16a5d24dd27efc618d295f75aa126e8f2c5",
+    "action": "재작성",
+    "destination": "06-play.md#play_phase_unification",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "PRIVATE_STATE",
+    "original_line_normalized": 1556,
+    "source_sha256": "162d363f815c4d2c4909b5b81cd044433807b2b6bf89ce7e8926d81f8dea5a5f",
+    "action": "통합",
+    "destination": "STATE_CADENCE",
+    "reason": "규칙 통합: STATE_CADENCE"
+  },
+  {
+    "original_id": "AUTOMATIC_CHECKPOINT_CADENCE_A15",
+    "original_line_normalized": 1561,
+    "source_sha256": "8959e1fe5820c9a154dd8acb041861994d90785b6033e2e94fa9b96cfcb3e531",
+    "action": "통합",
+    "destination": "STATE_CADENCE",
+    "reason": "규칙 통합: STATE_CADENCE"
+  },
+  {
+    "original_id": "TURN_INCREMENT",
+    "original_line_normalized": 1573,
+    "source_sha256": "1f5ac4816ae20babd73e5e2c3c69409240fee923ef1bb1080390514e5c79a03b",
+    "action": "정리·이동",
+    "destination": "06-play.md#turn_increment",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SURVIVAL_TIME_ROUTING",
+    "original_line_normalized": 1579,
+    "source_sha256": "98c85b724bc44e8e0ac3aaaa74d808e1dee06a6a28fa8a7322d078c1b36b3386",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "장기 생존·거점·Block/Day 전용 분기 삭제"
+  },
+  {
+    "original_id": "TURN_INDEX_NOT_STORY_CLOCK_A13",
+    "original_line_normalized": 1584,
+    "source_sha256": "2d4350f2004cf0950d5cd4dd7770da4945ea0eb34f488e740ef2b00104f029d6",
+    "action": "정리·이동",
+    "destination": "06-play.md#turn_index_not_story_clock",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENE_ELAPSED_TIME_SETTLEMENT_A13",
+    "original_line_normalized": 1590,
+    "source_sha256": "30e1fe59eccaa1b481f7b877fcf5144e1e4a2755d44fc6ca0b80436d8fd6334c",
+    "action": "재작성",
+    "destination": "06-play.md#scene_elapsed_time_settlement",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "LONG_ACTION_EARLIEST_INTERRUPTION_A13",
+    "original_line_normalized": 1597,
+    "source_sha256": "24edf6119cdfe42bc69446a7dc55de54dbabfa422c00fb7cbf96c5f2d58c862a",
+    "action": "정리·이동",
+    "destination": "06-play.md#long_action_earliest_interruption",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAY_SITTING_ACCOUNTING_A13",
+    "original_line_normalized": 1603,
+    "source_sha256": "d6279debfbc59fbf4e2217ecbb46ce683b4ab844cae4bfecc5eca103b8ad8faa",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "사용자 지정 삭제: MP 또는 영구 성장 종속 기능"
+  },
+  {
+    "original_id": "MULTI_PC_SPOTLIGHT_CONTRACT_A13",
+    "original_line_normalized": 1617,
+    "source_sha256": "dbdcad8144f93d350443a73144792dc730af6c056f6ed05eb364e8fd41baf1db",
+    "action": "정리·이동",
+    "destination": "06-play.md#multi_pc_spotlight_contract",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PUBLIC_OUTPUT_UI_A13",
+    "original_line_normalized": 1623,
+    "source_sha256": "43ed08ac7360f4063d35e7058054e05cf7f7b5def52a3ddd474ff45e8106e502",
+    "action": "통합",
+    "destination": "BOTTOM_HUD_CONTRACT",
+    "reason": "규칙 통합: BOTTOM_HUD_CONTRACT_RC14_A13"
+  },
+  {
+    "original_id": "ACTIVE_POV",
+    "original_line_normalized": 1637,
+    "source_sha256": "752d5472f8d71c25d54fcb84257b331c842333f16d69939e4d6956cfefa4bdbb",
+    "action": "정리·이동",
+    "destination": "06-play.md#active_pov",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CURRENT_FOCUS",
+    "original_line_normalized": 1641,
+    "source_sha256": "69e1990ed1d4d3b5d0236b066171d56ac0f4c2014b18625cad83f94a5922f8e4",
+    "action": "정리·이동",
+    "destination": "06-play.md#current_focus",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAYER_SCENE_VISIBILITY_A13",
+    "original_line_normalized": 1649,
+    "source_sha256": "9ef524bd93766eb73a022d9b290baa8e38da647591d0eaa7a042a5dc8c2bafba",
+    "action": "정리·이동",
+    "destination": "06-play.md#player_scene_visibility",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "STANDBY_PC_NO_AUTOPILOT_A13",
+    "original_line_normalized": 1670,
+    "source_sha256": "233775535516bea48b4b1884b5392ed35f6e2ed693499865ff9093fb852d6118",
+    "action": "정리·이동",
+    "destination": "06-play.md#standby_pc_no_autopilot",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENE_ROLES",
+    "original_line_normalized": 1675,
+    "source_sha256": "9f73f19123c2c52dcb8fc0acd5a1e65fcce993c6c6b7109b015a1cf5a9189885",
+    "action": "정리·이동",
+    "destination": "06-play.md#scene_roles",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CINEMATIC_SPOTLIGHT_SCENE_A13",
+    "original_line_normalized": 1681,
+    "source_sha256": "ad4971e3337d831de591b5e7defa8c6a7225e0a3cb02679bfdc84a54c4637dce",
+    "action": "정리·이동",
+    "destination": "06-play.md#cinematic_spotlight_scene",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SPOTLIGHT_FAIRNESS_COMMIT_GATE_A13",
+    "original_line_normalized": 1712,
+    "source_sha256": "b70b9172630f28f1a148658658a0af521b22e17dcbc5039f87b62270376d1900",
+    "action": "정리·이동",
+    "destination": "06-play.md#spotlight_fairness_commit_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "COLOCATED_SHARED_SCENE_EXCHANGE_A13",
+    "original_line_normalized": 1737,
+    "source_sha256": "c522cc3318403363cd5a5553939a8b6d1ddf31226a586ef66955052a59e7d91f",
+    "action": "정리·이동",
+    "destination": "06-play.md#colocated_shared_scene_exchange",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CINEMATIC_SEQUENCE_AND_BRANCH_A13",
+    "original_line_normalized": 1757,
+    "source_sha256": "a43b52c4811bef3d481d0d4f45d58bd2e4756ba99c76356f4cf457abb52e51aa",
+    "action": "정리·이동",
+    "destination": "06-play.md#cinematic_sequence_and_branch",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LEGACY_PAID_SPOTLIGHT_CUT_COMPAT_RC14_A13",
+    "original_line_normalized": 1766,
+    "source_sha256": "08eb6a3208f9d71742fbd9f34ebc7bb61d0e446523596978be8a7b03ea114937",
+    "action": "통합",
+    "destination": "CORE_AGENCY",
+    "reason": "규칙 통합: CORE_AGENCY"
+  },
+  {
+    "original_id": "GUIDED_ACTION_RETURN_A13",
+    "original_line_normalized": 1775,
+    "source_sha256": "bed78013fbd91b41d74157ad126f397619dc5c84338cbe3337fa06648cbaaca3",
+    "action": "정리·이동",
+    "destination": "06-play.md#guided_action_return",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NORMAL_HANDOFF_GATE_A13",
+    "original_line_normalized": 1784,
+    "source_sha256": "ab6ba4166ea80d79701dda9eb14ec323fb336b4dc81d3520b864085b084d2b3e",
+    "action": "정리·이동",
+    "destination": "06-play.md#normal_handoff_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "REACTION_SCENE_HANDOFF_A13",
+    "original_line_normalized": 1801,
+    "source_sha256": "cc406a2c0494189964e0a4b41ee93a6ba7831f70ab81d490df03d6c8698247d8",
+    "action": "정리·이동",
+    "destination": "06-play.md#reaction_scene_handoff",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "VISUAL_CHOICE_GATE_A13",
+    "original_line_normalized": 1808,
+    "source_sha256": "ac83fa7393c78fc1197e93c41d6f1a6888fdff7f908cc0473490a52acc0e7df1",
+    "action": "정리·이동",
+    "destination": "06-play.md#visual_choice_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "WORLD_FORCED_RESPONSE_FOCUS",
+    "original_line_normalized": 1835,
+    "source_sha256": "a8126d259adac47267c3bc4872bfe00419091f27b217c07ade46882c7c05ed62",
+    "action": "정리·이동",
+    "destination": "06-play.md#world_forced_response_focus",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FOCUS_INTERVENTION_BOUNDARY_A13",
+    "original_line_normalized": 1840,
+    "source_sha256": "4e23aecb1187bfe6e12c34a4aeb69b558eb11e57da71eeade05cefda261ed665",
+    "action": "재작성",
+    "destination": "06-play.md#focus_intervention_boundary",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "BOTTOM_HUD_CONTRACT_RC14_A13",
+    "original_line_normalized": 1846,
+    "source_sha256": "179e13f2ef6bd4a82e9c4782c0dee8bf9401329eab30246875c5d64b47ff96df",
+    "action": "정리·이동",
+    "destination": "06-play.md#bottom_hud_contract",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DYNAMIC_FOCUS_TURN_RENDER",
+    "original_line_normalized": 1864,
+    "source_sha256": "e6b6634fc5238fe38e2808e41e22af75eed9d3c4e9948141b17e8f49e154b1e9",
+    "action": "정리·이동",
+    "destination": "06-play.md#dynamic_focus_turn_render",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SINGLE_PC_SCENE_COMPLETENESS_A13",
+    "original_line_normalized": 1877,
+    "source_sha256": "a986a440bb877517f15e36e83a0ebe4586cdd01bf3911a7c0f12ab4343af55ee",
+    "action": "정리·이동",
+    "destination": "06-play.md#single_pc_scene_completeness",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PARALLEL_TIMELINE_SYNC_A13",
+    "original_line_normalized": 1885,
+    "source_sha256": "980ad2c7681aa8433f4abe3ef16de42f530461f7f639e3708b6cf03013274e25",
+    "action": "정리·이동",
+    "destination": "06-play.md#parallel_timeline_sync",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SURVIVAL_PARALLEL_TIME_ROUTING_A13",
+    "original_line_normalized": 1892,
+    "source_sha256": "b6d55291070ecf6a276e54b917abc8f22b2357d54cc8a207a9f2d8e6cd0bdc74",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "장기 생존·거점·Block/Day 전용 분기 삭제"
+  },
+  {
+    "original_id": "SPLIT_PARTY_MACRO_BARRIER",
+    "original_line_normalized": 1897,
+    "source_sha256": "683ef5c58f5d46238df91b192a032a727f455ed19b486a3dddf5b65401d16592",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "장기 생존·거점·Block/Day 전용 분기 삭제"
+  },
+  {
+    "original_id": "START_MAP_HANDOUT_GATE_A15",
+    "original_line_normalized": 1906,
+    "source_sha256": "d78591d78e3456402895658ea03a046651a99997b40661b827595e40ed0d8899",
+    "action": "정리·이동",
+    "destination": "08-visual.md#start_map_handout_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FUNCTIONAL_MAP_RENDERING_A15",
+    "original_line_normalized": 1914,
+    "source_sha256": "6183d4c8c3714717e458ea8f28dc4b89759c0f2aec589bd75fa7daa1705bbb7f",
+    "action": "정리·이동",
+    "destination": "08-visual.md#functional_map_rendering",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENARIO_ESSENCE",
+    "original_line_normalized": 1931,
+    "source_sha256": "c8fcd362470279d7083af359b7ff75c97e325c2e813e4bc8a1eba0b7540ef404",
+    "action": "재작성",
+    "destination": "05-world.md#scenario_essence",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "SCENARIO_CAUSAL_PROGRESS_MODEL_A13",
+    "original_line_normalized": 1942,
+    "source_sha256": "cb90dae369c313e40f755bd25acb420010a718c5242eb9c44eae706533f19919",
+    "action": "정리·이동",
+    "destination": "05-world.md#scenario_causal_progress_model",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENARIO_THREAD_REGISTER_A13",
+    "original_line_normalized": 1953,
+    "source_sha256": "e947ba9c8ed696960587deca88248f4915146f7d59b68ab68de08174854f4f99",
+    "action": "정리·이동",
+    "destination": "05-world.md#scenario_thread_register",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NESTED_STAKES_PROGRESS_BRIDGE_A13",
+    "original_line_normalized": 1961,
+    "source_sha256": "472c6fa2a0bd0229fcbaab72299b0b350a1bd1826e55e4998e1d96ff59b8ed03",
+    "action": "정리·이동",
+    "destination": "05-world.md#nested_stakes_progress_bridge",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROGRESS_TERMINAL_SEPARATION_A13",
+    "original_line_normalized": 1965,
+    "source_sha256": "5f48447ae3897b9f54b43b68325b5878b48852c79f62fb07a2d09be37759ead6",
+    "action": "정리·이동",
+    "destination": "05-world.md#progress_terminal_separation",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENARIO_TERMINAL_BOUNDARY_A13",
+    "original_line_normalized": 1968,
+    "source_sha256": "349a305d2b4f5e0f2b06e08582521e07f7efde661003eed15091f5cab7356f68",
+    "action": "정리·이동",
+    "destination": "05-world.md#scenario_terminal_boundary",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PC_INVOLVEMENT_COLLISION_GATE_A13",
+    "original_line_normalized": 1976,
+    "source_sha256": "89e00eae8051895444b87931b19778e8b424019cd7ac08d717fbc5ef630fdf82",
+    "action": "정리·이동",
+    "destination": "05-world.md#pc_involvement_collision_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INVESTIGATOR_INCIDENT_COUPLING_A13",
+    "original_line_normalized": 1992,
+    "source_sha256": "8c4a32eaad3f99fd7416aebdd203bc6d5b2d06f6aecd82e50b763e8f14f969c2",
+    "action": "정리·이동",
+    "destination": "05-world.md#investigator_incident_coupling",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "MULTI_PC_CONVERGENCE_GATE_A15",
+    "original_line_normalized": 2006,
+    "source_sha256": "f2e99d3686ec6e7dc3402296b0d826de6661741f53f0cc39a5cd01f2c70a884d",
+    "action": "정리·이동",
+    "destination": "05-world.md#multi_pc_convergence_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INCITING_COLLISION_GATE_A13",
+    "original_line_normalized": 2017,
+    "source_sha256": "acadebdbf4b0b63caa029fa2c3849db0d5ac7e626063d8a7a665265d92d9e028",
+    "action": "정리·이동",
+    "destination": "05-world.md#inciting_collision_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NO_CLEAN_EXIT_HORROR_ARCHITECTURE_A13",
+    "original_line_normalized": 2023,
+    "source_sha256": "79626f055b13ef244d66f940f773260edf243c2714cb86a942c34635a562dc1b",
+    "action": "정리·이동",
+    "destination": "05-world.md#no_clean_exit_horror_architecture",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HOMAGE_HORROR_DEPTH_A13",
+    "original_line_normalized": 2030,
+    "source_sha256": "c2c691bde93c993a4e22cfd9d711cae3a3f30505671ef558714eb2c4cddfe9a5",
+    "action": "정리·이동",
+    "destination": "05-world.md#homage_horror_depth",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "TAILORED_DESPAIR",
+    "original_line_normalized": 2036,
+    "source_sha256": "a81e4e4e0d246acab66fa7d9d79ccd958378568e3db7ec9185ecef96cdebd915",
+    "action": "정리·이동",
+    "destination": "05-world.md#tailored_despair",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SILENT_TRUTH",
+    "original_line_normalized": 2041,
+    "source_sha256": "1e389fa2c81e88baa96f5caedb2b5226bd78670e6f33b568b5d149e18050502b",
+    "action": "정리·이동",
+    "destination": "05-world.md#silent_truth",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "COOPERATIVE_SCENARIO_ARCHITECTURE",
+    "original_line_normalized": 2046,
+    "source_sha256": "649fa418178f3fbb155f5deaa452e0020ab2deefeb81bfe28d3d45e9dad2c6fc",
+    "action": "정리·이동",
+    "destination": "05-world.md#cooperative_scenario_architecture",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OPENING_NORMALITY_BEAT_A13",
+    "original_line_normalized": 2052,
+    "source_sha256": "55393c4e5a3cb33a8b06e84936d5d28f2983194f6ff76e3fab810de3faee1357",
+    "action": "정리·이동",
+    "destination": "05-world.md#opening_normality_beat",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FIRST_PC_SCENE_ORIENTATION_A13",
+    "original_line_normalized": 2059,
+    "source_sha256": "35d9bdac4a7f63b465fe44d9ab6cf5c2783316a36f01017aea213792c9a4ee33",
+    "action": "정리·이동",
+    "destination": "05-world.md#first_pc_scene_orientation",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OPENING_NORMALITY_SKILL_CONTEXT_A13",
+    "original_line_normalized": 2079,
+    "source_sha256": "437fea2d58c579e3e98c82ebeb38503b6f9bf965b31a26ea4fce81f44ad06657",
+    "action": "정리·이동",
+    "destination": "05-world.md#opening_normality_skill_context",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OPENING_NORMALITY_SURVIVAL_ROUTING_A13",
+    "original_line_normalized": 2087,
+    "source_sha256": "de847edfda1529b7166072a0796bb52d7312737e71d032f0d53c0a6812a27c6f",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "장기 생존·거점·Block/Day 전용 분기 삭제"
+  },
+  {
+    "original_id": "DYNAMIC_PLOT_REROUTE",
+    "original_line_normalized": 2093,
+    "source_sha256": "2cb01f9880e36620d70bb76f3f8b8234fcb2d6e7099a9448b548140ffab15712",
+    "action": "정리·이동",
+    "destination": "05-world.md#dynamic_plot_reroute",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SITUATION_AND_AGENCY",
+    "original_line_normalized": 2096,
+    "source_sha256": "4d2699113cfd3c79fdf11f8473ed7ec8fae274e6ae56bae9c24c5639d695ae31",
+    "action": "정리·이동",
+    "destination": "05-world.md#situation_and_agency",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENARIO_OBJECTIVES",
+    "original_line_normalized": 2102,
+    "source_sha256": "6bf11747a1463ed15a37065ac2689d2e90d4e12a0bfabbaf9ed4cbab58880901",
+    "action": "정리·이동",
+    "destination": "05-world.md#scenario_objectives",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SURVIVAL_OBJECTIVE_COEXISTENCE",
+    "original_line_normalized": 2119,
+    "source_sha256": "552bfe686faaa208f00163cc3a65cdc13d3285803024e4766226475d19185459",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "장기 생존·거점·Block/Day 전용 분기 삭제"
+  },
+  {
+    "original_id": "PC_SKILL_START_VALUES",
+    "original_line_normalized": 2127,
+    "source_sha256": "33b599b20e5ae39e17d13917796804680167ad192a5332629f6ea34b4bd81e9d",
+    "action": "정리·이동",
+    "destination": "04-setup.md#pc_skill_start_values",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROFESSION_SPECIALTY_A13",
+    "original_line_normalized": 2141,
+    "source_sha256": "40096c91d0518962900552e03d744bb9e51a706aab2b59c5f4a986cc2ca766be",
+    "action": "정리·이동",
+    "destination": "04-setup.md#profession_specialty",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION_A13",
+    "original_line_normalized": 2149,
+    "source_sha256": "d38165ab651d859289160686f62c0be181f7cc0773aa9fd4d2274810e2a55ada",
+    "action": "정리·이동",
+    "destination": "04-setup.md#chronicle_specialty_development_exception",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "MASTERY_RENDERING",
+    "original_line_normalized": 2158,
+    "source_sha256": "d5b7d96d365a3d2543994b221a0e926ecaa0b22c51ee45af29a6ed5c4a8caef5",
+    "action": "정리·이동",
+    "destination": "04-setup.md#mastery_rendering",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ORGANIC_SKILL_INTEGRATION",
+    "original_line_normalized": 2166,
+    "source_sha256": "1583d42911fcd7e70047aefb9c82ed012b9a88587d973787f5ad53a6d8e02bee",
+    "action": "정리·이동",
+    "destination": "04-setup.md#organic_skill_integration",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SKILL_IMPROVEMENT",
+    "original_line_normalized": 2172,
+    "source_sha256": "748ec47b4df0d8480704861f80b15bd89cf87700504a49bf8e762f83cff85f48",
+    "action": "정리·이동",
+    "destination": "04-setup.md#skill_improvement",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROFESSIONAL_GAZE",
+    "original_line_normalized": 2178,
+    "source_sha256": "c8f7a14f3cf79f2677ccb72b4ad44c8c5416835092ececbead9db8fd648ea244",
+    "action": "정리·이동",
+    "destination": "04-setup.md#professional_gaze",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROFESSION_PROP",
+    "original_line_normalized": 2183,
+    "source_sha256": "b919a2687d56d89d650ce8a0c8ca371cc4e1f37718fd489ae93f78fa09c8e052",
+    "action": "정리·이동",
+    "destination": "04-setup.md#profession_prop",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NOTEBOOK_LITE_OPEN_GATE_A24_1",
+    "original_line_normalized": 2192,
+    "source_sha256": "cd2bd0c4f3ec009ced665a86f55742e0f9762f9eeaad2ebbafbae409673f93fe",
+    "action": "재작성",
+    "destination": "09-notebook.md#notebook_lite_open_gate",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER_A26",
+    "original_line_normalized": 2200,
+    "source_sha256": "f656ad66ef92f8d10ff2f713df4090d4645297e02a742a893aea8f595f512edb",
+    "action": "재작성",
+    "destination": "09-notebook.md#notebook_watcher_runtime_single_writer",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "CAMPAIGN_SETUP_PIPELINE_A13",
+    "original_line_normalized": 2212,
+    "source_sha256": "32ba53359b3567820f550098c90190f5daa50ee60ed5b5f774869cceeb0e65d9",
+    "action": "재작성",
+    "destination": "04-setup.md#campaign_setup_pipeline",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "CANONICAL_CAMPAIGN_MAP_A15",
+    "original_line_normalized": 2226,
+    "source_sha256": "ac9a9ae8686833e9f38f79ad95f796d81fb28ec623c863f022ce6e959a7e0eb4",
+    "action": "정리·이동",
+    "destination": "08-visual.md#canonical_campaign_map",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROFESSION_SPECIALTY_GENERATION_SEED_A13",
+    "original_line_normalized": 2239,
+    "source_sha256": "3dbb6acd3c8b3be21e29b8291c33a0e8a88d99adc4eac4eb7f5151250da0034a",
+    "action": "정리·이동",
+    "destination": "04-setup.md#profession_specialty_generation_seed",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GENERATION_RNG_SEPARATION",
+    "original_line_normalized": 2242,
+    "source_sha256": "7bf03e80f135a23d0cc93d17218506e1aa124bddb251c61a1535a3918a00ae5e",
+    "action": "정리·이동",
+    "destination": "04-setup.md#generation_rng_separation",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NORMALIZED_TABLE_INDEX",
+    "original_line_normalized": 2249,
+    "source_sha256": "fec0a4f0416b85d9a0f8b02572cb7d8c2d3b0cd040ea1888309595c4c5dc637d",
+    "action": "재작성",
+    "destination": "04-setup.md#normalized_table_index",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "PUBLIC_SETUP_INFORMATION_SHARE_A13",
+    "original_line_normalized": 2255,
+    "source_sha256": "75175fd18d41f52e81b43b1e3b5e8389ea605e197c624e03ce969d5688b7dd55",
+    "action": "정리·이동",
+    "destination": "04-setup.md#public_setup_information_share",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "WORLD_HOMAGE_DNA",
+    "original_line_normalized": 2259,
+    "source_sha256": "691da36f44e0069eda0085b3324ae7bf4f46f42583997eeb3adf231f0fe20a74",
+    "action": "정리·이동",
+    "destination": "04-setup.md#world_homage_dna",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HOMAGE_DISCOVERY_LANES",
+    "original_line_normalized": 2289,
+    "source_sha256": "dae8c0135ff00e492db862ac73dec03e4e6a31f1e90d59f21cdcd29a4ade026c",
+    "action": "정리·이동",
+    "destination": "04-setup.md#homage_discovery_lanes",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HOMAGE_CANDIDATE_GATE",
+    "original_line_normalized": 2300,
+    "source_sha256": "7c5d11c6e6a978232200f8230683b03773c9f900a1e8544d533be3e6bc492ac7",
+    "action": "정리·이동",
+    "destination": "04-setup.md#homage_candidate_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "AUTOMATIC_SF_HOMAGE_EXCLUSION_A13",
+    "original_line_normalized": 2310,
+    "source_sha256": "611efca8583999b5e6f56f8ea2587e0ac4c3f8e85a02faeec92a5b4bc37399f8",
+    "action": "정리·이동",
+    "destination": "04-setup.md#automatic_sf_homage_exclusion",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "RECENT_COMPLETED_HOMAGE_GUARD",
+    "original_line_normalized": 2318,
+    "source_sha256": "88028c4749ed39254d7801c8ae5c2f892ae52b7766d9f3b98809f5d7fce2d262",
+    "action": "재작성",
+    "destination": "04-setup.md#recent_completed_homage_guard",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "CTHULHU_SOURCE_UNIT_COMPLETION_GUARD_A13",
+    "original_line_normalized": 2329,
+    "source_sha256": "81574c0cfa200a14bcb42128274fa495b1bd55758f5b41f6c2f8b5e62e0756b1",
+    "action": "재작성",
+    "destination": "04-setup.md#cthulhu_source_unit_completion_guard",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "HOMAGE_IDENTITY_METADATA",
+    "original_line_normalized": 2339,
+    "source_sha256": "8d01a8a5ac4e209f26bd30c09f9cfe0d03e4b7d6bd6f1243efd0a615d335a8cc",
+    "action": "재작성",
+    "destination": "04-setup.md#homage_identity_metadata",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "HOMAGE_SIGNATURE_FREEZE",
+    "original_line_normalized": 2351,
+    "source_sha256": "ab235e8f0c36945505446cb35186e81340112b71eead5317f4b7cd4f6787ed3f",
+    "action": "정리·이동",
+    "destination": "04-setup.md#homage_signature_freeze",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "STORY_SCALE_A13",
+    "original_line_normalized": 2359,
+    "source_sha256": "e5e7b31c82242e88d3218880c02a3d3a43b6c308806dd707b5677202d795484c",
+    "action": "재작성",
+    "destination": "04-setup.md#story_scale",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "SCENARIO_DNA",
+    "original_line_normalized": 2369,
+    "source_sha256": "b7d19e1f9499ed9eeaa9752f6f7b34d4df7d1fb38645ed81138538eca668658c",
+    "action": "정리·이동",
+    "destination": "04-setup.md#scenario_dna",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "WORLD_RULE_HOMAGE_DNA_A13",
+    "original_line_normalized": 2406,
+    "source_sha256": "d580c74a7bb55c424aaa2dc0e4f256f8dcc670e15e3867c6ee95f67b5bbf224a",
+    "action": "재작성",
+    "destination": "04-setup.md#world_rule_homage_dna",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "PROFESSION_DNA",
+    "original_line_normalized": 2415,
+    "source_sha256": "acc56f92ee36d08a49744ce110b6316af384b18492bf6e8f57057db5d3136707",
+    "action": "정리·이동",
+    "destination": "04-setup.md#profession_dna",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROFESSION_MULTILAYER_GENERATOR_A25",
+    "original_line_normalized": 2434,
+    "source_sha256": "248edb7ced9206ff113d2b949fac52529f93c1db0f209bd69441d5400aa0a359",
+    "action": "정리·이동",
+    "destination": "04-setup.md#profession_multilayer_generator",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROFESSION_SIX_CHOICE_A25",
+    "original_line_normalized": 2444,
+    "source_sha256": "b1928fa80d7e8a30db6bea202f901d60ec824fa81b0185cb1a13ae97ac4f176b",
+    "action": "정리·이동",
+    "destination": "04-setup.md#profession_six_choice",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "JOKER_PROFESSION_CANDIDATE_A13",
+    "original_line_normalized": 2452,
+    "source_sha256": "fb31c026ed39f8bd54a109572d91274ad83f41c1f160d99331f3c6d43dd2c528",
+    "action": "정리·이동",
+    "destination": "04-setup.md#joker_profession_candidate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROFESSION_SYNTHESIS",
+    "original_line_normalized": 2462,
+    "source_sha256": "54a10a6c810c80ec5e61368ebde64ca9c2385ab1203017a993c26fa8bb474229",
+    "action": "정리·이동",
+    "destination": "04-setup.md#profession_synthesis",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INVESTIGATOR_ROLEPLAY_DNA",
+    "original_line_normalized": 2470,
+    "source_sha256": "597e34f1bd18731160473228487862aac3f1f7051d36b3581f8515aa1ffaab43",
+    "action": "정리·이동",
+    "destination": "04-setup.md#investigator_roleplay_dna",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ROLEPLAY_DNA_SYNTHESIS",
+    "original_line_normalized": 2488,
+    "source_sha256": "b013d4b7d1c14a1066c5a30a223c425f8bdaa7ca28997cd4e2a03f81e0383710",
+    "action": "정리·이동",
+    "destination": "04-setup.md#roleplay_dna_synthesis",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INVESTIGATOR_DNA_CONSOLIDATION_RC14_A13",
+    "original_line_normalized": 2496,
+    "source_sha256": "08b49235f65685bd781fbcd1e055739da7bcdcafe51ef27a46a84673513977e2",
+    "action": "재작성",
+    "destination": "04-setup.md#investigator_dna_consolidation",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "CHARACTER_TAG_CATALOG_A12",
+    "original_line_normalized": 2505,
+    "source_sha256": "66af517b4e714d399bdf72df05bba85db50e68a5e88f9b1eaab9b88f95804c38",
+    "action": "정리·이동",
+    "destination": "04-setup.md#character_tag_catalog",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CHARACTER_TAG_FREEZE_AND_REACTION",
+    "original_line_normalized": 2524,
+    "source_sha256": "50513622e1affd22521e425e1641df0da9f9801b682c7dae00fe71d691d82480",
+    "action": "정리·이동",
+    "destination": "04-setup.md#character_tag_freeze_and_reaction",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENARIO_CONNECTION_AND_PERSONAL_RESONANCE",
+    "original_line_normalized": 2534,
+    "source_sha256": "38c9c6cf91765094a46e82572bd4ffae96f5d885d4a6522622739f81e3343798",
+    "action": "정리·이동",
+    "destination": "04-setup.md#scenario_connection_and_personal_resonance",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAYER_CHOICE_OVERRIDE",
+    "original_line_normalized": 2541,
+    "source_sha256": "599788b433ac60dba5bc77e36489a1a9ea3dcf92ece2f8250c6a5a9dad6ab012",
+    "action": "정리·이동",
+    "destination": "04-setup.md#player_choice_override",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PARTY_DIVERSITY_GUARD",
+    "original_line_normalized": 2547,
+    "source_sha256": "4f455960ff8202afeaf9aab9f26b34c56c7adb840d0c0b5477c15dd854c4bb76",
+    "action": "정리·이동",
+    "destination": "04-setup.md#party_diversity_guard",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CORE_SURVIVAL_HORROR_PRESSURE_A13",
+    "original_line_normalized": 2557,
+    "source_sha256": "941ead384da1366cc93644f010eb99e740428c425d2d209bffd83b1e8bb56966",
+    "action": "재작성",
+    "destination": "04-setup.md#horror_pressure",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "CAUSAL_ENDGAME_PRECOMMIT_A25",
+    "original_line_normalized": 2567,
+    "source_sha256": "998bd12e923ead519bd3bb216e6866d4ea67a5fff2a8dbae4bd7c96e6cf418c5",
+    "action": "정리·이동",
+    "destination": "04-setup.md#causal_endgame_precommit",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HARM_ECOLOGY_A13",
+    "original_line_normalized": 2575,
+    "source_sha256": "cdfb63088d6a13dcdcb237b6578dfaa3c1f15081e011cdbfe0e21fcadc6cfbb4",
+    "action": "정리·이동",
+    "destination": "04-setup.md#harm_ecology",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "COMPATIBILITY_GATE",
+    "original_line_normalized": 2586,
+    "source_sha256": "63e71cf05b4742ea4a6072613341f5b5f8e1fc63e41e0077df183d646fde478f",
+    "action": "재작성",
+    "destination": "04-setup.md#compatibility_gate",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "PACING_PLAYABILITY_QA",
+    "original_line_normalized": 2601,
+    "source_sha256": "12271fd15190efc6afa337e961c727cf553355648e420e985a98541c67306ae6",
+    "action": "정리·이동",
+    "destination": "04-setup.md#pacing_playability_qa",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CROSS_LINK_ENGINE",
+    "original_line_normalized": 2622,
+    "source_sha256": "a9537ef7974da9033c171b4333c819578ebd3db2f7bdb39bc3717bb5be7b289c",
+    "action": "정리·이동",
+    "destination": "04-setup.md#cross_link_engine",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SURVIVAL_CROSS_LINK_EXTENSION",
+    "original_line_normalized": 2631,
+    "source_sha256": "6ad4b3f95d695dcffb9c97122221460a058f8c8bb3093e1723866720f3e8ea26",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "장기 생존·거점·Block/Day 전용 분기 삭제"
+  },
+  {
+    "original_id": "NOVELTY_GUARD",
+    "original_line_normalized": 2636,
+    "source_sha256": "f471f518280e6740183ec3e2e9996a2d34f0fc37b2cebc2820b7df700963d433",
+    "action": "정리·이동",
+    "destination": "04-setup.md#novelty_guard",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GENERATION_HISTORY",
+    "original_line_normalized": 2658,
+    "source_sha256": "c08cf71b6f746d9dda99907dd4fceac21c80f6f30751c76243f233254ca39163",
+    "action": "재작성",
+    "destination": "04-setup.md#generation_history",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "GENERATION_FREEZE",
+    "original_line_normalized": 2666,
+    "source_sha256": "ee088c1d37f66faba6183a4c99a0b31691b68c436bfa79eca96e23e6699d19fa",
+    "action": "정리·이동",
+    "destination": "04-setup.md#generation_freeze",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "BUTTERFLY_AND_LIVING_WORLD",
+    "original_line_normalized": 2676,
+    "source_sha256": "c84546f8ab0bac3eeb39314276179087580e3609e6b53a1de3fb1c1fafda6ecf",
+    "action": "정리·이동",
+    "destination": "05-world.md#butterfly_and_living_world",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "COOPERATIVE_BY_DESIGN",
+    "original_line_normalized": 2685,
+    "source_sha256": "798582397f28f0c45b07f680be1f3e3c1ec32f7a0753bc12bf6b5876684b537a",
+    "action": "정리·이동",
+    "destination": "05-world.md#cooperative_by_design",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INTER_PC_FACT_MEMORY",
+    "original_line_normalized": 2691,
+    "source_sha256": "93fe18dab8fb75952b0214cbaf0c1d007f49cc1a76733b9ac9443c6653e73045",
+    "action": "정리·이동",
+    "destination": "05-world.md#inter_pc_fact_memory",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "BUTTERFLY_SEED_ECHO_PAYOFF",
+    "original_line_normalized": 2696,
+    "source_sha256": "eb8705e4e445ec438067cac40f1df8a0d6cb37af075a9ce2be2bfdeef5735ce5",
+    "action": "정리·이동",
+    "destination": "05-world.md#butterfly_seed_echo_payoff",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PREPARED_PAYOFF",
+    "original_line_normalized": 2704,
+    "source_sha256": "c9be7813d97c638ce46c2e4296d7a83aea85745379d4a8e1e169accc3d392096",
+    "action": "정리·이동",
+    "destination": "05-world.md#prepared_payoff",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "IRREVERSIBLE_WORLD_STATE",
+    "original_line_normalized": 2709,
+    "source_sha256": "88a263564d9f3b3b4ddf82d8085ad56b28d2dba75d870af7f0b6c02d4b139017",
+    "action": "정리·이동",
+    "destination": "05-world.md#irreversible_world_state",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NO_EMPTY_RETURN",
+    "original_line_normalized": 2714,
+    "source_sha256": "189c307b1c6f8434fb6cd0012e3d3e207bbb2bb343bff188c2d2e8bc0ffd2736",
+    "action": "정리·이동",
+    "destination": "05-world.md#no_empty_return",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LIVING_NPC_CONTINUITY",
+    "original_line_normalized": 2719,
+    "source_sha256": "b2de3c79978c94cc9cc243321fe43307d37774890373bbcc27af7f1c20c6dda8",
+    "action": "정리·이동",
+    "destination": "05-world.md#living_npc_continuity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OUTCOME_TO_FUTURE_AFFORDANCE_GATE_A13",
+    "original_line_normalized": 2728,
+    "source_sha256": "9a4c7847ced42403a6ed1752c456ec5a38c2248c9b3f03407d2998fb4769e933",
+    "action": "정리·이동",
+    "destination": "05-world.md#outcome_to_future_affordance_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "WORLD_PRESSURE_READ_ONLY_PROJECTION_A13",
+    "original_line_normalized": 2734,
+    "source_sha256": "7ca89dd3a8039c0d75998da45f7a1e04e0a181baa6fb5e039aa4e73b1b6f7f02",
+    "action": "정리·이동",
+    "destination": "05-world.md#world_pressure_read_only_projection",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GENERAL_PERSISTENT_PROJECT_A13",
+    "original_line_normalized": 2738,
+    "source_sha256": "f1b4cd64dc998a011f9e572f2bf130e392b35541a4c5eb4e80d5502961190826",
+    "action": "재작성",
+    "destination": "05-world.md#general_persistent_project",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "RECURRING_HUB_CONTINUITY_A13",
+    "original_line_normalized": 2745,
+    "source_sha256": "a5affa2c05f3709d8ef64d1048bb91adbe7ab8ecb717c638281a15eb00a21870",
+    "action": "정리·이동",
+    "destination": "05-world.md#recurring_hub_continuity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SHARED_ASSET_CAUSAL_OWNERSHIP_A13",
+    "original_line_normalized": 2750,
+    "source_sha256": "6931c97d64a068cdf138d12d769fd2d8a08ef6c84dda416a6d79eb79e2ae0fb7",
+    "action": "정리·이동",
+    "destination": "05-world.md#shared_asset_causal_ownership",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CAUSAL_OFFER_NO_QUESTBOARD_A13",
+    "original_line_normalized": 2754,
+    "source_sha256": "c09401abadc46dd7ca4e963f89a69c4f2cfa0a53c71f73bb46b3f7bb44111d6f",
+    "action": "정리·이동",
+    "destination": "05-world.md#causal_offer_no_questboard",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "WORLD_INITIATIVE_EXECUTION_A13",
+    "original_line_normalized": 2757,
+    "source_sha256": "a080691c483d86cb19dc7fb280fe8cc14594c15ac4c8c1a73c978a553ffe0635",
+    "action": "정리·이동",
+    "destination": "05-world.md#world_initiative_execution",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ACTIVE_DANGER_CONTINUITY_A13",
+    "original_line_normalized": 2770,
+    "source_sha256": "45b155250a03414f96457e19ef8d0ef6ba9bf24015589e21e96b95956e59c191",
+    "action": "정리·이동",
+    "destination": "05-world.md#active_danger_continuity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "REACHED_DANGER_EXECUTION_GATE_A25",
+    "original_line_normalized": 2781,
+    "source_sha256": "5760613780d196f3f3405b141205d6202458dd198ea68ecbef1e8e36244a1410",
+    "action": "정리·이동",
+    "destination": "05-world.md#reached_danger_execution_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ACTIVE_HORROR_PRESSURE_A13",
+    "original_line_normalized": 2791,
+    "source_sha256": "8a4a0622dae7ad735cf6f43c34b01304a9d0e40a7360cdc668f8c760431970c0",
+    "action": "정리·이동",
+    "destination": "05-world.md#active_horror_pressure",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LIVING_ADVERSARY_INTELLIGENCE_A13",
+    "original_line_normalized": 2798,
+    "source_sha256": "93d6111cc9c9187b6d579240963695adac0aa0ab1469d01562b0fe0925ef488c",
+    "action": "정리·이동",
+    "destination": "05-world.md#living_adversary_intelligence",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SURVIVAL_MOMENTUM_CADENCE_ROUTING",
+    "original_line_normalized": 2807,
+    "source_sha256": "2fbbc8aa598b451fd37301a202b5ed7d4703f43d12c0bc10d456673512828d1e",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "장기 생존·거점·Block/Day 전용 분기 삭제"
+  },
+  {
+    "original_id": "NPC_STORY_CONTINUITY_ROUTING",
+    "original_line_normalized": 2813,
+    "source_sha256": "0e08c05b00e0a57dc429cbd1d1f92bde66821a3adf1777784b489229c8626867",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_story_continuity_routing",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROMISE_AND_OBLIGATION_MEMORY",
+    "original_line_normalized": 2817,
+    "source_sha256": "ac36888a8e7fe14386c07b85bbdfbe425856fcf6b42e3e231d824dd5c0cbb54e",
+    "action": "정리·이동",
+    "destination": "05-world.md#promise_and_obligation_memory",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DRAMATIC_SPINE",
+    "original_line_normalized": 2821,
+    "source_sha256": "0a1fbc871cc04aae7c4e4eebc9edc865113001b1148231431f66a27cb01bbe6d",
+    "action": "정리·이동",
+    "destination": "05-world.md#dramatic_spine",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ADAPTIVE_DRAMATIC_PACING",
+    "original_line_normalized": 2828,
+    "source_sha256": "a2511bdeb2306fce32497b86425bcc72735d22452ed3858125b7c08accb55e96",
+    "action": "정리·이동",
+    "destination": "05-world.md#adaptive_dramatic_pacing",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "EARLY_TRUTH_AND_TWIST",
+    "original_line_normalized": 2839,
+    "source_sha256": "00d157be074e4aa0690c2e40adf6de6d3e46048afde1371b008e0613b5e58c36",
+    "action": "정리·이동",
+    "destination": "05-world.md#early_truth_and_twist",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FAILURE_MUST_MOVE_PLAY",
+    "original_line_normalized": 2847,
+    "source_sha256": "11bacc33f7676a51463f5db5f9ad9f26266d5e48454924c9d102fecb8e805bc4",
+    "action": "정리·이동",
+    "destination": "05-world.md#failure_must_move_play",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SCENE_CONSEQUENCE_RULE",
+    "original_line_normalized": 2857,
+    "source_sha256": "11ff69f05604f603bc303438ce2663bf7e628516318f87a479c84735e2f2527d",
+    "action": "정리·이동",
+    "destination": "05-world.md#scene_consequence_rule",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CAUSAL_REVEAL",
+    "original_line_normalized": 2862,
+    "source_sha256": "a1232e645b58dfd9facd4dce72fe3816b234e6b429ddcd27dadd44fe5f6d5cbe",
+    "action": "정리·이동",
+    "destination": "05-world.md#causal_reveal",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "DIEGETIC_EXPOSITION",
+    "original_line_normalized": 2867,
+    "source_sha256": "e3042178be1ff5bc5174eca65e7a79224c9f8fce6f87672e571743c26b24b5be",
+    "action": "정리·이동",
+    "destination": "05-world.md#diegetic_exposition",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "RECURRING_MOTIF",
+    "original_line_normalized": 2873,
+    "source_sha256": "7a86f30fcd70b978f7e6297b670f9a9027077009be13eeee00edb5d879e59cd7",
+    "action": "정리·이동",
+    "destination": "05-world.md#recurring_motif",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PERSONAL_RELEVANCE_WITHOUT_DESTINY",
+    "original_line_normalized": 2878,
+    "source_sha256": "de64ca74900c433921d43313bbf3f9a9430ffd704a876c3a30a3e23a6cb907d4",
+    "action": "정리·이동",
+    "destination": "05-world.md#personal_relevance_without_destiny",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SIGNATURE_OPPORTUNITY",
+    "original_line_normalized": 2882,
+    "source_sha256": "1b9859424869657f6e4a42e63b01e62f1a2cbf6142d8bd58702e33d43aa1a8bf",
+    "action": "정리·이동",
+    "destination": "05-world.md#signature_opportunity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OBJECTIVE_DRIFT",
+    "original_line_normalized": 2887,
+    "source_sha256": "8c38700937d2a1ad43ebcbfd1ad7cad51f8922a7964cf9710891f55ef8171336",
+    "action": "정리·이동",
+    "destination": "05-world.md#objective_drift",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CONVERGENCE_PASS",
+    "original_line_normalized": 2891,
+    "source_sha256": "9603f266033f289b87ea6df1b3dd0fea4daaae67909bdf55dea5392b4ebeefc0",
+    "action": "정리·이동",
+    "destination": "05-world.md#convergence_pass",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PARTIAL_VICTORY_AND_FAILURE_WITH_PROGRESS",
+    "original_line_normalized": 2903,
+    "source_sha256": "baa502195a740d6b3f1711dda0d9841079914a9771e4b5d94b8939a4222ac434",
+    "action": "정리·이동",
+    "destination": "05-world.md#partial_victory_and_failure_with_progress",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "STORY_MEMORY_CALLBACKS",
+    "original_line_normalized": 2908,
+    "source_sha256": "4d0f511f8f04ad3e64af3deceabf54919e35c3cb3f54f4a9235b659a037a4c21",
+    "action": "정리·이동",
+    "destination": "05-world.md#story_memory_callbacks",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "THE_LAST_LOOK",
+    "original_line_normalized": 2912,
+    "source_sha256": "160c71738d993af8b252489b2513a4d7c9d160e2ebf6f3ca9e3ecabfa006b583",
+    "action": "정리·이동",
+    "destination": "05-world.md#the_last_look",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NO_PROTAGONIST_IMMUNITY",
+    "original_line_normalized": 2916,
+    "source_sha256": "a501f66fe3c6ab30d68c67581ecec3e042de151d5ae2173ec1f024c1dc6ed32a",
+    "action": "정리·이동",
+    "destination": "05-world.md#no_protagonist_immunity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INCOMPLETE_CLOSURE",
+    "original_line_normalized": 2920,
+    "source_sha256": "7f4bf3ec5e4be399553d1d070efc19efb296ab90eb61d628e1ed14355aad0f5c",
+    "action": "정리·이동",
+    "destination": "05-world.md#incomplete_closure",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PROGRESS_EVIDENCE_SEPARATION_A13",
+    "original_line_normalized": 2928,
+    "source_sha256": "f432187f14d1673c79c1ba2873439ec0592c0732829bd251256f2cfce965a767",
+    "action": "정리·이동",
+    "destination": "05-world.md#progress_evidence_separation",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "MYSTERY_QUESTION_EVIDENCE_ARCHITECTURE_A13",
+    "original_line_normalized": 2933,
+    "source_sha256": "6ce1d1f3314421abb50511015a757afcc91a5a793f71a25328bf94c8956a84fa",
+    "action": "정리·이동",
+    "destination": "05-world.md#mystery_question_evidence_architecture",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "EVIDENCE_NAMESPACE_CONSOLIDATION_RC14_A13",
+    "original_line_normalized": 2946,
+    "source_sha256": "e9e0e8cb3e7fbaff9fa1eb1cb733bcc2da5621d416179824b56bd6e56c5afc83",
+    "action": "정리·이동",
+    "destination": "05-world.md#evidence_namespace_consolidation",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "MYSTERY_SURVIVAL_COUPLING_A13",
+    "original_line_normalized": 2956,
+    "source_sha256": "6c8e9846af1473c2d0dc2adff757f113c3c7e43b96c1e0b8c7360bec1cf31c6c",
+    "action": "정리·이동",
+    "destination": "05-world.md#mystery_danger_coupling",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "TRUTH_SURVIVAL_LEVERAGE_A13",
+    "original_line_normalized": 2965,
+    "source_sha256": "8056cf5113f6dee374b2edc181ad9c1d0bad52f3b4808432024e02ef34977194",
+    "action": "정리·이동",
+    "destination": "05-world.md#truth_danger_leverage",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CONTRADICTION_ENGINE",
+    "original_line_normalized": 2973,
+    "source_sha256": "738c79d5660192792ba8d2c04c998eb9eec7ea6afa375f6edd1429ed1aeb3ef5",
+    "action": "정리·이동",
+    "destination": "05-world.md#contradiction_engine",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "TEMPORAL_RECONSTRUCTION",
+    "original_line_normalized": 2979,
+    "source_sha256": "4b02db8bfdf8c7e6d32a9ec524dc8e34b02411f367d5ce559666780408ef461b",
+    "action": "정리·이동",
+    "destination": "05-world.md#temporal_reconstruction",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "QUESTION_LAYERS",
+    "original_line_normalized": 2984,
+    "source_sha256": "d262cc4c7b2711040b5af31bfc789ab51fd4f58d254aee9931a08c7aa8452816",
+    "action": "정리·이동",
+    "destination": "05-world.md#question_layers",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NEGATIVE_SPACE_CLUE",
+    "original_line_normalized": 2988,
+    "source_sha256": "77a5259d5fe6c06eea8b363d1f53676c998c376d89d1c4d9f3db6705f5d4d14e",
+    "action": "정리·이동",
+    "destination": "05-world.md#negative_space_clue",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HYPOTHESIS_TEST",
+    "original_line_normalized": 2992,
+    "source_sha256": "ca9f06666c2207ffde56d5c4718dd87d55036e8d6a2a508c475e37ab9ac733a8",
+    "action": "정리·이동",
+    "destination": "05-world.md#hypothesis_test",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FAIR_RED_HERRING",
+    "original_line_normalized": 3000,
+    "source_sha256": "3de74ad2b71c0350c68407e535d2532be45fb25e5898ec7db85bd462677508cc",
+    "action": "정리·이동",
+    "destination": "05-world.md#fair_red_herring",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "KNOWLEDGE_HAS_A_COST",
+    "original_line_normalized": 3005,
+    "source_sha256": "48020989bec194dba0fa9725ae7c7bdf7531a32fc1b3a5faa671fa80066478e2",
+    "action": "정리·이동",
+    "destination": "05-world.md#knowledge_has_a_cost",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "EPISTEMIC_HORROR",
+    "original_line_normalized": 3010,
+    "source_sha256": "8a220764453c59039a330b040a04251b4cdde83b9862031e7c51b9c388869581",
+    "action": "정리·이동",
+    "destination": "05-world.md#epistemic_horror",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "EARLY_ODDITY_LATE_MEANING",
+    "original_line_normalized": 3015,
+    "source_sha256": "693e735ebfc1c6cdfa8306038284138497af52178c38f0bfc9cde7b2fa85b773",
+    "action": "정리·이동",
+    "destination": "05-world.md#early_oddity_late_meaning",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "UNRELIABLE_WORLD_RELIABLE_KEEPER",
+    "original_line_normalized": 3019,
+    "source_sha256": "6690e989fd7369f44057ea490b919663f9c1ba8f663feaee5e0624b31be8767a",
+    "action": "정리·이동",
+    "destination": "05-world.md#unreliable_world_reliable_keeper",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "ENTITY_SIGNATURE",
+    "original_line_normalized": 3024,
+    "source_sha256": "4f3ecf5bcff582774b4ca19c2ec9dc51ba8dbe214981897350e76b6dd66a8bd0",
+    "action": "정리·이동",
+    "destination": "05-world.md#entity_signature",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FORESHADOWED_DANGER",
+    "original_line_normalized": 3029,
+    "source_sha256": "a8b97f764a132742efcf9102adb3b8e209481a83fa655b9a0711db2062570fcb",
+    "action": "정리·이동",
+    "destination": "05-world.md#foreshadowed_danger",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "THREAT_LEARNING_CURVE",
+    "original_line_normalized": 3034,
+    "source_sha256": "7c981d388b8443ac57e43b1faee8a18bbba31fc2bddc9d6a1b6435b5db2940ea",
+    "action": "정리·이동",
+    "destination": "05-world.md#threat_learning_curve",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "THREAT_ADAPTATION",
+    "original_line_normalized": 3041,
+    "source_sha256": "6421265984dc7dca34cdeb4515404f81f0f71eb6299dc6a1d6e5c25fa70a3f46",
+    "action": "정리·이동",
+    "destination": "05-world.md#threat_adaptation",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CINEMATIC_DEATH_PRINCIPLE",
+    "original_line_normalized": 3047,
+    "source_sha256": "632e4aa147e89a756b69e017cdc3fc7894a8c7c84090e8752a32915820987966",
+    "action": "정리·이동",
+    "destination": "05-world.md#cinematic_death_principle",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "FALSE_SAFETY_NOT_FAKE_SAFETY",
+    "original_line_normalized": 3053,
+    "source_sha256": "2e5f67cb735f52ce82e4a1f9a609f24d204401b3f33ef54cf73d56ac9d76068d",
+    "action": "정리·이동",
+    "destination": "05-world.md#false_safety_not_fake_safety",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "OPTIONAL_PREMONITION_OMEN",
+    "original_line_normalized": 3057,
+    "source_sha256": "54d0bd033a6a050e1d54e71184f2a86427f84d3269327e1af69b1360967dbe2a",
+    "action": "정리·이동",
+    "destination": "05-world.md#optional_premonition_omen",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NO_GENERIC_SPATIAL_MYSTERY",
+    "original_line_normalized": 3062,
+    "source_sha256": "2907e4fe3887e39e9a2acc6cdacbb6ce27980b0f6f0cf958f57eb95e73121ff8",
+    "action": "정리·이동",
+    "destination": "05-world.md#no_generic_spatial_mystery",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "THE_ANSWER_CHANGES_THE_GOAL",
+    "original_line_normalized": 3066,
+    "source_sha256": "dac71f9b0f6a5f7f1dd78487559a94bfef54828020ac2e5fa149db58e020e671",
+    "action": "정리·이동",
+    "destination": "05-world.md#the_answer_changes_the_goal",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "UNIVERSAL_ARCANA_ROLE_A13",
+    "original_line_normalized": 3075,
+    "source_sha256": "ed22583a6c806e37b7bef872e0e134c6fceafc26aa25cd200c15ae63181dfa13",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_MODE_A13",
+    "original_line_normalized": 3081,
+    "source_sha256": "5da013c8bf636604a96e46c43700cbb27bbfd27cdfffcd156a304048b5bc718e",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_LIBRARY_ROUTING_A13",
+    "original_line_normalized": 3087,
+    "source_sha256": "ed7f92772503f09594a7b42254c2a41755695ab09ff2c199dc318c2e8bab0641",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_DELIVERY_AND_COST_A13",
+    "original_line_normalized": 3093,
+    "source_sha256": "11af2a386fb26ed29b353570f3eea2806434cf9e9f5771eaaffd06ed40e577df",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_ACTIVATION_A13",
+    "original_line_normalized": 3101,
+    "source_sha256": "fef453299106ff6fd8208ac15b4a7794e676ce32adb6b9b099d936ce90ad2067",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_KERNEL_CATALOG_A13",
+    "original_line_normalized": 3107,
+    "source_sha256": "edcaad140f34a15ce77104d4bd50a01a8aca919055615d67b113b955ffed5858",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_DESIGN_FREEZE_A13",
+    "original_line_normalized": 3123,
+    "source_sha256": "02cfabc898f2acc6d59dc6d8e4e6ff4f36bacc3b9c8d567105f6e989b487965d",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_DISCOVERY_FOG_A13",
+    "original_line_normalized": 3127,
+    "source_sha256": "94987f16953beee245075591e96e8c59ba078fbfdabcd05915a990f28f394178",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_LEARNING_AND_INVENTORY_A13",
+    "original_line_normalized": 3131,
+    "source_sha256": "2e231c56e3a0cf4d3346a210f01f69fd02233201fa098bfe9251825b267b68f5",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_SCENARIO_DENSITY_A13",
+    "original_line_normalized": 3137,
+    "source_sha256": "1438cb40d6784f2b24b39acc5cae18836ee0f13a5feff1a39ff1dd78854e8d36",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "SIGNATURE_ARCANA_INTEGRATION_A13",
+    "original_line_normalized": 3143,
+    "source_sha256": "ede2913f3ee3d3ce140e4fc4b3fe7f125e8c8b8ca8d78a5ecf36fb91fe5fda06",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "ARCANA_NO_AUTO_SOLUTION_A13",
+    "original_line_normalized": 3149,
+    "source_sha256": "8878ea3f8d8b25f97f00f3528a9ee6a7b67522c82d2628cb0b49d04348e3339a",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PROGRESSION_RUNTIME_SCOPE_A13",
+    "original_line_normalized": 3156,
+    "source_sha256": "c421542c2e3448b9564aba1989e3f387b594740ab8aa023f5508c5c9a84160aa",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PROGRESSION_TERMINOLOGY",
+    "original_line_normalized": 3167,
+    "source_sha256": "1627a7899d993ed049e72d19f70d3f4131497cf154b57f1549887045388f24f3",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PLAYER_PROFILE_IS_HUMAN_IDENTITY",
+    "original_line_normalized": 3185,
+    "source_sha256": "b4564e99a5a1b9e47da2663569ef7578e44682f1fa059e1edb134fc814cf35f4",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PLAYER_PROFILE_BOOTSTRAP",
+    "original_line_normalized": 3192,
+    "source_sha256": "6bb83600e8d9e9f0cad046480d7dfc239c552059b3fee20d5e941d3f40960258",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PLAYER_PROFILE_BINDING_INTEGRITY_GATE_A13",
+    "original_line_normalized": 3202,
+    "source_sha256": "6f1d41ff4a45b358c7323d5f4eb40b2d25a4949a89a6ef6c11115844d7604efb",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PLAYER_LOBBY_UI",
+    "original_line_normalized": 3239,
+    "source_sha256": "48dc09d6e79d54c802e2a0c59ddf191ef98dc578c86951821fd1f6b3f6b4aa6c",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "TRACE_POINT_AWARD",
+    "original_line_normalized": 3254,
+    "source_sha256": "e3b6c7b86847640830330f3a3c17ab08a47624b7b1077219a210d7befad11787",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PRESTIGE_REQUIREMENT_TABLE",
+    "original_line_normalized": 3267,
+    "source_sha256": "14566c0f819b64516b89c9925a7478a85b4920c8220a17c338f10752a13aff80",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "REINCARNATION_POINTS_A12",
+    "original_line_normalized": 3276,
+    "source_sha256": "d94f5a680831e7f851903276d4f18a3b0a8170cd9ad1f5fdb02057836ad85b0d",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PERK_GROUP_MILESTONES",
+    "original_line_normalized": 3285,
+    "source_sha256": "f211234acf1c42be5d53ce641a34e24105a5402e4663765c318000e0e2c3a0a9",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "LOADOUT_SLOT_MILESTONES",
+    "original_line_normalized": 3293,
+    "source_sha256": "d649282a54ea81b817bad2fe1308915ce838e01ffb8e4d87ab4ca7153841518c",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PERK_GROUP_COMPLEXITY",
+    "original_line_normalized": 3305,
+    "source_sha256": "96231285ad287c6126f5b0d41908c81516d824007cfbc7f29fbc86b1895ea801",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PERK_RARITY",
+    "original_line_normalized": 3312,
+    "source_sha256": "ca95bf8b7b10891e1dfb70dbbfdf94817de05142d058a8dfee6b45b0934edbb2",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "SIGNATURE_DESIGN_STANDARD",
+    "original_line_normalized": 3320,
+    "source_sha256": "05d973d2634f7ece99d2e939bd9d042b23ab028e903573e11b8093d85f1745e7",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PERK_TIER_MODEL",
+    "original_line_normalized": 3329,
+    "source_sha256": "6b46aa558b88018c85aeaec446301847ddadda25c8e78832101097e0f52e52ef",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PERK_SINGLE_ACTIVATION_PACKAGE",
+    "original_line_normalized": 3338,
+    "source_sha256": "aa63b8a51fd1034e51794fae3901e997ce6d02e9ecc6df4af2bc18049698b570",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "MINOR_EFFECT_BUDGET_V3",
+    "original_line_normalized": 3345,
+    "source_sha256": "da902f8e39ffd4dd05aa55c7e2ce68a63540806a2d680043282da2711546df67",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PERK_EDGE_PLUS5",
+    "original_line_normalized": 3355,
+    "source_sha256": "3d709e5fe41016d0897054e7e45d9edaf361bf539d6095890728cb442028ddf0",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PERK_NO_STACKING_V3",
+    "original_line_normalized": 3363,
+    "source_sha256": "49fb01b4394a6c176694005e829da0f5ae65795bcf3365da28516cb451356a01",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "COMBAT_PERK_NARROW_OVERRIDE",
+    "original_line_normalized": 3369,
+    "source_sha256": "56fb551338bf7a14c26fa9b5cdf79067a927fb91a737876cf373dd83bc1fe43d",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "GROWTH_CHOICES",
+    "original_line_normalized": 3646,
+    "source_sha256": "f65ce278176a9eeed1cbf9211891505e47079da1ad9b2b1bea59a88728ec4373",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "RESONANCE_WEB_GENERATION",
+    "original_line_normalized": 3657,
+    "source_sha256": "88cc70dc481bdb4ae6c6a95688b05983d26461a03b7f0fdd970ca3caf5cc69d5",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "NEW_PERK_RARITY_WEIGHT",
+    "original_line_normalized": 3668,
+    "source_sha256": "e1e4f8e22e59a693f5faf9d2e8b1941ed32a00624dbd2eb39fb156cd5015cf37",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "RESONANCE_FOCUS",
+    "original_line_normalized": 3674,
+    "source_sha256": "4c827650e8b8521d7d510c2cecca4d07a96a2caa6ab5409b0fef2c4df58837e7",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "SIGNATURE_PITY_3_TO_4_A13",
+    "original_line_normalized": 3680,
+    "source_sha256": "b29e7833c1e7e4707ad028de9af9e5409704f602c697ac1e9b14b9a401be6ddf",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "RESONANCE_SELECTION",
+    "original_line_normalized": 3689,
+    "source_sha256": "88e60a6e36a46f13c7d07c3afaf9e99e26a7b012c67533ab3ef894688938d8b3",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PERK_VERSIONING",
+    "original_line_normalized": 3698,
+    "source_sha256": "8a954d96a1fe099ab7f3d78f19fdf3cf5cd0aa4576cf52881edee11c6624d7a0",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "LOADOUT_AGENCY_V3",
+    "original_line_normalized": 3710,
+    "source_sha256": "b0fdcb3f21dd6722b6635b145e754986cbea6b2d9065dfc8d771752c2488301c",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "TITLE_COLLECTION_V3",
+    "original_line_normalized": 3722,
+    "source_sha256": "2fc7710b1436401aac20b4c5a3630caaf45e011f9b62c25b7d13fc9c4f5023b7",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PLAYER_RECORD_UI",
+    "original_line_normalized": 3734,
+    "source_sha256": "2f516d7612294f326c2bc94eca3eff71b196a66e34d66f7e9c9b83efef83a72a",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "SETTLEMENT_PUBLIC_FORMAT_V3",
+    "original_line_normalized": 3750,
+    "source_sha256": "4312fde6c803c2f2ee16206ea0e01e6ef05d037b6e332a189abaecbc14ea7658",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "META_COMMANDS_V3",
+    "original_line_normalized": 3765,
+    "source_sha256": "3e82664dcfb3d2d4b8bab4eda800e9594b942dffb6ecd70123200374760f3fca",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "PRESTIGE_GROWTH_IDENTITY",
+    "original_line_normalized": 3786,
+    "source_sha256": "c275a14685b07317d3e63f22649a77cd4a0041939336577e2b563cec9fc9abc6",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "아르카나 또는 캠페인 간 영구 성장 삭제"
+  },
+  {
+    "original_id": "LIVING_ITEM_LORE_A13",
+    "original_line_normalized": 3798,
+    "source_sha256": "a69ce4d797c2d3f1a8fed05d6489a7371b9504f97c99adf6bd6841df1cd94b7d",
+    "action": "재작성",
+    "destination": "05-world.md#living_item_lore",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "STARTING_INVENTORY_LORE_OUTPUT_OVERRIDE_A13",
+    "original_line_normalized": 3810,
+    "source_sha256": "24071d3b883d9aa1220863e1e96a05a1273c834248540037692ebae576a9d124",
+    "action": "통합",
+    "destination": "LIVING_ITEM_LORE",
+    "reason": "규칙 통합: LIVING_ITEM_LORE_A13"
+  },
+  {
+    "original_id": "FOUNDATION_FIRST_CAMPAIGN_DESIGN_A13",
+    "original_line_normalized": 3839,
+    "source_sha256": "829356f8246fcb72b73f6dd624a38882bec996b0ae835730ced2a5b4a270cc16",
+    "action": "재작성",
+    "destination": "05-world.md#foundation_first_campaign_design",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "LIVING_LOCATION_AND_INSTITUTION_A13",
+    "original_line_normalized": 3850,
+    "source_sha256": "c25486b5b88df05cc4cbf34a765f346bc7c14fc40604217835ec24b330843544",
+    "action": "정리·이동",
+    "destination": "05-world.md#living_location_and_institution",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "NPC_ORDINARY_LIFE_AND_NO_INTERVENTION_BASELINE_A13",
+    "original_line_normalized": 3859,
+    "source_sha256": "aa0e2b16b0c56fb1ef1d81388ac0137aa7302770785616291fd9676d5be83471",
+    "action": "정리·이동",
+    "destination": "05-world.md#npc_ordinary_life_and_no_intervention_baseline",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LEGACY_WORLD_DRIVER_BOOTSTRAP_A13",
+    "original_line_normalized": 3872,
+    "source_sha256": "dd6d4ffa5b18d6c8c42b798635b77161e46b386bf9d4b87fd9064dca64db42d0",
+    "action": "통합",
+    "destination": "STATE_COMPATIBILITY",
+    "reason": "규칙 통합: STATE_COMPATIBILITY"
+  },
+  {
+    "original_id": "PC_SOCIAL_FOUNDATION_AND_PROFILE_DENSITY_A13",
+    "original_line_normalized": 3878,
+    "source_sha256": "4b670d9286be332c1b24172583564a7076cc1e311317147173f2e6f0f1b68ecc",
+    "action": "정리·이동",
+    "destination": "05-world.md#pc_social_foundation_and_profile_density",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAYER_FACING_KOREAN_LOCALIZATION_A13",
+    "original_line_normalized": 3890,
+    "source_sha256": "3223f418857f954a56b50dc8f0ba5a4c3971a88111a727993bc314cd0f35edb8",
+    "action": "정리·이동",
+    "destination": "05-world.md#player_facing_korean_localization",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PLAYER_STAT_KOREAN_DISPLAY_A13",
+    "original_line_normalized": 3904,
+    "source_sha256": "d40f214fcd21978e8da899ed53c3b2ed3714621feadb6fe50db30aa3b6039224",
+    "action": "통합",
+    "destination": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT",
+    "reason": "규칙 통합: FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT_A13"
+  },
+  {
+    "original_id": "SCENE_VISUALIZATION_CAST_CONTINUITY_A13",
+    "original_line_normalized": 3918,
+    "source_sha256": "f5644d3bcea2e61e695e0ad12d59770d631199fee2b4deeb93101cf12d0d58d2",
+    "action": "정리·이동",
+    "destination": "08-visual.md#scene_visualization_cast_continuity",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "VISUALIZATION_CANON_BOUNDARY_A13",
+    "original_line_normalized": 3927,
+    "source_sha256": "efd80886f2992ca4553dd7e8aa7c4a084e7bf5322763373eeca1f957cf7f61ac",
+    "action": "정리·이동",
+    "destination": "08-visual.md#visualization_canon_boundary",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "EVENT_DRIVEN_VISUAL_ROUTER_A13",
+    "original_line_normalized": 3934,
+    "source_sha256": "46fbab54c837f6e05c4a732794223892a66a21f346084985241d5897370bef30",
+    "action": "정리·이동",
+    "destination": "08-visual.md#event_driven_visual_router",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "CHARACTER_VISUAL_CANON_A13",
+    "original_line_normalized": 3946,
+    "source_sha256": "1028902b68e6a81956aec179c05a0625752263861bacbcf3904e94cf800557bb",
+    "action": "정리·이동",
+    "destination": "08-visual.md#character_visual_canon",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GOLD_INVESTIGATOR_PROFILE_REFERENCE_ROUTER_A13",
+    "original_line_normalized": 3956,
+    "source_sha256": "97bc2793379806391bfae8484ceae1f6b254fd9562ea52cfe832e41f6575224b",
+    "action": "통합",
+    "destination": "INVESTIGATOR_VISUAL_HANDOUT_TEMPLATE",
+    "reason": "규칙 통합: INVESTIGATOR_VISUAL_HANDOUT_TEMPLATE_A13"
+  },
+  {
+    "original_id": "GOLD_START_PROFILE_REFERENCE_A13",
+    "original_line_normalized": 3964,
+    "source_sha256": "436941b6584eb60dc9913cddc2697703fc6740be2e072487f1644725dbfcc131",
+    "action": "정리·이동",
+    "destination": "08-visual.md#gold_start_profile_reference",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PORTRAIT_COMPOSITION_VARIANCE_A13",
+    "original_line_normalized": 3985,
+    "source_sha256": "6d57364dc09f63244f461aee88b2160c5ed83d5ece913d94ed40bf4973dd2011",
+    "action": "정리·이동",
+    "destination": "08-visual.md#portrait_composition_variance",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "GOLD_EPILOGUE_PROFILE_REFERENCE_A13",
+    "original_line_normalized": 3994,
+    "source_sha256": "f31379bc67e615032dfdbf4b9d3a442e38ddf9e53b19ad4adca0b2c252df68f2",
+    "action": "정리·이동",
+    "destination": "08-visual.md#gold_epilogue_profile_reference",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "INVESTIGATOR_VISUAL_HANDOUT_TEMPLATE_A13",
+    "original_line_normalized": 4002,
+    "source_sha256": "752278a791aecf7055295b43f2c15109d114aaae01a67e25d7399664b3142072",
+    "action": "정리·이동",
+    "destination": "08-visual.md#investigator_visual_handout_template",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "STARTING_VISUAL_BASELINE_A13",
+    "original_line_normalized": 4021,
+    "source_sha256": "d9dd370fa3789da20963c3356693a611b7ce6a0a831103ffb7e9b35e7afe48a5",
+    "action": "정리·이동",
+    "destination": "08-visual.md#starting_visual_baseline",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "EPILOGUE_CHARACTER_EVOLUTION_HANDOUT_A13",
+    "original_line_normalized": 4027,
+    "source_sha256": "6fde2fde7713b13a0ff3ca4e9636766a9845e6cc4bbdb2574697fce98cd22044",
+    "action": "정리·이동",
+    "destination": "08-visual.md#epilogue_character_evolution_handout",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LOCATION_VISUAL_PRIORITY_A13",
+    "original_line_normalized": 4045,
+    "source_sha256": "a5c62043ce2d6d5c11675db94bf1f251086689bb7b3048d949cdef34bb9ac17d",
+    "action": "정리·이동",
+    "destination": "08-visual.md#location_visual_priority",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LOCATION_VISUAL_CANON_A13",
+    "original_line_normalized": 4054,
+    "source_sha256": "ffdc7b20a0844205820228d6632c66438622d358b0b1f047c783610487f84632",
+    "action": "정리·이동",
+    "destination": "08-visual.md#location_visual_canon",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "VISUAL_AFFORDANCE_MANIFEST_A13",
+    "original_line_normalized": 4063,
+    "source_sha256": "4e539ce088825ff96ac66e914ccdc06921d4384ae0bee4ed718de83dfe04b364",
+    "action": "정리·이동",
+    "destination": "08-visual.md#visual_affordance_manifest",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "PHOTOREAL_CINEMATIC_CUTBOARD_A13",
+    "original_line_normalized": 4070,
+    "source_sha256": "c303a2004a6fc09472d41314eeb420be55d3ee8b59fa6522a6779ca618326fcf",
+    "action": "정리·이동",
+    "destination": "08-visual.md#photoreal_cinematic_cutboard",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "VISUAL_ASSET_PERSISTENCE_BOUNDARY_A13",
+    "original_line_normalized": 4078,
+    "source_sha256": "480823af9ac12b59ba332c2fda30aa00543656d4c0a0a51439a56912abff4a3b",
+    "action": "정리·이동",
+    "destination": "08-visual.md#visual_asset_persistence_boundary",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "SAN_EXPOSURE_GATE_A13",
+    "original_line_normalized": 4087,
+    "source_sha256": "ca578097224b8d6774f95584d1f8789dbc1627482867697cfa22e2eead30fc0d",
+    "action": "정리·이동",
+    "destination": "03-danger.md#san_exposure_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HOMAGE_DRAFT_SELECTION_A13",
+    "original_line_normalized": 4101,
+    "source_sha256": "bc32dde67e47b799bfb3a70e075ef83791762829b056be9e9e8c6888da316d8f",
+    "action": "재작성",
+    "destination": "04-setup.md#homage_draft_selection",
+    "reason": "명시적 기능 제거·참조 갱신·현행 규칙 정리"
+  },
+  {
+    "original_id": "HOMAGE_DRAFT_DIVERSITY_GATE_A13",
+    "original_line_normalized": 4116,
+    "source_sha256": "ee07d5111ff5bfc32ababd419d42e9ed5b9d7d1c070c6d6b9171afa043127477",
+    "action": "정리·이동",
+    "destination": "04-setup.md#homage_draft_diversity_gate",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "HOMAGE_DRAFT_PUBLIC_FORMAT_A13",
+    "original_line_normalized": 4128,
+    "source_sha256": "3693220e4e9b5a55a78d4ffdd1b819deb3ab18b830a78f7f3b042d488b5bcde7",
+    "action": "정리·이동",
+    "destination": "04-setup.md#homage_draft_public_format",
+    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+  },
+  {
+    "original_id": "LONG_SESSION_CANON_DURABILITY_A19",
+    "original_line_normalized": 4156,
+    "source_sha256": "0fd6a30f25318b5c499b2e98ff4a35bc460aad0868b90f28d1ad217591fbf0e5",
+    "action": "통합",
+    "destination": "STATE_INTEGRITY",
+    "reason": "규칙 통합: STATE_INTEGRITY"
+  },
+  {
+    "original_id": "NARRATIVE_LONGFORM_NOVELIZATION_A20",
+    "original_line_normalized": 4163,
+    "source_sha256": "ace78d9251c930b88d6a06a8e28162ad919eeb005cfdf664d413960a2ce692aa",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "사용자 명시: 소설화·파생 기록 기능 완전 삭제"
+  }
+]

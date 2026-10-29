@@ -1,0 +1,13 @@
+{
+  "commit": "2a19727043c3a42d8d2f80ef96a1afabe8dfbe62",
+  "characters": 438607,
+  "files": {
+    "패치 프롬포트.txt": 17809,
+    "조사자_수첩_Lite_전용_패치_프롬프트_v32_A24_20261024.txt": 13483,
+    "시작_프롬프트_PC먼저_세계나중_최종1회저장_A24.txt": 37221,
+    "TRPG_GPT_RULEBOOK_STAGE_DURABILITY_A24.txt": 313159,
+    "PROJECT_INSTRUCTIONS_SETUP_ORDER_ROUTER_A24.txt": 6950,
+    "OPTIONAL_PRIVATE_STATE_STORE_SETUP_FINAL_ONLY_A24.txt": 49985
+  },
+  "counting": "UTF-8 decoded Unicode characters with universal newline normalization; not tokens"
+}

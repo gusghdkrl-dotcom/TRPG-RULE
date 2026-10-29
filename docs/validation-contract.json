@@ -1,0 +1,173 @@
+[
+  {
+    "rule": "CORE_AGENCY",
+    "contains": [
+      "광기 발작",
+      "미선언"
+    ],
+    "excludes": [
+      "키퍼가 자유롭게 대신"
+    ]
+  },
+  {
+    "rule": "CORE_VISIBILITY",
+    "contains": [
+      "같은 채팅",
+      "자동 발생시키지"
+    ]
+  },
+  {
+    "rule": "AI_DIE_MAPPING_VERSION",
+    "contains": [
+      "M≤L",
+      "((M-1) mod N)+1",
+      "플레이어가 제공"
+    ]
+  },
+  {
+    "rule": "BONUS_PENALTY_DICE",
+    "contains": [
+      "1:1 상쇄",
+      "최대 2개",
+      "1의 자리"
+    ]
+  },
+  {
+    "rule": "SUCCESS_LEVELS",
+    "contains": [
+      "96~100",
+      "50 이상",
+      "원래"
+    ]
+  },
+  {
+    "rule": "HP_AND_DEATH",
+    "contains": [
+      "floor((CON + SIZ) / 10)",
+      "최대 HP 이상",
+      "의식불명",
+      "Dying"
+    ]
+  },
+  {
+    "rule": "PC_DERIVED_STATS",
+    "contains": [
+      "MOV=8",
+      "DEX≥70",
+      "DEX≤40",
+      "POW"
+    ]
+  },
+  {
+    "rule": "PC_SKILL_START_VALUES",
+    "contains": [
+      "65 / 60 / 55 / 50 / 45 / 40 / 35",
+      "floor(DEX/2)",
+      "취미 기능"
+    ]
+  },
+  {
+    "rule": "STAT_DRAFT_GENERATION",
+    "contains": [
+      "합계 400",
+      "30~80",
+      "20~80",
+      "A 특성+B Luck"
+    ]
+  },
+  {
+    "rule": "WORLD_PC_INPUT",
+    "contains": [
+      "선택적으로 활용",
+      "복수 PC",
+      "확정된 PC 과거"
+    ],
+    "excludes": [
+      "항상 PC와 독립"
+    ]
+  },
+  {
+    "rule": "STORY_SCALE",
+    "contains": [
+      "CHRONICLE",
+      "앞 챕터",
+      "다음 챕터"
+    ]
+  },
+  {
+    "rule": "STATE_CADENCE",
+    "contains": [
+      "setup_bootstrap",
+      "play_start",
+      "periodic_scene_turn",
+      "terminal_pre_finalization",
+      "manual",
+      "30/60/90",
+      "자동 주기를 초기화하지"
+    ]
+  },
+  {
+    "rule": "STATE_COMMIT",
+    "contains": [
+      "<session_id>:cp<version>",
+      "SHA-256",
+      "pending",
+      "verify",
+      "exact read-back"
+    ]
+  },
+  {
+    "rule": "STATE_RECOVERY",
+    "contains": [
+      "최대 1회",
+      "자동 승격·폐기하지"
+    ]
+  },
+  {
+    "rule": "STATE_RESUME",
+    "contains": [
+      "orphan pending",
+      "최신 hash-valid verified",
+      "열린 판정",
+      "새 비밀"
+    ]
+  },
+  {
+    "rule": "STATE_COMPATIBILITY",
+    "contains": [
+      "수정·재해시·필드 삭제하지",
+      "실제 서버 검증 계약"
+    ]
+  },
+  {
+    "rule": "NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER",
+    "contains": [
+      "WHALE_WATCHER",
+      "중복",
+      "재연결"
+    ]
+  },
+  {
+    "rule": "WORLD_RULE_HOMAGE_DNA",
+    "contains": [
+      "원작의 정수와 테마",
+      "최소 2개",
+      "차단·회피"
+    ],
+    "excludes": [
+      "정확히 2개"
+    ]
+  },
+  {
+    "rule": "INSANITY_CONDITIONS",
+    "contains": [
+      "SAN 5+",
+      "INT 성공",
+      "INT 실패"
+    ],
+    "excludes": [
+      "신비주의자",
+      "4+"
+    ]
+  }
+]
