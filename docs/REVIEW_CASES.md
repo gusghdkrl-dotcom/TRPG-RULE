@@ -125,6 +125,19 @@
 | E/F가 모두 특별 역할 | 직업·업무 다양성과 세계 적합성을 지키면 허용, 쌍별 지위 할당 강제 없음 | JOKER_PROFESSION_CANDIDATE | 일치 |
 | 구판 후보가 이미 공개됐고 새 채팅에서 재개 | 기존 문자·직함·카테고리 보존, 새 규칙은 미공개 신규 후보에 적용 | PROFESSION_SIX_CHOICE | 일치 |
 
+## HUD 표시 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 일반 턴의 HUD 출력 | 응답 마지막에 현재 PC 하나, 이름/턴·자원표·시각/위치·현금/상태·소지품 표시 | BOTTOM_HUD_CONTRACT / HUD_VISUAL_STYLE | 일치 |
+| 좁은 화면 또는 표 미지원 | HP/SAN/Luck을 라벨·정확한 수치와 함께 세 줄로 표시 | HUD_VISUAL_STYLE | 일치 |
+| Luck35, 별도 최대치 없음 | 35만 표시, 가짜 분모·진척 막대 없음 | BOTTOM_HUD_CONTRACT / HUD_VISUAL_STYLE | 일치 |
+| 실제 HP2 손실과 부상 확정 | 해당 PC 값에만 ↓2 가능, 실제 부상 표시, 자동 위험 등급 추가 없음 | HUD_VISUAL_STYLE | 일치 |
+| 다른 PC로 인계 대기 또는 저장 로드 | 이전 PC 수치와의 차이를 변화량으로 쓰지 않고 예약·공개 범위 보존 | BOTTOM_HUD_CONTRACT / HUD_VISUAL_STYLE | 일치 |
+| 메인 슬롯 일부 비었고 별도 키템 없음 | 실제 점유량·주요 도구만 표시, 빈 칸·키템 행 채우기 없음 | BOTTOM_HUD_CONTRACT / HUD_VISUAL_STYLE | 일치 |
+| 시간·현금 등 필수 값 미확인 | 확인 필요 표시 후 기존 상태/복구 절차 적용, 예시 값 대입 없음 | HUD_VISUAL_STYLE | 일치 |
+| HUD 외형 개선만 필요 | 기존 공개 상태로 서식 출력, 장식용 이미지·검색·DB 조회·새 저장 없음 | HUD_VISUAL_STYLE | 일치 |
+
 ## 미실행
 
 - 전체 새 캠페인 생성부터 실제 Supabase 저장·verify·exact load·새 채팅 복원.

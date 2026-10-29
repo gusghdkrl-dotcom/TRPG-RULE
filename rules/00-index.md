@@ -39,6 +39,7 @@
 | 2인 이상 행동권 | [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate) |
 | 대표 행동·자유 선언 | [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) |
 | 일반 HUD | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
+| HUD 아이콘·수치표·소지품 배치 | [HUD_VISUAL_STYLE](06-play.md#hud_visual_style) |
 | 업무를 목적 단위로 처리 | [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis) |
 | 초반 30턴·진행 정체·페이싱 | [SCENE_PACING_GATE](06-play.md#scene_pacing_gate) |
 | 챕터·전체 엔딩 | [ENDING_FINALIZATION_GATE](06-play.md#ending_finalization_gate) |

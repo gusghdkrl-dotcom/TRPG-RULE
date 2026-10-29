@@ -141,6 +141,7 @@
 | HORROR_DEFLATION_GUARD | [04-setup.md](../rules/04-setup.md#horror_deflation_guard) |
 | HORROR_PRESSURE | [04-setup.md](../rules/04-setup.md#horror_pressure) |
 | HP_AND_DEATH | [02-checks.md](../rules/02-checks.md#hp_and_death) |
+| HUD_VISUAL_STYLE | [06-play.md](../rules/06-play.md#hud_visual_style) |
 | HYPOTHESIS_TEST | [05-world.md](../rules/05-world.md#hypothesis_test) |
 | IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL | [02-checks.md](../rules/02-checks.md#impossible_actions_and_rule_of_cool) |
 | INCITING_COLLISION_GATE | [05-world.md](../rules/05-world.md#inciting_collision_gate) |
