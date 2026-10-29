@@ -66,6 +66,9 @@ def validate():
             if fragment not in body:errors.append(f'{rid}: missing invariant {fragment}')
         for fragment in check.get('excludes',[]):
             if fragment in body:errors.append(f'{rid}: obsolete/conflicting text {fragment}')
+        # Critical play reminders must survive edits to the always-on instructions.
+        for fragment in check.get('instruction_contains',[]):
+            if fragment not in instructions:errors.append(f'Project Instructions: missing {rid} reminder {fragment}')
     if errors:raise SystemExit('\n'.join(errors))
     print(f'PASS: {len(ids)} unique rules; {len(migration)} original blocks accounted for; {len(checks)} semantic guard groups; UTF-8, links, code fences, removed features and instruction length')
     return ids

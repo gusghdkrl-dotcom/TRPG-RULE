@@ -204,6 +204,23 @@
 | E/F가 모두 특별 역할 | 직업·업무 다양성과 세계 적합성을 지키면 허용, 쌍별 지위 할당 강제 없음 | JOKER_PROFESSION_CANDIDATE | 일치 |
 | 구판 후보가 이미 공개됐고 새 채팅에서 재개 | 기존 문자·직함·카테고리 보존, 새 규칙은 미공개 신규 후보에 적용 | PROFESSION_SIX_CHOICE | 일치 |
 
+## 사건 진행 상시 지침·HUD 문단 분리 대조
+
+| 상황 | 기대 처리 | 담당 | 문서 대조 |
+|---|---|---|---|
+| 새 연출 지침 적용 후 첫 생활 목표를 마침 | 기존 인과의 사건 접점과 현재 접근 경로를 안전 경계에서 제시 | PROJECT_INSTRUCTIONS / SCENE_PACING_GATE | 일치 |
+| 3인 캠페인 초반 30턴 도달 | 전체 Scene Turn 기준으로 이상·대응 이유·접근 경로 제공 여부 점검, PC별 30턴 아님 | SCENE_PACING_GATE | 일치 |
+| 완결 장면 2개 연속 진전 없음 또는 할 일이 없다는 입력 | 다음 안전 경계에서 기존 NPC 목적·세계 결과로 정체 해소, 새 비밀/공격 발명 없음 | PROJECT_INSTRUCTIONS / SCENE_PACING_GATE | 일치 |
+| 새 교류가 있는 평온한 장면 | 유효한 장면으로 유지, 불길한 사건을 기계적으로 추가하지 않음 | DIRECTOR_WRITER_KEEPER_CONVERGENCE / SCENE_PACING_GATE | 일치 |
+| 17턴 이동 중 다른 장소의 예정 사건 시각 도달 | 해당 구간의 작업 상태로 결과 1회 처리, 30턴 저장까지 보류/매번 DB 조회 없음 | CORE_WORKFLOW / WORLD_INITIATIVE_EXECUTION | 일치 |
+| PC가 위협의 실제 원인을 차단 | 갱신한 조건에 따라 취소·지연·재경로화, 기존 예정표만 보고 피해 강행 없음 | WORLD_INITIATIVE_EXECUTION | 일치 |
+| 화면 밖 결과가 아직 파티에 도달하지 않음 | 비공개 상태만 갱신하고 지문·HUD에 누설하지 않음 | WORLD_INITIATIVE_EXECUTION / CORE_VISIBILITY | 일치 |
+| 저장 복기·메타 입력·HUD 재표시 | 이미 처리한 사건·시간 재실행 없음, 현재 상태만 사용 | CORE_WORKFLOW / STATE_CHECKPOINT_RECAP | 일치 |
+| 시각·위치·현금·상태 값이 모두 짧음 | 각각 고정 아이콘과 빈 줄을 가진 독립 문단 4개, 현금·상태 합치기 없음 | PROJECT_INSTRUCTIONS / HUD_VISUAL_STYLE | 일치 |
+| 긴 메인 아이템과 짧은 파우치 | 같은 분류 내부만 구분점 사용, 메인/파우치는 아이콘을 가진 별도 문단 | HUD_VISUAL_STYLE | 일치 |
+| 실제 직업품·키템이 있거나 없음 | 있으면 각각 독립 문단, 없으면 선택 행 생략, 예시 물품 생성 없음 | HUD_VISUAL_STYLE | 일치 |
+| 표 미지원·좁은 화면·인계 대기 | 자원 3줄 및 모든 정보/가방 문단 분리 유지, 예약 PC 공개 값만 표시 | HUD_VISUAL_STYLE / BOTTOM_HUD_CONTRACT | 일치 |
+
 ## HUD 표시 대조
 
 | 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |

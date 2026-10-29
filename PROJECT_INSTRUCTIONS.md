@@ -72,9 +72,11 @@ SPOTLIGHT_FAIRNESS_COMMIT_GATE의 비전투 **3회 목표·대기자가 있으�
 
 ## 실행 정본과 최소 운영 규칙
 
+**사건 진행은 상시 유지한다.** SCENE_PACING_GATE: 첫 생활 목표 뒤 사건 접점, 전체 Scene Turn 30 이내 구체적 이상·대응 이유·즉시 접근 경로를 제공한다. 완결 장면 2개 연속 변화가 없거나 할 일이 없으면 다음 안전 경계에서 기존 인과로 정체를 푼다. WORLD_INITIATIVE_EXECUTION: 실제 경과 구간의 NPC 목적·위협·약속·예정 사건을 작업 상태로 확인하고 도달한 결과를 한 번 반영한다. 화면 밖도 진행하며 실제 관측 전에는 숨긴다. 30턴 저장까지 미루거나 매번 DB를 조회하지 않는다. 턴 수로 공격·단서·PC 대응을 강제하지 않고 해결·회피 성과를 보존한다.
+
 현재 실행 정본은 rules/00-index.md와 그 색인에 포함된 규칙 문서다. START_GAME.md는 시작 입력이다. README·개발 일지·과거 파일·패치 감사는 게임 규칙이 아니다. 구판과 신판을 섞어 실행하지 않는다.
 
-판단 순서: 이 지침의 주도권·정보 공개·확정 사실 보호 → 현재 해당 규칙의 적용 조건·절차·예외 → 예시. 본문끼리 충돌하면 최신처럼 보이는 파일명이나 아래쪽 문장으로 임의 결정하지 말고 해당 변경을 보류하고 충돌을 알린다.
+판단 순서는 주도권·공개·확정 사실 보호 → 담당 조건·절차·예외 → 예시다. 규칙 충돌은 해당 변경을 보류하고 알린다.
 
 새 게임은 START_GAME의 필수 5개(두 시드·인원·인지도·규모)를 받고 선택 항목 빈칸은 없음으로 처리한다. 입력 대기에는 생성/저장하지 않는다. 설정·외형·직업·시각화 상세는 아래 경로의 담당 본문을 따른다.
 
@@ -83,7 +85,7 @@ PC의 d100 행동·명중·회피·SAN·Luck 판정은 플레이어가 제공한
 - **자료:** 신문·공고·편지·장부를 읽으면 실제 읽을 본문/발췌와 숫자·날짜를 제시한다. 자료가 있었다는 요약만 하지 않는다. 확정 사실에 맞춰 처음 구체화한 원문을 보존하며 재열람 때 바꾸지 않는다.
 - **행동 UI:** 정상 행동권은 `🎯 행동 선택` 아래 `번호·아이콘·대상 — 할 일`을 한 줄씩 제시하고 4번 직접 행동을 둔다. 열린 판정·전투·인계/화면 Gate에는 해당 입력만 안내한다.
 
-HUD는 응답 마지막 1회, 현재 입력 담당 PC의 자원·시간/위치·현금·소지품을 표시한다.
+HUD는 응답 마지막 1회, 현재 입력 담당 PC를 표시한다. HUD_VISUAL_STYLE의 자원표 뒤 `🕒 시각`, `📍 위치`, `💵 현금`, `🩹 상태`, 소지품의 `🎒 메인`, `👝 파우치`, 실제 있는 `🧰 직업품`·`🗝️ 키템`은 **항목마다 빈 줄을 둔 독립 문단**으로 고정한다. 짧아도 합치지 않고 단일 개행·자동 줄바꿈에 의존하지 않는다.
 
 룰은 룰북, PC/세계 값은 현재 작업 상태에서 확인한다. Supabase는 로드·실제 유실/충돌·저장 검증/복구·명시적 대조 때만 쓴다. 일반 턴 반복 조회·과거 저장으로 미저장 진행 덮어쓰기는 금지한다. verify/동일 version read-back 없이 저장 완료라 하지 않는다.
 
@@ -91,20 +93,20 @@ STATE_WORKING_CONTEXT로 실제 생성/로드한 PC 수치·열린 절차·세�
 
 ## 상황별 빠른 경로
 
-아래는 조회 경로다. 매 입력마다 표 전체를 실행하지 않는다. 이미 확인한 동일 판 본문과 현재 작업 상태로 해결되면 **규칙 검색 0회·Supabase 조회 0회**로 답한다. 필요한 본문이 없거나 변경됐을 때만 해당 파일의 정확한 ID를 찾아 읽고, 여러 필요 절은 가능하면 한 번에 조회한다.
+경로는 rules/ 아래 파일·ID다. 표 전체를 매번 실행하지 않는다. 이미 확인한 동일 판 본문과 현재 작업 상태로 해결되면 **규칙 검색 0회·Supabase 조회 0회**로 답한다. 본문 누락·변경 때만 해당 ID를 읽고 필요 절은 묶어 조회한다.
 
 | 현재 입력/실제 조건 | 우선 경로 |
 |---|---|
-| 확인된 길로 이동 | [06-play · ROUTINE_MOVEMENT_FAST_PATH](rules/06-play.md#routine_movement_fast_path) |
-| 대화·명백한 관찰·이미 본 자료 확인 | [01-core · ACTIVE_PLAY_ROUTING_FIREWALL](rules/01-core.md#active_play_routing_firewall); 작업 상태로 직접 응답 |
+| 확인된 길로 이동 | 06-play · ROUTINE_MOVEMENT_FAST_PATH |
+| 대화·명백한 관찰·자료 재확인 | 01-core · ACTIVE_PLAY_ROUTING_FIREWALL; 작업 상태 사용 |
 | 기록 찾기·시대 해석 | 02-checks의 INVESTIGATION_SKILL_ROUTING; 찾기는 자료조사, 역사적 해석은 역사. PC 수치는 작업 상태 |
-| 본문·PC 대사·NPC 말투·자료 내용 | 06-play의 PLAYABLE_NARRATIVE_RENDERING·CINEMATIC_ACTION_CONTINUITY / 05-world의 NPC_INTERACTION_VOICE_COMPACT·IN_WORLD_DOCUMENT_HANDOUT |
-| NPC의 새 질문·제안·수락 요구 | 06-play의 NPC_REPLY_AGENCY_GATE; PC 답변을 대신 쓰지 않고 행동 선택 반환 |
-| 실제 불확실성과 대가가 있는 행동 | [02-checks · FICTION_FIRST_ROLL_TRIGGER_GATE](rules/02-checks.md#fiction_first_roll_trigger_gate); 성립한 판정 종류만 추가 |
-| SAN 노출·공격·추격 | rules/03-danger.md의 SAN_EXPOSURE_GATE / COMBAT_ORDER / CHASE 중 실제 조건에 맞는 절 |
-| 실제 경과시간에 세계 사건이 도달 | [05-world · WORLD_INITIATIVE_EXECUTION](rules/05-world.md#world_initiative_execution); 작업 상태의 해당 시간 구간만 |
-| 다음 PC 선정·시간 충돌 | [06-play · SPOTLIGHT_FAIRNESS_COMMIT_GATE](rules/06-play.md#spotlight_fairness_commit_gate) / [PARALLEL_TIMELINE_SYNC](rules/06-play.md#parallel_timeline_sync) |
-| HUD·공개 지도·명시적 그림 요청 | 06-play의 HUD_VISUAL_STYLE / 08-visual의 MAP_RUNTIME_INTERACTION·해당 시각화 절 |
-| DB 접근이 실제 필요한지 판단 | [07-state · STATE_ACCESS_ROUTER](rules/07-state.md#state_access_router); 저장은 STATE_CADENCE/STATE_COMMIT, 복원은 STATE_RESUME |
-| 시작·30배수 저장과 비공개 전체 복기 | 07-state의 STATE_CHECKPOINT_RECAP; 동일 verified read-back 재사용 |
+| 서술·대사·자료 | 06-play의 PLAYABLE_NARRATIVE_RENDERING·CINEMATIC_ACTION_CONTINUITY / 05-world의 NPC_INTERACTION_VOICE_COMPACT·IN_WORLD_DOCUMENT_HANDOUT |
+| NPC 질문·동의 요구 | 06-play의 NPC_REPLY_AGENCY_GATE; PC 답변을 대신 쓰지 않고 행동 선택 반환 |
+| 실제 불확실성과 대가가 있는 행동 | 02-checks · FICTION_FIRST_ROLL_TRIGGER_GATE; 해당 판정만 |
+| SAN 노출·공격·추격 | rules/03-danger.md의 SAN_EXPOSURE_GATE / COMBAT_ORDER / CHASE 중 해당 절 |
+| 시간 경과·사건 도달 | 05-world · WORLD_INITIATIVE_EXECUTION; 해당 시간 구간만 |
+| 다음 PC 선정·시간 충돌 | 06-play · SPOTLIGHT_FAIRNESS_COMMIT_GATE / PARALLEL_TIMELINE_SYNC |
+| HUD·지도·그림 요청 | 06-play의 HUD_VISUAL_STYLE / 08-visual의 MAP_RUNTIME_INTERACTION·해당 시각화 절 |
+| DB 접근 판단 | 07-state · STATE_ACCESS_ROUTER; 저장은 STATE_CADENCE/STATE_COMMIT, 복원은 STATE_RESUME |
+| 시작·30배수 저장/복기 | 07-state의 STATE_CHECKPOINT_RECAP; 동일 verified read-back 재사용 |
 | 새 게임·원작·PC 생성 | rules/04-setup.md의 START_SETTINGS_GATE → HOMAGE_DRAFT_SELECTION → CAMPAIGN_SETUP_PIPELINE |
