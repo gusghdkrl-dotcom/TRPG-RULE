@@ -80,17 +80,18 @@
 | 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
 |---|---|---|---|
 | 새 게임 요청만 입력 | 시작 양식 전체 제시, 필수 입력 대기 중 웹 검색·생성 없음 | START_SETTINGS_GATE | 일치 |
-| 인원 질문에 1만 답함 | 1인만 보존, 시드·인지도·규모·배제 누락을 묻고 원작 대기 | START_SETTINGS_GATE / PLAYER_INPUT_NAMESPACE_ROUTER | 일치 |
+| 인원 질문에 1만 답함 | 1인만 보존, 시드·인지도·규모 누락만 묻고 원작 대기 | START_SETTINGS_GATE / PLAYER_INPUT_NAMESPACE_ROUTER | 일치 |
 | 여러 빈칸 양식 뒤 단독 2 | 대상 항목 확인, 여러 필드에 동시에 2를 적용하지 않음 | PLAYER_INPUT_NAMESPACE_ROUTER | 일치 |
 | 시드 0/101/소수 또는 미입력 | 오류 항목만 재입력 요청, 키퍼 대체 난수 생성 없음 | START_SETTINGS_GATE | 일치 |
 | 시드 두 개가 모두 1 또는 모두 100 | 각각 유효한 별도 입력으로 수용, 임의 중복 회피 없음 | START_SETTINGS_GATE | 일치 |
 | 인지도·규모가 비어 있음 | 기본/사건으로 자동 채우지 않고 대기 | HOMAGE_TIER / STORY_SCALE | 일치 |
-| 필수 양식 완성, 선택 항목 빈칸 | 추가 확인 없이 A~F 단계, PC는 원작 선택 후 생성, 사전 관계는 서로 모름 | START_SETTINGS_GATE / HOMAGE_DRAFT_SELECTION | 일치 |
-| 배제 세계관 빈칸/없음 | 빈칸은 미응답, 명시적 없음은 유효한 선택 | START_SETTINGS_GATE | 일치 |
+| 필수 5개만 입력, 선택 항목 생략/빈칸 | 선택 항목은 자동 없음, 추가 확인 없이 시드 기반 A~F 단계, PC는 원작 선택 후 생성, 사전 관계는 서로 모름 | START_SETTINGS_GATE / HOMAGE_DRAFT_SELECTION | 일치 |
+| 배제 세계관 미입력/빈칸/없음 | 모두 추가 배제 없음으로 처리하고 추가 질문하지 않음 | START_SETTINGS_GATE | 일치 |
 | 핵심 시드 25와 크툴루가 아닌 장르 직접 지정 | 직접 지정 장르 우선, 시드만으로 크툴루 강제 없음 | D100_PARADIGM_GENERATION / CTHULHU_OVERRIDE | 일치 |
 | 직접 지정 작품이 배제 세계관과 충돌 | 조건 조정 질문 후 대기, 임의 대체/배제 삭제 없음 | START_SETTINGS_GATE | 일치 |
 | 직접 원작은 지정했지만 필수 설정 미완성 | 나머지 입력 대기, 완료 후 후보를 생략하고 원작 확정 | START_SETTINGS_GATE / HOMAGE_DRAFT_SELECTION | 일치 |
 | 저장된 캠페인을 새 채팅에서 재개 | 저장 설정·현재 단계를 복원, 새 시드/장르/초기 입력 강제 없음 | STATE_SCHEMA / STATE_RESUME | 일치 |
+| 인지도만 보충하는 후속 답변에서 기존 배제 목록 생략 | 이미 지정한 배제는 유지, 생략을 선택 해제로 처리하지 않음 | START_SETTINGS_GATE | 일치 |
 
 ## 미실행
 
