@@ -4,14 +4,15 @@
 
 ## 조회 순서
 
-현재 선언과 상태에서 필요한 항목을 찾고 링크의 규칙 본문을 읽는다. 숫자·예외가 필요한데 본문을 읽지 못하면 추측하지 않는다. 현재 대화에서 확인 가능한 동일 규칙판 본문은 재사용하고 유실·변경된 부분만 다시 조회한다. 아래 링크는 검색 경로이며 상세 절차를 복제하지 않는다.
+현재 선언과 상태에서 필요한 항목을 찾고 링크의 규칙 본문을 읽는다. 숫자·예외가 필요한데 본문을 읽지 못하면 추측하지 않는다. 현재 대화에서 확인 가능한 동일 규칙판 본문은 재사용하고 유실·변경된 부분만 다시 조회한다. 아래 링크는 검색 경로이며 상세 절차를 복제하지 않는다. 이미 본문·작업 상태가 있으면 검색 없이 처리한다. 룰북 검색과 Supabase 조회는 별개이며 DB 접근은 STATE_ACCESS_ROUTER의 실제 조건에서만 한다.
 
 | 상황 | 읽을 규칙 |
 |---|---|
 | 이번 입력과 열린 절차부터 확인 | [CORE_WORKFLOW](01-core.md#core_workflow) |
+| 확인된 짧은 이동 | [ROUTINE_MOVEMENT_FAST_PATH](06-play.md#routine_movement_fast_path) |
 | 일상 행동·판정 필요 여부 | [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate) |
 | PC 주도권·대사·감정 | [CORE_AGENCY](01-core.md#core_agency) |
-| 비공개 정보·PC별 지식 | [CORE_VISIBILITY](01-core.md#core_visibility) |
+| 파티 공통 지식·비공개 세계 경계 | [CORE_VISIBILITY](01-core.md#core_visibility) |
 | 난수 큐와 일반 주사위 | [AI_DIE_MAPPING_VERSION](01-core.md#ai_die_mapping_version) |
 | 성공 단계·펌블 | [SUCCESS_LEVELS](02-checks.md#success_levels) |
 | 보너스·패널티 | [BONUS_PENALTY_DICE](02-checks.md#bonus_penalty_dice) |
@@ -36,7 +37,8 @@
 | 증거·가설·결론 | [EVIDENCE_NAMESPACE_CONSOLIDATION](05-world.md#evidence_namespace_consolidation) |
 | 기능의 캠페인 내부 성장 | [SKILL_IMPROVEMENT](04-setup.md#skill_improvement) |
 | 턴과 실제 시간 | [SCENE_ELAPSED_TIME_SETTLEMENT](06-play.md#scene_elapsed_time_settlement) |
-| 2인 이상 행동권 | [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate) |
+| 비전투 3회 목표·5회 상한·다음 PC | [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate) |
+| 짧은 독립 이동·실제 병렬 시간 충돌 | [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync) |
 | 대표 행동·자유 선언 | [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) |
 | 일반 HUD | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
 | HUD 아이콘·수치표·소지품 배치 | [HUD_VISUAL_STYLE](06-play.md#hud_visual_style) |
@@ -46,6 +48,7 @@
 | 지도 열람·이동 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) |
 | 직업·풍경·상황 웹 참고 | [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference) |
 | 이미지 선택 | [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate) |
+| DB 조회를 허용하는 실제 조건 | [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
 | Supabase 연결과 정본 | [STATE_AUTHORITY](07-state.md#state_authority) |
 | 저장 시점 | [STATE_CADENCE](07-state.md#state_cadence) |
 | 저장 검증·중단 복구 | [STATE_COMMIT](07-state.md#state_commit) |
@@ -70,8 +73,8 @@ PC는 플레이어가 조종하는 인물, P슬롯은 현재 참가 좌석이다
 
 확정(Freeze)은 원작·세계의 핵심 진실·PC 과거 등을 더 이상 연출에 맞춰 다시 쓰지 않는 경계다. 확정된 진실과 별도로 현재 위치·피해·소유·NPC 행동 결과는 실제 인과에 따라 갱신한다.
 
-Scene Turn은 시간이 드는 의미 있는 행동의 진행 번호다. 실제 경과시간·채팅 메시지 수·실제 플레이 회차와 다르다. 독립 장면은 하나의 행동 목적을 중심으로 이어지는 장면이며, 직접 결과가 끝나 다음 목적을 선택할 수 있을 때 전환 경계가 된다.
+Scene Turn은 시간이 드는 의미 있는 행동의 진행 번호다. 실제 경과시간·채팅 메시지 수·실제 플레이 회차와 다르다. Spotlight는 한 PC가 의미 있는 선택·결과를 이어가는 장면 묶음이다. 직접 결과가 끝난 안전 경계에서 대기 예산·실제 목적 종료를 함께 보고 인계를 정하며 새 선택·도착만으로 자동 교대하지 않는다.
 
-정보 공개 범위(FOG)는 해당 PC가 관찰·전달·검증한 범위다. GM_STATE는 공개·비공개를 포함한 게임의 작업 상태, Checkpoint는 그 전체 상태를 검증해 보존한 저장본이다. HUD·수첩·이미지는 공개 투영이다.
+정보 공개 범위(FOG)는 플레이어 전체에게 공개된 사실과 아직 미발견인 세계의 경계다. 어느 PC든 알게 되어 공개된 사실은 파티가 공유하며 PC별 열람 장벽은 없다. GM_STATE는 공개·비공개를 포함한 게임의 작업 상태, Checkpoint는 그 전체 상태를 검증해 보존한 저장본이다. HUD·수첩·이미지는 공개 투영이다.
 
 영어 코드 형태의 필드·enum은 실제 저장/도구 계약과 연결된 식별자다. 한국어 표현을 다듬는 이유로 필드명을 임의로 바꾸지 않는다.

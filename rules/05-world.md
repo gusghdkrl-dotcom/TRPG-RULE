@@ -259,7 +259,7 @@ PLAY의 현재 Scene에서 전문 NPC가 PC의 중상/심각한 정신붕괴를 
 - HP_AND_DEATH에 따라 실제 사망이 확정된 경우에만 사망 렌더링한다. HP 0 의식불명/Dying은 아직 사망이 아니다.
 - 목격 PC에게 상황에 맞는 SAN 굴림.
 - 사망 플레이어는 1회에 한해 살아있는 동행 NPC 1명의 통제권을 인계받을 수 있다.
-- 인계 시 해당 NPC의 스탯, 전문 기능, SAN, 인벤토리, 과거/트라우마/숨은 동기를 P 전용 기밀 지침서로 공개.
+- 인계 시 해당 NPC의 스탯·전문 기능·SAN·인벤토리와 그 인물이 실제 아는 확정 과거·목적을 참가자 모두에게 공개한다. 그 인물도 모르는 세계의 숨은 연결·정답은 공개하지 않는다. 개인 기밀 지침서는 만들지 않는다.
 - 인계할 동행 NPC가 없으면 영구 관전.
 
 ## INSTITUTION_ACCESS_STATE
@@ -339,7 +339,7 @@ PLAY의 현재 Scene에서 전문 NPC가 PC의 중상/심각한 정신붕괴를 
 - 표준 공동 캠페인은 각 PC가 자기 일상을 정상 진행했을 때 prolonged 독립 branch가 기본값이 되기 전에 자연스러운 초기 convergence path가 적어도 하나 있어야 Setup QA를 통과한다. 사용자가 명시적으로 장기 분리 스타트를 원하면 초기 물리 합류는 늦출 수 있으나 실제 통신·공통 기관·후속 rejoin path 중 하나는 확정한다.
 - 초기 공통 사건·만남/연락 기회의 전달은 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)의 초반 기준을 따른다. 장기 분리 시작을 명시적으로 선택했다면 물리 합류 대신 실제 공통 사건/연락 경로를 제공한다.
 - 실제 플레이에서 PC가 합류를 거부하거나 다른 길을 택하면 강제로 순간이동·우연한 재회·새 위협으로 묶지 않는다. 각 branch의 세계 시간과 기존 인과를 정상 진행하고, 기존 convergence/rejoin 조건이 다시 실제 성립할 때만 만날 수 있다.
-- 첫 합류 뒤에도 분리 선택은 자유다. Shared Scene이 되었다는 이유로 과거 private knowledge를 자동 공유하지 않으며 Scene Visibility가 그대로 우선한다.
+- 첫 합류 뒤에도 분리 선택은 자유다. 공개된 사실은 합류 전후와 무관하게 파티 공통 지식이며, 합류가 새 신뢰·관계·숨은 세계 지식을 만들지는 않는다.
 
 ## INCITING_COLLISION_GATE
 
@@ -402,7 +402,7 @@ PLAY의 현재 Scene에서 전문 NPC가 PC의 중상/심각한 정신붕괴를 
 해당 PC의 첫 장면은 반드시 다음 순서로 정착한다.
 1. **여기 오기 직전 무엇을 하고 있었는가** — 직업/여행/업무/약속/일상 역할 등 이미 확정된 공개 사실로 짧게 연결한다.
 2. **왜 지금 이곳에 와 있는가 / 지금 끝내려던 것은 무엇인가** — 최종 프로필의 공개 배경과 `scenario_connection_by_pc{}`의 player-known `mundane_reason / ordinary_goal / involvement_stake`를 이용해 객관적으로 설명한다.
-3. **현재 공간의 위치 맥락** — `canonical_map_model/player_map_state`에서 해당 PC가 이미 아는 지역·Route 관계만 짧게 연결한다. 다른 PC의 비공개 시작 위치나 Hidden POI는 말하지 않는다.
+3. **현재 공간의 위치 맥락** — `canonical_map_model/player_map_state`에서 파티가 이미 아는 지역·Route 관계를 현재 PC 위치와 짧게 연결한다. 공개된 다른 PC 위치도 참조할 수 있지만 Hidden POI는 말하지 않는다.
 4. **현재 상황과 이미 드러난 압박 표면** — 현재 시각·장소·주변 인물·보이는 환경·즉시 상호작용 가능한 표면을 정착하고, `exit_constraint/first_collision_surface` 중 지금 PC가 실제로 알고 보거나 겪는 부분이 있으면 객관 사실로 보여준다. 아직 숨은 제약을 설명 목적으로 선행 공개하지 않는다.
 5. 그 뒤에만 정상 행동권/판정/Handoff와 Bottom HUD를 준다.
 
@@ -411,7 +411,7 @@ PLAY의 현재 Scene에서 전문 NPC가 PC의 중상/심각한 정신붕괴를 
 - `무엇을 하고 있었는가`는 Setup에서 이미 정해진 직업·여행·약속·배치·직전 상태만 사용한다. 플레이어가 선언하지 않은 별도 조사·준비·대화·아이템 사용을 소급 확정하지 않는다.
 - `왜 여기 있는가`는 PC가 실제로 아는 이유만 공개한다. 비공개 진실, 비공개 Scenario Connection, NPC Agenda, 미발견 Evidence를 설명 편의를 위해 섞지 않는다.
 - Cold Open/재난 이후 Premise라면 Opening Normality를 억지로 추가하지 않고, **현재 위험 직전까지 PC가 무엇을 하던 중이었고 왜 그 장소에 있었는지**만 player-known 사실로 압축한 뒤 즉시 현재 위험을 보여준다.
-- 분리 파티에서는 각 PC의 Orientation도 [PLAYER_SCENE_VISIBILITY](06-play.md#player_scene_visibility)을 따른다. Shared Scene에서 다른 PC가 이미 화면에 있었더라도, 그 PC가 처음 POV/Normal Focus를 받을 때 자기 공개 맥락을 짧게 정착할 수 있으며 다른 PC의 비공개 과거/지식은 섞지 않는다.
+- 분리 파티에서도 공개 지식은 공유한다. 각 PC가 처음 POV/Normal Focus를 받을 때는 실제 위치·상황을 짧게 정착하되 이미 공개한 공통 사실을 처음 알아듣는 것처럼 다시 설명하지 않는다. 키퍼만 아는 숨은 과거·연결은 공개하지 않는다.
 
 ## OPENING_NORMALITY_SKILL_CONTEXT
 
@@ -543,7 +543,7 @@ NPC/기관은 자기 Agenda·업무·이해관계에서 실제 요청/의뢰를 
 - 같은 경과 구간에 복수 Driver가 due이면 **(1) 더 이른 diegetic effective time → (2) 명시적 causal prerequisite가 되는 Driver → (3) 확정된 `resolution_order`** 순으로 결정적으로 처리한다. 단 어떤 Driver도 아직 미충족인 causal prerequisite보다 먼저 반영하지 않는다. 저장된 effective time이 prerequisite보다 앞서도록 모순되면 해당 Driver는 prerequisite가 실제 충족되는 가장 이른 시점까지 보류/재계산하며, 사전 생성 단계에서 발견되면 확정 전에 모순을 수정한다. 각 반영 뒤 다음 Driver는 갱신된 실제 세계 상태에서 required/cancel 조건을 다시 확인한다.
 - `resolution_order`는 Driver가 **처음 active set에 들어갈 때** `world_momentum.driver_order_seq`의 다음 단조 증가 정수를 부여해 확정하고 이후 바꾸지 않는다. 게임플레이 난수를 소비하지 않으며 극적 편의를 위한 재정렬·재굴림은 금지한다. 진짜 동시이고 서로 독립이면 순서가 결과를 바꾸지 않아야 하며, 결과가 바뀔 수 있다면 위 prerequisite/order 계약으로 결정한다.
 - 한 Driver가 resolved된 뒤 그 **기존 source**인 Ordinary Life/Agenda/Threat process/환경 과정에서 다음 행동이 이미 논리적으로 결정되고 필요한 조건도 확정할 수 있다면 successor Driver를 활성화할 수 있다. 이때 새 비공개 진실·Evidence·동기·위협을 만들지 않고 `successor_of`로 연속성을 남긴다. 다음 행동이 아직 실제 선택/정보/조건에 따라 달라져 결정되지 않았다면 억지 successor를 만들지 않는다.
-- 오프스크린 결과가 Current POV에 아직 도달하지 않았다면 정보 공개 범위 아래 private world state로만 남긴다. PC가 현장에 돌아옴, 소문/전화/보고가 도착함, 사람이 부재함, 문이 닫힘, 물건이 이동함, 시간이 지난 물리 흔적처럼 실제 관측 경로가 생겼을 때 결과부터 경험하게 한다.
+- 오프스크린 결과가 어느 PC에게도 관측/전달되지 않았다면 비공개 세계 상태로만 남긴다. 한 PC의 장면에서 실제 공개되면 파티 공통 지식이 된다. PC가 현장에 돌아옴, 소문/전화/보고가 도착함, 사람이 부재함, 문이 닫힘, 물건이 이동함, 시간이 지난 물리 흔적처럼 실제 관측 경로가 생겼을 때 결과부터 경험하게 한다.
 - 여러 오프스크린 변화가 이미 발생했더라도 플레이어 출력은 알림 목록이 아니다. 현재 POV에 실제 도달한 변화 중 **가장 먼저 현재 선택을 바꾸는 직접 결과**를 우선 장면화하고, 같은 순간 자연스럽게 함께 감지되는 수동적 변화만 하나의 Transition에 묶는다. 아직 도달하지 않은 결과는 공개하지 않는다.
 - World Initiative는 유효한 ENRICHMENT Scene을 '진행이 느리다'는 이유로 중간 절단하는 권한이 아니다. 결과가 현재 Scene에 직접 침입하지 않는다면 현재 직접 결과를 완결하고 가장 가까운 안전한 장면 전환 경계에서 전면화한다. 반대로 [LONG_ACTION_EARLIEST_INTERRUPTION](06-play.md#long_action_earliest_interruption)처럼 지속 행동 완료 전에 실제로 도달한 결과는 그 도달 시점에서 정상적으로 중단시킬 수 있다.
 - NPC의 기존 목적·실제 새 정보·현재 접근에서 다음 행동을 정하고 실행할 수 있다. 필요하면 실제 선택/대항 규칙과 난수를 적용한다. 모든 행동이 초기 시각표에 미리 적혀 있어야 하는 것은 아니다. 실행 근거와 결과를 기록해 새로 확정한 사실을 보존한다.
@@ -567,7 +567,7 @@ NPC/기관은 자기 Agenda·업무·이해관계에서 실제 요청/의뢰를 
 - 도달 결과가 실제 공격/전투이면 , 추락·질식·화재·환경 접촉/탐사면 (+필요 시 ), 정신 충격에 해당하면 [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate), 외부 세계/NPC Driver 진행이면 [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution)으로 **각 효과의 정확한 단일 담당 규칙**를 확정한다. PC d100이 필요하면 실제 플레이어 굴림을 요청하고 결과 전에는 판정·HP/SAN을 선행 확정하지 않는다. Gameplay Queue와 PC roll의 구분을 유지한다.
 - 각 담당 규칙의 판정과 효과가 완료되면 실제 HP/SAN, 중상·빈사·사망, 위치·Route·자원·NPC·시설 결과 중 **그 인과가 실제로 발생시킨 것만** 해당 전문 규칙으로 반영하고 현재 정보 공개 범위에서 감각 가능한 직접 결과를 표시한다. 광기·중상·죽음까지 원 규칙의 Cascade를 실행한다. 같은 원인/도달 사건의 피해를 ·05·13에서 중복 적용하지 않는다.
 - 도주·차단·협상·엄폐·의료·안전 확보·Counterplay가 기존 규칙과 실제 상태로 성공했다면 위협은 그 결과에 따라 실패/지연/소멸할 수 있다. PC가 위험을 잘 피했다는 이유만으로 다른 위해를 Spawn하지 않는다. 반대로 드라마/생존 보장을 위해 이미 확정된 적의 행동·피해를 임의 실패나 축소로 바꾸지 않는다.
-- 시간 정지(Handoff A/Visual/meta), 아직 도달하지 않은 Offscreen 결과, 현재 POV가 모르는 사실은 새 피해 트리거/공개가 아니다. **매 micro-turn 전체 DOC 재조회가 아니라, 실제 위협 Trigger가 발생한 그 단계에서만 이 Gate로 담당 규칙 Cascade를 확인한다.**
+- 시간 정지(Handoff A/Visual/meta), 아직 도달하지 않은 Offscreen 결과, 키퍼만 아는 사실 자체는 새 피해 트리거/공개가 아니다. **매 micro-turn 전체 DOC 재조회가 아니라, 실제 위협 Trigger가 발생한 그 단계에서만 이 Gate로 담당 규칙 Cascade를 확인한다.**
 
 ## ACTIVE_HORROR_PRESSURE
 
@@ -579,7 +579,7 @@ NPC/기관은 자기 Agenda·업무·이해관계에서 실제 요청/의뢰를 
 ## LIVING_ADVERSARY_INTELLIGENCE
 
 - 주요 적대 NPC/위협은 Homage와 개체 설정에 맞는 **인지 채널 / 추론 범위 / 기억·정보공유 능력 / 목표 / 학습·적응 가능 범위**를 가진다. 평범한 인간의 상식적 추론까지 별도 수치화할 필요는 없으며 특이한 한계·초감각·집단통신·학습 능력은 사전 확정한다.
-- Entity가 행동에 사용할 수 있는 정보는 직접 감각·목격, 실제 보고/통신, 접근 가능한 기록, 또는 그 정보에서 합리적으로 추론한 것뿐이다. Keeper의 비공개 진실, 다른 PC의 비공개 지식, 플레이어가 장면 밖에서 세운 계획을 전지적으로 읽지 않는다.
+- Entity가 행동에 사용할 수 있는 정보는 직접 감각·목격, 실제 보고/통신, 접근 가능한 기록, 또는 그 정보에서 합리적으로 추론한 것뿐이다. Keeper의 비공개 진실, NPC에게 전달되지 않은 파티 지식, 플레이어가 장면 밖에서 세운 계획을 전지적으로 읽지 않는다.
 - 지능형 상대의 대응도 실제 세계 행동이다. 위치·시간·접근권·도구·자원·위험을 요구하며, 기록 이동·매복 준비·전원 차단·감시 같은 행동은 가능하면 부재·출입 흔적·시간 변화·사용 흔적 등 인과적 결과를 남긴다.
 - 높은 지능은 완전정보·완벽한 최적해를 뜻하지 않는다. Agenda, 성향, 잘못된 믿음, 공포, 제한된 시간/자원과 실제 정보 품질 안에서 판단한다.
 - 적응은 사전 확정된 약점·생태·세계 법칙 Counterplay를 삭제하거나 면역으로 바꾸는 권한이 아니다. 지능형 위협은 약점을 **당하지 않으려는 전술**을 바꿀 수 있을 뿐이다.
@@ -735,7 +735,7 @@ Evidence node/edge, player hypothesis, confirmed conclusion, Threat Learning은 
 - 신규 active state에서 별도 `contradiction_nodes[]`와 `temporal_evidence[]` namespace를 생성하지 않는다.
 - 모순은 Evidence node/edge의 `type/relation=contradicts` 등으로, 시간 정보는 node의 `timestamp/timeline_anchor` 또는 edge의 `precedes/follows/concurrent/corroborates/excludes` 같은 관계로 같은 Evidence Web 안에 보존한다.
 - 물리적 탐사·발견·POI·Sound/Item의 관찰 결과를 먼저 확정한다. 그 사실이 조사 정본으로 등록·연결될 필요가 있을 때만 가 Evidence Graph를 반영한다. 같은 상태를 두 DOC가 중복 반영하지 않는다.
-- 세계 사실(Evidence), PC별 알려진 사실(public facts), 플레이어 가설, 검증 결론을 하나의 객체로 뭉개지 않는다. Focus 이동이 knowledge ownership을 합치지 않는다.
+- 세계 사실(Evidence), 파티에 공개된 사실(public facts), 플레이어 가설, 검증 결론을 하나의 객체로 뭉개지 않는다. `public_facts_by_pc`는 발견자·출처·시점을 유지하고 그 실제 공개 사실의 합집합을 파티 지식으로 사용한다. 아직 미발견인 Evidence node는 합치지 않으며 매 PC마다 같은 사실을 복제할 필요는 없다.
 - legacy `contradiction_nodes/temporal_evidence`는 stable evidence ref가 명확할 때만 exact relation/timeline으로 1회 normalize할 수 있다. ref가 불명확하면 추측 변환하지 않고 dormant legacy로 보존한다.
 
 ## MYSTERY_DANGER_COUPLING

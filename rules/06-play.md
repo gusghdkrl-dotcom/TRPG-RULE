@@ -226,7 +226,7 @@ Lore 수집 개수나 Keeper의 0/1/2 점수 대신 **실제로 확립된 진실
 - `이름만 묻는다`, `덮개만 연다`처럼 명시적으로 좁힌 선언은 그 범위만 짧게 처리한다. 그러나 다음 메뉴를 나사 풀기·먼지 닦기·다시 물어보기로 채우지 말고 `점검과 수리를 마친다` 같은 실제 목적 단위의 선택을 제공한다. 플레이어가 세부 작업 자체를 원할 때만 확대한다.
 - 이미 끝난 일에 새로운 위험이나 정보가 없다면 잔여 마찰음·미세한 흠집을 계속 생성해 완료를 미루지 않는다. 완료 사실을 명확히 알리고 다음 사건 접점/세계 반응/다른 선택으로 전환한다.
 - 선언된 지속 범위 안의 반복 근무·이동·대기는 다음 의미 있는 시점까지 압축한다. 기다리겠다는 선언 없이 며칠을 자동 경과시키지 않는다. 현재 선택이 모두 미래 대기뿐이면 실제 다른 접근을 보여주거나 `약속 시각까지 기다릴 수 있다`고 제안한다.
-- 시간은 실제 소요시간만 한 번 진행한다. 도중에 도달할 세계 결과는 [LONG_ACTION_EARLIEST_INTERRUPTION](06-play.md#long_action_earliest_interruption)에서 가장 이른 것부터 처리한다. 다른 PC의 동시간대 선택은 [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync)을 먼저 정산한다. 판정·반응·새 선택·플레이어가 선언한 대사는 생략하지 않는다.
+- 시간은 실제 소요시간만 한 번 진행한다. 도중에 도달할 세계 결과는 [LONG_ACTION_EARLIEST_INTERRUPTION](06-play.md#long_action_earliest_interruption)에서 가장 이른 것부터 처리한다. 다른 PC의 동시간대 선택은 [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync)의 실제 동기화 조건이 있을 때만 먼저 정산한다. 판정·반응·새 선택·플레이어가 선언한 대사는 생략하지 않는다.
 
 ## KEEPER_SCENE_SELECTION
 
@@ -286,6 +286,15 @@ Lore 수집 개수나 Keeper의 0/1/2 점수 대신 **실제로 확립된 진실
 - 미선언 행동을 시간 정산에 끼워 넣지 않는다.
 - 경과 구간에 도달한 기존 NPC·위협·환경 결과는 [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution)으로 처리한다. 도중에 직접 위험이 도달하면 가장 이른 시점에서 먼저 해결한다. 비공개 결과는 비공개 상태에만 기록한다.
 
+## ROUTINE_MOVEMENT_FAST_PATH
+
+알려진 경로로 이동한다는 선언은 아래 순서로 한 번 처리한다. 매 지문마다 전 규칙·Supabase·지도 이미지를 읽는 절차가 아니다.
+1. 현재 작업 상태의 출발지·목적지·공개 경로·이동 수단·확정 소요시간/거리와 실제 봉쇄·미해결 판정을 읽는다. 경로와 조건이 이미 확인되어 있으면 재검색하지 않는다. 필수 상태가 실제 유실됐을 때만 STATE_ACCESS_ROUTER로 복구한다.
+2. 알려진 경로가 여러 개여도 플레이어가 하나를 지정했거나 의미 있는 차이가 없으면 재선택을 요구하지 않는다. 실제 새 위험·비용·갈림길 선택이 있을 때만 멈춘다. 단순 보행에는 판정을 자동 추가하지 않는다.
+3. PARALLEL_TIMELINE_SYNC의 실제 동기화 조건만 확인한다. 누적 15분 이내의 독립적인 이동이고 해당 조건이 없으면 다른 PC에게 할 일을 묻지 않고 진행한다.
+4. 완료 전 도달하는 기존 사건/위험이 있으면 LONG_ACTION_EARLIEST_INTERRUPTION대로 가장 이른 시점에서 처리한다. 없으면 출발·이동·도착을 한 응답으로 끝내고 위치·경과시간·Scene Turn을 한 번 반영한다. 이동 시작·도착·Handoff `A`마다 턴을 중복 증가시키지 않는다.
+5. 도착 장소를 짧게 보여주고 해당 PC가 문을 두드리거나 주변을 살피는 등 다음 행동을 선택할 수 있게 한다. 이동 도착만을 이유로 인계하지 않는다. 다만 실제 긴급 반응·이미 소진한 대기 예산·플레이어의 종료/넘김은 우선한다. 방문한 익숙한 장소의 장식용 웹 이미지나 이미 정산한 보수·과거 작업 설명을 반복하지 않는다.
+
 ## LONG_ACTION_EARLIEST_INTERRUPTION
 
 - 플레이어가 `2시간 조사한다 / 저녁까지 일한다 / 도착할 때까지 잔다`처럼 의미 있는 지속시간의 행동을 선언하면, **그 행동의 예정 완료보다 먼저 현재 PC에게 실제로 도달하는 이미 존재하는 World Driver·Threat·환경·통신·NPC 결과가 있는지** 확인한다. 있으면 timeline은 가장 이른 도달 시점까지만 진행하고 그 직접 결과를 먼저 장면화한다. 행동은 실제로 경과한 만큼만 완료/부분 진행된 상태로 남으며, 중단 뒤 계속할지는 플레이어에게 돌린다.
@@ -294,9 +303,10 @@ Lore 수집 개수나 Keeper의 0/1/2 점수 대신 **실제로 확립된 진실
 
 ## MULTI_PC_SPOTLIGHT_CONTRACT
 
-- 멀티 PC 비전투 Spotlight는 **현재 카메라의 주된 장면의 행동 목적**이지 다른 PC의 존재를 지우는 독점 턴이 아니다. 같은 shared Scene의 다른 PC는 실제로 듣고 본 짧은 대사·질문·반응에 Shared Scene Exchange로 별도 Handoff 없이 참여하고, 독립 Intent로 커지면 장면 전환 경계 후보가 된다.
-- 퀴즈대회·회의 같은 Sequence는 여러 Spotlight Scene에 걸치며 다른 PC를 잠그지 않는다. Standby는 branch intent를 무료 선언할 수 있으나 Focus 전 이동·조사 등을 대신 실행하지 않는다. **카메라 순서를 Luck이나 다른 PC 자원으로 구매하지 않는다.**
-- 목적 해결·차단, 새 의미 있는 선택/독립 목표/큰 맥락 변화는 장면 전환 경계다. 다른 eligible PC가 기다리면 같은 PC의 두 번째 독립 Scene을 연속 배정하지 않는다. 다른 PC 새 Normal은 Handoff Gate `A` 시간 정지를 쓰며 전투·진행 중 절차·긴급 Reaction이 우선한다.
+- 멀티 PC 비전투 Spotlight는 한 PC가 의미 있는 선택과 결과를 이어가는 장면 묶음이다. 이동 완료·대사 한 번마다 다른 PC로 넘기지 않는다. 구체적인 3회 목표·5회 상한과 예외는 [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate)가 단독 결정한다.
+- 같은 장소의 PC는 짧은 대사·질문·반응에 Shared Scene Exchange로 참여할 수 있다. 분리된 PC도 장면을 함께 읽고 의논할 수 있으나 현장 행동은 자기 위치·행동권을 따른다.
+- 큰 Sequence가 끝날 때까지 다른 PC를 잠그지 않는다. Standby는 branch intent를 무료 선언할 수 있고 카메라 순서를 Luck이나 다른 자원으로 구매하지 않는다.
+- 전투·추격·진행 중 판정·긴급 Reaction이 우선한다. 일반 인계가 확정되면 Handoff Gate `A`는 시간 정지이며 재조회·새 판정·턴 증가의 계기가 아니다.
 
 ## ACTIVE_POV
 
@@ -307,32 +317,20 @@ Lore 수집 개수나 Keeper의 0/1/2 점수 대신 **실제로 확립된 진실
 - `focus_owner`는 이번 응답에서 실제 선택·선언·PC 굴림을 요구받는 PC다. 기본적으로 Active POV와 같지만 직접 위협·대화 질문·반응 때문에 일시적으로 달라질 수 있다.
 - 행동권이 아닌 대기 예외는 `focus_mode=handoff_wait`와 `focus_mode=visual_choice_wait`다. `handoff_wait`에서는 `focus_owner`가 **다음 Normal owner로 예약된 PC**이며 아직 행동권을 가진 것이 아니다. Handoff HUD만 그 PC 기준으로 렌더링하고 신규 `A`로 활성화되기 전 Normal 행동을 요구하지 않는다.
 - `visual_choice_wait`에서는 현재 장면/Setup owner와 세계 상태를 그대로 고정하고 [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate)의 신규 `A/B` 입력만 기다린다.
-- Focus 변경이 다른 PC의 미공개 지식을 공유하지 않는다. 짧은 반응만 해결되면 Active POV를 유지한 채 원래 Focus로 돌아갈 수 있고, 장면 중심이 실제로 넘어갈 때만 Active POV를 전환한다.
+- 공개 지식은 모든 PC가 공유하며 Focus는 행동권만 정한다. 짧은 반응만 해결되면 Active POV를 유지한 채 원래 Focus로 돌아갈 수 있고, 장면 중심이 실제로 넘어갈 때만 Active POV를 전환한다.
 
 ## PLAYER_SCENE_VISIBILITY
 
-[ROLE]
-는 멀티 플레이어의 **장면 전달 범위**를 정한다. Scene Visibility는 지식 정본이나 새 정보 공개 범위 시스템이 아니라, 이미 확정된 위치·감각·통신·PC별 지식 경계를 이번 플레이어 출력에 적용하는 delivery projection이다.
-
-[MODES]
-- `PRIVATE`: 현재 장면을 실제로 감각하거나 실시간 전달받을 수 없는 다른 플레이어에게는 그 장면을 공개하지 않는다. 서로 다른 장소/분리 Scene이 대표적이지만 **장소가 다르다는 사실만으로 판정하지 않고 실제 감각·전달 가능성**을 본다.
-- `SHARED`: 둘 이상의 PC가 같은 감각 공간/같은 Scene context에 있어 현재 일어난 일을 정상적으로 함께 보고 들을 수 있다. 같은 건물·같은 장소 ID라도 닫힌 방, 거리, 귓속말, 혼자 읽은 문서, 개인 환각·개별 감각처럼 공유되지 않는 것은 해당 PC에만 남는다.
-- `TRANSMITTED`: 전화·무전·영상·전언·감시화면 등 실제 매체로 전달되는 범위만 공유한다. 상대편 공간 전체나 매체 밖의 감각·행동을 자동 공개하지 않는다.
-
-[OUTPUT]
-- `PRIVATE` 장면은 시네마틱 본문 **최상단**에 `🔒 P[N] 전용 Scene · 다른 플레이어는 확인하지 마십시오.`를 표시한다.
-- `SHARED` 장면은 필요 시 `👥 Shared Scene · P[N] [PC] · P[N] [PC]`를 표시할 수 있다. Private→Shared 합류가 일어난 첫 장면에는 혼동 방지를 위해 표시한다.
-- `TRANSMITTED`는 실제 공유 매체가 전달한 내용만 해당 수신 플레이어 출력에 포함한다. 출력 라벨이 지식 이전 자체를 만들지는 않는다.
-- 플레이 채널이 사람별 접근 제어를 지원하지 않으면 `PRIVATE` 라벨은 열람 금지 안내일 뿐 기술적 숨김을 보장한다고 주장하지 않는다. 접근 제어가 가능한 별도 플레이어 채널에서는 authorized player에게만 전달한다.
-
-[MERGE / KNOWLEDGE]
-- 분리 PC가 재합류하면 **그 시점 이후 현재 Shared Scene만** 공동 공개된다. 과거 Private Scene, 발견 사실, 추리, NPC 발언을 Keeper가 자동 recap/병합하지 않는다.
-- 과거 정보는 PC가 실제로 말·문서·통신·시연 등으로 전달했거나 이미 다른 PC가 독립적으로 알게 된 범위만 기존 `public_facts_by_pc`/Evidence/관계·지식 정본에서 공유된다. Scene Visibility state는 이를 복제하거나 대신하지 않는다.
-- Focus/Handoff/Spotlight 이동만으로 knowledge owner를 변경하지 않는다. Combat/Chase/Reaction에서도 순서가 우선할 뿐 본 visibility 경계는 유지한다.
+모든 플레이 장면은 참가자 전원에게 공개한다. FOG는 [CORE_VISIBILITY](01-core.md#core_visibility)의 플레이어 전체 대 비공개 세계 경계만 적용한다.
+- 장면 제목의 `P[N] · 이름`은 현재 행동하는 인물을 가리킨다. PC 전용·열람 금지·비밀 전달 라벨을 붙이지 않는다. 분리된 장소·귓속말·개인 환각도 실제 공개한 묘사는 파티가 함께 읽고 판단에 쓸 수 있다. 실제 알려진 출처·불확실성을 유지하며 환각/전언을 객관적 진실로 바꾸지 않는다. 아직 알아채지 못한 환각 여부를 공개 표식으로 누설하지 않는다.
+- 공개 지식은 기존 `public_facts_by_pc`의 실제 알려진 사실을 stable ref로 합친 공통 투영으로 사용한다. 누구에게도 공개되지 않은 Evidence node·NPC Agenda·숨은 연결은 합치지 않는다. 재합류·전화·공유 행동을 공통 지식 사용의 전제조건으로 삼지 않는다.
+- 장면의 실제 장소·행위자·발견자·시간·감각 조건은 그대로 보존한다. 물리적 현장 참여는 해당 장소에 있는 PC만 가능하고, 별도 장소의 PC는 자기 행동권에서 공통 정보를 활용한다.
+- Focus/Handoff는 카메라와 행동권을 바꾸며 정보 접근권을 새로 계산하지 않는다. 장면·지도·수첩마다 PC별 FOG를 재대조하지 않는다.
+- 과거 `scene_visibility`의 mode/authorized slots는 구판 전달 이력으로 보존할 수 있으나 현행 접근 차단에 쓰지 않는다. 신규 출력에는 별도 개인 정보 필터나 전달 큐를 만들지 않는다.
 
 ## STANDBY_PC_NO_AUTOPILOT
 
-Standby/분리 PC의 세계 시간이 흐를 수 있다는 사실은 Keeper에게 PC 선택권을 주지 않는다. 플레이어가 선언하지 않은 이동·조사·대화·정리·준비·휴식·아이템 사용을 오프스크린에서 완료 처리하지 않는다. 이미 선언된 지속 행동의 시간 경과와 세계/NPC가 그 PC에게 가하는 직접 결과만 인과적으로 진행할 수 있다.
+Standby/분리 PC의 세계 시간이 흐를 수 있다는 사실은 Keeper에게 PC 선택권을 주지 않는다. 플레이어가 선언하지 않은 이동·조사·대화·정리·준비·휴식·아이템 사용을 오프스크린에서 완료 처리하지 않는다. 이미 선언된 지속 행동의 시간 경과와 세계/NPC가 그 PC에게 가하는 직접 결과만 인과적으로 진행할 수 있다. PARALLEL_TIMELINE_SYNC의 짧고 독립적인 구간은 마지막 위치·선언 상태를 유지한 채 시간이 흐를 수 있으나 미선언 작업 성과·휴식 회복·자원 소비를 주지 않는다. 장시간 구간이나 그 PC의 선택이 필요한 실제 사건은 먼저 선언/반응 기회를 준다.
 
 ## SCENE_ROLES
 
@@ -342,59 +340,41 @@ Standby: 현재 Focus가 아니어도 같은 shared Scene에서 실제로 듣고
 
 ## CINEMATIC_SPOTLIGHT_SCENE
 
-[ROLE]
-비전투 멀티 PC의 Normal 포커스는 본 Lock이 단일 Scheduler다. Spotlight 공정성은 행동 횟수를 세지 않고 완결된 Scene 배분으로 관리하며 Combat, CURRENT_FOCUS, 정보 공개 범위와 Handoff를 유지한다.
-
-[FOCUS KIND]
-- `NORMAL`: 현재 PC가 새 장면의 행동 목적/의미 있는 선택을 선언할 행동권.
-- `CONTINUATION`: 이미 선언한 행동의 굴림·대항·피해·직접 결과. 새 Scene이 아니다.
-- `REACTION`: 세계/NPC/환경이 특정 PC에게 즉시 선택·저항을 요구한 범위.
-- `META_FREEZE`: 룰/묘사/이미지/상태 조회. 시간·Scene service를 소비하지 않는다.
-- `DIALOGUE_EXCHANGE`: 같은 장소의 이미 성립한 shared Scene에서 다른 PC가 실제로 듣고 본 것에 짧은 대사·질문·몸짓·즉시 반응으로 참여할 때 Current Focus만 넘기는 상태. PC↔PC 대화뿐 아니라 같은 NPC 대화에 자연스럽게 한마디 끼어드는 경우도 포함하며 새 Spotlight Scene이 아니다.
-- `HANDOFF_WAIT` / `REACTION_WAIT`: 다른 PC의 다음 Normal/긴급 Reaction 장면을 예약했으나 아직 열지 않은 상태. 신규 `A`는 시간 정지다.
-- `VISUAL_CHOICE_WAIT`: 적격 Visual Event에서 텍스트 컷씬/다음 진행과 비주얼 사이를 고르는 시간 정지 Gate다. 신규 상태에서는 `A=텍스트 컷씬/다음 진행`, `B=비주얼`이다.
-- `COMBAT`: 가 우선한다.
-
-[SPOTLIGHT SCENE]
-- Spotlight Scene은 한 PC의 현재 **장면의 행동 목적/Question**을 따라가는 짧은 시네마틱 플레이 장면이다. 행동 횟수를 세지 않는다.
-- 같은 Intent를 완결하는 판정·짧은 이동·즉시 확인·대화의 직접 연속은 Scene 안에서 이어갈 수 있다. 플레이어가 한 메시지에 여러 행동을 적었더라도 앞선 결과가 다음 판단을 바꾸면 그 지점에서 멈춘다.
-- 장면 전환 경계: 현재 micro-scene Intent가 해결/차단됨; 새 의미 있는 선택이 생김; 새 독립 목표/대화/조사로 바뀜; 장소·상황 맥락이 크게 변함; 다른 PC에게 즉시 Reaction이 필요함. 퀴즈대회·파티·수술·회의처럼 더 큰 Sequence 전체가 끝나야만 장면 전환 경계가 오는 것은 아니다.
-- 장면 전환 경계 뒤 다른 eligible PC가 기다리고 있으면 현재 PC에게 **두 번째 독립 Spotlight Scene을 연속 배정하지 않는다.** 같은 PC만 eligible이면 새 Scene을 이어갈 수 있다. Pass는 Meta다.
-
-[FAIRNESS]
-- `spotlight_epoch`와 `last_scene_epoch_by_pc{}`로 마지막 완결 Scene을 기록한다. 다음 owner는 가장 오래 Scene을 못 받은 eligible PC를 우선하고 동률은 P슬롯으로 안정화한다.
-- 분리 파티에서도 어떤 그룹을 장기간 방치하지 않는다. 단, 카메라 공정성과 극중 시간은 별개이며 시간은 [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync)이 담당한다.
-- Standby PC의 선택 가능한 행동을 Keeper가 대신 정하지 않는다. 이미 선언된 지속 행동만 그 범위에서 진행한다.
-
-[OUTPUT]
-- 한 응답의 시네마틱 장면은 방금 처리한 owner 한 명/한 장소의 직접 결과까지만 렌더링한다.
-- 같은 PC가 계속하면 Action Return/Roll Request+Bottom HUD. 같은 장소 shared Scene의 짧은 참여면 [COLOCATED_SHARED_SCENE_EXCHANGE](06-play.md#colocated_shared_scene_exchange)으로 즉시 해당 PC Focus를 줄 수 있다. 다른 PC의 새 Normal/branch이면 [NORMAL_HANDOFF_GATE](06-play.md#normal_handoff_gate), 즉시 Reaction이면 [REACTION_SCENE_HANDOFF](06-play.md#reaction_scene_handoff)으로 예약하고 그 응답에서 새 PC 장면을 열지 않는다.
-- Combat 진입 시 Scheduler를 정지하고 종료 뒤 가장 오래 기다린 eligible PC부터 새 Spotlight Scene을 연다.
+비전투 카메라 Scheduler다. 한 Spotlight는 이동·접촉·짧은 조사/대화처럼 하나의 장면 맥락에서 의미 있는 선택과 결과를 이어가는 묶음이다. **새 선택이나 위치 변경만으로 자동 종료하지 않는다.**
+- `NORMAL`은 PC가 의미 있는 다음 접근·행동을 정하는 단계다. `CONTINUATION`은 이미 선언한 행동의 굴림·대항·피해·직접 결과이며 새 선택 횟수를 늘리지 않는다. 같은 선언이라도 결과 뒤 새 방법·비용·목표를 선택하면 새 NORMAL이다.
+- `REACTION`은 실제 긴급 선택, `META_FREEZE`는 룰/공개 정보/이미지 요청, `DIALOGUE_EXCHANGE`는 같은 장소의 짧은 공동 참여다. `HANDOFF_WAIT/REACTION_WAIT`의 `A`와 `VISUAL_CHOICE_WAIT`의 `A/B`는 기존 시간 정지 입력을 유지한다. 전투/추격은 해당 순서 규칙이 우선한다.
+- 같은 목적의 판정·짧은 이동·확인·직접 대화는 이어간다. 이동 도착은 다음 상호작용을 여는 지점이며, 목적지에서 선택할 기회도 주기 전에 자동 컷하지 않는다. 한 메시지의 여러 선언은 앞선 결과가 다음 판단을 바꾸는 지점에서 멈춘다.
+- [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate)가 정한 장면 종료·대기 예산에서만 일반 인계를 확정한다. `spotlight_epoch/last_scene_epoch_by_pc`는 서비스 순서, 현재 Spotlight의 선택 횟수·시작 시각은 대기 예산에만 사용한다. Scene Turn·세계 시간·저장 주기와 혼동하지 않는다.
+- 한 응답의 주 장면은 처리한 PC 한 명이다. 계속 진행하면 같은 PC의 행동/판정 안내와 HUD, 인계가 확정되면 다음 PC 안내와 Handoff HUD를 출력한다. 인계가 없으면 다음 PC 이름이나 준비 입력을 덧붙이지 않는다.
+- 전투 뒤에는 현재 열린 직접 결과를 정리하고 가장 오래 기다린 eligible PC를 우선한다. 장면 제목·채팅 이동·같은 PC의 새 질문만으로 대기 예산을 초기화하지 않는다.
 
 ## SPOTLIGHT_FAIRNESS_COMMIT_GATE
 
-[ROLE]
-장면 전환 경계가 확정된 뒤 **다음 Normal Scene을 누구에게 열지 먼저 상태로 반영하고 나서** 출력하게 만드는 비전투 원자 Gate다. 큰 Sequence의 지속, 현재 장면의 재미, 같은 날짜·장소·데이트·행사라는 이유로 이 Gate를 건너뛰지 않는다.
+일반 비전투에서 몰입과 대기 시간을 함께 관리하는 유일한 전환 기준이다. 아래 '회'는 **플레이어의 의미 있는 선택을 받아 그 결과 또는 새 판단 지점까지 처리한 횟수**다. 메시지 수·PC 굴림 입력 수·Scene Turn 수가 아니다.
 
-[TRIGGER / PRIORITY]
-- 현재 owner의 직접 결과가 완결되어 장면 전환 경계가 실제 성립했을 때만 실행한다. 아직 같은 선언의 굴림·대항·피해·직접 결과인 진행 중 절차가면 실행하지 않는다.
-- 우선순위는 Combat/Chase의 즉시 순서와 [REACTION_SCENE_HANDOFF](06-play.md#reaction_scene_handoff)의 긴급 Reaction > 이미 발생한 진행 중 절차 > 본 Gate의 일반 공정성이다.
+### 계속할 때와 넘길 때
 
-[ATOMIC COMMIT ORDER]
-1. outgoing Scene의 직접 결과와 필요한 Scene Elapsed Time Settlement를 먼저 확정한다.
-2. 완결된 Spotlight Scene이면 `spotlight_epoch`를 한 번 증가시키고 outgoing owner의 `last_scene_epoch_by_pc{}`를 그 값으로 갱신한다. shared dialogue 교환이나 Handoff `A`만으로 epoch를 올리지 않는다.
-3. 현재 세계 상태에서 Normal Focus를 실제 받을 수 있는 PC만 eligible set으로 만든다. **활성 `branch_intent_by_pc{}`가 있는 Standby PC는 그 의사가 해결·철회·차단되지 않은 동안 반드시 eligible에 포함한다.** 열려 있는 자기 Sequence/미해결 Scene이 실제로 다음 Normal 선택을 기다리는 PC도 기존 Scheduler 정본대로 포함할 수 있다.
-4. 다른 eligible PC가 하나 이상 기다리면 `last_scene_epoch_by_pc{}`가 가장 오래된 PC를 next owner로 고른다. 미기록/동률은 가장 오래 기다린 것으로 보고 P슬롯으로 안정화한다. 현재 outgoing owner는 **다른 eligible PC가 모두 서비스되기 전 새 독립 Normal Scene을 연속으로 받을 수 없다.**
-5. next owner가 다른 PC면 같은 state 반영에서 `handoff_pending={active:true,source_owner:outgoing,target_owner:next_owner,input_contract:"alpha_A"}`, `focus_owner=next_owner`, `focus_mode=handoff_wait`를 먼저 확정한다. outgoing의 큰 Sequence/open_sequences는 미해결 상태로 보존한다.
-6. Handoff가 반영된 응답은 [NORMAL_HANDOFF_GATE](06-play.md#normal_handoff_gate) 출력으로 끝내며 outgoing PC에게 새 Normal 행동권·새 독립 질문·새 목적지 선택을 추가하지 않는다. `다음에도 같은 데이트/행사/업무를 계속한다`는 이유로 이 금지를 우회하지 않는다.
-7. 다른 eligible PC가 실제로 없을 때만 outgoing owner에게 새 Normal Action Return을 줄 수 있다.
+- 기본 목표는 한 PC **3회**다. 1~2회에는 같은 맥락의 이동·접촉·대화·조사를 이어갈 수 있다. 도착·문 열기·자료 한 번 확인은 그 자체만으로 인계 사유가 아니다. 이동 뒤 목적지에서 최소 한 번 상호작용을 선택할 기회를 우선 준다.
+- 3회에 도달하면 현재 직접 결과가 끝난 자연스러운 경계에서 가장 오래 기다린 eligible PC로 넘긴다. 3번째가 이동 도착뿐이라면 5회 상한 안에서 목적지의 첫 상호작용 기회를 준 뒤 넘길 수 있다. 바로 이어진 대화 국면·직접 후속 결과를 닫는 데 필요하면 같은 맥락 안에서 더 진행할 수 있다.
+- 다른 eligible PC가 기다리는 동안 **5회 이후 첫 안전한 경계에서는 반드시 인계**하고 여섯 번째 새 Normal 선택을 열지 않는다. 이미 열린 굴림·피해·저항·즉시 결과는 끝낸다. 상한 직전 일부러 새 판정·새 대화 목표를 추가해 컷을 미루지 않는다.
+- 3회 미만이어도 플레이어가 장면 종료/넘김을 선언하거나, 주된 방문·조사·대화 목적이 명확히 끝나 무관한 새 목표로 넘어갈 때, 더 할 의미 있는 행동이 없을 때는 일찍 넘긴다. 횟수를 채우기 위한 공허한 대화·단계·재확인을 만들지 않는다.
+- 다른 PC의 긴급 Reaction·공유 인과에 필요한 동시간 선택은 예산보다 우선한다. 오래 기다린 PC가 명시적으로 참여/분기를 요청하면 현재 직접 결과 뒤 첫 안전 경계에서 넘긴다. 단순 관전 중 질문·파티 추리 의견만으로 자동 인계하지 않는다.
+- 모든 다른 PC가 명시적으로 패스/부재이거나 실제 행동 불가면 현재 PC가 계속할 수 있다. 누군가 다시 참여 가능해지면 다음 안전 경계에서 우선권을 준다. 이 예외로 부상·위협·필수 선택을 오프스크린 처리하지 않는다.
 
-[HARD EDIT-POINT EXAMPLES]
-- 의미 있는 장소 이동을 완료해 새 장소에서 다음 선택이 열림.
-- 특정 NPC와의 독립 대화 목적/방문 목적이 끝나 다음 사람·활동을 고를 수 있음.
-- 하나의 활동(식사, 작업 구경, 게임, 방문, 조사 묶음)이 끝나 다음 활동으로 넘어감.
-- 큰 Sequence 안에서 중간 결과가 완결되고 새 선택이 생김.
-위 예시는 Turn 수 하드캡이 아니다. 같은 직접 결과가 아직 끝나지 않았다면 컷하지 않고, 반대로 1~2 Turn만 지났어도 장면 전환 경계+대기 eligible PC가 있으면 Handoff한다.
+### 횟수와 저장
+
+- 같은 선언의 판정 요청→굴림→피해→결과는 통틀어 1회다. 룰 질문·상태 조회·이미지·Handoff `A`·단순 재표시·짧은 끼어들기는 0회다. 실질적으로 새 선택을 받는 대화는 극중 시간이 짧아도 1회로 센다.
+- 이미 있는 Spotlight 진행 기록에 현재 owner·시작 시각·횟수·종료 사유를 compact하게 유지하고 STATE_SCHEMA에 포함한다. 카운트용 DB 조회·별도 영구 턴 시계를 만들지 않는다. owner가 같은 채로 장면 제목/목적이 조금 바뀌었다고 횟수를 초기화하지 않는다.
+- 1인 게임에는 교대 예산을 강제하지 않는다. 복수 PC의 각 정상 Spotlight를 시작할 때 횟수를 초기화하고, 재개/메타/인계 확인/긴급 반응 뒤 원래 장면 복귀에는 기존 횟수를 복원한다.
+
+### 인계를 확정하는 순서
+
+1. 실제 전환 조건이 성립한 안전 경계인지 먼저 확인한다. Combat/Chase·긴급 Reaction > 열린 직접 결과 > 일반 공정성 순서를 지킨다.
+2. outgoing의 직접 결과와 미반영 경과시간을 한 번 정산한다. 완료된 Spotlight에만 `spotlight_epoch`를 한 번 올리고 `last_scene_epoch_by_pc`를 기록한다. 중간 결과마다 완료 처리하지 않는다.
+3. 행동 가능한 참가 PC를 eligible로 본다. 구체적인 새 선언이 아직 없다는 이유만으로 제외하지 않는다. 활성 `branch_intent_by_pc`와 미해결 선택 대기는 포함하며, 명시적 패스·부재·행동 불가를 제외한다.
+4. 가장 오래 서비스받지 못한 다른 PC를 우선하고 동률은 P슬롯으로 안정화한다. 3인도 각 대기 PC가 한 묶음씩 받기 전에 방금 처리한 PC가 새 묶음을 독점하지 않는다.
+5. next owner와 `handoff_pending={active:true,source_owner:outgoing,target_owner:next_owner,input_contract:"alpha_A"}`를 함께 반영한다. 미해결 Sequence·작업·기존 선언은 유지한다.
+6. NORMAL_HANDOFF_GATE 안내와 예약 PC HUD로 마친다. outgoing에게 새 행동권을 동시에 주지 않는다. `A`는 장면을 열기만 하며 Scene Turn·시간·저장·난수를 진행하지 않는다.
 
 ## COLOCATED_SHARED_SCENE_EXCHANGE
 
@@ -410,7 +390,7 @@ Standby: 현재 Focus가 아니어도 같은 shared Scene에서 실제로 듣고
 4. 짧은 참여가 반복되더라도 화자 교환 자체로 `spotlight_epoch`를 증가시키지 않는다.
 [TIME / 정보 공개 범위]
 - 짧은 교환 자체는 화자마다 Turn/Timeline을 증가시키지 않는다. 대화 전체가 fiction상 의미 있는 시간을 소비했다면 그 실제 지속시간만 반영한다.
-- Focus가 바뀌면 HUD/지식 경계는 즉시 그 PC 정보 공개 범위를 따른다. 같은 장소에서 함께 들은 대사·공개 행동만 공유되고 각 PC의 비공개 지식은 자동 공유되지 않는다.
+- Focus가 바뀌면 HUD의 자원·위치·소지품은 해당 PC 값으로 바뀌며 파티 공통 지식은 유지한다. 현장 대화/물리적 참여 가능성은 실제 위치·통신 조건을 따른다.
 [EXIT / EMERGENT EXPANSION]
 - 참여가 독립 이동·조사·물건 사용·별도 NPC 접촉·개인 내기·새 목표처럼 독립 장면의 행동 목적로 성장하면 이를 억지로 원래 장면에 접지 않는다. shared exchange를 끝내고 정상 장면 전환 경계/Scheduler의 **새 Scene 후보**로 인정한다.
 - Standby가 `나는 밖으로 나간다`처럼 독립 행동을 선언하면 branch intent는 무료로 등록할 수 있으나 이동 자체를 offscreen 확정하지 않는다. 실제 행동은 그 PC Normal Focus에서 시작한다.
@@ -444,7 +424,7 @@ Normal Action Return에서 자유행동을 대체하지 않고 현재 Scene의 *
 1. outgoing Active POV의 직접 결과와 Scene을 완결한다.
 2. `focus_owner=next_owner`, `focus_mode=handoff_wait`, `handoff_pending={active:true,source_owner:outgoing,target_owner:next_owner,input_contract:"alpha_A"}`로 예약하고 active_pov는 outgoing에 남긴다.
 3. `▶ 🎬 다음 턴은 [P[N] · PC 이름]의 턴입니다. 준비가 완료되면 A를 입력해 주세요.`
-4. 예약 PC의 **기존 정보 공개 범위 Handoff HUD**만 1회 출력하고 행동/판정을 요구하지 않는다.
+4. 예약 PC의 **시트와 파티 공개 정보 Handoff HUD**만 1회 출력하고 행동/판정을 요구하지 않는다.
 [ACTIVATION]
 - 신규 `A`는 시간 정지다. Scene Turn, Spotlight service, timeline, World Momentum, NPC/환경, 자원, RNG를 진행하지 않는다.
 - `A` 뒤 active_pov를 예약 PC로 바꾸고 pending을 해제한다. 다음 응답에서 그 PC의 Establishing/Re-entry Scene을 먼저 렌더링하고 Normal 행동권+Active HUD를 준다. 새 `scene_intent`는 플레이어 선언으로 생긴다.
@@ -456,7 +436,7 @@ Normal Action Return에서 자유행동을 대체하지 않고 현재 Scene의 *
 ## REACTION_SCENE_HANDOFF
 
 - outgoing PC의 직접 결과가 **다른 PC**에게 즉시 선택·저항·굴림을 요구하면, outgoing 결과까지만 완결하고 target을 `focus_mode=reaction_wait`, `reaction_pending.input_contract="alpha_A"`로 예약한다. 같은 응답에서 target 장면/판정을 선행하지 않는다.
-- 플레이어 UI는 `▶ 🎬 다음 포커스는 [P[N] · PC 이름]의 긴급 반응입니다. 준비가 완료되면 A를 입력해 주세요.` 뒤 target의 기존 정보 공개 범위 HUD로 끝낸다.
+- 플레이어 UI는 `▶ 🎬 다음 포커스는 [P[N] · PC 이름]의 긴급 반응입니다. 준비가 완료되면 A를 입력해 주세요.` 뒤 target의 시트와 파티 공개 정보 HUD로 끝낸다.
 - 신규 `A`는 시간 정지이며 다음 응답에서 target 위치의 위험과 직접 감각을 먼저 Establish한 뒤 필요한 Reaction/판정을 요구한다. Reaction 해결 뒤 미해결 원래 Scene/진행 중 절차가 있으면 정본 Focus Return으로 복귀한다.
 - 패치 이전 숫자 pending은 저장 규칙 호환 Gate만 처리한다. 같은 PC가 자기 장면에서 즉시 반응하는 경우에는 별도 Handoff를 만들지 않는다.
 
@@ -512,9 +492,9 @@ Normal Action Return에서 자유행동을 대체하지 않고 현재 Scene의 *
 - 추가 Context는 보통 현재 판단을 바꾸는 0~2행만 쓴다. 즉시 위험·필수 선택이 더 있으면 누락하지 않는다. 본문을 그대로 반복하지 않는다.
 - `💭`는 플레이어가 실제로 제시한 미검증 가설만 렌더링한다. Keeper가 추리·감정·판단을 대신 만들어 넣지 않는다. `🧩`는 Evidence/실제 검증으로 확립된 결론만 사용한다.
 - 하나의 사실은 가장 적합한 한 행에 우선 배치하고 `👁️/🔎/🧩/↻`에 동일 내용을 반복 복사하지 않는다. Context 생략은 underlying public facts/hypotheses/conclusions/promises/world state 삭제를 뜻하지 않는다.
-- Focus가 바뀌면 Core와 Context 모두 그 PC 정보 공개 범위 기준으로 바뀐다. 다른 PC의 HP/SAN/Luck/Inventory/비공개 사실/가설/결론을 합쳐 보여주지 않는다.
-- Handoff 예약 응답은 예약 PC가 이미 알고 있던 기존 정보 공개 범위만 투영하며 새 장소 상태·감각·단서·상호작용 표면을 선행 공개하지 않는다. `A` 뒤 Establishing/Re-entry Scene에서 실제 공개된 정보만 같은 응답 Context HUD에 반영한다.
-- 플레이어가 `상세/전체 단서/인벤토리 펼쳐줘` 등을 요청하면 해당 PC 정보 공개 범위에서 별도 확장 뷰를 제공할 수 있다. HUD 뒤에는 새 행동권 문장이나 다른 PC 장면을 추가하지 않는다.
+- Focus가 바뀌면 Core의 HP/SAN/Luck·현금·위치·소지품은 해당 PC 값으로 바뀐다. Context는 파티 공통 지식에서 그 PC의 현재 판단에 필요한 사실만 고른다. 다른 PC의 자원·소지품을 합산하지 않는다.
+- Handoff 예약 응답은 이미 공개된 파티 지식과 예약 PC의 실제 시트만 투영한다. 아직 누구도 발견하지 않은 새 장소 상태·단서를 인계 HUD에서 선행 공개하지 않는다. `A` 뒤 장면에서 새로 공개된 사실은 파티 공통 지식과 같은 응답 HUD에 반영한다.
+- 플레이어가 `상세/전체 단서/인벤토리 펼쳐줘` 등을 요청하면 파티 공개 범위에서 별도 확장 뷰를 제공할 수 있다. HUD 뒤에는 새 행동권 문장이나 다른 PC 장면을 추가하지 않는다.
 
 ## HUD_VISUAL_STYLE
 
@@ -574,7 +554,11 @@ HUD는 이름·핵심 수치·현재 상황·소지품을 빠르게 구분할 �
 
 ## PARALLEL_TIMELINE_SYNC
 
-- 분리 파티의 모든 장소는 하나의 global timeline을 공유하지만 **Spotlight Scene 수나 PC 행동 수를 시간 단위로 환산하지 않는다.** 카메라 이동만으로 시간이 흐르지 않는다.
-- 각 행동은 fiction상 실제 지속시간을 가진다. 짧은 행동은 즉시 반영하고, 한 PC가 다른 분리 PC의 선택과 병렬로 겹칠 만큼 의미 있는 시간(수분 규모 이상의 작업/대기/이동 등)을 소비하려 할 때 `parallel_time_pending`을 열어 아직 같은 시간대 행동이 정해지지 않은 PC에게 선언 기회를 준다.
-- Keeper는 미확정 PC의 이동·조사·휴식·대화·준비를 대신 선택하지 않는다. 관련 PC의 동시간대 행동/대기/지속이 확정된 뒤 global timeline을 실제 소요시간에 맞게 진행한다.
-- 로컬 결과는 즉시 반영하되 다른 장소의 비공개 정보는 공유하지 않는다.
+분리 파티도 하나의 global timeline을 사용한다. 카메라 전환은 시간을 진행하지 않으며, 이미 반영한 구간은 다른 PC 장면에서 다시 더하지 않는다. **분리 상태 또는 수분짜리 행동만으로 매번 병렬 선언을 요구하지 않는다.**
+
+- 짧고 독립적인 이동/작업은 현재 Spotlight 시작 이후 누적 극중 경과가 **15분 이내**이고, 그 구간에 다른 PC의 대응·공유 자원·합류·마감·경로 변화가 현재 결과에 영향을 주지 않으면 바로 처리한다. 실제 세계의 due 결과는 작업 상태에서 검사하고 반영한다. 다른 PC의 미선언 행동·성과·회복은 만들지 않는다.
+- 다음 경우에만 `parallel_time_pending`으로 관련 PC의 동시간 선택을 먼저 받는다: ① 현재 Spotlight 누적 15분을 넘기는 시간 생략/이동/장기 작업, ② 다른 PC의 이미 선언된 분기가 같은 시간 구간의 결과를 바꿀 수 있음, ③ 공통 물품/차량/공간·합류·명시적 시간창의 순서가 실제로 충돌, ④ 다른 PC에게 완료 전 도달하는 즉시 선택/위험. 근거 없이 충돌을 가정해 모든 장소를 재점검하지 않는다.
+- 장시간 행동은 관련 PC에게 해당 구간에 할 일을 한 번 묶어 묻고, 이미 선언된 행동의 충분한 범위는 재사용한다. 같은 `시간 구간+선언`을 재조회·재질문하거나 5분마다 강제 교대하지 않는다. 플레이어가 패스/대기/계속을 실제 선택했으면 그 범위만 반영한다.
+- 병렬로 선언한 행동들은 같은 시작 시각과 각 지속시간·인과를 기록한다. 완료 시간을 합산하지 않고 **가장 이른 의미 있는 중단/선택 시점**까지 진행한다. 5분 작업과 12분 이동이 함께 시작되었다면 5분 시점에는 이동이 5/12분 진행된 것이며, 남은 7분을 다시 12분으로 처리하지 않는다. 미해결 대응이 없고 나머지 선언이 유효하면 잔여 구간은 반복 승인 없이 이어갈 수 있다.
+- 시간 정산 때문에 모든 PC의 장면을 매번 재출력하지 않는다. 필요한 선택만 짧게 받고 현재 POV의 직접 결과를 보여준다. 다음 카메라 owner는 SPOTLIGHT_FAIRNESS_COMMIT_GATE가 결정하며 병렬 작업 완료가 자동 왕복 인계를 만들지 않는다.
+- 어느 PC에게도 아직 드러나지 않은 세계 결과는 비공개로 보존한다. 한 PC의 장면에서 실제 공개한 사실은 전원 공유하며, 공개되었다는 이유로 다른 PC의 위치·소지품·이미 확정된 과거 행동을 바꾸지 않는다.

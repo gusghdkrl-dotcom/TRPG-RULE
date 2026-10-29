@@ -20,9 +20,9 @@
 | HP11에서 단일6 피해 | 중상 조건 충족. 이후 의식/HP0 처리는 해당 조건에 따름 | HP_AND_DEATH / WOUNDS | 일치 |
 | 중상 없는 PC의 HP0 | 즉사로 단정하지 않고 의식불명 | HP_AND_DEATH | 일치 |
 | 단일 SAN5 손실 | 모든 PC가 일시적 광기 INT 검사 대상. 이름/직업으로4점 예외를 생성하지 않음 | INSANITY_CONDITIONS | 일치 |
-| 한 PC가 독립 행동을 끝냈고 다른 PC가 대기 | 공정성 규칙으로 다음 PC 선정, 같은 응답에 새 PC 장면 선행 출력 금지 | SPOTLIGHT_FAIRNESS_COMMIT_GATE / NORMAL_HANDOFF_GATE | 일치 |
+| 한 PC의 Spotlight 종료 조건이 성립하고 다른 PC가 대기 | 3회 목표·5회 상한과 실제 종료/긴급 조건으로 다음 PC 선정, 새 PC 장면 선행 출력 금지 | SPOTLIGHT_FAIRNESS_COMMIT_GATE / NORMAL_HANDOFF_GATE | 일치 |
 | Handoff A·이미지 B | 시간·Scene Turn·난수 정지, 저장된 대기 단계만 처리 | PLAYER_INPUT_NAMESPACE_ROUTER / VISUAL_CHOICE_GATE | 일치 |
-| P1 단서를 P2가 아직 전달받지 않음 | 자동 공유하지 않음. 같은 채팅의 실제 접근 제어 한계도 명시 | CORE_VISIBILITY / PLAYER_SCENE_VISIBILITY | 일치 |
+| P1 장면에서 단서 공개, P2는 다른 장소 | P2도 공통 지식으로 사용 가능, 전달 행동 불필요, 위치·물품은 별개 | CORE_VISIBILITY / PLAYER_SCENE_VISIBILITY | 일치 |
 | Scene Turn30이 전투 진행 도중 도달 | 열린 절차 종료 후 첫 안전 경계에 periodic 저장 | STATE_CADENCE | 일치 |
 | Turn29 수동 저장 후30 도달 | 다음 자동 주기는 밀리지 않음 | STATE_CADENCE | 일치 |
 | 시간 생략으로30·60 기준선 모두 통과 | 같은 snapshot을 중복 저장하지 않고1회, 다음 기준선은 현재보다 큰30배수 | STATE_CADENCE | 일치 |
@@ -51,7 +51,7 @@
 | 수리를 마친다고 선언, 새 위험/비용 없음 | 통상 공정을 묶고 한 목적의 결과·시간·합의된 정산을 한 번 적용 | CINEMATIC_ELLIPSIS | 일치 |
 | 덮개만 연다고 명시 | 그 범위만 짧게 처리, 자동 수리/유료 부품 교체 없음 | CINEMATIC_ELLIPSIS | 일치 |
 | 수리 중 새 비용 또는 위험 발견 | 해당 지점에서 멈춰 선택/판정을 돌림 | CINEMATIC_ELLIPSIS | 일치 |
-| 장시간 수리 도중 세계 사건 도달 | 다른 PC의 동시간 선택과 가장 이른 중단 사건을 먼저 처리 | LONG_ACTION_EARLIEST_INTERRUPTION / PARALLEL_TIMELINE_SYNC | 일치 |
+| 장시간 수리 도중 세계 사건 도달 | 실제 동기화 조건일 때만 동시간 선택 수집, 가장 이른 중단 사건 처리 | LONG_ACTION_EARLIEST_INTERRUPTION / PARALLEL_TIMELINE_SYNC | 일치 |
 | NPC에게 새 정보가 생겨 먼저 연락할 이유·수단이 있음 | 초기 시각표에 없던 행동도 기존 목적·현재 조건으로 실행하고 기록 | WORLD_INITIATIVE_EXECUTION | 일치 |
 | 최근 두 장면이 같은 무변화 확인만 반복 | 다음 안전 경계에 정체 점검, 자동 공격/새 정답 생성은 없음 | SCENE_PACING_GATE | 일치 |
 | 동일 규칙 본문이 현재 대화에서 확인 가능 | 재조회 생략 가능, 컨텍스트 유실 시 원문 재조회 | TURN_RESPONSE_BUDGET | 일치 |
@@ -137,6 +137,41 @@
 | 메인 슬롯 일부 비었고 별도 키템 없음 | 실제 점유량·주요 도구만 표시, 빈 칸·키템 행 채우기 없음 | BOTTOM_HUD_CONTRACT / HUD_VISUAL_STYLE | 일치 |
 | 시간·현금 등 필수 값 미확인 | 확인 필요 표시 후 기존 상태/복구 절차 적용, 예시 값 대입 없음 | HUD_VISUAL_STYLE | 일치 |
 | HUD 외형 개선만 필요 | 기존 공개 상태로 서식 출력, 장식용 이미지·검색·DB 조회·새 저장 없음 | HUD_VISUAL_STYLE | 일치 |
+
+## 조회·공통 지식·Spotlight 정정 대조
+
+아래 시간·경로는 임의의 검토 조건이다. 실제 캠페인의 상태나 도구 실행 결과가 아니다.
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 같은 대화에 현재 상태·규칙 본문 있음, 독립적인 12분 이동, 저장 경계 아님 | 규칙/DB 재조회 없이 출발~도착 한 응답, 위치·시간·Turn 한 번 반영 | ROUTINE_MOVEMENT_FAST_PATH / STATE_ACCESS_ROUTER | 일치 |
+| Spotlight 첫 이동으로 목적지 도착 | 같은 PC에게 문 두드리기 등 첫 상호작용 기회, 자동 인계 없음 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
+| 이미 본 문서·공개 지도·HUD 재표시 | 작업 상태 재사용, DB 조회/장식용 검색 없음, 재표시만으로 시간 진행 없음 | STATE_ACCESS_ROUTER / TURN_INCREMENT | 일치 |
+| 새로운 판정의 예외 본문만 유실 | 필요한 규칙 ID만 조회, 게임 상태가 남아 있으면 DB load 불필요 | ACTIVE_PLAY_ROUTING_FIREWALL | 일치 |
+| working 상태는 최신인데 verified 저장은 이전 위치 | 일반 조회로 과거 저장을 덮어쓰지 않음, 미저장 결과 유지 | STATE_ACCESS_ROUTER | 일치 |
+| 새 채팅 또는 실제 현재 상태 유실 | verified 복원/복구 허용, 빈 상태를 추측 생성하지 않음 | STATE_ACCESS_ROUTER / STATE_RESUME | 일치 |
+| 짧은 이동 결과 Scene Turn30 안전 경계 도달 | 일반 이동이어도 필수 저장·verify/read-back 실행 | STATE_ACCESS_ROUTER / STATE_CADENCE | 일치 |
+| 저장 read-back이 exact-version load 조건 충족 | 같은 원문 재사용, 별도 동일 load 반복 없음 | STATE_COMMIT / STATE_ACCESS_ROUTER | 일치 |
+| 저장 없는 테스트에서 연속 평범한 행동 | 원본 DB·수첩 쓰기 및 이유 없는 DB 대조 없음, 안내 반복 없음 | STATE_ACCESS_ROUTER | 일치 |
+| P1이 공개한 단서, P2는 다른 장소 | P2도 판단에 사용, 전달·전화·합류 요구 없음 | CORE_VISIBILITY | 일치 |
+| 공유된 단서는 미검증 전언·가설 | 출처/제안자와 불확실성 유지, 검증 결론으로 승격 없음 | PLAYER_SCENE_VISIBILITY | 일치 |
+| 누구도 발견하지 않은 증거·NPC 비밀 | 파티 합집합에 포함하지 않음, 미발견 세계는 비공개 | CORE_VISIBILITY / EVIDENCE_NAMESPACE_CONSOLIDATION | 일치 |
+| P1에게 있는 열쇠가 공통 지식이 됨 | P2 인벤토리에 생기지 않고 원격 사용도 불가 | CORE_VISIBILITY | 일치 |
+| P1 직접 목격형 SAN 노출 | 원격 P2에게 목격 손실 복사 없음, 정보 노출은 실제 해당 조건일 때 별도 처리 | CORE_VISIBILITY | 일치 |
+| 파티가 안 사실을 NPC가 듣지 못함 | NPC의 전지적 지식 갱신 없음 | DURABLE_STORY_CONTINUITY / CORE_VISIBILITY | 일치 |
+| 같은 맥락에서 의미 있는 선택·결과 1~2회 | 현재 PC 계속 가능, 장소 변경/새 선택만으로 인계하지 않음 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
+| 3회 완료, 자연스러운 직접 결과 종료, 다른 PC 대기 | 가장 오래 기다린 eligible PC로 인계 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
+| 세 번째 결과가 이동 도착뿐 | 5회 상한 내에서 목적지 첫 상호작용 기회 뒤 인계 가능 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
+| 5회째 선언의 굴림/피해 처리 중 | 직접 결과까지 완료 후 인계, 여섯 번째 새 Normal 열지 않음 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
+| 굴림 입력 2개·메타·A 확인이 추가됨 | 같은 선언은 1회, 메타/A는 0회, 새 Turn도 중복 증가 없음 | SPOTLIGHT_FAIRNESS_COMMIT_GATE / TURN_INCREMENT | 일치 |
+| 1회 만에 방문 목적 종료 또는 명시 패스 | 공허한 선택으로 3회 채우지 않고 일찍 인계 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
+| 3인 모두 대기 가능, 방금 P1 서비스 완료 | 오래 기다린 P2/P3부터 순서 배정, 의사 미제출만으로 제외하지 않음 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
+| 12분 이동인데 다른 PC의 대응이 4분 시점에 필요 | 짧아도 실제 동기화/중단 우선, 12분 전체 확정 금지 | PARALLEL_TIMELINE_SYNC / LONG_ACTION_EARLIEST_INTERRUPTION | 일치 |
+| 같은 Spotlight 누적 15분/16분, 다른 충돌 없음 | 15분까지 독립 처리 가능, 16분 구간은 다른 PC 선언 기회 필요 | PARALLEL_TIMELINE_SYNC | 일치 |
+| 같은 시간에 5분 작업·12분 이동을 이미 선언 | 첫 5분 뒤 이동 5/12분, 잔여7분만 처리, 총17분으로 합산하지 않음 | PARALLEL_TIMELINE_SYNC | 일치 |
+| 대기 PC가 아무 작업도 선언하지 않은 짧은 독립 구간 | 세계 시간만 경과, 미선언 조사 성과·휴식 회복·소모 없음 | STANDBY_PC_NO_AUTOPILOT | 일치 |
+| 저장/재개 시 Spotlight 4회 및 열린 판정 보존 | 횟수 초기화나 결과 재실행 없이 해당 단계로 재개 | STATE_IDENTITY / SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
+| 기존 개인 장면 기록이 있는 캠페인에 현행 패치 적용 | 실제 공개 사실만 공통 지식으로 사용, verified 원문/과거 결과 유지 | STATE_COMPATIBILITY | 일치 |
 
 ## 미실행
 

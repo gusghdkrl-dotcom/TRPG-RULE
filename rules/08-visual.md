@@ -5,17 +5,17 @@
 ## MAP_RUNTIME_INTERACTION
 
 지도는 확정된 장소·경로와 실제 세계 상태를 참조한다. 이미지의 픽셀 거리가 이동 시간의 정본은 아니다.
-- 지도 보기·공개 경로 질문은 시간 정지다. 현재 PC가 실제로 알고 공유받은 `player_map_state`만 보여준다.
-- 지도에서 목적지를 고르는 선언은 실제 이동이다. 경로의 봉쇄·거리·수단·위험·시간을 처리한다. 순간이동이나 무료 탐사가 아니다.
+- 지도 보기·공개 경로 질문은 시간 정지다. 파티 중 누구든 실제 발견한 정보를 반영한 공통 `player_map_state`만 보여준다.
+- 지도에서 목적지를 고르는 선언은 실제 이동이다. [ROUTINE_MOVEMENT_FAST_PATH](06-play.md#routine_movement_fast_path)로 확인된 경로를 처리하고 실제 봉쇄·거리·수단·위험·시간을 반영한다. 순간이동이나 무료 탐사가 아니다.
 - 여러 공개 경로의 차이가 의미 있으면 알려진 차이를 설명하고 선택을 받는다. 미발견 지름길은 제안하지 않는다.
 - 발견·개통·폐쇄 등이 실제 확인됐을 때 공개 지도 투영을 갱신한다. 지도 때문에 장소나 단서를 생성하지 않는다.
-- PC가 남긴 표식은 `map_annotations_by_pc`에 기록한다. 분리된 개인 표식은 전달 전 공유하지 않는다.
+- PC가 남긴 공개 표식은 `map_annotations_by_pc`에 작성자를 보존하고 공통 지도에 표시한다. 별도의 전달 행동을 요구하지 않는다.
 - 클릭 UI가 실제 제공되지 않으면 공개 장소·경로의 이름을 자연어로 지정한다. 이미지 속 부수 표현은 세계의 정본이 아니다.
 
 ## START_MAP_HANDOUT_GATE
 
 - `게임 시작`으로 PLAY가 반영된 신규 Run에서 최초 PC Scene을 열기 전에, `player_map_state.start_map_handout.status=pending`이면 **현재 캠페인/Chapter의 시작 지역 지도 이미지 1장**을 자동 생성·전달한다. 이는 플레이어가 이미 요청한 캠페인 handout 정책이며 별도 `A/B` Visual Choice를 요구하지 않는다.
-- handout은 `canonical_map_model`에서 공개 가능한로 파생한 `player_map_state`만 사용한다. 기본 지형·공개 생활권·알려진 주요 Route·공개 시설/랜드마크·북쪽/범례·시대/계절감은 표현할 수 있으나 Hidden POI·비밀통로·미발견 Evidence/Threat 위치·다른 PC의 비공개 시작 위치를 표시하지 않는다.
+- handout은 `canonical_map_model`에서 공개 가능한로 파생한 `player_map_state`만 사용한다. 기본 지형·공개 생활권·알려진 주요 Route·공개 시설/랜드마크·북쪽/범례·시대/계절감은 표현할 수 있으나 Hidden POI·비밀통로·미발견 Evidence/Threat 위치는 표시하지 않는다. 이미 공개된 PC별 시작 위치는 실제 위치에 맞게 표시할 수 있다.
 - 지도 생성/전달은 **시간 정지**다. Scene Turn, timeline, World Momentum, NPC/Threat, RNG, HP/SAN/Luck/Inventory를 진행하지 않는다. 지도 handout이 실제 전달된 뒤 `status=delivered`로 반영하고, 저장 규칙의 Play Start Checkpoint verified 이후에만 첫 PC Scene을 연다.
 - 이미지 자체는 공간 정본이 아니다. 픽셀 배치와 실제 world state가 충돌하면 `canonical_map_model + 현재 world/location/route state`가 우선한다. 이미지가 그리지 않은 장식 요소를 새 장소/경로로 사용할 수 없다.
 - stable asset ref가 실제로 있으면 저장할 수 있고, 없으면 map model + visual manifest로 재현한다. 이미지 생성 실패 시 geography를 즉석 재창작하지 않고 handout을 pending으로 유지한 채 같은 frozen spec으로 재시도한다.
@@ -28,7 +28,7 @@
 [VALID FUNCTIONAL MAP]
 - 플레이어 지도는 분위기용 풍경 삽화나 시네마틱 배경이 아니라 **이동·탐사·공간 판단에 실제 사용할 수 있는 기능형 지도**여야 한다. top-down/준탑다운 조감도/명확한 schematic 지역도/도면형처럼 상대 위치와 Route 연결이 읽히는 형식을 사용한다.
 - 거리 풍경, 마을 전경 일러스트, 캐릭터 중심 장면 카드, Route 연결을 판독할 수 없는 콘셉트 아트는 시작 지도 성공으로 취급하지 않는다.
-- 현재 공개 범위에서 최소 `공개 장소 라벨 / 공개 Route와 연결 / 방향 또는 orientation anchor / 이동 판단에 필요한 지형·경계 / 확인된 Route 상태`를 읽을 수 있게 한다. 플레이 중에서 Current Focus PC의 실제 위치가 revealed node/region에 대응하고 정보 공개 범위를 침해하지 않으면 현재 위치 마커를 표시한다. 첫 shared handout에 안전하게 공유할 current location이 없으면 다른 PC의 비공개 시작 위치를 노출하기 위해 마커를 강제하지 않는다.
+- 현재 공개 범위에서 최소 `공개 장소 라벨 / 공개 Route와 연결 / 방향 또는 orientation anchor / 이동 판단에 필요한 지형·경계 / 확인된 Route 상태`를 읽을 수 있게 한다. 플레이 중에서 Current Focus PC의 실제 위치가 revealed node/region에 대응하고 정보 공개 범위를 침해하지 않으면 현재 위치 마커를 표시한다. PC 위치가 아직 확인되지 않았으면 마커를 추측 생성하지 않는다. 공개된 다른 PC의 위치는 해당 슬롯을 구분해 표시할 수 있다.
 - 지도에 표시하는 장소/Route는 각각 기존 `location_nodes{}`/`route_edges[]`의 stable ref에서 파생해야 한다. 그림의 장식 건물·길·아이콘은 새 이동 가능 장소/통로가 아니다.
 - 생성된 이미지가 위 조건을 충족하지 않거나 공개 topology와 모순되면 `start_map_handout.status=delivered`로 반영하지 않는다. geography를 재생성하지 말고 같은 frozen map/player projection으로 기능형 지도를 다시 렌더링한다.
 - 새 장소/Route 공개나 확인된 Route 상태 변화가 `player_map_state`에 반영되면 지도를 매 턴 자동 재생성하지 않는다. 다음 명시적 지도 열람 또는 새 handout이 필요한 시점에 최신 projection을 렌더링한다.
