@@ -1,10 +1,10 @@
 # 규칙 색인
 
-규칙판: 1차 정리판 2026-10-29. 실행 파일은 이 폴더의 Markdown 문서다. 과거 문서·개발 일지를 검색 정본으로 사용하지 않는다.
+규칙판: 플레이 개선판 2026-10-29. 실행 파일은 이 폴더의 Markdown 문서다. 과거 문서·개발 일지를 검색 정본으로 사용하지 않는다.
 
 ## 조회 순서
 
-현재 선언과 상태에서 필요한 항목을 찾고 링크의 규칙 본문을 읽는다. 숫자·예외가 필요한데 본문을 읽지 못하면 추측하지 않는다. 같은 턴에 확인한 본문은 재사용한다. 아래 링크는 검색 경로이며 상세 절차를 복제하지 않는다.
+현재 선언과 상태에서 필요한 항목을 찾고 링크의 규칙 본문을 읽는다. 숫자·예외가 필요한데 본문을 읽지 못하면 추측하지 않는다. 현재 대화에서 확인 가능한 동일 규칙판 본문은 재사용하고 유실·변경된 부분만 다시 조회한다. 아래 링크는 검색 경로이며 상세 절차를 복제하지 않는다.
 
 | 상황 | 읽을 규칙 |
 |---|---|
@@ -18,6 +18,8 @@
 | HP·중상·사망 | [HP_AND_DEATH](02-checks.md#hp_and_death) |
 | SAN 노출 | [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) |
 | 전투·총기·추격 | [COMBAT_ORDER](03-danger.md#combat_order) |
+| 일반 턴 조회·도구·출력 최소화 | [TURN_RESPONSE_BUDGET](01-core.md#turn_response_budget) |
+| 시작 인원 1~3명 확정 | [PARTICIPANT_COUNT_SETUP](04-setup.md#participant_count_setup) |
 | 새 캠페인 전체 순서 | [CAMPAIGN_SETUP_PIPELINE](04-setup.md#campaign_setup_pipeline) |
 | 원작 후보 A~F | [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) |
 | PC 특성+Luck 후보 | [STAT_DRAFT_GENERATION](04-setup.md#stat_draft_generation) |
@@ -31,7 +33,8 @@
 | 2인 이상 행동권 | [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate) |
 | 대표 행동·자유 선언 | [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) |
 | 일반 HUD | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
-| 진행 정체·페이싱 | [SCENE_PACING_GATE](06-play.md#scene_pacing_gate) |
+| 업무를 목적 단위로 처리 | [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis) |
+| 초반 30턴·진행 정체·페이싱 | [SCENE_PACING_GATE](06-play.md#scene_pacing_gate) |
 | 챕터·전체 엔딩 | [ENDING_FINALIZATION_GATE](06-play.md#ending_finalization_gate) |
 | 지도 열람·이동 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) |
 | 이미지 선택 | [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate) |

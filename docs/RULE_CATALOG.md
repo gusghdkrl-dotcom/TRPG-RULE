@@ -218,6 +218,7 @@
 | PACING_PLAYABILITY_QA | [04-setup.md](../rules/04-setup.md#pacing_playability_qa) |
 | PARALLEL_TIMELINE_SYNC | [06-play.md](../rules/06-play.md#parallel_timeline_sync) |
 | PARTIAL_VICTORY_AND_FAILURE_WITH_PROGRESS | [05-world.md](../rules/05-world.md#partial_victory_and_failure_with_progress) |
+| PARTICIPANT_COUNT_SETUP | [04-setup.md](../rules/04-setup.md#participant_count_setup) |
 | PARTY_DIVERSITY_GUARD | [04-setup.md](../rules/04-setup.md#party_diversity_guard) |
 | PC_DERIVED_STATS | [04-setup.md](../rules/04-setup.md#pc_derived_stats) |
 | PC_INVOLVEMENT_COLLISION_GATE | [05-world.md](../rules/05-world.md#pc_involvement_collision_gate) |
@@ -322,6 +323,7 @@
 | TRUTH_DANGER_LEVERAGE | [05-world.md](../rules/05-world.md#truth_danger_leverage) |
 | TURN_INCREMENT | [06-play.md](../rules/06-play.md#turn_increment) |
 | TURN_INDEX_NOT_STORY_CLOCK | [06-play.md](../rules/06-play.md#turn_index_not_story_clock) |
+| TURN_RESPONSE_BUDGET | [01-core.md](../rules/01-core.md#turn_response_budget) |
 | UNDERLYING_INSANITY | [03-danger.md](../rules/03-danger.md#underlying_insanity) |
 | UNIQUE_ENDING_TITLE | [06-play.md](../rules/06-play.md#unique_ending_title) |
 | UNRELIABLE_WORLD_RELIABLE_KEEPER | [05-world.md](../rules/05-world.md#unreliable_world_reliable_keeper) |

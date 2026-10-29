@@ -29,6 +29,8 @@ def validate():
             errors.append(f'{path.name}: obsolete routing markup')
         if re.search(r'(?i)\bMP\b|arcana|장착 퍽|프레스티지|환생|survival_state|Survival ON|Survival OFF',text):
             errors.append(f'{path.name}: removed feature in active instructions')
+        if re.search(r'붙들고 있는 것|연기 앵커|역할극 참고|Holding Anchor|Roleplay Expression',text):
+            errors.append(f'{path.name}: retired profile category in active instructions')
         if text.count('```') % 2:
             errors.append(f'{path.name}: unclosed fenced block')
         for url in re.findall(r'\]\(([^)]+)\)', text):

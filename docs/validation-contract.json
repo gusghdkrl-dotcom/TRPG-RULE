@@ -169,5 +169,99 @@
       "신비주의자",
       "4+"
     ]
+  },
+  {
+    "rule": "PARTICIPANT_COUNT_SETUP",
+    "contains": [
+      "1~3명",
+      "2명으로 자동 결정하지",
+      "P1/P2/P3",
+      "재개 시에는 저장된 인원"
+    ],
+    "excludes": [
+      "기본은 2인"
+    ]
+  },
+  {
+    "rule": "CAMPAIGN_SETUP_PIPELINE",
+    "contains": [
+      "PARTICIPANT_COUNT_SETUP",
+      "첫 충돌",
+      "원작 후보 A~F"
+    ]
+  },
+  {
+    "rule": "SCENE_PACING_GATE",
+    "contains": [
+      "Scene Turn 30 이내",
+      "첫 일상 목적",
+      "장면 2개 연속",
+      "30턴을 따로 주지",
+      "현재 가능한 접점",
+      "3:7 분위기 비율은 사용하지"
+    ]
+  },
+  {
+    "rule": "CINEMATIC_ELLIPSIS",
+    "contains": [
+      "목적",
+      "나사",
+      "명시적으로 좁힌 선언",
+      "새 비용 승인",
+      "LONG_ACTION_EARLIEST_INTERRUPTION"
+    ]
+  },
+  {
+    "rule": "INVESTIGATOR_INCIDENT_COUPLING",
+    "contains": [
+      "세계 확정 전",
+      "생활 목표를 끝내도",
+      "다음 행동 가능한 경로",
+      "호감·의리는 플레이어"
+    ]
+  },
+  {
+    "rule": "TURN_RESPONSE_BUDGET",
+    "contains": [
+      "20초 이내",
+      "동일 규칙판 본문",
+      "컨텍스트 손실",
+      "full snapshot",
+      "300~600자",
+      "측정값을 만들지"
+    ]
+  },
+  {
+    "rule": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT",
+    "contains": [
+      "배우 레퍼런스",
+      "캐릭터 태그 정확히 3개"
+    ],
+    "excludes": [
+      "붙들고 있는 것",
+      "역할극 참고",
+      "연기 앵커"
+    ]
+  },
+  {
+    "rule": "GOLD_START_PROFILE_REFERENCE",
+    "contains": [
+      "캐릭터 태그 3개",
+      "외형 레퍼런스"
+    ],
+    "excludes": [
+      "붙들고",
+      "연기 앵커"
+    ]
+  },
+  {
+    "rule": "TURN_INDEX_NOT_STORY_CLOCK",
+    "contains": [
+      "STATE_CADENCE",
+      "30배수"
+    ],
+    "excludes": [
+      "cadence와 연결하지"
+    ]
   }
 ]

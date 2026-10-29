@@ -1,6 +1,6 @@
 # 비공개 상태·저장·복원
 
-규칙판: 1차 정리판 2026-10-29. 규칙 ID는 버전과 독립적으로 유지한다. 필요한 절만 조회한다. 전체 경로는 `00-index.md`를 따른다.
+규칙판: 플레이 개선판 2026-10-29. 규칙 ID는 버전과 독립적으로 유지한다. 필요한 절만 조회한다. 전체 경로는 `00-index.md`를 따른다.
 
 ## STATE_AUTHORITY
 
@@ -20,7 +20,7 @@
 | 식별·순서 | session, version/event, 현재 규칙판, phase, active chapter, 종료 상태 |
 | 불변 세계 | 원작 특징, 시나리오 핵심, 비공개 진실, 세계 법칙, 증거의 원래 배치, 종결 조건, 확정 지도 |
 | 변화하는 세계 | 현재 시각, 장소/경로 상태, NPC 위치·지식·목적·일정, 위협/환경 결과, 기관 접근, 소유권, 작업, 약속, 되돌릴 수 없는 결과 |
-| PC | stable PC identity와 P슬롯 연결, 확정 과거/외형/직업/전문 분야, 특성·기능, HP/SAN/Luck·부상/광기, 현금·소지품·위치, 참여 연결 |
+| PC | 확정 참가 인원(1~3명)·실제 참가 슬롯, stable PC identity와 P슬롯 연결, 확정 과거/외형/직업/전문 분야, 특성·기능, HP/SAN/Luck·부상/광기, 현금·소지품·위치, 참여 연결 |
 | 지식·조사 | PC별 관찰/전달 사실, 증거 ref, 플레이어 가설, 검증/모순·시간 순서·결론, 진행/미해결 질문 |
 | 난수 | gameplay queue 순서·소비 상태·매핑 버전, 생성 named seed와 확정 결과 |
 | 진행 대기 | 판정 원값/요청 단계, Luck 선택, 전투/추격 순서, 광기, 중단된 작업, Focus/POV, Handoff/Reaction/Visual 대기와 행동 메뉴 |
@@ -32,17 +32,17 @@
 
 ## STATE_IDENTITY
 
-P1/P2는 참가 슬롯이고 PC identity는 인물 식별자다. 같은 슬롯에 새 PC가 들어오면 새 identity를 만든다. 과거 PC의 지식·과거·시트·이미지 정체성을 새 PC에 자동 상속하지 않는다.
-- `investigator_dna_by_pc`는 역할극 참고의 정본, character tags는 객관적 인물 태그다. 감정·가설을 키퍼가 추가하지 않는다.
+P1/P2/P3는 참가 슬롯이고 PC identity는 인물 식별자다. 같은 슬롯에 새 PC가 들어오면 새 identity를 만든다. 과거 PC의 지식·과거·시트·이미지 정체성을 새 PC에 자동 상속하지 않는다.
+- `investigator_dna_by_pc`는 공개 과거·현재 목적의 정본, character tags는 객관적 인물 태그다. 감정·가설을 키퍼가 추가하지 않는다.
 - scene_visibility의 authorized slots와 실제 전달 범위를 보존한다. NPC 지식도 NPC가 실제 얻은 사실만 기록한다.
 - `first_scene_orientation_by_pc`는 실제 첫 장면 설명이 전달된 뒤에만 delivered다. 메타 선택이나 Resume만으로 전달 완료 처리하지 않는다.
 - Spotlight의 시작 시각·의도·선언·직접 결과·분기 대기와 action_menu_pending의 선택지/소유 PC/장면/공개 사실 ref를 보존한다. 숫자 선택은 그 당시 메뉴의 같은 선택으로 해석한다.
-- PC 연결은 세계 생성 시의 실제 근거·일상 목적·이해관계·현재 접근 경로를 보존한다. 비밀 답 자체를 연결 요약에 복제하지 않는다.
+- PC 연결은 세계 생성 시의 실제 근거·일상 목적·이해관계·현재 접근 경로, 실제 첫 충돌/접근 기회의 전달 여부와 대응 결과를 보존한다. 기존 thread·PC 지식·scene 기록을 재사용하며 초반 전달 점검용 중복 시계를 만들지 않는다. 비밀 답 자체를 연결 요약에 복제하지 않는다.
 
 ## STATE_INTEGRITY
 
 저장 전에 현재 full snapshot을 실제 최신 semantic-valid verified parent와 비교한다. 대화 요약을 parent로 간주하지 않는다.
-1. 식별자·버전·현재 단계·PC identity·난수·진행 대기·지도·증거·세계 상태가 재개 가능한가 확인한다.
+1. 식별자·버전·현재 단계·PC identity·난수·진행 대기·지도·증거·세계 상태가 재개 가능한가 확인한다. 신규 1~3인 게임은 참가 인원과 실제 슬롯/PC 연결 수가 일치하고 Focus/인계가 존재하는 슬롯을 가리키는지 검사한다.
 2. 불변 세계/PC 사실과 Canon Anchor가 설명 없이 변경·누락·null로 회귀하지 않았는지 확인한다. 변화하는 상태는 실제 사건·소비·이동·선택으로 변화 이유가 설명돼야 한다.
 3. `critical_state_registry`에는 실제 생성되어 활성인 핵심 namespace와 경로/ref를 등록한다. `checkpoint_canon_manifest`와 실제 데이터가 일치해야 한다. 빈 이름만 나열한 manifest는 검증이 아니다.
 4. 불변 정본이 단순 누락됐다면 동일 scope의 verified parent/ancestor에서 exact 값만 복구할 수 있다. 현재 NPC 목적·세계 진행·위치·난수·진행 대기처럼 변하는 상태를 오래된 값으로 메우지 않는다.

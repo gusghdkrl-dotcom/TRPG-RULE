@@ -1,6 +1,6 @@
 # 원작·PC·세계 생성
 
-규칙판: 1차 정리판 2026-10-29. 규칙 ID는 버전과 독립적으로 유지한다. 필요한 절만 조회한다. 전체 경로는 `00-index.md`를 따른다.
+규칙판: 플레이 개선판 2026-10-29. 규칙 ID는 버전과 독립적으로 유지한다. 필요한 절만 조회한다. 전체 경로는 `00-index.md`를 따른다.
 
 ## D100_PARADIGM_GENERATION
 
@@ -134,7 +134,7 @@ Scenario 확정 직전에는 비공개 진실와 주요 Reveal을 함께 보고 
 ## INVESTIGATOR_DEPTH_PROTOCOL
 
 - PC 과거는 플레이어가 사건 시작 전에 알아야 할 공개 캐릭터 사실과 Keeper가 숨길 수 있는 외부 연결을 분리한다.
-- 자동 생성은 Investigator Roleplay DNA를 사용해 `과거의 상처 / 붙들고 있는 것 / 이번에 원하는 것 / 연기 앵커 / 민감한 자극`을 구체화한다.
+- 자동 생성은 Investigator Roleplay DNA를 사용해 `공개 과거 사건 / 현재 목적 / 필요한 경우 민감한 자극`을 구체화한다.
 - 테마 표는 캐릭터의 비밀 행동 명령이나 성격 정답이 아니라 과거 사건 후보의 다양성 보조축으로만 사용할 수 있다.
 - 자동 생성 시 파티 중복은 PARTY_DIVERSITY_GUARD로 보정하되 플레이어가 직접 고른 과거·관계·목표는 유지한다.
 
@@ -161,17 +161,7 @@ Scenario 확정 직전에는 비공개 진실와 주요 Reveal을 함께 보고 
 
 ## ROLEPLAY_ANCHOR_AGENCY
 
-- 연기 앵커와 민감한 자극은 막막할 때 참고하는 아이디어다. 특정 감정·윤리 판단·행동을 강제하지 않는다.
-- 플레이어는 자신의 PC의 생각과 감정을 자유롭게 선언할 수 있다. Keeper는 그 부분을 대신 확정하지 않는다.
-- 연기 앵커를 따르지 않았다는 이유로 판정 보너스/패널티, SAN 보상/손실을 부여하지 않는다.
-
-[PLAYER-FACING ROLEPLAY TIPS]
-- 정답보다 “이 사람이라면 어떻게 할까?”를 생각해도 좋습니다. 가장 효율적인 선택을 할 필요는 없습니다.
-- 행동은 자유롭게 선언하세요. 한 문장만 써도 되고 대사·표정·속마음을 함께 적어도 됩니다. 기능명은 Keeper가 안내합니다.
-- 캐릭터의 생각과 감정은 당신이 결정합니다. 연기 앵커는 규칙이 아니라 막막할 때 참고하는 아이디어입니다.
-- Keeper가 현재 상황에서 대표 행동을 제안할 수 있지만 가능한 행동의 전부가 아닙니다. 언제든 다른 행동·대사·계획을 자유롭게 선언할 수 있으며 실패 역시 다음 상황을 만들어냅니다.
-
-`💡 좋은 연기는 긴 글이 아닙니다. 짧은 대사나 작은 행동 하나면 충분합니다.`
+캐릭터의 생각·감정·말투·행동은 플레이어가 결정한다. 프로필에서 역할극 모범답안이나 성격별 행동 지침을 생성하지 않는다. 플레이어가 직접 정한 표현·성향은 존중하지만, 이를 따르지 않았다는 이유로 판정 보너스/패널티나 SAN 보상/손실을 부여하지 않는다. 자유 선언은 [FREEFORM_PLAYER_DECLARATION](06-play.md#freeform_player_declaration)을 따른다.
 
 ## FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT
 
@@ -179,23 +169,21 @@ Scenario 확정 직전에는 비공개 진실와 주요 Reveal을 함께 보고 
 한 개의 텍스트 코드 블록에 다음 순서로 배부한다. 항목당 1~2문장 중심으로 중복 설명을 줄인다.
 1. 이름·나이·성별·정확한 직업·전문 분야.
 2. 확정 배우 레퍼런스와 외형.
-3. 지금 여기 있는 이유, PC가 아는 과거 사건, 붙들고 있는 것, 현재 원하는 것.
-4. 직업적 반사·평소 표현·압박 표현의 역할극 참고와 민감한 자극 1~3개. 감정·행동을 강제하지 않는다.
+3. 지금 여기 있는 이유, PC가 아는 과거 사건, 현재 원하는 것.
+4. 공개 과거와 연결된 민감한 자극은 필요한 경우에만 짧게 포함한다. 반응·감정·행동은 지정하지 않는다.
 5. 캐릭터 태그 정확히 3개.
 6. HP 현재/최대, SAN 현재/최대, 행운(Luck), 현금, MOV/DB/Build.
 7. 근력(STR)·건강(CON)·체격(SIZ)·민첩(DEX)·외모(APP)·지능(INT)·정신력(POW)·교육(EDU).
 8. 공통 표시 기능 관찰·듣기·회피·격투·사격, 직업 업무 축 3개와 기능 7개의 확정 수치, 전문 분야의 범위, 취미 기능 40. 같은 기능은 중복 수치를 만들지 않는다.
 9. 메인/파우치 점유량·직업품·키템과 각 소지품의 짧은 생활 흔적. 세부는 [LIVING_ITEM_LORE](05-world.md#living_item_lore).
-역할극 안내는 한 번만 붙인다: 행동·대사·생각은 자유롭게 선언하며 기능명은 키퍼가 안내한다. 제시된 선택지는 가능한 행동의 전부가 아니다.
 카드 배부 응답에서 게임 시간·NPC 행동·첫 장면을 시작하지 않는다. 프로필 시각화는 [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate)을 적용한다.
 
 ## INVESTIGATOR_PROFILE_PLAY_ENGINE
 
-신규 Final Investigator Profile은 설정집이 아니라 **첫 플레이에서 사건·생활·생존 선택을 이해하는 인터페이스**로 작동한다. 기존 플레이어용 항목 순서와 Gold UI 형식은 유지하며 안의 사실을 다음 정본에서 채운다.
+신규 Final Investigator Profile은 설정집이 아니라 **첫 플레이에서 사건·생활·생존 선택을 이해하는 인터페이스**로 작동한다. [FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT](04-setup.md#final_investigator_profile_output_contract)의 현재 항목과 Gold UI 형식을 사용하며 안의 사실을 다음 정본에서 채운다.
 - 최종 프로필의 `전문 분야/직업 스페셜리티` → 확정된 시작 Specialty의 player-known scope. 비공개 진실 맞춤 지식으로 확장하지 않는다.
 - `📌 지금 여기 있는 이유` → `scenario_connection_by_pc.mundane_reason`과 player-known 현재 배치/업무. 조사 의무를 쓰지 않는다.
 - `🩹 과거의 상처` → 실제 PC-known 과거 사건. Scenario에 맞추기 위해 소급 조작하지 않으며, 현재 사건과 자연스럽게 겹칠 때만 외부 공명 재료가 된다.
-- `⚓ 붙들고 있는 것` → 세계가 실제로 영향을 줄 수 있는 사람·책임·소유·약속·직업 원칙 등 객관적 anchor를 우선한다. 플레이어의 감정을 미리 정하지 않는다.
 - `🎯 이번에 원하는 것` → `ordinary_goal`처럼 **지금 당장 행동 가능한 현재 목적**을 우선한다. 추상적 인생 테마만으로 채우지 않는다.
 - 배포형 Visual Handout의 `사건 연결 고리`에는 player-known `involvement_stake`를 1~3문장으로 압축할 수 있다. `truth_need`의 정답, Hidden exit constraint, 미래 abandonment consequence는 미발견이면 공개하지 않는다.
 - 최종 프로필을 읽은 플레이어가 최소 `이 사람은 지금 무엇을 하던 중인가 / 무엇이 실제로 걸려 있는가 / 어떤 일상 표면에서 사건과 부딪힐 수 있는가`를 이해할 수 있어야 한다. 그래도 행동·감정·윤리 판단은 플레이어에게 남긴다.
@@ -314,11 +302,11 @@ Scenario 확정 직전에는 비공개 진실와 주요 Reveal을 함께 보고 
 ## CAMPAIGN_SETUP_PIPELINE
 
 순서:
-1. 인원·P슬롯, 원작/장르·시대·지역·배제 조건·이야기 규모·선택적 생성 시드를 확인한다. 기본은 2인으로 안내하되 실제 참가 인원에 맞춘다.
+1. [PARTICIPANT_COUNT_SETUP](04-setup.md#participant_count_setup)으로 1~3명과 P슬롯을 먼저 확정한 뒤 원작/장르·시대·지역·배제 조건·이야기 규모·선택적 생성 시드를 확인한다.
 2. [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection)에 따라 난수 기반 원작 후보 A~F를 제시하고 선택을 기다린다. 직접 원작 지정은 우선한다.
 3. [SEQUENTIAL_PROFILE_GENERATION](04-setup.md#sequential_profile_generation)으로 전원 PC의 선택·공개 과거·기계 사실을 먼저 확정한다.
 4. [WORLD_PC_INPUT](04-setup.md#world_pc_input)에 따라 원작과 세계의 개연성을 중심으로 세계를 생성한다. 원작 특징·시대/생활 기반·시나리오 생성축·비밀 진실·세계 법칙·증거·장소/경로·NPC 목적·개입하지 않았을 때의 진행·위협/실제 피해·종결 조건·비공개 지도·진행 구조를 정한다. 각 생성축은 독립 난수를 사용한다. 사건/대사건은 현재 사건, 연대기는 지속 세계 틀과 첫 챕터만 확정한다.
-5. [COMPATIBILITY_GATE](04-setup.md#compatibility_gate)와 [PACING_PLAYABILITY_QA](04-setup.md#pacing_playability_qa)를 검사한 뒤 세계의 불변 핵심을 확정한다. 이후 플레이 결과에 따라 변하는 상태는 별도로 추적한다.
+5. 각 PC의 생활 목표가 끝난 뒤에도 이어질 참여 이해관계·첫 충돌·행동 가능한 접근 경로와 2~3인의 초기 합류/연락 기회를 세계 생성안에 함께 설계한다. [COMPATIBILITY_GATE](04-setup.md#compatibility_gate)와 [PACING_PLAYABILITY_QA](04-setup.md#pacing_playability_qa)를 검사한 뒤 세계의 불변 핵심을 확정한다. 이후 플레이 결과에 따라 변하는 상태는 별도로 추적한다.
 6. 각 PC의 객관적인 참여 경로·이해관계를 확정하고 최종 프로필을 배부한다. PC의 감정·조사 의무·비밀 과거를 새로 쓰지 않는다. 프로필의 공개 범위, 각 P의 시각화 선택, 파티 합류 경로와 공개 지도 자료를 확인한다.
 7. 연결 가능한 공개 수첩은 [NOTEBOOK_LITE_OPEN_GATE](09-notebook.md#notebook_lite_open_gate)로 연다. 비공개 저장과 별개다.
 8. 완전한 GM_STATE를 [STATE_INTEGRITY](07-state.md#state_integrity)로 검사하고 [STATE_COMMIT](07-state.md#state_commit)으로 setup_bootstrap 1회를 검증 저장한다. 성공한 뒤 게임 시작 입력 대기 상태가 된다. PC/WORLD별 외부 중간 저장은 하지 않는다.
@@ -547,29 +535,22 @@ E/F Joker는 `괴상하거나 음지에 있는 직업`이 아니라 **플레이�
 [Past Wound: 10]
 1 사망 / 2 실종 / 3 배신 / 4 직업적 실패 / 5 범죄·위법 / 6 오판 / 7 사고 / 8 은폐에 연루 / 9 버림받음 / 10 희생의 결과
 
-[Holding Anchor: 10]
-1 가족 / 2 연인·배우자 / 3 친구·동료 / 4 제자·후배 / 5 보호 책임 / 6 공동체 / 7 직업적 원칙 / 8 작품·연구·기록 / 9 장소·고향 / 10 약속·물건
-
 [Current Want: 10]
 1 확인 / 2 회복 / 3 생계 / 4 명예 회복 / 5 특정인 보호 / 6 책임 완수 / 7 벗어나기 / 8 증명 / 9 진실 확인 / 10 통제권 되찾기
-
-[Roleplay Expression: 10]
-1 기록·확인 / 2 짧고 구체적인 질문 / 3 절차 우선 / 4 신체적으로 먼저 확인 / 5 사람의 반응 관찰 / 6 농담·완곡 표현 / 7 말보다 행동 / 8 반복 확인 / 9 도구 정리 / 10 거리·출구·위치 확인
 
 [Sensitive Cue: 10]
 1 사진·기록 불일치 / 2 특정 냄새 / 3 특정 날짜·숫자 / 4 닫힌 공간 / 5 실종·연락두절 / 6 오인·잘못된 신원 / 7 특정 직업/기관 / 8 파손된 개인 물건 / 9 방치된 보호 대상 / 10 과거 사건과 닮은 절차
 
 ## ROLEPLAY_DNA_SYNTHESIS
 
-- `과거의 상처 / 붙들고 있는 것 / 이번에 원하는 것 / 연기 앵커 3 / 민감한 자극`은 PC Card 형식으로 플레이어에게 공개한 뒤 확정한다.
-- 연기 앵커는 직업적 반사 / 평소 표현 / 압박 표현으로 구체화하며 PC의 감정이나 도덕 판단을 확정하지 않는다.
-- `이번에 원하는 것`은 방향성이지 강제 개인 퀘스트가 아니다. 플레이어 선택으로 바뀔 수 있다.
-- PC가 원래 알고 있어야 할 자신의 과거를 Keeper 전용 기밀로 남기지 않는다.
-- 플레이어가 직접 과거·관계·목표를 지정하면 해당 축은 Fixed다.
+- 공개 과거 사건과현재 목적을 구체적 사실로 생성·공개한 뒤 확정한다. 현재 목적은 플레이어의 선택으로 바뀔 수 있다.
+- 필요한 민감한 자극은 공개 과거에서 연결하되 감정·반사 행동·말투를 지정하지 않는다.
+- PC가 원래 알고 있어야 할 자신의 과거를 키퍼 전용 기밀로 남기지 않는다. 직접 지정한 과거·관계·목표는 자동 생성보다 우선한다.
+- 삭제한 프로필 항목을 별도 성격 카드·행동 가이드·필수 책임 슬롯으로 되살리지 않는다.
 
 ## INVESTIGATOR_DNA_CONSOLIDATION
 
-`investigator_dna_by_pc`에 최종 카드의 과거 사건·붙들고 있는 것·현재 목적·직업적 반사·표현 참고·민감한 자극을 보존한다. 같은 사실을 별도 역할극 앵커 필드에 중복 저장하지 않는다. 객관적인 캐릭터 태그는 `character_tags_by_pc`로 유지한다. 폐기된 개인 공명 후보 시스템을 다시 만들지 않는다. 과거 정본의 호환은 [STATE_COMPATIBILITY](07-state.md#state_compatibility)를 따른다.
+`investigator_dna_by_pc`에는 공개 과거·현재 목적·필요한 민감한 자극만 보존한다. 신규 생성은 삭제한 프로필 항목과 그 생성용 난수축을 만들지 않는다. 플레이어가 정한 실제 관계·약속·책임과 플레이에서 생긴 참여 이해관계는 해당 관계/연결 정본에 보존한다. 객관적 태그는 `character_tags_by_pc`를 사용한다. 기존 저장 원문과 hash를 소급 수정하지 않는 원칙은 [STATE_COMPATIBILITY](07-state.md#state_compatibility)를 따른다.
 
 ## CHARACTER_TAG_CATALOG
 
@@ -617,8 +598,8 @@ Character Tag는 공개 PC 프로필을 세계가 인식하고 반응하기 위�
 
 자동 생성 캐릭터끼리는 다음 중복을 검사한다.
 - Profession Domain+Function의 동일 조합.
-- Past Wound+Holding Anchor의 동일 조합.
-- Current Want+Roleplay Expression의 동일 조합.
+- 공개 과거 사건의 원인·결과가 동일함.
+- 현재 목적과 생활상 접근이 사실상 동일함.
 - 동일한 Scenario 접근 이유의 과도한 집중.
 - 직업 기능 7개 중 4개 이상이 반복되고 업무 축/생활권까지 겹쳐 역할이 사실상 동일해지는 경우.
 - 2개 이상의 핵심 축이 겹치면 아직 공개되지 않은 비고정 축 1~2개만 재생성한다.
@@ -673,7 +654,7 @@ Character Tag는 공개 PC 프로필을 세계가 인식하고 반응하기 위�
 6. **Critical Path Density**: INCIDENT/MAJOR_INCIDENT/현재 CHRONICLE Chapter의 결말에 필요한 **필수 직렬 의존**만 놓고 보았을 때 각각 약 2 / 3 / 2~3 실제 플레이 회차 soft envelope에 맞는가. 주민 교류·데이트·행사·자유 탐방 같은 선택적 ENRICHMENT는 이 길이 계산에서 제거 대상으로 보지 않는다. 과도하면 같은 의미의 필수 Evidence 단계·잠금·왕복·기관 대기를 확정 전에 압축한다.
 7. **Living World Sufficiency**: 반복 NPC·기관·영업시간·생활망·환경 과정처럼 PC 밖에서도 시간이 흐르는 세계라면, PC가 아무것도 하지 않아도 움직일 서로 다른 기존 인과축이 충분한가. 보통 2~5개의 실행 가능한 No-Intervention Baseline을 권장하며, 사람이 거의 없거나 본질적으로 정적인 밀실처럼 0~1축만 자연스러운 경우에는 그 세계 구조 자체가 이유여야 한다. populated/social Scenario에서 단지 설계 누락 때문에 0축인 상태로 확정하지 않는다.
 8. **Horror Pressure Coverage**: 공포·미스터리·스릴러 Scenario의 기존 Pressure source가 `조사하러 가야만 ON`이 되지 않는가. 주민·직업·숙소·교통·행사·공공장소 같은 **평범한 생활 표면** 중 작품에 자연스러운 곳에서도 기존 Threat/NPC/시간창/Route/기관/환경/세계 법칙/Evidence 인과가 플레이 선택에 닿을 경로가 충분한지 확인한다. populated/social Horror는 보통 서로 다른 접촉 경로 2개 이상, 그중 가능하면 하나는 명시적 조사 선언 없이 정상 생활에서 도달 가능한 구조가 안정적이다. 이는 최소 단서 수·수상한 NPC 수가 아니며, 원작이 의도적으로 특정 금지구역/행동 전까지 완전히 정상인 구조라면 그 원작 특징이 예외 근거다.
-- Pressure Coverage를 위해 새 비공개 진실·Threat·필수 Evidence·NPC 비밀을 덧붙이지 않는다. 확정 전이라면 이미 설계된 source의 관찰 경로·시간/사회/공간 접촉면만 원작에 맞게 연결하고, 자연스러운 접촉이 불가능한 Premise는 낮은 Pressure 구간을 정상으로 인정한다.
+- 생성 중에는 원작의 특성을 살리는 실제 접점과 세계/NPC의 선제 행동을 설계한다. 초반 내내 아무 사건도 도달할 수 없는 배치는 그대로 확정하지 않는다. 위험을 자극하기 전까지 안전한 원작이어도 관계·갈등·기회·질문을 통해 행동할 이유와 접근 경로를 제공할 수 있다. 플레이 중 확정 진실을 바꾸지 않는 원칙과 생성 중 설계 권한을 혼동하지 않는다.
 9. **Terminal Boundary Integrity**: [SCENARIO_TERMINAL_BOUNDARY](05-world.md#scenario_terminal_boundary)이 현재 Scenario/Chapter의 기존 중심 인과에서 도출되고, 특정 엔딩 루트·Evidence 수집률·Turn/Sitting·특정 PC 행동을 요구하지 않는가. 중심 결과가 아직 reachable reversal path로 바뀔 수 있는 상태와 실제 terminal state를 구분할 수 있어야 한다. Chronicle은 Chapter terminal과 전체 Chronicle terminal을 같은 것으로 만들지 않는다.
 10. **Horror Reveal Integrity**: 최종 비공개 진실/Recontextualization을 모두 알고 난 뒤에도 이번 Homage의 중심 공포가 더 구체적인 위협·침해·희생·공모·손실 또는 존재론적 불안으로 남는가. 반전을 위해 여러 핵심 축을 연속해서 `사실 무해했다`로 해제하고 있지 않은가. 세부 판정은 [HIDDEN_TRUTH_HORROR_PAYLOAD_GATE](04-setup.md#hidden_truth_horror_payload_gate)과 [HORROR_DEFLATION_GUARD](04-setup.md#horror_deflation_guard)을 따른다.
 11. **Harm Ecology**: 사전 Pressure가 경고/분위기에서 끝나지 않고, Homage에 맞는 실제 HP 위해·SAN Exposure·NPC/Route/Capability 상실 중 필요한 경로와 Counterplay를 가지는가. 피해 횟수 quota나 강제 사망을 만들지 않았는가. 실제 도달 시 [REACHED_DANGER_EXECUTION_GATE](05-world.md#reached_danger_execution_gate)의 전문 담당 규칙 Cascade가 실행 가능한가.
@@ -681,6 +662,7 @@ Character Tag는 공개 PC 프로필을 세계가 인식하고 반응하기 위�
 12. **Exit/Abandonment Playability**: Fracture 뒤 단순 이탈이 사건 전체를 자동 삭제하지 않도록 기존 exit pressure/No-Intervention 경로가 있는가. 동시에 플레이어가 실제 준비와 해결로 깨끗한 탈출을 만들어낼 가능성도 남아 있는가.
 13. **Operational Truth**: 핵심 Mystery 중 적어도 하나가 안전·신뢰·탈출·구조·차단·시간 판단을 실제로 개선할 수 있으면서도 단일 필수 단서 병목이 아닌가.
 14. **Breather Integrity**: 세계 안에서 확보 가능한 실제 Safe Interlude 표면이 Homage에 맞게 존재하거나, 존재하지 않는다면 그 고립/지속위기 자체가 원작 문법으로 정당화되는가. 안전한 ENRICHMENT에 공포 quota를 끼워 넣는 구조가 아닌가.
+15. **Opening Delivery**: [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)의 첫 목적 완료·30턴 이내 사건 입구 기준을 충족할 실제 접점이 있는가. 단순 업무 정산 뒤 목적이 사라지거나 모든 실마리가 며칠 뒤 대기에만 묶이지 않는가. 1~3인 각각의 이해관계와 접근, 복수 PC의 초반 만남/연락 기회가 있는가.
 - 실패하면 확정 전 구조만 국소 수정한다. 플레이 시작 후 QA를 이유로 비공개 진실나 terminal boundary를 극적 편의로 재생성하지 않는다.
 
 ## CROSS_LINK_ENGINE
@@ -710,7 +692,7 @@ Character Tag는 공개 PC 프로필을 세계가 인식하고 반응하기 위�
 규칙:
 1. 최근 8세션 중 하나와 위 핵심 축 중 4개 이상이 동일하면, 사용자 지정/이미 확정된 축을 제외하고 겹친 축 1~2개를 국소 재생성한다.
 2. 오마주 자체의 반복 회피는 RECENT_COMPLETED_HOMAGE_GUARD가 우선한다. 직접 지정된 동일 오마주는 허용하되 이번 Scenario의 비고정 구조를 과거 Run과 그대로 복사하지 않는다.
-3. PC는 최근 생성 캐릭터와 `Profession Domain+Function / Past Wound / Holding Anchor / Current Want` 중 3개 이상이 같으면 비고정 축을 최소 1개 변경한다.
+3. PC는 최근 생성 캐릭터와 `Profession Domain+Function / Past Wound / Current Want` 중 3개 이상이 같으면 비고정 축을 최소 1개 변경한다.
 4. Novelty는 개연성보다 우선하지 않는다. 더 새롭지만 세계관에 맞지 않는 결과보다 호환 가능한 결과를 선택한다.
 5. 기록이 없으면 과거 세션을 기억한다고 가정하지 않는다. 이 경우 현재 세션 내부의 Party Diversity와 후보 중복만 검사한다.
 6. 자동 생성 인물 이름은 NAME_GENERATION_LOCK을 별도로 적용한다. 최근 이름 이력이 있으면 구조적 PC 시그니처가 달라도 동일한 완전한 이름의 재사용은 독립적으로 차단한다.
@@ -781,3 +763,11 @@ F. [원작명] ([공개 연도] · [국가/문화권] · [매체]) — [선정 �
 - 원작·사용자 지정 조건·이미 확정된 사실과 충돌하면 PC 맞춤 연결을 줄인다. 감정·윤리·배신·조사 의무는 부여하지 않는다.
 - 복수 PC는 각각 다른 자연스러운 참여·탐험 경로를 갖게 한다. 특정 한 명만 사건의 중심이나 유일한 해결자가 되지 않게 확인한다. 모두를 혈연·운명으로 묶을 필요는 없다.
 - 세계 확정 전에 연결의 적격성을 검사하고, 확정 뒤에는 플레이 결과로 변할 상태만 갱신한다. 발견·주사위·플레이어 추리에 맞춰 진실·범인·증거 배치를 다시 설계하지 않는다.
+
+## PARTICIPANT_COUNT_SETUP
+
+새 캠페인은 원작 후보·PC·세계 생성 전에 참가 인원을 1~3명 중 명시적으로 확정한다. 키퍼와 NPC는 인원에 포함하지 않으며, 참가자 한 명당 PC 한 명을 기준으로 한다.
+- 허용값은 정수 1, 2, 3뿐이다. 입력에 유효한 인원이 이미 있으면 다시 묻지 않는다. 비어 있거나 소수·범위 밖·불명확한 값이면 `참가 인원을 1명, 2명, 3명 중 골라 주세요.`만 묻고 대기한다. 2명으로 자동 결정하지 않는다.
+- 1명은 P1, 2명은 P1/P2, 3명은 P1/P2/P3를 배정한다. 비어 있는 슬롯을 PC나 NPC로 자동 채우지 않는다. 숫자 응답은 이 설정 대기에서만 인원으로 해석하고 시간·턴·난수를 소비하지 않는다.
+- 1인은 PC 간 합류·인계 절차를 생략하고 P1의 다음 선택으로 이어간다. 2~3인은 실제 참가 슬롯 모두에 참여 이유·정보 범위·행동권을 적용한다. 사건은 해당 인원으로 접근·우회·해결 가능하게 설계하며, 혼자 불가능한 동시 조작이나 특정 직업을 필수 해법으로 강제하지 않는다. 판정 수치·피해를 인원만으로 임의 조정하지 않는다.
+- PC 생성 전 인원 변경은 슬롯을 다시 확정한다. 생성 이후 변경은 기존 PC를 삭제하거나 덧붙이지 말고 유지할 인물·참가 슬롯·공개 정보 범위를 확인한 뒤 변경한다. 재개 시에는 저장된 인원과 슬롯을 복원하며 신규 인원 선택이나 세계 재생성을 하지 않는다.
