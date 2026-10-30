@@ -1,0 +1,38 @@
+name: Build latest game ZIP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-project-zip.yml"
+      - "rules/**"
+      - "PROJECT_INSTRUCTIONS.md"
+      - "START_GAME.md"
+      - "scripts/rulebook.py"
+      - "docs/rule-migration.json"
+      - "docs/validation-contract.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: project-zip-main
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate rules and export game pack
+        run: python3 scripts/rulebook.py export
+      - name: Commit refreshed download ZIP
+        run: |
+          if ! git diff --quiet -- dist/TRPG-RULE-project.zip; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dist/TRPG-RULE-project.zip
+            git commit -m "Refresh dist game ZIP from verified rule sources"
+            git push origin HEAD:main
+          fi
