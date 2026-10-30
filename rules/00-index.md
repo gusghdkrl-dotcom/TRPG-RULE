@@ -63,6 +63,7 @@
 | Supabase 연결과 정본 | [STATE_AUTHORITY](07-state.md#state_authority) |
 | 저장 시점 | [STATE_CADENCE](07-state.md#state_cadence) |
 | 저장 검증·중단 복구 | [STATE_COMMIT](07-state.md#state_commit) |
+| Supabase 차단 시 GitHub 대체 복원·비상 저장·재동기화 | [STATE_GITHUB_FAILOVER_PROTOCOL](07-state.md#state_github_failover_protocol) |
 | 새 채팅 로드 | [STATE_RESUME](07-state.md#state_resume) |
 | 수첩 동시 쓰기 방지 | [NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER](09-notebook.md#notebook_watcher_runtime_single_writer) |
 
