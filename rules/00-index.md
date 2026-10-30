@@ -56,6 +56,7 @@
 | 직업·풍경·상황 웹 참고 | [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference) |
 | 이미지 선택 | [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate) |
 | DB 조회를 허용하는 실제 조건 | [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
+| 저장 원문 전체 감사·정식 복원 RPC·비공개 GitHub 백업 | [STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP](07-state.md#state_verified_owner_audit_and_github_backup) |
 | 현재 비공개 상태·예정 사건 유지와 문맥 손실 | [STATE_WORKING_CONTEXT](07-state.md#state_working_context) |
 | 시작·30턴 저장의 비공개 전체 복기 | [STATE_CHECKPOINT_RECAP](07-state.md#state_checkpoint_recap) |
 | 자료조사·역사 선택과 판정의 조회 범위 | [INVESTIGATION_SKILL_ROUTING](02-checks.md#investigation_skill_routing) |
