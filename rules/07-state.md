@@ -77,6 +77,16 @@ Supabase는 영속 저장·복구 경계에서 접근한다. **일반 응답의 
 - 필요한 여러 필드는 실제 지원되는 한 호출로 묶고 관련 없는 session·과거 전체를 읽지 않는다. DB 호출을 하지 않았다고 미검증 상태를 '저장 완료'로 표시하지 않는다.
 - 사용자가 명시한 저장 없는 테스트는 첫 복원 이후 작업 분기만 갱신한다. 위의 실제 복구/대조 조건이 없으면 원본 DB 재조회도 하지 않는다. DB·수첩 쓰기 중지 안내는 테스트 시작/종료·상태 변경/요청 때만 표시하고 매 지문에 반복하지 않는다. 테스트를 임의 시작하거나 테스트 결과를 나중에 원본에 자동 덮어쓰지 않는다.
 
+## STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP
+
+사용자가 저장 전체 대조·시나리오 비공개 원문 공개·백업 검수를 **명시적으로** 요청한 경우는 PLAY가 아닌 읽기 전용 소유자 감사다. 게임 시간·RNG·NPC·공개 수첩·저장 버전은 변하지 않는다. CORE_VISIBILITY의 일반 PLAY 정보 제한을 게임 지문에 우회 적용하지 않되, 감사 답변에는 실제 확인한 원문과 미확인 범위를 구분한다. 인증키·복구키 등 시스템 비밀은 시나리오 스포일러와 구별하고 노출하지 않는다.
+
+- **정식 읽기 경로:** Supabase의 인증된 커넥터로 session/version을 명시해 기존 `public.trpg_manual_checkpoint_load_version(p_session_id text, p_version bigint)`를 우선 호출한다. 반환된 `state_json` 전체 텍스트를 JSON으로 읽고, 같은 행의 version·event_id·state_hash와 verified history를 대조한다. 저장 목록은 확인된 `list` 계약을 따른다. `gm_sessions` latest mirror나 개별 필드 추측을 전체 정본으로 간주하지 않는다.
+- 직접 `gm_checkpoint_history.state_json`을 조회하는 임시 SQL은 정식 버전 복원보다 우선하지 않는다. 특정 도구 호출이 차단·절단되면 차단 사유를 단정하거나 데이터를 없다고 선언하지 않는다. 정식 함수도 실패하면 우회 인코딩·권한 완화·무인증 공개 링크를 만들지 않는다.
+- **독립 백업:** 사용자가 승인하여 만든 비공개 GitHub `gusghdkrl-dotcom/trpg-private-state`의 `verified-gm-snapshots-2026-10-30` 브랜치에는 당시 검증 완료된 10개 저장의 원문 및 `snapshots/verified/MANIFEST.json`이 있다. 복구가 필요하면 private GitHub 도구로 exact path를 읽어 manifest SHA-256 및 ID/version을 검사한다. 이 기록은 **2026-10-30 시점 백업**이며 자동 최신 미러가 아니다. GitHub가 Supabase보다 최신이라고 가정하거나 미저장 진행을 덮어쓰지 않는다.
+- 새 저장의 GitHub 이중 백업은 사용자가 명시적으로 활성화한 범위에서만 검증된 Supabase exact read-back 이후 수행한다. 두 저장소를 동시에 독립 정본으로 쓰지 않으며, GitHub 백업 실패를 Supabase verified 성공의 실패로 바꾸지 않는다. 백업 성공은 GitHub에서 재열람한 문자열이 정확히 일치할 때만 보고한다.
+- 비공개 GitHub로 **전체 스냅샷**을 백업하는 작업과, 공개 저장소/수첩/프로젝트 문서에 **비밀 요약**을 적어 작업 기억처럼 사용하는 행위는 다르다. 후자는 여전히 금지한다. 공개 Rules repo에는 절대 실제 비공개 state_json을 넣지 않는다.
+
 ## STATE_SCHEMA
 
 다음은 full snapshot에 포함해야 할 의미상의 범위다. 실제 필드 경로·허용 스키마 버전은 연결된 저장 계약을 따른다. 이 목록은 임의 DB 테이블이나 새 필수 컬럼을 만드는 지시가 아니다.
