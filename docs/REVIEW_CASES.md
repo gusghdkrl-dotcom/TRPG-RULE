@@ -185,24 +185,7 @@
 | 참고 풍경 사진에 게임에 없는 문이 있음 | 실제 출입구/단서로 등록하지 않고 게임 정본을 유지 | WEB_VISUAL_REFERENCE / VISUALIZATION_CANON_BOUNDARY | 일치 |
 | 검색/이미지 표시 도구가 없거나 적합한 결과 없음 | 텍스트를 이어가고 실제 확인된 링크만 안내, 이미지 제공 성공 가장 없음 | WEB_VISUAL_REFERENCE | 일치 |
 | 정확한 PC 초상·현재 지도 요청 | 다른 인물 사진·일반 지도로 대체 완료하지 않음 | WEB_VISUAL_REFERENCE | 일치 |
-| A 경기장 관리인, B 프로 선수/감독 | 같은 산업이어도 업무·권한·위상이 다른 유효한 대비 | PROFESSION_SIX_CHOICE | 일치 |
-| A 경비원, B 유명 CEO의 경비 보조 | B가 실제 특별 역할이 아니므로 공개 전 보정 | PROFESSION_MULTILAYER_GENERATOR / PROFESSION_SIX_CHOICE | 일치 |
-| 원작에 성립하는 왕/고위직을 선택 | 실제 권한·책임을 유지하고 타 PC 행동권 및 기존 기능 수치 적용 | PROFESSION_SIX_CHOICE | 일치 |
-| C/D 또는 E/F에서 선수·고위직 후보 발생 | C/D는 테마 생활권·테마 특별 하나씩, E/F는 지위 조합 자유 | PROFESSION_SIX_CHOICE / JOKER_PROFESSION_CANDIDATE | 일치 |
 | 기존 공개 직업 Draft/선택 PC에 패치 적용 | 조용히 재추첨하거나 직업을 변경하지 않음 | PROFESSION_SIX_CHOICE | 일치 |
-
-## 직업 쌍 구성 정정 대조
-
-| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
-|---|---|---|---|
-| A CEO, B 경비원 | 특별·생활권 하나씩이므로 허용, 문자별 역할 고정 없음 | PROFESSION_SIX_CHOICE | 일치 |
-| A/B가 모두 생활권 또는 모두 특별 | 공개 전 해당 쌍의 배정 조건에 맞게 국소 보정, C/D로 수량 대체 불가 | PROFESSION_MULTILAYER_GENERATOR | 일치 |
-| 왕실 테마에서 C 왕, D 궁궐 수문군 | 테마 특별·테마 생활권 하나씩이며 실제 업무도 테마와 연결되므로 허용 | PROFESSION_SIX_CHOICE | 일치 |
-| C/D가 모두 테마 생활권 또는 모두 테마 특별 | 테마 적합성만으로 통과하지 않고 각 역할 하나씩 보장 | PROFESSION_MULTILAYER_GENERATOR | 일치 |
-| C/D 중 하나가 테마풍 이름만 있고 실제 업무는 테마와 무관 | 공개 테마·무대·사회 구조와의 업무 연결을 갖추도록 공개 전 보정 | PROFESSION_SIX_CHOICE | 일치 |
-| A/B는 생활권→특별, C/D는 특별→생활권으로 배정 | 두 쌍의 순서는 독립이며 기존 생성 난수 묶음 사용, 플레이어 굴림 소비 없음 | PROFESSION_MULTILAYER_GENERATOR | 일치 |
-| E/F가 모두 특별 역할 | 직업·업무 다양성과 세계 적합성을 지키면 허용, 쌍별 지위 할당 강제 없음 | JOKER_PROFESSION_CANDIDATE | 일치 |
-| 구판 후보가 이미 공개됐고 새 채팅에서 재개 | 기존 문자·직함·카테고리 보존, 새 규칙은 미공개 신규 후보에 적용 | PROFESSION_SIX_CHOICE | 일치 |
 
 ## 사건 진행 상시 지침·HUD 문단 분리 대조
 
@@ -304,3 +287,29 @@
 - 실제 이미지 생성 및 첨부 예시 자산의 시각 일치 확인.
 
 이번 세션에 해당 실행 도구/서버가 연결돼 있지 않으므로 문서 검증을 운영 성공으로 해석하지 않는다.
+
+## 직업 특별 배치 철회 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| A/B 모두 평범한 생업, C/D 모두 테마에 맞는 실무직 | 특별 역할 할당 없이 각 분류·업무 다양성으로 검증 | PROFESSION_SIX_CHOICE | 일치 |
+| C/D가 원작 테마와 무관한 반대 직업 | 특별 배치 철회와 별개로 테마 연결 조건은 유지 | PROFESSION_MULTILAYER_GENERATOR | 일치 |
+| 이미 공개된 왕/CEO 직업 또는 기존 PC | 패치 때문에 직업·권한을 소급 재생성하지 않음 | PROFESSION_SIX_CHOICE | 일치 |
+
+## 생성 UI 고정 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 시작 설정 일부만 제출 | 같은 폼에 기존 값을 보존하고 필수 누락만 요청 | SETUP_UI_FIXED_CONTRACT | 일치 |
+| 원작 드래프트를 자유 산문으로 축약 | 같은 후보로 고정 A~F 두 줄 카드 재출력 | HOMAGE_DRAFT_PUBLIC_FORMAT | 일치 |
+| 특성 표에 Luck 또는 EDU가 빠짐 | 같은 수치로 8특성·합계·Luck 표 복구, 재굴림 없음 | SETUP_UI_FIXED_CONTRACT | 일치 |
+| 직업 화면에서 기능 점수 공개 | 기능명 7개만 남기고 확정값 자체는 보존 | PC_SKILL_START_VALUES | 일치 |
+| 전문 분야 A와 중복 취미 제출 | A 보존, 취미만 재요청, 다음 PC로 넘어가지 않음 | SETUP_UI_FIXED_CONTRACT | 일치 |
+| P2 생성 중 설명 질문·잘못된 문자·새 채팅 복귀 | 같은 P2 단계·후보·문자로 복귀, 다른 Gate의 A로 해석하지 않음 | SETUP_UI_FIXED_CONTRACT | 일치 |
+| 세계 브리핑에 숨은 법칙 수·정답 표시 | 공개 배경 양식만 채우고 숨은 정보 제외 | START_BRIEFING_FOG / SETUP_UI_FIXED_CONTRACT | 일치 |
+| 최종 카드 배부 | 필수 항목 한 코드 블록 후 기존 프로필 A/B만 표시, 첫 장면 미진행 | SETUP_UI_FIXED_CONTRACT | 일치 |
+| Gold 참조 이미지가 현재 없음 | 명시된 블록 배치로 렌더링 명세 작성, 다른 카드 형식으로 대체 금지 | GOLD_START_PROFILE_REFERENCE | 일치 |
+| P2의 직업·얼굴·초상 구도가 P1과 다름 | 콘텐츠·초상 구도만 변경하고 페이지 블록 배치는 유지 | GOLD_START_PROFILE_REFERENCE | 일치 |
+| 생성 이미지에 수치 오류·필수 블록 누락 | 완료로 표시하지 않고 텍스트 정본 유지, 명시 요청 때만 재생성 | GOLD_START_PROFILE_REFERENCE | 일치 |
+
+위 대조는 문서 계약 검토이며 실제 AI 응답·이미지 생성 준수율 측정이 아니다.

@@ -29,7 +29,7 @@
 | 원작 후보 A~F | [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) |
 | PC 특성+Luck 후보 | [STAT_DRAFT_GENERATION](04-setup.md#stat_draft_generation) |
 | APP 반영 외형·확정 시점 | [PC_APPEARANCE_FROM_APP](04-setup.md#pc_appearance_from_app) |
-| 직업 A/B 생활권·특별, C/D 테마 생활권·테마 특별 | [PROFESSION_SIX_CHOICE](04-setup.md#profession_six_choice) |
+| 직업 A/B 기본, C/D 테마 연결, E/F 자유형 | [PROFESSION_SIX_CHOICE](04-setup.md#profession_six_choice) |
 | 직업·기능 시작값 | [PC_SKILL_START_VALUES](04-setup.md#pc_skill_start_values) |
 | 원작 특징을 실제 세계에 구현 | [HOMAGE_SIGNATURE_FREEZE](04-setup.md#homage_signature_freeze) |
 | 실패·방치의 중대한 손실 설계 | [CAUSAL_ENDGAME_PRECOMMIT](04-setup.md#causal_endgame_precommit) |
@@ -90,3 +90,5 @@ Scene Turn은 시간이 드는 의미 있는 행동의 진행 번호다. 실제 
 정보 공개 범위(FOG)는 플레이어 전체에게 공개된 사실과 아직 미발견인 세계의 경계다. 어느 PC든 알게 되어 공개된 사실은 파티가 공유하며 PC별 열람 장벽은 없다. GM_STATE는 공개·비공개를 포함한 게임의 작업 상태, Checkpoint는 그 전체 상태를 검증해 보존한 저장본이다. HUD·수첩·이미지는 공개 투영이다.
 
 영어 코드 형태의 필드·enum은 실제 저장/도구 계약과 연결된 식별자다. 한국어 표현을 다듬는 이유로 필드명을 임의로 바꾸지 않는다.
+
+시작·원작·PC·세계 브리핑 고정 폼: [SETUP_UI_FIXED_CONTRACT](04-setup.md#setup_ui_fixed_contract). 텍스트 폼과 프로필 이미지 레이아웃을 구분해 적용한다.

@@ -290,6 +290,7 @@
 | SCENE_ROLES | [06-play.md](../rules/06-play.md#scene_roles) |
 | SCENE_VISUALIZATION_CAST_CONTINUITY | [08-visual.md](../rules/08-visual.md#scene_visualization_cast_continuity) |
 | SEQUENTIAL_PROFILE_GENERATION | [04-setup.md](../rules/04-setup.md#sequential_profile_generation) |
+| SETUP_UI_FIXED_CONTRACT | [04-setup.md](../rules/04-setup.md#setup_ui_fixed_contract) |
 | SHARED_ASSET_CAUSAL_OWNERSHIP | [05-world.md](../rules/05-world.md#shared_asset_causal_ownership) |
 | SIGNATURE_OPPORTUNITY | [05-world.md](../rules/05-world.md#signature_opportunity) |
 | SILENT_TRUTH | [05-world.md](../rules/05-world.md#silent_truth) |
