@@ -4,7 +4,7 @@
 
 ## STATE_AUTHORITY
 
-비공개 GM_STATE는 매 실제 결과 뒤 현재 작업 상태에서 갱신한다. 이 작업 자체는 DB 조회/쓰기가 아니다. Supabase verified history가 영속 정본이다. 자동 저장은 설정 완료·플레이 시작·Scene Turn 30배수의 안전 경계·전체 캠페인 종료 경계이며 수동 저장은 별도다. 저장 절차·복구·재개는 STATE_CADENCE/STATE_COMMIT/STATE_RESUME만 따른다. 실제 verify와 동일 version read-back 없이 저장 완료라 하지 않는다. 실패 때문에 비밀·난수·NPC 결과를 새로 생성하지 않는다.
+비공개 GM_STATE는 매 실제 결과 뒤 현재 작업 상태에서 갱신한다. 이 작업 자체는 DB 조회/쓰기가 아니다. Supabase verified history가 정상 운영의 영속 정본이다. 인증된 비공개 GitHub는 검증 백업 및 장애 시 비상 체크포인트 저장소이며, 장애 복구 절차는 STATE_GITHUB_FAILOVER_PROTOCOL을 따른다. GitHub 비상본은 Supabase verified와 구별한다. 자동 저장은 설정 완료·플레이 시작·Scene Turn 30배수의 안전 경계·전체 캠페인 종료 경계이며 수동 저장은 별도다. 저장 절차·복구·재개는 STATE_CADENCE/STATE_COMMIT/STATE_RESUME만 따른다. 정상 저장은 실제 Supabase verify와 동일 version read-back 없이 완료라 하지 않는다. GitHub 비상 저장도 별도 원문 재열람·해시 검증 없이 완료라 하지 않으며 정식 DB 검증 완료로 표시하지 않는다. 실패 때문에 비밀·난수·NPC 결과를 새로 생성하지 않는다.
 
 비공개 GM_STATE는 세계·인물·PC·난수·진행 절차의 작업 상태다. 매 일반 턴 실제 결과를 반영하고, [STATE_CADENCE](07-state.md#state_cadence)의 경계에서 전체 상태를 저장한다.
 - 문서에 지정된 운영 대상은 Supabase `trpg-private-state-db` / project ref `mwopllxdhxcykwyxuyrd`, 정본은 `public.gm_checkpoint_history`의 verified 전체 `state_json`이다. `public.gm_sessions`는 최신 미러이며 복원 정본이 아니다.
@@ -47,7 +47,7 @@ GM_STATE는 **실제 로드/생성한 게임 데이터와 이후 확정 변경�
 
 DB 호출에는 필요한 상태 필드/ref 또는 저장 작업과 허용 사유가 있어야 한다. 연결 계약은 첫 사용/실제 변경 때만 확인한다. 조회는 새 채팅/명시 로드, 필요한 상태 유실·충돌, 저장 경계 parent/verify/read-back, 실패 복구, 명시적 DB 대조에 한정한다. 기능 선정·판정 요청·굴림 결과·PC 전환·A·HUD만으로 latest/list/full load를 하지 않는다. 문서 찾기 판정 전에 발견할 기사 전문까지 미리 조회하지 않는다. 현재 미저장 상태를 과거 저장으로 덮어쓰지 않으며 필수 저장 검증은 유지한다.
 
-Supabase는 영속 저장·복구 경계에서 접근한다. **일반 응답의 기본값은 DB 조회 0회**다. 현재 작업 상태를 읽고 실제 결과를 갱신하는 것은 DB 호출이 아니다.
+Supabase는 영속 저장·복구 경계에서 접근한다. **일반 응답의 기본값은 DB 조회 0회**다. 연결 차단·일시 장애일 때의 GitHub 대체 접근도 동일한 허용 경계에서만 STATE_GITHUB_FAILOVER_PROTOCOL에 따라 수행한다. 현재 작업 상태를 읽고 실제 결과를 갱신하는 것은 DB 호출이 아니다.
 
 | 실제 조건 | 허용되는 접근 |
 |---|---|
@@ -86,6 +86,30 @@ Supabase는 영속 저장·복구 경계에서 접근한다. **일반 응답의 
 - **독립 백업:** 사용자가 승인하여 만든 비공개 GitHub `gusghdkrl-dotcom/trpg-private-state`의 `verified-gm-snapshots-2026-10-30` 브랜치에는 당시 검증 완료된 10개 저장의 원문 및 `snapshots/verified/MANIFEST.json`이 있다. 복구가 필요하면 private GitHub 도구로 exact path를 읽어 manifest SHA-256 및 ID/version을 검사한다. 이 기록은 **2026-10-30 시점 백업**이며 자동 최신 미러가 아니다. GitHub가 Supabase보다 최신이라고 가정하거나 미저장 진행을 덮어쓰지 않는다.
 - **2026-10-30 사용자 요청으로 향후 검증 세이브의 비공개 GitHub 이중 백업을 활성화했다.** 각 실제 저장 경계에서 Supabase 동일 version의 verified full `state_json` exact read-back을 마친 다음, 연결된 GitHub 도구로 비공개 `gusghdkrl-dotcom/trpg-private-state`의 `gm-checkpoints` 브랜치 `snapshots/verified/<session_id>/vNNNN.json`에 동일 원문을 새 파일로 추가한다. 기존 버전은 덮어쓰거나 삭제하지 않으며 GitHub 재열람 문자열과 Supabase 원문의 일치까지 확인한다. 함께 `snapshots/verified/MANIFEST.json`, `snapshots/INDEX.md`, 캠페인 `REVIEW.md`(숨은 진실·NPC·증거·조건부 사건을 원문 범위에서 파생)를 최신 확인 상태로 갱신하고 재열람한다. 비공개 스포일러는 공개 `TRPG-RULE` 저장소나 공개 수첩에 쓰지 않는다. Supabase는 단일 저장 정본이고 GitHub는 열람·복구용 백업이다. GitHub 실패·연결 단절·시간 한계가 있으면 Supabase의 verified 성공을 취소하지 말고 백업 미완료를 보고하고 다음 허용된 저장/복구 시 누락 버전만 대조한다. 채팅과 무관하게 실행되는 24시간 자동 동기화나 백그라운드 서버가 있다고 주장하지 않는다.
 - 비공개 GitHub로 **전체 스냅샷**을 백업하는 작업과, 공개 저장소/수첩/프로젝트 문서에 **비밀 요약**을 적어 작업 기억처럼 사용하는 행위는 다르다. 후자는 여전히 금지한다. 공개 Rules repo에는 절대 실제 비공개 state_json을 넣지 않는다.
+
+## STATE_GITHUB_FAILOVER_PROTOCOL
+
+**적용 범위:** 사용자 승인에 따른 장애 시 복원·비상 저장. Supabase `public.gm_checkpoint_history`의 verified 상태는 정상 운영의 영속 정본으로 유지하고, private `gusghdkrl-dotcom/trpg-private-state`의 `gm-checkpoints` 브랜치만 현재 동기화 대상 GitHub 저장소로 쓴다. 과거 `verified-gm-snapshots-2026-10-30` 브랜치는 날짜가 고정된 참고 백업이며 최신 미러로 취급하지 않는다. 공개 룰 저장소·수첩·이미지에는 비공개 GM_STATE를 기록하지 않는다. 이 절은 별도 서버·상시 자동 동기화·새 Supabase 테이블/함수의 존재를 전제하지 않는다.
+
+### 정상 경로와 대체 복원
+
+1. 정상 저장은 STATE_COMMIT의 Supabase commit → verify → 동일 version full read-back 뒤 기존 `snapshots/verified/<session_id>/vNNNN.json`과 `snapshots/verified/MANIFEST.json`에 **동일한 원문**을 백업하고 재열람해 문자열·SHA-256·session/version/event를 대조한다. Supabase 성공 후 GitHub가 실패하면 `supabase_verified / github_backup_pending`을 기록한다. GitHub 실패가 DB verified 성공을 취소하지 않는다.
+2. 새 채팅 로드·명시적 재개·실제 상태 유실 시 Supabase 정식 verified 조회를 우선한다. 일반 연결 실패로 재시도하더라도 같은 요청의 확인된 범위에서만 한다. 명시적인 도구 안전 차단은 다른 SQL/인코딩/권한 약화로 우회하지 않는다.
+3. Supabase를 읽을 수 없으면 GitHub **인증된 private 도구**로 저장 목록의 해당 session을 특정하고 `gm-checkpoints`의 최신 **검증 완료 미러** 후보를 읽는다. 매니페스트 `entries`의 session/version/event/path/SHA-256을 해당 원문과 대조하고 STATE_INTEGRITY의 전체 내용·불변 anchor·규칙판·RNG·미완결 절차를 검사한다. 확인되지 않은 매니페스트 또는 불완전·불일치 원문은 사용하지 않는다. 다른 session/branch의 파일이나 날짜 고정 백업을 임의로 합쳐서 최신본을 만들지 않는다.
+4. Supabase 최신 version을 확인할 수 없다면 GitHub 사본을 `github_mirror_verified / supabase_latest_unconfirmed`로 표시한다. 알려진 더 최신 verified/pending, 서로 다른 작성자, 미저장 변경분과의 충돌이 없으면 **확인 가능한 마지막 백업 지점**에서 제한적으로 재개할 수 있다. 이를 Supabase의 확정 최신 버전이라고 부르거나 미저장 현재 상태를 덮어쓰지 않는다. 충돌·손상 증거가 있으면 재개를 보류하고 판본 대조를 요구한다.
+
+### Supabase 저장 장애와 GitHub 비상 체크포인트
+
+5. Supabase commit/verify/read-back 도중 차단·장애가 발생하면 최초 저장 전 고정한 동일 full GM_STATE의 UTF-8 원문, SHA-256, session, 규칙판, 원래 attempt의 version/event, 마지막 확인된 DB parent version/hash 및 현재 미확인 상태를 보존한다. **DB에 쓰기가 반영됐을 가능성**을 지우지 않으며, 결과·난수·이벤트를 재실행하거나 임의의 새 DB version을 생성하지 않는다.
+6. 정식 `snapshots/verified/`와 분리된 `snapshots/emergency/<session_id>/<attempt_id>.json`에 그 전체 원문을 그대로 기록하고, `snapshots/emergency/<session_id>/<attempt_id>.meta.json`에 parent(version/hash), intended version/event, 원문 SHA-256, 저장 시각, `supabase_status=unconfirmed` 및 현재 복구 상태를 기록한다. attempt_id는 동일 저장 시도에서 재사용하는 안전한 파일명이어야 하며, 기존 다른 해시의 같은 경로를 덮어쓰지 않는다. 메타 파일과 원문을 모두 다시 읽어 바이트/문자열·SHA-256·식별자를 검증하기 전에는 `github_emergency_verified`가 아니다. 일부만 쓴 경우 `github_emergency_incomplete`로 둔다.
+7. `github_emergency_verified`는 **비상 저장 성공**이지 **Supabase 정상 저장 완료**가 아니다. 새 채팅에서는 실제 검증된 같은 attempt의 비상 원문을 불러올 수 있지만, DB 동기화 전까지 현재 세션을 `reconciliation_pending`으로 유지한다. 단일 Writer와 마지막 확정 상태의 연속성, 미해결 DB 충돌 없음이 확인되면 이 상태로 이후 플레이를 진행할 수 있다. 이후 변경분은 비상본을 부모로 하는 새로운 고유 attempt에 기록하며 DB 공식 version을 임의 확정하지 않는다. 모든 저장 경계에서 전체 원문 검증을 유지한다.
+8. GitHub도 실패하거나 전체 원문·메타의 검증이 불가능하면 기존 STATE_RECOVERY처럼 `checkpoint_write_recovery_required`로 보류한다. 부분 파일, API 성공 응답, hash 문자열만으로 복원·저장 성공을 선언하지 않는다.
+
+### Supabase 재연결·정합화
+
+9. Supabase에 재접속하면 해당 session의 최신 verified·orphan pending·event/version/hash를 **읽기 전용으로 먼저** 확인하고, GitHub의 검증 백업/비상 attempt와 정확히 대조한다. 동일 attempt가 이미 verified라면 원문이 같을 때만 완료 및 미러 동기화 처리한다. pending이라면 STATE_RECOVERY의 동일 tuple 규칙에 따라 verify/read-back을 마무리한다. DB가 아직 parent 상태이고 다른 쓰기가 없으면 순서대로 기존 고정 원문을 정식 commit/verify/read-back할 수 있다.
+10. DB에 다른 원문·다른 event의 동일 version, 더 최신 DB 세이브, 부모 불일치, 여러 작성자나 원인 불명의 gap이 있으면 **자동 승격·삭제·덮어쓰기·재번호 부여 금지**. `checkpoint_reconciliation_conflict`로 표시하고 해당 변경을 보류한다. 사용자의 명시적 선택과 STATE_INTEGRITY를 거쳐 해결한다. 특히 GitHub 비상본을 DB verified 기록으로 오인하지 않는다.
+11. 대조 완료 뒤에도 원래 GitHub 비상 파일을 조용히 지우지 않는다. verified 백업의 누락분을 같은 원문으로 완성하고, 별도 정리/삭제는 사용자의 명시적 지시에 따른다. 일반 플레이의 조회 최소화·Scene Turn 주기·단일 Writer·비밀 공개 금지·기존 세이브의 규칙판 보존은 그대로 적용한다.
 
 ## STATE_SCHEMA
 
@@ -145,7 +169,7 @@ Anchor는 손실 검출/복구 비교용이며 구조화 상태를 이중 계산
 - 하나의 시간 생략으로 여러 기준선을 넘으면 현재 full state를 한 번 저장하고 next_scene_turn을 현재보다 큰 다음 30배수로 옮긴다.
 - 자동 저장은 전투·추격·굴림/Luck 선택·광기·Handoff/Reaction/Visual·장기 행동의 열린 절차를 끊지 않는다. 첫 안전 경계로 연기한다. 수동 저장은 열린 단계까지 정확하게 보존해 재개할 수 있어야 한다.
 - 전투·피해·단서·장소 이동·회차 종료·이미지·수첩 변경 자체는 추가 자동 저장 조건이 아니다.
-- 실패하면 current working state를 유지한다. 초기/시작/종료 검증 완료를 가장하지 않는다. periodic 복구까지 실패하면 다음 독립 플레이 상태 변경 전에 저장 복구를 완료한다.
+- 실패하면 current working state를 유지한다. 초기/시작/종료 Supabase 검증 완료를 가장하지 않는다. periodic 복구 실패 시 STATE_GITHUB_FAILOVER_PROTOCOL의 비상 저장을 시도할 수 있다. GitHub 전체 원문·매니페스트의 재열람 검증까지 성공하면 비상 저장 상태로 진행할 수 있으나, 더 최신 DB 상태·중복 작성자·버전 충돌이 알려졌거나 무결성이 불확실하면 다음 독립 플레이 변경을 보류한다. 양쪽 저장 모두 실패하면 기존대로 저장 복구 전 진행을 보류한다.
 - 저장은 턴·시간·난수·세계 상태를 진행시키지 않는다.
 
 ## STATE_CHECKPOINT_RECAP
@@ -187,13 +211,14 @@ STATE_SCHEMA와 해당 저장의 실제 namespace/critical_state_registry를 따
 4. 의미·parent·manifest를 다시 검사하고 같은 원문으로 verify한다.
 5. 같은 version의 verified 원문을 exact read-back해 원문·hash·식별자·의미를 확인한다. 모두 성공해야 저장 완료다. HTTP 성공이나 SQL 실행 응답만으로 완료 처리하지 않는다.
 6. 시작/periodic 저장의 같은 version exact 상태로 STATE_CHECKPOINT_RECAP을 수행하고 working GM_STATE를 재정착한다. 이 읽기는 새 저장·게임 진행이 아니다. read-back 결과가 exact-version load 조건을 모두 충족하면 재사용해 같은 데이터를 중복 조회하지 않는다.
+- Supabase 쓰기·verify·exact read-back이 연결 차단 또는 실제 장애로 중단되면 STATE_GITHUB_FAILOVER_PROTOCOL에 따라 원문을 고정한 동일 attempt의 비상 체크포인트를 별도 기록할 수 있다. 이때 Supabase 정상 저장 완료로 처리하지 않는다.
 - idempotent_replay는 같은 attempt가 있다는 뜻이다. 검증 상태를 확인하고 남은 verify/read-back으로 이어간다.
 - cadence 완료 상태는 검증 성공 후 반영한다. 원문 내부의 pending 상태를 사후 조작해 재해시하지 않는다. Resume은 DB의 검증 결과와 exact snapshot을 함께 확인해 동일 attempt 완료 여부를 정합적으로 판정한다.
 - API 계약이 문자열 대신 JSON 객체를 요구하거나 hash 직렬화 규칙이 다르면 서버 계약을 먼저 확인한다. 임의 직렬화로 서로 다른 바이트를 같은 payload라 주장하지 않는다.
 
 ## STATE_RECOVERY
 
-pending 쓰기 뒤 verify/read-back이 중단되면 같은 version/event/원문으로 자동 재시도를 최대 1회 한다. 필요하면 같은 tuple로 반영을 replay한다. 실패 때문에 난수·사건·NPC 결과를 다시 계산하지 않는다.
+pending 쓰기 뒤 verify/read-back이 중단되면 같은 version/event/원문으로 일반 일시 오류에 한해 자동 재시도를 최대 1회 한다. 명시적인 도구 안전 차단은 SQL·인코딩·권한 변경 등으로 우회 재시도하지 않고 STATE_GITHUB_FAILOVER_PROTOCOL의 별도 인증된 백업/비상 저장 경로와 상태 대조를 검토한다. 필요하면 같은 tuple로 반영을 replay한다. 실패 때문에 난수·사건·NPC 결과를 다시 계산하지 않는다.
 새 채팅의 orphan pending은 다음을 모두 검사한다.
 - 최신 verified+1 또는 verified가 없는 session의 version 1.
 - event_id 규칙 일치, 저장된 exact 원문과 hash 일치.
@@ -211,6 +236,7 @@ pending 쓰기 뒤 verify/read-back이 중단되면 같은 version/event/원문�
 4. 최신 hash-valid verified 원문을 읽고 [STATE_INTEGRITY](07-state.md#state_integrity)의 의미 연속성까지 검사한다. hash만 맞는 불완전한 snapshot은 정상 복원이 아니다.
 5. exact full state로 STATE_CHECKPOINT_RECAP을 수행하고 STATE_WORKING_CONTEXT의 PC·세계 핵심·현재 장면·세계 진행 색인을 구성한다. 비공개 진실/자료 본문을 공개 요약으로 바꾸거나 원본을 버리지 않는다. 열린 판정·선택·전투·PC/POV·지도·난수·시간을 그 단계에서 이어간다. 새 채팅이라는 이유로 생성·굴림·첫 장면을 다시 실행하지 않는다.
 6. 실제 검증된 version/Scene Turn으로 공개 수첩을 연결한다. 수첩에서 게임 정본을 역복원하지 않는다.
+- Supabase 연결/정식 로드에 실패하면 STATE_GITHUB_FAILOVER_PROTOCOL로 검증된 GitHub 사본의 제한적 복원을 검토한다. 확인 불가한 Supabase 최신 상태를 안다고 주장하지 않으며, 비상본은 정식 DB verified로 표시하지 않는다.
 - 최신 미러가 뒤처져도 verified history가 정본이다. 실제 지원되는 repair 계약이 확인된 경우만 미러를 정합적으로 복구한다.
 - 최신 상태가 손실됐으면 정확한 불변 ancestor 복구, 검증 가능한 delta repair 또는 사용자가 선택한 완전한 이전 Checkpoint로의 rollback만 가능하다. 서로 다른 시점의 HP와 세계를 임의 혼합하지 않는다.
 - 마지막 검증 저장 뒤 미저장 진행은 복원이 보장되지 않는다. 새 비밀·RNG·NPC 기억으로 빈 구간을 채우지 않는다.
