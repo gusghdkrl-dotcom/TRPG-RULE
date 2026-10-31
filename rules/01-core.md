@@ -46,7 +46,7 @@ FOG는 **플레이어 전체와 아직 발견하지 못한 세계 사이**에만
 4. 판정값이 필요하면 요청하고 대기한다. 값이 오면 해당 규칙으로 직접 결과를 한 번 적용한다.
 5. 실제 경과시간이 있으면 [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution)으로 작업 상태의 해당 구간과 화면 밖 원인을 확인하고 도달한 세계·NPC·환경 결과를 한 번 처리한다. 다음 30턴 저장/복기까지 미루지 않는다. 현재 자료가 있으면 추가 조회하지 않으며 같은 시간·피해·자원을 이중 반영하지 않는다.
 6. 비공개 상태를 갱신하고, [DIRECTOR_WRITER_KEEPER_CONVERGENCE](06-play.md#director_writer_keeper_convergence)의 통합 연출·서술로 공개 가능한 결과·행동권·HUD를 출력한다. 별도 작성자/검수 도구를 호출하는 단계가 아니다.
-7. 선언이 끝난 안전한 장면 경계에서 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)의 첫 목표 뒤 사건 접점·초반 30턴 입구·완결 장면 2개 정체 기준과 다음 PC를 검토한다. 유효한 일상/관계 장면을 정체로 간주하거나 턴 수로 공격·PC 선택을 강제하지 않는다. 저장 조건이 성립하면 [STATE_CADENCE](07-state.md#state_cadence)를 적용한다.
+7. 선언이 끝난 안전한 장면 경계에서 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)의 첫 목표 뒤 사건 접점·초반 30턴 입구·완결 장면 2개 정체 기준과 다음 PC를 검토한다. 유효한 일상/관계 장면을 정체로 간주하거나 턴 수로 공격·PC 선택을 강제하지 않는다. 20배수 안전 경계에는 [PRIVATE_CANON_PERIODIC_REVIEW](07-state.md#private_canon_periodic_review)로 정본 전체를 재독한다. 저장 조건이 성립하면 [STATE_CADENCE](07-state.md#state_cadence)를 적용한다.
 소유권: 판정은 판정 문서, SAN/전투는 위험 문서, 시간/Focus는 진행 문서, 비공개 세계 인과는 세계 문서, 영속 저장은 상태 문서가 담당한다. 실제 원인이 같은 상태를 두 번 변경하지 않는다.
 
 ## DESTINY_DICE_QUEUE

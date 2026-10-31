@@ -4,6 +4,7 @@
 
 | PRIVATE_CANON_ACCESS_ROUTER | [07-state.md](../rules/07-state.md#private_canon_access_router) |
 | PRIVATE_CANON_DOCUMENT | [07-state.md](../rules/07-state.md#private_canon_document) |
+| PRIVATE_CANON_PERIODIC_REVIEW | [07-state.md](../rules/07-state.md#private_canon_periodic_review) |
 | STATE_CANON_SAVE_BINDING | [07-state.md](../rules/07-state.md#state_canon_save_binding) |
 | STATE_SAVE_FAILURE_CONTINUE | [07-state.md](../rules/07-state.md#state_save_failure_continue) |
 | 규칙 ID | 현재 문서 |

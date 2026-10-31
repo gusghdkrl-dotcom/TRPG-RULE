@@ -372,3 +372,23 @@
 | 새 채팅에서 미저장 HP/RNG/진행을 알 수 없음 | 값을 창작하지 않고 실제 복구 자료 확인, 미저장 복원 성공 가장 없음 | STATE_RESUME / STATE_SAVE_FAILURE_CONTINUE | 일치 |
 
 문서 계약 대조이며 실제 서버 장애 주입 테스트는 아니다.
+
+## 20턴 정본 실제 재독
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| Scene Turn 20, 열린 절차 없음 | 사용자 재독 요청 없이 활성 정본 전체 실제 조회·대조 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| Scene Turn 20에 굴림/Luck 대기 | 재독 예정 보존, 입력 해결 후 첫 안전 경계에 실행 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 19턴에서 한 번에 45턴으로 이동 | 현재 시점 1회 재독, 다음 기준 60턴 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 20턴 재독 완료, 저장 경계 아님 | Supabase commit/verify/full load를 추가하지 않음 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 60턴 재독과 30배수 저장 복기 동시 도래 | 정본 읽기 1회 재사용, 저장 성공/재독 완료는 별도 판정 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 60턴에 Supabase 저장 실패 | 소스 재독/작업 상태 대조 수행, 현재 플레이 계속 | PRIVATE_CANON_PERIODIC_REVIEW / STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| 정본 검색이 상위 3개 발췌만 반환 | 전체 완료 아님, manifest의 빠진 절/본문을 추가 조회 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 일부 본문 잘림·파일 조회 실패 | 미완료와 누락 범위 유지, 다음 재시도 경계와 성공 상태 구분 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 정본에 살아 있는 NPC가 현재 사망/단서가 이동함 | 현재 누적 변경 적용, 부활/원위치 복원/사건 재실행 없음 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 새 채팅 37턴 로드·재독 기록 없음 | 활성 정본 전체 1회 읽기, 다음 40턴, 열린 단계 유지 | PRIVATE_CANON_PERIODIC_REVIEW / STATE_RESUME | 일치 |
+| 같은 판본 요약은 있으나 40턴 정기 경계 도래 | 기억/요약만으로 생략하지 않고 새 소스 재독 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 13턴에 당장 필요한 비밀 사실이 문맥에서 없음 | 20턴까지 기다리지 않고 관련 절 즉시 조회 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
+| 기존 LEGACY_FULL 세이브에 별도 정본 파일 없음 | 실제 확보한 불변 원문 복기, 파일 소스 재독 성공 가장 없음 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+
+이는 문서 계약의 경계 사례 대조다. 실제 게임에서 검색 도구가 본문 전체를 반환하는지나 장기 기억 유지율은 측정하지 않았다.

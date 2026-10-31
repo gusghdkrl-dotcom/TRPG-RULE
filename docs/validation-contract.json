@@ -154,7 +154,8 @@
       "STATE_CHECKPOINT_RECAP",
       "DOCUMENT_BOUND",
       "canon_source_required",
-      "전체 누적 변경/추가 사실"
+      "전체 누적 변경/추가 사실",
+      "PRIVATE_CANON_PERIODIC_REVIEW"
     ]
   },
   {
@@ -833,7 +834,8 @@
       "현재 장소 밖의 활성 원인도 포함",
       "이미 처리한 사건은 복원/조회로 재실행하지",
       "조회한 비밀을 그대로 플레이 지문에 붙이지",
-      "동적 상태가 유실됐으면 STATE_ACCESS_ROUTER"
+      "동적 상태가 유실됐으면 STATE_ACCESS_ROUTER",
+      "PRIVATE_CANON_PERIODIC_REVIEW"
     ],
     "instruction_contains": [
       "PRIVATE_CANON_ACCESS_ROUTER"
@@ -903,6 +905,27 @@
     ],
     "excludes": [
       "Play Start Checkpoint verified 이후에만"
+    ]
+  },
+  {
+    "rule": "PRIVATE_CANON_PERIODIC_REVIEW",
+    "contains": [
+      "Scene Turn 20/40/60/80",
+      "플레이어의 `정본 읽어 줘` 명령이나 재승인은 필요 없다",
+      "열린 절차가 끝난 첫 안전 경계",
+      "45턴에 재독 완료 → 다음 60턴",
+      "활성 정본의 모든 절·본문",
+      "색인·검색 상위 발췌·요약만 읽고 전체 완료로 표시하지",
+      "최신 누적 변경 상태를 적용",
+      "정본 재독 20턴과 게임 저장 30턴은 별개",
+      "정본 전체 읽기는 한 번만",
+      "Supabase 저장 실패와 관계없이",
+      "재시도 경계와 완료 여부를 구분",
+      "현재 확인된 사실로 처리할 수 있는 플레이는 계속"
+    ],
+    "instruction_contains": [
+      "20턴마다 PRIVATE_CANON_PERIODIC_REVIEW",
+      "정본 전체를 실제 재독"
     ]
   }
 ]

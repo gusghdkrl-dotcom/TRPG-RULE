@@ -96,3 +96,5 @@ Scene Turn은 시간이 드는 의미 있는 행동의 진행 번호다. 실제 
 비공개 정본: [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) → [PRIVATE_CANON_ACCESS_ROUTER](07-state.md#private_canon_access_router) → [STATE_CANON_SAVE_BINDING](07-state.md#state_canon_save_binding).
 
 저장 실패 후 진행: [STATE_SAVE_FAILURE_CONTINUE](07-state.md#state_save_failure_continue).
+
+20턴 정본 전체 재독: [PRIVATE_CANON_PERIODIC_REVIEW](07-state.md#private_canon_periodic_review). 30턴 저장과 별도로 실행한다.
