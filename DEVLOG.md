@@ -1,5 +1,13 @@
 # 개발 일지
 
+## 2026-10-31 — 비공개 정본 단일 원본 + DB1 동적 세이브
+
+- 현재 Supabase 읽기 전용 검사에서 최근 checkpoint의 장문 canon·scenario_core 중복을 확인했다. 차단 원인은 크기만으로 단정할 수 없으며 실제 DB semantic validator도 기존 불변 전문을 요구했다.
+- 신규 캠페인 DOCUMENT_BOUND(DB1)을 기본으로 명세화했다. 실제 물리 파일 hash/판본/절과 baseline entity coverage를 대조하고, DB에는 참조+누적 world_delta·new_entities·tombstones·PC/진행/RNG만 보낸다.
+- 기존 LEGACY_FULL verified 원문·hash·history는 건드리지 않는다. 서버 DB1 검증을 설치·확인하기 전에는 축소 세이브 완료로 표기하지 않고, 자동 대용량 fallback 없이 진행한다. 기존 캠페인 이관은 별도 전체 대조가 필요하다.
+- DB1 SQL validator, 문서-세이브 결합과 실제 commit/verify/load 시험은 별도 검증 대상이다. 룰북 검사 및 ZIP 갱신은 배포 자동화에서 확인한다.
+
+
 ## 2026-10-31 — 저장 실패에 따른 게임 진행 잠금 제거
 
 요청: 세이브가 되지 않으면 진행하지 못하게 하는 조항을 제거한다.

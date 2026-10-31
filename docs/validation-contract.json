@@ -904,5 +904,23 @@
     "excludes": [
       "Play Start Checkpoint verified 이후에만"
     ]
+  },
+  {
+    "rule": "STATE_CANON_SAVE_BINDING",
+    "contains": [
+      "DOCUMENT_BOUND(DB1)",
+      "document_bound_format",
+      "canon_ref",
+      "file_sha256",
+      "change_coverage",
+      "baseline_entity_ids",
+      "changed_entity_ids",
+      "world_delta",
+      "processed_event_ids",
+      "LEGACY_FULL 대용량 payload로 자동 재전송하지 않는다"
+    ],
+    "excludes": [
+      "문서가 있다는 이유로 서버가 요구하는 원문·anchor를 삭제하지 않는다"
+    ]
   }
 ]

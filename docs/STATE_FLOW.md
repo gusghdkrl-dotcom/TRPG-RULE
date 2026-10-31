@@ -56,3 +56,10 @@
 이번 패치는 룰북 계약과 라우팅이다. 저장 서버/어댑터 도구가 이 작업 환경에 없어 DOCUMENT_BOUND의 commit·verify·새 채팅 복원은 실행 검증하지 못했다. 실제 프로젝트 소스 검색·파일 생성 기능도 게임 실행 환경에서 확인해야 한다. 운영 도입 전에는 정본 참조 보존, 누적 변화·삭제/사망·추가 사실 round-trip, 판본 누락 시 중단, 열린 판정/RNG 재개를 서버의 실제 계약으로 점검해야 한다.
 
 세이브 실패는 시작·첫 장면·일반 진행·인계·엔딩을 막지 않는다(STATE_SAVE_FAILURE_CONTINUE). 현재 작업 상태로 계속하며 저장 성공은 실제 검증 때만 표시한다. 실패한 원문은 동결하고 이후 진행과 구분해 다음 저장 경계/수동 저장/연결 복구 때 최신 상태를 저장한다. 미저장 진행이 새 채팅에서도 복원된다고 보장하지 않으며, 실제 데이터 유실은 필요한 범위를 복구한다.
+
+
+## DOCUMENT_BOUND(DB1) — 정본 한 번, 동적 상태만 반복 저장
+
+신규 세계 정본은 물리적 Markdown 파일에 불변 시나리오·NPC·Evidence·Route·Driver·지도·PC 최초 프로필 원문으로 완전히 기록한다. Supabase의 state_json에는 SHA-256을 포함한 canon_ref와 complete_since_revision 누적 change_coverage, world_delta, PC/진행/RNG를 넣는다. 저장을 거듭해도 마지막 checkpoint 하나 + 해당 정본 파일만으로 복원되어야 한다. DB validator는 JSON 구조만 검사하므로 실제 파일 hash·모든 baseline ref·동적 변경 완전성은 키퍼가 별도 대조한다.
+
+현재 DB의 TRPG2026_10_30 legacy validator는 전문 원문을 필수 요구한다. opt-in DB1 검증 추가는 `docs/sql/document_bound_payload_v1.sql`에 있고 기존 legacy 원문·검증 경로를 보존해야 한다. 차단이 반드시 payload 크기 때문이라고 단정하지 않는다. DB1의 실제 파일 왕복과 commit/verify/exact-read-back은 별도로 확인한다. 사용자 요청 없이 과거 verified snapshot을 변경하지 않는다.

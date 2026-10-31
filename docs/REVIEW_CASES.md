@@ -372,3 +372,16 @@
 | 새 채팅에서 미저장 HP/RNG/진행을 알 수 없음 | 값을 창작하지 않고 실제 복구 자료 확인, 미저장 복원 성공 가장 없음 | STATE_RESUME / STATE_SAVE_FAILURE_CONTINUE | 일치 |
 
 문서 계약 대조이며 실제 서버 장애 주입 테스트는 아니다.
+
+
+## 물리 정본+DB1 컴팩트 세이브 대표 사례
+
+| 조건 | 기대 결과 |
+|---|---|
+| 정본 전체 SHA·필수 절·coverage와 실제 DB1 서버 분기 확인 | 최초 불변 원문 제외, canon_ref + 누적 동적 상태 저장·verify·exact read-back |
+| DB1에 scenario_core·campaign_canon_text를 중복 포함 | DB semantic validator 거부 |
+| DB1의 change_coverage.changed_entity_ids와 world_delta 키 불일치 | DB semantic validator 거부 |
+| 정본 파일 누락/해시 불일치 | DB 원문이 정상이라도 복원 보류, 사실 생성/초기화 금지 |
+| legacy verified 기존 세션 | 기존 검증·복원 유지, 원문·hash·history 불변 |
+| 기존 세션 이관 요청 | 전체 원문/정본 비교 후 새 버전만 DB1 저장, 미확정이면 이관 보류 |
+| DB1 서버 미지원·차단 | 저장 미완료 표시, 무단 LEGACY_FULL 재전송 없이 현재 채팅 계속 |
