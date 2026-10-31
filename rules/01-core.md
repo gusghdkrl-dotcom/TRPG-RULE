@@ -74,7 +74,7 @@ AI 측 1dN(1≤N≤100)은 큐의 다음 M(1..100)을 소비한다. L=floor(100/
 ## PLAYER_INPUT_NAMESPACE_ROUTER
 
 플레이어 입력의 의미는 문자/숫자 자체가 아니라 **현재 열린 담당 규칙과 pending state**가 먼저 결정한다.
-1. 열린 Roll/Push/Luck/SAN/Combat/Chase/Madness/기타 진행 중 절차가 있으면 그 담당 규칙이 기대하는 입력을 먼저 해석한다. 일반 행동 메뉴가 이를 가로채지 않는다.
+1. 열린 Roll/Push/Luck/SAN/Combat/Chase/Madness/기타 진행 중 절차가 있으면 그 담당 규칙이 기대하는 입력을 먼저 해석한다. 일반 행동 메뉴가 이를 가로채지 않는다. 신규 PC 판정은 ROLL_INPUT_FORM_CONTRACT의 원값·행운/강행 선택을 하나의 제출로 해석한다.
 2. Setup 설정 대기에서는 START_SETTINGS_GATE의 현재 질문 대상과 필드명을 먼저 확인한다. 인원만 물었다면 1/2/3은 인원만 확정하며 시드·인지도·규모의 응답으로 복사하지 않는다. 여러 항목을 물은 뒤 단독 숫자가 오면 대상 항목을 확인한다. 시작 설정 전체가 확정된 뒤 Setup의 Homage·Profession Draft는 A~F, Stat·Specialty Draft는 A/B/C를 해당 단계의 로컬 선택으로 해석한다. PLAY Handoff 의미로 읽지 않는다.
 3. `focus_mode=handoff_wait/reaction_wait`의 신규 Gate는 정확한 단독 입력 `A`가 시간 정지 activation이다. Meta 요청은 pending을 유지한다.
 4. `focus_mode=visual_choice_wait`의 신규 Gate는 `A=텍스트/다음 진행`, `B=비주얼`이다. 둘 다 시간 정지다.

@@ -275,6 +275,7 @@
 | RETURN_SETTLEMENT_CONTINUITY | [06-play.md](../rules/06-play.md#return_settlement_continuity) |
 | ROLEPLAY_ANCHOR_AGENCY | [04-setup.md](../rules/04-setup.md#roleplay_anchor_agency) |
 | ROLEPLAY_DNA_SYNTHESIS | [04-setup.md](../rules/04-setup.md#roleplay_dna_synthesis) |
+| ROLL_INPUT_FORM_CONTRACT | [02-checks.md](../rules/02-checks.md#roll_input_form_contract) |
 | ROUTINE_MOVEMENT_FAST_PATH | [06-play.md](../rules/06-play.md#routine_movement_fast_path) |
 | SAFE_INTERLUDE_AND_ENRICHMENT | [06-play.md](../rules/06-play.md#safe_interlude_and_enrichment) |
 | SAN_CORE | [03-danger.md](../rules/03-danger.md#san_core) |

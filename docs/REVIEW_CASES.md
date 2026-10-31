@@ -430,3 +430,21 @@
 | 누출 대사를 이미 출력 | 과거 전달 소급 창작 없이 해당 대사·종속 결과/요약/작업 기억 정정, 독립 사실 보존 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
 | 저장 압축·새 채팅·씬 요약 | 수신자·청취/전언 구분 유지, 파티 공개를 NPC 지식으로 합치지 않음 | DURABLE_STORY_CONTINUITY / CORE_VISIBILITY | 일치 |
 | 현재 작업 상태에 청취 근거 존재 | 해당 근거만 확인, 매 턴 전체 채팅/정본/DB 재조회 없음 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+
+## 판정 숫자·행운·강행 통합 폼
+
+| 사례 | 기대 동작 | 담당 규칙 | 검토 |
+|---|---|---|---|
+| 기능45·원값54·Luck53·행운 체크/상한9 | Luck9 차감해44, 별도 질문 없이 Regular 결과 처리 | ROLL_INPUT_FORM_CONTRACT / LUCK_SPENDING | 일치 |
+| 같은 조건에서 상한8 또는 Luck8 | 부분 지출 없음, 강행 체크 없으면 실패 처리 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| 기능45·원값30·두 체크 활성 | 원래 성공 결과, Luck 지출·강행 없음 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| 두 체크 활성·행운으로 성공 전환 가능 | 폼에 알린 순서대로 행운만 적용 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| 행운 부족·강행 방법/위험 동의·재시도 가능 | 첫 실패 결과 보존, 사용 여부 질문 없이 새 강행 주사위 요청 | ROLL_INPUT_FORM_CONTRACT / PUSHED_ROLL | 일치 |
+| 첫 실패로 재시도 여지 상실 또는 방법 불명 | 미선언 재시도 자동 실행 없음, 필요한 변경/누락만 처리 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| SAN·Luck Roll·피해량 또는 강행 불가 전투/대항 | 담당 규칙상 금지 옵션 비활성화, 체크로 금지 우회 없음 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| Fumble 또는 Regular 전환으로 요구 미충족 | 행운 차감 없음, 유효 강행 여부는 독립적으로 판단 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| 보너스/패널티 있음 | 모든 원값을 같은 폼에 받고 결합한 최종값 기준 계산 | ROLL_INPUT_FORM_CONTRACT / BONUS_PENALTY_DICE | 일치 |
+| 신규 요청에 두 체크 해제 또는 안내 뒤 숫자만 제출 | 사용 안 함으로 즉시 결과 처리, 별도 선택 화면 없음 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| 구판 Luck 대기 저장에서 재개 | 원값 재요청·자동 사용/거부 없이 미응답 선택만 한 번 처리 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| 반복 제출·중간 저장/로드 | 동일 Luck·실패 비용·강행 중복 실행 없음 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+| 통합 폼 도구 미지원 | 한 메시지의 같은 입력 계약으로 안내, 가짜 버튼/폼 생성 주장 없음 | ROLL_INPUT_FORM_CONTRACT | 일치 |
