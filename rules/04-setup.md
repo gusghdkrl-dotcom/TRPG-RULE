@@ -479,11 +479,11 @@ APP: [값] | INT: [값] | POW: [값] | EDU: [값]
 🗝️ 키템: [실제 물품과 생활 흔적 또는 없음]
 ```
 
-카드 바로 뒤에는 [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate)의 `▶ 🎞️ 프로필 선택 — A 다음 단계 · B 조사자 프로필 비주얼`만 둔다. B 생성 뒤에도 같은 Gate를 유지한다. A 뒤 다음 PC 카드 또는 전원 공개자료·저장 검증으로 간다. setup_bootstrap 검증 성공 뒤에만 `▶ 게임 시작을 입력해 주세요.`를 표시하며 실패를 완료로 꾸미지 않는다. 이미지 양식은 [GOLD_START_PROFILE_REFERENCE](08-visual.md#gold_start_profile_reference)의 고정 레이아웃을 따른다.
+카드 바로 뒤에는 [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate)의 `▶ 🎞️ 프로필 선택 — A 다음 단계 · B 조사자 프로필 비주얼`만 둔다. B 생성 뒤에도 같은 Gate를 유지한다. A 뒤 다음 PC 카드 또는 전원 공개자료·저장 검증으로 간다. setup_bootstrap 저장 시도 뒤 `▶ 게임 시작을 입력해 주세요.`를 표시한다. 저장 실패는 STATE_SAVE_FAILURE_CONTINUE에 따라 시작을 막지 않으며 저장 완료로 꾸미지 않는다. 이미지 양식은 [GOLD_START_PROFILE_REFERENCE](08-visual.md#gold_start_profile_reference)의 고정 레이아웃을 따른다.
 
 ## CAMPAIGN_SETUP_PIPELINE
 
-플레이어 시작 설정 전체 확정 → 원작 난수 후보 A~F 선택 → 전원 PC 생성 → 상황에 맞는 PC 연결을 고려한 세계 생성·확정 → 최종 프로필·지도·공개 자료 → Supabase setup_bootstrap 검증 → 게임 시작 선언·지도 전달·play_start 검증 → 첫 장면 순서다. 세계의 PC 활용은 WORLD_PC_INPUT을 따른다. 인원을 포함한 필수 시작 설정이 미입력이면 먼저 묻고 기다린다. 1인은 P1, 2~3인은 P1부터 순서대로 배정하며 빈 슬롯은 채우지 않는다. 복수 PC 중 한 명만 유일한 중심·해결자가 되지 않게 한다.
+플레이어 시작 설정 전체 확정 → 원작 난수 후보 A~F 선택 → 전원 PC 생성 → 상황에 맞는 PC 연결을 고려한 세계 생성·확정 → 최종 프로필·지도·공개 자료 → Supabase setup_bootstrap 시도 → 게임 시작 선언·지도 전달·play_start 시도 → 첫 장면 순서다. 세계의 PC 활용은 WORLD_PC_INPUT을 따른다. 인원을 포함한 필수 시작 설정이 미입력이면 먼저 묻고 기다린다. 1인은 P1, 2~3인은 P1부터 순서대로 배정하며 빈 슬롯은 채우지 않는다. 복수 PC 중 한 명만 유일한 중심·해결자가 되지 않게 한다.
 
 순서:
 1. [START_SETTINGS_GATE](04-setup.md#start_settings_gate)로 플레이어의 핵심 시드·시작 시드·인원·인지도·규모·배제 조건과 선택 항목을 확인한다. 인원과 P슬롯은 [PARTICIPANT_COUNT_SETUP](04-setup.md#participant_count_setup)을 따른다. 누락·오류가 있으면 다음 단계로 가지 않는다.
@@ -493,8 +493,8 @@ APP: [값] | INT: [값] | POW: [값] | EDU: [값]
 5. 각 PC의 생활 목표가 끝난 뒤에도 이어질 참여 이해관계·첫 충돌·행동 가능한 접근 경로와 2~3인의 초기 합류/연락 기회를 세계 생성안에 함께 설계한다. [COMPATIBILITY_GATE](04-setup.md#compatibility_gate)와 [PACING_PLAYABILITY_QA](04-setup.md#pacing_playability_qa)를 검사한 뒤 세계의 불변 핵심을 확정한다. 이후 플레이 결과에 따라 변하는 상태는 별도로 추적한다.
 6. 각 PC의 객관적인 참여 경로·이해관계를 확정하고 최종 프로필을 배부한다. PC의 감정·조사 의무·비밀 과거를 새로 쓰지 않는다. 프로필의 공개 범위, 각 P의 시각화 선택, 파티 합류 경로와 공개 지도 자료를 확인한다.
 7. 연결 가능한 공개 수첩은 [NOTEBOOK_LITE_OPEN_GATE](09-notebook.md#notebook_lite_open_gate)로 연다. 비공개 저장과 별개다.
-8. [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document)로 신규 세계 정본 파일을 제공하고 사용자의 소스 업로드 뒤 실제 조회를 확인한다. [STATE_CANON_SAVE_BINDING](07-state.md#state_canon_save_binding)으로 저장 모드의 서버 호환성을 확인한다. 완전한 논리적 GM_STATE를 [STATE_INTEGRITY](07-state.md#state_integrity)로 검사하고 [STATE_COMMIT](07-state.md#state_commit)으로 setup_bootstrap 1회를 검증 저장한다. 성공한 뒤 게임 시작 입력 대기 상태가 된다. PC/WORLD별 외부 중간 저장은 하지 않는다.
-9. 플레이어의 `게임 시작` 선언 뒤 scene_turn=1/phase=play를 확정하고 시작 지도를 전달한다. play_start 1회를 검증 저장한 뒤 첫 장면을 진행한다. 실제 전달·검증이 실패하면 해당 경계에서 대기한다.
+8. [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document)로 신규 세계 정본 파일을 제공하고 사용자의 소스 업로드 뒤 실제 조회를 확인한다. [STATE_CANON_SAVE_BINDING](07-state.md#state_canon_save_binding)으로 저장 모드의 서버 호환성을 확인한다. 완전한 논리적 GM_STATE를 [STATE_INTEGRITY](07-state.md#state_integrity)로 검사하고 [STATE_COMMIT](07-state.md#state_commit)으로 setup_bootstrap 1회 저장을 시도한다. 성공 여부와 관계없이 현재 설정으로 게임 시작 입력 대기 상태가 된다. 실패는 [STATE_SAVE_FAILURE_CONTINUE](07-state.md#state_save_failure_continue)로 처리한다. PC/WORLD별 외부 중간 저장은 하지 않는다.
+9. 플레이어의 `게임 시작` 선언 뒤 scene_turn=1/phase=play를 확정하고 시작 지도를 전달한다. play_start 1회 저장을 시도하고 첫 장면을 진행한다. 저장·검증 실패는 첫 장면을 막지 않는다. 지도 실제 전달은 기존 시각화 규칙을 따른다.
 
 ## PROFESSION_SPECIALTY_GENERATION_SEED
 

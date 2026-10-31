@@ -94,3 +94,5 @@ Scene Turn은 시간이 드는 의미 있는 행동의 진행 번호다. 실제 
 시작·원작·PC·세계 브리핑 고정 폼: [SETUP_UI_FIXED_CONTRACT](04-setup.md#setup_ui_fixed_contract). 텍스트 폼과 프로필 이미지 레이아웃을 구분해 적용한다.
 
 비공개 정본: [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) → [PRIVATE_CANON_ACCESS_ROUTER](07-state.md#private_canon_access_router) → [STATE_CANON_SAVE_BINDING](07-state.md#state_canon_save_binding).
+
+저장 실패 후 진행: [STATE_SAVE_FAILURE_CONTINUE](07-state.md#state_save_failure_continue).

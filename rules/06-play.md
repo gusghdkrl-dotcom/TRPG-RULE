@@ -15,7 +15,7 @@
 - 새 출구·구조자·위협·해결책을 만들어 종료를 성립시키지 않는다.
 - 사건/대사건의 종결은 CAMPAIGN_TERMINAL이다. 연대기의 현재 챕터만 끝나면 CHAPTER_TERMINAL이며 세계 결과를 보존하고 다음 챕터로 이어간다. 연대기 전체의 지속 가능성이 끝나야 CHRONICLE_TERMINAL이다.
 - 동일 종결을 두 번 처리하지 않도록 `ending_state.finalization_event_id` 또는 chapter close event id와 scope/status를 고정한다.
-- 캠페인/연대기 전체 종료는 최종 확정 상태의 terminal_pre_finalization Checkpoint 1회가 검증된 뒤 종료를 완결한다. 챕터 종료에는 이 자동 저장을 추가하지 않는다.
+- 캠페인/연대기 전체 종료는 최종 확정 상태의 terminal_pre_finalization Checkpoint 1회를 시도하고 종료를 완결한다. 저장·검증 실패는 [STATE_SAVE_FAILURE_CONTINUE](07-state.md#state_save_failure_continue)로 기록하고 엔딩을 막지 않는다. 챕터 종료에는 이 자동 저장을 추가하지 않는다.
 - 철수 결말 전에는 CAUSAL_ENDGAME_PRECOMMIT과 NO_CLEAN_EXIT_HORROR_ARCHITECTURE에 따라 구조/차단한 것, 이미 상실한 것, 계속 진행 중인 위협을 정산한다. 한 PC가 떠나도 남은 PC의 유효한 대응을 건너뛰지 않는다. 아직 조건이 성립하지 않은 미래 피해는 발생 완료로 쓰지 않고 조건부 위험으로 보존한다. 후일담에서 실제 시간을 진행시킨 경우에만 그 구간에 도달한 세계 결과를 한 번 반영하며, 원인 없는 추가 비극을 만들지 않는다.
 - 엔딩 장면·후일담은 실제 결과에서 만든다. 이미지·기록 후처리는 게임 종료 결과를 다시 계산하지 않는다. 종료된 게임은 [STATE_RESUME](07-state.md#state_resume)에서 플레이로 재개하지 않는다.
 

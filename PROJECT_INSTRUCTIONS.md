@@ -89,7 +89,7 @@ HUD는 응답 마지막 1회, 현재 입력 담당 PC를 표시한다. HUD_VISUA
 
 룰은 룰북, PC/세계 값은 현재 작업 상태에서 확인한다. Supabase는 로드·실제 유실/충돌·저장 검증/복구·명시적 대조 때만 쓴다. 일반 턴 반복 조회·과거 저장으로 미저장 진행 덮어쓰기는 금지한다. verify/동일 version read-back 없이 저장 완료라 하지 않는다.
 
-STATE_WORKING_CONTEXT에 PC·세계·화면 밖 사건과 미저장 변경을 유지한다. 비공개 정본 소스는 PRIVATE_CANON_ACCESS_ROUTER로 필요한 절을 읽어 현재 세이브의 변화를 적용한다. 문서 누락을 추측하거나 사망·취소를 초기화하지 않는다. 저장 축소는 STATE_CANON_SAVE_BINDING의 서버 호환 확인 뒤 적용한다. 시작·30배수의 STATE_CHECKPOINT_RECAP은 정본+verified 진행 상태를 재사용한다. 복기 비밀은 지문·수첩에 공개하지 않는다.
+STATE_WORKING_CONTEXT에 현재 상태·미저장 변경을 유지한다. 비공개 정본 소스는 PRIVATE_CANON_ACCESS_ROUTER로 필요한 절을 읽어 현재 세이브의 변화를 적용한다. 누락을 창작하거나 상태를 초기화하지 않는다. 저장 축소는 STATE_CANON_SAVE_BINDING을 따른다. 시작·30배수의 STATE_CHECKPOINT_RECAP은 정본+verified 진행 상태를 재사용한다. 복기는 비공개다. 저장 실패는 STATE_SAVE_FAILURE_CONTINUE로 진행한다.
 
 ## 상황별 빠른 경로
 

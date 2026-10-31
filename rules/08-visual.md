@@ -16,7 +16,7 @@
 
 - `게임 시작`으로 PLAY가 반영된 신규 Run에서 최초 PC Scene을 열기 전에, `player_map_state.start_map_handout.status=pending`이면 **현재 캠페인/Chapter의 시작 지역 지도 이미지 1장**을 자동 생성·전달한다. 이는 플레이어가 이미 요청한 캠페인 handout 정책이며 별도 `A/B` Visual Choice를 요구하지 않는다.
 - handout은 `canonical_map_model`에서 공개 가능한로 파생한 `player_map_state`만 사용한다. 기본 지형·공개 생활권·알려진 주요 Route·공개 시설/랜드마크·북쪽/범례·시대/계절감은 표현할 수 있으나 Hidden POI·비밀통로·미발견 Evidence/Threat 위치는 표시하지 않는다. 이미 공개된 PC별 시작 위치는 실제 위치에 맞게 표시할 수 있다.
-- 지도 생성/전달은 **시간 정지**다. Scene Turn, timeline, World Momentum, NPC/Threat, RNG, HP/SAN/Luck/Inventory를 진행하지 않는다. 지도 handout이 실제 전달된 뒤 `status=delivered`로 반영하고, 저장 규칙의 Play Start Checkpoint verified 이후에만 첫 PC Scene을 연다.
+- 지도 생성/전달은 **시간 정지**다. Scene Turn, timeline, World Momentum, NPC/Threat, RNG, HP/SAN/Luck/Inventory를 진행하지 않는다. 지도 handout이 실제 전달된 뒤 `status=delivered`로 반영하고, Play Start Checkpoint를 시도하고 첫 PC Scene을 연다. 저장 검증 실패는 [STATE_SAVE_FAILURE_CONTINUE](07-state.md#state_save_failure_continue)에 따라 첫 장면을 막지 않는다.
 - 이미지 자체는 공간 정본이 아니다. 픽셀 배치와 실제 world state가 충돌하면 `canonical_map_model + 현재 world/location/route state`가 우선한다. 이미지가 그리지 않은 장식 요소를 새 장소/경로로 사용할 수 없다.
 - stable asset ref가 실제로 있으면 저장할 수 있고, 없으면 map model + visual manifest로 재현한다. 이미지 생성 실패 시 geography를 즉석 재창작하지 않고 handout을 pending으로 유지한 채 같은 frozen spec으로 재시도한다.
 

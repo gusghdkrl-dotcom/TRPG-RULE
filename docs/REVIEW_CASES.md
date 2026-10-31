@@ -33,7 +33,7 @@
 
 | 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
 |---|---|---|---|
-| 게임 시작 저장 검증 뒤 첫 장면 직전 | 같은 verified 전체 원문으로 비공개 상태 복기, 별도 추가 저장 없음 | STATE_CHECKPOINT_RECAP | 일치 |
+| 게임 시작 저장 시도 뒤 첫 장면 직전 | 성공 시 같은 verified 원문 재사용, 실패 시 현재 작업 상태 복기 후 첫 장면 진행 | STATE_CHECKPOINT_RECAP | 일치 |
 | Scene Turn 30 도달, 판정이 아직 열림 | 기존 첫 안전 경계로 저장/복기 연기, 굴림을 중단하거나 대신 실행하지 않음 | STATE_CADENCE / STATE_CHECKPOINT_RECAP | 일치 |
 | 30/60 기준선을 한 번에 넘긴 시간 생략 | 현재 전체 상태로 저장/복기 1회, 과거 턴별 스냅샷 생성 없음 | STATE_CHECKPOINT_RECAP | 일치 |
 | 현재 장면 밖 NPC의 비밀·미발견 증거가 존재 | 전체 namespace/registry 대조에 포함, 현재 장면 요약만으로 대체하지 않음 | STATE_CHECKPOINT_RECAP | 일치 |
@@ -134,7 +134,7 @@
 | NPC에게 새 정보가 생겨 먼저 연락할 이유·수단이 있음 | 초기 시각표에 없던 행동도 기존 목적·현재 조건으로 실행하고 기록 | WORLD_INITIATIVE_EXECUTION | 일치 |
 | 최근 두 장면이 같은 무변화 확인만 반복 | 다음 안전 경계에 정체 점검, 자동 공격/새 정답 생성은 없음 | SCENE_PACING_GATE | 일치 |
 | 동일 규칙 본문이 현재 대화에서 확인 가능 | 재조회 생략 가능, 컨텍스트 유실 시 원문 재조회 | TURN_RESPONSE_BUDGET | 일치 |
-| 20초 목표와 필수 저장 검증이 충돌 | 검증을 끝내며 저장 턴의 시간은 별도로 측정 | TURN_RESPONSE_BUDGET / STATE_COMMIT | 일치 |
+| 20초 목표와 필수 저장 검증이 충돌 | 저장 성공 판단의 검증은 유지하되 실패 시 플레이 계속, 저장 지연은 별도 측정 | TURN_RESPONSE_BUDGET / STATE_COMMIT | 일치 |
 | 새 텍스트·이미지 프로필 생성 | 붙들고 있는 것·연기 참고 없음, 배우 외형과 태그는 유지 | FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT / GOLD_START_PROFILE_REFERENCE | 일치 |
 
 ## 원작 체험·실패 대가 추가 대조
@@ -353,3 +353,22 @@
 | 정본 조회만 수행 | 시간·난수·저장·발견 상태 불변, 비공개 본문을 지문에 복사하지 않음 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
 
 문서상 경로 대조이며 실제 Supabase 축소 저장/로드와 게임 프로젝트 소스 검색 성공을 뜻하지 않는다.
+
+## 저장 실패 후 진행 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 신규 설정 완료, Supabase 연결 없음 | 저장 미완료 표시 후 게임 시작 입력 대기, 재개 승인 질문 없음 | CAMPAIGN_SETUP_PIPELINE / STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| play_start verify 실패, 현재 상태와 지도 있음 | 첫 장면 진행, 저장 성공 가장 없음 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| 30턴 저장과 GitHub 비상 저장 모두 실패 | 현재 상태로 계속, 다음 자동 시도 60턴, last_verified는 유지 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| 같은 장애가 31~59턴 지속 | 매 턴 재시도·실패 수락 질문·반복 경고 없음 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| 30턴 pending 후 40턴까지 진행, 이전 attempt 검증 성공 | 30턴 저장만 성공으로 기록, 40턴 현재 상태는 별도 저장, 되감기 없음 | STATE_SAVE_FAILURE_CONTINUE / STATE_COMMIT | 일치 |
+| 저장된 pending 원문과 현재 상태가 달라짐 | 기존 version/event/hash는 동결하고 최신 상태와 구분 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| 서버의 다른 Writer/버전과 충돌 | 원격 덮어쓰기·자동 병합만 보류, 알려진 현재 작업 분기 플레이 계속 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| 수동 저장 실패 | 실패 결과 표시 후 원래 열린 선택/판정으로 복귀, 자동 주기 유지 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| terminal 저장 실패 | 후일담·종료 완결, 나중 재시도에서 보상/결과 재실행 없음 | ENDING_FINALIZATION_GATE | 일치 |
+| 저장 read-back 일부 잘림, 최신 현재 상태는 있음 | 저장 검증 미완료, 현재 작업 상태로 복기·진행 | STATE_CHECKPOINT_RECAP | 일치 |
+| 저장 실패 후 같은 채팅에 현재 데이터 있음 | 실패만으로 Resume/과거 저장 강제 로드 없음 | STATE_RESUME | 일치 |
+| 새 채팅에서 미저장 HP/RNG/진행을 알 수 없음 | 값을 창작하지 않고 실제 복구 자료 확인, 미저장 복원 성공 가장 없음 | STATE_RESUME / STATE_SAVE_FAILURE_CONTINUE | 일치 |
+
+문서 계약 대조이며 실제 서버 장애 주입 테스트는 아니다.

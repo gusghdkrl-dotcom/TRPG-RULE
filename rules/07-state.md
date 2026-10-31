@@ -12,7 +12,7 @@
 - 문서상 함수는 `public.trpg_manual_checkpoint_commit`, `trpg_manual_checkpoint_verify`, `trpg_manual_checkpoint_load_version`, `trpg_manual_checkpoint_load`, `trpg_manual_checkpoint_list`, `trpg_manual_checkpoint_delete`다. 접두사만 같은 다른 함수·스키마로 추측 전송하지 않는다.
 - 인증된 기존 커넥터를 사용한다. 비밀 키를 채팅에 출력하지 않는다. 무인증 경로·권한 해제·공개 수첩으로 대체하지 않는다.
 - 웹훅·외부 큐·이미지·수첩 저장은 게임 정본을 대신하지 않는다. 보조 전송 실패는 이미 검증된 Checkpoint의 성공을 취소하지 않는다.
-- 커넥터가 없거나 정확한 저장 계약을 확인할 수 없으면 `게임 정본 저장 검증 대기`로 표시한다. 현재 확정 상태를 재생성하지 않는다.
+- 커넥터가 없거나 정확한 저장 계약을 확인할 수 없으면 `저장 미완료`로 표시하고 STATE_SAVE_FAILURE_CONTINUE에 따라 현재 채팅에서 계속한다. 현재 확정 상태를 재생성하지 않는다.
 
 ## PRIVATE_CANON_DOCUMENT
 
@@ -170,14 +170,14 @@ Supabase는 영속 저장·복구 경계에서 접근한다. **일반 응답의 
 1. 정상 저장은 STATE_COMMIT의 Supabase commit → verify → 동일 version full read-back 뒤 기존 `snapshots/verified/<session_id>/vNNNN.json`과 `snapshots/verified/MANIFEST.json`에 **동일한 원문**을 백업하고 재열람해 문자열·SHA-256·session/version/event를 대조한다. Supabase 성공 후 GitHub가 실패하면 `supabase_verified / github_backup_pending`을 기록한다. GitHub 실패가 DB verified 성공을 취소하지 않는다.
 2. 새 채팅 로드·명시적 재개·실제 상태 유실 시 Supabase 정식 verified 조회를 우선한다. 일반 연결 실패로 재시도하더라도 같은 요청의 확인된 범위에서만 한다. 명시적인 도구 안전 차단은 다른 SQL/인코딩/권한 약화로 우회하지 않는다.
 3. Supabase를 읽을 수 없으면 GitHub **인증된 private 도구**로 저장 목록의 해당 session을 특정하고 `gm-checkpoints`의 최신 **검증 완료 미러** 후보를 읽는다. 매니페스트 `entries`의 session/version/event/path/SHA-256을 해당 원문과 대조하고 STATE_INTEGRITY의 전체 내용·불변 anchor·규칙판·RNG·미완결 절차를 검사한다. 확인되지 않은 매니페스트 또는 불완전·불일치 원문은 사용하지 않는다. 다른 session/branch의 파일이나 날짜 고정 백업을 임의로 합쳐서 최신본을 만들지 않는다.
-4. Supabase 최신 version을 확인할 수 없다면 GitHub 사본을 `github_mirror_verified / supabase_latest_unconfirmed`로 표시한다. 알려진 더 최신 verified/pending, 서로 다른 작성자, 미저장 변경분과의 충돌이 없으면 **확인 가능한 마지막 백업 지점**에서 제한적으로 재개할 수 있다. 이를 Supabase의 확정 최신 버전이라고 부르거나 미저장 현재 상태를 덮어쓰지 않는다. 충돌·손상 증거가 있으면 재개를 보류하고 판본 대조를 요구한다.
+4. Supabase 최신 version을 확인할 수 없다면 GitHub 사본을 `github_mirror_verified / supabase_latest_unconfirmed`로 표시한다. 알려진 더 최신 verified/pending, 서로 다른 작성자, 미저장 변경분과의 충돌이 없으면 **확인 가능한 마지막 백업 지점**에서 제한적으로 재개할 수 있다. 이를 Supabase의 확정 최신 버전이라고 부르거나 미저장 현재 상태를 덮어쓰지 않는다. 충돌·손상 증거가 있는 사본의 로드·병합은 보류하고 판본을 대조한다. 현재 채팅에 정확한 작업 상태가 있으면 STATE_SAVE_FAILURE_CONTINUE로 계속한다.
 
 ### Supabase 저장 장애와 GitHub 비상 체크포인트
 
 5. Supabase commit/verify/read-back 도중 차단·장애가 발생하면 최초 저장 전 고정한 동일 저장 모드의 exact checkpoint UTF-8 원문, SHA-256, session, 규칙판, 원래 attempt의 version/event, 마지막 확인된 DB parent version/hash 및 현재 미확인 상태를 보존한다. **DB에 쓰기가 반영됐을 가능성**을 지우지 않으며, 결과·난수·이벤트를 재실행하거나 임의의 새 DB version을 생성하지 않는다.
 6. 정식 `snapshots/verified/`와 분리된 `snapshots/emergency/<session_id>/<attempt_id>.json`에 그 전체 원문을 그대로 기록하고, `snapshots/emergency/<session_id>/<attempt_id>.meta.json`에 parent(version/hash), intended version/event, 원문 SHA-256, 저장 시각, `supabase_status=unconfirmed` 및 현재 복구 상태를 기록한다. attempt_id는 동일 저장 시도에서 재사용하는 안전한 파일명이어야 하며, 기존 다른 해시의 같은 경로를 덮어쓰지 않는다. 메타 파일과 원문을 모두 다시 읽어 바이트/문자열·SHA-256·식별자를 검증하기 전에는 `github_emergency_verified`가 아니다. 일부만 쓴 경우 `github_emergency_incomplete`로 둔다.
-7. `github_emergency_verified`는 **비상 저장 성공**이지 **Supabase 정상 저장 완료**가 아니다. 새 채팅에서는 실제 검증된 같은 attempt의 비상 원문을 불러올 수 있지만, DB 동기화 전까지 현재 세션을 `reconciliation_pending`으로 유지한다. 단일 Writer와 마지막 확정 상태의 연속성, 미해결 DB 충돌 없음이 확인되면 이 상태로 이후 플레이를 진행할 수 있다. 이후 변경분은 비상본을 부모로 하는 새로운 고유 attempt에 기록하며 DB 공식 version을 임의 확정하지 않는다. 모든 저장 경계에서 전체 원문 검증을 유지한다.
-8. GitHub도 실패하거나 전체 원문·메타의 검증이 불가능하면 기존 STATE_RECOVERY처럼 `checkpoint_write_recovery_required`로 보류한다. 부분 파일, API 성공 응답, hash 문자열만으로 복원·저장 성공을 선언하지 않는다.
+7. `github_emergency_verified`는 **비상 저장 성공**이지 **Supabase 정상 저장 완료**가 아니다. 새 채팅에서는 실제 검증된 같은 attempt의 비상 원문을 불러올 수 있지만, DB 동기화 전까지 현재 세션을 `reconciliation_pending`으로 유지한다. 현재 작업 상태로 이후 플레이를 계속하며 원격 충돌은 STATE_SAVE_FAILURE_CONTINUE에 따라 쓰기 복구에서 해결한다. 이후 변경분은 비상본을 부모로 하는 새로운 고유 attempt에 기록하며 DB 공식 version을 임의 확정하지 않는다. 모든 저장 경계에서 전체 원문 검증을 유지한다.
+8. GitHub도 실패하거나 전체 원문·메타의 검증이 불가능하면 `checkpoint_write_recovery_required`로 저장 복구 상태만 남기고 STATE_SAVE_FAILURE_CONTINUE에 따라 플레이를 계속한다. 부분 파일, API 성공 응답, hash 문자열만으로 복원·저장 성공을 선언하지 않는다.
 
 ### Supabase 재연결·정합화
 
@@ -217,7 +217,7 @@ P1/P2/P3는 참가 슬롯이고 PC identity는 인물 식별자다. 같은 슬�
 
 ## STATE_INTEGRITY
 
-실제 저장 경계에서 현재 full snapshot을 최신 semantic-valid verified parent와 비교한다. DOCUMENT_BOUND는 같은 canon_ref의 문서와 누적 변경 상태를 결합하고 참조·coverage·추가 사실·tombstone을 함께 검사한다. 일반 지문마다 DB parent를 조회하는 절차가 아니다. 대화 요약을 parent로 간주하지 않는다.
+실제 저장 경계에서 현재 full snapshot을 최신 semantic-valid verified parent와 비교한다. parent 조회/저장 payload 검증 실패만으로 현재 플레이를 잠그지 않으며 STATE_SAVE_FAILURE_CONTINUE를 따른다. DOCUMENT_BOUND는 같은 canon_ref의 문서와 누적 변경 상태를 결합하고 참조·coverage·추가 사실·tombstone을 함께 검사한다. 일반 지문마다 DB parent를 조회하는 절차가 아니다. 대화 요약을 parent로 간주하지 않는다.
 1. 식별자·버전·현재 단계·PC identity·난수·진행 대기·지도·증거·세계 상태가 재개 가능한가 확인한다. 신규 1~3인 게임은 참가 인원과 실제 슬롯/PC 연결 수가 일치하고 Focus/인계가 존재하는 슬롯을 가리키는지 검사한다.
 2. 불변 세계/PC 사실과 Canon Anchor가 설명 없이 변경·누락·null로 회귀하지 않았는지 확인한다. 변화하는 상태는 실제 사건·소비·이동·선택으로 변화 이유가 설명돼야 한다. 발생한 손실·방지한 결과·진행 중인 위험이 혼합되거나 도주/종결 때문에 사라지지 않았는지도 확인한다.
 3. `critical_state_registry`에는 실제 생성되어 활성인 핵심 namespace와 경로/ref를 등록한다. `checkpoint_canon_manifest`와 실제 데이터가 일치해야 한다. 빈 이름만 나열한 manifest는 검증이 아니다.
@@ -235,16 +235,16 @@ Anchor는 손실 검출/복구 비교용이며 구조화 상태를 이중 계산
 자동 저장은 네 종류다. 명시적 수동 저장은 별도다.
 | 종류 | 실행 경계 |
 |---|---|
-| setup_bootstrap | 전원 PC·세계·연결·지도·정본이 완성된 뒤 게임 시작 입력 대기를 열기 전, 첫 verified version 1회 |
-| play_start | 게임 시작 선언, phase=play/scene_turn=1, 시작 지도 실제 전달 뒤 첫 장면 전 1회 |
+| setup_bootstrap | 전원 PC·세계·연결·지도·정본이 완성된 뒤 게임 시작 입력 대기를 열 때 저장 시도 1회; 실패해도 시작 가능 |
+| play_start | 게임 시작 선언, phase=play/scene_turn=1, 시작 지도 실제 전달 뒤 첫 장면 전 저장 시도 1회; 실패해도 장면 진행 |
 | periodic_scene_turn | Scene Turn 30/60/90… 기준선에 도달하거나 넘긴 뒤 열린 절차가 끝난 첫 안전 경계 |
-| terminal_pre_finalization | 전체 캠페인/연대기 종결 결과·event id 확정 뒤 종료를 완결하기 전 1회. 챕터 종료만으로 실행하지 않음 |
+| terminal_pre_finalization | 전체 캠페인/연대기 종결 결과·event id 확정 뒤 종료 경계에서 저장 시도 1회; 실패해도 종료 완결. 챕터 종료만으로 실행하지 않음 |
 | manual | 저장·세이브·채팅 이동 전 저장 등 사용자의 명시적 요청. 자동 주기를 초기화하지 않음 |
 - cadence에는 각 최초/종료 저장 status, next_scene_turn, last_verified_version, deferred_reason을 보존한다.
 - 하나의 시간 생략으로 여러 기준선을 넘으면 현재 full state를 한 번 저장하고 next_scene_turn을 현재보다 큰 다음 30배수로 옮긴다.
 - 자동 저장은 전투·추격·굴림/Luck 선택·광기·Handoff/Reaction/Visual·장기 행동의 열린 절차를 끊지 않는다. 첫 안전 경계로 연기한다. 수동 저장은 열린 단계까지 정확하게 보존해 재개할 수 있어야 한다.
 - 전투·피해·단서·장소 이동·회차 종료·이미지·수첩 변경 자체는 추가 자동 저장 조건이 아니다.
-- 실패하면 current working state를 유지한다. 초기/시작/종료 Supabase 검증 완료를 가장하지 않는다. periodic 복구 실패 시 STATE_GITHUB_FAILOVER_PROTOCOL의 비상 저장을 시도할 수 있다. GitHub 전체 원문·매니페스트의 재열람 검증까지 성공하면 비상 저장 상태로 진행할 수 있으나, 더 최신 DB 상태·중복 작성자·버전 충돌이 알려졌거나 무결성이 불확실하면 다음 독립 플레이 변경을 보류한다. 양쪽 저장 모두 실패하면 기존대로 저장 복구 전 진행을 보류한다.
+- 저장 실패·차단·검증 실패와 관계없이 STATE_SAVE_FAILURE_CONTINUE에 따라 현재 작업 상태로 계속 진행한다. 초기/시작/종료와 양쪽 저장 모두 실패한 경우도 동일하다. 저장 성공은 실제 검증됐을 때만 표시한다.
 - 저장은 턴·시간·난수·세계 상태를 진행시키지 않는다.
 
 ## STATE_CHECKPOINT_RECAP
@@ -255,8 +255,8 @@ Anchor는 손실 검출/복구 비교용이며 구조화 상태를 이중 계산
 
 DOCUMENT_BOUND의 복기는 같은 canon_ref의 확인한 문서 색인·관련 본문과 verified 동적 checkpoint의 결합이다. 매 30턴에 불변 문서 전체를 다시 생성·조회하지 않는다. 전체 entity/ref coverage와 화면 밖 활성 Driver를 검사하고 실제 필요한/유실된 절만 PRIVATE_CANON_ACCESS_ROUTER로 읽는다. LEGACY_FULL은 기존 full 원문 복기를 유지한다.
 
-- setup_bootstrap에서 생성된 전체 정본을 점검하고 play_start 검증 뒤 첫 장면 전에 복기한다. periodic_scene_turn에서는 STATE_CADENCE가 정한 첫 안전 경계의 저장에 결합한다. 열린 굴림·대화 인계 등을 복기를 위해 중단하지 않는다. 한 번에 여러 30배수 기준선을 넘겨도 현재 저장본으로 한 번만 복기한다.
-- 저장 전에는 현재 full GM_STATE와 미저장 변경분, 필요한 parent를 STATE_INTEGRITY로 대조해 누락/충돌을 해결한다. 저장 후에는 **같은 version의 verified exact read-back 결과를 그대로 사용**한다. hash/성공 표시만 받았거나 본문이 잘렸다면 전체를 읽었다고 주장하지 않고 기존 저장 검증/복구 절차를 완료한다.
+- setup_bootstrap에서 생성된 전체 정본을 점검하고 play_start 시도 뒤 첫 장면 전에 복기한다. 검증 실패 시 현재 작업 상태로 복기하며 첫 장면을 막지 않는다. periodic_scene_turn에서는 STATE_CADENCE가 정한 첫 안전 경계의 저장에 결합한다. 열린 굴림·대화 인계 등을 복기를 위해 중단하지 않는다. 한 번에 여러 30배수 기준선을 넘겨도 현재 저장본으로 한 번만 복기한다.
+- 저장 전에는 현재 full GM_STATE와 미저장 변경분, 필요한 parent를 STATE_INTEGRITY로 대조해 누락/충돌을 해결한다. 저장 후에는 **같은 version의 verified exact read-back 결과를 그대로 사용**한다. hash/성공 표시만 받았거나 본문이 잘렸다면 전체를 읽었다고 주장하지 않고 저장 복구 상태를 남긴다. 현재 작업 상태로 복기·플레이를 계속하고 검증 복구는 STATE_SAVE_FAILURE_CONTINUE를 따른다.
 - 같은 원문을 이미 확보했으면 복기를 위해 별도 latest/list/load를 호출하지 않는다. 원문이 큰 경우 실제 지원되는 전달 방식 안에서 같은 version의 누락된 부분만 확보한다. 지원되지 않는 부분 조회 API를 가정하거나 NPC마다 전체 저장본을 다시 읽지 않는다.
 - 새 채팅 STATE_RESUME에서도 확보한 verified 전체 상태로 같은 복기를 수행한다. 수동/종결 저장에서는 이미 확인한 전체 상태 검증 결과를 재사용하며 복기만을 위한 추가 저장을 만들지 않는다.
 
@@ -281,17 +281,30 @@ STATE_SCHEMA와 해당 저장의 실제 namespace/critical_state_registry를 따
 
 ## STATE_COMMIT
 
-캠페인당 Single Writer를 유지한다. 동일 요청을 다시 받아도 같은 저장 attempt를 완결한다.
+캠페인당 Single Writer를 유지한다. 같은 저장 요청의 재전송은 기존 attempt를 복구한다. 저장 실패는 STATE_SAVE_FAILURE_CONTINUE에 따라 진행을 막지 않으며 최신 상태의 후속 저장과 구분한다.
 1. [STATE_INTEGRITY](07-state.md#state_integrity) 검사를 통과한 exact full GM_STATE를 STATE_CANON_SAVE_BINDING의 확인된 모드로 직렬화한다. 최신 verified+1 version과 `event_id=<session_id>:cp<version>`을 사용한다.
 2. 실제 쓰기를 시작하기 전에 session/version/event와 UTF-8 state_json 원문을 고정한다. 이후 attempt가 끝나기 전 다른 상태로 다시 직렬화하거나 새 version을 만들지 않는다.
 3. 반영으로 pending을 쓴다. raw 원문과 SHA-256, session/version/event를 읽어 대조한다. 정확한 해시는 실행 도구로 계산한다.
 4. 의미·parent·manifest를 다시 검사하고 같은 원문으로 verify한다.
 5. 같은 version의 verified 원문을 exact read-back해 원문·hash·식별자·의미를 확인한다. 모두 성공해야 저장 완료다. HTTP 성공이나 SQL 실행 응답만으로 완료 처리하지 않는다.
-6. 시작/periodic 저장의 같은 version exact 상태로 STATE_CHECKPOINT_RECAP을 수행하고 working GM_STATE를 재정착한다. 이 읽기는 새 저장·게임 진행이 아니다. read-back 결과가 exact-version load 조건을 모두 충족하면 재사용해 같은 데이터를 중복 조회하지 않는다.
+6. 시작/periodic 저장의 같은 version exact 상태로 STATE_CHECKPOINT_RECAP을 수행하고 working GM_STATE를 대조한다. 이전 attempt 이후의 최신 미저장 진행은 덮어쓰지 않는다. 이 읽기는 새 저장·게임 진행이 아니다. read-back 결과가 exact-version load 조건을 모두 충족하면 재사용해 같은 데이터를 중복 조회하지 않는다.
 - Supabase 쓰기·verify·exact read-back이 연결 차단 또는 실제 장애로 중단되면 STATE_GITHUB_FAILOVER_PROTOCOL에 따라 원문을 고정한 동일 attempt의 비상 체크포인트를 별도 기록할 수 있다. 이때 Supabase 정상 저장 완료로 처리하지 않는다.
 - idempotent_replay는 같은 attempt가 있다는 뜻이다. 검증 상태를 확인하고 남은 verify/read-back으로 이어간다.
-- cadence 완료 상태는 검증 성공 후 반영한다. 원문 내부의 pending 상태를 사후 조작해 재해시하지 않는다. Resume은 DB의 검증 결과와 exact snapshot을 함께 확인해 동일 attempt 완료 여부를 정합적으로 판정한다.
+- cadence 성공 상태는 검증 성공 후 반영한다. 시도 주기와 실패 중 진행은 STATE_SAVE_FAILURE_CONTINUE로 관리한다. 원문 내부의 pending 상태를 사후 조작해 재해시하지 않는다. Resume은 DB의 검증 결과와 exact snapshot을 함께 확인해 동일 attempt 완료 여부를 정합적으로 판정한다.
 - API 계약이 문자열 대신 JSON 객체를 요구하거나 hash 직렬화 규칙이 다르면 서버 계약을 먼저 확인한다. 임의 직렬화로 서로 다른 바이트를 같은 payload라 주장하지 않는다.
+
+## STATE_SAVE_FAILURE_CONTINUE
+
+**세이브 실패는 게임 진행을 막지 않는다.** 저장 연결·commit·verify·read-back·비공개 GitHub 백업/비상 저장이 실패하거나 차단돼도, 현재 작업 상태가 있으면 시작·일반 플레이·인계·챕터 전환·엔딩을 계속한다. 재개 허가·실패 수락·추가 동의를 매번 요구하지 않는다. setup_bootstrap/play_start/periodic/manual/terminal 모두 같은 원칙이다.
+
+- 저장 시도와 성공 판정은 유지한다. 검증되지 않은 결과는 `저장 실패/미확인`이며 저장 완료·새 채팅 복원 가능이라고 표시하지 않는다. 마지막 실제 verified 지점, 실패한 attempt/session/version/event/hash와 원인, 그 뒤 진행한 미저장 변경을 구분한다. 기록은 현재 실제 작업 공간에서 유지하며 없는 영구 메모리를 주장하지 않는다.
+- 최초 실패·실패 상태 변경·수동 저장 결과·채팅 이동 요청 때 `저장 미완료, 현재 채팅에서 계속 진행`과 마지막 확인 저장 지점만 짧게 알린다. 같은 장애를 매 턴 반복 경고하거나 복구 메뉴를 행동 선택 대신 붙이지 않는다. 저장 실패 처리 때문에 PC의 선언·굴림·선택을 다시 요구하지 않는다.
+- 같은 attempt의 자동 재시도는 STATE_RECOVERY의 최대 1회를 따르고 명시적 도구 차단은 우회하지 않는다. 실패 후 매 응답 재시도하지 않으며 다음 정상 저장 경계·수동 저장·실제 연결 복구 시 재시도한다. 실패한 주기의 다음 자동 시도 기준은 현재보다 큰 다음 30배수로 옮기되 last_verified_version이나 성공 상태는 갱신하지 않는다. 사용자의 수동 저장은 자동 주기를 초기화하지 않는다.
+- 원문을 제출한 pending attempt는 원문·hash·version/event를 동결한다. 진행 재개 뒤의 새 상태를 같은 pending 원문에 덮어쓰지 않는다. 연결이 돌아오면 실제 반영/verified 상태와 parent를 먼저 확인해 같은 attempt를 정리하고, 이어서 **그동안 진행한 최신 상태를 별도 체크포인트로 저장**한다. 뒤늦게 이전 attempt 검증이 끝났어도 현재 진행까지 저장됐다고 하지 않는다. 전송되지 않았음이 확인된 실패는 기존 상태를 표시한 채 지원되는 계약으로 최신 저장을 준비할 수 있다.
+- 충돌·여러 Writer·버전 불명확 시 보류하는 대상은 원격 쓰기·자동 병합/승격이다. 현재 채팅의 알려진 진행은 작업 분기로 계속 보존하며 원격의 다른 상태를 덮어쓰거나 강제로 push하지 않는다. 복구 때 서로 다른 분기를 자동 합치지 않는다. 저장 원문/메타가 실제 남아 있지 않으면 있는 척 복구하지 않는다.
+- 저장 검증이 실패해도 STATE_CHECKPOINT_RECAP은 현재 실제 작업 상태와 정본으로 수행하고 `작업 상태 복기`로 구분한다. 실패한 read-back의 일부·구판 snapshot으로 최신 진행을 덮어쓰거나 verified 복기라고 하지 않는다.
+- **실제 상태 유실과 저장 장애를 구분한다.** 필요한 HP·난수·진행 중 판정·정본이 실제 없으면 그 값에 의존하는 결과를 추측하지 않고 관련 복원을 요청한다. 이것은 저장 성공을 기다리는 게임 잠금이 아니다. 새 채팅은 실제 읽을 수 있는 저장/복구 자료의 범위까지만 복원하며 미저장 진행의 복원을 보장하지 않는다. 현재 상태가 남아 있는 같은 채팅을 저장 실패만으로 처음부터 다시 로드하지 않는다.
+- 이미 게임 종료가 확정되면 terminal 저장 실패와 별개로 후일담·종료를 완결하고 저장 복구 상태만 남긴다. 나중의 terminal 저장 재시도는 시간·결과·보상을 재실행하지 않는다.
 
 ## STATE_RECOVERY
 
@@ -301,11 +314,13 @@ pending 쓰기 뒤 verify/read-back이 중단되면 같은 version/event/원문�
 - event_id 규칙 일치, 저장된 exact 원문과 hash 일치.
 - 의미·manifest·parent 연속성 통과.
 모두 통과하면 DB에 있는 그 원문으로 verify를 완결할 수 있다. 여러 충돌 pending, version gap, 다른 원문, 손상, 핵심 상태 소실이 있으면 자동 승격·폐기하지 않는다.
-- 복구 불가 시 `checkpoint_write_recovery_required`에 session/version/reason을 기록하고 기존 verified pointer와 작업 상태를 보존한다.
-- periodic exact load가 실패하면 검증된 저장을 폐기하지 않는다. 같은 version 재로드를 복구한 뒤 다음 독립 플레이 변경으로 간다.
+- 복구 불가 시 `checkpoint_write_recovery_required`에 session/version/reason을 기록하고 기존 verified pointer와 작업 상태를 보존하고 STATE_SAVE_FAILURE_CONTINUE로 플레이를 계속한다.
+- periodic exact load가 실패하면 검증된 저장을 폐기하지 않는다. 현재 작업 상태가 있으면 계속 진행하고 같은 version의 저장 검증 복구는 다음 허용된 시점으로 넘긴다.
 - pending은 verified되기 전 정상 Resume 정본이 아니다.
 
 ## STATE_RESUME
+
+저장 실패만으로 현재 채팅을 다시 로드하지 않는다. 현재 작업 상태가 있으면 STATE_SAVE_FAILURE_CONTINUE로 계속한다. 아래 절차는 실제 새 채팅/명시 로드 또는 상태 유실 복원에 적용한다.
 
 1. 실제 연결과 session 소유권/대상을 확인한다. P슬롯 번호나 표시 이름만으로 다른 session을 선택하지 않는다.
 2. 종료 상태를 확인한다. 이미 종료된 캠페인은 플레이를 재개하지 않는다. 종료 저장/완결이 중단됐다면 동일 결과의 마무리만 복구한다.
