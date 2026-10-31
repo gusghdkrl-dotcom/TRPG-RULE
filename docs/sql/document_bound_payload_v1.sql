@@ -10,7 +10,7 @@ DECLARE
  j jsonb; k text; slot text; pc text; n int; elem jsonb;
  required text[]:=ARRAY['session_id','state_schema_version','rules_version','save_mode','document_bound_format','campaign_id','canon_ref','change_coverage','world_delta','setup_start_settings','world_seed','start_seed','participants','pcs_by_identity','scenario_connection_by_pc','public_facts_by_pc','player_map_state','first_scene_orientation_by_pc','current_focus','pending','timeline','rng_mapping_version','rng_queue','rng_queue_next_consumption','checkpoint_cadence_state','save_cadence','critical_state_registry','ending_state','scene_turn','phase'];
  ns text[]:=ARRAY['npcs','evidence','locations','routes','drivers','threats'];
- banned text[]:=ARRAY['campaign_canon_text','chapter_canon_text_by_ref','pc_canon_text_by_identity','scenario_core','world_dna','canonical_map_model'];
+ banned text[]:=ARRAY['campaign_canon_text','chapter_canon_text_by_ref','pc_canon_text_by_identity','scenario_core','world_dna','canonical_map_model','world_state'];
 BEGIN
  BEGIN j:=p_state_json::jsonb; EXCEPTION WHEN others THEN
   RETURN QUERY SELECT false,'db1_invalid_json'::text; RETURN; END;
