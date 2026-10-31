@@ -42,6 +42,8 @@
 | ENDING_CONDITIONS | 해결·차단·탈출·실패·종결의 조건, 조건부 피해와 확정 결과의 구분 |
 | PC_CONNECTIONS | 확정된 PC의 공개 과거에 연결된 외부 사실·참여 근거, 공개 가능 범위 |
 
+정본에는 확정된 전체 시나리오 구조·고정 지도 topology·PC 최초 프로필 원문도 참조 가능하게 담아야 한다. 이미 존재하는 비공개 정본 파일에 빠진 불변 정보가 있다면 임의 삭제하지 말고 검증된 revision으로 보완한 뒤 전환한다.
+
 정본은 완전한 확정 내용이며 탐색용 요약은 원문을 대체하지 않는다. 문서에 기록된 미래 사건은 **조건부 계획**이지 발생 완료 사실이 아니다. NPC 현재 생사·목적, 이동한 단서, 열린 길, 드러난 비밀, 취소된 사건은 세이브/현재 작업 상태에서 판단한다. 정본의 기준선으로 사망·소비·발견·취소를 되돌리지 않는다.
 
 - 실제 플레이로 새로 확정된 NPC·단서·자료 원문 등은 먼저 세이브의 추가 사실로 보존한다. 정본에 없다는 이유로 누락하거나 즉석으로 과거부터 있던 사실처럼 바꾸지 않는다.
@@ -100,20 +102,25 @@
 
 ## STATE_CANON_SAVE_BINDING
 
-세이브·로드·STATE_CADENCE·STATE_COMMIT의 실제 검증은 유지한다. `full snapshot`은 선택한 저장 모드의 **재개 가능한 완전한 체크포인트**를 뜻한다. 두 모드의 payload를 혼합하거나 저장 성공 전에 전환하지 않는다.
+**신규 캠페인의 기본 세이브는 DOCUMENT_BOUND(DB1): 물리적 비공개 정본 문서 + Supabase 동적 체크포인트**다. 처음 확정한 비공개 진실·세계 법칙·원래 NPC/증거/장소/Driver/엔딩 조건·확정 지도·PC 최초 프로필 원문은 PRIVATE_CANON_DOCUMENT의 정확한 파일 판본에만 둔다. 매 저장에서 불변 원문을 중복 전송하지 않는다. 프로젝트 소스 업로드만으로 서버 저장 계약이 변경되었다고 가정하지 않는다.
 
-- **LEGACY_FULL:** 현재 서버 계약의 전체 GM_STATE를 그대로 저장한다. 정본 파일을 조회 보조로 사용할 수 있지만 문서가 있다는 이유로 서버가 요구하는 원문·anchor를 삭제하지 않는다. 기존 저장과 미확인 서버는 이 모드다.
-- **DOCUMENT_BOUND:** 서버의 commit·verify·exact load가 아래 문서 참조/현재 상태 계약을 실제 지원하고, 동일 판본 문서와 결합해 재개 가능한지 검증한 경우에만 사용한다. 의미상의 이름이지 현재 서버에 이미 등록된 enum/필드/API라는 주장이 아니다. 미지원이면 LEGACY_FULL을 유지하고 저장량 축소는 아직 적용되지 않았다고 알린다. 저장 모드/문서 참조가 없는 구판은 LEGACY_FULL로 해석하며 파일 존재만으로 모드를 바꾸지 않는다. 자동 스키마 변경·검증 우회·가짜 빈 정본을 만들지 않는다.
+### DB1 payload 필수 구조
 
-DOCUMENT_BOUND의 체크포인트에는 정확한 canon_ref와 모든 PC/진행 상태, **정본 기준 누적 변경 상태와 추가 사실 전체**를 넣는다. 마지막 저장 이후 delta만 넣는 체인은 사용하지 않는다. 최신 세이브 하나와 해당 판본 문서로 재개할 수 있어야 한다.
+- `state_schema_version="TRPG2026_10_30"`, `save_mode="DOCUMENT_BOUND"`, `document_bound_format="DB1"`. 서버의 실제 semantic validator가 DB1을 받아들이는지 읽기 전용 확인한다. 기존 RPC `trpg_manual_checkpoint_commit/verify/load_version`과 정확한 원문 hash/version/event 흐름은 그대로 쓴다.
+- `canon_ref{}`: `campaign_id, canon_id, revision, filename, document_format, file_sha256, section_ids[]`. `file_sha256`은 **실제 정본 파일 전체 바이트 SHA-256 64자리 소문자**다. section_ids는 PRIVATE_CANON_DOCUMENT의 필수 10개 절을 포함한다. active chapter/PC profile의 정확한 ref도 소속 문서 안에서 확인한다.
+- `change_coverage{}`: `complete_since_revision=true`, `baseline_entity_ids{}`, `changed_entity_ids{}`. 두 ID 맵에는 `npcs, evidence, locations, routes, drivers, threats`의 **6개 전체 namespace**를 배열로 보존한다. baseline 집합은 정본의 모든 해당 entity/ref를 대조한 결과이며, changed 집합은 아래 world_delta의 해당 object 키와 정확히 같아야 한다. 안 읽힌 범위와 사망/취소 항목도 누락시키지 않는다.
+- `world_delta{}`: 위 6개 namespace의 stable ID별 **정본 이후 누적 현재값** 및 변경 이유/시각/사건 기록. `new_entities{}`에는 새 NPC·단서·최초 확정 자료 원문을 포함한 신규 entity 전체, `tombstones{}`에는 사망·소모·삭제·취소 등 원상복구 방지 상태, `processed_event_ids[]`에는 이미 처리한 실제 사건 ID를 보존한다. 필요한 전역 실행 상태는 별도의 `runtime_flags{}` 등 동적 필드에 보존한다. 마지막 저장 이후의 delta만 기록하는 체인은 금지한다.
+- `session_id, campaign_id, rules_version, phase, scene_turn, setup_start_settings, world_seed, start_seed, participants, pcs_by_identity, scenario_connection_by_pc, public_facts_by_pc, player_map_state, first_scene_orientation_by_pc, current_focus, pending, timeline, rng_mapping_version, rng_queue, rng_queue_next_consumption, checkpoint_cadence_state, save_cadence, critical_state_registry, ending_state`와 실제 활성 진행 필드도 보존한다. PC의 현재 기능·자원·위치·소지품, Focus·Spotlight·병렬 시간·열린 Roll/Combat/Chase/Handoff/Action, 획득물·약속·공개 가설을 빼지 않는다.
+- **DB1 전송 금지 불변 중복:** `campaign_canon_text, chapter_canon_text_by_ref, pc_canon_text_by_identity, scenario_core, world_dna, canonical_map_model, world_state`. 이 전문을 `world_delta`나 `new_entities`에 숨겨 복사하지 않는다. 다만 정본에 없던 실제 신규 정보/동적 변화는 삭제하지 않는다.
 
-- 현재 시각·장소·Scene Turn·PC 수치/소지품·열린 판정·메뉴·Spotlight·RNG·공개 지식/지도·저장 cadence·종료 상태는 완전하게 보존한다.
-- NPC·단서·장소·Driver의 변경은 stable entity ID별 현재값, 변경 이유/시점, 처리 event와 연결한다. 삭제·사망·소모·취소는 명시적 tombstone/상태로 보존하고 목록에서 없애 원래 상태가 되살아나게 하지 않는다. 신규 entity와 처음 확정한 자료 원문도 세이브에 보존한다.
-- 변경 맵은 해당 정본에 대한 전체 누적분이라는 coverage 선언과 entity/ref 목록을 가져야 한다. 이 완전성이 확인됐을 때만 변경이 없는 항목을 정본 기준선으로 해석한다. 필드/목록 유실·잘린 본문은 `변경 없음`이 아니다. 현재 미저장 변화는 마지막 verified 위에 적용하며 오래된 세이브로 덮지 않는다.
-- 불변 설정의 본문은 정본에 남기고 checkpoint에는 정확한 문서 참조·절/entity manifest와 변경 가능한 상태를 넣는다. STATE_SCHEMA/STATE_INTEGRITY의 전체 의미 범위는 **문서와 체크포인트를 결합한 논리적 GM_STATE**로 검사한다. 정본 없는 checkpoint나 세이브 없는 정본만으로 로드 완료라고 하지 않는다.
-- verify/read-back은 실제 저장한 checkpoint 원문·hash·session/version/event·parent·참조를 확인한다. 정본 파일을 저장 때마다 다시 생성·재업로드하지 않는다. 동일 판본의 검증된 문서 식별/본문은 재사용하며 실제 누락·충돌·판본 변경만 추가 조회한다. STATE_CHECKPOINT_RECAP도 같은 문서와 verified 동적 상태를 결합한다.
-- GitHub 정상 백업/비상 저장도 같은 모드의 exact checkpoint를 보존한다. DOCUMENT_BOUND 사본만으로 독립 전체 세계 백업이 됐다고 주장하지 않는다. 복구에는 참조한 정본 파일이 필요하며 소유자는 구판 세이브용 구판 파일도 보관한다. 기존 비공개 백업 대상/권한/검증 계약은 유지한다.
-- 신규 캠페인은 문서 생성·업로드 조회를 준비하되 축소 저장 전환은 실제 서버 호환성을 확인한 뒤에만 한다. 기존 캠페인은 사용자가 이관을 요청했을 때 검증된 전체 원문에서 추출·대조하고 새 참조 세이브를 검증한 뒤 전환한다. 기존 history는 수정·재해시·필드 삭제하지 않는다.
+### 저장·복원·호환성
+
+1. 현재 논리적 full GM_STATE를 STATE_INTEGRITY로 점검하고, 원본 작업 상태를 건드리지 않은 **새 DB1 projection 객체**를 구성한다. 참조 정본을 실제 읽어 파일 SHA·필수 절·baseline/changed ref·신규 사실·tombstone coverage를 대조한 뒤 정확한 UTF-8 JSON 문자열을 고정한다.
+2. STATE_COMMIT의 commit → verify → 같은 version의 exact read-back에서 **바로 그 문자열·SHA·session/version/event/parent**를 대조한다. 서버 validator의 JSON 구조 검증은 물리 정본 내용/복원 가능성을 대신 검증하지 못한다.
+3. 복원은 같은 판본 정본의 실제 파일 바이트와 원문을 확인하고 `baseline + 누적 world_delta + new_entities + tombstones + processed_event_ids + PC/진행 상태`를 결합한다. 논리적 full state를 검증한 뒤에만 이어간다. 파일 유실·SHA 불일치·coverage 누락이면 `canon_source_required` 또는 `checkpoint_canon_recovery_required`로 해당 복원만 보류한다. 없는 내용을 새로 생성하거나 죽은 NPC·취소한 Driver를 초기화하지 않는다.
+4. DB1 서버 분기 미설치·호환 실패·저장 차단 때는 `저장 미완료`로 기록하고 STATE_SAVE_FAILURE_CONTINUE로 현재 채팅을 계속한다. **크기 축소 실패를 감추기 위해 LEGACY_FULL 대용량 payload로 자동 재전송하지 않는다.**
+5. 기존 verified LEGACY_FULL checkpoint는 원문·hash·history·백업 그대로 유지한다. 구판을 이관하려면 사용자의 해당 세션 명시 요청, exact verified 원문과 물리 정본 전체의 항목별 대조, 문서에서 빠진 확정 사실의 신규 revision 또는 누적 변경 반영, 새로운 version의 DB1 verify/read-back이 모두 필요하다. 검증 실패하면 전환하지 않는다. 기존 LEGACY_FULL 로드는 계속 지원한다.
+6. 인증된 비공개 GitHub 백업/비상 저장은 Supabase와 **동일한 DB1 원문**을 복사한다. DB1 checkpoint만으로 독립 세계 백업이 되는 것은 아니므로 정본 파일 및 구 revision은 소유자가 보관한다.
 
 ## STATE_WORKING_CONTEXT
 
@@ -244,7 +251,7 @@ P1/P2/P3는 참가 슬롯이고 PC identity는 인물 식별자다. 같은 슬�
 
 ## STATE_INTEGRITY
 
-실제 저장 경계에서 현재 full snapshot을 최신 semantic-valid verified parent와 비교한다. parent 조회/저장 payload 검증 실패만으로 현재 플레이를 잠그지 않으며 STATE_SAVE_FAILURE_CONTINUE를 따른다. DOCUMENT_BOUND는 같은 canon_ref의 문서와 누적 변경 상태를 결합하고 참조·coverage·추가 사실·tombstone을 함께 검사한다. 일반 지문마다 DB parent를 조회하는 절차가 아니다. 대화 요약을 parent로 간주하지 않는다.
+실제 저장 경계에서 현재 full snapshot을 최신 semantic-valid verified parent와 비교한다. parent 조회/저장 payload 검증 실패만으로 현재 플레이를 잠그지 않으며 STATE_SAVE_FAILURE_CONTINUE를 따른다. DOCUMENT_BOUND(DB1)는 같은 canon_ref의 실제 문서 전체 SHA-256, 필수 절, baseline/changed ref 6개 namespace, 누적 world_delta·new_entities·tombstones·processed_event_ids와 결합해 검사한다. 서버의 JSON 검증 성공만으로 정본과 세이브의 의미상 결합이 입증되지는 않는다. 일반 지문마다 DB parent를 조회하는 절차가 아니다. 대화 요약을 parent로 간주하지 않는다.
 1. 식별자·버전·현재 단계·PC identity·난수·진행 대기·지도·증거·세계 상태가 재개 가능한가 확인한다. 신규 1~3인 게임은 참가 인원과 실제 슬롯/PC 연결 수가 일치하고 Focus/인계가 존재하는 슬롯을 가리키는지 검사한다.
 2. 불변 세계/PC 사실과 Canon Anchor가 설명 없이 변경·누락·null로 회귀하지 않았는지 확인한다. 변화하는 상태는 실제 사건·소비·이동·선택으로 변화 이유가 설명돼야 한다. 발생한 손실·방지한 결과·진행 중인 위험이 혼합되거나 도주/종결 때문에 사라지지 않았는지도 확인한다.
 3. `critical_state_registry`에는 실제 생성되어 활성인 핵심 namespace와 경로/ref를 등록한다. `checkpoint_canon_manifest`와 실제 데이터가 일치해야 한다. 빈 이름만 나열한 manifest는 검증이 아니다.
@@ -309,7 +316,7 @@ STATE_SCHEMA와 해당 저장의 실제 namespace/critical_state_registry를 따
 ## STATE_COMMIT
 
 캠페인당 Single Writer를 유지한다. 같은 저장 요청의 재전송은 기존 attempt를 복구한다. 저장 실패는 STATE_SAVE_FAILURE_CONTINUE에 따라 진행을 막지 않으며 최신 상태의 후속 저장과 구분한다.
-1. [STATE_INTEGRITY](07-state.md#state_integrity) 검사를 통과한 exact full GM_STATE를 STATE_CANON_SAVE_BINDING의 확인된 모드로 직렬화한다. 최신 verified+1 version과 `event_id=<session_id>:cp<version>`을 사용한다.
+1. [STATE_INTEGRITY](07-state.md#state_integrity) 검사를 통과한 논리적 full GM_STATE에서 확인된 모드의 **별도 새 payload 객체**를 구성해 직렬화한다. DB1은 canon_ref + 누적 world_delta와 PC/실행 상태만 전송하며 불변 원문을 제외한다. 작업 상태를 삭제/축소하지 않고 물리 문서 SHA·coverage·실제 서버 DB1 지원을 확인한다. 최신 verified+1 version과 `event_id=<session_id>:cp<version>`을 사용한다.
 2. 실제 쓰기를 시작하기 전에 session/version/event와 UTF-8 state_json 원문을 고정한다. 이후 attempt가 끝나기 전 다른 상태로 다시 직렬화하거나 새 version을 만들지 않는다.
 3. 반영으로 pending을 쓴다. raw 원문과 SHA-256, session/version/event를 읽어 대조한다. 정확한 해시는 실행 도구로 계산한다.
 4. 의미·parent·manifest를 다시 검사하고 같은 원문으로 verify한다.
@@ -353,7 +360,7 @@ pending 쓰기 뒤 verify/read-back이 중단되면 같은 version/event/원문�
 2. 종료 상태를 확인한다. 이미 종료된 캠페인은 플레이를 재개하지 않는다. 종료 저장/완결이 중단됐다면 동일 결과의 마무리만 복구한다.
 3. history에 최신 verified 다음 버전의 orphan pending이 있으면 [STATE_RECOVERY](07-state.md#state_recovery)로 검사한다.
 4. 최신 hash-valid verified 원문을 읽고 [STATE_INTEGRITY](07-state.md#state_integrity)의 의미 연속성까지 검사한다. hash만 맞는 불완전한 snapshot은 정상 복원이 아니다.
-5. DOCUMENT_BOUND이면 세이브가 지정한 정확한 정본 문서의 식별·판본·색인을 실제 읽고 전체 누적 변경/추가 사실을 적용한다. 문서 누락/다른 판본이면 canon_source_required로 멈추며 새 진실을 생성하지 않는다. LEGACY_FULL은 저장 원문을 그대로 사용한다. PRIVATE_CANON_PERIODIC_REVIEW로 활성 문서 전체를 실제 읽고 현재 변경 상태와 대조한다. 별도 문서 없는 LEGACY_FULL은 그 절의 원문 복기 경로를 따른다. 결합된 exact full state로 STATE_CHECKPOINT_RECAP을 수행하고 STATE_WORKING_CONTEXT의 PC·세계 핵심·현재 장면·세계 진행 색인을 구성한다. 비공개 진실/자료 본문을 공개 요약으로 바꾸거나 원본을 버리지 않는다. 열린 판정·선택·전투·PC/POV·지도·난수·시간을 그 단계에서 이어간다. 새 채팅이라는 이유로 생성·굴림·첫 장면을 다시 실행하지 않는다.
+5. DOCUMENT_BOUND(DB1)이면 세이브가 지정한 정확한 정본 문서의 전체 바이트 SHA-256·식별·판본·필수 절·baseline ref 집합을 실제 읽고 change_coverage와 대조한 뒤 전체 누적 world_delta·new_entities·tombstones·processed_event_ids를 적용한다. 문서 누락/다른 판본이면 canon_source_required로 멈추며 새 진실을 생성하지 않는다. LEGACY_FULL은 저장 원문을 그대로 사용한다. PRIVATE_CANON_PERIODIC_REVIEW로 활성 문서 전체를 실제 읽고 현재 변경 상태와 대조한다. 별도 문서 없는 LEGACY_FULL은 그 절의 원문 복기 경로를 따른다. 결합된 exact full state로 STATE_CHECKPOINT_RECAP을 수행하고 STATE_WORKING_CONTEXT의 PC·세계 핵심·현재 장면·세계 진행 색인을 구성한다. 비공개 진실/자료 본문을 공개 요약으로 바꾸거나 원본을 버리지 않는다. 열린 판정·선택·전투·PC/POV·지도·난수·시간을 그 단계에서 이어간다. 새 채팅이라는 이유로 생성·굴림·첫 장면을 다시 실행하지 않는다.
 6. 실제 검증된 version/Scene Turn으로 공개 수첩을 연결한다. 수첩에서 게임 정본을 역복원하지 않는다.
 - Supabase 연결/정식 로드에 실패하면 STATE_GITHUB_FAILOVER_PROTOCOL로 검증된 GitHub 사본의 제한적 복원을 검토한다. 확인 불가한 Supabase 최신 상태를 안다고 주장하지 않으며, 비상본은 정식 DB verified로 표시하지 않는다.
 - 최신 미러가 뒤처져도 verified history가 정본이다. 실제 지원되는 repair 계약이 확인된 경우만 미러를 정합적으로 복구한다.

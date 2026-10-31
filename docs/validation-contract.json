@@ -154,7 +154,7 @@
       "STATE_CHECKPOINT_RECAP",
       "DOCUMENT_BOUND",
       "canon_source_required",
-      "전체 누적 변경/추가 사실",
+      "전체 누적 world_delta·new_entities·tombstones·processed_event_ids",
       "PRIVATE_CANON_PERIODIC_REVIEW"
     ]
   },
@@ -846,15 +846,14 @@
     "contains": [
       "LEGACY_FULL",
       "DOCUMENT_BOUND",
-      "미지원이면 LEGACY_FULL을 유지",
-      "정본 기준 누적 변경 상태와 추가 사실 전체",
-      "마지막 저장 이후 delta만 넣는 체인은 사용하지",
+      "기존 verified LEGACY_FULL checkpoint는 원문·hash·history·백업 그대로 유지한다",
+      "정본 이후 누적 현재값",
+      "마지막 저장 이후의 delta만 기록하는 체인은 금지한다",
       "tombstone",
       "coverage",
-      "필드/목록 유실·잘린 본문은",
-      "논리적 GM_STATE",
-      "정본 파일을 저장 때마다 다시 생성·재업로드하지",
-      "기존 history는 수정·재해시·필드 삭제하지"
+      "안 읽힌 범위와 사망/취소 항목도 누락시키지 않는다",
+      "논리적 full GM_STATE",
+      "매 저장에서 불변 원문을 중복 전송하지 않는다"
     ],
     "instruction_contains": [
       "STATE_CANON_SAVE_BINDING"
@@ -905,6 +904,24 @@
     ],
     "excludes": [
       "Play Start Checkpoint verified 이후에만"
+    ]
+  },
+  {
+    "rule": "STATE_CANON_SAVE_BINDING",
+    "contains": [
+      "DOCUMENT_BOUND(DB1)",
+      "document_bound_format",
+      "canon_ref",
+      "file_sha256",
+      "change_coverage",
+      "baseline_entity_ids",
+      "changed_entity_ids",
+      "world_delta",
+      "processed_event_ids",
+      "LEGACY_FULL 대용량 payload로 자동 재전송하지 않는다"
+    ],
+    "excludes": [
+      "문서가 있다는 이유로 서버가 요구하는 원문·anchor를 삭제하지 않는다"
     ]
   },
   {

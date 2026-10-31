@@ -346,7 +346,7 @@
 | 문서 파일명만 확인되고 본문 접근 실패 | 조회 완료 아님, 필요한 정확한 파일 조회 대기 | PRIVATE_CANON_DOCUMENT | 일치 |
 | 같은 판본 ID에 다른 본문 | 충돌 보류, 최신 파일명/기억으로 덮어쓰기 금지 | PRIVATE_CANON_DOCUMENT | 일치 |
 | 새 정본 r2 업로드 후 참조 세이브 검증 실패 | 기존 r1 참조·추가 사실·구판 파일 보존 | PRIVATE_CANON_DOCUMENT | 일치 |
-| 서버가 정본 참조/축소 payload 미지원 | LEGACY_FULL 유지, 빈 anchor로 verify를 우회하지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
+| 서버가 정본 참조/축소 payload 미지원 | 신규 DB1은 저장 미완료로 진행, 전체 payload 자동 재전송/빈 anchor 검증 우회 없음 | STATE_CANON_SAVE_BINDING | 일치 |
 | 기존 full 세이브 재개 | 소급 이관 없이 원래 계약으로 재개 | STATE_CANON_SAVE_BINDING | 일치 |
 | 30턴 저장 복기 | 모드별 전체 범위 검사, 같은 정본/verified 진행 재사용, 불변 전문 자동 재조회 없음 | STATE_CHECKPOINT_RECAP | 일치 |
 | GitHub 문서 결합 checkpoint만 복구됨 | 정확한 정본도 필요, 독립 전체 복원 성공으로 표시하지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
@@ -392,3 +392,16 @@
 | 기존 LEGACY_FULL 세이브에 별도 정본 파일 없음 | 실제 확보한 불변 원문 복기, 파일 소스 재독 성공 가장 없음 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 
 이는 문서 계약의 경계 사례 대조다. 실제 게임에서 검색 도구가 본문 전체를 반환하는지나 장기 기억 유지율은 측정하지 않았다.
+
+
+## 물리 정본+DB1 컴팩트 세이브 대표 사례
+
+| 조건 | 기대 결과 |
+|---|---|
+| 정본 전체 SHA·필수 절·coverage와 실제 DB1 서버 분기 확인 | 최초 불변 원문 제외, canon_ref + 누적 동적 상태 저장·verify·exact read-back |
+| DB1에 scenario_core·campaign_canon_text를 중복 포함 | DB semantic validator 거부 |
+| DB1의 change_coverage.changed_entity_ids와 world_delta 키 불일치 | DB semantic validator 거부 |
+| 정본 파일 누락/해시 불일치 | DB 원문이 정상이라도 복원 보류, 사실 생성/초기화 금지 |
+| legacy verified 기존 세션 | 기존 검증·복원 유지, 원문·hash·history 불변 |
+| 기존 세션 이관 요청 | 전체 원문/정본 비교 후 새 버전만 DB1 저장, 미확정이면 이관 보류 |
+| DB1 서버 미지원·차단 | 저장 미완료 표시, 무단 LEGACY_FULL 재전송 없이 현재 채팅 계속 |
