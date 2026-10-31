@@ -417,3 +417,16 @@
 | 변화 없는 재확인 또는 자원 변화 | 결과 창작 없음, 핵심 변화만 표시, 수치/가방 전체는 HUD | SCENE_SUMMARY_AND_RESULT | 일치 |
 | 판정·전투·인계·화면 Gate 또는 메타 요청 | 기존 전용 입력 우선, 일반 메뉴 강제 추가 없음 | SCENE_SUMMARY_AND_RESULT / GUIDED_ACTION_RETURN | 일치 |
 | Supabase 장애 중 일반 대화 | 현재 공개 상태로 요약, 추가 DB 호출/정본 재독/저장 의존 없음 | SCENE_SUMMARY_AND_RESULT | 일치 |
+
+## NPC 청취·전달 경로
+
+| 사례 | 기대 동작 | 담당 규칙 | 검토 |
+|---|---|---|---|
+| PC가 상인에게만 문해력을 말한 뒤 다른 직원과 대화 | 직원은 과거 발언을 인용하지 않고 필요하면 읽을 수 있는지 질문 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+| 직원이 당시 같은 장소에 있었으나 청취 조건 미확립 | 같은 장소만으로 들었다고 확정하지 않음 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+| 직원이 직접 들은 조건이 확립됨 | 직접 청취 기억 사용 가능, 불필요한 추가 판정 없음 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+| 상인이 실제 전달한 기록 존재 | 전언 출처 유지, PC가 직원에게 직접 말했다고 바꾸지 않음 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+| 옷차림·직업·게시물 보는 행동으로 능력 추정 | 추정을 자기소개 기억/문해력 확정으로 변환하지 않음 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+| 누출 대사를 이미 출력 | 과거 전달 소급 창작 없이 해당 대사·종속 결과/요약/작업 기억 정정, 독립 사실 보존 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
+| 저장 압축·새 채팅·씬 요약 | 수신자·청취/전언 구분 유지, 파티 공개를 NPC 지식으로 합치지 않음 | DURABLE_STORY_CONTINUITY / CORE_VISIBILITY | 일치 |
+| 현재 작업 상태에 청취 근거 존재 | 해당 근거만 확인, 매 턴 전체 채팅/정본/DB 재조회 없음 | NPC_INTERACTION_VOICE_COMPACT | 일치 |
