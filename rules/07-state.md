@@ -84,7 +84,7 @@
 - `change_coverage{}`: `complete_since_revision=true`, `baseline_entity_ids{}`, `changed_entity_ids{}`. 두 ID 맵에는 `npcs, evidence, locations, routes, drivers, threats`의 **6개 전체 namespace**를 배열로 보존한다. baseline 집합은 정본의 모든 해당 entity/ref를 대조한 결과이며, changed 집합은 아래 world_delta의 해당 object 키와 정확히 같아야 한다. 안 읽힌 범위와 사망/취소 항목도 누락시키지 않는다.
 - `world_delta{}`: 위 6개 namespace의 stable ID별 **정본 이후 누적 현재값** 및 변경 이유/시각/사건 기록. `new_entities{}`에는 새 NPC·단서·최초 확정 자료 원문을 포함한 신규 entity 전체, `tombstones{}`에는 사망·소모·삭제·취소 등 원상복구 방지 상태, `processed_event_ids[]`에는 이미 처리한 실제 사건 ID를 보존한다. 필요한 전역 실행 상태는 별도의 `runtime_flags{}` 등 동적 필드에 보존한다. 마지막 저장 이후의 delta만 기록하는 체인은 금지한다.
 - `session_id, campaign_id, rules_version, phase, scene_turn, setup_start_settings, world_seed, start_seed, participants, pcs_by_identity, scenario_connection_by_pc, public_facts_by_pc, player_map_state, first_scene_orientation_by_pc, current_focus, pending, timeline, rng_mapping_version, rng_queue, rng_queue_next_consumption, checkpoint_cadence_state, save_cadence, critical_state_registry, ending_state`와 실제 활성 진행 필드도 보존한다. PC의 현재 기능·자원·위치·소지품, Focus·Spotlight·병렬 시간·열린 Roll/Combat/Chase/Handoff/Action, 획득물·약속·공개 가설을 빼지 않는다.
-- **DB1 전송 금지 불변 중복:** `campaign_canon_text, chapter_canon_text_by_ref, pc_canon_text_by_identity, scenario_core, world_dna, canonical_map_model`. 이 전문을 `world_delta`나 `new_entities`에 숨겨 복사하지 않는다. 다만 정본에 없던 실제 신규 정보/동적 변화는 삭제하지 않는다.
+- **DB1 전송 금지 불변 중복:** `campaign_canon_text, chapter_canon_text_by_ref, pc_canon_text_by_identity, scenario_core, world_dna, canonical_map_model, world_state`. 이 전문을 `world_delta`나 `new_entities`에 숨겨 복사하지 않는다. 다만 정본에 없던 실제 신규 정보/동적 변화는 삭제하지 않는다.
 
 ### 저장·복원·호환성
 
