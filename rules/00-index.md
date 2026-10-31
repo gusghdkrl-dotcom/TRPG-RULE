@@ -42,6 +42,7 @@
 | 턴과 실제 시간 | [SCENE_ELAPSED_TIME_SETTLEMENT](06-play.md#scene_elapsed_time_settlement) |
 | 비전투 3회 목표·5회 상한·다음 PC | [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate) |
 | 짧은 독립 이동·실제 병렬 시간 충돌 | [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync) |
+| 묘사 끝·이번 씬 요약과 결과 | [SCENE_SUMMARY_AND_RESULT](06-play.md#scene_summary_and_result) |
 | 대표 행동·자유 선언 | [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) |
 | 풍부한 장면·플레이어 대사 | [PLAYABLE_NARRATIVE_RENDERING](06-play.md#playable_narrative_rendering) · [CINEMATIC_ACTION_CONTINUITY](06-play.md#cinematic_action_continuity) |
 | NPC 질문·제안 뒤 PC 답변을 기다릴 때 | [NPC_REPLY_AGENCY_GATE](06-play.md#npc_reply_agency_gate) |

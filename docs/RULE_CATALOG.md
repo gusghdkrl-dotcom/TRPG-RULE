@@ -293,6 +293,7 @@
 | SCENE_PACING_GATE | [06-play.md](../rules/06-play.md#scene_pacing_gate) |
 | SCENE_POI_SURFACE | [05-world.md](../rules/05-world.md#scene_poi_surface) |
 | SCENE_ROLES | [06-play.md](../rules/06-play.md#scene_roles) |
+| SCENE_SUMMARY_AND_RESULT | [06-play.md](../rules/06-play.md#scene_summary_and_result) |
 | SCENE_VISUALIZATION_CAST_CONTINUITY | [08-visual.md](../rules/08-visual.md#scene_visualization_cast_continuity) |
 | SEQUENTIAL_PROFILE_GENERATION | [04-setup.md](../rules/04-setup.md#sequential_profile_generation) |
 | SETUP_UI_FIXED_CONTRACT | [04-setup.md](../rules/04-setup.md#setup_ui_fixed_contract) |

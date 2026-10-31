@@ -546,7 +546,8 @@
       "IN_WORLD_DOCUMENT_HANDOUT",
       "판정 안내/HUD",
       "NPC 대사",
-      "DIRECTOR_WRITER_KEEPER_CONVERGENCE"
+      "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+      "SCENE_SUMMARY_AND_RESULT"
     ]
   },
   {
@@ -558,7 +559,8 @@
       "그 전용 입력이 우선",
       "action_menu_pending",
       "NPC_REPLY_AGENCY_GATE",
-      "PC의 질문을 직접화법"
+      "PC의 질문을 직접화법",
+      "SCENE_SUMMARY_AND_RESULT"
     ]
   },
   {
@@ -943,6 +945,20 @@
     "instruction_contains": [
       "20턴마다 PRIVATE_CANON_PERIODIC_REVIEW",
       "정본 전체를 실제 재독"
+    ]
+  },
+  {
+    "rule": "SCENE_SUMMARY_AND_RESULT",
+    "contains": [
+      "묘사 → 이번 씬 요약·결과 → 행동 선택 → HUD",
+      "🎯 행동 선택",
+      "각각 1~2문장",
+      "이번 응답에서 처리한 부분만",
+      "NPC 전언",
+      "아직 미결정이면 완료로 쓰지 않는다",
+      "비공개 정본·미발견 진실",
+      "기존 전용 출력/입력 계약이 우선",
+      "별도 Supabase 조회/저장·정본 재독을 유발하지"
     ]
   }
 ]

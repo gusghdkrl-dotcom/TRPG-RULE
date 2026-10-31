@@ -405,3 +405,15 @@
 | legacy verified 기존 세션 | 기존 검증·복원 유지, 원문·hash·history 불변 |
 | 기존 세션 이관 요청 | 전체 원문/정본 비교 후 새 버전만 DB1 저장, 미확정이면 이관 보류 |
 | DB1 서버 미지원·차단 | 저장 미완료 표시, 무단 LEGACY_FULL 재전송 없이 현재 채팅 계속 |
+
+## 이번 씬 요약·결과
+
+| 사례 | 기대 동작 | 담당 규칙 | 검토 |
+|---|---|---|---|
+| 첫 장면·일반 이동·대화 후 정상 메뉴 | 묘사 뒤 요약/결과 각 1~2문장, 행동 선택 바로 위 1회, HUD 마지막 | SCENE_SUMMARY_AND_RESULT | 일치 |
+| 여러 턴 이어지는 장면 | 이번 응답 부분만 요약, Scene 종료/턴 증가/새 저장 이벤트 없음 | SCENE_SUMMARY_AND_RESULT | 일치 |
+| NPC가 의뢰 수락이나 방문 목적을 질문 | 질문을 들은 결과와 답변 대기만 표시, PC의 수락/이동/지출 미확정 | SCENE_SUMMARY_AND_RESULT / NPC_REPLY_AGENCY_GATE | 일치 |
+| NPC 전언·비공개 진실이 따로 존재 | 발언 출처 유지, 숨은 정답/속마음/미발견 사건/추리 결론 노출 없음 | SCENE_SUMMARY_AND_RESULT | 일치 |
+| 변화 없는 재확인 또는 자원 변화 | 결과 창작 없음, 핵심 변화만 표시, 수치/가방 전체는 HUD | SCENE_SUMMARY_AND_RESULT | 일치 |
+| 판정·전투·인계·화면 Gate 또는 메타 요청 | 기존 전용 입력 우선, 일반 메뉴 강제 추가 없음 | SCENE_SUMMARY_AND_RESULT / GUIDED_ACTION_RETURN | 일치 |
+| Supabase 장애 중 일반 대화 | 현재 공개 상태로 요약, 추가 DB 호출/정본 재독/저장 의존 없음 | SCENE_SUMMARY_AND_RESULT | 일치 |
