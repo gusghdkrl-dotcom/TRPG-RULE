@@ -178,6 +178,7 @@
 | LIVING_NPC_CONTINUITY | [05-world.md](../rules/05-world.md#living_npc_continuity) |
 | LOCATION_VISUAL_CANON | [08-visual.md](../rules/08-visual.md#location_visual_canon) |
 | LOCATION_VISUAL_PRIORITY | [08-visual.md](../rules/08-visual.md#location_visual_priority) |
+| LIFESTYLE_BUFFS | [02-checks.md](../rules/02-checks.md#lifestyle_buffs) |
 | LONG_ACTION_EARLIEST_INTERRUPTION | [06-play.md](../rules/06-play.md#long_action_earliest_interruption) |
 | LORE_DRIVEN_PUZZLES | [06-play.md](../rules/06-play.md#lore_driven_puzzles) |
 | LUCK_ROLL | [02-checks.md](../rules/02-checks.md#luck_roll) |

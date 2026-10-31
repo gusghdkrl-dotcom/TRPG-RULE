@@ -39,10 +39,11 @@
 | 비공개 세계·NPC 시간 진행 | [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) |
 | 증거·가설·결론 | [EVIDENCE_NAMESPACE_CONSOLIDATION](05-world.md#evidence_namespace_consolidation) |
 | 기능의 캠페인 내부 성장 | [SKILL_IMPROVEMENT](04-setup.md#skill_improvement) |
-| 턴과 실제 시간 | [SCENE_ELAPSED_TIME_SETTLEMENT](06-play.md#scene_elapsed_time_settlement) |
 | 비전투 3회 목표·5회 상한·다음 PC | [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate) |
 | 짧은 독립 이동·실제 병렬 시간 충돌 | [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync) |
 | 묘사 끝·이번 씬 요약과 결과 | [SCENE_SUMMARY_AND_RESULT](06-play.md#scene_summary_and_result) |
+| 식사·수면 버프·만료 | [LIFESTYLE_BUFFS](02-checks.md#lifestyle_buffs) |
+| 행동·대화 턴과 실제 경과 | [TURN_INCREMENT](06-play.md#turn_increment) · [SCENE_ELAPSED_TIME_SETTLEMENT](06-play.md#scene_elapsed_time_settlement) |
 | 판정 숫자·행운·강행 통합 입력 | [ROLL_INPUT_FORM_CONTRACT](02-checks.md#roll_input_form_contract) |
 | 대표 행동·자유 선언 | [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) |
 | 풍부한 장면·플레이어 대사 | [PLAYABLE_NARRATIVE_RENDERING](06-play.md#playable_narrative_rendering) · [CINEMATIC_ACTION_CONTINUITY](06-play.md#cinematic_action_continuity) |

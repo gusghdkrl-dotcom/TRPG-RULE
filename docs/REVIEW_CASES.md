@@ -448,3 +448,31 @@
 | 구판 Luck 대기 저장에서 재개 | 원값 재요청·자동 사용/거부 없이 미응답 선택만 한 번 처리 | ROLL_INPUT_FORM_CONTRACT | 일치 |
 | 반복 제출·중간 저장/로드 | 동일 Luck·실패 비용·강행 중복 실행 없음 | ROLL_INPUT_FORM_CONTRACT | 일치 |
 | 통합 폼 도구 미지원 | 한 메시지의 같은 입력 계약으로 안내, 가짜 버튼/폼 생성 주장 없음 | ROLL_INPUT_FORM_CONTRACT | 일치 |
+
+## 생활 버프·행동 턴·자율 시간 경과
+
+| 사례 | 기대 동작 | 담당 규칙 | 검토 |
+|---|---|---|---|
+| 충분한 일반 식사 / 좋은 조건의 식사 완료 | 든든함 +3 / +5, 각 1회, 완료 시각부터 4시간 | LIFESTYLE_BUFFS | 일치 |
+| 충분한 수면 / 편안하고 조용한 수면 완료 | 개운함 +3 / +5, 각 1회, 기상부터 8시간 | LIFESTYLE_BUFFS | 일치 |
+| 식사 미실시·잠을 안 잠·짧은 낮잠 | 새로운 페널티·행동 잠금 없음, 조건 없는 버프 지급도 없음 | LIFESTYLE_BUFFS | 일치 |
+| 10시 식사 완료 후 12시 / 14시 | 2시간 남음 / 만료 제거, 자정·턴·현실 대기로 계산하지 않음 | LIFESTYLE_BUFFS | 일치 |
+| 같은 버프 재획득·품질 하락 | 새 품질/만료의 1회로 교체, 높은 수치와 긴 기간 혼합 없음 | LIFESTYLE_BUFFS | 일치 |
+| 든든함·개운함 둘 다 보유 | 해당 행동에 적격한 것 하나만 선택, 중첩 합산 없음 | LIFESTYLE_BUFFS | 일치 |
+| 기능45·버프+3 | Regular48/Hard25/Extreme12, 원값01 Critical·96~100 Fumble 유지 | LIFESTYLE_BUFFS / SUCCESS_LEVELS | 일치 |
+| 기능99·버프+5 | Regular 상한99, 원값100 Fumble, 영구 기능 변화 없음 | LIFESTYLE_BUFFS | 일치 |
+| 기능45·버프+3·원값54·행운 체크/상한6 | 버프 소모 후 비용6만 차감하여 Regular 전환 | LIFESTYLE_BUFFS / LUCK_SPENDING | 일치 |
+| 버프 선택 후 실패/Fumble 또는 강행 | 초기 버프는 소모, 강행에 자동 이월 없음, 나머지 적격 버프만 새 선택 | LIFESTYLE_BUFFS / ROLL_INPUT_FORM_CONTRACT | 일치 |
+| 무효 입력 수정·취소·반복 제출 | 무효/취소는 소모 없음, 유효 해결은 한 번만 소모 | LIFESTYLE_BUFFS | 일치 |
+| 장기 작업 도중 만료·현실 입력 지연 | 실제 판정 시점의 극중 시간으로 적격 확인, 현실 지연은 시간 경과 없음 | LIFESTYLE_BUFFS | 일치 |
+| 전투·SAN·Luck·피해·특성 판정 | 생활 버프 적용 없음, 버프 미소모 | LIFESTYLE_BUFFS | 일치 |
+| 저장/로드·구판 휴식 완료 표기 | 실제 만료 시각/횟수 유지, 자동 갱신·소급 품질 창작 없음 | LIFESTYLE_BUFFS | 일치 |
+| 한 선언으로 인사 후 이동 완료 | 합쳐 +1, 인사/출발/도착 각각 가산하지 않음 | TURN_INCREMENT | 일치 |
+| 증언 청취 후 별도 선언으로 청원 접수 | 각 행동권 반환에 +1, 예: 13→14→15 | TURN_INCREMENT | 일치 |
+| 판정 요청→숫자→행운/강행→행동권 반환 | 같은 행동 한 번만 +1, 주사위/확인 메시지마다 증가 없음 | TURN_INCREMENT | 일치 |
+| 룰 질문·화면 재표시·인계 A·전투 보조 대사 | 기존 시간 정지/전용 행동 경제 유지 | TURN_INCREMENT | 일치 |
+| 접수와 문서 작성, 정확한 분 정보 없음 | 통상 10~30분에서 상황에 맞게 추정, 같은 시간대에도 HUD 경과 표시 | SCENE_ELAPSED_TIME_SETTLEMENT | 일치 |
+| 오전 일을 선언, 20분 뒤 기존 방문 도달 | 작업을 충분히 진행하되 20분 시점에 멈춤, 완료까지 사건 건너뛰지 않음 | SCENE_ELAPSED_TIME_SETTLEMENT / LONG_ACTION_EARLIEST_INTERRUPTION | 일치 |
+| 병렬 PC가 같은 20분 동안 행동 | 전체 40분으로 합산하지 않음, 각 PC 실제 시점으로 버프 만료 | SCENE_ELAPSED_TIME_SETTLEMENT | 일치 |
+| 넓은 전통 시간대만 남은 구판 | 상대 anchor와 경과 누적, 가짜 분 시각/과거 턴 재작성 없음 | SCENE_ELAPSED_TIME_SETTLEMENT / TURN_INCREMENT | 일치 |
+| HUD 표시 후 메타 재표시 또는 로드 | 이전 경과 재가산 없음, 버프 효과·범위·1회·남은 시간 표시 | HUD_VISUAL_STYLE | 일치 |
