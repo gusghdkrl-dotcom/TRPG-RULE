@@ -2,6 +2,9 @@
 
 개발용 색인. 프로젝트 소스에는 넣지 않는다.
 
+| PRIVATE_CANON_ACCESS_ROUTER | [07-state.md](../rules/07-state.md#private_canon_access_router) |
+| PRIVATE_CANON_DOCUMENT | [07-state.md](../rules/07-state.md#private_canon_document) |
+| STATE_CANON_SAVE_BINDING | [07-state.md](../rules/07-state.md#state_canon_save_binding) |
 | 규칙 ID | 현재 문서 |
 |---|---|
 | ACTIVE_DANGER_CONTINUITY | [05-world.md](../rules/05-world.md#active_danger_continuity) |

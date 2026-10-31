@@ -92,3 +92,5 @@ Scene Turn은 시간이 드는 의미 있는 행동의 진행 번호다. 실제 
 영어 코드 형태의 필드·enum은 실제 저장/도구 계약과 연결된 식별자다. 한국어 표현을 다듬는 이유로 필드명을 임의로 바꾸지 않는다.
 
 시작·원작·PC·세계 브리핑 고정 폼: [SETUP_UI_FIXED_CONTRACT](04-setup.md#setup_ui_fixed_contract). 텍스트 폼과 프로필 이미지 레이아웃을 구분해 적용한다.
+
+비공개 정본: [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) → [PRIVATE_CANON_ACCESS_ROUTER](07-state.md#private_canon_access_router) → [STATE_CANON_SAVE_BINDING](07-state.md#state_canon_save_binding).

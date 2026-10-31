@@ -326,3 +326,30 @@
 | 입력 UI 지원 여부가 다른 채팅에서 확인됨 | 현재 게임 프로젝트에서도 제공된다고 추정하지 않음 | SETUP_UI_FIXED_CONTRACT | 일치 |
 
 대상 일반 ChatGPT 프로젝트에서 실제 폼 렌더링·제출은 이 저장소의 문서 검사로 검증할 수 없다.
+
+## 비공개 정본 조회·진행 세이브 대조
+
+| 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
+|---|---|---|---|
+| 신규 세계 생성 완료 | 정본 파일 제공 → 소스 업로드 후 실제 조회 → 지원 모드로 설정 저장 검증 | PRIVATE_CANON_DOCUMENT / CAMPAIGN_SETUP_PIPELINE | 일치 |
+| NPC 비밀 목적이 문맥에서 누락 | 정확한 판본 NPC 절을 읽고 현재 목적·지식·생사를 적용 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
+| 정본 NPC는 생존, 현재 세이브는 사망 | 사망 유지, 문서 재조회로 부활시키지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
+| 현재 사망 여부를 포함한 변경 맵 자체가 유실 | 변경 없음으로 간주하지 않고 동적 상태 복구 | STATE_CANON_SAVE_BINDING | 일치 |
+| 단서가 원래 장소에서 이동·소모됨 | 원래 의미·본문은 문서, 현재 위치/존재는 세이브 변화 적용 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
+| 발견 전 단서 조건/본문이 필요함 | 필요한 접근/발견 조건만 읽고 성공/공개 범위에 맞춰 본문 전달 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
+| 플레이어 가설이 정본 진실과 다름 | 가설은 가설로 보존, 진실 재작성·답안 유출 없음 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
+| 세계 법칙의 예외가 문맥에서 없음 | WORLD_RULES의 관련 절을 확인하고 현재 조건으로 적용 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
+| 다른 장소 Driver의 발동 시각 도달 | 전체 활성 색인과 필요한 정본 조건을 대조, 취소/처리 event는 재실행하지 않음 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
+| 새 NPC/자료 원문이 플레이 중 확정 | 세이브 추가 사실에 보존, 다음 문서 개정까지 누락하지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
+| 이전 저장에서 사망, 이번 저장에서 새 변화 없음 | 누적 변경 상태에 사망을 계속 보존, 직전 delta만 저장하지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
+| 새 채팅에 r2만 있는데 세이브는 r1 참조 | r1 요청, r2로 임의 대체/정본 재생성 금지 | STATE_RESUME | 일치 |
+| 문서 파일명만 확인되고 본문 접근 실패 | 조회 완료 아님, 필요한 정확한 파일 조회 대기 | PRIVATE_CANON_DOCUMENT | 일치 |
+| 같은 판본 ID에 다른 본문 | 충돌 보류, 최신 파일명/기억으로 덮어쓰기 금지 | PRIVATE_CANON_DOCUMENT | 일치 |
+| 새 정본 r2 업로드 후 참조 세이브 검증 실패 | 기존 r1 참조·추가 사실·구판 파일 보존 | PRIVATE_CANON_DOCUMENT | 일치 |
+| 서버가 정본 참조/축소 payload 미지원 | LEGACY_FULL 유지, 빈 anchor로 verify를 우회하지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
+| 기존 full 세이브 재개 | 소급 이관 없이 원래 계약으로 재개 | STATE_CANON_SAVE_BINDING | 일치 |
+| 30턴 저장 복기 | 모드별 전체 범위 검사, 같은 정본/verified 진행 재사용, 불변 전문 자동 재조회 없음 | STATE_CHECKPOINT_RECAP | 일치 |
+| GitHub 문서 결합 checkpoint만 복구됨 | 정확한 정본도 필요, 독립 전체 복원 성공으로 표시하지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
+| 정본 조회만 수행 | 시간·난수·저장·발견 상태 불변, 비공개 본문을 지문에 복사하지 않음 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
+
+문서상 경로 대조이며 실제 Supabase 축소 저장/로드와 게임 프로젝트 소스 검색 성공을 뜻하지 않는다.

@@ -89,7 +89,7 @@ HUD는 응답 마지막 1회, 현재 입력 담당 PC를 표시한다. HUD_VISUA
 
 룰은 룰북, PC/세계 값은 현재 작업 상태에서 확인한다. Supabase는 로드·실제 유실/충돌·저장 검증/복구·명시적 대조 때만 쓴다. 일반 턴 반복 조회·과거 저장으로 미저장 진행 덮어쓰기는 금지한다. verify/동일 version read-back 없이 저장 완료라 하지 않는다.
 
-STATE_WORKING_CONTEXT로 실제 생성/로드한 PC 수치·열린 절차·세계 핵심·NPC/증거·다른 장소의 예정 사건을 유지하고 결과마다 갱신한다. 시작·Scene Turn 30/60/90… 저장 때는 STATE_CHECKPOINT_RECAP으로 현재 장면 밖의 비공개 요소까지 전부 대조하고 다음 발동 조건·미해결 상태를 복기한다. 저장 검증의 동일 원문을 재사용하며 추가 전체 조회·새 저장·사건 재실행은 하지 않는다. 비밀 복기는 지문·수첩·프로젝트 소스에 출력하지 않는다. 문맥은 영구 메모리가 아니므로 실제 유실 때만 한정 복구한다. 별도 서버 방안은 사용하지 않는다.
+STATE_WORKING_CONTEXT에 PC·세계·화면 밖 사건과 미저장 변경을 유지한다. 비공개 정본 소스는 PRIVATE_CANON_ACCESS_ROUTER로 필요한 절을 읽어 현재 세이브의 변화를 적용한다. 문서 누락을 추측하거나 사망·취소를 초기화하지 않는다. 저장 축소는 STATE_CANON_SAVE_BINDING의 서버 호환 확인 뒤 적용한다. 시작·30배수의 STATE_CHECKPOINT_RECAP은 정본+verified 진행 상태를 재사용한다. 복기 비밀은 지문·수첩에 공개하지 않는다.
 
 ## 상황별 빠른 경로
 
@@ -107,6 +107,7 @@ STATE_WORKING_CONTEXT로 실제 생성/로드한 PC 수치·열린 절차·세�
 | 시간 경과·사건 도달 | 05-world · WORLD_INITIATIVE_EXECUTION; 해당 시간 구간만 |
 | 다음 PC 선정·시간 충돌 | 06-play · SPOTLIGHT_FAIRNESS_COMMIT_GATE / PARALLEL_TIMELINE_SYNC |
 | HUD·지도·그림 요청 | 06-play의 HUD_VISUAL_STYLE / 08-visual의 MAP_RUNTIME_INTERACTION·해당 시각화 절 |
+| 비공개 사실 | 07-state · PRIVATE_CANON_ACCESS_ROUTER |
 | DB 접근 판단 | 07-state · STATE_ACCESS_ROUTER; 저장은 STATE_CADENCE/STATE_COMMIT, 복원은 STATE_RESUME |
-| 시작·30배수 저장/복기 | 07-state의 STATE_CHECKPOINT_RECAP; 동일 verified read-back 재사용 |
+| 시작·30배수 저장/복기 | 07-state · STATE_CHECKPOINT_RECAP; 정본+verified 진행 상태 |
 | 새 게임·원작·PC 생성 | rules/04-setup.md의 START_SETTINGS_GATE → HOMAGE_DRAFT_SELECTION → CAMPAIGN_SETUP_PIPELINE |

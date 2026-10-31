@@ -493,7 +493,7 @@ APP: [값] | INT: [값] | POW: [값] | EDU: [값]
 5. 각 PC의 생활 목표가 끝난 뒤에도 이어질 참여 이해관계·첫 충돌·행동 가능한 접근 경로와 2~3인의 초기 합류/연락 기회를 세계 생성안에 함께 설계한다. [COMPATIBILITY_GATE](04-setup.md#compatibility_gate)와 [PACING_PLAYABILITY_QA](04-setup.md#pacing_playability_qa)를 검사한 뒤 세계의 불변 핵심을 확정한다. 이후 플레이 결과에 따라 변하는 상태는 별도로 추적한다.
 6. 각 PC의 객관적인 참여 경로·이해관계를 확정하고 최종 프로필을 배부한다. PC의 감정·조사 의무·비밀 과거를 새로 쓰지 않는다. 프로필의 공개 범위, 각 P의 시각화 선택, 파티 합류 경로와 공개 지도 자료를 확인한다.
 7. 연결 가능한 공개 수첩은 [NOTEBOOK_LITE_OPEN_GATE](09-notebook.md#notebook_lite_open_gate)로 연다. 비공개 저장과 별개다.
-8. 완전한 GM_STATE를 [STATE_INTEGRITY](07-state.md#state_integrity)로 검사하고 [STATE_COMMIT](07-state.md#state_commit)으로 setup_bootstrap 1회를 검증 저장한다. 성공한 뒤 게임 시작 입력 대기 상태가 된다. PC/WORLD별 외부 중간 저장은 하지 않는다.
+8. [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document)로 신규 세계 정본 파일을 제공하고 사용자의 소스 업로드 뒤 실제 조회를 확인한다. [STATE_CANON_SAVE_BINDING](07-state.md#state_canon_save_binding)으로 저장 모드의 서버 호환성을 확인한다. 완전한 논리적 GM_STATE를 [STATE_INTEGRITY](07-state.md#state_integrity)로 검사하고 [STATE_COMMIT](07-state.md#state_commit)으로 setup_bootstrap 1회를 검증 저장한다. 성공한 뒤 게임 시작 입력 대기 상태가 된다. PC/WORLD별 외부 중간 저장은 하지 않는다.
 9. 플레이어의 `게임 시작` 선언 뒤 scene_turn=1/phase=play를 확정하고 시작 지도를 전달한다. play_start 1회를 검증 저장한 뒤 첫 장면을 진행한다. 실제 전달·검증이 실패하면 해당 경계에서 대기한다.
 
 ## PROFESSION_SPECIALTY_GENERATION_SEED
