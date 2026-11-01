@@ -124,9 +124,9 @@
 | 시작 설정 전체와 원작 확정, 3명 | P1/P2/P3 모두 생성 후 세계 생성, 실제 세 슬롯의 참여·정보·행동권 유지 | PARTICIPANT_COUNT_SETUP / CAMPAIGN_SETUP_PIPELINE | 일치 |
 | 3인 저장을 새 채팅에서 로드 | 저장된 세 슬롯과 Focus를 복원, 인원 선택/세계를 새로 만들지 않음 | STATE_IDENTITY / STATE_RESUME | 일치 |
 | 광고 납품·보수 수령 완료 | 첫 목적 완료 경계에서 실제 사건 접점과 다음 접근을 제시 | SCENE_PACING_GATE | 일치 |
-| 30턴에 수상한 건물과 며칠 뒤 약속만 있음 | 사건 입구 제공 기준 미달, 구체적 충돌·이해관계·현재 접근이 필요 | SCENE_PACING_GATE | 일치 |
-| PC가 사건에 대응할 기회를 알고 귀가 선택 | 감정·수락 강요 없이 기존 세계 결과를 처리, 새 봉쇄로 붙잡지 않음 | PC_INVOLVEMENT_COLLISION_GATE | 일치 |
-| 이미 87턴인 기존 캠페인에 개선 적용 | 과거·진실을 바꾸지 않고 다음 안전 경계에서 현재 접점 복구 | SCENE_PACING_GATE | 일치 |
+| 30턴에 수상한 건물과 며칠 뒤 약속만 있음 | 큰 사건 실제 발생 기준 미달, 중심 위협의 발현과 PC에게 닿는 중대한 변화가 필요 | SCENE_PACING_GATE | 일치 |
+| PC가 사건에 대응할 기회를 알고 귀가 선택 | 귀가는 시도로 해석, 확정된 이탈 제약·탈출 난관을 처리하고 직접 행동을 선택하게 함 | PC_INVOLVEMENT_COLLISION_GATE | 일치 |
+| 이미 87턴인 기존 캠페인에 개선 적용 | 미달을 인정하고 과거 수정 없이 다음 안전 경계에서 현재 원인을 실제 큰 변화로 실행 | SCENE_PACING_GATE | 일치 |
 | 수리를 마친다고 선언, 새 위험/비용 없음 | 통상 공정을 묶고 한 목적의 결과·시간·합의된 정산을 한 번 적용 | CINEMATIC_ELLIPSIS | 일치 |
 | 덮개만 연다고 명시 | 그 범위만 짧게 처리, 자동 수리/유료 부품 교체 없음 | CINEMATIC_ELLIPSIS | 일치 |
 | 수리 중 새 비용 또는 위험 발견 | 해당 지점에서 멈춰 선택/판정을 돌림 | CINEMATIC_ELLIPSIS | 일치 |
@@ -149,7 +149,7 @@
 | 흑막을 알아냈지만 실제 진행은 막지 않음 | 지식 획득과 위협 차단을 분리하고 조건에 따라 피해 진행 | CAUSAL_ENDGAME_PRECOMMIT / SCENARIO_CAUSAL_PROGRESS_MODEL | 일치 |
 | 원작상 살해 불가능한 존재에 대응 | 봉쇄·지연·구조·격리·탈출 등 성립하는 대응 허용, 정면전 강제 없음 | CAUSAL_ENDGAME_PRECOMMIT | 일치 |
 | PC는 탈출했으나 마을의 위협은 미해결 | 생존과 사건 해결을 분리, 실제 발생 손실과 잔존 위험을 보존 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
-| 일부 주민을 구조하고 철수 | 구조 성과 인정, 미해결 부분의 실제 대가만 정산 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE / ENDING_RESULT_VECTOR | 일치 |
+| 일부 주민을 구조하고 탈출 난관을 돌파해 철수 | 구조·탈출 성과 인정, 미해결 부분의 실제 대가만 정산 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE / ENDING_RESULT_VECTOR | 일치 |
 | 모든 피해 원인을 막고 안전하게 떠남 | 무손실 성공 인정, 새로운 추격/납치나 자동 HP/SAN 차감 없음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
 | P1은 도주하고 P2는 아직 차단 가능 | P2의 유효한 행동을 처리한 뒤 실제 세계 결과로 판단 | ENDING_FINALIZATION_GATE | 일치 |
 | 저장 후 재개, 미래 피해 조건은 아직 미충족 | 예정 위험을 확정 사망으로 바꾸지 않고 기존 실제 손실도 재적용하지 않음 | STATE_SCHEMA / STATE_INTEGRITY | 일치 |
@@ -192,7 +192,7 @@
 | 상황 | 기대 처리 | 담당 | 문서 대조 |
 |---|---|---|---|
 | 새 연출 지침 적용 후 첫 생활 목표를 마침 | 기존 인과의 사건 접점과 현재 접근 경로를 안전 경계에서 제시 | PROJECT_INSTRUCTIONS / SCENE_PACING_GATE | 일치 |
-| 3인 캠페인 초반 30턴 도달 | 전체 Scene Turn 기준으로 이상·대응 이유·접근 경로 제공 여부 점검, PC별 30턴 아님 | SCENE_PACING_GATE | 일치 |
+| 3인 캠페인 초반 30턴 도달 | 전체 Scene Turn 기준 첫 큰 사건 실제 발생·각 PC 직접 영향 점검, PC별 30턴 아님 | SCENE_PACING_GATE | 일치 |
 | 완결 장면 2개 연속 진전 없음 또는 할 일이 없다는 입력 | 다음 안전 경계에서 기존 NPC 목적·세계 결과로 정체 해소, 새 비밀/공격 발명 없음 | PROJECT_INSTRUCTIONS / SCENE_PACING_GATE | 일치 |
 | 새 교류가 있는 평온한 장면 | 유효한 장면으로 유지, 불길한 사건을 기계적으로 추가하지 않음 | DIRECTOR_WRITER_KEEPER_CONVERGENCE / SCENE_PACING_GATE | 일치 |
 | 17턴 이동 중 다른 장소의 예정 사건 시각 도달 | 해당 구간의 작업 상태로 결과 1회 처리, 30턴 저장까지 보류/매번 DB 조회 없음 | CORE_WORKFLOW / WORLD_INITIATIVE_EXECUTION | 일치 |
@@ -476,3 +476,25 @@
 | 병렬 PC가 같은 20분 동안 행동 | 전체 40분으로 합산하지 않음, 각 PC 실제 시점으로 버프 만료 | SCENE_ELAPSED_TIME_SETTLEMENT | 일치 |
 | 넓은 전통 시간대만 남은 구판 | 상대 anchor와 경과 누적, 가짜 분 시각/과거 턴 재작성 없음 | SCENE_ELAPSED_TIME_SETTLEMENT / TURN_INCREMENT | 일치 |
 | HUD 표시 후 메타 재표시 또는 로드 | 이전 경과 재가산 없음, 버프 효과·범위·1회·남은 시간 표시 | HUD_VISUAL_STYLE | 일치 |
+
+## 필수 연루·실질적 탈출·30턴 큰 사건
+
+| 사례 | 기대 동작 | 담당 규칙 | 검토 |
+|---|---|---|---|
+| 의뢰 거절·보수 수령 뒤 귀가 | 의뢰 수락과 무관한 실제 원인이 PC에 도달, 연루/이탈 제약 유지 | PC_INVOLVEMENT_COLLISION_GATE | 일치 |
+| 타인을 버리면 PC는 그냥 떠날 수 있는 신규 설계 | 감정적 의무만으로는 미달, PC 자신의 객관적 제약을 세계 확정 전 설계 | INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| 큰 사건 전 초반 이탈 선언 | 준비된 원인/발동 조건과 경로로 제약 처리, 조사 선택까지 기다리지 않음 | INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| 나갈래 한마디 또는 도주 판정1회 성공 | 실제로 해소한 장애만 반영, 남은 독립 장애를 자동 완료하지 않음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 충분한 준비·독창적 우회로 모든 제약 해소 | 실제 탈출 인정, 고정 전투 횟수나 새 봉쇄로 재감금하지 않음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 대가는 감수하겠다고 답했으나 경로 봉쇄 잔존 | 감정/손실 수락과 물리적 돌파를 구분, 다음 대응 선택 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 탈출 실패 뒤 생존, 수단/위치 변화 | 실제 결과와 남은 대응 제공, 동일 굴림 반복·확정 사망 강요 없음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| P1만 난관 돌파, P2는 남음 | 각자 실제 상태·행동권 유지, 전원 이탈로 간주하지 않음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 30턴에 문서 이상·의뢰·며칠 뒤 방문만 소개 | 큰 사건 미발생, 통과 불가 | SCENE_PACING_GATE | 일치 |
+| 중심 위협이 발현해 생활권/안전/이동을 실제 크게 변경 | 첫 큰 사건 조건 충족, 즉시 대응·생존·탈출 선택 제공 | SCENE_PACING_GATE | 일치 |
+| 큰 사고는 화면 밖 기록에만 있고 PC는 무관 | 전달/확산된 직접 영향 없으므로 마감 충족 아님 | SCENE_PACING_GATE | 일치 |
+| 3인 중 한 명만 연루, 나머지는 선택형 동행 | 생성 검토 실패, 각 PC의 객관적 연루와 직접 영향 설계 | SCENE_PACING_GATE / INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| 18턴에 첫 큰 사건 도달 | 즉시 실행, 30턴까지 지연하거나30/60턴에 반복 발생하지 않음 | SCENE_PACING_GATE | 일치 |
+| 선제 개입으로 실제 위기·대치 끝에 큰 피해 방지 | 실제 국면과 성과 인정, 죽음/재난 할당량 충족용 새 사건 없음 | SCENE_PACING_GATE | 일치 |
+| 열린 판정·전투 중 초반 경계 | 해당 입력 우선, 초기부터 마감 전 사건 준비, 미달을 완료로 가장하지 않음 | SCENE_PACING_GATE | 일치 |
+| 구판87턴, 아직 큰 사건 없음 | 과거 변경 없이 미달 표시와 현재 인과 실행, 원인 없으면 정본 개정으로 보완 | SCENE_PACING_GATE / NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 로드·정본 재독·60턴 도달 | 기록된 실제 event/ref와 PC 영향을 복구, 큰 사건 재발동 없음 | SCENE_PACING_GATE | 일치 |

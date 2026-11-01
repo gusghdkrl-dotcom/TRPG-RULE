@@ -72,9 +72,9 @@ SPOTLIGHT_FAIRNESS_COMMIT_GATE의 비전투 **3회 목표·대기자가 있으�
 
 ## 실행 정본과 최소 운영 규칙
 
-**사건 진행은 상시 유지한다.** SCENE_PACING_GATE: 첫 생활 목표 뒤 사건 접점, 전체 Scene Turn 30 이내 구체적 이상·대응 이유·즉시 접근 경로를 제공한다. 완결 장면 2개 연속 변화가 없거나 할 일이 없으면 다음 안전 경계에서 기존 인과로 정체를 푼다. WORLD_INITIATIVE_EXECUTION: 실제 경과 구간의 NPC 목적·위협·약속·예정 사건을 작업 상태로 확인하고 도달한 결과를 한 번 반영한다. 화면 밖도 진행하며 실제 관측 전에는 숨긴다. 30턴 저장까지 미루거나 매번 DB를 조회하지 않는다. 턴 수로 공격·단서·PC 대응을 강제하지 않고 해결·회피 성과를 보존한다.
+**사건 연루는 필수다.** NO_CLEAN_EXIT_HORROR_ARCHITECTURE: PC별 이탈 제약·탈출 난관은 필수다. 귀가 선언만으로 종료하지 않는다. SCENE_PACING_GATE: 전체 Scene Turn 30 이내 큰 사건이 실제 발생해야 한다. 실마리·의뢰만으로 통과하지 않는다. 완결 장면 2개 연속 정체면 다음 안전 경계에 기존 인과를 실행한다. WORLD_INITIATIVE_EXECUTION: 실제 경과 구간의 NPC 목적·위협·약속·예정 사건에서 도달한 결과를 한 번 반영한다. 화면 밖도 진행하며 실제 관측 전에는 숨긴다. 30턴 저장까지 미루거나 매번 DB를 조회하지 않는다. 반복 공격·PC 대응을 강제하지 않고 해결·회피 성과를 보존한다.
 
-실행 정본은 rules/00-index.md와 연결 규칙, 시작 입력은 START_GAME.md다. 개발·과거 문서는 규칙이 아니며 판본을 섞지 않는다.
+정본: rules/00-index.md와 연결 규칙. 시작: START_GAME.md. 개발·과거 문서는 규칙이 아니며 판본을 섞지 않는다.
 
 우선순위: 주도권·공개·확정 사실 보호 → 담당 조건·절차·예외 → 예시. 규칙 충돌은 해당 변경을 보류하고 알린다.
 
@@ -87,9 +87,9 @@ PC가 d100을 제공한다. ROLL_INPUT_FORM_CONTRACT로 숫자·행운·강행�
 
 HUD는 응답 마지막 1회, 현재 입력 담당 PC를 표시한다. HUD_VISUAL_STYLE의 자원표 뒤 `🕒 시각`, `📍 위치`, `💵 현금`, `🩹 상태`, 소지품의 `🎒 메인`, `👝 파우치`, 실제 있는 `🧰 직업품`·`🗝️ 키템`은 **항목마다 빈 줄을 둔 독립 문단**으로 고정한다. 짧아도 합치지 않고 단일 개행·자동 줄바꿈에 의존하지 않는다.
 
-행동·대화 턴은 TURN_INCREMENT, 자율 시간 경과는 SCENE_ELAPSED_TIME_SETTLEMENT, 생활 버프·만료·HUD는 LIFESTYLE_BUFFS를 따른다.
+행동·대화 턴: TURN_INCREMENT. 시간: SCENE_ELAPSED_TIME_SETTLEMENT. 생활 버프·만료·HUD: LIFESTYLE_BUFFS.
 
-룰은 룰북, PC/세계 값은 현재 작업 상태를 쓴다. Supabase는 로드·실제 유실/충돌·저장 검증/복구·명시적 대조 때만 쓴다. 일반 턴 반복 조회·과거 저장으로 미저장 진행 덮어쓰기는 금지한다. verify/동일 version read-back 없이 저장 완료라 하지 않는다.
+룰은 룰북, PC/세계는 작업 상태를 쓴다. Supabase는 로드·실제 유실/충돌·저장 검증/복구·명시적 대조 때만 쓴다. 일반 턴 반복 조회·과거 저장으로 미저장 진행 덮어쓰기는 금지한다. verify/동일 version read-back 없이 저장 완료라 하지 않는다.
 
 STATE_WORKING_CONTEXT에 현재 상태·미저장 변경을 유지한다. PRIVATE_CANON_ACCESS_ROUTER로 필요한 정본 절을 읽고 현재 변화를 적용한다. 20턴마다 PRIVATE_CANON_PERIODIC_REVIEW로 정본 전체를 실제 재독한다. 초기화·비밀 공개는 금지한다. 저장은 STATE_CANON_SAVE_BINDING, 30턴 복기는 STATE_CHECKPOINT_RECAP, 저장 실패 후 진행은 STATE_SAVE_FAILURE_CONTINUE를 따른다.
 

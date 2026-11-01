@@ -33,7 +33,7 @@
 | 직업·기능 시작값 | [PC_SKILL_START_VALUES](04-setup.md#pc_skill_start_values) |
 | 원작 특징을 실제 세계에 구현 | [HOMAGE_SIGNATURE_FREEZE](04-setup.md#homage_signature_freeze) |
 | 실패·방치의 중대한 손실 설계 | [CAUSAL_ENDGAME_PRECOMMIT](04-setup.md#causal_endgame_precommit) |
-| 도주와 남겨진 대가 | [NO_CLEAN_EXIT_HORROR_ARCHITECTURE](05-world.md#no_clean_exit_horror_architecture) |
+| 필수 사건 연루·탈출 난관·남겨진 대가 | [INVESTIGATOR_INCIDENT_COUPLING](05-world.md#investigator_incident_coupling) · [NO_CLEAN_EXIT_HORROR_ARCHITECTURE](05-world.md#no_clean_exit_horror_architecture) |
 | 세계의 PC 설정 활용 | [WORLD_PC_INPUT](04-setup.md#world_pc_input) |
 | 생성 후 검증 | [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
 | 비공개 세계·NPC 시간 진행 | [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) |
@@ -53,7 +53,7 @@
 | 일반 HUD | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
 | HUD 아이콘·수치표·소지품 배치 | [HUD_VISUAL_STYLE](06-play.md#hud_visual_style) |
 | 업무를 목적 단위로 처리 | [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis) |
-| 초반 30턴·진행 정체·페이싱 | [SCENE_PACING_GATE](06-play.md#scene_pacing_gate) |
+| 30턴 이내 큰 사건 발생·진행 정체 | [SCENE_PACING_GATE](06-play.md#scene_pacing_gate) |
 | 챕터·전체 엔딩 | [ENDING_FINALIZATION_GATE](06-play.md#ending_finalization_gate) |
 | 지도 열람·이동 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) |
 | 직업·풍경·상황 웹 참고 | [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference) |
