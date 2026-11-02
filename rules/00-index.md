@@ -50,7 +50,7 @@
 | 묘사 끝·이번 씬 요약과 결과 | [SCENE_SUMMARY_AND_RESULT](06-play.md#scene_summary_and_result) |
 | 식사·수면 버프·만료 | [LIFESTYLE_BUFFS](02-checks.md#lifestyle_buffs) |
 | 행동·대화 턴과 실제 경과 | [TURN_INCREMENT](06-play.md#turn_increment) · [SCENE_ELAPSED_TIME_SETTLEMENT](06-play.md#scene_elapsed_time_settlement) |
-| 판정 숫자·행운·강행 통합 입력 | [ROLL_INPUT_FORM_CONTRACT](02-checks.md#roll_input_form_contract) |
+| 주사위값·행운 체크/최소 비용 자동 차감·강행 통합 입력 | [ROLL_INPUT_FORM_CONTRACT](02-checks.md#roll_input_form_contract) |
 | 대표 행동·자유 선언 | [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) |
 | 풍부한 장면·플레이어 대사 | [PLAYABLE_NARRATIVE_RENDERING](06-play.md#playable_narrative_rendering) · [CINEMATIC_ACTION_CONTINUITY](06-play.md#cinematic_action_continuity) |
 | NPC 질문·제안 뒤 PC 답변을 기다릴 때 | [NPC_REPLY_AGENCY_GATE](06-play.md#npc_reply_agency_gate) |

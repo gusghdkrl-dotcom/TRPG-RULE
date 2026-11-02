@@ -86,3 +86,5 @@ export는 GitHub 배포용 `dist/TRPG-RULE-project.zip`을 갱신하고, 로컬�
 DB1 저장 계약은 [STATE_CANON_SAVE_BINDING](rules/07-state.md#state_canon_save_binding), 실제 SQL 검증 분기는 [DB1 마이그레이션](docs/sql/document_bound_payload_v1.sql)을 참고한다. GitHub 소스 변경은 운영 DB SQL 적용/파일 업로드를 대신하지 않는다.
 
 바텀 HUD 마지막에는 이번 응답의 판정이 있으면 내용·결과 또는 실제 대기 상태를 표시하고, 맨 끝에 공개한 장면의 짧은 연출 의도를 덧붙인다. 비공개 진실·미래 계획·내부 추론은 공개하지 않는다. 적용 시 프로젝트 지침·시작 입력·룰북 소스를 함께 교체한다.
+
+행운 사용은 주사위 입력과 같은 폼에서 체크만 받으며 소모량·상한 입력칸은 없다. 일반 성공에 필요한 최소 비용을 현재 Luck 범위에서 자동 차감하고 실제 비용·잔여량을 표시한다. 금지 판정·행운 부족·요구 성공 수준 미충족이면 차감하지 않는다.
