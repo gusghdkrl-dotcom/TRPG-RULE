@@ -13,11 +13,15 @@
 | 키퍼·감독·소설가 통합 연출·서사·보정 예시 | [DIRECTOR_WRITER_KEEPER_CONVERGENCE](06-play.md#director_writer_keeper_convergence); 인스트럭션 우선 기준과 연결 |
 | 이번 입력과 열린 절차부터 확인 | [CORE_WORKFLOW](01-core.md#core_workflow) |
 | 확인된 짧은 이동 | [ROUTINE_MOVEMENT_FAST_PATH](06-play.md#routine_movement_fast_path) |
+| 게임 전체 경험·관심→목표→선택→변화 | [FOUNDATION_FIRST_CAMPAIGN_DESIGN](05-world.md#foundation_first_campaign_design) |
+| 캐릭터 고유 전문 행동·성과 설계 | [ORGANIC_SKILL_INTEGRATION](04-setup.md#organic_skill_integration) · [SIGNATURE_OPPORTUNITY](05-world.md#signature_opportunity) |
+| 자발적 목표·선택의 후속 사건 | [SCENARIO_OBJECTIVES](05-world.md#scenario_objectives) · [BUTTERFLY_AND_LIVING_WORLD](05-world.md#butterfly_and_living_world) |
 | 일상 행동·판정 필요 여부 | [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate) |
 | PC 주도권·대사·감정 | [CORE_AGENCY](01-core.md#core_agency) |
 | 파티 공통 지식·비공개 세계 경계 | [CORE_VISIBILITY](01-core.md#core_visibility) |
 | 난수 큐와 일반 주사위 | [AI_DIE_MAPPING_VERSION](01-core.md#ai_die_mapping_version) |
 | 성공 단계·펌블 | [SUCCESS_LEVELS](02-checks.md#success_levels) |
+| 작업 난이도·실패 위험·중복 보정 방지 | [DIFFICULTY_ASSIGNMENT](02-checks.md#difficulty_assignment) · [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate) |
 | 보너스·패널티 | [BONUS_PENALTY_DICE](02-checks.md#bonus_penalty_dice) |
 | HP·중상·사망 | [HP_AND_DEATH](02-checks.md#hp_and_death) |
 | SAN 노출 | [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) |
@@ -40,7 +44,7 @@
 | 생성 후 검증 | [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
 | 비공개 세계·NPC 시간 진행 | [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) |
 | 증거·가설·결론 | [EVIDENCE_NAMESPACE_CONSOLIDATION](05-world.md#evidence_namespace_consolidation) |
-| 기능의 캠페인 내부 성장 | [SKILL_IMPROVEMENT](04-setup.md#skill_improvement) |
+| 학습 근거·성장 경계·구판 호환 | [SKILL_IMPROVEMENT](04-setup.md#skill_improvement) |
 | 비전투 3회 목표·5회 상한·다음 PC | [SPOTLIGHT_FAIRNESS_COMMIT_GATE](06-play.md#spotlight_fairness_commit_gate) |
 | 짧은 독립 이동·실제 병렬 시간 충돌 | [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync) |
 | 묘사 끝·이번 씬 요약과 결과 | [SCENE_SUMMARY_AND_RESULT](06-play.md#scene_summary_and_result) |
@@ -54,7 +58,7 @@
 | 읽을 수 있는 기사·공고·편지 본문 | [IN_WORLD_DOCUMENT_HANDOUT](05-world.md#in_world_document_handout) |
 | 일반 HUD | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
 | HUD 아이콘·수치표·소지품 배치 | [HUD_VISUAL_STYLE](06-play.md#hud_visual_style) |
-| 업무를 목적 단위로 처리 | [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis) |
+| 위임한 작업 압축·상점 방문/미선택 경험 보존 | [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis) |
 | 30턴 이내 큰 사건 발생·진행 정체 | [SCENE_PACING_GATE](06-play.md#scene_pacing_gate) |
 | 챕터·전체 엔딩 | [ENDING_FINALIZATION_GATE](06-play.md#ending_finalization_gate) |
 | 지도 열람·이동 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) |

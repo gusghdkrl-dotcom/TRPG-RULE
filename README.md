@@ -6,6 +6,8 @@ AI 키퍼가 원작 테마에 맞는 세계를 만들고, 플레이어가 PC의 
 
 인스트럭션 맨 앞에 DIRECTOR_WRITER_KEEPER_CONVERGENCE의 13개 연출·서사 원칙을 우선 배치했다. 같은 세계를 키퍼로 처리하고 감독처럼 구성하며 소설처럼 전달하되 실제 인과·PC 주도권·판정·정보 공개를 보존한다. 전체 원문은 진행 룰북에, 기존 지침의 원문 이관 내역은 [반영 기록](docs/DIRECTOR_INTEGRATION.md)에 있다.
 
+2026-11-02 전체 경험 개편: 직업별 고유 행동·성과, 자발적 목표, 선택이 바꾸는 후속 사건, 일반 판정의 난이도/유불리 기준, 학습과 중요한 결과에 따른 캠페인 내 성장, 상점 등 미선택 경험의 보존을 통합했다. 기존 CoC 기반 수치 체계와 위험·연루·탈출 원칙은 유지한다. [세부 설계와 합성 상황 대조](docs/GAMEPLAY_DESIGN.md), [성장 조건·수치·구판 호환](rules/04-setup.md#skill_improvement)을 참고한다. 실제 플레이의 재미·성장 속도·장면 길이는 아직 실측하지 않았다.
+
 ## 사용
 
 **[최신 게임용 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/TRPG-RULE-project.zip)** — 이 주소는 유지하며, 룰북 패치 때 같은 파일을 갱신한다. 압축을 풀고 아래 순서대로 설정한다. GitHub 변경이 기존 ChatGPT 프로젝트에 자동 반영되지는 않으므로 프로젝트 파일도 교체해야 한다.

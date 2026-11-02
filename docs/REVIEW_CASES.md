@@ -527,3 +527,66 @@
 | 탈출 성취 뒤 새 능력·납치로 다시 붙잡으려 함 | 금지, 실제 성공과 남은 세계 결과 정산 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
 | 기존 캠페인에 위험 원인이 있으나 실행이 누락됨 | 현재 도달한 인과 실행, 과거 피해 소급 적용 없음 | REACHED_DANGER_EXECUTION_GATE / NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
 | 기존 캠페인 정본에 연루/위험 원인 자체가 없음 | 누락 기록 후 정본 개정 절차, 기존 과거·안전 퇴로·성공 보존 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE / PRIVATE_CANON_DOCUMENT | 일치 |
+
+## 전체 경험·전문 활약·성장·장면 범위 개편
+
+2026-11-02 문서 대조. 아래 합성 상황은 실제 캠페인/AI 플레이 로그가 아니며 수치 예시는 담당 본문의 경계값을 검토한 것이다.
+
+| 사례 | 기대 처리 | 담당 규칙 | 대조 |
+|---|---|---|---|
+| 정비사에게 회로를 분리해 시설을 보존할 자격·도구가 있음 | 그 PC 고유한 실행·성과 허용, 다른 PC의 일반 지능 한 번으로 동일 성과 보장 없음 | ORGANIC_SKILL_INTEGRATION | 일치 |
+| 의료인이 없어서 특수 처치로 이송할 기회 상실 | 그 성과는 닫힐 수 있음, 실제 도움/다른 목표/철수 등 전체 진행은 한 기능에 잠그지 않음 | ORGANIC_SKILL_INTEGRATION | 일치 |
+| 세계 생성안에서 한 PC의 전문성이 쓸 곳 없음 | 확정 전 자연스러운 장치·사람·접근을 보완, 플레이 도중 약점/과거 소급 생성은 없음 | SIGNATURE_OPPORTUNITY / CROSS_LINK_ENGINE | 일치 |
+| 기능 기본값20인 일반인이 전문 자격이 필요한 작업 선언 | 숫자가 있다고 시도 자격까지 자동 부여하지 않음, 가능한 기본 행위·도움·수단 구별 | FICTION_FIRST_ROLL_TRIGGER_GATE / ORGANIC_SKILL_INTEGRATION | 일치 |
+| 전문가가 눈앞의 표준 장치 취급법을 설명 | 일반 전문지식 제공, 숨은 내부 결함·초자연 진실은 자동 발견하지 않음 | PROFESSIONAL_GAZE | 일치 |
+| 플레이어가 본래 단서가 아닌 악기에 관심 | 실제 물건·소유자·거래 기회를 펼침, 메인 사건 목표·구매·애착을 대필하지 않음 | SCENARIO_OBJECTIVES | 일치 |
+| 개인 목표로 작업실을 확보하려고 협상 | 조건·상대 목적·접근을 실제로 처리, 성공 시 장소/권한 변화 유지 | SCENARIO_OBJECTIVES / BUTTERFLY_AND_LIVING_WORLD | 일치 |
+| 개인 목표를 포기하고 구조를 선택 | 목표 변경/포기 보존, 미해결 위협은 자기 인과로 진행, 도덕 점수 없음 | SCENARIO_OBJECTIVES | 일치 |
+| 식사·농담·취미가 의미 있는 상호작용을 만듦 | 메인 단서가 없어도 유효, 강제 실종/공포/보상 끼워 넣지 않음 | KEEPER_SCENE_SELECTION | 일치 |
+| 같은 기록 찾기만 장소를 바꿔 반복 | 실제 다른 목적·전문 접근·관계·환경 활용을 검토, 숨은 사건을 선택지용으로 발명하지 않음 | GUIDED_ACTION_RETURN | 일치 |
+| 잠긴 장치의 위험을 이미 보는데 메뉴에는 아무 차이도 없음 | 목적·현재 알 수 있는 위험/비용/이득을 구별해 제시, 정답과 숨은 모든 결과를 공개하지 않음 | BUTTERFLY_AND_LIVING_WORLD | 일치 |
+| 배터리를 확보해 둬 발전기 차단 중 의료실 유지 가능 | 준비로 복수 목표 보전 인정, 희생을 만들려고 새 손실 추가 없음 | BUTTERFLY_AND_LIVING_WORLD / PREPARED_PAYOFF | 일치 |
+| 구했던 NPC가 이후 협력할 정보·수단·이유를 갖춤 | 실제 협력으로 회수, 무조건 충성/순간이동 구조는 없음 | RELATIONSHIP_AND_NPC_MEMORY | 일치 |
+| 원인이 차단되어 예상한 나비효과가 불가능해짐 | 미발동 결과 유지, 회수 의무 때문에 새 원인을 만들지 않음 | BUTTERFLY_SEED_ECHO_PAYOFF | 일치 |
+| 열쇠를 확보했고 문 자체에 다른 문제가 없음 | 개방은 직접 처리, 성장용 굴림 추가 없음 | FICTION_FIRST_ROLL_TRIGGER_GATE | 일치 |
+| 익숙한 수리·충분한 도구·시간, 실패 차이 없음 | 통상 공정 무판정으로 처리, 능력 확인 목적의 주사위 없음 | FICTION_FIRST_ROLL_TRIGGER_GATE / CINEMATIC_ELLIPSIS | 일치 |
+| 같은 수리를 어두운 곳에서 실시 | 작업 난이도는 유지하고 실제 시야 제약을 유불리로 검토, 어둠을 난이도에도 중복 적용하지 않음 | DIFFICULTY_ASSIGNMENT / BONUS_PENALTY_DICE | 일치 |
+| 표준 방법이 불가능해 복잡한 우회 작업으로 변경 | 새 작업 난이도를 굴림 전에 확정, 동일 시간 압박을 패널티로 다시 계산하지 않음 | DIFFICULTY_ASSIGNMENT | 일치 |
+| 최소 작업 시간 자체가 남지 않음 | Extreme으로 허위 가능성을 주지 않음, 방법/수단 변경 필요 | DIFFICULTY_ASSIGNMENT | 일치 |
+| 평범한 폭의 발판 아래가 깊음 | 치명적 결과와 수행 난이도 구분, 위험하다는 이유만으로 Extreme 부여 없음 | DIFFICULTY_ASSIGNMENT | 일치 |
+| 안전줄을 설치한 뒤 같은 발판 이동 | 안전줄이 실제로 막는 추락 결과를 완화, 자동 성공/보너스/난이도 완화를 한꺼번에 부여하지 않음 | FICTION_FIRST_ROLL_TRIGGER_GATE | 일치 |
+| 일상 내기·흥정에 실제 승패/가격 차이가 있음 | 생명 위험이 없어도 실제 수행/저항이 불확실하면 판정 가능 | FICTION_FIRST_ROLL_TRIGGER_GATE | 일치 |
+| 전문 수리 성공 뒤 같은 공정의 추가 확인 판정 요구 | 확정 성공 범위 인정, 독립 새 난관 없는 재굴림/성과 취소 없음 | FICTION_FIRST_ROLL_TRIGGER_GATE | 일치 |
+| 실패값을 본 뒤 난이도·피해식을 올리려 함 | 금지, 굴림 전 고정한 원인·성공 범위·실패 결과 적용 | ROLL_INPUT_FORM_CONTRACT / FICTION_FIRST_ROLL_TRIGGER_GATE | 일치 |
+| 정보·도구로 위험을 피하며 전문 목표를 달성 | 실제 학습이면 무판정이어도 성장 근거 가능, 받은 피해량은 보상 기준 아님 | SKILL_IMPROVEMENT | 일치 |
+| 기능65에 새 적격 학습 근거, 중요한 목적 일단락 | 첫 안전 경계에67로 상승, 성장 RNG 소비 없음 | SKILL_IMPROVEMENT | 일치 |
+| 경계의 기능79/80/94/95/99 | 각각81/81/95/95/99, 상한 이상 감소 없음 및 후보 제외 | SKILL_IMPROVEMENT | 일치 |
+| 동일 PC의 적격 기능3개 이상 | 고정 후보에서 최대2개 선택, 선택 대기로 일반 진행/엔딩을 막지 않음 | SKILL_IMPROVEMENT | 일치 |
+| 적격 기능이 없거나 하나뿐 | 없으면0개, 하나면 해당1개만 적용, 보상 수 채우기 없음 | SKILL_IMPROVEMENT | 일치 |
+| 같은 전투의 공격·회피·행운·강행 메시지 반복 | 해당 대치/목적의 근거로 묶음, 판정 메시지별 성장 없음 | SKILL_IMPROVEMENT | 일치 |
+| 실패 후 잘못을 확인하고 실제 다른 적용/지도에서 수정 | 학습 근거 가능, 실패 자체·의도적 펌블만으로 자동 근거 없음 | SKILL_IMPROVEMENT | 일치 |
+| 성장하려고 의미 없는 수리나 안전 굴림 반복 | 근거 부적격, 판정 자체도 만들지 않음 | SKILL_IMPROVEMENT / FICTION_FIRST_ROLL_TRIGGER_GATE | 일치 |
+| 중요 목표를 접수/나사/문열기로 쪼개려 함 | 종속 공정은 별개 성장 경계가 아님 | SKILL_IMPROVEMENT | 일치 |
+| 새 규칙에서01 또는 펌블 발생 | 즉시1d5/1d3 성장 없음, 정상 결과와 실제 학습 적격성 처리 | SKILL_IMPROVEMENT | 일치 |
+| 구판의 이미 열린 판정에서01 발생 | 해당 판의 성장까지 한 번 처리 후 전환, 같은 사건의 새 성장 중복 없음 | SKILL_IMPROVEMENT / AI_DIE_MAPPING_VERSION | 일치 |
+| 구판 기존 기능과95 초과 기능으로 재개 | 이미 얻은 수치는 유지, 과거 이력 재탐색 보너스 없음 | SKILL_IMPROVEMENT | 일치 |
+| 생활 버프 적용중 영구 기능79가 성장 | 영구 수치로 계산해81, 버프로 높은 성장 단계/증가량 판단하지 않음 | SKILL_IMPROVEMENT | 일치 |
+| 선택 대기 중 새 사건이 발생 | 기존 후보 고정, 다음 구간 근거 분리, 새 지급 대기를 중첩 생성하지 않음 | SKILL_IMPROVEMENT / STATE_SCHEMA | 일치 |
+| 선택하지 않은 학습 근거를 다음 경계에 재사용 | 해당 경계에서 마감, 같은 근거 재지급 없음 | SKILL_IMPROVEMENT | 일치 |
+| 성장 적용 직후 저장 실패·재독·로드·중복 선택 | 동일 경계/PC 처리 여부와 전후 값 보존, 실제 적용 취소/재지급 없음 | SKILL_IMPROVEMENT / STATE_INTEGRITY | 일치 |
+| 성장 선택을 미룬 사이 열린 판정 | 그 판정 요청 수치 유지, 성장 후 소급 성공 전환 없음 | SKILL_IMPROVEMENT | 일치 |
+| 일반 기능 성장으로 특성·SAN·신화 수치 상승 요구 | 일반 기능만 대상, 신화는 별도 획득 규칙 | SKILL_IMPROVEMENT | 일치 |
+| 새 장비를 얻고 다음 관련 상황에 사용 | 공개 가능한 사용법/한계 제공, 실제 접근·위험·수단 변화 인정 | DISTINCTIVE_EQUIPMENT_AFFORDANCE | 일치 |
+| 자물쇠 수리 선언, 추가 비용·선택·위험 없음 | 진단/분해/조립/확인을 묶고 목적의 결과·시간만 정산 | CINEMATIC_ELLIPSIS | 일치 |
+| 수리 도중 유료 교체 또는 되돌릴 수 없는 방식 선택 | 해당 지점에 멈춰 선택, 미승인 결제/개조 없음 | CINEMATIC_ELLIPSIS | 일치 |
+| 상점에 간다 | 도착·공간·실제 대표 상품/가격·사람/교류 기회 제시, 임의 구매/퇴장 없음 | CINEMATIC_ELLIPSIS / GUIDED_ACTION_RETURN | 일치 |
+| 목록·표시 가격·예산이 확정된 물건을 사고 나온다 | 재고/조건 일치 시 구매·비용·소유·시간을 묶어 처리, 새 가격/품절이면 선택 반환 | CINEMATIC_ELLIPSIS | 일치 |
+| 상점에서 둘러보고 소식을 묻고 싶음 | 관심 범위를 펼치고 선언한 질문은 직접화법, 대답/구매/흥정을 대필하지 않음 | CINEMATIC_ELLIPSIS | 일치 |
+| 비공개 특별 물건이 실제 상인의 거래 조건으로 존재 | 현재 공개 범위만 먼저 제시, 실제 문의/권한 조건 충족 뒤 공개 가능 | CINEMATIC_ELLIPSIS | 일치 |
+| 재방문 상점의 재고·사람·상황이 같음 | 소개만 압축하고 아직 미선택 물건/교류는 유지, 새 이벤트 강제 없음 | CINEMATIC_ELLIPSIS | 일치 |
+| 플레이어가 세부 수리 과정 자체를 즐기고 싶다고 명시 | 관심 범위를 확대, 선택 없는 나사마다 판정은 추가하지 않음 | CINEMATIC_ELLIPSIS | 일치 |
+| 상점 대화 선택 대기 중 인계·저장/로드 | 미결정 구매/답변과 공개 재고/가격 보존, 재개 편의로 완료 처리 없음 | STATE_SCHEMA / STATE_INTEGRITY | 일치 |
+| 원인을 실제 해결했으나 개인 목표·복선이 남음 | 남은 항목 완결을 강요하거나 새 적을 만들어 엔딩을 늦추지 않음 | ENDING_FINALIZATION_GATE / ENDING_RESULT_VECTOR | 일치 |
+| 실패·씁쓸한 탈출·갑작스러운 사망이 실제 결과 | 예쁜 결말로 고치지 않고 PC의 교훈/감정 대필 없음 | ENDING_RESULT_VECTOR | 일치 |
+| 마지막 적격 성장 선택이 미결정인데 엔딩 성립 | 종료 진행, 나중 선택은 고정 후보의 시트 반영만 허용 | SKILL_IMPROVEMENT / ENDING_FINALIZATION_GATE | 일치 |
+| 관계·책임만으로 강하게 연루된 PC의 생성 점검 | PACING_PLAYABILITY_QA도 통과, 전원 감금 요구 없음 | PACING_PLAYABILITY_QA | 일치 |

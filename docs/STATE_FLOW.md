@@ -71,3 +71,9 @@ PRIVATE_CANON_PERIODIC_REVIEW는 Scene Turn 20/40/60…의 첫 안전 경계에�
 신규 세계 정본은 물리적 Markdown 파일에 불변 시나리오·NPC·Evidence·Route·Driver·지도·PC 최초 프로필 원문으로 완전히 기록한다. Supabase의 state_json에는 SHA-256을 포함한 canon_ref와 complete_since_revision 누적 change_coverage, world_delta, PC/진행/RNG를 넣는다. 저장을 거듭해도 마지막 checkpoint 하나 + 해당 정본 파일만으로 복원되어야 한다. DB validator는 JSON 구조만 검사하므로 실제 파일 hash·모든 baseline ref·동적 변경 완전성은 키퍼가 별도 대조한다.
 
 현재 DB의 TRPG2026_10_30 legacy validator는 전문 원문을 필수 요구한다. opt-in DB1 검증 추가는 `docs/sql/document_bound_payload_v1.sql`에 있고 기존 legacy 원문·검증 경로를 보존해야 한다. 차단이 반드시 payload 크기 때문이라고 단정하지 않는다. DB1의 실제 파일 왕복과 commit/verify/exact-read-back은 별도로 확인한다. 사용자 요청 없이 과거 verified snapshot을 변경하지 않는다.
+
+## 목표·획득·학습과 상점 진행의 보존
+
+STATE_SCHEMA/STATE_INTEGRITY는 자발적 목표의 채택·변경·포기, 실제 장비·응용법·협력/권한, 성장 경계 event와 PC identity·학습 근거·고정 후보/선택 대기·적용 전후 값·처리 여부를 기존 PC/진행 영역에 보존한다. DB1에서는 최초 PC 정본을 다시 쓰지 않고 동적 PC/활성 진행 필드로 전달한다. 미선택 학습 근거의 마감과 대기 중 다음 구간의 새 근거를 구분한다.
+
+상점의 공개 재고/가격·거래 조건·미결정 구매/응답은 기존 장소·물품·대화·진행 대기에 남긴다. 새 채팅·인계·재독이 미선택 구매를 자동 실행하거나 이미 적용한 성장/지출을 반복하지 않는다. 별도 DB 테이블·성장 API·자동 저장 주기를 추가하지 않으며 기존 구판 verified 원문과 이미 얻은 수치는 보존한다. 이는 문서 계약으로, 운영 서버 저장/복원 왕복은 별도 실행 검증 대상이다.
