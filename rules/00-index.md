@@ -56,7 +56,7 @@
 | NPC 질문·제안 뒤 PC 답변을 기다릴 때 | [NPC_REPLY_AGENCY_GATE](06-play.md#npc_reply_agency_gate) |
 | NPC의 자연스러운 대답 | [NPC_INTERACTION_VOICE_COMPACT](05-world.md#npc_interaction_voice_compact) |
 | 읽을 수 있는 기사·공고·편지 본문 | [IN_WORLD_DOCUMENT_HANDOUT](05-world.md#in_world_document_handout) |
-| 일반 HUD | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
+| 일반 HUD·마지막 판정 결과·짧은 씬 연출 의도 | [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
 | HUD 아이콘·수치표·소지품 배치 | [HUD_VISUAL_STYLE](06-play.md#hud_visual_style) |
 | 위임한 작업 압축·상점 방문/미선택 경험 보존 | [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis) |
 | 30턴 이내 큰 사건 발생·진행 정체 | [SCENE_PACING_GATE](06-play.md#scene_pacing_gate) |
