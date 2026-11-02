@@ -323,6 +323,8 @@
 | STATE_RECOVERY | [07-state.md](../rules/07-state.md#state_recovery) |
 | STATE_RESUME | [07-state.md](../rules/07-state.md#state_resume) |
 | STATE_SCHEMA | [07-state.md](../rules/07-state.md#state_schema) |
+| STATE_GITHUB_FAILOVER_PROTOCOL | [07-state.md](../rules/07-state.md#state_github_failover_protocol) |
+| STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP | [07-state.md](../rules/07-state.md#state_verified_owner_audit_and_github_backup) |
 | STATE_WORKING_CONTEXT | [07-state.md](../rules/07-state.md#state_working_context) |
 | STAT_BOUNDARY | [02-checks.md](../rules/02-checks.md#stat_boundary) |
 | STAT_DRAFT_GENERATION | [04-setup.md](../rules/04-setup.md#stat_draft_generation) |

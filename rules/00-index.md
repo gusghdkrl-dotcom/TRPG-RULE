@@ -33,7 +33,9 @@
 | 직업·기능 시작값 | [PC_SKILL_START_VALUES](04-setup.md#pc_skill_start_values) |
 | 원작 특징을 실제 세계에 구현 | [HOMAGE_SIGNATURE_FREEZE](04-setup.md#homage_signature_freeze) |
 | 실패·방치의 중대한 손실 설계 | [CAUSAL_ENDGAME_PRECOMMIT](04-setup.md#causal_endgame_precommit) |
-| 필수 사건 연루·탈출 난관·남겨진 대가 | [INVESTIGATOR_INCIDENT_COUPLING](05-world.md#investigator_incident_coupling) · [NO_CLEAN_EXIT_HORROR_ARCHITECTURE](05-world.md#no_clean_exit_horror_architecture) |
+| PC별 강한 연루 이유·관계 형성·성취 가능한 탈출 | [INVESTIGATOR_INCIDENT_COUPLING](05-world.md#investigator_incident_coupling) · [NO_CLEAN_EXIT_HORROR_ARCHITECTURE](05-world.md#no_clean_exit_horror_architecture) |
+| 진입·발견·탐사·대면·대응·탈출의 위험 설계 | [HARM_ECOLOGY](04-setup.md#harm_ecology) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
+| 도달한 HP·SAN·광기 실행과 후속 위험 | [REACHED_DANGER_EXECUTION_GATE](05-world.md#reached_danger_execution_gate) · [ACTIVE_DANGER_CONTINUITY](05-world.md#active_danger_continuity) |
 | 세계의 PC 설정 활용 | [WORLD_PC_INPUT](04-setup.md#world_pc_input) |
 | 생성 후 검증 | [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
 | 비공개 세계·NPC 시간 진행 | [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) |

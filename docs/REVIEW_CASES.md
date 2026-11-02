@@ -1,6 +1,6 @@
 # 대표 상황의 규칙 대조
 
-검토일: 2026-10-30. 아래는 현재 문서의 절차·수치·참조를 읽고 대조한 결과다. AI 플레이 세션이나 외부 서버 실행 결과가 아니다. 자동 검사는 rulebook.py check가 수행하는 정적 검증과 validation-contract.json의 핵심 조건이다.
+검토일: 2026-11-02(이번 변경 관련 사례 갱신). 아래는 현재 문서의 절차·수치·참조를 읽고 대조한 결과다. AI 플레이 세션이나 외부 서버 실행 결과가 아니다. 자동 검사는 rulebook.py check가 수행하는 정적 검증과 validation-contract.json의 핵심 조건이다.
 
 ## 통합 연출·서사 지침 대조
 
@@ -125,7 +125,7 @@
 | 3인 저장을 새 채팅에서 로드 | 저장된 세 슬롯과 Focus를 복원, 인원 선택/세계를 새로 만들지 않음 | STATE_IDENTITY / STATE_RESUME | 일치 |
 | 광고 납품·보수 수령 완료 | 첫 목적 완료 경계에서 실제 사건 접점과 다음 접근을 제시 | SCENE_PACING_GATE | 일치 |
 | 30턴에 수상한 건물과 며칠 뒤 약속만 있음 | 큰 사건 실제 발생 기준 미달, 중심 위협의 발현과 PC에게 닿는 중대한 변화가 필요 | SCENE_PACING_GATE | 일치 |
-| PC가 사건에 대응할 기회를 알고 귀가 선택 | 귀가는 시도로 해석, 확정된 이탈 제약·탈출 난관을 처리하고 직접 행동을 선택하게 함 | PC_INVOLVEMENT_COLLISION_GATE | 일치 |
+| PC가 사건에 대응할 기회를 알고 귀가 선택 | 귀가는 시도로 해석, 실제 경로·위험·남겨질 결과를 처리하고 새 봉쇄 없이 선택과 성과 존중 | PC_INVOLVEMENT_COLLISION_GATE | 일치 |
 | 이미 87턴인 기존 캠페인에 개선 적용 | 미달을 인정하고 과거 수정 없이 다음 안전 경계에서 현재 원인을 실제 큰 변화로 실행 | SCENE_PACING_GATE | 일치 |
 | 수리를 마친다고 선언, 새 위험/비용 없음 | 통상 공정을 묶고 한 목적의 결과·시간·합의된 정산을 한 번 적용 | CINEMATIC_ELLIPSIS | 일치 |
 | 덮개만 연다고 명시 | 그 범위만 짧게 처리, 자동 수리/유료 부품 교체 없음 | CINEMATIC_ELLIPSIS | 일치 |
@@ -481,9 +481,9 @@
 
 | 사례 | 기대 동작 | 담당 규칙 | 검토 |
 |---|---|---|---|
-| 의뢰 거절·보수 수령 뒤 귀가 | 의뢰 수락과 무관한 실제 원인이 PC에 도달, 연루/이탈 제약 유지 | PC_INVOLVEMENT_COLLISION_GATE | 일치 |
-| 타인을 버리면 PC는 그냥 떠날 수 있는 신규 설계 | 감정적 의무만으로는 미달, PC 자신의 객관적 제약을 세계 확정 전 설계 | INVESTIGATOR_INCIDENT_COUPLING | 일치 |
-| 큰 사건 전 초반 이탈 선언 | 준비된 원인/발동 조건과 경로로 제약 처리, 조사 선택까지 기다리지 않음 | INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| 의뢰 거절·보수 수령 뒤 귀가 | 실제 관계·목적·상황의 강한 연결과 기존 위험을 처리, 거절만으로 해소하거나 새 제약을 만들지 않음 | PC_INVOLVEMENT_COLLISION_GATE | 일치 |
+| 실제 도움과 교류가 충분한 은인이 실종, 전원 감금은 없음 | 관계 자체로 강한 연루 가능, 지킬 대상·포기할 것·탐구 질문을 공개하고 죄책감/수락은 대필하지 않음 | INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| 큰 사건 전 초반 이탈 선언 | 당시 실제 원인/발동 조건과 경로만 처리, 관계를 봉쇄로 변환하지 않고 세계도 조사 수락을 기다리지 않음 | INVESTIGATOR_INCIDENT_COUPLING | 일치 |
 | 나갈래 한마디 또는 도주 판정1회 성공 | 실제로 해소한 장애만 반영, 남은 독립 장애를 자동 완료하지 않음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
 | 충분한 준비·독창적 우회로 모든 제약 해소 | 실제 탈출 인정, 고정 전투 횟수나 새 봉쇄로 재감금하지 않음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
 | 대가는 감수하겠다고 답했으나 경로 봉쇄 잔존 | 감정/손실 수락과 물리적 돌파를 구분, 다음 대응 선택 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
@@ -492,9 +492,38 @@
 | 30턴에 문서 이상·의뢰·며칠 뒤 방문만 소개 | 큰 사건 미발생, 통과 불가 | SCENE_PACING_GATE | 일치 |
 | 중심 위협이 발현해 생활권/안전/이동을 실제 크게 변경 | 첫 큰 사건 조건 충족, 즉시 대응·생존·탈출 선택 제공 | SCENE_PACING_GATE | 일치 |
 | 큰 사고는 화면 밖 기록에만 있고 PC는 무관 | 전달/확산된 직접 영향 없으므로 마감 충족 아님 | SCENE_PACING_GATE | 일치 |
-| 3인 중 한 명만 연루, 나머지는 선택형 동행 | 생성 검토 실패, 각 PC의 객관적 연루와 직접 영향 설계 | SCENE_PACING_GATE / INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| 3인 중 한 명만 연루, 나머지는 선택형 동행 | 생성 검토 실패, 각 PC의 강한 이유와 직접 영향 설계, 관계·책임도 유효하며 전원 피격/감금 불필요 | SCENE_PACING_GATE / INVESTIGATOR_INCIDENT_COUPLING | 일치 |
 | 18턴에 첫 큰 사건 도달 | 즉시 실행, 30턴까지 지연하거나30/60턴에 반복 발생하지 않음 | SCENE_PACING_GATE | 일치 |
 | 선제 개입으로 실제 위기·대치 끝에 큰 피해 방지 | 실제 국면과 성과 인정, 죽음/재난 할당량 충족용 새 사건 없음 | SCENE_PACING_GATE | 일치 |
 | 열린 판정·전투 중 초반 경계 | 해당 입력 우선, 초기부터 마감 전 사건 준비, 미달을 완료로 가장하지 않음 | SCENE_PACING_GATE | 일치 |
 | 구판87턴, 아직 큰 사건 없음 | 과거 변경 없이 미달 표시와 현재 인과 실행, 원인 없으면 정본 개정으로 보완 | SCENE_PACING_GATE / NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
 | 로드·정본 재독·60턴 도달 | 기록된 실제 event/ref와 PC 영향을 복구, 큰 사건 재발동 없음 | SCENE_PACING_GATE | 일치 |
+
+## 강한 이유·위험 실행·플레이 가능한 탈출
+
+아래는 합성 상황을 현행 본문과 대조한 문서 검토다. 실제 캠페인 기록이나 ChatGPT 플레이 실행 결과가 아니다.
+
+| 사례 | 기대 동작 | 담당 규칙 | 검토 |
+|---|---|---|---|
+| 단기 업무 방문지의 기상 악화로 귀환 수단 상실 | 고립·생존의 강한 연결 인정, 실제 원인과 돌파 수단 필요, 모든 원작에 폭풍 복제 금지 | INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| 보수·호기심 또는 중요한 사람이라는 라벨만 있음 | 연루 미완성, 구체적 배경·경험·관계·책임·상황과 전달 경로 보완 | INVESTIGATOR_INCIDENT_COUPLING / COMPATIBILITY_GATE | 일치 |
+| 정본에는 은혜가 있으나 실제 장면에서 교류하지 않음 | 형성/전달 완료로 세지 않음, 현재 가능한 경험으로 보완하고 과거를 대필하지 않음 | INVESTIGATOR_INCIDENT_COUPLING | 일치 |
+| NPC가 도와줬지만 PC는 호감·협력을 표현하지 않음 | 도움의 사실만 보존, 감정·약속·죄책감 강요나 도덕 설교 없음 | PC_INVOLVEMENT_COLLISION_GATE | 일치 |
+| 세 PC가 각각 관계·배경 목적·현재 고립으로 연결 | 서로 다른 이유 인정, 전원 추적/감금 추가 없이 직접 영향과 탐구 경로 검토 | WORLD_PC_INPUT / COMPATIBILITY_GATE | 일치 |
+| 신규 설계가 마지막 보스만 위험하고 조사 과정은 무해 | 설계 검토 실패, 진입·발견·탐사·대면·대응·탈출에 원인/조건/결과/대응 연결 | HARM_ECOLOGY | 일치 |
+| 진입 중 공격자가 실제 사거리·행동 조건 충족 | Fracture 이전이어도 공격/방어·피해와 HP 후속 절차 실행, 경고로 낮추지 않음 | ACTIVE_DANGER_CONTINUITY / REACHED_DANGER_EXECUTION_GATE | 일치 |
+| 탐사 중 실제 질식 조건 도달 | EXTREME_HAZARDS의 CON/피해 후 HP·중상/사망 절차, 분위기로 대체하지 않음 | REACHED_DANGER_EXECUTION_GATE / EXTREME_HAZARDS | 일치 |
+| 자료를 연결해 처음 참혹한 함의를 이해 | 적격 SAN 노출이면 즉시 판정·손실·광기 검사, 전투까지 보류하지 않음 | SAN_EXPOSURE_GATE / SAN_ROLL / INSANITY_CONDITIONS | 일치 |
+| 안전한 단서 획득 또는 막연한 불길함 | SAN 자동 차감 없음, Tier 1 예시도 노출 문턱을 우회하지 않음 | SAN_EXPOSURE_GATE / SCALED_SANITY_LOSS | 일치 |
+| 동일 공포를 변화 없이 연속 관찰 | 반복 SAN 판정 없음, 형태/규모/의미 등 실질 상승 시에만 새 노출 | SAN_EXPOSURE_GATE | 일치 |
+| 한 번에 SAN 5 이상 손실 | INT 및 해당 광기 절차 수행, 생존/이야기 유지를 위한 누락 없음 | INSANITY_CONDITIONS / REACHED_DANGER_EXECUTION_GATE | 일치 |
+| 이미 광기 상태에서 적격 충격 발생 | UNDERLYING_INSANITY 예외 적용, 일반 SAN 판정 강제로 중복 처리하지 않음 | SAN_ROLL / REACHED_DANGER_EXECUTION_GATE | 일치 |
+| 한 사건이 신체 손상과 별도의 적격 정신 충격을 모두 일으킴 | 각 효과를 담당 규칙으로 처리, 동일 효과 중복이나 자동 쌍 피해 없음 | REACHED_DANGER_EXECUTION_GATE | 일치 |
+| 첫 큰 사건 뒤 PC가 식사 중이고 기존 위협의 다음 행동이 도달 | 실제 시간과 후속 상태 진행, 현재 장면에 닿으면 위험 처리 | WORLD_INITIATIVE_EXECUTION / SAFE_INTERLUDE_AND_ENRICHMENT | 일치 |
+| 첫 큰 사건 후 위협을 실제 봉쇄해 휴식 확보 | 안전 인정, 다음 30턴/장면 수를 이유로 새 공격·SAN 차감 없음 | ACTIVE_DANGER_CONTINUITY | 일치 |
+| 탈출로의 장비 확보·경로 관찰·협상 성공 | 노출/접근/후속 선택을 실제 변경, 형식적 반복 굴림이나 고정 전투 없음 | HARM_ECOLOGY / NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 탈출 중 사전 원인의 공포 노출·공격에 도달 | 기존 SAN/HP 절차 실행, 떠나려 한다는 벌점은 없음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE / REACHED_DANGER_EXECUTION_GATE | 일치 |
+| 관계를 포기했고 현재 경로는 실제로 안전 | 이탈과 남겨진 조건부 결과 인정, 관계를 감금으로 바꾸지 않음 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE / ENDING_FINALIZATION_GATE | 일치 |
+| 탈출 성취 뒤 새 능력·납치로 다시 붙잡으려 함 | 금지, 실제 성공과 남은 세계 결과 정산 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 기존 캠페인에 위험 원인이 있으나 실행이 누락됨 | 현재 도달한 인과 실행, 과거 피해 소급 적용 없음 | REACHED_DANGER_EXECUTION_GATE / NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 일치 |
+| 기존 캠페인 정본에 연루/위험 원인 자체가 없음 | 누락 기록 후 정본 개정 절차, 기존 과거·안전 퇴로·성공 보존 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE / PRIVATE_CANON_DOCUMENT | 일치 |
