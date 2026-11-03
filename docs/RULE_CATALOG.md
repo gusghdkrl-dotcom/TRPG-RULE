@@ -79,7 +79,6 @@
 | DEATH_AND_INHERITANCE | [05-world.md](../rules/05-world.md#death_and_inheritance) |
 | DEDUCTION_TIME_FREEZE | [06-play.md](../rules/06-play.md#deduction_time_freeze) |
 | DEFAULT_STRANGERS_AND_PC_EMOTIONAL_AGENCY | [04-setup.md](../rules/04-setup.md#default_strangers_and_pc_emotional_agency) |
-| DESTINY_DICE_QUEUE | [01-core.md](../rules/01-core.md#destiny_dice_queue) |
 | DIEGETIC_EXPOSITION | [05-world.md](../rules/05-world.md#diegetic_exposition) |
 | DIEGETIC_PROFILING | [02-checks.md](../rules/02-checks.md#diegetic_profiling) |
 | DIEGETIC_SAN_RECOVERY | [03-danger.md](../rules/03-danger.md#diegetic_san_recovery) |
@@ -267,6 +266,7 @@
 | PUSHED_ROLL | [02-checks.md](../rules/02-checks.md#pushed_roll) |
 | QUESTION_LAYERS | [05-world.md](../rules/05-world.md#question_layers) |
 | QUIET_AFTERMATH_BEAT | [06-play.md](../rules/06-play.md#quiet_aftermath_beat) |
+| PYTHON_RANDOM_EXECUTION | [01-core.md](../rules/01-core.md#python_random_execution) |
 | REACHED_DANGER_EXECUTION_GATE | [05-world.md](../rules/05-world.md#reached_danger_execution_gate) |
 | REACTION_SCENE_HANDOFF | [06-play.md](../rules/06-play.md#reaction_scene_handoff) |
 | RECENT_COMPLETED_HOMAGE_GUARD | [04-setup.md](../rules/04-setup.md#recent_completed_homage_guard) |

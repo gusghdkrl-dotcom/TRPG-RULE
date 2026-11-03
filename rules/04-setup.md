@@ -198,7 +198,7 @@ Scenario 확정 직전에는 비공개 진실와 주요 Reveal을 함께 보고 
 자동 생성되는 오리지널 인간 캐릭터의 이름은 PC와 주요/Story NPC 모두 다음 규칙을 따른다.
 - 플레이어가 직접 지정한 이름, 이미 공개·확정된 이름, 오마주 정본상 반드시 사용해야 하는 고유 인물명은 Fixed이며 중복 방지를 이유로 변경하지 않는다.
 - 자동 이름은 현재 시대·지역·언어·문화권·민족적 배경과 실제 명명 관습에 맞아야 한다. 현대 영어권 이름을 모든 세계의 기본값처럼 재사용하지 않는다.
-- 초기 PC/주요 NPC의 자동 이름에는 각 인물별 독립 `name_seed`를 생성 난수 묶음에 배정한다. 이름 선택만을 위해 게임플레이 난수 큐를 소비하지 않는다.
+- 초기 PC/주요 NPC의 자동 이름에는 각 인물별 독립 `name_seed`를 생성 난수 묶음에 배정한다. 이름 선택도 Python 생성용 stream으로 실행하며 게임플레이 난수를 사용하지 않는다.
 - 이름을 확정하기 전 해당 인물에게 적합한 완전한 이름 후보를 최소 6개 만든 뒤, 현재 세션 및 사용 가능한 최근 이름 이력과 충돌하는 후보를 제거한다. 남은 후보에서 `name_seed`를 NORMALIZED_TABLE_INDEX로 매핑해 최종 이름을 고른다. 후보가 모두 막히면 같은 문화권/시대 안에서 새 후보군을 만든다.
 - 현재 캠페인에서 자동 생성된 서로 다른 인물의 `완전한 이름`이 정확히 같아서는 안 된다. 띄어쓰기·대소문자·하이픈·한글/로마자 표기 차이만 있는 동일 인물명도 같은 이름으로 본다.
 - 같은 장면이나 주요 등장인물 집단에서는 이름만 들었을 때 혼동될 정도의 동일한 이름/호칭 반복도 가능하면 피한다. 다만 김·이·박처럼 특정 문화권에서 흔한 성씨의 반복 자체는 오류가 아니며, 가족·혈연·가문·의도된 동명이인 설정은 실제 인과가 있을 때 허용한다.
@@ -311,7 +311,7 @@ Scenario 확정 직전에는 비공개 진실와 주요 Reveal을 함께 보고 
 - 기존 PC 진행 영역에 경계 event ID, PC identity, 학습 근거/기능 ref, 고정 후보·선택 대기, 선택 기능의 적용 전후 값, 적용 여부를 보존한다. 한 경계·한 PC의 후보 결정과 수치 변경은 하나의 결과로 정산하며 사용/미선택 근거 모두 그 경계에서 마감한다. 미선택 근거를 다음 경계에 돌려 쓰지 않는다. 선택 대기 중 새 사건의 근거는 다음 구간으로 분리한다.
 - 적용한 기능과 근거를 이번 씬 요약·결과에 짧게 알리고 시트·관련 HUD/프로필을 갱신한다. 이미 열린 판정은 요청 당시 수치로 마치며 결과 도중 새 성장치를 끼워 넣지 않는다. 선택을 미룬 동안 이미 열린 새 판정에도 소급 적용하지 않는다.
 - 저장/로드·재독·HUD 재표시·같은 경계 재진입으로 중복 상승하지 않는다. 같은 P슬롯의 새 인물은 이전 PC 성장을 상속하지 않는다. 저장 실패는 실제 적용을 취소하거나 플레이를 막지 않으며, 현재 작업 상태를 유지하고 다음 정상 저장에 포함한다. 새 DB 컬럼/자동 저장 시점은 요구하지 않는다.
-- 구판에서 이미 얻은 기능 수치는 그대로 보존한다. 적용 전 과거 사건을 훑어 추가 성장하지 않으며 최초 적용 시점과 이후 근거만 추적한다. 구판 규칙으로 이미 열린 판정은 그 판정의 기존 성장 처리까지 한 번 마친 뒤 전환하고 같은 사건을 새 학습 근거로 다시 쓰지 않는다. 이 한정된 이행에서는 Critical(01)의 사용 기능 +1d5, Fumble의 사용 기능 +1d3을 기존 AI RNG 큐로 산출하며 새 성장 상한을 소급 적용하지 않는다. 완료 여부가 유실돼 확인되지 않으면 해당 성장만 보류해 복구하며 재지급하지 않는다.
+- 구판에서 이미 얻은 기능 수치는 그대로 보존한다. 적용 전 과거 사건을 훑어 추가 성장하지 않으며 최초 적용 시점과 이후 근거만 추적한다. 구판 규칙으로 이미 열린 판정은 그 판정의 기존 성장 처리까지 한 번 마친 뒤 전환하고 같은 사건을 새 학습 근거로 다시 쓰지 않는다. 이 한정된 이행에서는 Critical(01)의 사용 기능 +1d5, Fumble의 사용 기능 +1d3을 실제 Python으로 산출하며 새 성장 상한을 소급 적용하지 않는다. 완료 여부가 유실돼 확인되지 않으면 해당 성장만 보류해 복구하며 재지급하지 않는다.
 - 사건 종료/챕터 종료의 마지막 적격 경계도 한 번 처리할 수 있지만 성장 선택 대기나 저장 실패가 ENDING_FINALIZATION_GATE의 종료를 막지는 않는다. 종료 뒤 선택은 고정된 마지막 후보의 시트 반영만 하며 새 플레이·새 학습을 만들지 않는다.
 
 기능 외 획득은 실제 행동으로 얻은 장비·응용법·협력자·권한·거점·위협 지식으로 남긴다. DISTINCTIVE_EQUIPMENT_AFFORDANCE/PREPARED_PAYOFF/RELATIONSHIP_AND_NPC_MEMORY를 사용하며 동일 사실의 점수 장부를 추가하지 않는다. 새 응용법은 무엇을 어떤 도구·조건으로 할 수 있는지 구체적 범위로 남기고 만능 능력·상시 수치 보너스로 바꾸지 않는다. 전문 분야 자체의 추가/심화는 CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION의 경계를 유지한다.
@@ -523,16 +523,16 @@ APP: [값] | INT: [값] | POW: [값] | EDU: [값]
 
 ## PROFESSION_SPECIALTY_GENERATION_SEED
 
-Specialty A/B/C는 직업이 확정된 뒤 해당 P의 독립 named generation seed(예: `profession_specialty_seed_P[N]`)로 생성한다. 게임플레이 난수 큐를 소비하지 않으며 직업/시대/업무축을 입력으로 사용한다. 공개된 후보는 재접속·최적화·Scenario 적합성 때문에 리롤하지 않는다.
+Specialty A/B/C는 직업이 확정된 뒤 해당 P의 독립 named generation seed(예: `profession_specialty_seed_P[N]`)로 생성한다. Python 생성용 stream을 쓰며 직업/시대/업무축을 입력으로 사용한다. 공개된 후보는 재접속·최적화·Scenario 적합성 때문에 리롤하지 않는다.
 
 ## GENERATION_RNG_SEPARATION
 
-- 장르 보조축, 오마주 작품 후보, Scenario DNA, 직업, 배경, 동기 생성에는 `generation_seed_pack`의 독립 1~100 값을 사용한다.
-- START_SETTINGS_GATE 완료 뒤에만 플레이어가 제공한 `start_seed`를 시작 입력으로 생성 난수 묶음을 만들고 고정한다. `world_seed`와 `start_seed`를 키퍼가 임의로 보충·교체하지 않는다. 실제 시드 기반 난수 도구의 시작 입력에 전달하고 사용한 생성 방식과 named seed 결과를 보존한다. 도구가 해당 입력을 적용할 수 없다면 시드 적용 성공이나 재현성을 가장하지 말고 그 생성 단계의 한계를 알린다. 같은 시드가 모델의 서술·외부 검색 결과까지 같게 만든다고 보장하지 않는다.
-- 필수 시작 시드와 내부 파생 난수는 구분한다. 플레이어에게 모든 named seed를 추가로 입력받지는 않는다.
-- pack은 고정 길이일 필요가 없다. 아직 Fixed되지 않은 각 생성 축마다 서로 다른 named seed를 하나씩 할당하고, 같은 seed를 독립 축에 재사용하지 않는다.
-- 생성 난수는 `rng_queue`와 완전히 분리한다. 생성 과정 때문에 게임 중 NPC/적 판정, 피해, SAN, 회복 난수의 순서가 바뀌어서는 안 된다.
-- 사용자가 특정 오마주, 공개 배경, 관계를 직접 선택하면 해당 축은 Fixed로 잠근다. 신규 표준 PC의 직업은 사전 선택하지 않고 A~F 단계에서만 확정한다.
+- 장르 보조축·원작 후보·Scenario DNA·직업·특성/Luck·이름·배경·동기 등 **생성의 모든 무작위 선택도 실제 Python 실행**으로 처리한다. 생성 seed pack은 Python에서 얻은 축별 1~100 결과와 named key/방식의 보존 기록이며 AI가 먼저 숫자 목록을 만들지 않는다. 플레이어가 직접 선택/입력한 값은 다시 뽑지 않는다.
+- START_SETTINGS_GATE 완료 뒤에만 `start_seed`를 실제 Python 시드 입력으로 사용한다. `world_seed`와 `start_seed`는 원래 의미/필수 입력을 유지하며 임의 교체하지 않는다. Python 표준 라이브러리의 `hashlib.sha256`과 `random.Random`으로 별도 named stream을 만든다. 예: `key = json.dumps(["PYTHON_GENERATION_V1", start_seed, axis_name, retry_index], ensure_ascii=False, separators=(",", ":"))`; `rng = random.Random(int.from_bytes(hashlib.sha256(key.encode("utf-8")).digest(), "big"))`. 각 stream의 1~100 값은 `rng.randint(1, 100)`으로 실제 생성한다. 프로세스마다 변하는 내장 `hash()`는 시드 파생에 쓰지 않는다.
+- 축 이름은 참가 PC·후보·용도·표본의 stable ref를 포함해 구별하고 결과와 실제 Python/알고리즘 버전을 보존한다. 1~100 결과가 우연히 같아도 독립 named stream의 충돌이 아니므로 재굴림하지 않는다. 같은 요청은 기존 확정값을 재사용하고 각 draw의 식별/순서를 기록한다. 재시작 때 seed만 재적용해 이미 쓴 첫 숫자를 다음 값으로 중복 사용하지 않는다.
+- 기존 1~100 named seed의 NORMALIZED_TABLE_INDEX 매핑·가중치와 특성의 균등 bounded-composition sampler 조건은 그대로 실제 Python에서 계산한다. 시드가 모델의 서술·후보 작성·웹 검색까지 같게 만든다고 보장하지 않는다. 아직 비고정인 부적격 후보의 재생성은 기존 허용 조건에서만 사유와 retry_index를 올려 해당 축만 실행한다. 유리한 결과를 얻기 위한 retry는 금지한다.
+- 생성 stream은 게임플레이 `SystemRandom`과 완전히 분리한다. pack은 고정 길이가 아니며 필요한 현재 축만 실행한다. 필수 시작 시드와 내부 파생 값은 구분하고 플레이어에게 named seed를 추가 입력받지 않는다. 도구 실패·유실·중복 처리·실행 증거는 PYTHON_RANDOM_EXECUTION을 따른다.
+- 직접 지정한 원작·배경·관계와 이미 공개/Fixed된 후보·세계·PC는 잠그고 재생성하지 않는다. 신규 표준 PC 직업은 사전 선택하지 않고 A~F 단계에서 확정한다.
 
 ## NORMALIZED_TABLE_INDEX
 
@@ -709,7 +709,7 @@ Specialty A/B/C는 직업이 확정된 뒤 해당 P의 독립 named generation s
 ## PROFESSION_MULTILAYER_GENERATOR
 
 목표: 직함을 먼저 떠올리고 랜덤 축으로 합리화하는 편향을 막는다. **산업 분류를 먼저 seed로 확정하고, 세부 분야·업무·신분·근무 조건을 순서대로 선택한 뒤 마지막에 정확한 직함으로 번역**한다.
-- 적용: 신규 A~F 여섯 후보 각각에 대해 `profession_domain_seed_P[N]_[A-F] / profession_subdomain_seed_... / profession_function_seed_... / profession_position_seed_... / profession_workplace_seed_... / profession_condition_seed_...`의 **독립 named Generation Seed/sub-seed**를 할당한다. 모든 시드는 [GENERATION_RNG_SEPARATION](04-setup.md#generation_rng_separation)의 1~100 정규화 매핑을 사용하며 Gameplay Queue/플레이어 굴림을 절대 쓰지 않는다. 각 단계의 후보 풀과 실제 매핑은 다음 단계 직함 작성 전에 내부 확정한다.
+- 적용: 신규 A~F 여섯 후보 각각에 대해 `profession_domain_seed_P[N]_[A-F] / profession_subdomain_seed_... / profession_function_seed_... / profession_position_seed_... / profession_workplace_seed_... / profession_condition_seed_...`의 **독립 named Generation Seed/sub-seed**를 할당한다. 모든 시드는 [GENERATION_RNG_SEPARATION](04-setup.md#generation_rng_separation)의 1~100 정규화 매핑을 사용하며 게임플레이 난수/플레이어 굴림을 절대 쓰지 않는다. 각 단계의 후보 풀과 실제 매핑은 다음 단계 직함 작성 전에 내부 확정한다.
 - 산업 대분류: `[Professional Domain: 36 — 독립 1차 샘플링]`의 실제 적격 분야에서 **1차 seed**로 먼저 선정한다. 각 Domain의 `[Subdomain exemplars]`에서 시대·지역 적격 분야를 **2차 독립 seed**로 뽑는다. 같은 업종의 흔한 직업명만 먼저 떠올려 역으로 domain을 선택하지 않는다.
 - 하위 산업 후보를 선정할 때 같은 대분류의 대표 직업 하나로 항상 수렴하지 않도록 세부 분야를 별도 정규화 풀로 만든다. 업무 Function, Social Position, 근무 환경(도심/공장/야외/농장/가정/기관/이동/원격 등), Career Condition을 각자 독립적으로 뽑는다. 특정 조합이 시대·직무상 불가능하면 공개 전 **충돌하는 축만** 적격 후보 목록+독립 retry seed로 다시 선택하고 전체 seed를 임의 소모/재정렬하지 않는다. 해당 산업에 성립 가능한 세부 분야가 없다면 그 산업만 국소 retry한다.
 - 카테고리는 `기본 A/B=원작 표면에 자연스러운 산업/생활권`, `테마 C/D=원작의 공개 테마와 실제 업무 연결`, `Joker E/F=전 산업에서 개방형`의 **적격성 필터**이고 생성 결과를 사전에 특정 직업군/직함으로 고정하는 지시가 아니다. 시나리오 Core가 아직 미생성인 PC 우선 생성 단계이므로 Homage의 공개 시대·지역·사회·분위기만 사용한다.

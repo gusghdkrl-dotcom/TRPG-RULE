@@ -88,3 +88,7 @@ HUD 감시기를 사용하는 경우 `P[N]`, `Scene Turn`, `HP/SAN/Luck`와 실�
 ## DB1 이관 주의
 
 신규 캠페인은 물리적 정본 파일 전체 SHA-256, 필수 10절, 모든 baseline entity/ref, 최초 PC 프로필·고정 지도 내용을 확보한 후 DB1로 저장한다. 기존 LEGACY_FULL verified snapshot은 수정하지 않는다. 특정 기존 세션의 명시적 이관이 있으면 원본과 정본을 전체 대조해 빠진 고정 사실은 새 revision에, 현재 변화는 complete world_delta·tombstone에 남긴 뒤 **새 checkpoint version**만 저장·검증한다. 누락되면 이관을 중단한다. DB1 미지원 시 기존 큰 payload로 자동 대체하지 않고 저장 실패 상태로 현재 채팅 진행을 유지한다.
+
+## Python 난수 실행 전환
+
+미사용 난수 큐는 사용 중단하고 실제 Python으로 신규 무작위 처리를 수행한다. 이미 산출/반영된 결과·기존 verified 원문은 보존한다. 생성의 start_seed도 유지한다. 전환 경계/실행 기록·구판 SQL 큐 검증과의 차이는 [Python 난수 호환](PYTHON_RANDOM.md)을 따른다. 운영 저장 함수 변경은 별도 작업이며 가짜 큐로 호환을 가장하지 않는다.

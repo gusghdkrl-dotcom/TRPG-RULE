@@ -110,7 +110,7 @@
 - `canon_ref{}`: `campaign_id, canon_id, revision, filename, document_format, file_sha256, section_ids[]`. `file_sha256`은 **실제 정본 파일 전체 바이트 SHA-256 64자리 소문자**다. section_ids는 PRIVATE_CANON_DOCUMENT의 필수 10개 절을 포함한다. active chapter/PC profile의 정확한 ref도 소속 문서 안에서 확인한다.
 - `change_coverage{}`: `complete_since_revision=true`, `baseline_entity_ids{}`, `changed_entity_ids{}`. 두 ID 맵에는 `npcs, evidence, locations, routes, drivers, threats`의 **6개 전체 namespace**를 배열로 보존한다. baseline 집합은 정본의 모든 해당 entity/ref를 대조한 결과이며, changed 집합은 아래 world_delta의 해당 object 키와 정확히 같아야 한다. 안 읽힌 범위와 사망/취소 항목도 누락시키지 않는다.
 - `world_delta{}`: 위 6개 namespace의 stable ID별 **정본 이후 누적 현재값** 및 변경 이유/시각/사건 기록. `new_entities{}`에는 새 NPC·단서·최초 확정 자료 원문을 포함한 신규 entity 전체, `tombstones{}`에는 사망·소모·삭제·취소 등 원상복구 방지 상태, `processed_event_ids[]`에는 이미 처리한 실제 사건 ID를 보존한다. 필요한 전역 실행 상태는 별도의 `runtime_flags{}` 등 동적 필드에 보존한다. 마지막 저장 이후의 delta만 기록하는 체인은 금지한다.
-- `session_id, campaign_id, rules_version, phase, scene_turn, setup_start_settings, world_seed, start_seed, participants, pcs_by_identity, scenario_connection_by_pc, public_facts_by_pc, player_map_state, first_scene_orientation_by_pc, current_focus, pending, timeline, rng_mapping_version, rng_queue, rng_queue_next_consumption, checkpoint_cadence_state, save_cadence, critical_state_registry, ending_state`와 실제 활성 진행 필드도 보존한다. PC의 현재 기능·자원·위치·소지품, Focus·Spotlight·병렬 시간·열린 Roll/Combat/Chase/Handoff/Action, 획득물·약속·공개 가설을 빼지 않는다.
+- `session_id, campaign_id, rules_version, phase, scene_turn, setup_start_settings, world_seed, start_seed, participants, pcs_by_identity, scenario_connection_by_pc, public_facts_by_pc, player_map_state, first_scene_orientation_by_pc, current_focus, pending, timeline, checkpoint_cadence_state, save_cadence, critical_state_registry, ending_state`와 실제 활성 진행 필드도 보존한다. PC의 현재 기능·자원·위치·소지품, Focus·Spotlight·병렬 시간·열린 Roll/Combat/Chase/Handoff/Action, 획득물·약속·공개 가설을 빼지 않는다.
 - **DB1 전송 금지 불변 중복:** `campaign_canon_text, chapter_canon_text_by_ref, pc_canon_text_by_identity, scenario_core, world_dna, canonical_map_model, world_state`. 이 전문을 `world_delta`나 `new_entities`에 숨겨 복사하지 않는다. 다만 정본에 없던 실제 신규 정보/동적 변화는 삭제하지 않는다.
 
 ### 저장·복원·호환성
@@ -230,7 +230,7 @@ Supabase는 영속 저장·복구 경계에서 접근한다. **일반 응답의 
 | PC | 확정 참가 인원(1~3명)·실제 참가 슬롯, stable PC identity와 P슬롯 연결, 확정 과거/APP와 반영 외형/직업/전문 분야 및 실제 지위·권한·책임, 특성·기능, HP/SAN/Luck·부상/광기, 현금·소지품·위치, 참여 연결 |
 | 목표·획득·학습 | PC가 실제 선언한 목표의 범위/변경/포기/결과 ref, 장비·응용법·관계·권한의 획득 근거와 실제 한계, SKILL_IMPROVEMENT의 경계 event ID·PC identity·근거/고정 후보·선택 대기·기능 적용 전후 값·처리 여부·구판 전환 시점 |
 | 지식·조사 | 발견자·시점·출처를 보존한 파티 공통 공개 사실, 증거 ref와 실제 배부한 자료 본문/발췌·수치·손상 범위, 제안자가 있는 플레이어 가설, 검증/모순·시간 순서·결론, 진행/미해결 질문 |
-| 난수 | 플레이어가 확정한 핵심 시드/world_seed·시작 시드/start_seed와 실제 적용 방식, gameplay queue 순서·소비 상태·매핑 버전, 생성 named seed와 확정 결과 |
+| 난수 | 플레이어가 확정한 핵심 시드/world_seed·시작 시드/start_seed와 실제 적용 방식, 실제 Python 실행 출처/버전·random_event_id별 요청/원값/최종값/해결·상태 적용 여부·생성 named stream/축·retry·확정 결과, 구판 RNG 기록과 전환 경계 |
 | 생활 효과 | 기존 PC 상태 영역의 버프 종류·품질/수치·획득/만료 timeline anchor·남은 횟수·원인 ref; 로드 시 만료 확인, 기간 갱신 없음 |
 | 진행 대기 | 판정 식별·PC·원값/요청·해결 단계, 통합 폼의 행운/강행 체크·자동 산출 행운 비용/적용 전후 Luck·구판에 이미 제출한 상한·강행 방법/고지 위험, 생활 버프 선택·적용 목표치·소모 여부, 행동 단위 턴 정산 여부·이미 반영한 경과, 구판 Luck 선택, 전투/추격 순서, 광기, 중단된 작업, Focus/POV, 현재 Spotlight의 의미 있는 선택·결과 횟수/시작 시각·최근 서비스 순서, 필요한 병렬 시간 구간·수집한 선언, Handoff/Reaction/Visual 대기와 행동 메뉴 |
 | 공개 투영 | player_map_state, 실제 전달된 프로필·첫 장면 상태, 이미지 asset ref가 실제 존재할 때의 연결, 수첩 연결·단일 Writer |
@@ -307,7 +307,7 @@ STATE_SCHEMA와 해당 저장의 실제 namespace/critical_state_registry를 따
 | NPC·세계 변화 | 현재 장면 밖과 휴면 상태를 포함한 모든 NPC의 위치·현재 목적·아는 사실·관계·비밀·일정, 장소/경로/소유/권한·증거의 실제 변화 |
 | 아직 보이지 않은 진행 | 모든 활성 Threat/Driver·예약 사건·약속·후속 결과, 발동/취소 조건·다음 시각·의존 순서·이미 처리한 결과 |
 | 공개와 비공개 경계 | 파티가 발견한 내용·발견자/출처·가설과 아직 미발견인 내용, NPC가 실제로 전달받은 사실 |
-| PC·실행 상태 | 전원 수치/자원/소지품/위치, 난수 큐/소비 위치, Scene Turn/시간, 열린 판정·대사/답변 대기·선언·Spotlight/메뉴 |
+| PC·실행 상태 | 전원 수치/자원/소지품/위치, Python 난수 이벤트·원값/최종값·적용 여부/구판 전환 경계, Scene Turn/시간, 열린 판정·대사/답변 대기·선언·Spotlight/메뉴 |
 | 연속성 | 지난 저장 이후 실제 변경 근거, 발생/방지/잔존 손실, 미해결 작업, 이전에 확정된 원문과 현재 값의 연결 |
 
 ### 다음 일반 턴으로 이어가기
@@ -375,7 +375,8 @@ pending 쓰기 뒤 verify/read-back이 중단되면 같은 version/event/원문�
 이번 판은 새로운 캠페인의 실행 규칙을 정리한 것이다. 운영 DB 스키마·함수·저장 행을 변경하는 지시가 아니다.
 - 현행 공개 공유·조회·Spotlight 규칙을 기존 캠페인에 적용할 때 verified 원문은 유지하고 다음 작업 상태부터 적용한다. PC에게 실제 알려졌던 기존 공개 사실만 stable ref로 합치며 미발견 Evidence·숨은 PC 연결·NPC 비밀은 공개하지 않는다. 기존 인계/판정·병렬 시간 pending의 의미와 이미 발생한 결과는 보존하고, 현재 Spotlight 기록에서 확인 가능한 진행량만 복원한다. 알 수 없는 횟수·과거 대기를 만들어내지 않는다.
 - 기존 verified history는 수정·재해시·필드 삭제하지 않는다. 삭제된 모드/자원을 사용하는 기존 캠페인은 그 저장의 규칙판으로 재개하거나 별도 명시적 변환 계획을 검토한다. 이번 판을 조용히 소급 적용하지 않는다.
-- 기존 rng_mapping_version이 A13_MOD100_LEGACY이거나 그 규칙판에서 생략됐다면 기존 mod 방식의 소비 연속성을 유지한다. 새 rejection 방식으로 중간 전환하지 않는다.
+- 현행 난수 처리는 PYTHON_RANDOM_EXECUTION이다. 구판 `rng_mapping_version`(A13_MOD100_LEGACY/A19_REJECTION100 등)·`rng_queue`·소비 위치는 과거 원문에 보존하고 새 Python 값으로 덮어쓰지 않는다. 미사용 큐는 사용 중단하며 전환 시점/session·event와 `PYTHON_SYSTEM_RANDOM_V1` 출처를 기존 동적 runtime/pending에 보존한다. 이미 산출·공개·반영된 원값/피해/후보·성장과 플레이어 원값은 그대로 이어간다. 아직 실행하지 않은 부분만 같은 식/순서의 Python으로 수행하고, 실행 여부가 불명확하면 복구 전 재굴림하지 않는다. 큐에 들어 있다는 사실만으로 미래 값이 이미 적용된 결과가 되지는 않는다.
+- 신규 세이브에는 Python 요청·실제 결과·적용/미결정 상태와 생성 seed/축/버전/결과를 기존 동적 실행 필드에 보존하고 새 미래 큐를 만들지 않는다. DB1에서도 활성 runtime/pending/PC 상태로 포함한다. 새 채팅은 이 기록을 복원하고 완료 이벤트를 재실행하지 않는다. Python 커널·로컬 파일·Random 객체를 세이브 대신 쓰지 않는다. 이 문서는 서버 스키마를 바꾸지 않으며 실제 저장 계약이 구판 큐 필드를 필수로 요구하면 운영 호환 문제를 보고하고 STATE_SAVE_FAILURE_CONTINUE대로 현재 플레이를 유지한다. 검사를 우회할 가짜 큐·가짜 Python 결과를 채우지 않는다.
 - 기존 anchor/registry 부재만으로 오류를 단정하지 않는다. 해당 규칙판의 실제 namespace와 parent를 검사하고, 없는 원문을 추측 생성하지 않는다.
 - 과거 숫자 입력 Gate가 저장돼 있으면 그 pending 단계까지만 정확히 해석한 뒤 현행 입력 방식으로 전환한다. 저장된 메뉴 의미를 재배정하지 않는다.
 - 문서판 번호는 DB state_schema_version과 다르다. 이전 문서의 RC19/A24/A1 허용 설명만으로 새 payload 호환을 단정하지 않는다. 실제 서버 검증 계약이 삭제 필드를 필수로 요구하면 별도의 저장 어댑터 수정이 필요한 것으로 보고한다. 가짜 0/빈 필드로 통과시키지 않는다.

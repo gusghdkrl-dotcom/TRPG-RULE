@@ -1,3 +1,5 @@
+-- Legacy queue RNG validation reference. Does NOT accept Python-only runtime records.
+-- See docs/PYTHON_RANDOM.md; no production migration is performed by this file edit.
 -- DOCUMENT_BOUND(DB1): opt-in compact checkpoints; legacy full snapshots are not rewritten.
 -- Existing commit/verify/load_version functions, raw state_json hash and version/event rules remain unchanged.
 -- The keeper MUST independently check the private Markdown file's full SHA-256 and semantic delta coverage.

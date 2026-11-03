@@ -76,7 +76,7 @@
     "original_line_normalized": 77,
     "source_sha256": "fe3f9d80e10c0f043de0799b10ad69330a01e07966f551258340efe8142ecfab",
     "action": "정리·이동",
-    "destination": "01-core.md#destiny_dice_queue",
+    "destination": "01-core.md#python_random_execution",
     "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
   },
   {

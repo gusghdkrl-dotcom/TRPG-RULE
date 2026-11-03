@@ -19,7 +19,7 @@
 | 일상 행동·판정 필요 여부 | [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate) |
 | PC 주도권·대사·감정 | [CORE_AGENCY](01-core.md#core_agency) |
 | 파티 공통 지식·비공개 세계 경계 | [CORE_VISIBILITY](01-core.md#core_visibility) |
-| 난수 큐와 일반 주사위 | [AI_DIE_MAPPING_VERSION](01-core.md#ai_die_mapping_version) |
+| 실제 Python 난수·일반 주사위 | [PYTHON_RANDOM_EXECUTION](01-core.md#python_random_execution) · [AI_DIE_MAPPING_VERSION](01-core.md#ai_die_mapping_version) |
 | 성공 단계·펌블 | [SUCCESS_LEVELS](02-checks.md#success_levels) |
 | 작업 난이도·실패 위험·중복 보정 방지 | [DIFFICULTY_ASSIGNMENT](02-checks.md#difficulty_assignment) · [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate) |
 | 보너스·패널티 | [BONUS_PENALTY_DICE](02-checks.md#bonus_penalty_dice) |

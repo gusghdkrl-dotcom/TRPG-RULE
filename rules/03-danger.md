@@ -116,7 +116,7 @@ Tier 3 재앙적 위협: 일반 물리 공격 무효. 환경 기믹·특정 키�
 Dodge: 방어 성공 단계가 공격자와 같거나 높으면 회피. 공격자는 더 높은 성공 단계가 필요하다.
 Fight Back: 방어 성공 단계가 공격자보다 높아야 반격 성공. 동점은 공격 개시자 우세.
 - Fight Back 피해는 DAMAGE에 따라 Regular 피해까지만 적용한다.
-- PC가 방어자면 플레이어 직접 굴림. 적/NPC가 방어자면 AI RNG 큐 사용.
+- PC가 방어자면 플레이어 직접 굴림. 적/NPC가 방어자면 PYTHON_RANDOM_EXECUTION으로 실제 Python 굴림.
 - 다대일 보정은 아래 OUTNUMBERED 규칙을 적용하며 방어자에게 임의 패널티를 추가하지 않는다.
 
 ## FIGHTING_MANEUVERS
