@@ -11,6 +11,7 @@
 | 상황 | 읽을 규칙 |
 |---|---|
 | 지속 상태·부상·환경 영향·완화/해제 | [CONDITION_EFFECTS](03-danger.md#condition_effects) |
+| 저장 내용 누락·NPC 말투·중단 지점 보존 | [STATE_RESTORE_CONTRACT](07-state.md#state_restore_contract) · [STATE_INTEGRITY](07-state.md#state_integrity) |
 | 파일 세이브·새 채팅 복원 | [STATE_CANON_SAVE_BINDING](07-state.md#state_canon_save_binding) · [STATE_COMMIT](07-state.md#state_commit) · [STATE_RESUME](07-state.md#state_resume) |
 | 키퍼·감독·소설가 통합 연출·서사·보정 예시 | [DIRECTOR_WRITER_KEEPER_CONVERGENCE](06-play.md#director_writer_keeper_convergence); 인스트럭션 우선 기준과 연결 |
 | 이번 입력과 열린 절차부터 확인 | [CORE_WORKFLOW](01-core.md#core_workflow) |

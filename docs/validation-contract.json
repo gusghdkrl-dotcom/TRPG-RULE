@@ -1629,5 +1629,30 @@
       "가짜 큐·가짜 Python 결과",
       "과거 피해·해제 시각·NPC 버릇을 창작하지"
     ]
+  },
+  {
+    "rule": "STATE_RESTORE_CONTRACT",
+    "contains": [
+      "RESTORE_V1",
+      "실제 저장 전 원본과의 대조",
+      "participants",
+      "npcs",
+      "investigation",
+      "procedures",
+      "presentation",
+      "state_inventory",
+      "canon_inventory",
+      "references",
+      "scene_ref",
+      "pending_ref",
+      "last_output_ref",
+      "execution_unknown",
+      "알려지지 않은 확장 필드",
+      "원본에서 이미 잊힌 사실",
+      "미래 대사·모델 행동까지 똑같아짐을 보장하지"
+    ],
+    "instruction_contains": [
+      "STATE_RESTORE_CONTRACT"
+    ]
   }
 ]
