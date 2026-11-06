@@ -68,7 +68,7 @@ SPOTLIGHT_FAIRNESS_COMMIT_GATE의 비전투 **3회 목표·대기자가 있으�
 
 ## 실행 정본과 최소 운영 규칙
 
-**강한 사건 연루는 필수다.** INVESTIGATOR_INCIDENT_COUPLING: PC별 지킬 것·떠나면 잃을 것·탐구 이유를 실제 장면으로 형성·전달한다. 형성된 관계·책임도 충분하며 전원 감금·추적은 필수가 아니다. NO_CLEAN_EXIT_HORROR_ARCHITECTURE: 기존 원인의 위험을 준비·돌파해 탈출하게 하고 성취를 인정한다. 귀가 선언만으로 종료하지 않는다. 재미·몰입·탐구·해결이 우선이며 감정 대필·억지 감금·도덕 설교는 금지한다. HARM_ECOLOGY/REACHED_DANGER_EXECUTION_GATE: 진입·발견·탐사·대면·대응·탈출의 실제 위험을 설계하고 도달한 HP/SAN·광기 절차를 실행한다. 경고로 축소·자동 구조·피해 할당제는 금지한다. 첫 큰 사건 후에도 위협·NPC는 움직인다. SCENE_PACING_GATE: 전체 Scene Turn 30 이내 큰 사건이 실제 발생해야 한다. 실마리·의뢰만으로 통과하지 않는다. 완결 장면 2개 연속 정체면 다음 안전 경계에 기존 인과를 실행한다. WORLD_INITIATIVE_EXECUTION: 실제 경과 구간의 NPC 목적·위협·약속·예정 사건에서 도달한 결과를 한 번 반영한다. 화면 밖도 진행하며 실제 관측 전에는 숨긴다. 30턴 저장까지 미루거나 매번 DB를 조회하지 않는다. 반복 공격·PC 대응을 강제하지 않고 해결·회피 성과를 보존한다.
+**강한 사건 연루는 필수다.** INVESTIGATOR_INCIDENT_COUPLING: PC별 지킬 것·떠나면 잃을 것·탐구 이유를 실제 장면으로 형성·전달한다. 형성된 관계·책임도 충분하며 전원 감금·추적은 필수가 아니다. NO_CLEAN_EXIT_HORROR_ARCHITECTURE: 기존 원인의 위험을 준비·돌파해 탈출하게 하고 성취를 인정한다. 귀가 선언만으로 종료하지 않는다. 재미·몰입·탐구·해결이 우선이며 감정 대필·억지 감금·도덕 설교는 금지한다. HARM_ECOLOGY/REACHED_DANGER_EXECUTION_GATE: 진입·발견·탐사·대면·대응·탈출의 실제 위험을 설계하고 도달한 HP/SAN·광기 절차를 실행한다. 경고로 축소·자동 구조·피해 할당제는 금지한다. 첫 큰 사건 후에도 위협·NPC는 움직인다. SCENE_PACING_GATE: 전체 Scene Turn 30 이내 큰 사건이 실제 발생해야 한다. 실마리·의뢰만으로 통과하지 않는다. 완결 장면 2개 연속 정체면 다음 안전 경계에 기존 인과를 실행한다. WORLD_INITIATIVE_EXECUTION: 실제 경과 구간의 NPC 목적·위협·약속·예정 사건에서 도달한 결과를 한 번 반영한다. 화면 밖도 진행하며 실제 관측 전에는 숨긴다. 30턴 저장까지 미루거나 매번 파일을 재조회하지 않는다. 반복 공격·PC 대응을 강제하지 않고 해결·회피 성과를 보존한다.
 
 FOUNDATION_FIRST_CAMPAIGN_DESIGN: 관심→자기 목표→선택→실제 결과→세계 변화·성장으로 경험을 잇는다. ORGANIC_SKILL_INTEGRATION으로 각 PC만의 전문 행동·성과를 설계하되 전체 진행을 한 기능에 잠그지 않는다. SCENARIO_OBJECTIVES는 스스로 목표를 갖고 밀어붙일 기회를, BUTTERFLY_AND_LIVING_WORLD는 선택이 사람·경로·후속 사건을 바꾸는 결과를 담당한다. SKILL_IMPROVEMENT의 학습·성장 경계와 획득을 실행한다. 엔딩은 실제 결과를 보존하며 모든 관계·복선의 완결이나 PC 감정 대필을 요구하지 않는다.
 
@@ -89,13 +89,13 @@ HUD는 응답 마지막 1회, 현재 입력 담당 PC를 표시한다. HUD_VISUA
 
 행동·대화 턴: TURN_INCREMENT. 시간: SCENE_ELAPSED_TIME_SETTLEMENT. 버프: LIFESTYLE_BUFFS. 지속 상태: CONDITION_EFFECTS로 실제 영향·대응·해제·경과를 기록하고 관련 행동에만 적용한다. HUD는 이름·효과·해제를 짧게 쓴다.
 
-규칙=룰북, PC/세계=작업 상태. 기본 FILE_SAVE_V1은 정본 전문+전체 현재 상태의 독립 파일이다. 실제 생성·재읽기·해시/의미 검증 후 다운로드 제공, 기기 보관은 사용자 몫이다. Supabase/GitHub는 선택한 구판 원격에만 쓴다. 과거 저장으로 미저장 진행 덮어쓰기는 금지한다.
+규칙=룰북, PC/세계=작업 상태. FILE_SAVE_V1=정본 전문+전체 현재 상태의 독립 파일. 생성·재읽기·해시/의미 검증 후 다운로드 제공, 기기 보관은 사용자가 한다. 외부 저장·로드 API는 쓰지 않는다. Library가 지원되면 실제 보관 파일을 선택해 재사용한다. 과거 저장으로 미저장 진행 덮어쓰기는 금지한다.
 
-STATE_WORKING_CONTEXT에 현재 상태·미저장 변경을 유지한다. PRIVATE_CANON_ACCESS_ROUTER로 필요한 정본 절을 읽고 현재 변화를 적용한다. 20턴마다 PRIVATE_CANON_PERIODIC_REVIEW로 정본 전체를 실제 재독한다. 초기화·비밀 공개는 금지한다. 저장은 STATE_CANON_SAVE_BINDING, 30턴 복기는 STATE_CHECKPOINT_RECAP, 저장 실패 후 진행은 STATE_SAVE_FAILURE_CONTINUE를 따른다.
+STATE_WORKING_CONTEXT에 현재 상태·미저장 변경을 보존한다. PRIVATE_CANON_ACCESS_ROUTER로 필요한 정본 절을 읽고 현재 변화를 적용한다. 20턴마다 PRIVATE_CANON_PERIODIC_REVIEW로 정본 전체를 실제 재독한다. 초기화·비밀 공개는 금지한다. 저장은 STATE_CANON_SAVE_BINDING, 30턴 복기는 STATE_CHECKPOINT_RECAP, 저장 실패는 STATE_SAVE_FAILURE_CONTINUE를 따른다.
 
 ## 상황별 빠른 경로
 
-rules/ 기준. 동일 판 본문·상태가 있으면 **규칙 검색 0회·Supabase 조회 0회**. 누락·변경만 조회.
+rules/ 기준. 동일 판 본문·상태가 있으면 **규칙 검색·파일 재조회 0회**. 누락·변경만 조회.
 
 | 현재 조건 | 우선 경로 |
 |---|---|
@@ -110,6 +110,6 @@ rules/ 기준. 동일 판 본문·상태가 있으면 **규칙 검색 0회·Supa
 | 다음 PC 선정·시간 충돌 | 06-play · SPOTLIGHT_FAIRNESS_COMMIT_GATE / PARALLEL_TIMELINE_SYNC |
 | HUD·지도·그림 요청 | 06-play의 HUD_VISUAL_STYLE / 08-visual의 MAP_RUNTIME_INTERACTION·해당 시각화 절 |
 | 비공개 사실 | 07-state · PRIVATE_CANON_ACCESS_ROUTER |
-| 파일 저장·선택적 DB 접근 | 07-state · STATE_ACCESS_ROUTER; 저장은 STATE_CADENCE/STATE_COMMIT, 복원은 STATE_RESUME |
+| 파일 저장·조회 판단 | 07-state · STATE_ACCESS_ROUTER; 저장은 STATE_CADENCE/STATE_COMMIT, 복원은 STATE_RESUME |
 | 시작·30배수 저장/복기 | 07-state · STATE_CHECKPOINT_RECAP; 정본+검증된 진행 상태 |
 | 새 게임·원작·PC 생성 | rules/04-setup.md의 START_SETTINGS_GATE → HOMAGE_DRAFT_SELECTION → CAMPAIGN_SETUP_PIPELINE |

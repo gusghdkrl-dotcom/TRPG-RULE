@@ -6,7 +6,7 @@
 
 판단 순서: 이 지침의 주도권·정보 공개·확정 사실 보호 → 현재 해당 규칙의 적용 조건·절차·예외 → 예시. 본문끼리 충돌하면 최신처럼 보이는 파일명이나 아래쪽 문장으로 임의 결정하지 말고 해당 변경을 보류하고 충돌을 알린다.
 
-현재 선언과 상태에서 필요한 항목을 찾고 링크의 규칙 본문을 읽는다. 숫자·예외가 필요한데 본문을 읽지 못하면 추측하지 않는다. 현재 대화에서 확인 가능한 동일 규칙판 본문은 재사용하고 유실·변경된 부분만 다시 조회한다. 아래 링크는 검색 경로이며 상세 절차를 복제하지 않는다. 이미 본문·작업 상태가 있으면 검색 없이 처리한다. 룰북 검색과 세이브 조회는 별개다. 기본 FILE_SAVE_V1은 외부 연결 없이 읽고 DB 접근은 선택한 구판 원격의 STATE_ACCESS_ROUTER 조건에서만 한다.
+현재 선언과 상태에서 필요한 항목을 찾고 링크의 규칙 본문을 읽는다. 숫자·예외가 필요한데 본문을 읽지 못하면 추측하지 않는다. 현재 대화에서 확인 가능한 동일 규칙판 본문은 재사용하고 유실·변경된 부분만 다시 조회한다. 아래 링크는 검색 경로이며 상세 절차를 복제하지 않는다. 이미 본문·작업 상태가 있으면 검색 없이 처리한다. 룰북 검색과 세이브 조회는 별개다. 기본 FILE_SAVE_V1은 외부 연결 없이 읽고 파일 접근은 STATE_ACCESS_ROUTER의 실제 조건에서만 한다.
 
 | 상황 | 읽을 규칙 |
 |---|---|
@@ -66,15 +66,14 @@
 | 지도 열람·이동 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) |
 | 직업·풍경·상황 웹 참고 | [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference) |
 | 이미지 선택 | [VISUAL_CHOICE_GATE](06-play.md#visual_choice_gate) |
-| DB 조회를 허용하는 실제 조건 | [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
-| 저장 원문 전체 감사·정식 복원 RPC·비공개 GitHub 백업 | [STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP](07-state.md#state_verified_owner_audit_and_github_backup) |
+| 세이브 파일 조회의 실제 조건 | [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
+| 저장 파일 전체 원문·무결성 읽기 전용 감사 | [STATE_OWNER_AUDIT](07-state.md#state_owner_audit) |
 | 현재 비공개 상태·예정 사건 유지와 문맥 손실 | [STATE_WORKING_CONTEXT](07-state.md#state_working_context) |
 | 시작·30턴 저장의 비공개 전체 복기 | [STATE_CHECKPOINT_RECAP](07-state.md#state_checkpoint_recap) |
 | 자료조사·역사 선택과 판정의 조회 범위 | [INVESTIGATION_SKILL_ROUTING](02-checks.md#investigation_skill_routing) |
-| Supabase 연결과 정본 | [STATE_AUTHORITY](07-state.md#state_authority) |
+| 파일 저장 정본과 보관 범위 | [STATE_AUTHORITY](07-state.md#state_authority) |
 | 저장 시점 | [STATE_CADENCE](07-state.md#state_cadence) |
 | 저장 검증·중단 복구 | [STATE_COMMIT](07-state.md#state_commit) |
-| 선택한 구판 원격 모드의 GitHub 비상 저장·복원 | [STATE_GITHUB_FAILOVER_PROTOCOL](07-state.md#state_github_failover_protocol) |
 | 새 채팅 로드 | [STATE_RESUME](07-state.md#state_resume) |
 | 수첩 동시 쓰기 방지 | [NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER](09-notebook.md#notebook_watcher_runtime_single_writer) |
 
@@ -86,7 +85,7 @@
 - 04-setup: 원작·PC·직업·세계 생성.
 - 05-world: 탐사·증거·NPC·세계 인과.
 - 06-play: 시간·멀티 PC·HUD·페이싱·엔딩.
-- 07-state: 비공개 상태·파일 세이브·복원과 선택적 구판 원격 호환.
+- 07-state: 비공개 상태·파일 세이브·복원·사용자 제공 구판 파일 변환.
 - 08-visual: 지도·초상·장면 이미지.
 - 09-notebook: 공개 수첩.
 

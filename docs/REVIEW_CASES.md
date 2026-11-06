@@ -1,5 +1,20 @@
 # 대표 상황의 규칙 대조
 
+## 2026-11-07 외부 저장 제거·보관 대안 대조
+
+| 상황 | 현행 결과 |
+|---|---|
+| 게임 저장/로드/백업을 요청 | FILE_SAVE_V1 실제 파일만 사용, 외부 API/구판 원격 경로 없음 |
+| 파일이 없지만 외부에 과거 세이브가 있다고 함 | 원격을 탐색하지 않고 사용자가 보유한 실제 자료 요청 |
+| Library에 파일이 실제 보관되고 전체 본문을 읽을 수 있음 | 동일 payload/정본 해시·의미 검증으로 복원 |
+| Library 메뉴/보관 파일이 없음 | 자동 등록 성공을 가장하지 않고 다운로드·직접 첨부 경로 안내 |
+| 파일 목록/프로젝트 소스 발췌만 확인됨 | 전체 읽기/정상 복원 완료 주장 금지 |
+| 다른 파일명으로 같은 payload를 재첨부 | 파일명보다 실제 session/branch/save_seq/hash로 판별 |
+| 구판 파일만 있고 정본 전문 또는 최신 동적 상태 누락 | 원본 보존, 정확한 자료 요청; 빈칸을 창작하지 않음 |
+| 수첩 연결이 과거 검증 번호를 요구 | 가짜 번호/세이브 API 호출 금지, 수첩만 보류 |
+| 외부 연동 규칙/엔드포인트가 실행 소스에 재등장 | rulebook.py check에서 실패 |
+
+
 ## 2026-11-06 상태·진행·파일 세이브 대조
 
 아래는 합성 사례의 문서 대조이며 실제 캠페인이나 클라이언트 실행이 아니다.
@@ -16,7 +31,7 @@
 | 중요 NPC에게 실제 공격 도달 | 담당 공격/피해·부상·사망 적용, 중요 인물 면제 없음 |
 | 변화 없는 이동·회의·같은 조사 반복 | 직접 결과로 압축, 다른 접근/미결정 선택은 보존 |
 | 이미 안전을 확보했는데 긴장 비중이 낮음 | 억지 습격·실패·피해로 비율을 맞추지 않음 |
-| Supabase/GitHub 둘 다 차단 | FILE_SAVE_V1은 외부 호출 없이 생성/검증/전달, 원격 실패로 파일 무효화 없음 |
+| 파일 저장/GitHub 둘 다 차단 | FILE_SAVE_V1은 외부 호출 없이 생성/검증/전달, 원격 실패로 파일 무효화 없음 |
 | 파일 도구도 없음 | 정상 저장 성공 주장 금지, 현재 상태로 계속; 비밀 텍스트 자동 출력 금지 |
 | 정본만 있고 현재 진행이 없음 | 완전한 세이브로 처리하지 않고 실제 누락 범위 보고 |
 | 파일 생성됐으나 다운로드 제공 실패 | 생성/검증과 전달 미완료 구별; 같은 원문 재전달 |
@@ -24,7 +39,6 @@
 | parent 파일 없이 완전한 세이브 첨부 | 파일 하나로 복원; 부모는 추적용이며 의존 체인 아님 |
 | 해시 손상·정본 누락·중복 키·동일 번호 다른 해시 | 검증 실패/충돌 처리, 최신 파일명으로 무시하지 않음 |
 | 다른 채팅의 여러 분기 | 자동 최신 선택/병합 없음, 선택한 분기로 재개 |
-| 구판 DB1/Python 큐 필드 불일치 | 파일에 가짜 큐를 추가하지 않음; 선택한 원격 호환 문제는 별도 보고 |
 | 파일 save_seq를 수첩의 DB version으로 사용하려 함 | 가짜 verified 번호 금지, 연결만 보류하고 파일 로드 유지 |
 
 
@@ -62,7 +76,7 @@
 
 | 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
 |---|---|---|---|
-| 게임 시작 저장 시도 뒤 첫 장면 직전 | 성공 시 같은 verified 원문 재사용, 실패 시 현재 작업 상태 복기 후 첫 장면 진행 | STATE_CHECKPOINT_RECAP | 일치 |
+| 게임 시작 저장 시도 뒤 첫 장면 직전 | 성공 시 같은 검증 파일 원문 재사용, 실패 시 현재 작업 상태 복기 후 첫 장면 진행 | STATE_CHECKPOINT_RECAP | 일치 |
 | Scene Turn 30 도달, 판정이 아직 열림 | 기존 첫 안전 경계로 저장/복기 연기, 굴림을 중단하거나 대신 실행하지 않음 | STATE_CADENCE / STATE_CHECKPOINT_RECAP | 일치 |
 | 30/60 기준선을 한 번에 넘긴 시간 생략 | 현재 전체 상태로 저장/복기 1회, 과거 턴별 스냅샷 생성 없음 | STATE_CHECKPOINT_RECAP | 일치 |
 | 현재 장면 밖 NPC의 비밀·미발견 증거가 존재 | 전체 namespace/registry 대조에 포함, 현재 장면 요약만으로 대체하지 않음 | STATE_CHECKPOINT_RECAP | 일치 |
@@ -73,7 +87,7 @@
 | 비공개 복기를 마친 공개 응답 | 비밀/예정 사건/난수 미출력, 실제 저장 성공/실패만 최소 안내 | STATE_CHECKPOINT_RECAP | 일치 |
 | 일반 31~59턴, 필요한 규칙/작업 상태가 남음 | 관련 범위만 재사용, 전체 복기와 DB 조회 반복 없음 | STATE_WORKING_CONTEXT / STATE_ACCESS_ROUTER | 일치 |
 | 저장 사이 필수 동적 상태가 유실됨 | 60턴까지 무조건 기다리거나 창작하지 않고 한정 복구 | STATE_CHECKPOINT_RECAP / STATE_ACCESS_ROUTER | 일치 |
-| 새 채팅에서 verified 원문 복원 | 확보한 원문으로 같은 복기, 추가 저장/새 장면 재생성 없음 | STATE_RESUME | 일치 |
+| 새 채팅에서 검증 파일 원문 복원 | 확보한 원문으로 같은 복기, 추가 저장/새 장면 재생성 없음 | STATE_RESUME | 일치 |
 | 이동만 선언, 도착 후 NPC가 방문 목적을 물음 | 질문까지 묘사 후 PC 선택 반환, 자동 설명·절차 문의 없음 | NPC_REPLY_AGENCY_GATE | 일치 |
 | 큰 목표는 일감 찾기, NPC가 점검 수락을 요구 | 큰 목표로 수락을 추정하지 않고 응답 대기 | NPC_REPLY_AGENCY_GATE | 일치 |
 | 플레이어가 질문 문장을 직접 입력 | 실제 PC 직접 대사와 NPC 반응 재현, 간접 요약만 출력하지 않음 | CINEMATIC_ACTION_CONTINUITY | 일치 |
@@ -99,7 +113,7 @@
 | 미발견 증거의 배치·발견 조건·원문이 이미 로드됨 | DB 없이 실제 발견 조건 처리, 발견 전 원문 공개 없음 | STATE_WORKING_CONTEXT | 일치 |
 | 다른 장소의 Driver가 시간 경과 구간에 발동 | 현재 색인/상태로 결과 1회 반영, 현재 PC가 못 보면 비공개 유지 | WORLD_INITIATIVE_EXECUTION | 일치 |
 | 세계 진행 색인이나 필요한 조건이 유실됨 | 사건 없음으로 간주하지 않고 필요한 범위 복구 | STATE_WORKING_CONTEXT | 일치 |
-| Supabase에 저장됐지만 현재 모델 문맥에는 없는 사실 | 자동 인지를 주장하지 않고 현재 의존하는 값만 복구 | STATE_WORKING_CONTEXT | 일치 |
+| 파일 저장에 저장됐지만 현재 모델 문맥에는 없는 사실 | 자동 인지를 주장하지 않고 현재 의존하는 값만 복구 | STATE_WORKING_CONTEXT | 일치 |
 | 부분 조회 API는 없고 exact snapshot 로드만 지원 | 같은 snapshot 한 번에서 여러 필요한 값을 가져와 재사용 | STATE_ACCESS_ROUTER | 일치 |
 | 저장본 이후 미저장 HP/시간/NPC 변경이 있음 | 오래된 snapshot으로 덮어쓰지 않음, 검증 불가능한 동적 누락은 보류 | STATE_WORKING_CONTEXT / STATE_INTEGRITY | 일치 |
 | 현재 장면 요약만 남았는데 full checkpoint 저장 시점 | 원문+검증 가능한 변경분에서 전체 구성, 원격 세계/NPC 누락 금지 | STATE_WORKING_CONTEXT / STATE_COMMIT | 일치 |
@@ -136,7 +150,7 @@
 | 시간 생략으로30·60 기준선 모두 통과 | 같은 snapshot을 중복 저장하지 않고1회, 다음 기준선은 현재보다 큰30배수 | STATE_CADENCE | 일치 |
 | pending 성공 뒤 verify 응답 유실 | 같은 version/event/exact 원문으로 최대1회 자동 재시도 | STATE_RECOVERY | 일치 |
 | hash는 맞지만 NPC/증거 상태가 누락 | 의미 검증 실패로 복구 대기, 오래된 변화 상태로 임의 채우지 않음 | STATE_INTEGRITY / STATE_RESUME | 일치 |
-| 새 채팅에서 수첩만 남아 있음 | 수첩으로 비공개 정본 복원 불가, verified history가 필요 | STATE_RESUME | 일치 |
+| 새 채팅에서 수첩만 남아 있음 | 수첩으로 비공개 정본 복원 불가, 실제 전체 세이브 파일이 필요 | STATE_RESUME | 일치 |
 | 연대기 챕터만 종료 | 전체 게임 종료/terminal 저장을 강제하지 않고 확정 결과로 다음 챕터 생성 | ENDING_FINALIZATION_GATE / STORY_SCALE | 일치 |
 | 감시기 소유 P슬롯의 채팅 이동 | Keeper가 자동 쓰기로 복귀하지 않고 같은 수첩 재연결 확인 | NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER | 일치 |
 | 기존 DB가 삭제 필드를 필수로 요구 | 임의 값으로 우회하지 않고 실제 어댑터 호환 문제로 보고 | STATE_COMPATIBILITY | 일치 |
@@ -256,9 +270,9 @@
 | Spotlight 첫 이동으로 목적지 도착 | 같은 PC에게 문 두드리기 등 첫 상호작용 기회, 자동 인계 없음 | SPOTLIGHT_FAIRNESS_COMMIT_GATE | 일치 |
 | 이미 본 문서·공개 지도·HUD 재표시 | 작업 상태 재사용, DB 조회/장식용 검색 없음, 재표시만으로 시간 진행 없음 | STATE_ACCESS_ROUTER / TURN_INCREMENT | 일치 |
 | 새로운 판정의 예외 본문만 유실 | 필요한 규칙 ID만 조회, 게임 상태가 남아 있으면 DB load 불필요 | ACTIVE_PLAY_ROUTING_FIREWALL | 일치 |
-| working 상태는 최신인데 verified 저장은 이전 위치 | 일반 조회로 과거 저장을 덮어쓰지 않음, 미저장 결과 유지 | STATE_ACCESS_ROUTER | 일치 |
-| 새 채팅 또는 실제 현재 상태 유실 | verified 복원/복구 허용, 빈 상태를 추측 생성하지 않음 | STATE_ACCESS_ROUTER / STATE_RESUME | 일치 |
-| 짧은 이동 결과 Scene Turn30 안전 경계 도달 | 일반 이동이어도 필수 저장·verify/read-back 실행 | STATE_ACCESS_ROUTER / STATE_CADENCE | 일치 |
+| working 상태는 최신인데 파일 저장은 이전 위치 | 일반 조회로 과거 저장을 덮어쓰지 않음, 미저장 결과 유지 | STATE_ACCESS_ROUTER | 일치 |
+| 새 채팅 또는 실제 현재 상태 유실 | 검증 파일 복원/복구 허용, 빈 상태를 추측 생성하지 않음 | STATE_ACCESS_ROUTER / STATE_RESUME | 일치 |
+| 짧은 이동 결과 Scene Turn30 안전 경계 도달 | 일반 이동이어도 필수 파일 생성·재읽기·해시/의미 검증 실행 | STATE_ACCESS_ROUTER / STATE_CADENCE | 일치 |
 | 저장 read-back이 exact-version load 조건 충족 | 같은 원문 재사용, 별도 동일 load 반복 없음 | STATE_COMMIT / STATE_ACCESS_ROUTER | 일치 |
 | 저장 없는 테스트에서 연속 평범한 행동 | 원본 DB·수첩 쓰기 및 이유 없는 DB 대조 없음, 안내 반복 없음 | STATE_ACCESS_ROUTER | 일치 |
 | P1이 공개한 단서, P2는 다른 장소 | P2도 판단에 사용, 전달·전화·합류 요구 없음 | CORE_VISIBILITY | 일치 |
@@ -310,7 +324,7 @@
 
 ## 미실행
 
-- 전체 새 캠페인 생성부터 실제 Supabase 저장·verify·exact load·새 채팅 복원.
+- 전체 새 캠페인 생성부터 실제 파일 저장 저장·verify·exact load·새 채팅 복원.
 - 2인 실제 장시간 플레이 및 모델의 조회 누락률 측정.
 - 공개 수첩 API·감시기·이미지 업로드·사용자별 접근 제어.
 - 실제 이미지 생성 및 첨부 예시 자산의 시각 일치 확인.
@@ -375,23 +389,21 @@
 | 문서 파일명만 확인되고 본문 접근 실패 | 조회 완료 아님, 필요한 정확한 파일 조회 대기 | PRIVATE_CANON_DOCUMENT | 일치 |
 | 같은 판본 ID에 다른 본문 | 충돌 보류, 최신 파일명/기억으로 덮어쓰기 금지 | PRIVATE_CANON_DOCUMENT | 일치 |
 | 새 정본 r2 업로드 후 참조 세이브 검증 실패 | 기존 r1 참조·추가 사실·구판 파일 보존 | PRIVATE_CANON_DOCUMENT | 일치 |
-| 서버가 정본 참조/축소 payload 미지원 | 선택한 구판 DB1 원격은 저장 미완료로 진행, 전체 payload 자동 재전송/빈 anchor 검증 우회 없음 | STATE_CANON_SAVE_BINDING | 일치 |
 | 기존 full 세이브 재개 | 소급 이관 없이 원래 계약으로 재개 | STATE_CANON_SAVE_BINDING | 일치 |
-| 30턴 저장 복기 | 모드별 전체 범위 검사, 같은 정본/verified 진행 재사용, 불변 전문 자동 재조회 없음 | STATE_CHECKPOINT_RECAP | 일치 |
-| GitHub 문서 결합 checkpoint만 복구됨 | 정확한 정본도 필요, 독립 전체 복원 성공으로 표시하지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
+| 30턴 저장 복기 | 파일 전체 범위 검사, 같은 정본/검증된 현재 상태 재사용, 불변 전문 자동 재조회 없음 | STATE_CHECKPOINT_RECAP | 일치 |
+| 사용자 제공 구판 파일에 정본 참조만 있음 | 정확한 정본도 필요, 독립 전체 복원 성공으로 표시하지 않음 | STATE_CANON_SAVE_BINDING | 일치 |
 | 정본 조회만 수행 | 시간·난수·저장·발견 상태 불변, 비공개 본문을 지문에 복사하지 않음 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
 
-문서상 경로 대조이며 실제 Supabase 축소 저장/로드와 게임 프로젝트 소스 검색 성공을 뜻하지 않는다.
+문서상 경로 대조이며 실제 파일 저장 축소 저장/로드와 게임 프로젝트 소스 검색 성공을 뜻하지 않는다.
 
 ## 저장 실패 후 진행 대조
 
-파일 생성/검증/전달 실패에도 진행 유지 원칙을 적용한다. 아래 commit/verify/GitHub 행은 해당 구판 원격 모드를 선택한 경우의 사례다.
+파일 생성/검증/전달 실패에도 진행 유지 원칙을 적용한다. 모든 저장은 실제 파일 경로이며 외부 저장 호출을 요구하지 않는다.
 
 | 상황 | 현재 규칙의 결과 | 확인 위치 | 대조 |
 |---|---|---|---|
-| 신규 설정 완료, Supabase 연결 없음 | FILE_SAVE_V1 생성·검증·전달 시도 후 게임 시작 입력 대기, 원격 연결 불필요 | CAMPAIGN_SETUP_PIPELINE / STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| 신규 설정 완료, 파일 저장 연결 없음 | FILE_SAVE_V1 생성·검증·전달 시도 후 게임 시작 입력 대기, 원격 연결 불필요 | CAMPAIGN_SETUP_PIPELINE / STATE_SAVE_FAILURE_CONTINUE | 일치 |
 | play_start verify 실패, 현재 상태와 지도 있음 | 첫 장면 진행, 저장 성공 가장 없음 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
-| 30턴 저장과 GitHub 비상 저장 모두 실패 | 현재 상태로 계속, 다음 자동 시도 60턴, last_verified는 유지 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
 | 같은 장애가 31~59턴 지속 | 매 턴 재시도·실패 수락 질문·반복 경고 없음 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
 | 30턴 pending 후 40턴까지 진행, 이전 attempt 검증 성공 | 30턴 저장만 성공으로 기록, 40턴 현재 상태는 별도 저장, 되감기 없음 | STATE_SAVE_FAILURE_CONTINUE / STATE_COMMIT | 일치 |
 | 저장된 pending 원문과 현재 상태가 달라짐 | 기존 version/event/hash는 동결하고 최신 상태와 구분 | STATE_SAVE_FAILURE_CONTINUE | 일치 |
@@ -411,31 +423,18 @@
 | Scene Turn 20, 열린 절차 없음 | 사용자 재독 요청 없이 활성 정본 전체 실제 조회·대조 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 | Scene Turn 20에 굴림/Luck 대기 | 재독 예정 보존, 입력 해결 후 첫 안전 경계에 실행 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 | 19턴에서 한 번에 45턴으로 이동 | 현재 시점 1회 재독, 다음 기준 60턴 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
-| 20턴 재독 완료, 저장 경계 아님 | Supabase commit/verify/full load를 추가하지 않음 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 | 60턴 재독과 30배수 저장 복기 동시 도래 | 정본 읽기 1회 재사용, 저장 성공/재독 완료는 별도 판정 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
-| 60턴에 Supabase 저장 실패 | 소스 재독/작업 상태 대조 수행, 현재 플레이 계속 | PRIVATE_CANON_PERIODIC_REVIEW / STATE_SAVE_FAILURE_CONTINUE | 일치 |
+| 60턴에 파일 저장 저장 실패 | 소스 재독/작업 상태 대조 수행, 현재 플레이 계속 | PRIVATE_CANON_PERIODIC_REVIEW / STATE_SAVE_FAILURE_CONTINUE | 일치 |
 | 정본 검색이 상위 3개 발췌만 반환 | 전체 완료 아님, manifest의 빠진 절/본문을 추가 조회 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 | 일부 본문 잘림·파일 조회 실패 | 미완료와 누락 범위 유지, 다음 재시도 경계와 성공 상태 구분 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 | 정본에 살아 있는 NPC가 현재 사망/단서가 이동함 | 현재 누적 변경 적용, 부활/원위치 복원/사건 재실행 없음 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 | 새 채팅 37턴 로드·재독 기록 없음 | 활성 정본 전체 1회 읽기, 다음 40턴, 열린 단계 유지 | PRIVATE_CANON_PERIODIC_REVIEW / STATE_RESUME | 일치 |
 | 같은 판본 요약은 있으나 40턴 정기 경계 도래 | 기억/요약만으로 생략하지 않고 새 소스 재독 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 | 13턴에 당장 필요한 비밀 사실이 문맥에서 없음 | 20턴까지 기다리지 않고 관련 절 즉시 조회 | PRIVATE_CANON_ACCESS_ROUTER | 일치 |
-| 기존 LEGACY_FULL 세이브에 별도 정본 파일 없음 | 실제 확보한 불변 원문 복기, 파일 소스 재독 성공 가장 없음 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
+| 사용자 제공 구판 세이브에 별도 정본 파일 없음 | 실제 확보한 불변 원문 복기, 파일 소스 재독 성공 가장 없음 | PRIVATE_CANON_PERIODIC_REVIEW | 일치 |
 
 이는 문서 계약의 경계 사례 대조다. 실제 게임에서 검색 도구가 본문 전체를 반환하는지나 장기 기억 유지율은 측정하지 않았다.
 
-
-## 선택한 구판 원격의 물리 정본+DB1 대표 사례
-
-| 조건 | 기대 결과 |
-|---|---|
-| 정본 전체 SHA·필수 절·coverage와 실제 DB1 서버 분기 확인 | 최초 불변 원문 제외, canon_ref + 누적 동적 상태 저장·verify·exact read-back |
-| DB1에 scenario_core·campaign_canon_text를 중복 포함 | DB semantic validator 거부 |
-| DB1의 change_coverage.changed_entity_ids와 world_delta 키 불일치 | DB semantic validator 거부 |
-| 정본 파일 누락/해시 불일치 | DB 원문이 정상이라도 복원 보류, 사실 생성/초기화 금지 |
-| legacy verified 기존 세션 | 기존 검증·복원 유지, 원문·hash·history 불변 |
-| 기존 세션 이관 요청 | 전체 원문/정본 비교 후 새 버전만 DB1 저장, 미확정이면 이관 보류 |
-| DB1 서버 미지원·차단 | 저장 미완료 표시, 무단 LEGACY_FULL 재전송 없이 현재 채팅 계속 |
 
 ## 이번 씬 요약·결과
 
@@ -447,7 +446,7 @@
 | NPC 전언·비공개 진실이 따로 존재 | 발언 출처 유지, 숨은 정답/속마음/미발견 사건/추리 결론 노출 없음 | SCENE_SUMMARY_AND_RESULT | 일치 |
 | 변화 없는 재확인 또는 자원 변화 | 결과 창작 없음, 핵심 변화만 표시, 수치/가방 전체는 HUD | SCENE_SUMMARY_AND_RESULT | 일치 |
 | 판정·전투·인계·화면 Gate 또는 메타 요청 | 기존 전용 입력 우선, 일반 메뉴 강제 추가 없음 | SCENE_SUMMARY_AND_RESULT / GUIDED_ACTION_RETURN | 일치 |
-| Supabase 장애 중 일반 대화 | 현재 공개 상태로 요약, 추가 DB 호출/정본 재독/저장 의존 없음 | SCENE_SUMMARY_AND_RESULT | 일치 |
+| 파일 저장 장애 중 일반 대화 | 현재 공개 상태로 요약, 추가 DB 호출/정본 재독/저장 의존 없음 | SCENE_SUMMARY_AND_RESULT | 일치 |
 
 ## NPC 청취·전달 경로
 
