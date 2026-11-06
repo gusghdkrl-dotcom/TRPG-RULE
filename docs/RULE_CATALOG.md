@@ -9,6 +9,7 @@
 | STATE_SAVE_FAILURE_CONTINUE | [07-state.md](../rules/07-state.md#state_save_failure_continue) |
 | 규칙 ID | 현재 문서 |
 |---|---|
+| CONDITION_EFFECTS | [03-danger.md](../rules/03-danger.md#condition_effects) |
 | ACTIVE_DANGER_CONTINUITY | [05-world.md](../rules/05-world.md#active_danger_continuity) |
 | ACTIVE_HORROR_PRESSURE | [05-world.md](../rules/05-world.md#active_horror_pressure) |
 | ACTIVE_PLAY_ROUTING_FIREWALL | [01-core.md](../rules/01-core.md#active_play_routing_firewall) |

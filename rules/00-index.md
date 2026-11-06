@@ -6,10 +6,12 @@
 
 판단 순서: 이 지침의 주도권·정보 공개·확정 사실 보호 → 현재 해당 규칙의 적용 조건·절차·예외 → 예시. 본문끼리 충돌하면 최신처럼 보이는 파일명이나 아래쪽 문장으로 임의 결정하지 말고 해당 변경을 보류하고 충돌을 알린다.
 
-현재 선언과 상태에서 필요한 항목을 찾고 링크의 규칙 본문을 읽는다. 숫자·예외가 필요한데 본문을 읽지 못하면 추측하지 않는다. 현재 대화에서 확인 가능한 동일 규칙판 본문은 재사용하고 유실·변경된 부분만 다시 조회한다. 아래 링크는 검색 경로이며 상세 절차를 복제하지 않는다. 이미 본문·작업 상태가 있으면 검색 없이 처리한다. 룰북 검색과 Supabase 조회는 별개이며 DB 접근은 STATE_ACCESS_ROUTER의 실제 조건에서만 한다.
+현재 선언과 상태에서 필요한 항목을 찾고 링크의 규칙 본문을 읽는다. 숫자·예외가 필요한데 본문을 읽지 못하면 추측하지 않는다. 현재 대화에서 확인 가능한 동일 규칙판 본문은 재사용하고 유실·변경된 부분만 다시 조회한다. 아래 링크는 검색 경로이며 상세 절차를 복제하지 않는다. 이미 본문·작업 상태가 있으면 검색 없이 처리한다. 룰북 검색과 세이브 조회는 별개다. 기본 FILE_SAVE_V1은 외부 연결 없이 읽고 DB 접근은 선택한 구판 원격의 STATE_ACCESS_ROUTER 조건에서만 한다.
 
 | 상황 | 읽을 규칙 |
 |---|---|
+| 지속 상태·부상·환경 영향·완화/해제 | [CONDITION_EFFECTS](03-danger.md#condition_effects) |
+| 파일 세이브·새 채팅 복원 | [STATE_CANON_SAVE_BINDING](07-state.md#state_canon_save_binding) · [STATE_COMMIT](07-state.md#state_commit) · [STATE_RESUME](07-state.md#state_resume) |
 | 키퍼·감독·소설가 통합 연출·서사·보정 예시 | [DIRECTOR_WRITER_KEEPER_CONVERGENCE](06-play.md#director_writer_keeper_convergence); 인스트럭션 우선 기준과 연결 |
 | 이번 입력과 열린 절차부터 확인 | [CORE_WORKFLOW](01-core.md#core_workflow) |
 | 확인된 짧은 이동 | [ROUTINE_MOVEMENT_FAST_PATH](06-play.md#routine_movement_fast_path) |
@@ -72,7 +74,7 @@
 | Supabase 연결과 정본 | [STATE_AUTHORITY](07-state.md#state_authority) |
 | 저장 시점 | [STATE_CADENCE](07-state.md#state_cadence) |
 | 저장 검증·중단 복구 | [STATE_COMMIT](07-state.md#state_commit) |
-| Supabase 차단 시 GitHub 대체 복원·비상 저장·재동기화 | [STATE_GITHUB_FAILOVER_PROTOCOL](07-state.md#state_github_failover_protocol) |
+| 선택한 구판 원격 모드의 GitHub 비상 저장·복원 | [STATE_GITHUB_FAILOVER_PROTOCOL](07-state.md#state_github_failover_protocol) |
 | 새 채팅 로드 | [STATE_RESUME](07-state.md#state_resume) |
 | 수첩 동시 쓰기 방지 | [NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER](09-notebook.md#notebook_watcher_runtime_single_writer) |
 
@@ -84,7 +86,7 @@
 - 04-setup: 원작·PC·직업·세계 생성.
 - 05-world: 탐사·증거·NPC·세계 인과.
 - 06-play: 시간·멀티 PC·HUD·페이싱·엔딩.
-- 07-state: 비공개 상태·Supabase 저장·복원.
+- 07-state: 비공개 상태·파일 세이브·복원과 선택적 구판 원격 호환.
 - 08-visual: 지도·초상·장면 이미지.
 - 09-notebook: 공개 수첩.
 

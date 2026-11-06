@@ -232,7 +232,7 @@
       "장면 2개 연속",
       "30턴을 따로 주지",
       "현재 가능한 접점",
-      "3:7 분위기 비율은 사용하지",
+      "긴장감 7 : 안정 3 체감 목표",
       "첫 큰 사건이 실제 발생",
       "조사 의뢰·이상 징후만",
       "한 명만 강한 연루 이유",
@@ -1584,6 +1584,107 @@
       "사용 완료 수치 공개 예외",
       "공개 판정의 NPC 수치도",
       "비밀 사유는 밝히지 않는다"
+    ]
+  },
+  {
+    "rule": "CONDITION_EFFECTS",
+    "contains": [
+      "원인 → 적용 조건 → 실제 효과 → 대응·해제",
+      "패널티 주사위 1개",
+      "최대 2개",
+      "같은 원인",
+      "이미 제출한 굴림",
+      "현재 불이익 없음",
+      "NPC도 같은 원인",
+      "지속 시간을 초기화하거나 이미 처리한 피해",
+      "식사·수면 버프 미획득으로 생성 금지"
+    ],
+    "instruction_contains": [
+      "CONDITION_EFFECTS"
+    ]
+  },
+  {
+    "rule": "KEEPER_SCENE_SELECTION",
+    "contains": [
+      "긴장감 7 : 안정 3",
+      "체감 비중",
+      "이동·회의·동일 방법의 반복 조사",
+      "괴물·마감·피해를 새로 만들어",
+      "중요한 발견·대면·전투·추격·탈출"
+    ],
+    "instruction_contains": [
+      "긴장감 7 : 안정 3"
+    ]
+  },
+  {
+    "rule": "STATE_AUTHORITY",
+    "contains": [
+      "FILE_SAVE_V1",
+      "원격 서비스 연결을 저장의 전제 조건으로 삼지 않는다",
+      "기존 원격 세이브는 삭제·재작성하지 않는다"
+    ]
+  },
+  {
+    "rule": "STATE_CANON_SAVE_BINDING",
+    "contains": [
+      "FILE_SAVE_V1",
+      "부모 파일 없이도 현재 파일 하나로 복원",
+      "canon_files",
+      "payload_sha256",
+      "allow_nan=False",
+      "JSON 중복 키·NaN/Infinity",
+      "다른 분기의 높은 번호",
+      "인증 정보",
+      "state의 campaign_id/session_id/rules_version"
+    ],
+    "instruction_contains": [
+      "FILE_SAVE_V1"
+    ]
+  },
+  {
+    "rule": "STATE_COMMIT",
+    "contains": [
+      "파일 전체를 다시 열어",
+      "파일 세이브 생성·검증 완료 — 내려받아 보관",
+      "다운로드 제공 실패는 전달 미완료",
+      "사용자 기기에 저장됐다고 단정하지",
+      "파일을 열면 비공개 내용",
+      "비공개 내용의 채팅 노출을 선택한 경우에만"
+    ]
+  },
+  {
+    "rule": "STATE_RESUME",
+    "contains": [
+      "Supabase/GitHub 접근을 요구하지",
+      "다른 해시는 충돌",
+      "이미 적용한 사건·피해·사망·난수는 재실행하지",
+      "현실 대기시간은 극중 시간으로 더하지",
+      "수첩",
+      "새 분기"
+    ]
+  },
+  {
+    "rule": "STATE_SCHEMA",
+    "contains": [
+      "NPC 표현·관계",
+      "마지막 중요한 발화·미응답 질문",
+      "CONDITION_EFFECTS",
+      "씬 연속성",
+      "문장까지 같은 재생을 보장하지"
+    ]
+  },
+  {
+    "rule": "STATE_ACCESS_ROUTER",
+    "contains": [
+      "FILE_SAVE_V1 기본 모드에서는 DB 조회·쓰기 0회",
+      "외부 접속으로 자동 전환하지"
+    ]
+  },
+  {
+    "rule": "BOTTOM_HUD_CONTRACT",
+    "contains": [
+      "CONDITION_EFFECTS",
+      "이름: 현재 영향 · 완화/해제"
     ]
   }
 ]

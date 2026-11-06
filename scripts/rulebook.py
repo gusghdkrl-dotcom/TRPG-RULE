@@ -80,7 +80,7 @@ def export():
     (target/'sources').mkdir(parents=True)
     for path in RULES.glob('*.md'):shutil.copyfile(path,target/'sources'/path.name)
     for name in ['PROJECT_INSTRUCTIONS.md','START_GAME.md']:shutil.copyfile(ROOT/name,target/name)
-    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침\nsources/*.md → 최신 프로젝트 소스\nSTART_GAME.md → 시작할 때 채팅에 입력\n기존 TXT·구판·개발 일지·감사 문서는 소스에서 제외하세요.\nSupabase 커넥터 연결과 실제 저장 검증은 별도입니다.\n')
+    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침\nsources/*.md → 최신 프로젝트 소스\nSTART_GAME.md → 시작할 때 채팅에 입력\n기존 TXT·구판·개발 일지·감사 문서는 소스에서 제외하세요.\n기본 세이브는 FILE_SAVE_V1 JSON 파일입니다. 실제 생성·재읽기 검증 후 내려받아 보관하고 새 채팅에 첨부하세요. Supabase/GitHub는 선택적 구판 연동입니다.\n')
     manifest={str(p.relative_to(target)):__import__('hashlib').sha256(p.read_bytes()).hexdigest() for p in sorted(target.rglob('*')) if p.is_file()}
     (target/'SHA256.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     archive=ROOT/'dist/TRPG-RULE-project.zip'

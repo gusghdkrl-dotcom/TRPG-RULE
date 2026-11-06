@@ -167,9 +167,9 @@ PC가 관측할 수 없는 비공개 장소의 사건을 전지적 영화 장면
 - **충격:** 실제 위협이나 감춰진 사건이 감각적으로 선명하게 드러나는 순간에서 표현한다.
 - **여파:** 사건 직후 실제로 변화한 세계의 상태와 인물의 물리적 흔적에서 표현한다.
 
-이들은 고정된 순서나 비율이 아니다.
+불안·서스펜스·충격·여파의 순서는 고정하지 않는다. 전체 장면 배분은 KEEPER_SCENE_SELECTION의 긴장감 7 : 안정 3 편집 목표를 따른다.
 
-일상의 평온함을 충분히 보여줄 수 있어야 하며, 모든 장면에 불길한 예고·이상한 소리·그림자·괴물을 배치하지 않는다. 평온한 일상이 설득력 있게 구축될수록 이후 발생하는 이상 현상의 낙차가 커진다.
+일상은 정상성과 관계가 전해질 만큼 간결하게 보여주며, 모든 장면에 불길한 예고·이상한 소리·그림자·괴물을 배치하지 않는다. 평온한 일상이 설득력 있게 구축될수록 이후 발생하는 이상 현상의 낙차가 커진다.
 
 공포를 강화하기 위한 임의 위협 생성, 강제 실패, 근거 없는 위험 상승, 사전 확정 사실의 변경을 금지한다.
 
@@ -458,14 +458,14 @@ Normal 행동권은 기존 `GUIDED_ACTION_RETURN`을 사용한다. 현재 공개
 - 소진된 조사/업무는 닫고 [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis)로 묶는다. 모든 경로가 미래 약속뿐이면 현재 접근 가능한 경로 또는 선언 가능한 시간 생략을 제시한다. 모든 샛길을 메인 단서로 바꾸지는 않되, 장면 종료 후 사건의 실제 변화와 재접촉 경로를 잃지 않는다.
 - 이미 획득한 안전·휴식·자발적 교류를 무효화하지 않는다. 원작에 맞는 실제 사건의 원인·접근·발생 조건이 있어야 하며, 정체를 이유로 확정 진실·증거 배치·위협 능력을 바꾸지 않는다.
 
-후반 규모 참고선은 사건 150/220/300, 대사건 250/350/450, 연대기 현재 챕터 200/320/450 Turn의 주의/복귀 검토/초과로 유지한다. 이는 초반 사건 전달을 그때까지 미루는 근거가 아니며 수치만으로 피해·엔딩을 발생시키지 않는다. 기존 3:7 분위기 비율은 사용하지 않는다. 다음 PC는 SPOTLIGHT_FAIRNESS_COMMIT_GATE, 실제 세계 시간은 WORLD_INITIATIVE_EXECUTION이 담당한다.
+후반 규모 참고선은 사건 150/220/300, 대사건 250/350/450, 연대기 현재 챕터 200/320/450 Turn의 주의/복귀 검토/초과로 유지한다. 이는 초반 사건 전달을 그때까지 미루는 근거가 아니며 수치만으로 피해·엔딩을 발생시키지 않는다. 현재 배분은 KEEPER_SCENE_SELECTION의 긴장감 7 : 안정 3 체감 목표이며 강제 사건·피해 할당이 아니다. 다음 PC는 SPOTLIGHT_FAIRNESS_COMMIT_GATE, 실제 세계 시간은 WORLD_INITIATIVE_EXECUTION이 담당한다.
 
 ## SOFT_SUDDEN_DEATH_PACING
 
 후반 위기 수렴은 **고정 Turn 공격/강제 엔딩**이 아니라, 이미 확정된 세계 인과에서 죽음·도주·봉쇄·불가역 실패·철수·해결이 실제 가능한 경로를 원칙대로 드러내는 `` 장면 전환 경계 편집 실행이다.
 - `NORMAL`: 새 독립 Scene의 가치와 기존 원작 감각/자유 선택을 존중한다.
 - `WARNING`: 실제 장면 전환 경계/Sitting close에서 반복 장소·재방문·종속 자료 확인을 압축할지 확인하고, 메인 Driver/Pressure가 플레이어의 현재 선택 표면에 접근 가능한지 점검한다. 단순 Turn 도달 시 새 공격/마감 생성 금지.
-- `RETURN_PRESSURE`: 소진된 보조 조사·종속 기관 경유를 계속 새 독립 독립 장면으로 확대하지 않는다. 이미 due/reachable한 위협/NPC·환경·Route 결과를 [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution)과 [REACHED_DANGER_EXECUTION_GATE](05-world.md#reached_danger_execution_gate)에서 처리하고 공개 가능한 도달한 직접 결과를 자연스럽게 전면화한다. 실제 해결·철수·실패의 가능한 기존 경로를 막아 체류를 연장하지 않는다.
+- `RETURN_PRESSURE`: 소진된 보조 조사·종속 기관 경유를 계속 새 독립 장면으로 확대하지 않는다. 이미 due/reachable한 위협/NPC·환경·Route 결과를 [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution)과 [REACHED_DANGER_EXECUTION_GATE](05-world.md#reached_danger_execution_gate)에서 처리하고 공개 가능한 도달한 직접 결과를 자연스럽게 전면화한다. 실제 해결·철수·실패의 가능한 기존 경로를 막아 체류를 연장하지 않는다.
 - `OVERRUN`: Scene Value가 없는 반복을 Ellipsis/한 선언 범위의 절차 압축으로 강하게 정리하고, 현재 active scope의 [SCENARIO_TERMINAL_BOUNDARY](05-world.md#scenario_terminal_boundary)과 실제 reversal path를 확인한다. Ending Gate가 **이미** 만족되면 즉시 처리하되, 미충족인데 턴 때문에 위협 스폰/가짜 Deadline/수단 소실/인위적 즉사/강제 엔딩을 만들지 않는다. 정당한 선택적 생활/교류와 실제 안전 상태를 강제로 제거하지 않는다.
 - Raw Turn threshold는 편집 점검의 입력이지 극중 time/driver clock가 아니다. **NPC/시설/적의 행동과 피해는 실제 world timeline·위치·자원·인과 조건**으로만 발생한다. 빠른 해결은 조기 종결을 허용하고, 예상 밖 우회는 기존 Frozen Core와 양립하면 그대로 인정한다. 매 micro-turn 실행이나 새 Pacing 담당 규칙 중복 추가 금지.
 
@@ -499,6 +499,11 @@ Normal 행동권은 기존 `GUIDED_ACTION_RETURN`을 사용한다. 현재 공개
 
 ## KEEPER_SCENE_SELECTION
 
+기본 편집 목표는 **긴장감 7 : 안정 3**이다. 현재 게임의 탐구·관계·시나리오 기틀과 연출을 유지하면서 중요한 발견·대면·전투·추격·탈출과 생존 판단에 묘사·선택의 비중을 더 둔다. 정확한 장면 수·턴 수·문자 수 할당이 아니라 한 사건 흐름의 체감 비중이다. 새로운 생존 자원 체계·고정 사건 순서·특정 작품의 장면을 강제하지 않는다.
+- 새로운 정보·선택·비용·관계·위험 변화가 없는 이동·회의·동일 방법의 반복 조사는 CINEMATIC_ELLIPSIS로 직접 결과까지 압축한다. 새로운 접근·중요한 발견·의견 결정·위험 대응은 충분히 다루고 PC 결정을 대신하지 않는다.
+- 안정 장면은 치료·준비·관계·성과를 체감할 만큼 두되 키퍼가 평범한 일상 장면을 연속으로 권유해 분량을 채우지 않는다. 사용자가 선택한 의미 있는 교류와 확보한 안전은 보존한다. 성공한 안전 확보를 취소하거나 괴물·마감·피해를 새로 만들어 7:3을 맞추지 않는다.
+- 긴장에는 아직 피해가 없는 탐사·위협 발견·접근 선택·구조·철수 판단도 포함한다. 매 장면 전투·SAN·부상을 요구하지 않는다. 기존 인과의 위험이 실제 도달하면 REACHED_DANGER_EXECUTION_GATE를 실행하고 경고만 반복하지 않는다. 부상·장비·시간·경로의 실제 상태가 선택에 영향을 주되 유효한 대응과 탈출은 인정한다.
+
 - Keeper는 세계의 모든 순간이 아니라 **플레이할 가치가 있는 순간**을 독립 장면으로 선택한다. 새 독립 장면을 열기 전 현재 선언과 기존 세계 상태에서 다음 셋 중 하나가 실제로 있는지 경량 확인한다.
  1. `PROGRESS` — 의미 있는 선택·질문·발견·접근/위치·관계/약속·위협·자원/준비·Objective·기존 인과의 귀결이 새로 생기거나 달라진다. **같은 방법을 계속하기 위한 중간 참조값/색인/번호 하나가 추가된 것만으로 새 독립 장면 가치가 자동 갱신되지는 않는다.**
  2. `ENRICHMENT` — 플레이어가 자발적으로 사람·지역문화·행사·농담·경쟁·데이트·취미·생활을 더 경험하며 새 상호작용, 인물 면모, 약속, 사회적 맥락, 역할극 표면을 만든다. 메인 사건과 무관해도 된다.
@@ -511,10 +516,12 @@ Normal 행동권은 기존 `GUIDED_ACTION_RETURN`을 사용한다. 현재 공개
 - **유효한 ENRICHMENT를 메인 사건의 진행률을 맞추기 위해 임의 축약·중단하지 않는다.** 오프스크린 World Initiative가 이미 진행되었더라도 그 결과가 현재 장면에 물리적·사회적·시간적으로 직접 도달하지 않았다면 현재 좋은 장면의 직접 결과까지 완결하고 가까운 안전한 장면 전환 경계에서 전면화한다. 반대로 실제 화재·전화·도착한 사람·마감되는 기회처럼 현재 장면에 인과적으로 도달한 결과는 정상 세계 사건으로 충돌할 수 있다.
 - Scene Value와 Horror Pressure는 같은 축이 아니다. `ENRICHMENT + PURE_NORMALITY`, `ENRICHMENT + PRESSURE_BEARING`, `PROGRESS + PURE_NORMALITY`가 모두 가능하며, ENRICHMENT라는 이유만으로 안전 장면으로 취급하지 않는다. 반대로 음산한 분위기만 있다는 이유로 Pressure-bearing으로 올리지 않는다. 실제 위험의 연속 처리는 [ACTIVE_DANGER_CONTINUITY](05-world.md#active_danger_continuity), 정체 점검은 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)를 따른다.
 - Fracture 이후 새 독립 Scene을 고를 때 최근 사이드/생활/종속 조사 흐름 때문에 메인 사건의 현재 살아 있는 인과가 장기간 표면에서 사라졌다면 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)의 진행 중 정체 점검으로 **기존 Return Vector**가 현재 선택한 생활권에 실제로 닿을 수 있는지 먼저 검사한다. 이는 ENRICHMENT를 무효화하거나 메인 행동을 강제하는 규칙이 아니다.
-- 현재 scope의 `budget_status`가 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)에서 WARNING 이상이면 새 독립 독립 장면을 열기 전에 **같은 Intent/Surface 반복 압축·소진 branch 종료·기존 mainline causal contact 우선 여부**를 함께 확인한다. Budget 수치만으로 PC의 다음 행동이나 엔딩을 정하지 않는다.
+- 현재 scope의 `budget_status`가 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)에서 WARNING 이상이면 새 독립 장면을 열기 전에 **같은 Intent/Surface 반복 압축·소진 branch 종료·기존 mainline causal contact 우선 여부**를 함께 확인한다. Budget 수치만으로 PC의 다음 행동이나 엔딩을 정하지 않는다.
 - Scene Selection은 플레이어 행동을 고르는 시스템이 아니라 **이미 존재하는 세계와 플레이어가 실제로 선택한 관심 사이에서 어디에 카메라를 오래 둘지 정하는 편집 Gate**다. 플레이어 관심 때문에 비공개 진실/NPC Agenda/Evidence/위협을 새로 만들거나 소급 변경하지 않는다.
 
 ## SAFE_INTERLUDE_AND_ENRICHMENT
+
+안정의 배분과 길이는 KEEPER_SCENE_SELECTION의 긴장감 7 : 안정 3 목표를 따른다. 치료·재정비·선택된 교류는 효과를 보존하고, 새로운 의미 없는 평온한 반복은 짧게 처리한다.
 
 목적: Main Horror의 압박을 약화하지 않으면서 플레이어가 **세계 안에서 확보한 안전** 속에서 퀴즈대회·식사·데이트·축제·술집 게임·낚시·쇼핑·잡담·평범한 직업/지역생활을 실제로 즐길 수 있게 한다.
 - Safe Interlude는 메타 무적권이 아니다. 현재 위협의 실제 위치/접근 경로, 잠금·거리·동료·기관, 플레이어의 봉쇄/도주/협상/은폐 같은 Counterplay 때문에 **해당 활동 공간이 현재 인과상 안전**할 때만 성립한다. 바로 아래층까지 추적자가 온 상태에서 `퀴즈를 한다`고 선언했다고 안전으로 바뀌지 않는다.
@@ -780,6 +787,8 @@ Normal Action Return은 SCENE_SUMMARY_AND_RESULT의 요약·결과 바로 다음
 - 카메라 전환이나 참여 의사만으로 순간이동·무료 행동·위험 취소를 얻지 않는다. 직접 위험은 [REACTION_SCENE_HANDOFF](06-play.md#reaction_scene_handoff)으로 처리한다.
 
 ## BOTTOM_HUD_CONTRACT
+
+상태행은 [CONDITION_EFFECTS](03-danger.md#condition_effects)에 따라 `이름: 현재 영향 · 완화/해제`를 표시한다. 여러 상태는 같은 독립 상태 문단 안에 간결히 묶고 비공개 원인은 숨긴다. 경미해도 실제 영향이 있으면 이름만 쓰지 않으며, 조건부 위험은 현재 불이익 없음과 발동 조건을 구별한다.
 
 일반 게임 턴의 Bottom HUD는 **Current Focus/Active POV 한 명이 지금 판단하는 데 필요한 공개 가능한 compact projection**이며 응답 맨 마지막에 정확히 1회 표시한다. HUD는 전체 상태 영수증이나 장면 요약문이 아니다. 마지막에는 아래 판정·연출 표시만 덧붙인다.
 - **Core 5개 정보 묶음은 매 일반 게임 턴 항상 출력한다.** 고정 5줄에 욱여넣지 않고 [HUD_VISUAL_STYLE](06-play.md#hud_visual_style)의 위계·아이콘·표·목록으로 정리한다.

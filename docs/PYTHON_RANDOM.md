@@ -1,5 +1,7 @@
 # 실제 Python 난수 실행과 저장 호환
 
+현재 기본 FILE_SAVE_V1은 Python 요청·실제 결과·적용 상태를 전체 현재 state에 보존한다. 아래 서버 검증안은 선택한 구판 원격 경로에만 해당하며 파일 저장에 구판 RNG 큐를 요구하지 않는다. 임시 실행 파일과 검증·다운로드 제공한 파일 세이브를 구별한다.
+
 실행 정본은 [PYTHON_RANDOM_EXECUTION](../rules/01-core.md#python_random_execution), [주사위](../rules/01-core.md#ai_die_mapping_version), [생성 stream](../rules/04-setup.md#generation_rng_separation), [구판 전환](../rules/07-state.md#state_compatibility)이다.
 
 PC d100만 플레이어가 제공한다. PC가 입거나 가하는 피해량·회복·SAN 감소량 등 키퍼가 맡는 수치도 실제 Python으로 처리한다. 세계·특성·Luck·직업·원작 후보 등 생성도 Python이다. 무작위가 아닌 세계 인과·수동 선택을 주사위로 바꾸지 않는다.
