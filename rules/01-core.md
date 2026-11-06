@@ -42,12 +42,12 @@ FOG는 **플레이어 전체와 아직 발견하지 못한 세계 사이**에만
 ## CORE_WORKFLOW
 
 매 응답 처리 순서:
-1. 현재 단계·Focus·위치·시간과 열린 판정/전투/추격/반응/화면 선택 대기를 읽는다.
+1. 최초 로드 후 갱신해 온 현재 작업 상태에서 단계·Focus·위치·시간과 열린 판정/전투/추격/반응/화면 선택 대기를 확인한다. 매 응답 세이브 파일을 읽는 단계가 아니다. 실제 값이 유실되면 STATE_ACCESS_ROUTER를 따른다.
 2. 메타 요청은 시간 정지로 처리한다. 이미 열린 절차가 있으면 그 저장된 단계부터 재개한다.
 3. [TURN_RESPONSE_BUDGET](01-core.md#turn_response_budget)에 따라 현재 선언에 필요한 본문을 재사용하거나 색인에서 조회한다. 적용 조건·수치·예외를 확인하기 전 상태를 바꾸지 않는다. 규칙을 읽을 수 없으면 필요한 부분을 확인할 때까지 그 변경만 보류한다.
 4. PC d100은 플레이어에게 요청하고 대기한다. 그 밖의 무작위 처리는 PYTHON_RANDOM_EXECUTION으로 실제 실행한다. 확보한 값으로 담당 결과를 한 번 적용한다.
 5. 일반 행동·대화는 TURN_INCREMENT, 경과 추정·정산은 SCENE_ELAPSED_TIME_SETTLEMENT, 생활 효과의 획득/소모/만료는 LIFESTYLE_BUFFS를 따른다. 지속 상태의 적용·완화·해제·악화 경계는 [CONDITION_EFFECTS](03-danger.md#condition_effects)로 실제 행동/경과에 맞춰 한 번 처리한다. 실제 경과시간이 있으면 [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution)으로 작업 상태의 해당 구간과 화면 밖 원인을 확인하고 도달한 세계·NPC·환경 결과를 한 번 처리한다. 다음 30턴 저장/복기까지 미루지 않는다. 현재 자료가 있으면 추가 조회하지 않으며 같은 시간·피해·자원을 이중 반영하지 않는다.
-6. 비공개 상태를 갱신하고, [DIRECTOR_WRITER_KEEPER_CONVERGENCE](06-play.md#director_writer_keeper_convergence)의 통합 연출·서술로 공개 가능한 결과·행동권·HUD를 출력한다. 별도 작성자/검수 도구를 호출하는 단계가 아니다.
+6. [STATE_WORKING_CONTEXT](07-state.md#state_working_context)에 공개·비공개 상태의 확정 변경을 즉시 반영하고, 같은 최신값으로 [DIRECTOR_WRITER_KEEPER_CONVERGENCE](06-play.md#director_writer_keeper_convergence)의 통합 연출·서술로 공개 가능한 결과·행동권·HUD를 출력한다. 별도 작성자/검수 도구를 호출하는 단계가 아니다.
 7. 선언이 끝난 안전한 장면 경계에서 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)의 첫 목표 뒤 실제 연루·초반 30턴 이내 큰 사건·완결 장면 2개 정체 기준과 다음 PC를 검토한다. 일상/관계 장면을 무효화하지 않되 초반 큰 사건 마감을 지킨다. 반복 공격·PC 선택을 턴 수로 강제하지 않는다. 20배수 안전 경계에는 [PRIVATE_CANON_PERIODIC_REVIEW](07-state.md#private_canon_periodic_review)로 정본 전체를 재독한다. 저장 조건이 성립하면 [STATE_CADENCE](07-state.md#state_cadence)를 적용한다.
 소유권: 판정은 판정 문서, SAN/전투는 위험 문서, 시간/Focus는 진행 문서, 비공개 세계 인과는 세계 문서, 영속 저장은 상태 문서가 담당한다. 실제 원인이 같은 상태를 두 번 변경하지 않는다.
 
@@ -101,7 +101,7 @@ result = sum(faces) + 1  # 확정된 2d6+1의 원값과 합계를 보존
 필요한 규칙 ID만 찾고 현재 문맥의 동일 판 본문은 재사용한다. 누락·불확실·변경된 절만 TURN_RESPONSE_BUDGET에 따라 조회한다. 확인하지 못한 수치·예외는 추측하지 않는다. 열린 판정·전투·추격·반응·선택은 그 단계부터 이어가며 같은 시간·피해·난수·자원을 두 번 반영하지 않는다.
 
 조회 범위는 현재 선언과 상태가 실제 요구하는 규칙으로 제한한다.
-- 먼저 질문을 나눈다. `어떤 기능/판정인가`는 룰북, `이 PC의 수치/이 장소의 사실은 무엇인가`는 현재 GM_STATE, `최초 비공개 사실`은 [PRIVATE_CANON_ACCESS_ROUTER](07-state.md#private_canon_access_router)의 정본 문서, `현재 동적 상태 유실`은 정확한 세이브 파일에서 복구한다. 규칙 조회 실패를 세이브 검색으로 대체하지 않는다.
+- 먼저 질문을 나눈다. `어떤 기능/판정인가`는 룰북, `이 PC의 수치/이 장소의 사실은 무엇인가`는 현재 GM_STATE, `최초 비공개 사실`은 [PRIVATE_CANON_ACCESS_ROUTER](07-state.md#private_canon_access_router)의 정본 문서, `현재 동적 상태 유실`은 현재 문맥의 마지막 확인값·이후 확정 변경을 먼저 대조하고 부족한 범위만 STATE_ACCESS_ROUTER로 정확한 파일과 대조한다. 규칙 조회 실패를 세이브 검색으로 대체하지 않는다.
 - 일상 대화·명백한 관찰·이미 해결된 절차: 현재 상태로 직접 반응한다.
 - 불확실성이 있으면 [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate)을 확인한다.
 - 문헌 찾기·읽기·시대 해석은 [INVESTIGATION_SKILL_ROUTING](02-checks.md#investigation_skill_routing)으로 구분한다. 기능 선정이나 d100 요청 자체는 저장소 접근 사유가 아니다.

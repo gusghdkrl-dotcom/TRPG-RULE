@@ -1,6 +1,6 @@
 # 전체 규칙 위치
 
-개발용 색인. 프로젝트 소스에는 넣지 않는다.
+개발용 색인. 프로젝트 소스에는 넣지 않는다. 최초 전체 로드 이후 갱신은 STATE_WORKING_CONTEXT, 파일 접근 조건은 STATE_ACCESS_ROUTER, 비공개 프로젝트 소스 조회는 PRIVATE_CANON_ACCESS_ROUTER가 담당한다.
 
 | PRIVATE_CANON_ACCESS_ROUTER | [07-state.md](../rules/07-state.md#private_canon_access_router) |
 | PRIVATE_CANON_DOCUMENT | [07-state.md](../rules/07-state.md#private_canon_document) |

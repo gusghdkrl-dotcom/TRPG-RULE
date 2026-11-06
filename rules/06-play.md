@@ -790,7 +790,7 @@ Normal Action Return은 SCENE_SUMMARY_AND_RESULT의 요약·결과 바로 다음
 
 상태행은 [CONDITION_EFFECTS](03-danger.md#condition_effects)에 따라 `이름: 현재 영향 · 완화/해제`를 표시한다. 여러 상태는 같은 독립 상태 문단 안에 간결히 묶고 비공개 원인은 숨긴다. 경미해도 실제 영향이 있으면 이름만 쓰지 않으며, 조건부 위험은 현재 불이익 없음과 발동 조건을 구별한다.
 
-일반 게임 턴의 Bottom HUD는 **Current Focus/Active POV 한 명이 지금 판단하는 데 필요한 공개 가능한 compact projection**이며 응답 맨 마지막에 정확히 1회 표시한다. HUD는 전체 상태 영수증이나 장면 요약문이 아니다. 마지막에는 아래 판정·연출 표시만 덧붙인다.
+일반 게임 턴의 Bottom HUD는 **Current Focus/Active POV 한 명이 지금 판단하는 데 필요한 공개 가능한 compact projection**이며 응답 맨 마지막에 정확히 1회 표시한다. HUD는 STATE_WORKING_CONTEXT에서 이번 확정 결과를 반영한 같은 최신값을 표시한다. 마지막 저장 시점 값이나 직전 HUD를 그대로 복사하지 않는다. 현재값이 실제 없으면 해당 결과/표시만 확인 불가로 두고 STATE_ACCESS_ROUTER로 복구하며 숫자를 추측하지 않는다. HUD 출력 자체를 위한 파일 재로드·전체 검증은 하지 않는다. HUD는 전체 상태 영수증이나 장면 요약문이 아니다. 마지막에는 아래 판정·연출 표시만 덧붙인다.
 - **Core 5개 정보 묶음은 매 일반 게임 턴 항상 출력한다.** 고정 5줄에 욱여넣지 않고 [HUD_VISUAL_STYLE](06-play.md#hud_visual_style)의 위계·아이콘·표·목록으로 정리한다.
  1) PC 슬롯·이름, Scene Turn, 현재 Focus의 진행/대기 상태
  2) 현재 게임 시각·해당 PC에게 공개된 위치
