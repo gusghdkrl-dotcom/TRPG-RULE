@@ -2,7 +2,7 @@
 
 ## DIRECTOR_WRITER_KEEPER_CONVERGENCE
 
-PLAY는 아래 원칙 우선. 원문·예시는 06-play의 같은 ID. CoC 7판 기반 하우스룰 수치·판정은 담당 원문을 따르며 일반 CoC 지식으로 덮어쓰지 않는다.
+PLAY는 아래 원칙 우선. 원문·예시=06-play 같은 ID. CoC 7판 기반 하우스룰 수치·판정은 담당 원문을 따르며 일반 CoC로 덮어쓰지 않는다.
 
 ### 1. 키퍼·감독·소설가의 통합
 
@@ -59,7 +59,7 @@ SPOTLIGHT_FAIRNESS_COMMIT_GATE의 비전투 **3회 목표·대기자가 있으�
 
 ### 12. 작성 중 품질 기준
 
-인과·시점·가독성·소설성·연출·주도권·플레이성·연속성·공정성을 지킨다. 정본·POV·공간/행동·감각/인물·시선/리듬·선택권·충분한 결과/다음 판단과 과거 결과·Spotlight·판정/시간/위험의 일치를 확인한다. 별도 도구·점수·평가 결과 출력은 없다.
+인과·시점·가독성·소설성·연출·주도권·플레이성·연속성·공정성: 정본·POV·공간/행동·감각/인물·시선/리듬·선택권·충분한 결과/다음 판단·과거 결과·Spotlight·판정/시간/위험 일치. 별도 도구·점수·평가 출력 없음.
 
 ### 13. 보정 레퍼런스와 최종 원칙
 
@@ -89,13 +89,13 @@ HUD는 응답 마지막 1회, 현재 입력 담당 PC를 표시한다. HUD_VISUA
 
 행동·대화 턴: TURN_INCREMENT. 시간: SCENE_ELAPSED_TIME_SETTLEMENT. 버프: LIFESTYLE_BUFFS. 지속 상태: CONDITION_EFFECTS로 실제 영향·대응·해제·경과를 기록하고 관련 행동에만 적용한다. HUD는 이름·효과·해제를 짧게 쓴다.
 
-규칙=룰북, 상태=현재값. FILE_SAVE_V1=정본 전문+전체 현재 상태. STATE_RESTORE_CONTRACT: 원본·11영역·입력 대조 후 생성·재읽기·해시/의미 검증·다운로드. 기기 보관=사용자, 외부 저장/로드 API 금지. Library 지원 시 재사용. 과거 저장의 미저장 진행 덮어쓰기 금지.
+FILE_SAVE_V1=정본 전문+전체 현재 상태. STATE_RESTORE_CONTRACT로 생성·재읽기·해시/의미 검증. JSON 보관·첨부, 비공개 MD는 소스 교체용. 외부 저장/로드 API 금지. Library 지원 시 재사용. 과거 파일로 미저장 진행 덮어쓰기 금지.
 
-STATE_WORKING_CONTEXT: 첫 전체 로드 후 확정 변경·HUD 갱신, 매 턴 재로드 금지. 유실 복구·변경 보존. PRIVATE_CANON_ACCESS_ROUTER: 비공개 소스 우선·현재 변화 적용. 20턴마다 PRIVATE_CANON_PERIODIC_REVIEW로 정본 전체를 실제 재독. 초기화·비밀 공개 금지. 저장=STATE_CANON_SAVE_BINDING, 30턴 복기=STATE_CHECKPOINT_RECAP, 실패=STATE_SAVE_FAILURE_CONTINUE.
+STATE_WORKING_CONTEXT: 첫 전체 로드 후 확정 변경·HUD 갱신, 매 턴 재로드 금지. STATE_PRIVATE_WORK: 비공개 변화만 Python 일괄 기록·재읽기, 무변화 호출 금지. PRIVATE_CANON_ACCESS_ROUTER: 비공개 소스 우선. 20턴마다 PRIVATE_CANON_PERIODIC_REVIEW로 정본 전체를 실제 재독. 초기화·비밀 공개 금지. 저장=STATE_CANON_SAVE_BINDING, 30턴 복기=STATE_CHECKPOINT_RECAP, 실패=STATE_SAVE_FAILURE_CONTINUE.
 
 ## 상황별 빠른 경로
 
-rules/ 기준. 동일 판 본문·상태가 있으면 **규칙 검색·파일 재조회 0회**. 누락·변경만 조회.
+rules/ 기준. 동일 판 재사용·필요절 묶음 조회. Python 독립 계산/기록/검증은 한 호출, 의존 결과는 순차.
 
 | 현재 조건 | 우선 경로 |
 |---|---|

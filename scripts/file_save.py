@@ -286,6 +286,9 @@ def validate_payload(payload, *, require_continuity=True):
     canonical(payload)
     if require_continuity:
         validate_continuity(payload)
+        if "private_work" in state:
+            from private_state import verify_save_work
+            verify_save_work(payload)
 
 
 def encode(payload):
