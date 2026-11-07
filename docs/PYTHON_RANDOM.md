@@ -1,7 +1,5 @@
 # 실제 Python 난수 실행과 저장 호환
 
-FILE_SAVE_V1은 Python 요청·실제 결과·적용 상태를 전체 현재 state에 보존한다. 외부 저장 연동은 없으며 구판 큐를 요구하는 서버 검증안/배포 SQL은 제거했다. 임시 실행 파일과 실제 검증·제공한 세이브를 구별한다.
-
 실행 정본은 [PYTHON_RANDOM_EXECUTION](../rules/01-core.md#python_random_execution), [주사위](../rules/01-core.md#ai_die_mapping_version), [생성 stream](../rules/04-setup.md#generation_rng_separation), [구판 전환](../rules/07-state.md#state_compatibility)이다.
 
 PC d100만 플레이어가 제공한다. PC가 입거나 가하는 피해량·회복·SAN 감소량 등 키퍼가 맡는 수치도 실제 Python으로 처리한다. 세계·특성·Luck·직업·원작 후보 등 생성도 Python이다. 무작위가 아닌 세계 인과·수동 선택을 주사위로 바꾸지 않는다.
@@ -16,8 +14,12 @@ session + random_event_id별 요청(용도/ref·식·분포·범위·개수·mod
 
 도구가 없는 일반 ChatGPT 프로젝트에서는 규칙만으로 Python 실행기를 설치할 수 없다. 난수가 필요한 부분만 보류하고 한계를 알린다. 도구 없이 임의 숫자를 만들거나 코드 블록을 실행 결과처럼 출력하지 않는다. 필요한 무작위값이 없는 상태에서 성공/피해를 확정하지 않는다. 도구 실행 내역이 공개되는 클라이언트에서는 완전한 비공개 굴림을 보장하지 않는다. 미래 큐나 비밀 인물 설명을 코드로 출력하지 않으며 공개 결과만 기존 HUD 규칙으로 투영한다.
 
-## 보유 구판 파일과 Python 기록
+## 기존 세이브와 서버 검증안
 
-사용자 보유 구판 원문의 hash·과거 판정·확정 세계/PC/후보는 수정하지 않는다. 큐의 미사용 값은 현행 굴림에 쓰지 않고 이미 산출된 원값은 이어간다. 전환 경계와 실제 Python 실행 기록을 FILE_SAVE_V1 state에 보존한다. 가짜 큐·가짜 성공으로 누락을 숨기지 않는다.
+기존 verified snapshot/hash·과거 판정·확정 세계/PC/후보를 수정하지 않는다. 큐의 미사용 값은 현행 신규 굴림에 쓰지 않고, 이미 산출된 원값은 이어간다. 전환 경계와 Python 실행 출처/기록은 기존 runtime/pending 동적 영역에 보존한다. 과거 큐 필드는 이행 감사 자료이며 Python 값을 끼워 넣거나 과거 버전 표식을 덮어쓰지 않는다.
 
-`python3 scripts/test_python_random.py`는 실제 본문의 Python 예시·범위·유불리 자리수 분포·seed 재현/축 분리를 확인한다. 파일 구조와 손상 검사는 `test_file_save.py`가 담당하며 실제 ChatGPT 도구 호출 준수율·장기 기억·서사 연속성은 별도 검증이 필요하다.
+**알려진 호환 차이:** 저장소의 `docs/sql/document_bound_payload_v1.sql`은 구판 A19_REJECTION100·rng_queue·소비 위치를 필수 검사한다. 해당 SQL이 설치된 서버는 이 조건을 제거한 신규 Python 전용 payload를 그대로 수락하지 못한다. 이 파일은 구판 검증 경로의 자료로 유지하며 현행 Python 저장 지원으로 소개하지 않는다. 운영 서버의 실제 설치 상태는 이번 작업에서 조회하지 않았다.
+
+실제 운영 적용은 별도 범위에서 신규 Python 기록의 의미 검사·기존 원문 보존·commit/verify/read-back/새 채팅 재개를 검증해야 한다. 문서 변경은 운영 SQL 적용이 아니다. 가짜 큐/가짜 성공으로 통과시키지 않고, 저장이 실패해도 현재 플레이는 STATE_SAVE_FAILURE_CONTINUE로 이어간다. 미저장 진행의 새 채팅 복원은 보장하지 않는다.
+
+개발용 검증은 `python3 scripts/test_python_random.py`로 실행한다. 실제 본문의 Python 예시·범위·유불리 자리수 조합의 정확한 분포·seed 재현/축 분리를 확인하며 ChatGPT 도구 호출 준수율이나 서버 저장을 검증하지 않는다.

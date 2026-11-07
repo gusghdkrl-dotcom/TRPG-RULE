@@ -110,6 +110,70 @@
     ]
   },
   {
+    "rule": "STATE_CADENCE",
+    "contains": [
+      "setup_bootstrap",
+      "play_start",
+      "periodic_scene_turn",
+      "terminal_pre_finalization",
+      "manual",
+      "30/60/90",
+      "자동 주기를 초기화하지",
+      "STATE_SAVE_FAILURE_CONTINUE",
+      "양쪽 저장 모두 실패한 경우도 동일"
+    ],
+    "excludes": [
+      "저장 복구 전 진행을 보류",
+      "다음 독립 플레이 변경을 보류"
+    ]
+  },
+  {
+    "rule": "STATE_COMMIT",
+    "contains": [
+      "<session_id>:cp<version>",
+      "SHA-256",
+      "pending",
+      "verify",
+      "exact read-back",
+      "STATE_CHECKPOINT_RECAP",
+      "같은 데이터를 중복 조회하지"
+    ]
+  },
+  {
+    "rule": "STATE_RECOVERY",
+    "contains": [
+      "최대 1회",
+      "자동 승격·폐기하지",
+      "현재 작업 상태가 있으면 계속 진행"
+    ],
+    "excludes": [
+      "재로드를 복구한 뒤 다음 독립 플레이 변경"
+    ]
+  },
+  {
+    "rule": "STATE_RESUME",
+    "contains": [
+      "orphan pending",
+      "최신 hash-valid verified",
+      "열린 판정",
+      "새 비밀",
+      "STATE_WORKING_CONTEXT",
+      "세계 진행 색인",
+      "STATE_CHECKPOINT_RECAP",
+      "DOCUMENT_BOUND",
+      "canon_source_required",
+      "전체 누적 world_delta·new_entities·tombstones·processed_event_ids",
+      "PRIVATE_CANON_PERIODIC_REVIEW"
+    ]
+  },
+  {
+    "rule": "STATE_COMPATIBILITY",
+    "contains": [
+      "수정·재해시·필드 삭제하지",
+      "실제 서버 검증 계약"
+    ]
+  },
+  {
     "rule": "NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER",
     "contains": [
       "WHALE_WATCHER",
@@ -168,7 +232,7 @@
       "장면 2개 연속",
       "30턴을 따로 주지",
       "현재 가능한 접점",
-      "긴장감 7 : 안정 3 체감 목표",
+      "3:7 분위기 비율은 사용하지",
       "첫 큰 사건이 실제 발생",
       "조사 의뢰·이상 징후만",
       "한 명만 강한 연루 이유",
@@ -249,13 +313,7 @@
       "컨텍스트 손실",
       "full snapshot",
       "900~1,600자",
-      "측정값을 만들지",
-      "필요한 도구를 금지하거나 횟수 상한",
-      "확정된 독립 작업은 묶고, 의존하는 결과는 순서를 지킨다",
-      "판정 전 기능/상대값",
-      "기록·재읽기 대조",
-      "실제 난수 결과가 다음 조건/선택을 바꾸는 경계",
-      "필요한 검증·판정·실제 Python 실행 자체는 유지"
+      "측정값을 만들지"
     ],
     "excludes": [
       "300~600자"
@@ -513,6 +571,21 @@
     ]
   },
   {
+    "rule": "STATE_ACCESS_ROUTER",
+    "contains": [
+      "일반 응답의 기본값은 DB 조회 0회",
+      "미저장 HP·시간·위치·난수",
+      "부모 검증은 저장 경계",
+      "저장 없는 테스트",
+      "commit/verify/exact read-back",
+      "현재 필요한 상태 필드/ref 또는 저장 작업",
+      "규칙 확인만으로는 없음",
+      "부분 조회가 실제 지원되지 않으면",
+      "별도 명시적 삭제 지시",
+      "기능 선정·판정 요청/굴림 결과"
+    ]
+  },
+  {
     "rule": "ROUTINE_MOVEMENT_FAST_PATH",
     "contains": [
       "출발·이동·도착을 한 응답",
@@ -601,7 +674,7 @@
       "다른 NPC에게 한 말의 수신자를 바꾸지 않는다",
       "소급 창작하지 않는다",
       "오류 대사 자체는 전달 근거가 아니다",
-      "매 턴 세이브/정본 전체를 조회하지 않는다"
+      "매 턴 DB/정본 전체를 조회하지 않는다"
     ]
   },
   {
@@ -616,9 +689,27 @@
     ]
   },
   {
+    "rule": "STATE_WORKING_CONTEXT",
+    "contains": [
+      "실제 로드/생성한 게임 데이터",
+      "추론 과정 자체를 게임 데이터의 저장 장소로 간주하지",
+      "현재 장소 밖도 포함한 활성 Driver",
+      "문맥에서 빠질 수",
+      "별도 숨은 메모장을 유지한다고 주장하지",
+      "공개 답변·HUD·수첩·공개 GitHub",
+      "과거 snapshot을 현재 전체 상태로 덮어쓰지",
+      "작업 범위 밖까지 포함한 full snapshot",
+      "현실 시간에 자동 실행되는 백그라운드 프로세스",
+      "Scene Turn 30/60/90",
+      "전체 복기를 반복하지",
+      "PRIVATE_CANON_DOCUMENT",
+      "STATE_CANON_SAVE_BINDING"
+    ]
+  },
+  {
     "rule": "ACTIVE_PLAY_ROUTING_FIREWALL",
     "contains": [
-      "규칙 조회 실패를 세이브 검색으로 대체하지",
+      "규칙 조회 실패를 DB 검색으로 대체하지",
       "INVESTIGATION_SKILL_ROUTING",
       "기능 선정이나 d100 요청 자체는 저장소 접근 사유가 아니",
       "STATE_WORKING_CONTEXT"
@@ -640,8 +731,26 @@
       "NPC 목적·위협·약속·예정 사건",
       "도달한 결과를 한 번 반영",
       "화면 밖도 진행하며 실제 관측 전에는 숨긴다",
-      "30턴 저장까지 미루거나 매번 파일을 재조회하지",
+      "30턴 저장까지 미루거나 매번 DB를 조회하지",
       "해결·회피 성과를 보존"
+    ]
+  },
+  {
+    "rule": "STATE_CHECKPOINT_RECAP",
+    "contains": [
+      "게임 시작과 Scene Turn 30/60/90",
+      "현재 장면 밖의 모든 비공개 요소까지",
+      "같은 version의 verified exact read-back 결과를 그대로 사용",
+      "별도 latest/list/load를 호출하지",
+      "새 채팅 STATE_RESUME",
+      "본문이 잘렸다면",
+      "미래 사건 결과를 확정하지",
+      "원문을 간략한 요약으로 대체 저장하지",
+      "사건·난수·SAN·피해·시간을 다시 적용하지",
+      "지문/HUD/수첩으로 출력하지",
+      "무손실 기억이 보장됐다고 주장하지",
+      "매 30턴에 불변 문서 전체를 다시 생성·조회하지",
+      "PRIVATE_CANON_ACCESS_ROUTER"
     ]
   },
   {
@@ -715,9 +824,7 @@
       "다음 30턴 저장/복기까지 미루지",
       "SCENE_PACING_GATE",
       "완결 장면 2개 정체",
-      "현재 자료가 있으면 추가 조회하지",
-      "매 응답 세이브 파일을 읽는 단계가 아니다",
-      "공개·비공개 상태의 확정 변경을 즉시 반영"
+      "현재 자료가 있으면 추가 조회하지"
     ]
   },
   {
@@ -813,9 +920,7 @@
       "본문을 붙이지",
       "구판 세이브",
       "인증키·서버 자격 증명은 넣지",
-      "실제 캠페인 비밀을 포함하지",
-      "플레이 중 비공개 정본 조회는 등록된 프로젝트 소스를 기본",
-      "소스 등록을 로드의 필수 조건으로 만들지"
+      "실제 캠페인 비밀을 포함하지"
     ]
   },
   {
@@ -833,13 +938,45 @@
       "이미 처리한 사건은 복원/조회로 재실행하지",
       "조회한 비밀을 그대로 플레이 지문에 붙이지",
       "동적 상태가 유실됐으면 STATE_ACCESS_ROUTER",
-      "PRIVATE_CANON_PERIODIC_REVIEW",
-      "등록된 프로젝트 소스를 우선 조회",
-      "동일 판본 정본 전문",
-      "현재 작업 상태의 Driver 색인"
+      "PRIVATE_CANON_PERIODIC_REVIEW"
     ],
     "instruction_contains": [
       "PRIVATE_CANON_ACCESS_ROUTER"
+    ]
+  },
+  {
+    "rule": "STATE_CANON_SAVE_BINDING",
+    "contains": [
+      "LEGACY_FULL",
+      "DOCUMENT_BOUND",
+      "기존 verified LEGACY_FULL checkpoint는 원문·hash·history·백업 그대로 유지한다",
+      "정본 이후 누적 현재값",
+      "마지막 저장 이후의 delta만 기록하는 체인은 금지한다",
+      "tombstone",
+      "coverage",
+      "안 읽힌 범위와 사망/취소 항목도 누락시키지 않는다",
+      "논리적 full GM_STATE",
+      "매 저장에서 불변 원문을 중복 전송하지 않는다"
+    ],
+    "instruction_contains": [
+      "STATE_CANON_SAVE_BINDING"
+    ]
+  },
+  {
+    "rule": "STATE_SAVE_FAILURE_CONTINUE",
+    "contains": [
+      "세이브 실패는 게임 진행을 막지 않는다",
+      "setup_bootstrap/play_start/periodic/manual/terminal",
+      "재개 허가·실패 수락·추가 동의를 매번 요구하지",
+      "다음 30배수",
+      "원문·hash·version/event를 동결",
+      "그동안 진행한 최신 상태를 별도 체크포인트로 저장",
+      "현재 진행까지 저장됐다고 하지",
+      "실제 상태 유실과 저장 장애를 구분",
+      "종료를 완결"
+    ],
+    "instruction_contains": [
+      "STATE_SAVE_FAILURE_CONTINUE"
     ]
   },
   {
@@ -879,6 +1016,24 @@
     ]
   },
   {
+    "rule": "STATE_CANON_SAVE_BINDING",
+    "contains": [
+      "DOCUMENT_BOUND(DB1)",
+      "document_bound_format",
+      "canon_ref",
+      "file_sha256",
+      "change_coverage",
+      "baseline_entity_ids",
+      "changed_entity_ids",
+      "world_delta",
+      "processed_event_ids",
+      "LEGACY_FULL 대용량 payload로 자동 재전송하지 않는다"
+    ],
+    "excludes": [
+      "문서가 있다는 이유로 서버가 요구하는 원문·anchor를 삭제하지 않는다"
+    ]
+  },
+  {
     "rule": "PRIVATE_CANON_PERIODIC_REVIEW",
     "contains": [
       "Scene Turn 20/40/60/80",
@@ -890,12 +1045,9 @@
       "최신 누적 변경 상태를 적용",
       "정본 재독 20턴과 게임 저장 30턴은 별개",
       "정본 전체 읽기는 한 번만",
-      "파일 저장 실패와 관계없이",
+      "Supabase 저장 실패와 관계없이",
       "재시도 경계와 완료 여부를 구분",
-      "현재 확인된 사실로 처리할 수 있는 플레이는 계속",
-      "진행 상태를 저장 시점으로 다시 로드하는 절차가 아니다",
-      "같은 내용을 검색 발췌로 다시 조립하지",
-      "실제 전체 재독을 생략하는 문맥 기억 사용이 아니다"
+      "현재 확인된 사실로 처리할 수 있는 플레이는 계속"
     ],
     "instruction_contains": [
       "20턴마다 PRIVATE_CANON_PERIODIC_REVIEW",
@@ -913,7 +1065,7 @@
       "아직 미결정이면 완료로 쓰지 않는다",
       "비공개 정본·미발견 진실",
       "기존 전용 출력/입력 계약이 우선",
-      "별도 세이브 파일 조회/저장·정본 재독을 유발하지"
+      "별도 Supabase 조회/저장·정본 재독을 유발하지"
     ]
   },
   {
@@ -1329,6 +1481,25 @@
     ]
   },
   {
+    "rule": "STATE_SCHEMA",
+    "contains": [
+      "학습",
+      "경계 event ID",
+      "적용 전후 값",
+      "미선택 근거의 마감",
+      "상점의 공개 재고/가격",
+      "정본 원문이 아닌 동적 PC/활성 진행 필드"
+    ]
+  },
+  {
+    "rule": "STATE_INTEGRITY",
+    "contains": [
+      "성장 후보 대기와 다음 구간의 새 근거",
+      "상점의 미결정 구매/답변",
+      "동일 경계/PC"
+    ]
+  },
+  {
     "rule": "BOTTOM_HUD_CONTRACT",
     "contains": [
       "🎲 판정",
@@ -1346,10 +1517,7 @@
       "표·열별 목록·빈 셀",
       "해설·각주·규칙 원리",
       "작업 상태에 보존",
-      "이번 서식 변경으로 수치를 바꾸지 않는다",
-      "이번 확정 결과를 반영한 같은 최신값",
-      "직전 HUD를 그대로 복사하지",
-      "HUD 출력 자체를 위한 파일 재로드·전체 검증은 하지"
+      "이번 서식 변경으로 수치를 바꾸지 않는다"
     ],
     "excludes": [
       "가독성을 위해 짧은 목록/표를 사용",
@@ -1388,6 +1556,14 @@
     ]
   },
   {
+    "rule": "STATE_COMPATIBILITY",
+    "contains": [
+      "미사용 큐는 사용 중단",
+      "Python 커널·로컬 파일·Random 객체를 세이브 대신 쓰지",
+      "가짜 큐·가짜 Python 결과"
+    ]
+  },
+  {
     "rule": "GENERIC_OPPOSED_ROLL",
     "contains": [
       "완료된 공개 대항",
@@ -1408,313 +1584,6 @@
       "사용 완료 수치 공개 예외",
       "공개 판정의 NPC 수치도",
       "비밀 사유는 밝히지 않는다"
-    ]
-  },
-  {
-    "rule": "CONDITION_EFFECTS",
-    "contains": [
-      "원인 → 적용 조건 → 실제 효과 → 대응·해제",
-      "패널티 주사위 1개",
-      "최대 2개",
-      "같은 원인",
-      "이미 제출한 굴림",
-      "현재 불이익 없음",
-      "NPC도 같은 원인",
-      "지속 시간을 초기화하거나 이미 처리한 피해",
-      "식사·수면 버프 미획득으로 생성 금지"
-    ],
-    "instruction_contains": [
-      "CONDITION_EFFECTS"
-    ]
-  },
-  {
-    "rule": "KEEPER_SCENE_SELECTION",
-    "contains": [
-      "긴장감 7 : 안정 3",
-      "체감 비중",
-      "이동·회의·동일 방법의 반복 조사",
-      "괴물·마감·피해를 새로 만들어",
-      "중요한 발견·대면·전투·추격·탈출"
-    ],
-    "instruction_contains": [
-      "긴장감 7 : 안정 3"
-    ]
-  },
-  {
-    "rule": "BOTTOM_HUD_CONTRACT",
-    "contains": [
-      "CONDITION_EFFECTS",
-      "이름: 현재 영향 · 완화/해제"
-    ]
-  },
-  {
-    "rule": "STATE_AUTHORITY",
-    "contains": [
-      "FILE_SAVE_V1",
-      "외부 저장 API·원격 DB·저장소 커넥터를 호출하지 않는다",
-      "선택적 백업·비상 접속·원격 재동기화·구판 원격 로드도 실행 경로에 없다",
-      "Library/Space에 등록됐다고 추측하지",
-      "원격의 기존 자료를 삭제하거나 수정하는 지시는 아니다"
-    ]
-  },
-  {
-    "rule": "STATE_CANON_SAVE_BINDING",
-    "contains": [
-      "부모 파일 없이도 현재 파일 하나로 복원",
-      "canon_files",
-      "payload_sha256",
-      "allow_nan=False",
-      "JSON 중복 키·NaN/Infinity",
-      "다른 분기의 높은 번호",
-      "state의 campaign_id/session_id/rules_version",
-      "본문 일부만 검색되는 자료",
-      "전체 GM_STATE",
-      "전체 현재값·누적 변경",
-      "인증 정보"
-    ],
-    "instruction_contains": [
-      "STATE_CANON_SAVE_BINDING"
-    ]
-  },
-  {
-    "rule": "STATE_ACCESS_ROUTER",
-    "contains": [
-      "현재 작업 상태를 먼저",
-      "외부 저장·불러오기 호출은 하지 않는다",
-      "미저장 HP·시간·위치·난수",
-      "저장 없는 테스트",
-      "부분 조회가 실제 지원되지 않으면",
-      "별도 명시적 삭제 지시",
-      "기능 선정·판정 요청/굴림 결과",
-      "부모 파일 부재만으로"
-    ]
-  },
-  {
-    "rule": "STATE_OWNER_AUDIT",
-    "contains": [
-      "명시적으로",
-      "읽기 전용",
-      "전체 원문을 확인했다고 말하지",
-      "인증키",
-      "원문 그대로"
-    ]
-  },
-  {
-    "rule": "STATE_WORKING_CONTEXT",
-    "contains": [
-      "실제 로드/생성한 게임 데이터",
-      "추론 과정 자체를 게임 데이터의 저장 장소로 간주하지",
-      "현재 장소 밖도 포함한 활성 Driver",
-      "문맥에서 빠질 수",
-      "별도 숨은 메모장을 유지한다고 주장하지",
-      "공개 답변·HUD·수첩·공개 저장소",
-      "과거 snapshot을 현재 전체 상태로 덮어쓰지",
-      "작업 범위 밖까지 포함한 full snapshot",
-      "현실 시간에 자동 실행되는 백그라운드 프로세스",
-      "Scene Turn 30/60/90",
-      "전체 복기를 반복하지",
-      "PRIVATE_CANON_DOCUMENT",
-      "STATE_CANON_SAVE_BINDING",
-      "처음 한 번 전체 로드",
-      "현재 상태 확인 → 실제 결과를 한 번 반영",
-      "같은 최신값으로 공개 출력",
-      "마지막 파일의 값이 아닌",
-      "새 상태 카드·전체 시트/JSON",
-      "일반 턴마다 파일 재읽기·전체 검증",
-      "마지막 확인값과 그 이후 확정 변경",
-      "별도 공개 세이브로 분할하지"
-    ],
-    "instruction_contains": [
-      "첫 전체 로드 후 확정 변경·HUD 갱신",
-      "매 턴 재로드 금지",
-      "비공개 소스 우선"
-    ]
-  },
-  {
-    "rule": "STATE_SCHEMA",
-    "contains": [
-      "학습",
-      "경계 event ID",
-      "적용 전후 값",
-      "미선택 근거의 마감",
-      "상점의 공개 재고/가격",
-      "정본 원문이 아닌 동적 PC/활성 진행 필드",
-      "NPC 표현·관계",
-      "마지막 중요한 발화·미응답 질문",
-      "CONDITION_EFFECTS",
-      "씬 연속성",
-      "문장까지 같은 재생을 보장하지",
-      "이전 파일을 이어 붙여야 하는 delta 체인으로 줄이지"
-    ]
-  },
-  {
-    "rule": "STATE_INTEGRITY",
-    "contains": [
-      "JSON/해시 통과만으로 의미 검증을 대신하지",
-      "부모 파일 부재만으로",
-      "상태 효과의 적용/해제·NPC 목소리/기억",
-      "성장 후보 대기와 다음 구간의 새 근거",
-      "상점의 미결정 구매/답변",
-      "동일 경계/PC",
-      "빈 이름만 나열한 manifest는 검증이 아니다",
-      "변하는 상태를 오래된 값으로 메우지"
-    ]
-  },
-  {
-    "rule": "STATE_CADENCE",
-    "contains": [
-      "setup_bootstrap",
-      "play_start",
-      "periodic_scene_turn",
-      "terminal_pre_finalization",
-      "manual",
-      "30/60/90",
-      "자동 주기를 초기화하지",
-      "STATE_SAVE_FAILURE_CONTINUE",
-      "파일 생성·검증·전달 모두 실패한 경우도 동일"
-    ]
-  },
-  {
-    "rule": "STATE_CHECKPOINT_RECAP",
-    "contains": [
-      "게임 시작과 Scene Turn 30/60/90",
-      "현재 장면 밖의 모든 비공개 요소까지",
-      "같은 파일의 검증된 전체 재읽기 결과를 그대로 사용",
-      "동일 파일을 다시 조회하지",
-      "새 채팅 STATE_RESUME",
-      "본문이 잘렸다면",
-      "미래 사건 결과를 확정하지",
-      "원문을 간략한 요약으로 대체 저장하지",
-      "사건·난수·SAN·피해·시간을 다시 적용하지",
-      "지문/HUD/수첩으로 출력하지",
-      "무손실 기억이 보장됐다고 주장하지",
-      "PRIVATE_CANON_ACCESS_ROUTER"
-    ]
-  },
-  {
-    "rule": "STATE_COMMIT",
-    "contains": [
-      "파일 전체를 다시 열어",
-      "해시",
-      "파일 세이브 생성·검증 완료 — 내려받아 보관",
-      "다운로드 제공 실패는 전달 미완료",
-      "사용자 기기에 저장됐다고 단정하지",
-      "파일을 열면 비공개 내용",
-      "비공개 내용의 채팅 노출을 선택한 경우에만",
-      "STATE_CHECKPOINT_RECAP",
-      "같은 데이터를 중복 조회하지",
-      "실제 목록/원문 접근 없이 자동 등록·보관 완료라고 표시하지",
-      "두 다운로드 링크",
-      "MD 생성/전달만 실패하면 전체 JSON의 검증 성공을 취소하지"
-    ]
-  },
-  {
-    "rule": "STATE_SAVE_FAILURE_CONTINUE",
-    "contains": [
-      "세이브 실패는 게임 진행을 막지 않는다",
-      "setup_bootstrap/play_start/periodic/manual/terminal",
-      "재개 허가·실패 수락·추가 동의를 매번 요구하지",
-      "다음 30배수",
-      "원문·hash·session/branch/save_seq를 동결",
-      "그동안 진행한 최신 상태를 별도 체크포인트로 저장",
-      "현재 진행까지 저장됐다고 하지",
-      "실제 상태 유실과 저장 장애를 구분",
-      "종료를 완결"
-    ],
-    "instruction_contains": [
-      "STATE_SAVE_FAILURE_CONTINUE"
-    ]
-  },
-  {
-    "rule": "STATE_RECOVERY",
-    "contains": [
-      "최대 1회",
-      "자동 승격·폐기하지",
-      "현재 작업 상태가 있으면 계속 진행",
-      "같은 원문",
-      "외부 백업으로 자동 전환하지"
-    ]
-  },
-  {
-    "rule": "STATE_RESUME",
-    "contains": [
-      "외부 저장 API를 호출하지 않는다",
-      "다른 해시는 충돌",
-      "이미 적용한 사건·피해·사망·난수는 재실행하지",
-      "현실 대기시간은 극중 시간으로 더하지",
-      "수첩",
-      "새 분기",
-      "열린 판정",
-      "새 비밀",
-      "STATE_WORKING_CONTEXT",
-      "세계 진행 색인",
-      "STATE_CHECKPOINT_RECAP",
-      "PRIVATE_CANON_PERIODIC_REVIEW",
-      "처음 한 번 읽는다",
-      "로드·검증·복기는 같은 전체 읽기를 재사용",
-      "매 턴 첫 단계로 파일을 다시 열거나 재검증하지",
-      "다른 저장 시점/분기면 그 동적 값을 섞지"
-    ]
-  },
-  {
-    "rule": "STATE_COMPATIBILITY",
-    "contains": [
-      "이미 보유한 구판 파일/정본 원문",
-      "원본 파일은 수정·재해시·필드 삭제하지",
-      "원격 자료는 그대로",
-      "미사용 큐는 사용 중단",
-      "Python 커널·로컬 파일·Random 객체를 세이브 대신 쓰지",
-      "가짜 큐·가짜 Python 결과",
-      "과거 피해·해제 시각·NPC 버릇을 창작하지"
-    ]
-  },
-  {
-    "rule": "STATE_RESTORE_CONTRACT",
-    "contains": [
-      "RESTORE_V1",
-      "실제 저장 전 원본과의 대조",
-      "participants",
-      "npcs",
-      "investigation",
-      "procedures",
-      "presentation",
-      "state_inventory",
-      "canon_inventory",
-      "references",
-      "scene_ref",
-      "pending_ref",
-      "last_output_ref",
-      "execution_unknown",
-      "알려지지 않은 확장 필드",
-      "원본에서 이미 잊힌 사실",
-      "미래 대사·모델 행동까지 똑같아짐을 보장하지"
-    ],
-    "instruction_contains": [
-      "STATE_RESTORE_CONTRACT"
-    ]
-  },
-  {
-    "rule": "STATE_PRIVATE_WORK",
-    "contains": [
-      "비공개 변화가 없으면 기록용 Python·파일 조회·상태 점검 호출 0회",
-      "확정된 여러 비공개 변화는 한 번에 기록",
-      "유실된 게임 상태를 빈 파일로 재생성하지",
-      "PRIVATE_WORK_V1",
-      "release",
-      "오래된 비공개 값으로 최신 공개 상태를 덮지",
-      "state.private_work",
-      "전체 세이브 JSON + 최신 비공개 소스 MD 두 파일",
-      "PRIVATE_SOURCE_V1",
-      "순환 해시를 만들지",
-      "프로젝트 소스 자동 교체를 주장하지",
-      "기록 재시도로 게임 결과·난수를 다시 실행하지",
-      "구판 FILE_SAVE_V1에 private_work가 없다는 이유만으로"
-    ],
-    "instruction_contains": [
-      "STATE_PRIVATE_WORK",
-      "비공개 변화만 Python 일괄 기록·재읽기",
-      "무변화 호출 금지",
-      "비공개 MD는 소스 교체용"
     ]
   }
 ]

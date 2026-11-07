@@ -1,17 +1,14 @@
 # 전체 규칙 위치
 
-개발용 색인. 프로젝트 소스에는 넣지 않는다. 최초 전체 로드 이후 갱신은 STATE_WORKING_CONTEXT, 파일 접근 조건은 STATE_ACCESS_ROUTER, 비공개 프로젝트 소스 조회는 PRIVATE_CANON_ACCESS_ROUTER가 담당한다.
+개발용 색인. 프로젝트 소스에는 넣지 않는다.
 
 | PRIVATE_CANON_ACCESS_ROUTER | [07-state.md](../rules/07-state.md#private_canon_access_router) |
 | PRIVATE_CANON_DOCUMENT | [07-state.md](../rules/07-state.md#private_canon_document) |
 | PRIVATE_CANON_PERIODIC_REVIEW | [07-state.md](../rules/07-state.md#private_canon_periodic_review) |
-| STATE_PRIVATE_WORK | [07-state.md](../rules/07-state.md#state_private_work) |
-| STATE_RESTORE_CONTRACT | [07-state.md](../rules/07-state.md#state_restore_contract) |
 | STATE_CANON_SAVE_BINDING | [07-state.md](../rules/07-state.md#state_canon_save_binding) |
 | STATE_SAVE_FAILURE_CONTINUE | [07-state.md](../rules/07-state.md#state_save_failure_continue) |
 | 규칙 ID | 현재 문서 |
 |---|---|
-| CONDITION_EFFECTS | [03-danger.md](../rules/03-danger.md#condition_effects) |
 | ACTIVE_DANGER_CONTINUITY | [05-world.md](../rules/05-world.md#active_danger_continuity) |
 | ACTIVE_HORROR_PRESSURE | [05-world.md](../rules/05-world.md#active_horror_pressure) |
 | ACTIVE_PLAY_ROUTING_FIREWALL | [01-core.md](../rules/01-core.md#active_play_routing_firewall) |
@@ -326,7 +323,8 @@
 | STATE_RECOVERY | [07-state.md](../rules/07-state.md#state_recovery) |
 | STATE_RESUME | [07-state.md](../rules/07-state.md#state_resume) |
 | STATE_SCHEMA | [07-state.md](../rules/07-state.md#state_schema) |
-| STATE_OWNER_AUDIT | [07-state.md](../rules/07-state.md#state_owner_audit) |
+| STATE_GITHUB_FAILOVER_PROTOCOL | [07-state.md](../rules/07-state.md#state_github_failover_protocol) |
+| STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP | [07-state.md](../rules/07-state.md#state_verified_owner_audit_and_github_backup) |
 | STATE_WORKING_CONTEXT | [07-state.md](../rules/07-state.md#state_working_context) |
 | STAT_BOUNDARY | [02-checks.md](../rules/02-checks.md#stat_boundary) |
 | STAT_DRAFT_GENERATION | [04-setup.md](../rules/04-setup.md#stat_draft_generation) |

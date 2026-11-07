@@ -8,8 +8,8 @@
 1. 기존 binding을 확인한다. 이미 열렸으면 기존 수첩을 사용하며 새로 발급하지 않는다. 이전 호출의 성공 여부가 불명확하면 중복 생성 전에 복구 키/현재 binding을 확인한다.
 2. 지원되는 `open_notebook(slot,campaignTitle)`을 실제 호출하고 응답의 recoveryKey/revision을 비공개로 기록한다. 제목은 확정한 캠페인 이름이다.
 3. 공개 허용목록만 최초 동기화한다. 공개된 해당 PC 정보·HP/SAN/Luck·현금·소지품·지도·NPC·증거·플레이어 가설만 포함한다. 지도·NPC·증거·가설 등 파티 공통 지식은 모든 참가 슬롯에서 같은 공개 범위를 사용하고 HP/SAN/Luck·현금·소지품은 해당 PC 값만 쓴다. 미검증 checkpoint version은 null이며 아직 시작 전의 sceneTurn은 0이다.
-4. 명백히 최초 열기를 누락한 경우에만 첫 장면 전 1회 보정한다. 앱이 없거나 실패하면 수첩 연결만 대기하고 파일 세이브 성공 여부는 별도로 판정한다.
-5. `수첩 열기`는 시간 정지다. 새 채팅의 load_notebook은 게임을 STATE_RESUME으로 복원한 뒤 현재 파일 세이브 식별을 실제로 지원하는 연결 계약에서만 요청한다. 지원하지 않는 검증 번호를 만들어 넣거나 게임 세이브 API로 보완하지 않는다. 수첩 연결만 보류하고 파일 복원은 유지한다.
+4. 명백히 최초 열기를 누락한 경우에만 첫 장면 전 1회 보정한다. 앱이 없거나 실패하면 수첩 연결만 대기하고 Supabase 저장 성공 여부는 별도로 판정한다.
+5. `수첩 열기`는 시간 정지다. 새 채팅의 load_notebook은 게임을 STATE_RESUME으로 복원한 뒤 실제 verifiedSceneTurn/verifiedCheckpointVersion으로만 요청한다.
 연결 실패를 이유로 과거 산장·로그인·외부 캐릭터 생성 UI를 열지 않는다. 실제 서버의 접근 통제는 유지한다. 공개 변경의 이후 Writer는 NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER를 따른다.
 
 ## NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER

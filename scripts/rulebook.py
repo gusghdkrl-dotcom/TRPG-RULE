@@ -23,17 +23,6 @@ def validate():
     ids = registry()
     for path in sources():
         text = path.read_text(encoding='utf-8', errors='strict')
-        # Game saves are file-only. Developer GitHub publishing is unrelated.
-        retired_save_routes = (
-            'Supabase', 'trpg_manual_checkpoint', 'gm_checkpoint_history',
-            'gm_sessions', 'DOCUMENT_BOUND', 'DB1',
-            'STATE_GITHUB_FAILOVER_PROTOCOL',
-            'STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP',
-            'mwopllxdhxcykwyxuyrd',
-        )
-        for token in retired_save_routes:
-            if token.lower() in text.lower():
-                errors.append(f'{path.name}: retired remote save route {token}')
         if '\\n' in text:
             errors.append(f'{path.name}: literal escaped newline')
         if re.search(r'<(?:/?SYSTEM_LOCK|/?SYS_RULE|/?SYS_DIRECTIVE)|\bDOC:\d', text):
@@ -91,7 +80,7 @@ def export():
     (target/'sources').mkdir(parents=True)
     for path in RULES.glob('*.md'):shutil.copyfile(path,target/'sources'/path.name)
     for name in ['PROJECT_INSTRUCTIONS.md','START_GAME.md']:shutil.copyfile(ROOT/name,target/name)
-    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침\nsources/*.md → 최신 프로젝트 소스\nSTART_GAME.md → 시작할 때 채팅에 입력\n기존 TXT·구판·개발 일지·감사 문서는 소스에서 제외하세요.\n기본 세이브는 FILE_SAVE_V1 JSON 파일입니다. 실제 생성·재읽기 검증 후 내려받아 보관하고 새 채팅에 첨부하세요. 정상 저장 때 함께 받는 비공개 MD는 프로젝트 소스 교체용입니다. 전체 JSON은 새 방 채팅에 첨부하세요. 비공개 변화만 임시 작업 JSON에 기록하며 작업 파일을 매번 내려받을 필요는 없습니다. 외부 저장·불러오기 연동은 없습니다. Library가 지원되면 실제 보관된 파일을 선택해 재사용할 수 있습니다.\n')
+    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침\nsources/*.md → 최신 프로젝트 소스\nSTART_GAME.md → 시작할 때 채팅에 입력\n기존 TXT·구판·개발 일지·감사 문서는 소스에서 제외하세요.\nSupabase 커넥터 연결과 실제 저장 검증은 별도입니다.\n')
     manifest={str(p.relative_to(target)):__import__('hashlib').sha256(p.read_bytes()).hexdigest() for p in sorted(target.rglob('*')) if p.is_file()}
     (target/'SHA256.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     archive=ROOT/'dist/TRPG-RULE-project.zip'
