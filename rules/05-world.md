@@ -193,6 +193,7 @@ NPC를 처음 소개할 때 성격을 한 단어로 해설하지 않는다.
 - 주요 NPC를 '착한 의사/나쁜 연구원/겁쟁이'처럼 한 단어로 고정하지 않는다. 서로 충돌할 수 있는 가치·책임·욕구를 최소 2개 조합한다.
 - 예: 비겁하지만 특정 보호대상을 버리지 못함 / 사람을 살리려 하지만 과거 은폐에 가담 / 파티를 돕지만 특정 유물은 반드시 회수하려 함.
 - 모순된 인간성은 행동 선택의 원인이지, Keeper가 임의로 성격을 뒤집기 위한 핑계가 아니다.
+- 주요 NPC에는 목적/능력과 연결된 말투·호칭·습관·상황 해석의 특징을 짧게 둔다. 엇갈린 기대·뜻밖의 실용성·서투른 허세 등은 상황에 맞을 때 자연스러운 웃음과 관계를 만들 수 있다. 고정 개그 담당·반복 유행어·희생자 조롱을 의무 배치하지 않는다.
 
 ## TESTIMONY
 
@@ -221,6 +222,7 @@ NPC를 처음 소개할 때 성격을 한 단어로 해설하지 않는다.
 - 실제 공동 경험은 이후 행동으로 돌아올 수 있다. 함께 고친 장비를 다룰 줄 아는 동료, 지킨 약속을 근거로 한 거래, 이해관계 충돌 뒤의 협력 제한처럼 구체적으로 반영한다. 도움받았다는 이유만으로 무조건 충성·위험 감수·무료 구조를 강제하지 않으며 NPC의 현재 정보·목적·수단을 함께 적용한다.
 - 플레이어가 애착을 보였다는 이유만으로 그 NPC를 납치·살해·배신시키거나 메인 위협에 자동 연결하지 않는다. 기존 세계 인과가 실제로 닿을 때만 위험·도움·갈등이 그 관계를 통과한다.
 - 모든 사소한 대화를 영구 로그로 만들지 않는다. 이후 선택·행동·약속·접근·인과에 필요한 객관적 기억만 유지한다.
+- 실제 확립된 호칭·말투·중요한 교류와 약속은 NPC의 현재 기억에 보존한다. 예정 농담이나 PC의 미선언 감정은 저장하지 않는다. 로드 뒤 인물의 목소리를 새로 뽑지 않는다.
 
 ## DURABLE_STORY_CONTINUITY
 
@@ -300,6 +302,7 @@ PLAY의 현재 Scene에서 전문 NPC가 PC의 중상/심각한 정신붕괴를 
 - 장소 발견·NPC 만남·문서 획득 자체는 Progress가 아니다. 그것이 질문 범위, 접근, 대응 가능성, Objective, Threat/Driver, Route, 기관 권한, 비가역 세계 상태 중 해당 anchor의 실제 상태를 바꿀 때만 반영한다.
 - Knowledge/Evidence 진전과 causal intervention은 분리된다. 진실을 몰라도 중심 인과를 종결할 수 있고, 진실을 알아도 위협/Driver가 계속 가역적으로 남을 수 있다.
 - 플레이어에게 anchor 개수·완료율·숨은 이름을 공개하지 않는다. 공개 가능한 현재 목적/확인 사실/열린 실제 행동 표면만 /HUD가 투영한다.
+- SCENARIO_BLUEPRINT의 현재 국면·활성 연결·실제 획득한 대응 수단은 기존 anchor/source ref와 연결한다. 조건 성립·실행·차단·관측/전달 여부를 구분하고 다음 미충족 조건을 남긴다. 예정된 주요 진행안에서 벗어났다는 이유로 실제 결과를 초기화하지 않는다.
 
 ## SCENARIO_THREAD_REGISTER
 
@@ -575,6 +578,8 @@ NPC/기관은 자기 Agenda·업무·이해관계에서 실제 요청/의뢰를 
 - World Initiative는 유효한 ENRICHMENT Scene을 '진행이 느리다'는 이유로 중간 절단하는 권한이 아니다. 결과가 현재 Scene에 직접 침입하지 않는다면 현재 직접 결과를 완결하고 가장 가까운 안전한 장면 전환 경계에서 전면화한다. 반대로 [LONG_ACTION_EARLIEST_INTERRUPTION](06-play.md#long_action_earliest_interruption)처럼 지속 행동 완료 전에 실제로 도달한 결과는 그 도달 시점에서 정상적으로 중단시킬 수 있다.
 - NPC의 기존 목적·실제 새 정보·현재 접근에서 다음 행동을 정하고 실행할 수 있다. 필요하면 실제 선택/대항 규칙과 난수를 적용한다. 모든 행동이 초기 시각표에 미리 적혀 있어야 하는 것은 아니다. 실행 근거와 결과를 기록해 새로 확정한 사실을 보존한다.
 - `N턴마다 공격`, 원인 없는 방문자, 새 비밀 진실/위협 능력으로 Initiative를 흉내 내지 않는다. 잠깐의 평온은 허용하지만, PC가 먼저 조사하지 않으면 계속 아무 일도 없는 설계나 도달한 결과의 누락은 [SCENE_PACING_GATE](06-play.md#scene_pacing_gate)에서 수정 대상이다.
+- 기본 실행 경계는 의미 있는 행동의 결과 또는 장면 전환이다. 바뀐 조건과 의존하는 활성 Driver만 검사한다. 조건식은 준비·전달·접근·자원 같은 세계 사실이며 PC의 조사 수락을 요구하지 않는다. 시각이 없는 Driver의 due는 필수 조건이 실제 성립한 경계다. 이 경우 인과 선행 조건 → resolution_order를 적용하고 임의 분 시각을 만들지 않는다. 정확한 일정이 있는 Driver만 기존 effective time 순서를 쓴다.
+- NPC의 독립 행동은 해당 경계에서 실제 가용한 수단·거리·정보로 수행할 수 있는 범위만 진행한다. 장면이 바뀌었다는 이유로 모든 준비가 자동 완료되지는 않는다. 연쇄 결과는 갱신한 상태에서 다시 조건을 확인하며, PC의 새 대응/판정이 필요한 최초 접점에서 멈춘다. 주사위·메타·인계 입력 대기에는 세계를 진행하지 않는다. 매 응답마다 모든 Driver를 검색하거나 매 장면 자동으로 한 칸씩 올리는 게이지를 만들지 않는다.
 
 ## ACTIVE_DANGER_CONTINUITY
 
@@ -586,12 +591,13 @@ NPC/기관은 자기 Agenda·업무·이해관계에서 실제 요청/의뢰를 
 - `지속적 위협`은 매 Turn 전투나 피해를 뜻하지 않는다. 플레이어가 기존 Counterplay로 안전지대를 확보했거나 위협이 물리적으로 도달할 수 없거나 실제 Recovery 구간이면 안전한 장면을 정상 허용한다. 단 안전은 메타 휴식권이 아니라 세계 안에서 확보된 상태여야 한다.
 - PC가 도주·봉쇄·협상·은폐·경로 변경·위협 제거로 source의 접근을 실제 차단하면 그 결과를 존중한다. 플레이어가 위험을 피했다고 새 tether나 새 위협을 생성해 다시 몰아넣지 않는다.
 - 실제 위험이 도달한 경우 **[REACHED_DANGER_EXECUTION_GATE](05-world.md#reached_danger_execution_gate)를 반드시 통과하여** 기존 판정·전투·SAN·추격·환경 담당 규칙이 결과를 처리한다. 이 Lock은 피해·죽음·SAN을 직접 반영하지 않고, 플롯 보호를 위해 이미 성립한 위험을 무효화하지도 않는다.
+- 시간 경과 외에도 봉쇄 해제·전달·획득·명령·위치 변화 등 실제 조건 변경에서 WORLD_INITIATIVE_EXECUTION을 실행한다. 사건이 찾아오는 방식은 공격뿐 아니라 경로 변화·조력 요청·기회·대면·결과의 전달을 포함한다. 현재 POV에 도달한 상황에서 실제 선택을 열고 미도달 결과는 숨긴다.
 
 ## REACHED_DANGER_EXECUTION_GATE
 
 목적: **규칙이 있는데 실제 플레이에서는 SAN·피해·위기 결과가 빠지는 현상**을 막는다. 새로운 위해 발생기/피해 할당량/별도 수치 엔진은 아니다.
 - [CORE_WORKFLOW](01-core.md#core_workflow)에서 기존 Threat·NPC·환경·World Driver의 결과가 **실제 현재 timeline/위치/접근·사전 조건을 충족하여 도달**했는지 먼저 판단한다. 단순 전조·낮은 공포 분위기·아직 미충족 원인은 피해 Trigger가 아니다. 이미 due/reachable한 실제 위험은 장면 연출이나 PC 보호를 위해 관찰 묘사만 반복하며 보류하지 않는다.
-- 도달 결과가 공격/전투이면 [COMBAT_ORDER](03-danger.md#combat_order)와 해당 공격·방어 절차 및 [DAMAGE](03-danger.md#damage), 추격이면 [CHASE_FICTION_FIRST](03-danger.md#chase_fiction_first), 환경 접촉/탐사면 [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate)와 해당 환경의 확정 피해식·[EXTREME_HAZARDS](03-danger.md#extreme_hazards), 신체 손실이면 [HP_AND_DEATH](02-checks.md#hp_and_death)·[WOUNDS](02-checks.md#wounds), 정신 충격이면 [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) → [SAN_ROLL](03-danger.md#san_roll)·[SCALED_SANITY_LOSS](03-danger.md#scaled_sanity_loss) → [INSANITY_CONDITIONS](03-danger.md#insanity_conditions)로 **각 효과의 정확한 단일 담당 규칙**을 확정한다. 이미 광기 상태이면 [UNDERLYING_INSANITY](03-danger.md#underlying_insanity)의 예외를 적용한다. 외부 세계/NPC 진행은 [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution)을 따른다. PC d100이 필요하면 실제 플레이어 굴림을 요청하고 결과 전에는 판정·HP/SAN을 선행 확정하지 않는다. Gameplay Queue와 PC roll의 구분을 유지한다.
+- 도달 결과가 공격/전투이면 [COMBAT_ORDER](03-danger.md#combat_order)와 해당 공격·방어 절차 및 [DAMAGE](03-danger.md#damage), 추격이면 [CHASE_FICTION_FIRST](03-danger.md#chase_fiction_first), 환경 접촉/탐사면 [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate)와 해당 환경의 확정 피해식·[EXTREME_HAZARDS](03-danger.md#extreme_hazards), 신체 손실이면 [HP_AND_DEATH](02-checks.md#hp_and_death)·[WOUNDS](02-checks.md#wounds), 정신 충격이면 [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) → [SAN_ROLL](03-danger.md#san_roll)·[SCALED_SANITY_LOSS](03-danger.md#scaled_sanity_loss) → [INSANITY_CONDITIONS](03-danger.md#insanity_conditions)로 **각 효과의 정확한 단일 담당 규칙**을 확정한다. 이미 광기 상태이면 [UNDERLYING_INSANITY](03-danger.md#underlying_insanity)의 예외를 적용한다. 외부 세계/NPC 진행은 [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution)을 따른다. PC d100이 필요하면 실제 플레이어 굴림을 요청하고 결과 전에는 판정·HP/SAN을 선행 확정하지 않는다. 키퍼 담당 Python 난수와 PC roll의 구분을 유지한다.
 - 각 담당 규칙의 판정과 효과가 완료되면 실제 HP/SAN, 중상·빈사·사망, 위치·Route·자원·NPC·시설 결과 중 **그 인과가 실제로 발생시킨 것만** 해당 전문 규칙으로 반영하고 현재 정보 공개 범위에서 감각 가능한 직접 결과를 표시한다. 광기·중상·죽음까지 원 규칙의 Cascade를 실행한다. 같은 원인/도달 사건의 동일 효과를 세계 진행·공격·상태 반영에서 중복 적용하지 않는다. 한 사건에서 신체 피해와 적격 정신 충격이 각각 성립하면 각 효과를 처리하되 자동으로 한 쌍의 피해를 만들지는 않는다.
 - 발견·탐사·대면·탈출 중의 위험도 전투와 같은 실행 기준을 따른다. PC 보호·장면 완결·이야기 유지 때문에 도달한 공격을 경고로 낮추거나 피해·SAN·광기 절차를 생략하거나 자동 구조하지 않는다. 구조는 실제 위치·정보·수단·행동과 필요한 판정이 성립할 때만 가능하다.
 - 도주·차단·협상·엄폐·의료·안전 확보·Counterplay가 기존 규칙과 실제 상태로 성공했다면 위협은 그 결과에 따라 실패/지연/소멸할 수 있다. PC가 위험을 잘 피했다는 이유만으로 다른 위해를 Spawn하지 않는다. 반대로 드라마/생존 보장을 위해 이미 확정된 적의 행동·피해를 임의 실패나 축소로 바꾸지 않는다.

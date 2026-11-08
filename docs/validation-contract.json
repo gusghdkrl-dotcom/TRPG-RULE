@@ -163,7 +163,8 @@
       "DOCUMENT_BOUND",
       "canon_source_required",
       "전체 누적 world_delta·new_entities·tombstones·processed_event_ids",
-      "PRIVATE_CANON_PERIODIC_REVIEW"
+      "PRIVATE_CANON_PERIODIC_REVIEW",
+      "로드는 사건 조건을 진행시키는 행동이 아니다"
     ]
   },
   {
@@ -241,7 +242,8 @@
       "예방을 취소하거나 새 재난을 추가",
       "첫 큰 사건 이후에도 ACTIVE_DANGER_CONTINUITY",
       "플레이어가 위험을 고를 때까지 멈추지",
-      "모두의 피격·감금은 필요하지"
+      "모두의 피격·감금은 필요하지",
+      "긴장감 7 : 안정 3"
     ],
     "instruction_contains": [
       "사건 연루는 필수",
@@ -724,7 +726,10 @@
       "그 결과를 정확히 한 번 반영",
       "첫 큰 사건을 처리했다는 이유로",
       "그 사건이 바꾼 접근·자원·목적·위험",
-      "후속 위해도 강요하지"
+      "후속 위해도 강요하지",
+      "시각이 없는 Driver",
+      "주사위·메타·인계 입력 대기",
+      "매 장면 자동으로 한 칸"
     ],
     "instruction_contains": [
       "WORLD_INITIATIVE_EXECUTION: 실제 경과 구간",
@@ -1488,7 +1493,10 @@
       "적용 전후 값",
       "미선택 근거의 마감",
       "상점의 공개 재고/가격",
-      "정본 원문이 아닌 동적 PC/활성 진행 필드"
+      "정본 원문이 아닌 동적 PC/활성 진행 필드",
+      "원작 체험·조건부 진행 설계도",
+      "진행성 위해",
+      "runtime_flags"
     ]
   },
   {
@@ -1584,6 +1592,42 @@
       "사용 완료 수치 공개 예외",
       "공개 판정의 NPC 수치도",
       "비밀 사유는 밝히지 않는다"
+    ]
+  },
+  {
+    "rule": "FINAL_THREAT_DESIGN",
+    "contains": [
+      "추첨 전",
+      "추가 축",
+      "총 8개 설계축",
+      "원값·후보 목록",
+      "선제 제압"
+    ]
+  },
+  {
+    "rule": "SCENARIO_BLUEPRINT",
+    "contains": [
+      "조건부 진행 설계도",
+      "예상 주요 진행안",
+      "분 단위 시한",
+      "조사/의뢰 수락은 사건 발생 스위치가 아니다",
+      "조기에 해결"
+    ]
+  },
+  {
+    "rule": "EXTREME_HAZARDS",
+    "contains": [
+      "현재 단계·관측 증상",
+      "처치·억제·해제 조건",
+      "같은 원인을 중복 보정하지",
+      "로드했다고 피해를 재적용하지"
+    ]
+  },
+  {
+    "rule": "QUIET_AFTERMATH_BEAT",
+    "contains": [
+      "짧은 유머",
+      "피해 희화화"
     ]
   }
 ]

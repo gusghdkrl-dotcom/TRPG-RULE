@@ -10,6 +10,8 @@
 
 | 상황 | 읽을 규칙 |
 |---|---|
+| 최종 위험 8축·조건부 시나리오 설계도 | [FINAL_THREAT_DESIGN](04-setup.md#final_threat_design) · [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) |
+| 진행성 위해·상태의 영향과 처치 | [EXTREME_HAZARDS](03-danger.md#extreme_hazards) |
 | 키퍼·감독·소설가 통합 연출·서사·보정 예시 | [DIRECTOR_WRITER_KEEPER_CONVERGENCE](06-play.md#director_writer_keeper_convergence); 인스트럭션 우선 기준과 연결 |
 | 이번 입력과 열린 절차부터 확인 | [CORE_WORKFLOW](01-core.md#core_workflow) |
 | 확인된 짧은 이동 | [ROUTINE_MOVEMENT_FAST_PATH](06-play.md#routine_movement_fast_path) |

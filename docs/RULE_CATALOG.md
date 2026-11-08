@@ -362,3 +362,6 @@
 | WORLD_RULE_HOMAGE_DNA | [04-setup.md](../rules/04-setup.md#world_rule_homage_dna) |
 | WORLD_RULE_OVERRIDE | [04-setup.md](../rules/04-setup.md#world_rule_override) |
 | WOUNDS | [02-checks.md](../rules/02-checks.md#wounds) |
+
+| FINAL_THREAT_DESIGN | [04-setup.md](../rules/04-setup.md#final_threat_design) |
+| SCENARIO_BLUEPRINT | [04-setup.md](../rules/04-setup.md#scenario_blueprint) |
