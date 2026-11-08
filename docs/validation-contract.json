@@ -1,1564 +1,61 @@
 [
   {
+    "rule": "CORE_ZERO_HOMAGE_EXPERIENCE_GATE",
+    "contains": [
+      "CoC 7판 기반 하우스룰",
+      "주도권",
+      "수치",
+      "예시"
+    ]
+  },
+  {
     "rule": "CORE_AGENCY",
     "contains": [
-      "광기 발작",
-      "미선언"
-    ],
-    "excludes": [
-      "키퍼가 자유롭게 대신"
+      "플레이어가 결정",
+      "광기",
+      "미선언",
+      "NPC·세계·판정 결과"
     ]
   },
   {
     "rule": "CORE_VISIBILITY",
     "contains": [
-      "같은 채팅",
       "파티 공통 지식",
-      "플레이어 전체와 아직 발견하지 못한 세계 사이",
-      "NPC는 실제 목격",
+      "NPC는 실제",
       "직접 목격형 SAN",
-      "씬 요약은 NPC에게 자동 공유되지 않는다"
-    ],
-    "excludes": [
-      "지식 공유를 자동 발생시키지",
-      "개인 기밀 전달 경로가 없으면"
-    ]
-  },
-  {
-    "rule": "AI_DIE_MAPPING_VERSION",
-    "contains": [
-      "PYTHON_SYSTEM_RANDOM_V1",
-      "randint(1, N)",
-      "플레이어가 제공",
-      "이미 정해진 수치는 다시 굴리지"
-    ]
-  },
-  {
-    "rule": "BONUS_PENALTY_DICE",
-    "contains": [
-      "1:1 상쇄",
-      "최대 2개",
-      "1의 자리",
-      "같은 원인을 난이도와 유불리에 중복 반영하지"
-    ]
-  },
-  {
-    "rule": "SUCCESS_LEVELS",
-    "contains": [
-      "96~100",
-      "50 이상",
-      "원래"
-    ]
-  },
-  {
-    "rule": "HP_AND_DEATH",
-    "contains": [
-      "floor((CON + SIZ) / 10)",
-      "최대 HP 이상",
-      "의식불명",
-      "Dying"
-    ]
-  },
-  {
-    "rule": "PC_DERIVED_STATS",
-    "contains": [
-      "MOV=8",
-      "DEX≥70",
-      "DEX≤40",
-      "POW"
-    ]
-  },
-  {
-    "rule": "PC_SKILL_START_VALUES",
-    "contains": [
-      "65 / 60 / 55 / 50 / 45 / 40 / 35",
-      "floor(DEX/2)",
-      "취미 기능"
-    ]
-  },
-  {
-    "rule": "STAT_DRAFT_GENERATION",
-    "contains": [
-      "합계 400",
-      "30~80",
-      "20~80",
-      "A 특성+B Luck"
-    ]
-  },
-  {
-    "rule": "WORLD_PC_INPUT",
-    "contains": [
-      "선택적으로 활용",
-      "복수 PC",
-      "확정된 PC 과거",
-      "강한 연루 이유와 실제 형성·전달 경로",
-      "관계·책임·배경 목적도 그 자체로 유효",
-      "각 PC의 실제 능력이 고유한 행동·성과",
-      "전문 활약을 우연에만 맡기지"
-    ],
-    "excludes": [
-      "항상 PC와 독립",
-      "강제 연루·객관적 이탈 제약은 필수"
-    ]
-  },
-  {
-    "rule": "STORY_SCALE",
-    "contains": [
-      "CHRONICLE",
-      "앞 챕터",
-      "다음 챕터"
-    ]
-  },
-  {
-    "rule": "STATE_CADENCE",
-    "contains": [
-      "setup_bootstrap",
-      "play_start",
-      "periodic_scene_turn",
-      "terminal_pre_finalization",
-      "manual",
-      "30/60/90",
-      "자동 주기를 초기화하지",
-      "STATE_SAVE_FAILURE_CONTINUE",
-      "양쪽 저장 모두 실패한 경우도 동일"
-    ],
-    "excludes": [
-      "저장 복구 전 진행을 보류",
-      "다음 독립 플레이 변경을 보류"
-    ]
-  },
-  {
-    "rule": "STATE_COMMIT",
-    "contains": [
-      "<session_id>:cp<version>",
-      "SHA-256",
-      "pending",
-      "verify",
-      "exact read-back",
-      "STATE_CHECKPOINT_RECAP",
-      "같은 데이터를 중복 조회하지",
-      "직렬화 전 STATE_EXPERIENCE_CONTINUITY",
-      "복원 연속성 미검증"
-    ]
-  },
-  {
-    "rule": "STATE_RECOVERY",
-    "contains": [
-      "최대 1회",
-      "자동 승격·폐기하지",
-      "현재 작업 상태가 있으면 계속 진행"
-    ],
-    "excludes": [
-      "재로드를 복구한 뒤 다음 독립 플레이 변경"
-    ]
-  },
-  {
-    "rule": "STATE_RESUME",
-    "contains": [
-      "orphan pending",
-      "최신 hash-valid verified",
-      "열린 판정",
-      "새 비밀",
-      "STATE_WORKING_CONTEXT",
-      "세계 진행 색인",
-      "STATE_CHECKPOINT_RECAP",
-      "DOCUMENT_BOUND",
-      "canon_source_required",
-      "전체 누적 world_delta·new_entities·tombstones·processed_event_ids",
-      "PRIVATE_CANON_PERIODIC_REVIEW",
-      "로드는 사건 조건을 진행시키는 행동이 아니다",
-      "이미 실행한 도움을 다시 지급하지",
-      "이미 확인한 것을 미확인으로",
-      "부분 복구라는 표시는"
-    ]
-  },
-  {
-    "rule": "STATE_COMPATIBILITY",
-    "contains": [
-      "수정·재해시·필드 삭제하지",
-      "실제 서버 검증 계약"
-    ]
-  },
-  {
-    "rule": "NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER",
-    "contains": [
-      "WHALE_WATCHER",
-      "중복",
-      "재연결"
-    ]
-  },
-  {
-    "rule": "WORLD_RULE_HOMAGE_DNA",
-    "contains": [
-      "원작의 정수와 테마",
-      "최소 2개",
-      "차단·회피"
-    ],
-    "excludes": [
-      "정확히 2개"
-    ]
-  },
-  {
-    "rule": "INSANITY_CONDITIONS",
-    "contains": [
-      "SAN 5+",
-      "INT 성공",
-      "INT 실패"
-    ],
-    "excludes": [
-      "신비주의자",
-      "4+"
-    ]
-  },
-  {
-    "rule": "PARTICIPANT_COUNT_SETUP",
-    "contains": [
-      "1~3명",
-      "2명으로 자동 결정하지",
-      "P1/P2/P3",
-      "재개 시에는 저장된 인원"
-    ],
-    "excludes": [
-      "기본은 2인"
-    ]
-  },
-  {
-    "rule": "CAMPAIGN_SETUP_PIPELINE",
-    "contains": [
-      "PARTICIPANT_COUNT_SETUP",
-      "첫 충돌",
-      "원작 후보 A~F"
-    ]
-  },
-  {
-    "rule": "SCENE_PACING_GATE",
-    "contains": [
-      "Scene Turn 30 이내",
-      "첫 일상 목적",
-      "장면 2개 연속",
-      "30턴을 따로 주지",
-      "현재 가능한 접점",
-      "3:7 분위기 비율은 사용하지",
-      "첫 큰 사건이 실제 발생",
-      "조사 의뢰·이상 징후만",
-      "한 명만 강한 연루 이유",
-      "미달을 인정",
-      "로드·정본 재독·60턴 도달",
-      "예방을 취소하거나 새 재난을 추가",
-      "첫 큰 사건 이후에도 ACTIVE_DANGER_CONTINUITY",
-      "플레이어가 위험을 고를 때까지 멈추지",
-      "모두의 피격·감금은 필요하지",
-      "긴장감 7 : 안정 3"
-    ],
-    "instruction_contains": [
-      "사건 연루는 필수",
-      "전체 Scene Turn 30 이내 큰 사건이 실제 발생",
-      "실마리·의뢰만으로 통과하지",
-      "완결 장면 2개 연속",
-      "다음 안전 경계",
-      "해결·회피 성과를 보존",
-      "첫 큰 사건 후에도 위협·NPC는 움직인다"
-    ],
-    "excludes": [
-      "초반 기준(30턴 안에 사건 입구 제공)",
-      "본격 사건의 입구를 제공한다",
-      "각 PC의 강제 연루"
-    ]
-  },
-  {
-    "rule": "CINEMATIC_ELLIPSIS",
-    "contains": [
-      "목적",
-      "나사",
-      "명시적으로 좁힌 선언",
-      "새 비용 승인",
-      "LONG_ACTION_EARLIEST_INTERRUPTION",
-      "결과를 맡긴 실행과 선택·교류를 위해 연 방문을 구분",
-      "상점에 간다",
-      "구매·주문·가격 동의·대화·퇴장까지 위임받은 것으로 보지",
-      "실제 대표 상품과 가격",
-      "매 방문 희귀품·흥정·이벤트를 강제하지",
-      "플레이어가 세부 작업·생활·대화 자체를 원하면",
-      "실제 재고·가격·예산·권한"
-    ],
-    "instruction_contains": [
-      "방문은 구매·대화·퇴장의 위임이 아니다",
-      "상점의 상품·가격·교류와 미선택 경험"
-    ]
-  },
-  {
-    "rule": "INVESTIGATOR_INCIDENT_COUPLING",
-    "contains": [
-      "세계 확정 전",
-      "생활 목표를 끝내도",
-      "다음 행동 가능한 경로",
-      "호감·의리는 플레이어",
-      "초반 큰 사건 전 이탈",
-      "충분히 형성된 관계·책임만으로도 통과",
-      "남을 이유와 물리적 이탈 장애를 구분",
-      "설계한 이유와 실제로 형성·전달된 이유를 구분",
-      "내용 없는 `중요한 사람`",
-      "근거 장면·공개 사실",
-      "모든 시나리오에 복제하지"
-    ],
-    "excludes": [
-      "그 타인을 돕지 않겠다고 해도",
-      "감정적 의무·죄책감만으로 대체하지",
-      "각 PC 자신의 객관적 제약"
-    ],
-    "instruction_contains": [
-      "PC별 지킬 것·떠나면 잃을 것·탐구 이유",
-      "형성된 관계·책임도 충분",
-      "전원 감금·추적은 필수가 아니다"
-    ]
-  },
-  {
-    "rule": "TURN_RESPONSE_BUDGET",
-    "contains": [
-      "20초 이내",
-      "동일 규칙판 본문",
-      "컨텍스트 손실",
-      "full snapshot",
-      "900~1,600자",
-      "측정값을 만들지"
-    ],
-    "excludes": [
-      "300~600자"
-    ]
-  },
-  {
-    "rule": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT",
-    "contains": [
-      "배우 레퍼런스",
-      "캐릭터 태그 정확히 3개"
-    ],
-    "excludes": [
-      "붙들고 있는 것",
-      "역할극 참고",
-      "연기 앵커"
-    ]
-  },
-  {
-    "rule": "GOLD_START_PROFILE_REFERENCE",
-    "contains": [
-      "캐릭터 태그 3개",
-      "외형 레퍼런스"
-    ],
-    "excludes": [
-      "붙들고",
-      "연기 앵커"
-    ]
-  },
-  {
-    "rule": "TURN_INDEX_NOT_STORY_CLOCK",
-    "contains": [
-      "STATE_CADENCE",
-      "30배수"
-    ],
-    "excludes": [
-      "cadence와 연결하지"
-    ]
-  },
-  {
-    "rule": "HOMAGE_SIGNATURE_FREEZE",
-    "contains": [
-      "5~7개",
-      "원작에서의 구체적 근거",
-      "상호작용",
-      "동일한 창고",
-      "관련 장면에서만"
-    ]
-  },
-  {
-    "rule": "HIDDEN_TRUTH_HORROR_PAYLOAD_GATE",
-    "contains": [
-      "현재 진행 중인 위협",
-      "중대한 손실",
-      "소급 변경하지",
-      "SAN 위험을 전투나 마지막 보스에만 몰지",
-      "정답을 맞혔거나 단서를 얻었다는 이유만으로"
-    ]
-  },
-  {
-    "rule": "CAUSAL_ENDGAME_PRECOMMIT",
-    "contains": [
-      "중대한 대가",
-      "각 PC",
-      "인지 경로",
-      "신격 살해",
-      "방지/잔존/진행 중",
-      "HP/SAN을 자동 차감하지",
-      "소급 삽입하지",
-      "전체 30턴 이내 실제 발생",
-      "관계와 책임은 확정 과거 또는 실제 교류",
-      "모든 PC의 감금·추적을 필수화하지"
-    ],
-    "excludes": [
-      "각 PC의 객관적 연루·이탈 제약"
-    ]
-  },
-  {
-    "rule": "NO_CLEAN_EXIT_HORROR_ARCHITECTURE",
-    "contains": [
-      "미해결 사건의 대가",
-      "깨끗한 퇴로",
-      "한 PC의 철수",
-      "무손실 성공",
-      "남겨둘 대상",
-      "큰 역경을 버티고 개척",
-      "단일 형식적 판정",
-      "실제 탈출 조건을 충족",
-      "대가를 감수한다는 답만으로",
-      "위험과 돌파 수단",
-      "관계·책임을 포기할지는 플레이어",
-      "현재 경로가 실제 안전하다면",
-      "REACHED_DANGER_EXECUTION_GATE",
-      "PRIVATE_CANON_DOCUMENT의 개정 절차",
-      "새 납치·추적 능력·봉쇄",
-      "과거를 소급 취소하지"
-    ],
-    "excludes": [
-      "타인에게 나쁜 일이 생긴다는 설명만 붙이고",
-      "각 PC가 거부·귀가·신고·다른 길을 택해도 사건에 휘말리는 원인과 객관적 이탈 제약"
-    ],
-    "instruction_contains": [
-      "기존 원인의 위험을 준비·돌파해 탈출",
-      "성취를 인정"
-    ]
-  },
-  {
-    "rule": "ENDING_RESULT_VECTOR",
-    "contains": [
-      "이미 발생한 손실",
-      "실제로 막거나 줄인 손실",
-      "진행 중인 위험",
-      "완결 의무",
-      "갑작스러운 죽음",
-      "모든 Seed를 회수하거나 PC가 무엇을 느끼고 배웠는지 대신 확정하지",
-      "매번 교훈"
-    ],
-    "instruction_contains": [
-      "모든 관계·복선의 완결이나 PC 감정 대필을 요구하지"
-    ]
-  },
-  {
-    "rule": "START_BRIEFING_FOG",
-    "contains": [
-      "이미 들은 이상 사건",
-      "숨은 원인·정답·미래 결과"
-    ]
-  },
-  {
-    "rule": "START_SETTINGS_GATE",
-    "contains": [
-      "정수 1~100",
-      "시작 시드",
-      "인지도",
-      "이야기 규모",
-      "배제할 세계관",
-      "단독 `1`",
-      "웹 검색",
-      "원작 A~F 선택",
-      "완성된 입력에 다시 확인",
-      "기존 캠페인 복원",
-      "규모의 5개",
-      "자동으로 `없음`",
-      "선택 항목이 비었다는 이유로 질문하거나 진행을 막지",
-      "후속 부분 답변에서 생략된 기존 선택값은 유지"
-    ],
-    "excludes": [
-      "빈칸은 미응답",
-      "명시적인 `없음`."
-    ]
-  },
-  {
-    "rule": "GENERATION_RNG_SEPARATION",
-    "contains": [
-      "START_SETTINGS_GATE 완료 뒤에만",
-      "start_seed",
-      "실제 Python 실행",
-      "hashlib.sha256",
-      "random.Random",
-      "게임플레이 `SystemRandom`과 완전히 분리"
-    ],
-    "excludes": [
-      "시드를 주지 않아도"
-    ]
-  },
-  {
-    "rule": "WORLD_HOMAGE_DNA",
-    "contains": [
-      "플레이어가 선택한 인지도"
-    ],
-    "excludes": [
-      "homage_tier_seed"
-    ]
-  },
-  {
-    "rule": "HOMAGE_DRAFT_SELECTION",
-    "contains": [
-      "START_SETTINGS_GATE",
-      "PC 생성으로 간다"
-    ]
-  },
-  {
-    "rule": "STORY_SCALE",
-    "contains": [
-      "플레이어가 명시적으로",
-      "미입력을 사건으로 채우지"
-    ]
-  },
-  {
-    "rule": "BASIC_INFO_ACTOR_COMMIT",
-    "contains": [
-      "APP가 확정된 뒤",
-      "PC_APPEARANCE_FROM_APP",
-      "소급 재선정하지"
-    ],
-    "excludes": [
-      "기본정보 단계에서 PC 외형"
-    ]
-  },
-  {
-    "rule": "PC_APPEARANCE_FROM_APP",
-    "contains": [
-      "선택된 APP 수치",
-      "39 이하",
-      "80 이상",
-      "후속 그림",
-      "특성을 재굴리거나",
-      "자동 의미하지"
-    ]
-  },
-  {
-    "rule": "CHARACTER_VISUAL_CANON",
-    "contains": [
-      "확정 APP",
-      "같은 APP 반영 외형",
-      "그림에 맞춰 APP나 인물 정체성을 바꾸지"
-    ]
-  },
-  {
-    "rule": "PROFESSION_SIX_CHOICE",
-    "contains": [
-      "A/B 기본 직업",
-      "C/D 테마 직업",
-      "E/F 자유형 Joker",
-      "기존/Import/Legacy 확정 직업",
-      "특별·고위 역할의 의무 배치"
-    ],
-    "excludes": [
-      "생활권 1개 + 특별 1개",
-      "테마 특별",
-      "B — 특별·고위 역할"
-    ]
-  },
-  {
-    "rule": "PROFESSION_DNA",
-    "contains": [
-      "산업",
-      "사회"
-    ],
-    "excludes": [
-      "프로선수/감독",
-      "기업경영/사업소유",
-      "군주·통치자"
-    ]
-  },
-  {
-    "rule": "WEB_VISUAL_REFERENCE",
-    "contains": [
-      "참고 이미지",
-      "원본 출처 링크",
-      "정확한 장면",
-      "reference_only",
-      "일반 턴마다 검색하지",
-      "PC 비밀",
-      "텍스트를 계속 제공"
-    ]
-  },
-  {
-    "rule": "STATE_ACCESS_ROUTER",
-    "contains": [
-      "일반 응답의 기본값은 DB 조회 0회",
-      "미저장 HP·시간·위치·난수",
-      "부모 검증은 저장 경계",
-      "저장 없는 테스트",
-      "commit/verify/exact read-back",
-      "현재 필요한 상태 필드/ref 또는 저장 작업",
-      "규칙 확인만으로는 없음",
-      "부분 조회가 실제 지원되지 않으면",
-      "별도 명시적 삭제 지시",
-      "기능 선정·판정 요청/굴림 결과"
-    ]
-  },
-  {
-    "rule": "ROUTINE_MOVEMENT_FAST_PATH",
-    "contains": [
-      "출발·이동·도착을 한 응답",
-      "턴을 중복 증가시키지",
-      "이동 도착만을 이유로 인계하지",
-      "STATE_ACCESS_ROUTER"
-    ]
-  },
-  {
-    "rule": "SPOTLIGHT_FAIRNESS_COMMIT_GATE",
-    "contains": [
-      "**3회**",
-      "**5회 이후 첫 안전한 경계에서는 반드시 인계**",
-      "통틀어 1회",
-      "가장 오래 서비스받지 못한",
-      "장면 제목/목적이 조금 바뀌었다고 횟수를 초기화하지",
-      "Scene Turn·시간·저장·난수를 진행하지"
-    ],
-    "excludes": [
-      "1~2 Turn만 지났어도",
-      "장소 이동을 완료해 새 장소에서 다음 선택이 열림"
-    ]
-  },
-  {
-    "rule": "PARALLEL_TIMELINE_SYNC",
-    "contains": [
-      "가장 이른 의미 있는 중단/선택 시점",
-      "다시 12분으로 처리하지",
-      "미선언 행동·성과·회복은 만들지",
-      "공개한 사실은 전원 공유",
-      "이동 시간만으로 병렬 선언을 요구하지",
-      "20~30분",
-      "서로 다른 PC의 자료 조사와 이동 도착을 한 본문에 섞지"
-    ],
-    "excludes": [
-      "15분 이내",
-      "누적 15분을 넘기는"
-    ]
-  },
-  {
-    "rule": "PLAYABLE_NARRATIVE_RENDERING",
-    "contains": [
-      "공포 소설처럼",
-      "전보식 나열",
-      "IN_WORLD_DOCUMENT_HANDOUT",
-      "판정 안내/HUD",
-      "NPC 대사",
-      "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
-      "SCENE_SUMMARY_AND_RESULT"
-    ]
-  },
-  {
-    "rule": "GUIDED_ACTION_RETURN",
-    "contains": [
-      "번호·아이콘·대상 — 할 일 요약",
-      "[4] ✍️ 직접 행동",
-      "공개 라벨에 없던",
-      "그 전용 입력이 우선",
-      "action_menu_pending",
-      "NPC_REPLY_AGENCY_GATE",
-      "PC의 질문을 직접화법",
-      "SCENE_SUMMARY_AND_RESULT",
-      "항상 `자료 찾기/다른 사람에게 묻기/현장 재확인`만 반복하지",
-      "상점 방문/둘러보기",
-      "알려진 비용·위험·상충점"
-    ]
-  },
-  {
-    "rule": "IN_WORLD_DOCUMENT_HANDOUT",
-    "contains": [
-      "각각의 실제 숫자",
-      "최초 본문을 구체화해 한 번 확정",
-      "필요한 상태를 복구",
-      "같은 원문",
-      "비공개 정답",
-      "본문/발췌"
-    ]
-  },
-  {
-    "rule": "NPC_INTERACTION_VOICE_COMPACT",
-    "contains": [
-      "검증 안내·면책 문구를 사용하지",
-      "모르는 것을 꾸며 답하지",
-      "플레이어의 추리를 대신 평가하지",
-      "발화 전 지식 확인",
-      "다른 NPC에게 한 말의 수신자를 바꾸지 않는다",
-      "소급 창작하지 않는다",
-      "오류 대사 자체는 전달 근거가 아니다",
-      "매 턴 DB/정본 전체를 조회하지 않는다"
-    ]
-  },
-  {
-    "rule": "INVESTIGATION_SKILL_ROUTING",
-    "contains": [
-      "선언한 작업",
-      "`자료조사`가 기본",
-      "역사 40만 보인다고 자료조사도 40",
-      "찾기에 성공했다고 반드시 역사 판정",
-      "필요한 상태 값이 없을 때만",
-      "판정 요청의 선행 조회"
-    ]
-  },
-  {
-    "rule": "STATE_WORKING_CONTEXT",
-    "contains": [
-      "실제 로드/생성한 게임 데이터",
-      "추론 과정 자체를 게임 데이터의 저장 장소로 간주하지",
-      "현재 장소 밖도 포함한 활성 Driver",
-      "문맥에서 빠질 수",
-      "별도 숨은 메모장을 유지한다고 주장하지",
-      "공개 답변·HUD·수첩·공개 GitHub",
-      "과거 snapshot을 현재 전체 상태로 덮어쓰지",
-      "작업 범위 밖까지 포함한 full snapshot",
-      "현실 시간에 자동 실행되는 백그라운드 프로세스",
-      "Scene Turn 30/60/90",
-      "전체 복기를 반복하지",
-      "PRIVATE_CANON_DOCUMENT",
-      "STATE_CANON_SAVE_BINDING"
-    ]
-  },
-  {
-    "rule": "ACTIVE_PLAY_ROUTING_FIREWALL",
-    "contains": [
-      "규칙 조회 실패를 DB 검색으로 대체하지",
-      "INVESTIGATION_SKILL_ROUTING",
-      "기능 선정이나 d100 요청 자체는 저장소 접근 사유가 아니",
-      "STATE_WORKING_CONTEXT"
-    ]
-  },
-  {
-    "rule": "WORLD_INITIATIVE_EXECUTION",
-    "contains": [
-      "STATE_WORKING_CONTEXT",
-      "현재 장소 밖의 활성 원인도 포함",
-      "필요한 색인/조건이 실제 없을 때만",
-      "그 결과를 정확히 한 번 반영",
-      "첫 큰 사건을 처리했다는 이유로",
-      "그 사건이 바꾼 접근·자원·목적·위험",
-      "후속 위해도 강요하지",
-      "시각이 없는 Driver",
-      "주사위·메타·인계 입력 대기",
-      "매 장면 자동으로 한 칸"
-    ],
-    "instruction_contains": [
-      "WORLD_INITIATIVE_EXECUTION: 실제 경과 구간",
-      "NPC 목적·위협·약속·예정 사건",
-      "도달한 결과를 한 번 반영",
-      "화면 밖도 진행하며 실제 관측 전에는 숨긴다",
-      "30턴 저장까지 미루거나 매번 DB를 조회하지",
-      "해결·회피 성과를 보존"
-    ]
-  },
-  {
-    "rule": "STATE_CHECKPOINT_RECAP",
-    "contains": [
-      "게임 시작과 Scene Turn 30/60/90",
-      "현재 장면 밖의 모든 비공개 요소까지",
-      "같은 version의 verified exact read-back 결과를 그대로 사용",
-      "별도 latest/list/load를 호출하지",
-      "새 채팅 STATE_RESUME",
-      "본문이 잘렸다면",
-      "미래 사건 결과를 확정하지",
-      "원문을 간략한 요약으로 대체 저장하지",
-      "사건·난수·SAN·피해·시간을 다시 적용하지",
-      "지문/HUD/수첩으로 출력하지",
-      "무손실 기억이 보장됐다고 주장하지",
-      "매 30턴에 불변 문서 전체를 다시 생성·조회하지",
-      "PRIVATE_CANON_ACCESS_ROUTER"
-    ]
-  },
-  {
-    "rule": "NPC_REPLY_AGENCY_GATE",
-    "contains": [
-      "새 답변·의사·동의가 필요한 질문이나 제안",
-      "무슨 일로 오셨습니까",
-      "거기서 멈춘다",
-      "포괄적 위임이 아니",
-      "이미 선언했다면",
-      "첫 실제 문의와 의미 있는 상대",
-      "근거 없는 후속 발화를 삭제",
-      "미답 질문은 보존"
-    ]
-  },
-  {
-    "rule": "CINEMATIC_ACTION_CONTINUITY",
-    "contains": [
-      "직접 입력한 대사",
-      "질문/설명/일감 문의",
-      "간접 요약만으로 PC의 발화를 지우지",
-      "단순 이동이나 침묵에는 대사를 억지로 넣지",
-      "NPC_REPLY_AGENCY_GATE"
-    ]
-  },
-  {
-    "rule": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
-    "contains": [
-      "### 1. 핵심 역할",
-      "### 2. 장면의 기본 목적",
-      "### 3. 영화감독의 시점과 카메라",
-      "### 4. 공포와 긴장의 설계",
-      "### 5. 소설가의 서술 원칙",
-      "### 6. 인물과 대화의 연출",
-      "### 7. 장면의 연속성과 편집",
-      "### 8. 플레이어별 Spotlight와 교차편집",
-      "### 9. 선택의 의미와 세계의 반응",
-      "### 10. 응답 분량과 밀도",
-      "### 11. 행동권을 돌려주는 순간",
-      "### 12. 실시간 서사 생성 및 품질 원칙",
-      "### 13. 서술 및 연출 보정 레퍼런스",
-      "### 최종 원칙",
-      "Positive Anchor",
-      "1~2가지",
-      "900~1,600자",
-      "인과",
-      "가독성",
-      "소설성",
-      "플레이성",
-      "별도 모델 호출·검색·평가 라운드",
-      "인계의 A 확인 전에",
-      "성공을 대신하지",
-      "예시는 가상 문체 자료",
-      "STATE_CHECKPOINT_RECAP"
-    ]
-  },
-  {
-    "rule": "CINEMATIC_MISE_EN_SCENE",
-    "contains": [
-      "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
-      "감각 1~2개",
-      "감각 조합을 고정하지"
+      "사용 완료 수치 공개 예외",
+      "공개 판정의 NPC 수치도",
+      "비공개 사건"
     ]
   },
   {
     "rule": "CORE_WORKFLOW",
     "contains": [
-      "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
-      "별도 작성자/검수 도구를 호출하는 단계가 아니",
-      "WORLD_INITIATIVE_EXECUTION",
-      "다음 30턴 저장/복기까지 미루지",
-      "SCENE_PACING_GATE",
-      "완결 장면 2개 정체",
-      "현재 자료가 있으면 추가 조회하지"
-    ]
-  },
-  {
-    "rule": "HUD_VISUAL_STYLE",
-    "contains": [
-      "독립 문단 4개",
-      "각 항목 사이에 빈 줄 하나",
-      "짧아도 두 항목을 한 줄로 합치지",
-      "단일 개행·자동 줄바꿈·후행 공백에 의존하지",
-      "각각 빈 줄로 분리한 독립 문단",
-      "💵 **현금** · [금액·통화]\n\n🩹 **상태**",
-      "🎒 **메인 [점유/용량]** · [현재 관련 물품·핵심 도구]\n\n👝 **파우치",
-      "\n\n🧰 **직업품**",
-      "\n\n🗝️ **키템**",
-      "🌿 생활 버프",
-      "이번 응답 경과",
-      "소모/만료 항목"
-    ],
-    "excludes": [
-      "현금·상태는 짧으면 한 줄에 함께"
+      "필요한 상태와 규칙만",
+      "유실·충돌·변경",
+      "한 번",
+      "저장 경계만",
+      "별도 작성자/검수 모델"
     ],
     "instruction_contains": [
-      "HUD_VISUAL_STYLE의 자원표 뒤",
-      "`🕒 시각`, `📍 위치`, `💵 현금`, `🩹 상태`",
-      "`🎒 메인`, `👝 파우치`",
-      "`🧰 직업품`·`🗝️ 키템`",
-      "항목마다 빈 줄을 둔 독립 문단",
-      "짧아도 합치지"
-    ]
-  },
-  {
-    "rule": "SETUP_UI_FIXED_CONTRACT",
-    "contains": [
-      "하나의 선택 Gate만",
-      "값·난수·시간을 바꾸지 않고 같은 데이터로 재출력",
-      "원작 확정 → 전원 PC 생성 → 세계 생성",
-      "STR | CON | SIZ | DEX | APP | INT | POW | EDU | 합계 | Luck",
-      "기능명 7개",
-      "전문 분야 A / B / C와 취미 기능 하나",
-      "🌍 세계 브리핑",
-      "비공개 세계 법칙의 개수·내용",
-      "🪪 P[N] 최종 조사자 프로필",
-      "setup_bootstrap 저장 시도 뒤",
-      "입력은 실제 입력 UI 도구를 우선 호출",
-      "필드·표시 순서의 명세",
-      "기본 선택·미제출·닫기·시간 경과는 제출이 아니며",
-      "실제 입력 UI 도구가 없거나 호출에 실패하면",
-      "코드 블록으로 조용히 대체하지 않는다",
-      "이전 폼의 지연 응답·중복 제출",
-      "문서 검사는 UI의 렌더링·제출 연결을 검증하지 않는다"
-    ],
-    "instruction_contains": [
-      "SETUP_UI_FIXED_CONTRACT"
-    ],
-    "excludes": [
-      "아래 text 코드 블록은 실제 채팅에서도 코드 블록으로 유지한다",
-      "⚙️ 시작 설정\n핵심 시드(1~100): [값]",
-      "setup_bootstrap 검증 성공 뒤에만"
-    ]
-  },
-  {
-    "rule": "HOMAGE_DRAFT_PUBLIC_FORMAT",
-    "contains": [
-      "필수 고정 양식",
-      "제목·A~F 순서·두 줄 카드 구조"
-    ],
-    "excludes": [
-      "권장 플레이어 출력"
-    ]
-  },
-  {
-    "rule": "GOLD_START_PROFILE_REFERENCE",
-    "contains": [
-      "참조 이미지가 없으면",
-      "블록 위치·항목·전체 페이지 구조는 유지",
-      "완료로 표시하지 않는다",
-      "추가 재생성은 플레이어의 명시 요청",
-      "이미지의 픽셀 동일성이나 한글 정확성을 보장한다고 주장하지 않는다"
-    ]
-  },
-  {
-    "rule": "PRIVATE_CANON_DOCUMENT",
-    "contains": [
-      "비공개 세계 정본 문서 + 게임 세이브",
-      "실제 소스 조회",
-      "campaign_id / canon_id / revision",
-      "CANON_INDEX",
-      "HIDDEN_TRUTH",
-      "NPC_BASELINES",
-      "EVIDENCE_BASELINES",
-      "DRIVER_BASELINES",
-      "이전 파일을 보존",
-      "본문을 붙이지",
-      "구판 세이브",
-      "인증키·서버 자격 증명은 넣지",
-      "실제 캠페인 비밀을 포함하지"
-    ]
-  },
-  {
-    "rule": "PRIVATE_CANON_ACCESS_ROUTER",
-    "contains": [
-      "현재 변경 상태를 적용한 사실로 판단",
-      "NPC_BASELINES",
-      "EVIDENCE_BASELINES",
-      "WORLD_RULES",
-      "LOCATION_BASELINES",
-      "DRIVER_BASELINES",
-      "ENDING_CONDITIONS",
-      "canon_source_required",
-      "현재 장소 밖의 활성 원인도 포함",
-      "이미 처리한 사건은 복원/조회로 재실행하지",
-      "조회한 비밀을 그대로 플레이 지문에 붙이지",
-      "동적 상태가 유실됐으면 STATE_ACCESS_ROUTER",
-      "PRIVATE_CANON_PERIODIC_REVIEW"
-    ],
-    "instruction_contains": [
-      "PRIVATE_CANON_ACCESS_ROUTER"
-    ]
-  },
-  {
-    "rule": "STATE_CANON_SAVE_BINDING",
-    "contains": [
-      "LEGACY_FULL",
-      "DOCUMENT_BOUND",
-      "기존 verified LEGACY_FULL checkpoint는 원문·hash·history·백업 그대로 유지한다",
-      "정본 이후 누적 현재값",
-      "마지막 저장 이후의 delta만 기록하는 체인은 금지한다",
-      "tombstone",
-      "coverage",
-      "안 읽힌 범위와 사망/취소 항목도 누락시키지 않는다",
-      "논리적 full GM_STATE",
-      "매 저장에서 불변 원문을 중복 전송하지 않는다"
-    ],
-    "instruction_contains": [
-      "STATE_CANON_SAVE_BINDING"
-    ]
-  },
-  {
-    "rule": "STATE_SAVE_FAILURE_CONTINUE",
-    "contains": [
-      "세이브 실패는 게임 진행을 막지 않는다",
-      "setup_bootstrap/play_start/periodic/manual/terminal",
-      "재개 허가·실패 수락·추가 동의를 매번 요구하지",
-      "다음 30배수",
-      "원문·hash·version/event를 동결",
-      "그동안 진행한 최신 상태를 별도 체크포인트로 저장",
-      "현재 진행까지 저장됐다고 하지",
-      "실제 상태 유실과 저장 장애를 구분",
-      "종료를 완결"
-    ],
-    "instruction_contains": [
-      "STATE_SAVE_FAILURE_CONTINUE"
-    ]
-  },
-  {
-    "rule": "CAMPAIGN_SETUP_PIPELINE",
-    "contains": [
-      "성공 여부와 관계없이",
-      "저장·검증 실패는 첫 장면을 막지 않는다"
-    ],
-    "excludes": [
-      "성공한 뒤 게임 시작 입력 대기",
-      "실제 전달·검증이 실패하면 해당 경계에서 대기"
-    ]
-  },
-  {
-    "rule": "ENDING_FINALIZATION_GATE",
-    "contains": [
-      "STATE_SAVE_FAILURE_CONTINUE",
-      "관계·책임을 포기한 철수도 실제 이탈 조건을 충족했다면 인정",
-      "새 위험으로 성공을 취소하지",
-      "남은 PC의 유효한 대응",
-      "개인 목표·나비효과를 전부 완결해야 종료하는 것은 아니다",
-      "마지막 적격 성장",
-      "아직 결과를 바꿀 유효한 선택"
-    ],
-    "excludes": [
-      "Checkpoint 1회가 검증된 뒤 종료"
-    ]
-  },
-  {
-    "rule": "START_MAP_HANDOUT_GATE",
-    "contains": [
-      "STATE_SAVE_FAILURE_CONTINUE",
-      "첫 장면을 막지 않는다"
-    ],
-    "excludes": [
-      "Play Start Checkpoint verified 이후에만"
-    ]
-  },
-  {
-    "rule": "STATE_CANON_SAVE_BINDING",
-    "contains": [
-      "DOCUMENT_BOUND(DB1)",
-      "document_bound_format",
-      "canon_ref",
-      "file_sha256",
-      "change_coverage",
-      "baseline_entity_ids",
-      "changed_entity_ids",
-      "world_delta",
-      "processed_event_ids",
-      "LEGACY_FULL 대용량 payload로 자동 재전송하지 않는다"
-    ],
-    "excludes": [
-      "문서가 있다는 이유로 서버가 요구하는 원문·anchor를 삭제하지 않는다"
-    ]
-  },
-  {
-    "rule": "PRIVATE_CANON_PERIODIC_REVIEW",
-    "contains": [
-      "Scene Turn 20/40/60/80",
-      "플레이어의 `정본 읽어 줘` 명령이나 재승인은 필요 없다",
-      "열린 절차가 끝난 첫 안전 경계",
-      "45턴에 재독 완료 → 다음 60턴",
-      "활성 정본의 모든 절·본문",
-      "색인·검색 상위 발췌·요약만 읽고 전체 완료로 표시하지",
-      "최신 누적 변경 상태를 적용",
-      "정본 재독 20턴과 게임 저장 30턴은 별개",
-      "정본 전체 읽기는 한 번만",
-      "Supabase 저장 실패와 관계없이",
-      "재시도 경계와 완료 여부를 구분",
-      "현재 확인된 사실로 처리할 수 있는 플레이는 계속"
-    ],
-    "instruction_contains": [
-      "20턴마다 PRIVATE_CANON_PERIODIC_REVIEW",
-      "정본 전체를 실제 재독"
-    ]
-  },
-  {
-    "rule": "SCENE_SUMMARY_AND_RESULT",
-    "contains": [
-      "묘사 → 이번 씬 요약·결과 → 행동 선택 → HUD",
-      "🎯 행동 선택",
-      "각각 1~2문장",
-      "이번 응답에서 처리한 부분만",
-      "NPC 전언",
-      "아직 미결정이면 완료로 쓰지 않는다",
-      "비공개 정본·미발견 진실",
-      "기존 전용 출력/입력 계약이 우선",
-      "별도 Supabase 조회/저장·정본 재독을 유발하지"
-    ]
-  },
-  {
-    "rule": "ROLL_INPUT_FORM_CONTRACT",
-    "contains": [
-      "굴림 숫자 + 행운 사용 + 실패 시 강행",
-      "둘 다 기본 해제",
-      "행운으로 성공 전환 우선 → 불가능하면 강행",
-      "Luck을 전혀 차감하지 않는다",
-      "새 강행 굴림값은 플레이어에게 받는다",
-      "구판의 이미 열린 Luck 선택",
-      "두 번 실행하지 않게",
-      "실제 통합 입력 폼 도구",
-      "LIFESTYLE_BUFFS",
-      "선언한 목적/성공 범위",
-      "요구 성공 수준과 목표치",
-      "제출 뒤 바꾸지",
-      "행운은 사용 체크만 받는다",
-      "일반 성공(Regular)에 필요한 최소 비용 자동 차감",
-      "읽기 전용",
-      "구판의 이미 열린 Luck 선택",
-      "동의 범위를 넓히지 않는다"
-    ],
-    "excludes": [
-      "행운 체크 옆에는 소비 상한 입력을 둔다",
-      "비용이 제출한 상한 또는 현재 Luck을 넘거나"
-    ]
-  },
-  {
-    "rule": "LIFESTYLE_BUFFS",
-    "contains": [
-      "1회 사용 또는 만료 시각 도달",
-      "식사 종료 후 극중 4시간",
-      "기상 후 극중 8시간",
-      "한 판정에는 하나만",
-      "각 기준 목표치",
-      "Critical은 원값01만",
-      "Fumble 범위는 원래 기능치",
-      "굴리기 전에",
-      "강행에 자동 이월하지 않는다",
-      "페널티·행동 금지·기본 난이도 인상이 없다"
-    ]
-  },
-  {
-    "rule": "TURN_INCREMENT",
-    "contains": [
-      "극중 행동·대화를 처리하고 다음 행동권을 반환할 때 Scene Turn +1",
-      "판정값 제출·행운 선택·강행 확인 자체",
-      "같은 목적의 강행",
-      "소급 재실행하지 않는다"
-    ],
-    "excludes": [
-      "찰나 대화/수신호"
-    ]
-  },
-  {
-    "rule": "SCENE_ELAPSED_TIME_SETTLEMENT",
-    "contains": [
-      "자율적으로 추정해 진행",
-      "5~15분",
-      "10~30분",
-      "가장 이른 시점",
-      "상대 경과를 누적",
-      "현실 채팅 대기 시간",
-      "LIFESTYLE_BUFFS"
-    ]
-  },
-  {
-    "rule": "PC_INVOLVEMENT_COLLISION_GATE",
-    "contains": [
-      "재미와 몰입, 사건 탐구와 위험 돌파·해결",
-      "형성·전달",
-      "내적 동기·대사·협조·죄책감은 플레이어",
-      "자동 안전 귀환하지",
-      "조사 수락을 기다리지"
-    ],
-    "instruction_contains": [
-      "재미·몰입·탐구·해결이 우선",
-      "감정 대필·억지 감금·도덕 설교는 금지"
-    ]
-  },
-  {
-    "rule": "HARM_ECOLOGY",
-    "contains": [
-      "부상·죽음·정신적 붕괴가 실제로 가능한 위험",
-      "진실 발견·장소 탐사·인물 대면·위협 대응·탈출",
-      "노출·발동 조건 / 실패·방치 결과",
-      "준비·관찰·정보·아이템·우회·협상·성공적인 대응",
-      "피해 quota는 금지",
-      "자동 구조하지",
-      "REACHED_DANGER_EXECUTION_GATE"
-    ],
-    "excludes": [
-      "명백히 비물리적 공포만을 요구하는 예외"
-    ],
-    "instruction_contains": [
-      "진입·발견·탐사·대면·대응·탈출의 실제 위험",
-      "도달한 HP/SAN·광기 절차를 실행",
-      "경고로 축소·자동 구조·피해 할당제는 금지"
-    ]
-  },
-  {
-    "rule": "COMPATIBILITY_GATE",
-    "contains": [
-      "형성·전달 경로",
-      "충분히 형성된 관계·책임은 통과",
-      "전투 밖 SAN 위험",
-      "성취 가능한가",
-      "아직 형성되지 않은 관계를 완료로 간주하지",
-      "ORGANIC_SKILL_INTEGRATION",
-      "기록·목격·자료조사만으로 전체 경험"
-    ]
-  },
-  {
-    "rule": "ACTIVE_DANGER_CONTINUITY",
-    "contains": [
-      "사건 진입부터",
-      "첫 큰 사건 뒤에도",
-      "미해소 실제 위험 source",
-      "REACHED_DANGER_EXECUTION_GATE"
-    ],
-    "excludes": [
-      "Fracture 이후이고",
-      "독립 독립"
-    ]
-  },
-  {
-    "rule": "REACHED_DANGER_EXECUTION_GATE",
-    "contains": [
-      "COMBAT_ORDER",
-      "DAMAGE",
-      "EXTREME_HAZARDS",
-      "HP_AND_DEATH",
-      "WOUNDS",
-      "SAN_ROLL",
-      "SCALED_SANITY_LOSS",
-      "INSANITY_CONDITIONS",
-      "UNDERLYING_INSANITY",
-      "발견·탐사·대면·탈출",
-      "자동 구조하지",
-      "동일 효과",
-      "판정·HP/SAN을 선행 확정하지"
-    ],
-    "excludes": [
-      "공격/전투이면 ,",
-      "피해를 ·05·13"
-    ]
-  },
-  {
-    "rule": "SAN_EXPOSURE_GATE",
-    "contains": [
-      "발견·내용 이해·대면",
-      "유효한 노출이 실제로 발생한 순간",
-      "매 Turn 반복하지",
-      "안전한 단서 획득·맞는 추리 자체에는 피해를 붙이지"
-    ]
-  },
-  {
-    "rule": "SAN_ROLL",
-    "contains": [
-      "적격 노출이 실제 성립하면",
-      "PC 보호를 위해 생략하지",
-      "UNDERLYING_INSANITY",
-      "플레이어 직접 굴림이며 Luck 사용 불가"
-    ]
-  },
-  {
-    "rule": "SCALED_SANITY_LOSS",
-    "contains": [
-      "SAN_EXPOSURE_GATE를 통과한 실제 노출",
-      "INSANITY_CONDITIONS",
-      "확정 손실을 임의 축소하지"
-    ]
-  },
-  {
-    "rule": "SAFE_INTERLUDE_AND_ENRICHMENT",
-    "contains": [
-      "세계 안에서 확보한 안전",
-      "REACHED_DANGER_EXECUTION_GATE",
-      "공포 부채",
-      "자동 구조하지"
-    ]
-  },
-  {
-    "rule": "FOUNDATION_FIRST_CAMPAIGN_DESIGN",
-    "contains": [
-      "CoC 기반",
-      "언틸던",
-      "발더스 게이트",
-      "자기 목표",
-      "미래 결과의 개방성",
-      "캠페인 내 획득/성장",
-      "매 턴 세계 전체"
-    ],
-    "instruction_contains": [
-      "FOUNDATION_FIRST_CAMPAIGN_DESIGN",
-      "관심→자기 목표→선택→실제 결과→세계 변화·성장"
-    ]
-  },
-  {
-    "rule": "ORGANIC_SKILL_INTEGRATION",
-    "contains": [
-      "각 PC의 직업 기능·취미·전문성",
-      "이 캐릭터이기 때문에 가능한 해법·성과",
-      "동일한 성과의 대체 해법을 보장하지",
-      "캠페인 전체를 특정 PC/기능의 단 한 번 성공에 잠그지는",
-      "PRIVATE_CANON_DOCUMENT"
-    ],
-    "excludes": [
-      "하나의 장애물에 유일한 정답 기술을 고정하지"
-    ],
-    "instruction_contains": [
-      "각 PC만의 전문 행동·성과",
-      "전체 진행을 한 기능에 잠그지"
-    ]
-  },
-  {
-    "rule": "PROFESSION_SPECIALTY",
-    "contains": [
-      "FICTION_FIRST_ROLL_TRIGGER_GATE",
-      "ORGANIC_SKILL_INTEGRATION",
-      "자동 성공"
-    ],
-    "excludes": [
-      "남으면 를 정상 적용"
-    ]
-  },
-  {
-    "rule": "PROFESSIONAL_GAZE",
-    "contains": [
-      "표준 절차·시도 가능한 전문 접근",
-      "비공개 범인·초자연 법칙은 자동 공개하지",
-      "플레이어 대신 추리 결론·목표"
-    ]
-  },
-  {
-    "rule": "SIGNATURE_OPPORTUNITY",
-    "contains": [
-      "세계 확정 전 ORGANIC_SKILL_INTEGRATION",
-      "미확정 설계",
-      "정본 개정",
-      "고유 성과"
-    ],
-    "excludes": [
-      "자연스러운 기존 기회가 없다면 할당량을 맞추려고 만들지"
-    ]
-  },
-  {
-    "rule": "CROSS_LINK_ENGINE",
-    "contains": [
-      "전원 PC 확정 뒤",
-      "고유 능력",
-      "한 사람의 전용 해법/추가 성과는 가능",
-      "단 한 번 판정",
-      "확정 뒤"
-    ],
-    "excludes": [
-      "현재 PC 직업에 맞춘 전용 해결 루트로 재설계하지"
-    ]
-  },
-  {
-    "rule": "PACING_PLAYABILITY_QA",
-    "contains": [
-      "실제로 획득할 장비",
-      "고유한 전문 행동·성과",
-      "미선택 경험",
-      "충분한 관계·책임도 통과",
-      "첫 큰 사건 마감 외에",
-      "핵심 Mystery가 있는 사건"
-    ],
-    "excludes": [
-      "각 PC가 의뢰 거절·귀가·분리 선언만으로 사건을 벗어날 수 없게 하는 객관적 제약",
-      "타인 손실만으로 붙잡는 구조는 탈락",
-      "한 편의 기승전결이 남는가"
-    ]
-  },
-  {
-    "rule": "FICTION_FIRST_ROLL_TRIGGER_GATE",
-    "contains": [
-      "목적과 방법",
-      "실패가 현재 방법의 성패",
-      "굴림 전에 고정",
-      "같은 목적의 종속 공정을 쪼개 굴리지",
-      "안전줄은 추락의 결과",
-      "Fumble/Push의 심화",
-      "PC의 굴림값이 없으면"
-    ],
-    "instruction_contains": [
-      "목적 단위로 남은 불확실성만 판정",
-      "목적·요구 수준·성공 범위·실패 위험은 굴림 전에 고정"
-    ]
-  },
-  {
-    "rule": "DIFFICULTY_ASSIGNMENT",
-    "contains": [
-      "위험의 크기와 수행 난이도는 별개",
-      "표준 방식",
-      "본질적으로 높은 정밀도",
-      "최고 숙련자",
-      "제한 시간이라는 단어만으로 Hard",
-      "같은 원인을 난이도와 보너스/패널티에 중복 반영하지",
-      "물리적으로 필요한 최소 시간이 없으면 불가능",
-      "이미 받은 굴림에 소급 적용하지"
-    ],
-    "instruction_contains": [
-      "위험과 난이도를 구별",
-      "같은 원인을 중복 보정하지"
-    ]
-  },
-  {
-    "rule": "SKILL_IMPROVEMENT",
-    "contains": [
-      "현재 캠페인 안에서",
-      "판정 없이 전문 문제를 해결",
-      "확인한 오류를",
-      "중요한 목표·위기·개인적 도전의 결과",
-      "최대 2개",
-      "80 미만이면 +2, 80 이상이면 +1",
-      "상한은 95",
-      "95 이상은 선택 후보에서 제외",
-      "성장용 주사위·추가 판정은 없다",
-      "미선택 근거를 다음 경계에 돌려 쓰지",
-      "선택 대기 중 새 사건",
-      "적용 전후 값",
-      "이미 열린 판정은 요청 당시 수치",
-      "구판에서 이미 얻은 기능 수치",
-      "종료를 막지는",
-      "Cthulhu Mythos",
-      "새 DB 컬럼/자동 저장 시점은 요구하지"
-    ],
-    "excludes": [
-      "Critical(01): 사용 기능 +1d5",
-      "Fumble: 최악의 결과를 그대로 적용하되 해당 기능 +1d3"
-    ],
-    "instruction_contains": [
-      "SKILL_IMPROVEMENT의 학습·성장 경계와 획득"
-    ]
-  },
-  {
-    "rule": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION",
-    "contains": [
-      "실제 학습·중요한 결과 경계",
-      "구체적 도구 사용법·대응법·접근",
-      "CHAPTER_TERMINAL",
-      "상한은 시작 포함 3개"
-    ]
-  },
-  {
-    "rule": "SCENARIO_OBJECTIVES",
-    "contains": [
-      "사람·물건·장소·경쟁·부당함·거래·문제·기회",
-      "메인 사건과 무관해도",
-      "수락/변경/포기",
-      "목표를 전부 엔딩 필수 조건으로 승격하지",
-      "예정된 플롯으로 강제 복귀시키지"
-    ],
-    "instruction_contains": [
-      "스스로 목표를 갖고 밀어붙일 기회"
-    ]
-  },
-  {
-    "rule": "BUTTERFLY_AND_LIVING_WORLD",
-    "contains": [
-      "후속 사건",
-      "선택 전에는 현재 알 수 있는 목적·이득·비용·위험",
-      "찍기 선택",
-      "사소한 선택마다 임의의 큰 벌",
-      "모두를 구할 수 없는 선택도 가능",
-      "같은 사건으로 복귀시키는 가짜 분기"
-    ],
-    "instruction_contains": [
-      "선택이 사람·경로·후속 사건을 바꾸는 결과"
-    ]
-  },
-  {
-    "rule": "BUTTERFLY_SEED_ECHO_PAYOFF",
-    "contains": [
-      "미발견 Echo를 자동 공개하지",
-      "조건이 취소되거나 관련이 없어졌으면 회수를 강요하지",
-      "3단계 형식 때문에 늦추지"
-    ]
-  },
-  {
-    "rule": "RELATIONSHIP_AND_NPC_MEMORY",
-    "contains": [
-      "실제 공동 경험은 이후 행동",
-      "무조건 충성·위험 감수·무료 구조",
-      "애착을 보였다는 이유만으로"
-    ]
-  },
-  {
-    "rule": "DISTINCTIVE_EQUIPMENT_AFFORDANCE",
-    "contains": [
-      "실제 행동 가능성",
-      "공개 가능한 사용법",
-      "이미 확보한 성과를 재압박용 파손/몰수로 자동 상쇄하지"
-    ]
-  },
-  {
-    "rule": "KEEPER_SCENE_SELECTION",
-    "contains": [
-      "일상·유머·교류·경이·갈등·성취·긴박함·공포·절망·안도",
-      "성공 뒤에는 성과를 사용하거나 잠시 누릴",
-      "장면별 할당량"
-    ]
-  },
-  {
-    "rule": "SCENE_CONSEQUENCE_RULE",
-    "contains": [
-      "아직 고르지 않았거나",
-      "매 장면마다 보상·손실·진전 점수를 요구하지",
-      "SKILL_IMPROVEMENT"
-    ]
-  },
-  {
-    "rule": "STATE_SCHEMA",
-    "contains": [
-      "학습",
-      "경계 event ID",
-      "적용 전후 값",
-      "미선택 근거의 마감",
-      "상점의 공개 재고/가격",
-      "정본 원문이 아닌 동적 PC/활성 진행 필드",
-      "원작 체험·조건부 진행 설계도",
-      "진행성 위해",
-      "runtime_flags",
-      "NPC의 현재 우선순위"
-    ]
-  },
-  {
-    "rule": "STATE_INTEGRITY",
-    "contains": [
-      "성장 후보 대기와 다음 구간의 새 근거",
-      "상점의 미결정 구매/답변",
-      "동일 경계/PC",
-      "저장 전 고정 기준"
-    ]
-  },
-  {
-    "rule": "BOTTOM_HUD_CONTRACT",
-    "contains": [
-      "🎲 판정",
-      "🎬 씬 연출 의도",
-      "결과 미확정·선택 대기",
-      "PC가 느껴야 할 감정이나 선택을 지정하지 않는다",
-      "실제 판정 내역",
-      "요구",
-      "플레이어",
-      "비교",
-      "U=9·T=9/9",
-      "확인 불가",
-      "사용 완료 수치 공개 예외",
-      "1~2줄",
-      "표·열별 목록·빈 셀",
-      "해설·각주·규칙 원리",
-      "작업 상태에 보존",
-      "이번 서식 변경으로 수치를 바꾸지 않는다"
-    ],
-    "excludes": [
-      "가독성을 위해 짧은 목록/표를 사용",
-      "설명형 한 줄 대신"
-    ]
-  },
-  {
-    "rule": "LUCK_SPENDING",
-    "contains": [
-      "최소 비용 = max(0, 최종 굴림값 - Regular 목표치)",
-      "행운 소모량·상한 숫자 입력은 요구하지 않는다",
-      "실제 차감량과 잔여 Luck"
+      "이번 처리에 필요한 부분만 조회",
+      "화면 밖 진행"
     ]
   },
   {
     "rule": "PYTHON_RANDOM_EXECUTION",
     "contains": [
-      "모든 게임 내 무작위 처리",
       "실제 Python 실행 결과",
       "random_event_id",
-      "성공 여부를 모르면 같은 event를 자동 재굴림하지",
+      "PYTHON_SYSTEM_RANDOM_V1",
+      "성공 여부를 모르면",
       "PC d100을 AI/Python으로 대신 굴리지",
-      "도구 실행 내역이 플레이어에게 보일 수"
+      "현재 조건으로 독립",
+      "randint(1, N)"
     ],
     "instruction_contains": [
-      "실제 Python 필수(생성 포함)"
+      "PC d100은 플레이어",
+      "나머지 실제 무작위는 Python"
     ]
   },
   {
@@ -1571,54 +68,367 @@
     ]
   },
   {
-    "rule": "STATE_COMPATIBILITY",
+    "rule": "PLAYER_INPUT_NAMESPACE_ROUTER",
     "contains": [
-      "미사용 큐는 사용 중단",
-      "Python 커널·로컬 파일·Random 객체를 세이브 대신 쓰지",
-      "가짜 큐·가짜 Python 결과"
+      "현재 질문/열린 절차",
+      "번호",
+      "자유문장",
+      "해당 단계/PC",
+      "별도 A/B 대기는 만들지"
+    ]
+  },
+  {
+    "rule": "FICTION_FIRST_ROLL_TRIGGER_GATE",
+    "contains": [
+      "실패가 시간",
+      "굴림 전에 고정",
+      "종속 공정을 쪼개",
+      "준비로 불확실성이 제거",
+      "전문 자격"
+    ]
+  },
+  {
+    "rule": "PLAYER_D100",
+    "contains": [
+      "플레이어가 직접 제공",
+      "결과를 선행 생성하지"
+    ]
+  },
+  {
+    "rule": "ROLL_INPUT_FORM_CONTRACT",
+    "contains": [
+      "행운은 사용 체크만",
+      "소모량·상한 숫자 입력은 요구하지",
+      "둘 다 기본 해제",
+      "행운으로 성공 전환 우선",
+      "Luck을 전혀 차감하지",
+      "새 강행 굴림값은 플레이어",
+      "실제 통합 입력 폼 도구",
+      "두 번 실행하지"
+    ],
+    "excludes": [
+      "LIFESTYLE_BUFFS"
+    ]
+  },
+  {
+    "rule": "CHARACTERISTIC_VS_SKILL",
+    "contains": [
+      "EDU",
+      "전문 자격",
+      "회피는 회피",
+      "대체하지 않는다"
+    ]
+  },
+  {
+    "rule": "INVESTIGATION_SKILL_ROUTING",
+    "contains": [
+      "자료조사",
+      "역사",
+      "발견→읽기→해석의 자동 연속 판정",
+      "현재 상태에 있으면 재사용"
+    ]
+  },
+  {
+    "rule": "SUCCESS_LEVELS",
+    "contains": [
+      "01=Critical",
+      "÷5",
+      "÷2",
+      "50 미만이면96~100",
+      "50 이상이면100",
+      "원래 수치"
+    ]
+  },
+  {
+    "rule": "DIFFICULTY_ASSIGNMENT",
+    "contains": [
+      "위험의 크기와 수행 난이도는 별개",
+      "중복 반영하지",
+      "굴림 뒤",
+      "최소 시간이 없으면 불가능"
+    ]
+  },
+  {
+    "rule": "BONUS_PENALTY_DICE",
+    "contains": [
+      "1:1 상쇄",
+      "최대 2개",
+      "1의 자리",
+      "결합 결과 00은 100",
+      "기본 d100 1회 + 추가 d100 N회"
+    ]
+  },
+  {
+    "rule": "LUCK_SPENDING",
+    "contains": [
+      "max(0, 최종 굴림값 - Regular 목표치)",
+      "부족하면0차감",
+      "Hard/Extreme",
+      "Fumble·SAN·Luck Roll·피해량",
+      "행운 소모량·상한 숫자 입력은 요구하지"
+    ]
+  },
+  {
+    "rule": "PUSHED_ROLL",
+    "contains": [
+      "동일 목적의 1회",
+      "세 번째 굴림은 없다",
+      "전투 판정, SAN, Luck Roll, 피해량, 일반 대항",
+      "첫 실패",
+      "한 행동"
     ]
   },
   {
     "rule": "GENERIC_OPPOSED_ROLL",
     "contains": [
-      "완료된 공개 대항",
-      "양측 목표치/원값/최종값/성공 단계",
-      "실제 적용한 비교 기준"
+      "더 높은 성공 단계",
+      "원래 기능/특성 수치",
+      "새 1d100",
+      "MELEE_OPPOSED"
     ]
   },
   {
-    "rule": "PLAYER_FACING_ROLL_RESULT_RENDER",
+    "rule": "LUCK_ROLL",
     "contains": [
-      "질문을 기다리지 않는다",
-      "본문 서술과 구분"
+      "Luck이 가장 낮은",
+      "Push할 수 없고",
+      "외부",
+      "Luck Spending"
     ]
   },
   {
-    "rule": "CORE_VISIBILITY",
+    "rule": "IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL",
     "contains": [
-      "사용 완료 수치 공개 예외",
-      "공개 판정의 NPC 수치도",
-      "비밀 사유는 밝히지 않는다"
+      "불가능한 행동은 Extreme",
+      "창의적",
+      "자동 성공"
     ]
   },
   {
-    "rule": "FINAL_THREAT_DESIGN",
+    "rule": "CORE_CLUE_FAIL_FORWARD",
     "contains": [
-      "추첨 전",
-      "추가 축",
-      "총 8개 설계축",
-      "원값·후보 목록",
-      "선제 제압"
+      "올바른 접근",
+      "단일 판정 실패",
+      "선택적 보너스 단서"
     ]
   },
   {
-    "rule": "SCENARIO_BLUEPRINT",
+    "rule": "DAMAGE_BONUS_AND_BUILD",
     "contains": [
-      "조건부 진행 설계도",
-      "예상 주요 진행안",
-      "분 단위 시한",
-      "조사/의뢰 수락은 사건 발생 스위치가 아니다",
-      "조기에 해결"
+      "2~64",
+      "65~84",
+      "85~124",
+      "125~164",
+      "165~204",
+      "총기 피해에는 적용하지",
+      "0 미만"
+    ]
+  },
+  {
+    "rule": "HP_AND_DEATH",
+    "contains": [
+      "floor((CON + SIZ) / 10)",
+      "최대 HP 이상",
+      "절반 이상",
+      "Major Wound가 없는",
+      "Dying",
+      "다음 라운드 종료",
+      "응급치료 성공"
+    ]
+  },
+  {
+    "rule": "WOUNDS",
+    "contains": [
+      "이동력 절반",
+      "도주를 제외",
+      "CON",
+      "HP 0"
+    ]
+  },
+  {
+    "rule": "HEALING",
+    "contains": [
+      "파우치 의료품 성공HP1d3",
+      "구급상자/수술도구 성공HP1d6",
+      "구급상자 소모+의학 성공",
+      "시간을 정지시키지",
+      "전투에서는 해당 행동 기회",
+      "감염",
+      "최대HP 이내"
+    ]
+  },
+  {
+    "rule": "SKILL_IMPROVEMENT",
+    "contains": [
+      "CHRONICLE(연대기)에서만",
+      "대사건은 기능/특성 등 영구 스탯 성장 없음",
+      "최대 2개",
+      "80 미만이면 +2, 80 이상이면 +1",
+      "상한은 95",
+      "79→81,94→95",
+      "성장용 주사위·추가 판정은 없다",
+      "미선택 근거를 다음 경계에 돌려 쓰지",
+      "요청 당시 수치"
+    ]
+  },
+  {
+    "rule": "SAN_CORE",
+    "contains": [
+      "initial_san",
+      "max_san",
+      "99-Cthulhu Mythos",
+      "소급 재계산하지"
+    ]
+  },
+  {
+    "rule": "CTHULHU_MYTHOS_SKILL",
+    "contains": [
+      "CHRONICLE에서만",
+      "대사건에서도",
+      "0",
+      "사전에 정해진 획득량",
+      "SAN_CORE"
+    ]
+  },
+  {
+    "rule": "SAN_ROLL",
+    "contains": [
+      "적격 노출",
+      "플레이어 직접 굴림이며 Luck 사용 불가",
+      "패널티 주사위 1개"
+    ]
+  },
+  {
+    "rule": "SCALED_SANITY_LOSS",
+    "contains": [
+      "성공 1 / 실패 1d4",
+      "성공 1d3 / 실패 1d10",
+      "성공 1d6 / 실패 1d20+5",
+      "확정 손실을 임의 축소하지"
+    ]
+  },
+  {
+    "rule": "INSANITY_CONDITIONS",
+    "contains": [
+      "한 번에 SAN 5+",
+      "INT 성공",
+      "INT 실패",
+      "극중 하루 시작 SAN",
+      "ceil(하루시작SAN/5)",
+      "회복은 누적 손실을 차감하지",
+      "채팅/로드/시점 교대로"
+    ]
+  },
+  {
+    "rule": "BOUTS_OF_MADNESS",
+    "contains": [
+      "1~2턴",
+      "실제 Python",
+      "1d10",
+      "10 새로운 집착증",
+      "새 역사를 만들지"
+    ]
+  },
+  {
+    "rule": "UNDERLYING_INSANITY",
+    "contains": [
+      "치료 전까지 Insane",
+      "1~2점",
+      "3+"
+    ]
+  },
+  {
+    "rule": "DIEGETIC_SAN_RECOVERY",
+    "contains": [
+      "극중 하루 1회 SAN 1d3",
+      "실제 최대SAN",
+      "동일 휴식/로드로 중복",
+      "광기 상태가 자동 치료되지는",
+      "대사건에서도"
+    ]
+  },
+  {
+    "rule": "COMBAT_ORDER",
+    "contains": [
+      "DEX가 높은 순서",
+      "DEX+50",
+      "한 번의 의미 있는 행동"
+    ]
+  },
+  {
+    "rule": "DAMAGE",
+    "contains": [
+      "1d3 + DB",
+      "1d4 또는 1d6",
+      "1d8 또는 1d10",
+      "2d6~4d6",
+      "1d8~1d100",
+      "최대치",
+      "Fight Back",
+      "Regular 피해"
+    ]
+  },
+  {
+    "rule": "THREAT_TIERS",
+    "contains": [
+      "Tier 1",
+      "Tier 2",
+      "Tier 3",
+      "Stagger 지속 규칙"
+    ]
+  },
+  {
+    "rule": "MELEE_OPPOSED",
+    "contains": [
+      "같거나 높으면",
+      "보다 높아야",
+      "동점은 공격 개시자",
+      "Regular 피해"
+    ]
+  },
+  {
+    "rule": "FIGHTING_MANEUVERS",
+    "contains": [
+      "Build 차이 1점",
+      "최대 2개",
+      "3 이상",
+      "자동 추가 피해"
+    ]
+  },
+  {
+    "rule": "OUTNUMBERED",
+    "contains": [
+      "이미 한 번",
+      "보너스 주사위 1개",
+      "총기 공격에는"
+    ]
+  },
+  {
+    "rule": "FIREARMS",
+    "contains": [
+      "총알 자체",
+      "패널티 주사위 1개",
+      "성공/실패와 무관",
+      "다음 공격 행동을 포기",
+      "Malfunction"
+    ]
+  },
+  {
+    "rule": "CINEMATIC_ENCOUNTER",
+    "contains": [
+      "최소 오브젝트 개수",
+      "실제 소음·파손",
+      "정상 전투 행동"
+    ]
+  },
+  {
+    "rule": "CHASE",
+    "contains": [
+      "실제로 추적/도주",
+      "MOV",
+      "추적 인과가 끊겨",
+      "마지막 판정",
+      "실제 시간·거리·소음"
     ]
   },
   {
@@ -1626,69 +436,1110 @@
     "contains": [
       "현재 단계·관측 증상",
       "처치·억제·해제 조건",
+      "행동 구간마다 CON1회",
+      "라운드당1회",
+      "실패1d6",
       "같은 원인을 중복 보정하지",
       "로드했다고 피해를 재적용하지"
+    ]
+  },
+  {
+    "rule": "CAUSAL_MULTI_PHASE_THREAT",
+    "contains": [
+      "모든 적/위협에 Phase를 강제하지",
+      "세계 상태 변화",
+      "전량 회복",
+      "소급 거짓"
+    ]
+  },
+  {
+    "rule": "SAN_EXPOSURE_GATE",
+    "contains": [
+      "적격",
+      "매 턴 반복하지",
+      "전투 THREAT_TIERS와 SAN 손실 Tier는 별개",
+      "전투/마지막 보스까지 미루지"
+    ]
+  },
+  {
+    "rule": "START_SETTINGS_GATE",
+    "contains": [
+      "필수 입력은 참가 인원1~3명",
+      "인지도",
+      "대사건/연대기",
+      "시작 시드는 Python SystemRandom",
+      "1~100",
+      "핵심/시작 시드 숫자를 입력받지",
+      "미확정 조건에 의존하는",
+      "이후 부분 응답",
+      "2명으로 자동 결정하지"
+    ]
+  },
+  {
+    "rule": "SETUP_UI_FIXED_CONTRACT",
+    "contains": [
+      "일반 채팅",
+      "별도 전환 승인",
+      "후보·수치를 다시 뽑지",
+      "선택 대기는 하나"
+    ]
+  },
+  {
+    "rule": "CAMPAIGN_SETUP_PIPELINE",
+    "contains": [
+      "원작 A~D",
+      "전원 PC 생성",
+      "세계·시나리오",
+      "setup_bootstrap",
+      "play_start",
+      "첫 장면을 막지"
+    ]
+  },
+  {
+    "rule": "GENERATION_RNG_SEPARATION",
+    "contains": [
+      "start_seed",
+      "hashlib.sha256",
+      "random.Random",
+      "PYTHON_GENERATION_V1",
+      "게임플레이 SystemRandom과 분리",
+      "필수 독립 추첨축 목록은 없"
+    ]
+  },
+  {
+    "rule": "NORMALIZED_TABLE_INDEX",
+    "contains": [
+      "floor((S-1)×N/100)+1",
+      "균등"
+    ]
+  },
+  {
+    "rule": "GENRE_TABLE",
+    "contains": [
+      "독립 genre stream",
+      "01~10",
+      "91~100",
+      "Cthulhu Mythos",
+      "의무",
+      "실제 법칙"
+    ]
+  },
+  {
+    "rule": "HOMAGE_TIER",
+    "contains": [
+      "메이저",
+      "마이너",
+      "기본을 자동 적용",
+      "실제 세계를 구현"
+    ]
+  },
+  {
+    "rule": "AUTOMATIC_SF_HOMAGE_EXCLUSION",
+    "contains": [
+      "SF가 작품 정체성의 핵심",
+      "예외: Genre Family 21~30",
+      "직접 지정"
+    ]
+  },
+  {
+    "rule": "HOMAGE_DRAFT_SELECTION",
+    "contains": [
+      "A~D 4개",
+      "현재 후보 내 중복만",
+      "직접 지정",
+      "비밀을 공개하지"
+    ]
+  },
+  {
+    "rule": "CTHULHU_SOURCE_UNIT_ROUTING",
+    "contains": [
+      "공식 Source Unit",
+      "라이선스",
+      "현재4개",
+      "이번 사건"
+    ]
+  },
+  {
+    "rule": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "contains": [
+      "이름 이력 추적은 없다",
+      "필수 과거 상처",
+      "사건 공명 후보는 만들지",
+      "실제 아는 과거는 공개"
+    ]
+  },
+  {
+    "rule": "STAT_DRAFT_GENERATION",
+    "contains": [
+      "합계 400",
+      "30~80",
+      "5단위",
+      "20~80",
+      "균등 bounded-composition sampler",
+      "A 특성+B Luck"
+    ]
+  },
+  {
+    "rule": "PC_DERIVED_STATS",
+    "contains": [
+      "HP=floor((CON+SIZ)/10)",
+      "MOV=8",
+      "DEX≥70",
+      "DEX≤40",
+      "POW"
+    ]
+  },
+  {
+    "rule": "PC_APPEARANCE_FROM_APP",
+    "contains": [
+      "배우 레퍼런스 1명은 필수",
+      "APP가 확정된 뒤",
+      "상세 묘사표는 없다",
+      "성격으로 복사하지"
+    ]
+  },
+  {
+    "rule": "PROFESSION_DRAFT",
+    "contains": [
+      "A~D 4개",
+      "직접 지정",
+      "같은 시작 기능 총량",
+      "다단계 의무 추첨하지"
+    ]
+  },
+  {
+    "rule": "PC_SKILL_START_VALUES",
+    "contains": [
+      "65 / 60 / 55 / 50 / 45 / 40 / 35",
+      "취미 기능1개",
+      "floor(DEX/2)",
+      "모국어는 EDU",
+      "일반 기본20",
+      "만능 기능을 만들지"
+    ]
+  },
+  {
+    "rule": "PROFESSION_SPECIALTY",
+    "contains": [
+      "A/B/C",
+      "자동 성공",
+      "수행 불확실성",
+      "PC 교체"
+    ]
+  },
+  {
+    "rule": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION",
+    "contains": [
+      "연대기 CHAPTER_TERMINAL",
+      "상한은 3개",
+      "새 분야1개",
+      "대사건에서는",
+      "중복 지급하지"
+    ]
+  },
+  {
+    "rule": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT",
+    "contains": [
+      "배우 레퍼런스",
+      "모든 확정 기능",
+      "실제 시작 장비",
+      "무료0칸 직업 소품을 추가하지"
+    ]
+  },
+  {
+    "rule": "STORY_SCALE",
+    "contains": [
+      "MAJOR_INCIDENT",
+      "CHRONICLE",
+      "대사건",
+      "중대한",
+      "다음 챕터",
+      "기존 INCIDENT 세이브"
+    ]
+  },
+  {
+    "rule": "FULL_DIVE_CROSS_ANALYSIS",
+    "contains": [
+      "실제 인물/공간/위협/물건",
+      "PC의 접촉/선택",
+      "사실과 이번 각색",
+      "개수나 세계 법칙 최소 개수는 없다"
+    ]
+  },
+  {
+    "rule": "SCENARIO_BLUEPRINT",
+    "contains": [
+      "조건부 진행 설계도",
+      "생존 대응과 발견",
+      "중대한 난관",
+      "원래 목적/중요성/악용/활용",
+      "조사/의뢰 수락은 사건 발생 스위치가 아니다",
+      "실제 위협과 손실 가능성",
+      "조기에 해결"
+    ],
+    "instruction_contains": [
+      "현재 문제에 대응하면",
+      "세계 생성은 실제 시나리오의 설계도",
+      "대사건 또는 연대기",
+      "실행력·파급"
+    ]
+  },
+  {
+    "rule": "FINAL_THREAT_DESIGN",
+    "contains": [
+      "8개",
+      "실체",
+      "격화·차단 조건",
+      "필요한 이해·준비·획득",
+      "독립5축 추첨",
+      "선제 제압",
+      "원인 차단"
+    ]
+  },
+  {
+    "rule": "WORLD_RULE_HOMAGE_DNA",
+    "contains": [
+      "고정 개수는 없다",
+      "한계/예외",
+      "차단·회피/대응",
+      "바꾸지 않는다"
+    ]
+  },
+  {
+    "rule": "WORLD_PC_INPUT",
+    "contains": [
+      "선택적으로 활용",
+      "강한 연루 이유",
+      "감정",
+      "물리적 합류·신뢰를 강요하지"
+    ]
+  },
+  {
+    "rule": "ORGANIC_SKILL_INTEGRATION",
+    "contains": [
+      "고유한 행동·성과",
+      "단 한 번 성공에 잠그지는",
+      "성공으로 바뀐",
+      "소급 발명하지"
+    ]
+  },
+  {
+    "rule": "HARM_ECOLOGY",
+    "contains": [
+      "실제 가능한 위험",
+      "전투 외에도",
+      "실제 처리",
+      "피해 횟수·필수 희생·강제 감염은 없다"
+    ]
+  },
+  {
+    "rule": "CAUSAL_ENDGAME_PRECOMMIT",
+    "contains": [
+      "중대한 대가",
+      "실제 발생·방지/완화·잔존·진행 중인",
+      "실제 수단",
+      "미래 조건부 피해"
+    ]
+  },
+  {
+    "rule": "COMPATIBILITY_GATE",
+    "contains": [
+      "원작/인과/진행/생존/실행",
+      "의미 없는 공정",
+      "개수/턴/회차 목표"
+    ]
+  },
+  {
+    "rule": "START_BRIEFING_FOG",
+    "contains": [
+      "이미 들은 사건",
+      "숨은 원인",
+      "이미 알고 온 의뢰"
+    ]
+  },
+  {
+    "rule": "CAUSAL_SAFETY_AND_SOUND",
+    "contains": [
+      "가설",
+      "전언",
+      "소급",
+      "비밀을 묘사로 공개하지"
+    ]
+  },
+  {
+    "rule": "INVENTORY",
+    "contains": [
+      "메인5칸",
+      "파우치3칸",
+      "키템은0칸",
+      "메인2칸",
+      "용량이 늘어나지",
+      "매 일반 HUD",
+      "수량"
+    ]
+  },
+  {
+    "rule": "PERSONAL_CASH_LEDGER",
+    "contains": [
+      "휴대 현금",
+      "필요할 때 확정",
+      "가격 동의",
+      "전체 가격표를 미리 만들지"
+    ]
+  },
+  {
+    "rule": "CLUE_FUNCTION",
+    "contains": [
+      "발견과 해석을 별도 의무 단계로",
+      "소진된 조사",
+      "중심 인과",
+      "전문 상식"
+    ]
+  },
+  {
+    "rule": "IN_WORLD_DOCUMENT_HANDOUT",
+    "contains": [
+      "본문/발췌",
+      "숫자/날짜",
+      "같은 원문",
+      "최초 필요 시"
+    ]
+  },
+  {
+    "rule": "HYPOTHESIS_TEST",
+    "contains": [
+      "검증 완료",
+      "시험 방법",
+      "자동"
+    ]
+  },
+  {
+    "rule": "DISTINCTIVE_EQUIPMENT_AFFORDANCE",
+    "contains": [
+      "실제 가능한 행동",
+      "공개 가능한 사용법",
+      "자동 파손/몰수로 상쇄하지"
+    ]
+  },
+  {
+    "rule": "STORY_NPC",
+    "contains": [
+      "stable entity_id",
+      "동행자는0명",
+      "고정6단계나 호감 점수는 없다"
+    ]
+  },
+  {
+    "rule": "NPC_AGENDA_AND_SECRECY",
+    "contains": [
+      "동의·조건부 협력·대안·보류·거절",
+      "성공 뒤 새 거절 경계",
+      "자동 거짓말 탐지",
+      "일괄 제한은 없다"
+    ]
+  },
+  {
+    "rule": "NPC_AGENDA_INTERVENTION",
+    "contains": [
+      "PC의 명령 없이",
+      "무료 추가 공격",
+      "다음 독립 행동",
+      "수락이 필요한"
+    ]
+  },
+  {
+    "rule": "NPC_STATS",
+    "contains": [
+      "60~75",
+      "보통30",
+      "최초 관련 판정 전에",
+      "적격 SAN",
+      "실제 Python"
+    ]
+  },
+  {
+    "rule": "NPC_INTERACTION_VOICE_COMPACT",
+    "contains": [
+      "상대별 실제 호칭",
+      "말투·호칭",
+      "청취",
+      "매 발언 전원 기록을 다시 읽지",
+      "면책"
+    ],
+    "instruction_contains": [
+      "상대별 호칭",
+      "공동 경험",
+      "채팅 전체/파티 지식을 자동 공유하지"
+    ]
+  },
+  {
+    "rule": "RELATIONSHIP_AND_NPC_MEMORY",
+    "contains": [
+      "무조건 충성",
+      "현재 태도와 이유",
+      "영구 로그로 만들지는",
+      "애착 때문에 자동"
+    ]
+  },
+  {
+    "rule": "DURABLE_STORY_CONTINUITY",
+    "contains": [
+      "대화를 했다",
+      "무엇에 동의",
+      "현재 값의 경쟁 장부가 아니라"
+    ]
+  },
+  {
+    "rule": "DEATH_AND_INHERITANCE",
+    "contains": [
+      "1회",
+      "살아있는 동행 NPC",
+      "영구 관전"
+    ]
+  },
+  {
+    "rule": "SCENARIO_OBJECTIVES",
+    "contains": [
+      "플레이어가 결정",
+      "메인 사건과 무관해도",
+      "버린 목표를 로드 뒤 되살리지"
+    ]
+  },
+  {
+    "rule": "INVESTIGATOR_INCIDENT_COUPLING",
+    "contains": [
+      "첫 생활 목표",
+      "형성·전달",
+      "남을 이유와 물리적 이탈 장애"
+    ]
+  },
+  {
+    "rule": "NO_CLEAN_EXIT_HORROR_ARCHITECTURE",
+    "contains": [
+      "실제 안전",
+      "철수를 인정",
+      "새 납치",
+      "실제 위험/제약"
+    ]
+  },
+  {
+    "rule": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+    "contains": [
+      "단서 수집률",
+      "상태",
+      "가짜 분기",
+      "예상 밖 유효 해결"
+    ]
+  },
+  {
+    "rule": "SCENARIO_TERMINAL_BOUNDARY",
+    "contains": [
+      "세계 확정 때",
+      "소급 바꾸거나",
+      "ENDING_FINALIZATION_GATE"
+    ]
+  },
+  {
+    "rule": "BUTTERFLY_AND_LIVING_WORLD",
+    "contains": [
+      "숨은 결과를 모두 공개하지",
+      "같은 사건으로 복귀시키는 가짜 분기",
+      "대피로",
+      "초기화하지",
+      "3단계 회수"
+    ]
+  },
+  {
+    "rule": "COOPERATIVE_BY_DESIGN",
+    "contains": [
+      "협동",
+      "PvP",
+      "금지하지 않고"
+    ]
+  },
+  {
+    "rule": "GENERAL_PERSISTENT_PROJECT",
+    "contains": [
+      "실제 지속 작업",
+      "공유 자산",
+      "유지보수 단계를 강제하지"
+    ]
+  },
+  {
+    "rule": "WORLD_INITIATIVE_EXECUTION",
+    "contains": [
+      "현재 장소 밖",
+      "정확히 한 번",
+      "인과 선행조건",
+      "실제 도달",
+      "현실 대기",
+      "모든 원인을 매 응답 다시 읽지"
+    ]
+  },
+  {
+    "rule": "ACTIVE_DANGER_CONTINUITY",
+    "contains": [
+      "미해소 위협",
+      "전조만 반복하지",
+      "안전 뒤의 공포 부채",
+      "검증한 약점을 소급 변경하지"
+    ]
+  },
+  {
+    "rule": "REACHED_DANGER_EXECUTION_GATE",
+    "contains": [
+      "HP_AND_DEATH/WOUNDS",
+      "INSANITY_CONDITIONS",
+      "분위기/경고로 되돌리거나",
+      "PC/NPC 동일 원칙"
+    ]
+  },
+  {
+    "rule": "SCENE_CONSEQUENCE_RULE",
+    "contains": [
+      "실제 세계 반응",
+      "매 장면 보상/손실/진전 점수",
+      "SKILL_IMPROVEMENT"
+    ]
+  },
+  {
+    "rule": "NARRATIVE_TECHNIQUES",
+    "contains": [
+      "자율 작법",
+      "고정 개수/순서/피해/환시 의무는 없다",
+      "추론 가능",
+      "실제 결과"
+    ]
+  },
+  {
+    "rule": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+    "contains": [
+      "PROJECT_INSTRUCTIONS.md",
+      "실제 세계/판정 결과",
+      "별도 모델/검수 단계는 아니다"
+    ],
+    "instruction_contains": [
+      "공간·사람·행동·감각·변화",
+      "거리/방향·출입구",
+      "실제 대사와 움직임",
+      "위기는 수식어를 덜고",
+      "직전 변화에서 계속",
+      "감독처럼",
+      "소설가처럼"
+    ]
+  },
+  {
+    "rule": "CINEMATIC_ACTION_CONTINUITY",
+    "contains": [
+      "입력한",
+      "직접 대사",
+      "미선언",
+      "직접화법의 매 행 의무 검수는 없다"
+    ]
+  },
+  {
+    "rule": "NPC_REPLY_AGENCY_GATE",
+    "contains": [
+      "거기서 멈춘다",
+      "이미 선언한",
+      "미답 질문/제안"
+    ]
+  },
+  {
+    "rule": "CINEMATIC_ELLIPSIS",
+    "contains": [
+      "목적 단위",
+      "구매·흥정·퇴장까지 자동 실행하지",
+      "명시적으로 세부",
+      "LONG_ACTION_EARLIEST_INTERRUPTION"
+    ]
+  },
+  {
+    "rule": "KEEPER_SCENE_SELECTION",
+    "contains": [
+      "첫 일상 목적",
+      "직접 충돌",
+      "고정 턴 마감",
+      "성공은 존중",
+      "실제 NPC 목적"
+    ],
+    "instruction_contains": [
+      "의미 없는 이동·회의",
+      "고정 글자 수·턴 마감",
+      "초반의 업무"
     ]
   },
   {
     "rule": "QUIET_AFTERMATH_BEAT",
     "contains": [
       "짧은 유머",
-      "피해 희화화"
+      "빚처럼",
+      "웃음이 위험과 결과를 무효화하지",
+      "HEALING/DIEGETIC_SAN_RECOVERY"
+    ],
+    "instruction_contains": [
+      "특이한 행동",
+      "상황의 어긋남",
+      "말장난에 편중",
+      "긴장7:안정3"
     ]
   },
   {
-    "rule": "NPC_AGENDA_AND_SECRECY",
+    "rule": "TURN_INCREMENT",
     "contains": [
-      "감수할 비용·거절 경계",
-      "동의·조건부 협력·대안·보류·거절",
-      "판정 뒤 새 경계"
+      "Scene Turn +1",
+      "한 목적",
+      "+0",
+      "공격/반전/엔딩 시계가 아니다",
+      "30배수 저장"
     ]
   },
   {
-    "rule": "NPC_AGENDA_INTERVENTION",
+    "rule": "SCENE_ELAPSED_TIME_SETTLEMENT",
     "contains": [
-      "PC의 명령 없이도",
-      "무료 추가 공격",
-      "전원 순번 대사",
-      "NPC_REPLY_AGENCY_GATE"
+      "자율 추정",
+      "분 단위 표/계산 의무는 없다",
+      "다시 더하지",
+      "채팅 대기",
+      "상대 경과"
     ]
   },
   {
-    "rule": "NPC_CONTRADICTORY_HUMANITY",
+    "rule": "ROUTINE_MOVEMENT_FAST_PATH",
     "contains": [
-      "현재 무엇을 우선",
-      "압박 시 표현 변화"
+      "출발·이동·도착을 한 응답",
+      "한 번 반영",
+      "도착만으로 교대하지",
+      "미선언"
     ]
   },
   {
-    "rule": "NPC_STATS",
+    "rule": "LONG_ACTION_EARLIEST_INTERRUPTION",
     "contains": [
-      "최초 관련 판정 전에"
+      "가장 이른 시점",
+      "부분 진행",
+      "새 방문자를 만들어 중단하지"
     ]
   },
   {
-    "rule": "LIVING_NPC_CONTINUITY",
+    "rule": "MULTI_PC_SPOTLIGHT_CONTRACT",
     "contains": [
-      "의도를 세웠다는 사실과 실행 결과를 구분"
+      "고정3회/5회 예산·교대 준비 A 입력은 없다",
+      "오래 기다린",
+      "긴급 대응",
+      "한 목적",
+      "다른 장소의 PC 장면을 한 본문에 섞지",
+      "화자마다 교대/새 턴을 만들지"
+    ]
+  },
+  {
+    "rule": "PARALLEL_TIMELINE_SYNC",
+    "contains": [
+      "5/12",
+      "7분 남음",
+      "미선언 행동·성과·회복은 만들지",
+      "실제 겹친 구간",
+      "단순 분리·긴 이동만으로"
+    ]
+  },
+  {
+    "rule": "GUIDED_ACTION_RETURN",
+    "contains": [
+      "개수 고정이나 별도4번",
+      "자유 선언은 항상 동등",
+      "성공 결과가 아니라 시도",
+      "action_menu_pending",
+      "전용 입력만"
+    ]
+  },
+  {
+    "rule": "BOTTOM_HUD_CONTRACT",
+    "contains": [
+      "인벤토리 목록과 메인/파우치 점유량은 상시 유지",
+      "Luck 가짜 최대치는 없다",
+      "실제 상대 Python값",
+      "합계1~2줄",
+      "표·각주·긴 규칙 해설",
+      "확인 불가",
+      "현금은 거래·변경·요청 시"
+    ],
+    "excludes": [
+      "🎬 씬 연출 의도",
+      "SCENE_SUMMARY_AND_RESULT"
+    ]
+  },
+  {
+    "rule": "ENDING_FINALIZATION_GATE",
+    "contains": [
+      "실제 이탈",
+      "CAMPAIGN_TERMINAL",
+      "CHAPTER_TERMINAL",
+      "CHRONICLE_TERMINAL",
+      "terminal_pre_finalization",
+      "한 번 확정",
+      "성장 대기도 종료를 막지"
+    ]
+  },
+  {
+    "rule": "ENDING_PRESENTATION",
+    "contains": [
+      "고유 엔딩 제목",
+      "실제 부상",
+      "PC의 감정/교훈",
+      "이미지 선택 대기"
+    ]
+  },
+  {
+    "rule": "OPTIONAL_POST_CREDITS_VIEWS",
+    "contains": [
+      "기본 엔딩의 다섯",
+      "별도의 응답에서 자세하고 몰입되게",
+      "Highlight Reel",
+      "The Silent Stage",
+      "Cast & Crew",
+      "The Hidden Truth",
+      "Ultimate Butterfly",
+      "완료 항목",
+      "후속 캠페인/진행 세계 비밀"
+    ]
+  },
+  {
+    "rule": "LORE_DRIVEN_PUZZLES",
+    "contains": [
+      "실제 원작",
+      "이미 이해한 답",
+      "강제하지"
+    ]
+  },
+  {
+    "rule": "STATE_AUTHORITY",
+    "contains": [
+      "verified history",
+      "gm_checkpoint_history",
+      "gm_sessions",
+      "최초 연결/실제 변경",
+      "STATE_SAVE_FAILURE_CONTINUE"
+    ]
+  },
+  {
+    "rule": "PRIVATE_CANON_DOCUMENT",
+    "contains": [
+      "전체 바이트 SHA-256",
+      "필수 절",
+      "CANON_INDEX",
+      "HIDDEN_TRUTH",
+      "ENDING_CONDITIONS",
+      "조건부 계획이지 발생 완료가 아니다",
+      "새 revision",
+      "비밀 본문을 넣지"
+    ]
+  },
+  {
+    "rule": "PRIVATE_CANON_ACCESS_ROUTER",
+    "contains": [
+      "현재 작업 상태",
+      "현재 확인 가능한 같은 본문",
+      "canon_source_required",
+      "최신 누적 변화"
+    ]
+  },
+  {
+    "rule": "PRIVATE_CANON_PERIODIC_REVIEW",
+    "contains": [
+      "Scene Turn20/40/60",
+      "첫 안전 경계",
+      "모든 절/파일",
+      "재독20턴과 저장30턴은 별개",
+      "무손실 기억의 보장이 아니다"
+    ]
+  },
+  {
+    "rule": "STATE_CANON_SAVE_BINDING",
+    "contains": [
+      "DOCUMENT_BOUND(DB1)",
+      "change_coverage",
+      "baseline_entity_ids",
+      "changed_entity_ids",
+      "6개",
+      "누적",
+      "new_entities/tombstones/processed_event_ids",
+      "LEGACY_FULL",
+      "거부/삭제하면 호환 실패",
+      "재개 문맥"
+    ]
+  },
+  {
+    "rule": "STATE_WORKING_CONTEXT",
+    "contains": [
+      "실제 로드/생성",
+      "현재 문맥",
+      "실제 변화가 있을 때",
+      "영구 장부",
+      "저장 때까지 미루지",
+      "현재 장소 밖도 포함",
+      "과거 snapshot",
+      "비밀 메모"
+    ]
+  },
+  {
+    "rule": "STATE_ACCESS_ROUTER",
+    "contains": [
+      "DB 조회0회",
+      "실제 유실/충돌",
+      "entity마다 전체load하지",
+      "명시적 삭제 지시",
+      "저장 없는 테스트"
+    ]
+  },
+  {
+    "rule": "STATE_SCHEMA",
+    "contains": [
+      "이야기/경험",
+      "일일SAN기준/누적",
+      "연결 맥락",
+      "전투/추격/광기",
+      "후일담완료항목",
+      "폐기 기능의 신규 상태를 만들지"
+    ]
+  },
+  {
+    "rule": "STATE_IDENTITY",
+    "contains": [
+      "새identity",
+      "중단 작업",
+      "같은 슬롯",
+      "stable ref"
     ]
   },
   {
     "rule": "STATE_EXPERIENCE_CONTINUITY",
     "contains": [
+      "story_context",
+      "npc_contexts",
+      "scene_context",
+      "ongoing_consequences",
       "의사소통은 방향과 범위를 가진다",
       "confirmed/inferred/unknown",
       "payload에서만 기준을 뽑아",
       "read-back 원문과 정확한 canon_ref",
       "해시 일치는",
-      "부분 복구",
-      "중간 대화 전체가 없어도"
+      "이전 채팅 없이 이어쓰기 비교",
+      "서버 verified만으로 완전한 최신 복원이라 하지"
+    ],
+    "instruction_contains": [
+      "여기까지 온 인과",
+      "인물의 목소리·태도/이유",
+      "진행 중 대화·확인된 의미·응답 대기"
     ]
   },
   {
-    "rule": "DURABLE_STORY_CONTINUITY",
+    "rule": "STATE_INTEGRITY",
     "contains": [
-      "대화를 했다"
+      "현재 full 논리 상태",
+      "최신 의미유효 verified parent",
+      "재개맥락",
+      "과거snapshot으로 메우지",
+      "고정된 경험 검증 기준",
+      "서버 JSON구조 검사만으로"
+    ]
+  },
+  {
+    "rule": "STATE_CADENCE",
+    "contains": [
+      "setup_bootstrap",
+      "play_start",
+      "periodic_scene_turn",
+      "terminal_pre_finalization",
+      "manual",
+      "30/60/90",
+      "자동 주기를 초기화하지",
+      "실패한 자동 시도",
+      "STATE_SAVE_FAILURE_CONTINUE"
+    ]
+  },
+  {
+    "rule": "STATE_CHECKPOINT_RECAP",
+    "contains": [
+      "동일 version verified exact read-back",
+      "추가 full load를 만들지",
+      "현재 장면 밖",
+      "다시 적용하지",
+      "미래30턴을 생성하지"
+    ]
+  },
+  {
+    "rule": "STATE_COMMIT",
+    "contains": [
+      "<session_id>:cp<version>",
+      "SHA-256",
+      "pending",
+      "verify",
+      "exact read-back",
+      "복원 연속성 미검증",
+      "최신 미저장 변화는 보존"
+    ]
+  },
+  {
+    "rule": "STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP",
+    "contains": [
+      "동일 원문",
+      "gm-checkpoints",
+      "verified-gm-snapshots-2026-10-30",
+      "24시간 자동 동기화는 없다"
+    ]
+  },
+  {
+    "rule": "STATE_GITHUB_FAILOVER_PROTOCOL",
+    "contains": [
+      "supabase_latest_unconfirmed",
+      "snapshots/emergency/",
+      "github_emergency_verified",
+      "자동 승격·삭제·덮어쓰기·재번호 부여 금지"
+    ]
+  },
+  {
+    "rule": "STATE_SAVE_FAILURE_CONTINUE",
+    "contains": [
+      "세이브 실패는 게임 진행을 막지",
+      "그동안 진행한 최신 상태를 별도 체크포인트로 저장",
+      "현재까지 저장됐다고 하지",
+      "원격쓰기·자동병합을 보류",
+      "실제 유실"
+    ]
+  },
+  {
+    "rule": "STATE_RECOVERY",
+    "contains": [
+      "최대1회",
+      "자동 승격·폐기하지",
+      "pending은 verify 전 정상재개 정본이 아니다"
+    ]
+  },
+  {
+    "rule": "STATE_RESUME",
+    "contains": [
+      "orphan pending",
+      "최신 hash-valid verified",
+      "이야기흐름",
+      "마지막질문",
+      "말못함을 이해못함으로 바꾸지",
+      "로드 자체/현실경과는 게임조건을 진행시키는 행동이 아니다"
+    ]
+  },
+  {
+    "rule": "STATE_COMPATIBILITY",
+    "contains": [
+      "수정·재해시·필드 삭제하지",
+      "가짜0/빈값",
+      "미사용큐는 중단",
+      "구판성장",
+      "실제기록·현재작업·사용자확인"
+    ]
+  },
+  {
+    "rule": "CANONICAL_CAMPAIGN_MAP",
+    "contains": [
+      "그림에 맞춰 바꾸지",
+      "개략도",
+      "기존세계결과"
+    ]
+  },
+  {
+    "rule": "MAP_RUNTIME_INTERACTION",
+    "contains": [
+      "시간정지",
+      "실제 이동",
+      "기능형",
+      "픽셀거리",
+      "비밀통로"
+    ]
+  },
+  {
+    "rule": "START_MAP_HANDOUT_GATE",
+    "contains": [
+      "이미지1장",
+      "텍스트/간단연결도",
+      "이미지전달상태는미완료",
+      "저장실패도첫장면을막지"
+    ]
+  },
+  {
+    "rule": "EVENT_DRIVEN_VISUAL_ROUTER",
+    "contains": [
+      "명시요청",
+      "A/B대기나 등급검사",
+      "현재인물",
+      "일반참고사진"
+    ]
+  },
+  {
+    "rule": "CHARACTER_VISUAL_CANON",
+    "contains": [
+      "배우레퍼런스",
+      "APP/정체성을바꾸지",
+      "시각적기준",
+      "최초외형"
+    ]
+  },
+  {
+    "rule": "GOLD_START_PROFILE_REFERENCE",
+    "contains": [
+      "dossier",
+      "gold_start_profile_reference",
+      "정확한블록좌표",
+      "같은캠페인",
+      "실제시작소지품"
+    ]
+  },
+  {
+    "rule": "EPILOGUE_CHARACTER_EVOLUTION_HANDOUT",
+    "contains": [
+      "요청하면",
+      "시작/종료",
+      "감정/교훈/비극/구원을창작하지",
+      "다섯후일담"
+    ]
+  },
+  {
+    "rule": "LOCATION_VISUAL_CANON",
+    "contains": [
+      "개수는고정하지",
+      "패널수/면적비율을강제하지",
+      "현재세계"
+    ]
+  },
+  {
+    "rule": "VISUALIZATION_CANON_BOUNDARY",
+    "contains": [
+      "자동으로증거/자원/통로/적약점",
+      "실제확정된결과는유지",
+      "비밀누출"
+    ]
+  },
+  {
+    "rule": "VISUAL_ASSET_PERSISTENCE_BOUNDARY",
+    "contains": [
+      "실제재사용가능한asset ref",
+      "픽셀동일성",
+      "추가자동저장조건이아니다"
+    ]
+  },
+  {
+    "rule": "WEB_VISUAL_REFERENCE",
+    "contains": [
+      "reference_only",
+      "원본출처링크",
+      "의무검색하지",
+      "텍스트진행",
+      "미발견진실"
+    ]
+  },
+  {
+    "rule": "PLAYER_FACING_KOREAN_LOCALIZATION",
+    "contains": [
+      "자연스러운 한국어",
+      "확정된 표기",
+      "임의 변경하지"
     ]
   }
 ]

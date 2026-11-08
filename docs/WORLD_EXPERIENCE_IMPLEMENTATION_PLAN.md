@@ -1,5 +1,7 @@
 # 원작 체험·세계 생성·사건 진행·세이브 1차 구현 계획
 
+> 과거 판의 설계/검토 기록입니다. 현행 실행은 PROJECT_INSTRUCTIONS.md·rules와 [통합 경량판 사례](REVIEW_CASES.md)를 따릅니다. 아래의 삭제된 기능/수치/서식은 현재 지시가 아닙니다.
+
 작성: 2026-11-08 · 상태: **1차 실행 규칙 반영 / 실플레이·운영 저장 미검증**
 
 기준: `ab3f8802854b6da3b53b2c7a10d78f1a32818cd1`의 main. 룰북·배포 ZIP은 판정 내역 1~2줄 패치 `34c06f5` 시점으로 복원된 상태다. 이 문서는 사용자가 요청한 구현 요소와 구현 방법의 계획서이며 게임용 프로젝트 소스에 올릴 실행 지침이 아니다.
@@ -46,13 +48,13 @@
 
 | 현행 근거 | 이미 요구하는 내용 | 이번에 구체화할 지점 |
 |---|---|---|
-| [FULL_DIVE_CROSS_ANALYSIS](../rules/04-setup.md#full_dive_cross_analysis), [HOMAGE_SIGNATURE_FREEZE](../rules/04-setup.md#homage_signature_freeze) | 원작 분석, 특징 5~7개와 세계/상호작용/결과 연결 | 목록만 채운 설계를 거부하고 실제 접촉·선택·후속 결과까지 검사 |
+| [FULL_DIVE_CROSS_ANALYSIS](../rules/04-setup.md#full_dive_cross_analysis), [HOMAGE_SIGNATURE_FREEZE](../rules/04-setup.md#full_dive_cross_analysis) | 원작 분석, 특징 5~7개와 세계/상호작용/결과 연결 | 목록만 채운 설계를 거부하고 실제 접촉·선택·후속 결과까지 검사 |
 | [WORLD_RULE_HOMAGE_DNA](../rules/04-setup.md#world_rule_homage_dna) | 원작에 맞는 세계 법칙 최소 2개와 검증/대응 | 법칙 수를 구현 충실도의 점수로 취급하지 않음; 그 법칙이 실제 장면에서 작동하는지 확인 |
-| [HIDDEN_TRUTH_HORROR_PAYLOAD_GATE](../rules/04-setup.md#hidden_truth_horror_payload_gate), [HORROR_DEFLATION_GUARD](../rules/04-setup.md#horror_deflation_guard) | 무해한 고장/관습으로 중심 공포를 해체하지 않음 | 중심 위협과 실제 손실·깊은 진실·최종 개입을 생성 단계에서 구체적으로 대조 |
-| [SCENARIO_DNA](../rules/04-setup.md#scenario_dna), [WORLD_PC_INPUT](../rules/04-setup.md#world_pc_input) | 생성축과 원작/PC의 자연스러운 연결 | 원작의 작동 방식을 먼저 확정하고 생성축을 그 안에서 해석; 표의 당첨 결과를 중심 줄거리로 삼지 않음 |
+| [HIDDEN_TRUTH_HORROR_PAYLOAD_GATE](../rules/04-setup.md#scenario_blueprint), [HORROR_DEFLATION_GUARD](../rules/04-setup.md#scenario_blueprint) | 무해한 고장/관습으로 중심 공포를 해체하지 않음 | 중심 위협과 실제 손실·깊은 진실·최종 개입을 생성 단계에서 구체적으로 대조 |
+| [SCENARIO_DNA](../rules/04-setup.md#scenario_blueprint), [WORLD_PC_INPUT](../rules/04-setup.md#world_pc_input) | 생성축과 원작/PC의 자연스러운 연결 | 원작의 작동 방식을 먼저 확정하고 생성축을 그 안에서 해석; 표의 당첨 결과를 중심 줄거리로 삼지 않음 |
 | [SCENARIO_CAUSAL_PROGRESS_MODEL](../rules/05-world.md#scenario_causal_progress_model) | 결과 상태와 유한한 인과 진행 | 접촉·발견·획득·위험 변화가 다음 국면에 어떻게 기여했는지 실제 ref로 연결 |
 | [WORLD_INITIATIVE_EXECUTION](../rules/05-world.md#world_initiative_execution), [ACTIVE_DANGER_CONTINUITY](../rules/05-world.md#active_danger_continuity) | 도달한 화면 밖 원인/위협의 실행 | 평범한 활동에도 닿는 접점과 적의 후속 행동을 구체적으로 준비 |
-| [DRAMATIC_SPINE_SCENE_PACING](../rules/06-play.md#dramatic_spine_scene_pacing), [CINEMATIC_ELLIPSIS](../rules/06-play.md#cinematic_ellipsis) | 기승전결의 질적 국면, 종속 과정 압축 | 다음 중요한 선택까지 진행하고 작은 확인을 독립 장면으로 늘리지 않는 판단 기준 |
+| [DRAMATIC_SPINE_SCENE_PACING](../rules/06-play.md#keeper_scene_selection), [CINEMATIC_ELLIPSIS](../rules/06-play.md#cinematic_ellipsis) | 기승전결의 질적 국면, 종속 과정 압축 | 다음 중요한 선택까지 진행하고 작은 확인을 독립 장면으로 늘리지 않는 판단 기준 |
 | [PRIVATE_CANON_DOCUMENT](../rules/07-state.md#private_canon_document), [STATE_SCHEMA](../rules/07-state.md#state_schema) | 기준 정본과 전체 동적 상태 보존 | 원작 체험의 접점/연결과 현재 사건 상태를 재개에 충분한 내용으로 보존 |
 
 ‘특성 2개’는 현행 원작 특징 개수와 다르다. 최소 2개는 세계 법칙이고 원작 특징은 이미 5~7개다. 숫자 증설보다 실제 플레이로 이어지는 설계의 밀도와 실행을 강화한다.

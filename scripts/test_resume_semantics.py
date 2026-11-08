@@ -9,8 +9,16 @@ state={'session':'SYNTHETIC','turn':41,'canon_revision':2,
                   'speaks':False,'signal_meaning':'unknown'},'held_item':'ITEM_A'}},
        'agreement':{'status':'proposed','accepted':False},'route':{'blocked':True},
        'pending':{'kind':'player_response'},'processed':['EVENT_A'],'optional':None}
+state['resume_context']={
+ 'story_context':{'current_goal':'stop_flooding','changed_because':'pump_damaged','source_ref':'EVENT_A'},
+ 'npc_contexts':{'ENTITY_A':{'address':'formal','interaction':'terse_cooperation',
+                           'attitude_reason':'shared_rescue','source_ref':'EVENT_A'}},
+ 'scene_context':{'last_question':'use_the_gate','answer_owner':'PC_A',
+                  'completed_check':'speech_understood','ongoing_action':'holding_gate'},
+ 'ongoing_consequences':{'THREAT_A':{'status':'blocked','condition':'gate_held','applied':['EVENT_A']}}
+}
 paths=['/session','/turn','/canon_revision','/entities/ENTITY_A/communication','/entities/ENTITY_A/held_item',
-       '/agreement','/route','/pending','/processed','/optional']
+       '/agreement','/route','/pending','/processed','/optional','/resume_context']
 def at(obj,path):
     for key in path[1:].split('/'):obj=obj[key]
     return obj
@@ -32,6 +40,14 @@ mutations=[
  lambda s:s.pop('optional'),
  lambda s:s.update(session='OTHER'),
  lambda s:s['entities']['ENTITY_A']['communication'].update(speaks=0),
+ lambda s:s.pop('resume_context'),
+ lambda s:s['resume_context']['story_context'].update(current_goal='investigate_noise'),
+ lambda s:s['resume_context']['npc_contexts']['ENTITY_A'].update(address='casual'),
+ lambda s:s['resume_context']['npc_contexts']['ENTITY_A'].pop('attitude_reason'),
+ lambda s:s['resume_context']['scene_context'].update(last_question='understand_speech'),
+ lambda s:s['resume_context']['scene_context'].update(answer_owner='PC_B'),
+ lambda s:s['resume_context']['scene_context'].update(ongoing_action='idle'),
+ lambda s:s['resume_context']['ongoing_consequences']['THREAT_A'].update(status='active'),
 ]
 for mutate in mutations:
     bad=deepcopy(state);mutate(bad);assert not compare(probes,bad)['passed'];cases+=1

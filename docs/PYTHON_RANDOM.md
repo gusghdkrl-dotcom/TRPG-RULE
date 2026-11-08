@@ -1,6 +1,8 @@
 # 실제 Python 난수 실행과 저장 호환
 
-실행 정본은 [PYTHON_RANDOM_EXECUTION](../rules/01-core.md#python_random_execution), [주사위](../rules/01-core.md#ai_die_mapping_version), [생성 stream](../rules/04-setup.md#generation_rng_separation), [구판 전환](../rules/07-state.md#state_compatibility)이다.
+> 과거 판의 설계/검토 기록입니다. 현행 실행은 PROJECT_INSTRUCTIONS.md·rules와 [통합 경량판 사례](REVIEW_CASES.md)를 따릅니다. 아래의 삭제된 기능/수치/서식은 현재 지시가 아닙니다.
+
+실행 정본은 [PYTHON_RANDOM_EXECUTION](../rules/01-core.md#python_random_execution), [주사위](../rules/01-core.md#python_random_execution), [생성 stream](../rules/04-setup.md#generation_rng_separation), [구판 전환](../rules/07-state.md#state_compatibility)이다.
 
 PC d100만 플레이어가 제공한다. PC가 입거나 가하는 피해량·회복·SAN 감소량 등 키퍼가 맡는 수치도 실제 Python으로 처리한다. 세계·특성·Luck·직업·원작 후보 등 생성도 Python이다. 무작위가 아닌 세계 인과·수동 선택을 주사위로 바꾸지 않는다.
 

@@ -1,5 +1,7 @@
 # NPC 판단·선제 행동 검토
 
+> 과거 판의 설계/검토 기록입니다. 현행 실행은 PROJECT_INSTRUCTIONS.md·rules와 [통합 경량판 사례](REVIEW_CASES.md)를 따릅니다. 아래의 삭제된 기능/수치/서식은 현재 지시가 아닙니다.
+
 2026-11-08. 실제 캠페인을 포함하지 않는 문서 의미 대조다. 관련 본문: NPC_AGENDA_AND_SECRECY / NPC_AGENDA_INTERVENTION / NPC_CONTRADICTORY_HUMANITY / NPC_STATS / LIVING_NPC_CONTINUITY / STATE_SCHEMA / STATE_RESUME.
 
 | 합성 조건 | 기대 결과와 담당 규칙 대조 |

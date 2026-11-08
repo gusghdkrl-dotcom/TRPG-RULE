@@ -1,5 +1,7 @@
 # 전체 경험·판정·성장 개편 설계
 
+> 과거 판의 설계/검토 기록입니다. 현행 실행은 PROJECT_INSTRUCTIONS.md·rules와 [통합 경량판 사례](REVIEW_CASES.md)를 따릅니다. 아래의 삭제된 기능/수치/서식은 현재 지시가 아닙니다.
+
 설계일: 2026-11-02. 개발·검토용 설명이며 게임 실행 정본은 아래 연결한 `rules/`의 각 담당 절이다. 실제 캠페인 자료나 플레이 테스트 로그가 아니다. 새 앱·서버·운영 DB 변경은 포함하지 않는다.
 
 ## 게임의 중심과 담당 규칙
@@ -8,16 +10,16 @@ CoC 기반의 취약함·공포와 판정, 언틸던에서 가져온 나비효�
 
 | 설계 책임 | 실행 정본 |
 |---|---|
-| 전체 경험과 세계의 생활 기반 | [FOUNDATION_FIRST_CAMPAIGN_DESIGN](../rules/05-world.md#foundation_first_campaign_design) |
-| 캐릭터 고유 전문 행동·성과 | [ORGANIC_SKILL_INTEGRATION](../rules/04-setup.md#organic_skill_integration), [CROSS_LINK_ENGINE](../rules/04-setup.md#cross_link_engine) |
+| 전체 경험과 세계의 생활 기반 | [FOUNDATION_FIRST_CAMPAIGN_DESIGN](../rules/05-world.md#narrative_techniques) |
+| 캐릭터 고유 전문 행동·성과 | [ORGANIC_SKILL_INTEGRATION](../rules/04-setup.md#organic_skill_integration), [CROSS_LINK_ENGINE](../rules/04-setup.md#organic_skill_integration) |
 | 관심에서 스스로 정하고 변경하는 목표 | [SCENARIO_OBJECTIVES](../rules/05-world.md#scenario_objectives) |
 | 선택·준비가 사람·경로·후속 사건을 바꾸는 결과 | [BUTTERFLY_AND_LIVING_WORLD](../rules/05-world.md#butterfly_and_living_world) |
 | 판정 필요성·범위·성패 결과 | [FICTION_FIRST_ROLL_TRIGGER_GATE](../rules/02-checks.md#fiction_first_roll_trigger_gate) |
 | 작업 난이도와 현재 유불리 분리 | [DIFFICULTY_ASSIGNMENT](../rules/02-checks.md#difficulty_assignment) |
-| 학습·성장 조건·수치·이행 | [SKILL_IMPROVEMENT](../rules/04-setup.md#skill_improvement) |
+| 학습·성장 조건·수치·이행 | [SKILL_IMPROVEMENT](../rules/02-checks.md#skill_improvement) |
 | 위임한 실행 압축과 미선택 경험 보존 | [CINEMATIC_ELLIPSIS](../rules/06-play.md#cinematic_ellipsis) |
 | 일상부터 절망·안도까지 장면의 다양성 | [KEEPER_SCENE_SELECTION](../rules/06-play.md#keeper_scene_selection) |
-| 실제 결과에 충실한 종결·미완성 허용 | [ENDING_RESULT_VECTOR](../rules/06-play.md#ending_result_vector) |
+| 실제 결과에 충실한 종결·미완성 허용 | [ENDING_RESULT_VECTOR](../rules/06-play.md#ending_finalization_gate) |
 
 ## 세부 결정과 이유
 

@@ -1,0 +1,2529 @@
+[
+  {
+    "previous_id": "CORE_ZERO_HOMAGE_EXPERIENCE_GATE",
+    "previous_file": "rules/01-core.md",
+    "action": "수정",
+    "destination": "CORE_ZERO_HOMAGE_EXPERIENCE_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CORE_AGENCY",
+    "previous_file": "rules/01-core.md",
+    "action": "수정",
+    "destination": "CORE_AGENCY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CORE_VISIBILITY",
+    "previous_file": "rules/01-core.md",
+    "action": "수정",
+    "destination": "CORE_VISIBILITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CORE_WORKFLOW",
+    "previous_file": "rules/01-core.md",
+    "action": "수정",
+    "destination": "CORE_WORKFLOW",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PYTHON_RANDOM_EXECUTION",
+    "previous_file": "rules/01-core.md",
+    "action": "수정",
+    "destination": "PYTHON_RANDOM_EXECUTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "AI_BONUS_PENALTY_DICE",
+    "previous_file": "rules/01-core.md",
+    "action": "수정",
+    "destination": "AI_BONUS_PENALTY_DICE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "AI_DIE_MAPPING_VERSION",
+    "previous_file": "rules/01-core.md",
+    "action": "통합",
+    "destination": "PYTHON_RANDOM_EXECUTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PLAYER_INPUT_NAMESPACE_ROUTER",
+    "previous_file": "rules/01-core.md",
+    "action": "수정",
+    "destination": "PLAYER_INPUT_NAMESPACE_ROUTER",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ACTIVE_PLAY_ROUTING_FIREWALL",
+    "previous_file": "rules/01-core.md",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "TURN_RESPONSE_BUDGET",
+    "previous_file": "rules/01-core.md",
+    "action": "통합",
+    "destination": "CORE_WORKFLOW",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FICTION_FIRST_ROLL_TRIGGER_GATE",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "FICTION_FIRST_ROLL_TRIGGER_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PLAYER_D100",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "PLAYER_D100",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ROLL_INPUT_FORM_CONTRACT",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "ROLL_INPUT_FORM_CONTRACT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CHARACTERISTIC_VS_SKILL",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "CHARACTERISTIC_VS_SKILL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "INVESTIGATION_SKILL_ROUTING",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "INVESTIGATION_SKILL_ROUTING",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STAT_BOUNDARY",
+    "previous_file": "rules/02-checks.md",
+    "action": "통합",
+    "destination": "CHARACTERISTIC_VS_SKILL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CORE_CHARACTERISTIC_REFERENCE",
+    "previous_file": "rules/02-checks.md",
+    "action": "통합",
+    "destination": "CHARACTERISTIC_VS_SKILL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SUCCESS_LEVELS",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "SUCCESS_LEVELS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PLAYER_FACING_ROLL_RESULT_RENDER",
+    "previous_file": "rules/02-checks.md",
+    "action": "통합",
+    "destination": "BOTTOM_HUD_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "BONUS_PENALTY_DICE",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "BONUS_PENALTY_DICE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PUSHED_ROLL",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "PUSHED_ROLL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "GENERIC_OPPOSED_ROLL",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "GENERIC_OPPOSED_ROLL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "LUCK_ROLL",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "LUCK_ROLL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "DIFFICULTY_ASSIGNMENT",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "DIFFICULTY_ASSIGNMENT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CORE_CLUE_FAIL_FORWARD",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "CORE_CLUE_FAIL_FORWARD",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "DIEGETIC_PROFILING",
+    "previous_file": "rules/02-checks.md",
+    "action": "통합",
+    "destination": "FICTION_FIRST_ROLL_TRIGGER_GATE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DAMAGE_BONUS_AND_BUILD",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "DAMAGE_BONUS_AND_BUILD",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "HP_AND_DEATH",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "HP_AND_DEATH",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "WOUNDS",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "WOUNDS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "HEALING",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "HEALING",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "LIFESTYLE_BUFFS",
+    "previous_file": "rules/02-checks.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "식사/수면 일회성 수치 버프 전체 삭제 승인"
+  },
+  {
+    "previous_id": "LUCK_SPENDING",
+    "previous_file": "rules/02-checks.md",
+    "action": "수정",
+    "destination": "LUCK_SPENDING",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SAN_CORE",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "SAN_CORE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CTHULHU_MYTHOS_SKILL",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "CTHULHU_MYTHOS_SKILL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SAN_ROLL",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "SAN_ROLL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SCALED_SANITY_LOSS",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "SCALED_SANITY_LOSS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "INSANITY_CONDITIONS",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "INSANITY_CONDITIONS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "BOUTS_OF_MADNESS",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "BOUTS_OF_MADNESS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "UNDERLYING_INSANITY",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "UNDERLYING_INSANITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "DIEGETIC_SAN_RECOVERY",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "DIEGETIC_SAN_RECOVERY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CINEMATIC_ENCOUNTER",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "CINEMATIC_ENCOUNTER",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "COMBAT_ORDER",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "COMBAT_ORDER",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "DAMAGE",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "DAMAGE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "THREAT_TIERS",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "THREAT_TIERS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "MELEE_OPPOSED",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "MELEE_OPPOSED",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "FIGHTING_MANEUVERS",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "FIGHTING_MANEUVERS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "OUTNUMBERED",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "OUTNUMBERED",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "FIREARMS",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "FIREARMS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CHASE_FICTION_FIRST",
+    "previous_file": "rules/03-danger.md",
+    "action": "통합",
+    "destination": "CHASE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CHASE",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "CHASE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "EXTREME_HAZARDS",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "EXTREME_HAZARDS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CAUSAL_MULTI_PHASE_THREAT",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "CAUSAL_MULTI_PHASE_THREAT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SAN_EXPOSURE_GATE",
+    "previous_file": "rules/03-danger.md",
+    "action": "수정",
+    "destination": "SAN_EXPOSURE_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "D100_PARADIGM_GENERATION",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "GENRE_TABLE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "START_BRIEFING_FOG",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "START_BRIEFING_FOG",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "FULL_DIVE_CROSS_ANALYSIS",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "FULL_DIVE_CROSS_ANALYSIS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "WORLD_RULE_OVERRIDE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "WORLD_RULE_HOMAGE_DNA",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "GENRE_IS_NOT_RULESET",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "GENRE_TABLE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "GENRE_TABLE",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "GENRE_TABLE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ADAPTATION_GRAMMAR_ROUTING",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "GENRE_TABLE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "ADAPTATION_GRAMMAR",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "GENRE_TABLE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CTHULHU_OVERRIDE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "CTHULHU_SOURCE_UNIT_ROUTING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CTHULHU_SOURCE_UNIT_ROUTING",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "CTHULHU_SOURCE_UNIT_ROUTING",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "HOMAGE_TIER",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "HOMAGE_TIER",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "HIDDEN_TRUTH_ENGINE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "SCENARIO_BLUEPRINT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HIDDEN_TRUTH_HORROR_PAYLOAD_GATE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "SCENARIO_BLUEPRINT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HORROR_DEFLATION_GUARD",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "SCENARIO_BLUEPRINT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SEQUENTIAL_PROFILE_GENERATION",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "CAMPAIGN_SETUP_PIPELINE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "BASIC_INFO_ACTOR_COMMIT",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PC_APPEARANCE_FROM_APP",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PC_KNOWN_BACKSTORY_DISCLOSURE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "ROLEPLAY_ANCHOR_AGENCY",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "INVESTIGATOR_PROFILE_PLAY_ENGINE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NAME_GENERATION_LOCK",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DEFAULT_STRANGERS_AND_PC_EMOTIONAL_AGENCY",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "STAT_DRAFT_GENERATION",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "STAT_DRAFT_GENERATION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PC_DERIVED_STATS",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "PC_DERIVED_STATS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STAT_THEME_FUSION",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PROFESSION_DRAFT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PC_SKILL_START_VALUES",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "PC_SKILL_START_VALUES",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PROFESSION_SPECIALTY",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "PROFESSION_SPECIALTY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "MASTERY_RENDERING",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PROFESSION_SPECIALTY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "ORGANIC_SKILL_INTEGRATION",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "ORGANIC_SKILL_INTEGRATION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SKILL_IMPROVEMENT",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "SKILL_IMPROVEMENT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PROFESSIONAL_GAZE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PROFESSION_SPECIALTY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PROFESSION_PROP",
+    "previous_file": "rules/04-setup.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "무료0칸 직업 소지품 지급 삭제 승인"
+  },
+  {
+    "previous_id": "START_SETTINGS_GATE",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "START_SETTINGS_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SETUP_UI_FIXED_CONTRACT",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "SETUP_UI_FIXED_CONTRACT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CAMPAIGN_SETUP_PIPELINE",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "CAMPAIGN_SETUP_PIPELINE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PROFESSION_SPECIALTY_GENERATION_SEED",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "GENERATION_RNG_SEPARATION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "GENERATION_RNG_SEPARATION",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "GENERATION_RNG_SEPARATION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NORMALIZED_TABLE_INDEX",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "NORMALIZED_TABLE_INDEX",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PUBLIC_SETUP_INFORMATION_SHARE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "CAMPAIGN_SETUP_PIPELINE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "WORLD_HOMAGE_DNA",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "GENRE_TABLE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HOMAGE_DISCOVERY_LANES",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "GENRE_TABLE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HOMAGE_CANDIDATE_GATE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "HOMAGE_DRAFT_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "AUTOMATIC_SF_HOMAGE_EXCLUSION",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "AUTOMATIC_SF_HOMAGE_EXCLUSION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "RECENT_COMPLETED_HOMAGE_GUARD",
+    "previous_file": "rules/04-setup.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "완료 작품 이력 제외/추적 삭제 승인"
+  },
+  {
+    "previous_id": "CTHULHU_SOURCE_UNIT_COMPLETION_GUARD",
+    "previous_file": "rules/04-setup.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "완료 작품 이력 제외/추적 삭제 승인"
+  },
+  {
+    "previous_id": "HOMAGE_IDENTITY_METADATA",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "HOMAGE_DRAFT_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HOMAGE_SIGNATURE_FREEZE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "FULL_DIVE_CROSS_ANALYSIS",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "STORY_SCALE",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "STORY_SCALE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SCENARIO_DNA",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "SCENARIO_BLUEPRINT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FINAL_THREAT_DESIGN",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "FINAL_THREAT_DESIGN",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SCENARIO_BLUEPRINT",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "SCENARIO_BLUEPRINT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "WORLD_RULE_HOMAGE_DNA",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "WORLD_RULE_HOMAGE_DNA",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PROFESSION_DNA",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PROFESSION_DRAFT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PROFESSION_MULTILAYER_GENERATOR",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PROFESSION_DRAFT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PROFESSION_SIX_CHOICE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PROFESSION_DRAFT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "JOKER_PROFESSION_CANDIDATE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PROFESSION_DRAFT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PROFESSION_SYNTHESIS",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "PROFESSION_DRAFT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INVESTIGATOR_ROLEPLAY_DNA",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "ROLEPLAY_DNA_SYNTHESIS",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INVESTIGATOR_DNA_CONSOLIDATION",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CHARACTER_TAG_CATALOG",
+    "previous_file": "rules/04-setup.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "고정 캐릭터 태그와 카탈로그 삭제 승인"
+  },
+  {
+    "previous_id": "CHARACTER_TAG_FREEZE_AND_REACTION",
+    "previous_file": "rules/04-setup.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "고정 캐릭터 태그와 카탈로그 삭제 승인"
+  },
+  {
+    "previous_id": "SCENARIO_CONNECTION_AND_PERSONAL_RESONANCE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "WORLD_PC_INPUT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PLAYER_CHOICE_OVERRIDE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "HOMAGE_DRAFT_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PARTY_DIVERSITY_GUARD",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_DEPTH_PROTOCOL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HORROR_PRESSURE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "HARM_ECOLOGY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CAUSAL_ENDGAME_PRECOMMIT",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "CAUSAL_ENDGAME_PRECOMMIT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "HARM_ECOLOGY",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "HARM_ECOLOGY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "COMPATIBILITY_GATE",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "COMPATIBILITY_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PACING_PLAYABILITY_QA",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "COMPATIBILITY_GATE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CROSS_LINK_ENGINE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "ORGANIC_SKILL_INTEGRATION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NOVELTY_GUARD",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "COMPATIBILITY_GATE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "GENERATION_HISTORY",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "COMPATIBILITY_GATE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "GENERATION_FREEZE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "SCENARIO_BLUEPRINT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HOMAGE_DRAFT_SELECTION",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "HOMAGE_DRAFT_SELECTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "HOMAGE_DRAFT_DIVERSITY_GATE",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "HOMAGE_DRAFT_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HOMAGE_DRAFT_PUBLIC_FORMAT",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "HOMAGE_DRAFT_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "WORLD_PC_INPUT",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "WORLD_PC_INPUT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PARTICIPANT_COUNT_SETUP",
+    "previous_file": "rules/04-setup.md",
+    "action": "통합",
+    "destination": "START_SETTINGS_GATE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PC_APPEARANCE_FROM_APP",
+    "previous_file": "rules/04-setup.md",
+    "action": "수정",
+    "destination": "PC_APPEARANCE_FROM_APP",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CAUSAL_SAFETY_AND_SOUND",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "CAUSAL_SAFETY_AND_SOUND",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "FRAGMENTED_BREADCRUMBS",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CLUE_FUNCTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "OBJECTIVE_EVIDENCE_ONLY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CLUE_FUNCTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "EPISTEMIC_LAYERS",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CAUSAL_SAFETY_AND_SOUND",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PLAYER_HYPOTHESIS_NARRATIVE_BOUNDARY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CAUSAL_SAFETY_AND_SOUND",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NATURAL_LANGUAGE_READING",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CLUE_FUNCTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FLASHBACK_CAUSALITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CAUSAL_SAFETY_AND_SOUND",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INVENTORY",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "INVENTORY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PERSONAL_CASH_LEDGER",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "PERSONAL_CASH_LEDGER",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ECONOMY_ANCHOR_GATE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "PERSONAL_CASH_LEDGER",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INVENTORY_SLOT_STABILITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVENTORY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INVENTORY_SLOT_SCALE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVENTORY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NESTED_INVENTORY_CONTENTS",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVENTORY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENE_POI_SURFACE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CLUE_FUNCTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CLUE_FUNCTION",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "CLUE_FUNCTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "INVESTIGATION_STALL_GUARD",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CLUE_FUNCTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DISTINCTIVE_EQUIPMENT_AFFORDANCE",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "DISTINCTIVE_EQUIPMENT_AFFORDANCE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "COMPANION_COUNT",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "STORY_NPC",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "COMPANION_STAGING_AND_PUBLIC_INTRO",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "STORY_NPC",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "STORY_NPC",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "STORY_NPC",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NPC_AGENDA_AND_SECRECY",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "NPC_AGENDA_AND_SECRECY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NPC_CONTRADICTORY_HUMANITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NPC_AGENDA_AND_SECRECY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "TESTIMONY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NPC_AGENDA_AND_SECRECY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NPC_STATS",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "NPC_STATS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NPC_SANITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NPC_STATS",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "RELATIONSHIP_AND_NPC_MEMORY",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "RELATIONSHIP_AND_NPC_MEMORY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "DURABLE_STORY_CONTINUITY",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "DURABLE_STORY_CONTINUITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NPC_INTERACTION_VOICE_COMPACT",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "NPC_INTERACTION_VOICE_COMPACT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NPC_AGENDA_INTERVENTION",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "NPC_AGENDA_INTERVENTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NPC_AUTO_ASSIST",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NPC_AGENDA_INTERVENTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NO_SOCIAL_PING_HINT_DISPENSER",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NPC_AGENDA_AND_SECRECY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DEATH_AND_INHERITANCE",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "DEATH_AND_INHERITANCE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "INSTITUTION_ACCESS_STATE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "STORY_NPC",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENARIO_ESSENCE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SCENARIO_THREAD_REGISTER",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NESTED_STAKES_PROGRESS_BRIDGE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PROGRESS_TERMINAL_SEPARATION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENARIO_TERMINAL_BOUNDARY",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "SCENARIO_TERMINAL_BOUNDARY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PC_INVOLVEMENT_COLLISION_GATE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INVESTIGATOR_INCIDENT_COUPLING",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "MULTI_PC_CONVERGENCE_GATE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INCITING_COLLISION_GATE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NO_CLEAN_EXIT_HORROR_ARCHITECTURE",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "NO_CLEAN_EXIT_HORROR_ARCHITECTURE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "HOMAGE_HORROR_DEPTH",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "TAILORED_DESPAIR",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SILENT_TRUTH",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "COOPERATIVE_SCENARIO_ARCHITECTURE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "OPENING_NORMALITY_BEAT",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FIRST_PC_SCENE_ORIENTATION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "OPENING_NORMALITY_SKILL_CONTEXT",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DYNAMIC_PLOT_REROUTE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SITUATION_AND_AGENCY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENARIO_OBJECTIVES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENARIO_OBJECTIVES",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "SCENARIO_OBJECTIVES",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "BUTTERFLY_AND_LIVING_WORLD",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "BUTTERFLY_AND_LIVING_WORLD",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "COOPERATIVE_BY_DESIGN",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "COOPERATIVE_BY_DESIGN",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "INTER_PC_FACT_MEMORY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "RELATIONSHIP_AND_NPC_MEMORY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "BUTTERFLY_SEED_ECHO_PAYOFF",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "BUTTERFLY_AND_LIVING_WORLD",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PREPARED_PAYOFF",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "BUTTERFLY_AND_LIVING_WORLD",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "IRREVERSIBLE_WORLD_STATE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "BUTTERFLY_AND_LIVING_WORLD",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NO_EMPTY_RETURN",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "BUTTERFLY_AND_LIVING_WORLD",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "LIVING_NPC_CONTINUITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NPC_AGENDA_INTERVENTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "OUTCOME_TO_FUTURE_AFFORDANCE_GATE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "BUTTERFLY_AND_LIVING_WORLD",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "WORLD_PRESSURE_READ_ONLY_PROJECTION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "WORLD_INITIATIVE_EXECUTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "GENERAL_PERSISTENT_PROJECT",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "GENERAL_PERSISTENT_PROJECT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "RECURRING_HUB_CONTINUITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "GENERAL_PERSISTENT_PROJECT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SHARED_ASSET_CAUSAL_OWNERSHIP",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "GENERAL_PERSISTENT_PROJECT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CAUSAL_OFFER_NO_QUESTBOARD",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENARIO_OBJECTIVES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "WORLD_INITIATIVE_EXECUTION",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "WORLD_INITIATIVE_EXECUTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ACTIVE_DANGER_CONTINUITY",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "ACTIVE_DANGER_CONTINUITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "REACHED_DANGER_EXECUTION_GATE",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "REACHED_DANGER_EXECUTION_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ACTIVE_HORROR_PRESSURE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "WORLD_INITIATIVE_EXECUTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "LIVING_ADVERSARY_INTELLIGENCE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "ACTIVE_DANGER_CONTINUITY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NPC_STORY_CONTINUITY_ROUTING",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NPC_AGENDA_INTERVENTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PROMISE_AND_OBLIGATION_MEMORY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "RELATIONSHIP_AND_NPC_MEMORY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DRAMATIC_SPINE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "WORLD_INITIATIVE_EXECUTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "ADAPTIVE_DRAMATIC_PACING",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "WORLD_INITIATIVE_EXECUTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "EARLY_TRUTH_AND_TWIST",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FAILURE_MUST_MOVE_PLAY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENE_CONSEQUENCE_RULE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENE_CONSEQUENCE_RULE",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "SCENE_CONSEQUENCE_RULE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CAUSAL_REVEAL",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DIEGETIC_EXPOSITION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "IN_WORLD_DOCUMENT_HANDOUT",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "IN_WORLD_DOCUMENT_HANDOUT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "RECURRING_MOTIF",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PERSONAL_RELEVANCE_WITHOUT_DESTINY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SIGNATURE_OPPORTUNITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "OBJECTIVE_DRIFT",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "SCENARIO_OBJECTIVES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CONVERGENCE_PASS",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PARTIAL_VICTORY_AND_FAILURE_WITH_PROGRESS",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "BUTTERFLY_AND_LIVING_WORLD",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "STORY_MEMORY_CALLBACKS",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "BUTTERFLY_AND_LIVING_WORLD",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "THE_LAST_LOOK",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NO_PROTAGONIST_IMMUNITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "REACHED_DANGER_EXECUTION_GATE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INCOMPLETE_CLOSURE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PROGRESS_EVIDENCE_SEPARATION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CLUE_FUNCTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "MYSTERY_QUESTION_EVIDENCE_ARCHITECTURE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CLUE_FUNCTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "EVIDENCE_NAMESPACE_CONSOLIDATION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CLUE_FUNCTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "MYSTERY_DANGER_COUPLING",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "TRUTH_DANGER_LEVERAGE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CONTRADICTION_ENGINE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "TEMPORAL_RECONSTRUCTION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "QUESTION_LAYERS",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NEGATIVE_SPACE_CLUE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "HYPOTHESIS_TEST",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "FAIR_RED_HERRING",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "KNOWLEDGE_HAS_A_COST",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "EPISTEMIC_HORROR",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "EARLY_ODDITY_LATE_MEANING",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "UNRELIABLE_WORLD_RELIABLE_KEEPER",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "CAUSAL_SAFETY_AND_SOUND",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "ENTITY_SIGNATURE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FORESHADOWED_DANGER",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "THREAT_LEARNING_CURVE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "THREAT_ADAPTATION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "ACTIVE_DANGER_CONTINUITY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CINEMATIC_DEATH_PRINCIPLE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FALSE_SAFETY_NOT_FAKE_SAFETY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "ACTIVE_DANGER_CONTINUITY",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "OPTIONAL_PREMONITION_OMEN",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NO_GENERIC_SPATIAL_MYSTERY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "THE_ANSWER_CHANGES_THE_GOAL",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "HYPOTHESIS_TEST",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "LIVING_ITEM_LORE",
+    "previous_file": "rules/05-world.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "모든 의미 있는 물건의 생활 흔적 한 줄 의무 삭제 승인; 실제 중요한 물건의 기능/역할은 생성 본문에 유지"
+  },
+  {
+    "previous_id": "FOUNDATION_FIRST_CAMPAIGN_DESIGN",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "NARRATIVE_TECHNIQUES",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "LIVING_LOCATION_AND_INSTITUTION",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "GENERAL_PERSISTENT_PROJECT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "NPC_ORDINARY_LIFE_AND_NO_INTERVENTION_BASELINE",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "STORY_NPC",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PC_SOCIAL_FOUNDATION_AND_PROFILE_DENSITY",
+    "previous_file": "rules/05-world.md",
+    "action": "통합",
+    "destination": "INVESTIGATOR_INCIDENT_COUPLING",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PLAYER_FACING_KOREAN_LOCALIZATION",
+    "previous_file": "rules/05-world.md",
+    "action": "수정",
+    "destination": "PLAYER_FACING_KOREAN_LOCALIZATION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ENDING_FINALIZATION_GATE",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "ENDING_FINALIZATION_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "TRUTH_COMPREHENSION_FRAME",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "ENDING_FINALIZATION_GATE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "ENDING_RESULT_VECTOR",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "ENDING_FINALIZATION_GATE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "UNIQUE_ENDING_TITLE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "ENDING_PRESENTATION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "ENDING_PRESENTATION",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "ENDING_PRESENTATION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ENDING_CHARACTER_EVOLUTION_VISUAL_GATE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "ENDING_PRESENTATION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "OPTIONAL_POST_CREDITS_VIEWS",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "OPTIONAL_POST_CREDITS_VIEWS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "POST_CREDITS_HIDDEN_TRUTH_INTEGRITY",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "OPTIONAL_POST_CREDITS_VIEWS",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CINEMATIC_ACTION_CONTINUITY",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "CINEMATIC_ACTION_CONTINUITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NPC_REPLY_AGENCY_GATE",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "NPC_REPLY_AGENCY_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PLAYABLE_NARRATIVE_RENDERING",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FREEFORM_PLAYER_DECLARATION",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "GUIDED_ACTION_RETURN",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CALM_BEFORE_STORM",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "BUILDUP_GOALS",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CINEMATIC_MISE_EN_SCENE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "LORE_DRIVEN_PUZZLES",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "LORE_DRIVEN_PUZZLES",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "DEDUCTION_TIME_FREEZE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "TURN_INCREMENT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INCITING_INCIDENT",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CAUSAL_DILEMMA",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "QUIET_AFTERMATH_BEAT",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "QUIET_AFTERMATH_BEAT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CHOICE_COLLISION",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DRAMATIC_SPINE_SCENE_PACING",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENE_PACING_GATE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SOFT_SUDDEN_DEATH_PACING",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CAUSAL_PROGRESS_PACING_BRIDGE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CINEMATIC_ELLIPSIS",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "CINEMATIC_ELLIPSIS",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "KEEPER_SCENE_SELECTION",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "KEEPER_SCENE_SELECTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SAFE_INTERLUDE_AND_ENRICHMENT",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "QUIET_AFTERMATH_BEAT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "RETURN_SETTLEMENT_CONTINUITY",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "CINEMATIC_ELLIPSIS",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PLAY_PHASE_UNIFICATION",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "CINEMATIC_ELLIPSIS",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "TURN_INCREMENT",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "TURN_INCREMENT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "TURN_INDEX_NOT_STORY_CLOCK",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "TURN_INCREMENT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENE_ELAPSED_TIME_SETTLEMENT",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "SCENE_ELAPSED_TIME_SETTLEMENT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ROUTINE_MOVEMENT_FAST_PATH",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "ROUTINE_MOVEMENT_FAST_PATH",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "LONG_ACTION_EARLIEST_INTERRUPTION",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "LONG_ACTION_EARLIEST_INTERRUPTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "ACTIVE_POV",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CURRENT_FOCUS",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PLAYER_SCENE_VISIBILITY",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "STANDBY_PC_NO_AUTOPILOT",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENE_ROLES",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CINEMATIC_SPOTLIGHT_SCENE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SPOTLIGHT_FAIRNESS_COMMIT_GATE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "COLOCATED_SHARED_SCENE_EXCHANGE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CINEMATIC_SEQUENCE_AND_BRANCH",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SCENE_SUMMARY_AND_RESULT",
+    "previous_file": "rules/06-play.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "매 응답 씬 요약·결과 의무 전체 삭제 승인"
+  },
+  {
+    "previous_id": "GUIDED_ACTION_RETURN",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "GUIDED_ACTION_RETURN",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NORMAL_HANDOFF_GATE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "REACTION_SCENE_HANDOFF",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "VISUAL_CHOICE_GATE",
+    "previous_file": "rules/06-play.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "프로필/장소/엔딩마다 A/B 이미지 대기 삭제 승인"
+  },
+  {
+    "previous_id": "WORLD_FORCED_RESPONSE_FOCUS",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "FOCUS_INTERVENTION_BOUNDARY",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "BOTTOM_HUD_CONTRACT",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "BOTTOM_HUD_CONTRACT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "HUD_VISUAL_STYLE",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "BOTTOM_HUD_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "DYNAMIC_FOCUS_TURN_RENDER",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "MULTI_PC_SPOTLIGHT_CONTRACT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "SINGLE_PC_SCENE_COMPLETENESS",
+    "previous_file": "rules/06-play.md",
+    "action": "통합",
+    "destination": "DIRECTOR_WRITER_KEEPER_CONVERGENCE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PARALLEL_TIMELINE_SYNC",
+    "previous_file": "rules/06-play.md",
+    "action": "수정",
+    "destination": "PARALLEL_TIMELINE_SYNC",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_AUTHORITY",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_AUTHORITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PRIVATE_CANON_DOCUMENT",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "PRIVATE_CANON_DOCUMENT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PRIVATE_CANON_ACCESS_ROUTER",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "PRIVATE_CANON_ACCESS_ROUTER",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PRIVATE_CANON_PERIODIC_REVIEW",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "PRIVATE_CANON_PERIODIC_REVIEW",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_CANON_SAVE_BINDING",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_CANON_SAVE_BINDING",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_WORKING_CONTEXT",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_WORKING_CONTEXT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_ACCESS_ROUTER",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_ACCESS_ROUTER",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_GITHUB_FAILOVER_PROTOCOL",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_GITHUB_FAILOVER_PROTOCOL",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_SCHEMA",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_SCHEMA",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_IDENTITY",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_IDENTITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_EXPERIENCE_CONTINUITY",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_EXPERIENCE_CONTINUITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_INTEGRITY",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_INTEGRITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_CADENCE",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_CADENCE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_CHECKPOINT_RECAP",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_CHECKPOINT_RECAP",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_COMMIT",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_COMMIT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_SAVE_FAILURE_CONTINUE",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_SAVE_FAILURE_CONTINUE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_RECOVERY",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_RECOVERY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_RESUME",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_RESUME",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "STATE_COMPATIBILITY",
+    "previous_file": "rules/07-state.md",
+    "action": "수정",
+    "destination": "STATE_COMPATIBILITY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "MAP_RUNTIME_INTERACTION",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "MAP_RUNTIME_INTERACTION",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "START_MAP_HANDOUT_GATE",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "START_MAP_HANDOUT_GATE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "FUNCTIONAL_MAP_RENDERING",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "MAP_RUNTIME_INTERACTION",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "CANONICAL_CAMPAIGN_MAP",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "CANONICAL_CAMPAIGN_MAP",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "SCENE_VISUALIZATION_CAST_CONTINUITY",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "CHARACTER_VISUAL_CANON",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "VISUALIZATION_CANON_BOUNDARY",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "VISUALIZATION_CANON_BOUNDARY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "EVENT_DRIVEN_VISUAL_ROUTER",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "EVENT_DRIVEN_VISUAL_ROUTER",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "CHARACTER_VISUAL_CANON",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "CHARACTER_VISUAL_CANON",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "GOLD_START_PROFILE_REFERENCE",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "GOLD_START_PROFILE_REFERENCE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "PORTRAIT_COMPOSITION_VARIANCE",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "GOLD_START_PROFILE_REFERENCE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "GOLD_EPILOGUE_PROFILE_REFERENCE",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "EPILOGUE_CHARACTER_EVOLUTION_HANDOUT",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "INVESTIGATOR_VISUAL_HANDOUT_TEMPLATE",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "GOLD_START_PROFILE_REFERENCE",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "STARTING_VISUAL_BASELINE",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "CHARACTER_VISUAL_CANON",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "EPILOGUE_CHARACTER_EVOLUTION_HANDOUT",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "EPILOGUE_CHARACTER_EVOLUTION_HANDOUT",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "LOCATION_VISUAL_PRIORITY",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "EVENT_DRIVEN_VISUAL_ROUTER",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "LOCATION_VISUAL_CANON",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "LOCATION_VISUAL_CANON",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "VISUAL_AFFORDANCE_MANIFEST",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "LOCATION_VISUAL_CANON",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "PHOTOREAL_CINEMATIC_CUTBOARD",
+    "previous_file": "rules/08-visual.md",
+    "action": "통합",
+    "destination": "LOCATION_VISUAL_CANON",
+    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+  },
+  {
+    "previous_id": "VISUAL_ASSET_PERSISTENCE_BOUNDARY",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "VISUAL_ASSET_PERSISTENCE_BOUNDARY",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "WEB_VISUAL_REFERENCE",
+    "previous_file": "rules/08-visual.md",
+    "action": "수정",
+    "destination": "WEB_VISUAL_REFERENCE",
+    "reason": "통합 합의에 맞게 담당 본문 정리"
+  },
+  {
+    "previous_id": "NOTEBOOK_LITE_OPEN_GATE",
+    "previous_file": "rules/09-notebook.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "공개 수첩 기능과 문서/동기화/미디어/전용상태 전체 삭제 승인"
+  },
+  {
+    "previous_id": "NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER",
+    "previous_file": "rules/09-notebook.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "공개 수첩 기능과 문서/동기화/미디어/전용상태 전체 삭제 승인"
+  },
+  {
+    "previous_id": "NOTEBOOK_PUBLIC_PATCH",
+    "previous_file": "rules/09-notebook.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "공개 수첩 기능과 문서/동기화/미디어/전용상태 전체 삭제 승인"
+  },
+  {
+    "previous_id": "NOTEBOOK_MEDIA",
+    "previous_file": "rules/09-notebook.md",
+    "action": "삭제",
+    "destination": "—",
+    "reason": "공개 수첩 기능과 문서/동기화/미디어/전용상태 전체 삭제 승인"
+  }
+]

@@ -53,8 +53,33 @@ def validate():
         if dest=='—':continue
         rid=dest.partition('#')[2].upper() if '#' in dest else dest
         if rid not in ids: errors.append(f'Migration target missing: {row["original_id"]} -> {dest}')
-    required={'WORLD_PC_INPUT','STATE_AUTHORITY','STATE_SCHEMA','STATE_INTEGRITY','STATE_CADENCE','STATE_COMMIT','STATE_RECOVERY','STATE_RESUME','CORE_AGENCY','CORE_VISIBILITY','HOMAGE_DRAFT_SELECTION','PC_DERIVED_STATS','SKILL_IMPROVEMENT','CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION','NOTEBOOK_WATCHER_RUNTIME_SINGLE_WRITER'}
+    required={'WORLD_PC_INPUT','SCENARIO_BLUEPRINT','FINAL_THREAT_DESIGN','STATE_AUTHORITY','STATE_SCHEMA','STATE_INTEGRITY','STATE_CADENCE','STATE_COMMIT','STATE_RECOVERY','STATE_RESUME','STATE_EXPERIENCE_CONTINUITY','CORE_AGENCY','CORE_VISIBILITY','HOMAGE_DRAFT_SELECTION','PC_DERIVED_STATS','SKILL_IMPROVEMENT','CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION','BOTTOM_HUD_CONTRACT','OPTIONAL_POST_CREDITS_VIEWS'}
     if required-ids.keys():errors.append(f'Missing essential rules: {sorted(required-ids.keys())}')
+    # The integrated edition accounts for every ID of its 361-rule parent.
+    # Removed/merged features cannot silently return through stale routing text.
+    reorganization=json.loads((ROOT/'docs/rule-reorganization.json').read_text())
+    previous={row['previous_id'] for row in reorganization}
+    if len(reorganization)!=361 or len(previous)!=361:
+        errors.append('Previous 361-rule reorganization inventory incomplete or duplicated')
+    for row in reorganization:
+        dest=row['destination']
+        if row['action'] not in {'수정','통합','삭제'}:
+            errors.append(f'Unknown reorganization action: {row["previous_id"]}')
+        if dest!='—' and dest not in ids:
+            errors.append(f'Reorganization target missing: {row["previous_id"]} -> {dest}')
+        if dest=='—' and row['action']!='삭제':
+            errors.append(f'Unexplained rule removal: {row["previous_id"]}')
+    retired=previous-ids.keys()
+    for path in sources():
+        text=path.read_text()
+        for rid in sorted(retired):
+            if re.search(r'\b'+re.escape(rid)+r'\b',text):
+                errors.append(f'{path.name}: retired rule still routed: {rid}')
+    if (RULES/'09-notebook.md').exists():
+        errors.append('Public notebook source must not be shipped')
+    catalog=(ROOT/'docs/RULE_CATALOG.md').read_text()
+    if set(re.findall(r'^\| ([A-Z][A-Z0-9_]+) \|',catalog,re.M))!=ids.keys():
+        errors.append('Rule catalog does not match active registry')
     # These cross-system dependencies are checked against the current authoritative sections.
     checks=json.loads((ROOT/'docs/validation-contract.json').read_text())
     for check in checks:
@@ -70,7 +95,7 @@ def validate():
         for fragment in check.get('instruction_contains',[]):
             if fragment not in instructions:errors.append(f'Project Instructions: missing {rid} reminder {fragment}')
     if errors:raise SystemExit('\n'.join(errors))
-    print(f'PASS: {len(ids)} unique rules; {len(migration)} original blocks accounted for; {len(checks)} semantic guard groups; UTF-8, links, code fences, removed features and instruction length')
+    print(f'PASS: {len(ids)} unique rules; {len(migration)} original blocks and {len(reorganization)} parent IDs accounted for; {len(checks)} semantic guard groups; UTF-8, links, code fences, retired routing, catalog and instruction length')
     return ids
 
 def export():
@@ -80,7 +105,7 @@ def export():
     (target/'sources').mkdir(parents=True)
     for path in RULES.glob('*.md'):shutil.copyfile(path,target/'sources'/path.name)
     for name in ['PROJECT_INSTRUCTIONS.md','START_GAME.md']:shutil.copyfile(ROOT/name,target/name)
-    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침\nsources/*.md → 최신 프로젝트 소스\nSTART_GAME.md → 시작할 때 채팅에 입력\n기존 TXT·구판·개발 일지·감사 문서는 소스에서 제외하세요.\nSupabase 커넥터 연결과 실제 저장 검증은 별도입니다.\n')
+    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~08-visual의 9개 최신 소스로 교체\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하세요.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
     manifest={str(p.relative_to(target)):__import__('hashlib').sha256(p.read_bytes()).hexdigest() for p in sorted(target.rglob('*')) if p.is_file()}
     (target/'SHA256.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     archive=ROOT/'dist/TRPG-RULE-project.zip'
