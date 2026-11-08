@@ -935,6 +935,7 @@ Character Tag는 공개 PC 프로필을 세계가 인식하고 반응하기 위�
 - 실패하면 확정 전 구조만 국소 수정한다. 플레이 시작 후 QA를 이유로 비공개 진실나 terminal boundary를 극적 편의로 재생성하지 않는다.
 20. **Blueprint and Final Danger**: SCENARIO_BLUEPRINT의 예상 진행·분기·후속 인과와 FINAL_THREAT_DESIGN의 8축이 실제 ref/행동/조건으로 채워졌는가. 이름/수치만 있는 보스, 설정에만 있는 원작 요소, 분 단위 시한과 왕복으로 만든 규모, 한 장치의 평범한 수리로만 끝나는 중심 사건은 확정 전에 고친다.
 21. **Conditional Counterplay**: 조사 미수락·다른 동선·선제 차단·부상/자원 차이에서도 원인과 대응이 성립하는가. 전투/의료 수치·진행성 위해의 효과가 미정이면 최초 적용 전에 담당 규칙으로 확정하며 판정 뒤 임의 보완하지 않는다.
+22. **NPC Agency**: 주요 NPC의 충돌하는 우선순위·협력/거절 경계·다음 독립 행동·기본 Voice가 실제 지식/수단/접근과 연결되는가. 자동 찬성·자동 반대·명령 대기만 하는 동행자, 전원 똑같은 목소리, 무료 만능 해결자가 아닌지 NPC_AGENDA_AND_SECRECY / NPC_AGENDA_INTERVENTION으로 대조한다.
 
 ## CROSS_LINK_ENGINE
 

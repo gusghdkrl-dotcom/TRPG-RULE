@@ -164,7 +164,8 @@
       "canon_source_required",
       "전체 누적 world_delta·new_entities·tombstones·processed_event_ids",
       "PRIVATE_CANON_PERIODIC_REVIEW",
-      "로드는 사건 조건을 진행시키는 행동이 아니다"
+      "로드는 사건 조건을 진행시키는 행동이 아니다",
+      "이미 실행한 도움을 다시 지급하지"
     ]
   },
   {
@@ -1496,7 +1497,8 @@
       "정본 원문이 아닌 동적 PC/활성 진행 필드",
       "원작 체험·조건부 진행 설계도",
       "진행성 위해",
-      "runtime_flags"
+      "runtime_flags",
+      "NPC의 현재 우선순위"
     ]
   },
   {
@@ -1628,6 +1630,42 @@
     "contains": [
       "짧은 유머",
       "피해 희화화"
+    ]
+  },
+  {
+    "rule": "NPC_AGENDA_AND_SECRECY",
+    "contains": [
+      "감수할 비용·거절 경계",
+      "동의·조건부 협력·대안·보류·거절",
+      "판정 뒤 새 경계"
+    ]
+  },
+  {
+    "rule": "NPC_AGENDA_INTERVENTION",
+    "contains": [
+      "PC의 명령 없이도",
+      "무료 추가 공격",
+      "전원 순번 대사",
+      "NPC_REPLY_AGENCY_GATE"
+    ]
+  },
+  {
+    "rule": "NPC_CONTRADICTORY_HUMANITY",
+    "contains": [
+      "현재 무엇을 우선",
+      "압박 시 표현 변화"
+    ]
+  },
+  {
+    "rule": "NPC_STATS",
+    "contains": [
+      "최초 관련 판정 전에"
+    ]
+  },
+  {
+    "rule": "LIVING_NPC_CONTINUITY",
+    "contains": [
+      "의도를 세웠다는 사실과 실행 결과를 구분"
     ]
   }
 ]

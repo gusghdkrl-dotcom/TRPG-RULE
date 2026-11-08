@@ -365,3 +365,5 @@
 
 | FINAL_THREAT_DESIGN | [04-setup.md](../rules/04-setup.md#final_threat_design) |
 | SCENARIO_BLUEPRINT | [04-setup.md](../rules/04-setup.md#scenario_blueprint) |
+
+NPC 판단·협력/거절은 NPC_AGENDA_AND_SECRECY, 선제 개입은 NPC_AGENDA_INTERVENTION, 실제 기억/역할 연속성은 LIVING_NPC_CONTINUITY가 담당한다. 신규 ID 없이 기존 담당 본문을 보강했다.
