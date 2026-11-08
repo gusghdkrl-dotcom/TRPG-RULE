@@ -10,6 +10,7 @@
 
 | 상황 | 읽을 규칙 |
 |---|---|
+| 저장 세밀도·의사소통/합의·재개 의미 대조 | [STATE_EXPERIENCE_CONTINUITY](07-state.md#state_experience_continuity) |
 | NPC 판단·협력/거절·선제 행동 | [NPC_AGENDA_AND_SECRECY](05-world.md#npc_agenda_and_secrecy) · [NPC_AGENDA_INTERVENTION](05-world.md#npc_agenda_intervention) |
 | 최종 위험 8축·조건부 시나리오 설계도 | [FINAL_THREAT_DESIGN](04-setup.md#final_threat_design) · [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) |
 | 진행성 위해·상태의 영향과 처치 | [EXTREME_HAZARDS](03-danger.md#extreme_hazards) |

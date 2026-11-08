@@ -136,7 +136,9 @@
       "verify",
       "exact read-back",
       "STATE_CHECKPOINT_RECAP",
-      "같은 데이터를 중복 조회하지"
+      "같은 데이터를 중복 조회하지",
+      "직렬화 전 STATE_EXPERIENCE_CONTINUITY",
+      "복원 연속성 미검증"
     ]
   },
   {
@@ -165,7 +167,9 @@
       "전체 누적 world_delta·new_entities·tombstones·processed_event_ids",
       "PRIVATE_CANON_PERIODIC_REVIEW",
       "로드는 사건 조건을 진행시키는 행동이 아니다",
-      "이미 실행한 도움을 다시 지급하지"
+      "이미 실행한 도움을 다시 지급하지",
+      "이미 확인한 것을 미확인으로",
+      "부분 복구라는 표시는"
     ]
   },
   {
@@ -1506,7 +1510,8 @@
     "contains": [
       "성장 후보 대기와 다음 구간의 새 근거",
       "상점의 미결정 구매/답변",
-      "동일 경계/PC"
+      "동일 경계/PC",
+      "저장 전 고정 기준"
     ]
   },
   {
@@ -1666,6 +1671,24 @@
     "rule": "LIVING_NPC_CONTINUITY",
     "contains": [
       "의도를 세웠다는 사실과 실행 결과를 구분"
+    ]
+  },
+  {
+    "rule": "STATE_EXPERIENCE_CONTINUITY",
+    "contains": [
+      "의사소통은 방향과 범위를 가진다",
+      "confirmed/inferred/unknown",
+      "payload에서만 기준을 뽑아",
+      "read-back 원문과 정확한 canon_ref",
+      "해시 일치는",
+      "부분 복구",
+      "중간 대화 전체가 없어도"
+    ]
+  },
+  {
+    "rule": "DURABLE_STORY_CONTINUITY",
+    "contains": [
+      "대화를 했다"
     ]
   }
 ]
