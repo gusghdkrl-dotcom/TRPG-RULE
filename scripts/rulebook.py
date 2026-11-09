@@ -102,6 +102,8 @@ def validate():
         # Critical play reminders must survive edits to the always-on instructions.
         for fragment in check.get('instruction_contains',[]):
             if fragment not in instructions:errors.append(f'Project Instructions: missing {rid} reminder {fragment}')
+        for fragment in check.get('instruction_excludes',[]):
+            if fragment in instructions:errors.append(f'Project Instructions: obsolete {rid} reminder {fragment}')
         order=check.get('instruction_order',[])
         if order:
             positions=[instructions.find(fragment) for fragment in order]
