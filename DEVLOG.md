@@ -1,5 +1,13 @@
 # 개발 일지
 
+## 2026-11-09 — Supabase 상태 저장소 V2 전면 재구축
+
+- 승인/대상: 사용자가 기존 Supabase 자료를 직접 모두 삭제한 후, 동일 조직에 새 trpg-state-v2 프로젝트를 생성하고 현행 GitHub 룰북 기준으로 저장 시스템 구축을 명시 요청했다. 조직 gusghdkrl-dotcom's Org, 프로젝트 ref taoaffdyssqtnjszumpq, 지역 ap-northeast-2, 프로젝트 생성 비용 견적 월 $0. 구형 프로젝트·테이블·실게임 세이브는 복원/복사하지 않았다.
+- 스키마/계약: public.gm_checkpoint_history에 session/version별 원문 state_json·SHA-256·attempt/event/parent·verified history를 보존하고, DOCUMENT_BOUND/DB1의 V2 필수 참조·누적 델타6종·PC/현재 장면/이야기·인물·진행성 여파/대기 문맥을 검증한다. 신규 state_schema_version=TRPG_STATE_V2는 rules_version과 분리했고 구형 RNG 큐는 필수가 아니다. 같은 attempt 멱등 처리, pending 차단, parent/version 해시 검증, exact load_version/latest/list/inspect_pending 함수 적용. 일반 anon/authenticated Data API에는 테이블/함수 접근권한을 주지 않았고 RLS를 켰다.
+- DB 검증: 가상 데이터로 1번·2번 체크포인트 commit→verify→동일 버전 원문/SHA 재조회 및 latest 선택을 확인했다. 같은 attempt의 commit/verify 재실행은 멱등 처리되며, 부모 SHA 충돌을 차단했다. scene_context 제거/coverage-delta 불일치를 거부했고 불필요한 구형 RNG 필드는 요구하지 않았다. anon/authenticated 테이블 및 RPC 권한 없음, 보안 advisor는 정책 없는 비공개 RLS 테이블 안내(INFO)만 보고, 성능 advisor는 문제 없음. 합성 2개 verified 테스트 행은 검증 후 삭제했다.
+- GitHub: rules/07-state.md에 V2 ref/함수 서명/payload 필수 필드·복원 절차를 반영하고 README의 저장 경로/검증 범위를 갱신했다. 새 DB에서 읽어온 실제 함수 정의를 재설치 SQL docs/sql/trpg-state-v2.sql로 보존했다. 기존 프로젝트 지침, 타 규칙 담당, 캠페인 기밀·키·실제 세이브는 공개하지 않았다.
+- 한계: DB 바이트 정확성/구조 검증과 실제 캐릭터/세계 경험 연속성의 검증은 다르다. 진짜 PRIVATE_CANON 파일 전체 해시/필수 절, 비공개 GitHub 백업, 장기 채팅 재개는 실제 캠페인 데이터를 이용한 별도 검증이 필요하다. Supabase 최초 신규 생성/검증은 수행했으나 공개 룰 ZIP의 CI 갱신 여부는 별도로 확인한다.
+
 ## 2026-11-09 — 키퍼 원칙·숙지 문구의 반복 출력 제거
 
 - 요청/기준: 사용자가 매 응답의 키퍼4요소 반복 표시를 제거하고 인스트럭션 공간을 정리하라고 요청했다. 최신 main 9aea2c4와 깨끗한 작업 트리·AGENTS/EDITING·인스트럭션/출력 담당 절/예시/계약을 확인했다.
