@@ -11,6 +11,11 @@ checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker)
 def change(root,path,old,new):
     p=root/path;s=p.read_text();assert old in s,(path,old);p.write_text(s.replace(old,new,1))
 
+def move_priority_last(root):
+    p=root/'PROJECT_INSTRUCTIONS.md';s=p.read_text()
+    a=s.index('## 최우선 기준');b=s.index('## 진행 순서와 규칙 조회')
+    p.write_text(s[:a]+s[b:]+'\n'+s[a:b])
+
 def validate(root):
     checker.ROOT=root;checker.RULES=root/'rules'
     with redirect_stdout(StringIO()):checker.validate()
@@ -50,6 +55,13 @@ mutations=[
  ('source_world_immersion_lost',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','원작 안에 들어온 감각을 주며','원작 이름만 표시하며')),
  ('investigation_spiral',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','증거 완전성·세부 모순·추가 검증을 계속 요구하며 조사 단계를 늘이지 않는다','증거가 완벽해질 때까지 추가 조사를 계속 요구한다')),
  ('chosen_deep_inquiry_erased',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','핵심 난관과 플레이어가 선택한 심층 탐구는 보존한다','플레이어가 원해도 심층 탐구는 전부 생략한다')),
+ ('presentation_overrides_priority',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','재미·속도·5요소를 위해 상위 기준을 뒤집지 않는다','재미를 위해 PC 주도권과 확정 결과를 바꾼다')),
+ ('regenerate_existing_canon',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','신규 캠페인 또는 새 챕터의 미확정 범위에 적용한다','기존 세계도 매 응답 다시 생성한다')),
+ ('meta_advances_danger',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','메타 질문·재표시는 답만 제공하며 극중 시간·위험을 진행시키지 않는다','메타 질문마다 시간과 위협을 진행한다')),
+ ('every_routine_is_important',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','생존·목표·수단·관계·진실 이해·이후 선택을 바꾸는 순간','모든 접수와 확인을 별도 장면으로')),
+ ('lookup_failure_guessed_success',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','조회 실패 시 영향을 받는 처리만 보류하고 확인 가능한 진행은 계속한다','조회 실패 시 결과를 추측해 확정한다')),
+ ('routine_without_decision_stops',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','이미 선언한 목적/발언의 통상 실행에 새 판단이 없으면','이미 선언한 통상 확인도 매번 멈춰')),
+ ('priority_at_bottom',move_priority_last),
  ('retired_router',lambda r:(r/'rules/01-core.md').write_text((r/'rules/01-core.md').read_text()+'\nNOTEBOOK_PUBLIC_PATCH\n')),
  ('notebook_shipped',lambda r:(r/'rules/09-notebook.md').write_text('# retired\n')),
  ('pi_too_long',lambda r:(r/'PROJECT_INSTRUCTIONS.md').write_text((r/'PROJECT_INSTRUCTIONS.md').read_text()+'가'*7801)),

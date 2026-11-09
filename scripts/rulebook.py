@@ -102,6 +102,13 @@ def validate():
         # Critical play reminders must survive edits to the always-on instructions.
         for fragment in check.get('instruction_contains',[]):
             if fragment not in instructions:errors.append(f'Project Instructions: missing {rid} reminder {fragment}')
+        order=check.get('instruction_order',[])
+        if order:
+            positions=[instructions.find(fragment) for fragment in order]
+            if (len(set(order))!=len(order)
+                    or any(instructions.count(fragment)!=1 for fragment in order)
+                    or positions!=sorted(positions)):
+                errors.append(f'Project Instructions: missing, duplicated or reordered {rid} execution sections')
     if errors:raise SystemExit('\n'.join(errors))
     print(f'PASS: {len(ids)} unique rules; {len(migration)} original blocks and {len(reorganization)} parent IDs accounted for; {len(checks)} semantic guard groups; UTF-8, links, code fences, retired routing, catalog and instruction length')
     return ids
