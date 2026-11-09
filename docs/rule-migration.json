@@ -1723,25 +1723,25 @@
     "original_id": "PROFESSION_SPECIALTY_A13",
     "original_line_normalized": 2141,
     "source_sha256": "40096c91d0518962900552e03d744bb9e51a706aab2b59c5f4a986cc2ca766be",
-    "action": "정리·이동",
-    "destination": "PROFESSION_SPECIALTY",
-    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+    "action": "삭제",
+    "destination": "—",
+    "reason": "2026-11-10 사용자 요청: 신규 전문 분야/별도 성장 규칙 삭제. 구판 정본 및 이미 획득한 정보는 보존"
   },
   {
     "original_id": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION_A13",
     "original_line_normalized": 2149,
     "source_sha256": "d38165ab651d859289160686f62c0be181f7cc0773aa9fd4d2274810e2a55ada",
-    "action": "정리·이동",
-    "destination": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION",
-    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+    "action": "삭제",
+    "destination": "—",
+    "reason": "2026-11-10 사용자 요청: 신규 전문 분야/별도 성장 규칙 삭제. 구판 정본 및 이미 획득한 정보는 보존"
   },
   {
     "original_id": "MASTERY_RENDERING",
     "original_line_normalized": 2158,
     "source_sha256": "d5b7d96d365a3d2543994b221a0e926ecaa0b22c51ee45af29a6ed5c4a8caef5",
-    "action": "정리·이동",
-    "destination": "PROFESSION_SPECIALTY",
-    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리; 2026-11-08 담당 통합: PROFESSION_SPECIALTY"
+    "action": "삭제",
+    "destination": "—",
+    "reason": "2026-11-10 사용자 요청: 신규 전문 분야/별도 성장 규칙 삭제. 구판 정본 및 이미 획득한 정보는 보존"
   },
   {
     "original_id": "ORGANIC_SKILL_INTEGRATION",
@@ -1763,9 +1763,9 @@
     "original_id": "PROFESSIONAL_GAZE",
     "original_line_normalized": 2178,
     "source_sha256": "c8f7a14f3cf79f2677ccb72b4ad44c8c5416835092ececbead9db8fd648ea244",
-    "action": "정리·이동",
-    "destination": "PROFESSION_SPECIALTY",
-    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리; 2026-11-08 담당 통합: PROFESSION_SPECIALTY"
+    "action": "삭제",
+    "destination": "—",
+    "reason": "2026-11-10 사용자 요청: 신규 전문 분야/별도 성장 규칙 삭제. 구판 정본 및 이미 획득한 정보는 보존"
   },
   {
     "original_id": "PROFESSION_PROP",
