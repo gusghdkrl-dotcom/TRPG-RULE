@@ -569,23 +569,23 @@
   {
     "previous_id": "PROFESSION_SPECIALTY",
     "previous_file": "rules/04-setup.md",
-    "action": "수정",
-    "destination": "PROFESSION_SPECIALTY",
-    "reason": "통합 합의에 맞게 담당 본문 정리"
+    "action": "삭제",
+    "destination": "—",
+    "reason": "2026-11-10 사용자 요청: 신규 전문 분야/별도 성장 규칙 삭제. 구판 정본 및 이미 획득한 정보는 보존"
   },
   {
     "previous_id": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION",
     "previous_file": "rules/04-setup.md",
-    "action": "수정",
-    "destination": "CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION",
-    "reason": "통합 합의에 맞게 담당 본문 정리"
+    "action": "삭제",
+    "destination": "—",
+    "reason": "2026-11-10 사용자 요청: 신규 전문 분야/별도 성장 규칙 삭제. 구판 정본 및 이미 획득한 정보는 보존"
   },
   {
     "previous_id": "MASTERY_RENDERING",
     "previous_file": "rules/04-setup.md",
-    "action": "통합",
-    "destination": "PROFESSION_SPECIALTY",
-    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+    "action": "삭제",
+    "destination": "—",
+    "reason": "2026-11-10 사용자 요청: 신규 전문 분야/별도 성장 규칙 삭제. 구판 정본 및 이미 획득한 정보는 보존"
   },
   {
     "previous_id": "ORGANIC_SKILL_INTEGRATION",
@@ -604,9 +604,9 @@
   {
     "previous_id": "PROFESSIONAL_GAZE",
     "previous_file": "rules/04-setup.md",
-    "action": "통합",
-    "destination": "PROFESSION_SPECIALTY",
-    "reason": "동일 역할을 담당 본문 한곳으로 통합"
+    "action": "삭제",
+    "destination": "—",
+    "reason": "2026-11-10 사용자 요청: 신규 전문 분야/별도 성장 규칙 삭제. 구판 정본 및 이미 획득한 정보는 보존"
   },
   {
     "previous_id": "PROFESSION_PROP",
