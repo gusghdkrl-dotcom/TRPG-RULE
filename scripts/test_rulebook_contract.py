@@ -21,6 +21,12 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('start_loadout_expanded',lambda r:change(r,'rules/04-setup.md','직업 관련 필수 물품 정확히 1개','시작부터 장비 여러 개')),
+ ('kit_counts_as_one',lambda r:change(r,'rules/04-setup.md','별개로 사용할 수 있는 여러 도구가 든 키트','키트 안의 무료 별도 도구 전부 지급')),
+ ('starting_item_not_acquired_in_world',lambda r:change(r,'rules/04-setup.md','정상적인 획득','자동으로 지급')),
+ ('specialty_selection_returns',lambda r:change(r,'rules/04-setup.md','전문 분야 A/B/C 선택과 별도 전문성 성장','전문 분야 A/B/C와 별도 전문성 성장')),
+ ('roll_for_dramatic_arbitrariness',lambda r:change(r,'rules/02-checks.md','극적 연출만으로 판정을 만들지 않는다','극적 연출만으로 판정을 만든다')),
+ ('luck_invents_legendary_clue',lambda r:change(r,'rules/02-checks.md','이전에 없던 전설적 단서·강력한 무기','우연으로 강력한 보상을 만든다')),
  ('early_exit_hazards_require_plot_optin',lambda r:change(r,'rules/04-setup.md','조사/의뢰/핵심 장소 방문에 동의해야만 모든 위험이 켜지고 초반 귀가에는 아무 원인도 닿지 않는 설계는 보완한다','모든 위험은 본편을 수락한 뒤에만 시작하고 초반 귀가는 무조건 안전하게 한다')),
  ('leaving_intent_spawns_attack',lambda r:change(r,'rules/04-setup.md','출발 의도 자체를 공격 스위치로 쓰지 않고','출발 의도 자체를 새 공격과 봉쇄의 스위치로 쓰고')),
  ('schedule_only_escape_design_passes',lambda r:change(r,'rules/04-setup.md','단순 운항 일정/요금만 두고 생존 위협이 없거나, 본편 수락/최종 의례에만 모든 위해를 모아 두면 이탈 설계는 미완료다','초기 이탈은 운항 일정과 요금만 정하면 설계 완료다')),
