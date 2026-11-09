@@ -21,6 +21,15 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('vague_design_marked_complete',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','설계 완료는 ‘가능하다’는 설명이 아니라 정본의 실제 연결로 판단한다','가능성만 적으면 설계 완료다')),
+ ('source_cause_only_background',lambda r:change(r,'rules/04-setup.md','원작의 깊은 원인/갈등 → 고유한 현상·공간·위협의 작동 → PC가 겪는 난관·관계/행동 선택','원작의 깊은 원인은 배경 설명으로만 둔다')),
+ ('world_change_without_conditions',lambda r:change(r,'rules/04-setup.md','어떤 기존 상태/원인이 성립하면 어느 범위의 공간·접근·위해·사람/정보 전달이 달라지고 무엇은 유지되는지','키퍼가 필요할 때 모든 공간과 능력을 바꾸는지')),
+ ('safety_after_generic_movement',lambda r:change(r,'rules/06-play.md','남은 위협의 접근이 끊기는 경로/목적지·차단/보호 상태','어느 구역이든 이동하기만 한 상태')),
+ ('npc_relationship_never_changes_action',lambda r:change(r,'rules/05-world.md','어떤 실제 변화가 협력·역할 분담·갈등·이탈을 바꾸는지','관계와 실제 행동을 연결하지 않고')),
+ ('possibilities_pass_compatibility',lambda r:change(r,'rules/04-setup.md','가능성만 적고 발동/억제·체험 접점·대응·실제 안전/종결이 비었으면 그 연결은 미완료다','모든 항목에 가능하다고 적으면 설계 완료다')),
+ ('full_design_review_every_reply',lambda r:change(r,'rules/04-setup.md','매 응답 전수 검토·검토표 출력·추가 검수 모델/저장 호출은 만들지 않는다','매 응답 전체 설계를 재검토하고 검토표와 저장을 실행한다')),
+ ('canon_headers_replace_actual_design',lambda r:change(r,'rules/07-state.md','필수 절의 제목/원인 요약만으로 완성하지 않는다','필수 절의 제목만 존재하면 정본 완성이다')),
+ ('mandatory_boss_and_full_truth',lambda r:change(r,'rules/04-setup.md','근원 전체의 소멸·고정 보스전·모든 진상 규명은 공통 필수가 아니다','모든 캠페인은 근원 전체 소멸과 보스전과 전모 규명을 요구한다')),
  ('retired_keeper_footer_returns',lambda r:(r/'PROJECT_INSTRUCTIONS.md').write_text((r/'PROJECT_INSTRUCTIONS.md').read_text()+'\n#### 🎬 키퍼 4요소\n#### 1. 반복 표시\n')),
  ('rulebook_requires_keeper_footer',lambda r:change(r,'rules/06-play.md','키퍼 원칙·숙지 문구·준수 보고를 게임 응답에 반복 출력하지 않는다','매 응답의 마지막에 키퍼 원칙과 숙지 문구를 표시한다')),
  ('experience_replaced_by_proof',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','추리·미스터리는 대응과 선택을 바꾸는 요소다','모든 진행은 진상 입증을 위한 조사다')),

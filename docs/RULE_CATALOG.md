@@ -2,6 +2,8 @@
 
 개발용 색인. 현행 실행 ID만 표시한다. 이전361개 대응은 rule-reorganization.json, 최초403개 원문 대응은 rule-migration.json.
 
+생성 완료의 실제 인과/체험·변화 조건·대응/탈출은 SCENARIO_BLUEPRINT/WORLD_RULE_HOMAGE_DNA/FINAL_THREAT_DESIGN, 빈 연결 보완 시점은 COMPATIBILITY_GATE, 인물 관계는 STORY_NPC, 종결/정본 보존은 ENDING_FINALIZATION_GATE/PRIVATE_CANON_DOCUMENT가 담당한다. 아래 기존 ID/담당 링크를 재사용하며 새 검수 단계나 별도 게임용 문서를 추가하지 않는다.
+
 | 규칙 ID | 담당 본문 |
 |---|---|
 | ACTIVE_DANGER_CONTINUITY | [05-world.md](../rules/05-world.md#active_danger_continuity) |
