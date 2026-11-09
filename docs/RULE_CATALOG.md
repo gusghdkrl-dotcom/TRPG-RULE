@@ -4,6 +4,8 @@
 
 생성 완료의 실제 인과/체험·변화 조건·대응/탈출은 SCENARIO_BLUEPRINT/WORLD_RULE_HOMAGE_DNA/FINAL_THREAT_DESIGN, 빈 연결 보완 시점은 COMPATIBILITY_GATE, 인물 관계는 STORY_NPC, 종결/정본 보존은 ENDING_FINALIZATION_GATE/PRIVATE_CANON_DOCUMENT가 담당한다. 아래 기존 ID/담당 링크를 재사용하며 새 검수 단계나 별도 게임용 문서를 추가하지 않는다.
 
+원작의 공포와 주요 진실 전후의 의미/선택·대응/결말 변화는 FULL_DIVE_CROSS_ANALYSIS/SCENARIO_BLUEPRINT, 절정의 준비/관계/선택 회수와 조기 해결은 FINAL_THREAT_DESIGN/CAUSAL_ENDGAME_PRECOMMIT, 행동 중 접촉/후속은 CLUE_FUNCTION/STORY_NPC/KEEPER_SCENE_SELECTION에서 다룬다. COMPATIBILITY_GATE는 운용 가능한 조건과 서사의 깊이를 구분해 대조한다.
+
 | 규칙 ID | 담당 본문 |
 |---|---|
 | ACTIVE_DANGER_CONTINUITY | [05-world.md](../rules/05-world.md#active_danger_continuity) |

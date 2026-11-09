@@ -21,6 +21,14 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('truth_without_meaning_or_choice',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','원작의 핵심 진실은 겪은 현상/인물/물건의 의미와 목표·신뢰·위협·대응·결말에 실질적 차이를 만든다','핵심 진실은 결말 뒤 설명으로만 제공한다.')),
+ ('truth_invented_after_discovery',lambda r:change(r,'rules/04-setup.md','핵심 진실은 앞서 겪을 현상·물건·인물 행동의 의미를 바꾸는 사전 원인으로 설계한다','진실은 발견 뒤 이전 사실에 맞춰 소급 발명한다')),
+ ('central_cause_left_as_unknown',lambda r:change(r,'rules/04-setup.md','이번 사건의 의미와 결정적 선택을 떠받치는 내막은 ‘알 수 없는 힘’으로 비워 두지 않는다','이번 사건의 핵심 원인은 알 수 없는 힘으로만 둔다')),
+ ('climax_replaced_by_work_report',lambda r:change(r,'rules/04-setup.md','작업 완료 보고나 더 강한 적의 등장만으로 절정을 대신하지 않는다','작업 완료 보고나 새 강적 등장만으로 절정을 완성한다')),
+ ('early_success_undone_for_twist',lambda r:change(r,'rules/04-setup.md','반전을 보여주려고 해결을 취소하거나 성공 뒤 숨은 다음 적을 추가하지 않는다','반전을 보여주기 위해 초기 해결을 취소하고 다음 적을 추가한다')),
+ ('discovery_only_adds_archive_tasks',lambda r:change(r,'rules/05-world.md','설명을 들은 뒤 다음 자료를 확인하는 과제로만 끝내지 않는다','새 사실은 항상 다음 자료를 확인하는 과제로 이어진다')),
+ ('all_sources_same_cosmic_plot',lambda r:change(r,'rules/04-setup.md','모든 세계를 같은 음모/유물/우주적 재앙으로 번역하지 않는다','모든 세계에 같은 유물과 우주적 재앙을 추가한다')),
+ ('victim_count_substitutes_depth',lambda r:change(r,'rules/04-setup.md','그 진실을 빼도 모든 경험/선택/결과가 같고 피해 대상 수·작업량·설명 분량만 늘면 서사 심화를 보완한다','주요 진실을 빼도 피해 대상 수와 작업량이 많으면 깊은 시나리오다')),
  ('cash_hidden_between_trades',lambda r:change(r,'rules/06-play.md','현금은 매 일반 HUD에 실제 통화/잔액을 표시한다','현금은 거래를 할 때만 표시한다')),
  ('unpaid_added_to_cash',lambda r:change(r,'rules/06-play.md','미지급 대금/외상은 현재 잔액에 더하지 않고','미지급 대금/외상은 현재 잔액에 즉시 더하고')),
  ('important_item_frees_inventory_slot',lambda r:change(r,'rules/06-play.md','메인/파우치 물품을 중요하다는 이유로 다시 나열하거나0칸으로 옮기지 않는다','중요한 메인/파우치 물품은 중요 물품으로 옮겨0칸 처리한다')),
