@@ -38,7 +38,7 @@ ZIP에는 실행 지침·시작 입력·게임용 소스·업로드 안내·SHA2
 
 PC d100은 플레이어, 그 밖의 실제 무작위는 Python 실행을 사용한다. 실제 입력 폼이 없으면 채팅 입력으로 진행한다. 룰북은 클라이언트에 없는 입력/검색/파일 기능을 만들지 않는다.
 
-저장 수단은 기존 **비공개 프로젝트 정본 + Supabase 검증 체크포인트(DOCUMENT_BOUND/DB1), 인증된 비공개 GitHub 백업/비상본**을 유지한다. 운영 DB/함수/권한/앱을 변경하지 않았다. 신규 동적 맥락의 실제 수용/보존은 서버 계약과 read-back으로 확인해야 한다. 차단/실패는 완료라 하지 않고 현재 확인 가능한 플레이는 계속한다. 기존20턴 정본 재독·30턴 저장 경계는 유지하고 같은 원문/상태를 재사용한다.
+저장 수단은 **비공개 프로젝트 정본 + 새 Supabase `trpg-state-v2` 검증 체크포인트(DOCUMENT_BOUND/DB1, `state_schema_version=TRPG_STATE_V2`) + 인증된 비공개 GitHub 백업/비상본**이다. 신규 Supabase project ref는 `taoaffdyssqtnjszumpq`이고, 서버 RPC와 정확한 호출/검증/복원 계약은 [07-state](rules/07-state.md)의 STATE_CANON_SAVE_BINDING·STATE_COMMIT에 있다. [DB V2 재구축 SQL](docs/sql/trpg-state-v2.sql)은 구형 DB를 복제하지 않고 독립 구축하기 위한 이력이다. 신규 DB에서 합성 2버전의 commit→verify→같은 version exact read-back/SHA, 부모충돌 차단, 중복attempt 재생, 필수문맥·coverage 거부와 권한 제한을 검증했으며 테스트 저장본은 제거했다. 실제 비공개 캠페인의 정본 결합·장기재개 및 인증된 private GitHub 백업 왕복은 별도 검증이 필요하다. 차단/실패는 완료라 하지 않고 현재 확인 가능한 플레이는 계속한다. 기존20턴 정본 재독·30턴 저장 경계는 유지하고 같은 원문/상태를 재사용한다.
 
 검증 명령:
 
