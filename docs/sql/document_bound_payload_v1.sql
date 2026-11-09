@@ -1,3 +1,6 @@
+-- ARCHIVE ONLY: 2026-10-30 legacy DOCUMENT_BOUND validator. DO NOT RUN on trpg-state-v2.
+-- The active rebuilt DB and RPC contract are in docs/sql/trpg-state-v2.sql.
+-- This historical source requires removed RNG queue fields and is incompatible with the current ruleset.
 -- Legacy queue RNG validation reference. Does NOT accept Python-only runtime records.
 -- See docs/PYTHON_RANDOM.md; no production migration is performed by this file edit.
 -- DOCUMENT_BOUND(DB1): opt-in compact checkpoints; legacy full snapshots are not rewritten.
