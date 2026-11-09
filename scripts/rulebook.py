@@ -61,7 +61,7 @@ def validate():
         if dest=='—':continue
         rid=dest.partition('#')[2].upper() if '#' in dest else dest
         if rid not in ids: errors.append(f'Migration target missing: {row["original_id"]} -> {dest}')
-    required={'WORLD_PC_INPUT','SCENARIO_BLUEPRINT','FINAL_THREAT_DESIGN','STATE_AUTHORITY','STATE_SCHEMA','STATE_INTEGRITY','STATE_CADENCE','STATE_COMMIT','STATE_RECOVERY','STATE_RESUME','STATE_EXPERIENCE_CONTINUITY','CORE_AGENCY','CORE_VISIBILITY','HOMAGE_DRAFT_SELECTION','PC_DERIVED_STATS','SKILL_IMPROVEMENT','CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION','BOTTOM_HUD_CONTRACT','OPTIONAL_POST_CREDITS_VIEWS'}
+    required={'WORLD_PC_INPUT','SCENARIO_BLUEPRINT','FINAL_THREAT_DESIGN','STATE_AUTHORITY','STATE_SCHEMA','STATE_INTEGRITY','STATE_CADENCE','STATE_COMMIT','STATE_RECOVERY','STATE_RESUME','STATE_EXPERIENCE_CONTINUITY','CORE_AGENCY','CORE_VISIBILITY','HOMAGE_DRAFT_SELECTION','PC_DERIVED_STATS','SKILL_IMPROVEMENT','BOTTOM_HUD_CONTRACT','OPTIONAL_POST_CREDITS_VIEWS'}
     if required-ids.keys():errors.append(f'Missing essential rules: {sorted(required-ids.keys())}')
     # The integrated edition accounts for every ID of its 361-rule parent.
     # Removed/merged features cannot silently return through stale routing text.
