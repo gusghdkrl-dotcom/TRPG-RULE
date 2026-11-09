@@ -21,6 +21,14 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('experience_replaced_by_proof',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','추리·미스터리는 대응과 선택을 바꾸는 요소다','모든 진행은 진상 입증을 위한 조사다')),
+ ('generic_source_reskin',lambda r:change(r,'rules/04-setup.md','원작 이름·가면·지명·용어만 바꾸어도 같은 자료 수사로 진행되는 설계는 다시 구성한다','원작의 이름만 바꾸면 체험 설계가 완성된다')),
+ ('situation_network_missing',lambda r:change(r,'rules/04-setup.md','당면 목적 → 세계의 변화와 직접 경험 → 행동/관계/수단 선택 → 실제 결과 → 달라진 상황과 다음 목적','증언 → 문서 → 대조 → 입증')),
+ ('npc_only_information_desk',lambda r:change(r,'rules/05-world.md','증언자/기관 창구를 넘어 함께 움직이고 갈등/유머/도움/손실을 겪을 사람','자료 문의에만 답하는 기관 창구')),
+ ('unlisted_future_frozen',lambda r:change(r,'rules/05-world.md','미래 사건표에 없는 일은 발생 불가라고 세계를 멈추지 않는다','미래 사건표에 없는 일은 절대 발생하지 않는다')),
+ ('all_choices_investigation',lambda r:change(r,'rules/06-play.md','매번 자료 찾기/증언 묻기/재확인만 나열하지 않는다','모든 선택지를 자료 찾기와 증언 확인으로 구성한다')),
+ ('proof_required_for_all_endings',lambda r:change(r,'rules/06-play.md','진상 입증·범인 신원 확정·모든 증거 수집은 일반 종결 필수가 아니다','모든 진상을 입증하고 모든 증거를 모아야 종결한다')),
+ ('experience_save_only_clues',lambda r:change(r,'rules/07-state.md','단서 목록만으로 현재 경험을 대신하지 않으며','현재 경험은 단서 목록만으로 대체하며')),
  ('major_incident_growth',lambda r:change(r,'rules/02-checks.md','CHRONICLE(연대기)에서만','모든 규모에서')),
  ('growth_cap',lambda r:change(r,'rules/02-checks.md','상한은 95','상한은 100')),
  ('san_accumulation',lambda r:change(r,'rules/03-danger.md','회복은 누적 손실을 차감하지 않는다','회복은 손실을 지운다')),
