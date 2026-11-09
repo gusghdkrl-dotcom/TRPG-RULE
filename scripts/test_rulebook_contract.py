@@ -39,7 +39,7 @@ mutations=[
  ('opposed_digits',lambda r:change(r,'rules/02-checks.md','결합 결과 00은 100','결합 결과 00은 0')),
  ('inventory_hidden',lambda r:change(r,'rules/06-play.md','인벤토리 목록과 메인/파우치 점유량은 상시 유지','인벤토리는 표시하지 않음')),
  ('credits_optional',lambda r:change(r,'rules/06-play.md','기본 엔딩의 다섯','요청할 때만 제공하는 다섯')),
- ('scene_context_missing',lambda r:change(r,'rules/07-state.md','scene_context','omitted_context')),
+ ('scene_context_missing',lambda r:change(r,'rules/07-state.md','| scene_context | 현재 행동권/장소·직전행동과 반응·대화주제/마지막질문','| omitted_context | 현재 행동권/장소·직전행동과 반응·대화주제/마지막질문')),
  ('world_scale_weak',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','실행력·파급','장식')),
  ('npc_voice_forgotten',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','상대별 호칭','일반 대화')),
  ('routine_micro_gates',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','단순 확인마다 긴 대사·서류 전문·새 메뉴·입력 대기를 만들지 않는다','모든 확인에서 메뉴를 만들고 입력을 기다린다')),
