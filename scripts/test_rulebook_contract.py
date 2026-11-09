@@ -21,6 +21,12 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('cash_hidden_between_trades',lambda r:change(r,'rules/06-play.md','현금은 매 일반 HUD에 실제 통화/잔액을 표시한다','현금은 거래를 할 때만 표시한다')),
+ ('unpaid_added_to_cash',lambda r:change(r,'rules/06-play.md','미지급 대금/외상은 현재 잔액에 더하지 않고','미지급 대금/외상은 현재 잔액에 즉시 더하고')),
+ ('important_item_frees_inventory_slot',lambda r:change(r,'rules/06-play.md','메인/파우치 물품을 중요하다는 이유로 다시 나열하거나0칸으로 옮기지 않는다','중요한 메인/파우치 물품은 중요 물품으로 옮겨0칸 처리한다')),
+ ('historical_save_marked_current',lambda r:change(r,'rules/06-play.md','과거 성공을 현재 저장으로 재표시하거나 UI 표시 때문에 저장을 실행하지 않는다','과거 저장 성공을 매번 현재 저장 성공으로 표시한다')),
+ ('native_status_split_into_cards',lambda r:change(r,'rules/06-play.md','기본 레이아웃은 선택지 → 구분선 → 단일 상태 카드다','기본 레이아웃은 선택지 → 여러 개의 상태 카드다')),
+ ('five_choices_always_required',lambda r:change(r,'rules/06-play.md','개수 고정이나 별도4번 직접 행동 안내는 없다','선택지는 항상5개를 채워야 한다')),
  ('vague_design_marked_complete',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','설계 완료는 ‘가능하다’는 설명이 아니라 정본의 실제 연결로 판단한다','가능성만 적으면 설계 완료다')),
  ('source_cause_only_background',lambda r:change(r,'rules/04-setup.md','원작의 깊은 원인/갈등 → 고유한 현상·공간·위협의 작동 → PC가 겪는 난관·관계/행동 선택','원작의 깊은 원인은 배경 설명으로만 둔다')),
  ('world_change_without_conditions',lambda r:change(r,'rules/04-setup.md','어떤 기존 상태/원인이 성립하면 어느 범위의 공간·접근·위해·사람/정보 전달이 달라지고 무엇은 유지되는지','키퍼가 필요할 때 모든 공간과 능력을 바꾸는지')),
@@ -80,7 +86,7 @@ mutations=[
  ('choice_buttons_dropped',lambda r:change(r,'rules/06-play.md','실제 버튼/선택 UI를 제공하면','버튼 UI가 지원되어도')),
  ('fake_click_fallback',lambda r:change(r,'rules/06-play.md','작동하지 않는 HTML/가짜 링크로 클릭 기능을 가장하지 않으며','가짜 클릭 링크를 제공하며')),
  ('status_panel_flattened',lambda r:change(r,'rules/06-play.md','Markdown 상태 카드','상태 한 줄')),
- ('resource_icons_removed',lambda r:change(r,'rules/06-play.md','❤️ 체력 HP','HP')),
+ ('resource_icons_removed',lambda r:change(r,'rules/06-play.md','❤️ HP','HP')),
  ('bag_sections_merged',lambda r:change(r,'rules/06-play.md','각각 빈 줄로 나눈 독립 문단/별도 UI 영역에 표시한다','합쳐 한 문단에 표시한다')),
  ('inventory_rearranged_for_style',lambda r:change(r,'rules/06-play.md','기존 소지 위치·수량·점유량을 서식 때문에 재배치하거나 예시 값/새 물품으로 채우지 않는다','패널에 맞춰 물품의 위치와 수량을 바꾼다')),
  ('ui_instruction_reminder_removed',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','선택지·상태 패널·아이콘·메인/파우치 구분은06-play를 따른다','UI 서식은 자유다')),
