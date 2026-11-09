@@ -45,6 +45,14 @@ def validate():
     instructions = (ROOT/'PROJECT_INSTRUCTIONS.md').read_text()
     if len(instructions)>7800:
         errors.append('Project Instructions exceeds 7,800 Unicode characters')
+    routes=re.findall(r'^\| (\d{2}-[a-z-]+\.md) \| (.+) \|$',instructions,re.M)
+    expected_routes={p.name for p in RULES.glob('*.md')}
+    if len(routes)!=len(expected_routes) or {name for name,_ in routes}!=expected_routes:
+        errors.append('Project Instructions must route every current rulebook file exactly once')
+    for name,route in routes:
+        for rid in re.findall(r'\b[A-Z][A-Z0-9_]+\b',route.partition(':')[2]):
+            if ids.get(rid)!=RULES/name:
+                errors.append(f'Project Instructions: routing target {rid} does not belong to {name}')
     migration=json.loads((ROOT/'docs/rule-migration.json').read_text())
     if len(migration)!=403 or len({row['original_id'] for row in migration})!=403:
         errors.append('Original 403-block inventory incomplete or duplicated')
