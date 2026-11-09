@@ -1,12 +1,20 @@
 # 개발 일지
 
+## 2026-11-09 — V2 저장소 반영 후 GitHub 배포·회귀 검증 정합화
+
+- 문제: Supabase V2 규칙과 README/SQL/개발 일지는 반영되었으나, 사용자 확인 요청 시점에 배포 ZIP 최신성 및 CI 결과 대조가 필요했다. 지난 rules/07-state.md 변경(커밋 e579fd2)에 대한 GitHub Actions 42602236689는 정상 통과하고 ZIP을 e6c441f에서 갱신했다. 당시 배포 파일이 그대로 보인 것은 불일치가 아니라 이미 배포본이 갱신된 상태였기 때문이다.
+- 추가 점검: CI 워크플로를 최신 main fetch→검증→ZIP export→동일 여부 대조→필요 시 커밋/푸시로 개정했다. 원격 main에 후속 커밋이 끼어들면 최신 HEAD부터 다시 생성하도록 최대5회 비강제 푸시 재시도를 넣었다.
+- 첫 검증 실패와 수정: 강화된 CI 실행 42603727702에서 `scene_context_missing` 고의 훼손 시험이 거부되지 않은 오류가 확인됐다. V2 스키마 설명에 `scene_context`라는 토큰이 앞쪽에 추가되면서 종전 테스트가 엉뚱한 첫 출현을 치환한 것이 원인이다. 회귀 테스트를 단순 토큰 대신 STATE_EXPERIENCE_CONTINUITY의 필수 맥락 표 행 전체를 겨냥하도록 고쳤고, 검사 약화/검사 제거 없이 다시 실행했다.
+- 재검증: GitHub Actions [42603907035](https://github.com/gusghdkrl-dotcom/TRPG-RULE/actions/runs/42603907035) 성공. `rulebook.py check`에서154개 규칙/403개 원문/361개 이전ID/154개 의미계약 통과, `test_rulebook_contract.py`에서63건 고의 훼손 모두 거부, `test_resume_semantics.py`에서 합성30건 통과, `rulebook.py export`에서12파일+manifest ZIP 재생성 및 저장소의 ZIP과 바이트 동일 판정. ZIP은 `dist/TRPG-RULE-project.zip`, Git blob SHA `32ed50a8b9eb9de39e2451f9aba4377e63f4d3d1`, 81,971바이트.
+- 적용 범위: 공개 룰 저장소의 자동화·회귀테스트·이력만 추가 수정했고, private 캠페인 정본/실제 세이브/인증값을 커밋하거나 Supabase DB에 추가 쓰기하지 않았다. 실제 캠페인의 장기 재개/비공개 백업 왕복은 별도 미검증 상태로 남긴다.
+
 ## 2026-11-09 — Supabase 상태 저장소 V2 전면 재구축
 
 - 승인/대상: 사용자가 기존 Supabase 자료를 직접 모두 삭제한 후, 동일 조직에 새 trpg-state-v2 프로젝트를 생성하고 현행 GitHub 룰북 기준으로 저장 시스템 구축을 명시 요청했다. 조직 gusghdkrl-dotcom's Org, 프로젝트 ref taoaffdyssqtnjszumpq, 지역 ap-northeast-2, 프로젝트 생성 비용 견적 월 $0. 구형 프로젝트·테이블·실게임 세이브는 복원/복사하지 않았다.
 - 스키마/계약: public.gm_checkpoint_history에 session/version별 원문 state_json·SHA-256·attempt/event/parent·verified history를 보존하고, DOCUMENT_BOUND/DB1의 V2 필수 참조·누적 델타6종·PC/현재 장면/이야기·인물·진행성 여파/대기 문맥을 검증한다. 신규 state_schema_version=TRPG_STATE_V2는 rules_version과 분리했고 구형 RNG 큐는 필수가 아니다. 같은 attempt 멱등 처리, pending 차단, parent/version 해시 검증, exact load_version/latest/list/inspect_pending 함수 적용. 일반 anon/authenticated Data API에는 테이블/함수 접근권한을 주지 않았고 RLS를 켰다.
 - DB 검증: 가상 데이터로 1번·2번 체크포인트 commit→verify→동일 버전 원문/SHA 재조회 및 latest 선택을 확인했다. 같은 attempt의 commit/verify 재실행은 멱등 처리되며, 부모 SHA 충돌을 차단했다. scene_context 제거/coverage-delta 불일치를 거부했고 불필요한 구형 RNG 필드는 요구하지 않았다. anon/authenticated 테이블 및 RPC 권한 없음, 보안 advisor는 정책 없는 비공개 RLS 테이블 안내(INFO)만 보고, 성능 advisor는 문제 없음. 합성 2개 verified 테스트 행은 검증 후 삭제했다.
 - GitHub: rules/07-state.md에 V2 ref/함수 서명/payload 필수 필드·복원 절차를 반영하고 README의 저장 경로/검증 범위를 갱신했다. 새 DB에서 읽어온 실제 함수 정의를 재설치 SQL docs/sql/trpg-state-v2.sql로 보존했다. 기존 프로젝트 지침, 타 규칙 담당, 캠페인 기밀·키·실제 세이브는 공개하지 않았다.
-- 한계: DB 바이트 정확성/구조 검증과 실제 캐릭터/세계 경험 연속성의 검증은 다르다. 진짜 PRIVATE_CANON 파일 전체 해시/필수 절, 비공개 GitHub 백업, 장기 채팅 재개는 실제 캠페인 데이터를 이용한 별도 검증이 필요하다. Supabase 최초 신규 생성/검증은 수행했으나 공개 룰 ZIP의 CI 갱신 여부는 별도로 확인한다.
+- 한계: DB 바이트 정확성/구조 검증과 실제 캐릭터/세계 경험 연속성의 검증은 다르다. 진짜 PRIVATE_CANON 파일 전체 해시/필수 절, 비공개 GitHub 백업, 장기 채팅 재개는 실제 캠페인 데이터를 이용한 별도 검증이 필요하다. Supabase 신규 생성/합성 DB 검증은 수행했다. 공개 룰 ZIP의 CI 갱신·현재 소스 일치는 후속 배포·회귀 검증 정합화 항목에서 확인했다.
 
 ## 2026-11-09 — 키퍼 원칙·숙지 문구의 반복 출력 제거
 
