@@ -25,7 +25,6 @@
 | CHARACTERISTIC_VS_SKILL | [02-checks.md](../rules/02-checks.md#characteristic_vs_skill) |
 | CHARACTER_VISUAL_CANON | [08-visual.md](../rules/08-visual.md#character_visual_canon) |
 | CHASE | [03-danger.md](../rules/03-danger.md#chase) |
-| CHRONICLE_SPECIALTY_DEVELOPMENT_EXCEPTION | [04-setup.md](../rules/04-setup.md#chronicle_specialty_development_exception) |
 | CINEMATIC_ACTION_CONTINUITY | [06-play.md](../rules/06-play.md#cinematic_action_continuity) |
 | CINEMATIC_ELLIPSIS | [06-play.md](../rules/06-play.md#cinematic_ellipsis) |
 | CINEMATIC_ENCOUNTER | [03-danger.md](../rules/03-danger.md#cinematic_encounter) |
@@ -102,6 +101,7 @@
 | PC_APPEARANCE_FROM_APP | [04-setup.md](../rules/04-setup.md#pc_appearance_from_app) |
 | PC_DERIVED_STATS | [04-setup.md](../rules/04-setup.md#pc_derived_stats) |
 | PC_SKILL_START_VALUES | [04-setup.md](../rules/04-setup.md#pc_skill_start_values) |
+| STARTING_EQUIPMENT_MINIMAL | [04-setup.md](../rules/04-setup.md#starting_equipment_minimal) |
 | PERSONAL_CASH_LEDGER | [05-world.md](../rules/05-world.md#personal_cash_ledger) |
 | PLAYER_D100 | [02-checks.md](../rules/02-checks.md#player_d100) |
 | PLAYER_FACING_KOREAN_LOCALIZATION | [05-world.md](../rules/05-world.md#player_facing_korean_localization) |
@@ -110,7 +110,6 @@
 | PRIVATE_CANON_DOCUMENT | [07-state.md](../rules/07-state.md#private_canon_document) |
 | PRIVATE_CANON_PERIODIC_REVIEW | [07-state.md](../rules/07-state.md#private_canon_periodic_review) |
 | PROFESSION_DRAFT | [04-setup.md](../rules/04-setup.md#profession_draft) |
-| PROFESSION_SPECIALTY | [04-setup.md](../rules/04-setup.md#profession_specialty) |
 | PUSHED_ROLL | [02-checks.md](../rules/02-checks.md#pushed_roll) |
 | PYTHON_RANDOM_EXECUTION | [01-core.md](../rules/01-core.md#python_random_execution) |
 | QUIET_AFTERMATH_BEAT | [06-play.md](../rules/06-play.md#quiet_aftermath_beat) |
