@@ -5,7 +5,7 @@
 ## STATE_AUTHORITY
 
 적용: 실제 정본/저장/복원. 현재 확정 진행은 작업 상태에, 영속 진행 정본은 Supabase verified history에 둔다. 신규 기본은 비공개 프로젝트 정본 문서+DOCUMENT_BOUND(DB1) 누적 동적 체크포인트. 인증된 비공개 GitHub는 검증 백업/장애 시 비상본이다. 외부 차단 자체를 해결하는 기능이나 별도 영구 메모리를 이 문서가 만들지는 않는다.
-문서상 기존 대상은 trpg-private-state-db / project ref mwopllxdhxcykwyxuyrd / public.gm_checkpoint_history의 verified state_json. gm_sessions는 최신 미러이며 복원 정본이 아니다. 기존 함수 trpg_manual_checkpoint_commit/verify/load_version/load/list/delete의 정확한 계약을 최초 연결/실제 변경 때 확인한다. 확인한 계약은 같은 조건에서 재사용한다.
+현행 대상은 trpg-state-v2 / project ref taoaffdyssqtnjszumpq / public.gm_checkpoint_history의 verified history 및 원문 state_json이다. 이 신규 DB에는 gm_sessions 최신 미러를 만들지 않았으며 verified history가 유일한 정상 복원 정본이다. 최초 연결/실제 변경 때 공개 데이터 API가 아닌 인증된 권한 있는 Supabase 연결과 trpg_v2_commit/verify/load_version/load/list/inspect_pending의 실제 계약을 확인한다. 확인한 계약은 같은 조건에서 재사용한다.
 인증된 연결을 사용하고 키를 출력하지 않는다. 일반 판정/NPC 대화에 DB를 호출하지 않는다. 필요한 값이 현재 상태에 있으면 사용한다. 저장 완료는 실제 verify+동일 version read-back 뒤에만 표시한다. 차단·검증 실패는 STATE_SAVE_FAILURE_CONTINUE로 처리하며 운영 테이블/함수/권한/외부 앱을 임의 변경하지 않는다.
 
 ## PRIVATE_CANON_DOCUMENT
@@ -44,7 +44,7 @@ campaign_id+canon_id+revision+절/entity ID로 조회하고, 현재 확인 가�
 
 ## STATE_CANON_SAVE_BINDING
 
-신규 기본 DOCUMENT_BOUND(DB1)은 정확한 정본 파일 참조+완전한 누적 동적 상태를 결합한다. 기존 RPC와 state_schema_version=TRPG2026_10_30·save_mode=DOCUMENT_BOUND·document_bound_format=DB1의 실제 수용/검증 계약을 확인한다. 룰북 업로드로 서버 계약이 바뀌지는 않는다.
+신규 기본 DOCUMENT_BOUND(DB1)은 정확한 정본 파일 참조+완전한 누적 동적 상태를 결합한다. 현행 V2 서버 계약은 state_schema_version=TRPG_STATE_V2·save_mode=DOCUMENT_BOUND·document_bound_format=DB1이며, rules_version은 실제 사용한 룰북판을 별도로 기록한다. 버전 문자열로 삭제된 구형 상태필드나 이전 RNG 큐를 필수화하지 않는다. 새 RPC의 실제 수용/검증 계약을 확인한다. 룰북 업로드로 서버 계약이 바뀌지는 않는다.
 | 구성 | 필요한 데이터 |
 |---|---|
 | canon_ref | campaign/canon ID·revision·filename·document_format·전체 바이트 file_sha256·필수 section_ids와 실제 PC/챕터 참조 |
@@ -53,6 +53,7 @@ campaign_id+canon_id+revision+절/entity ID로 조회하고, 현재 확인 가�
 | new_entities/tombstones/processed_event_ids | 신규 인물/단서/원문·사망/소모/취소/종결·실제 처리event, 현재 실행 플래그 |
 | PC/진행 | session/campaign/규칙판·phase/챕터/턴·설정/시드·전원 identity/수치/자원/위치/장비·공개 사실/지도·시간·선언/판정/전투/질문 대기·약속/획득·저장주기·종료/후일담 상태 |
 | 재개 문맥 | STATE_EXPERIENCE_CONTINUITY의 이야기·인물·현재 장면/미해결 상태와 원문/이벤트 참조 |
+현행 V2 checkpoint payload 최상위에는 `session_id`, `campaign_id`, `rules_version`, `state_schema_version`, `save_mode`, `document_bound_format`, `checkpoint`, `canon_ref`, `change_coverage`, `world_delta`, `new_entities`, `tombstones`, `processed_event_ids`, `pcs`, `runtime`, `story_context`, `npc_contexts`, `scene_context`, `ongoing_consequences`, `critical_state_registry`, `manifest`를 둔다. 별도 JSON객체를 원문 상태에서 만들어 현재 맥락을 빠뜨리지 않는다. `checkpoint`에는 `version`·`event_id`·`attempt_id`·`parent_version`·`parent_sha256`를 두며 첫판의 parent는 명시적 null이다. `pcs`는 P1~P3 중 실제 인원만의 객체, `runtime`에는 phase·scene_turn·current_pc·pending을 포함한다. `canon_ref`에는 campaign_id·canon_id·revision·filename·document_format·file_sha256·필수10절의 section_ids를 둔다. 신규 세션에는 구형 RNG 큐가 필요 없다.
 캠페인/챕터/최초프로필 전문·scenario_core/world_dna/canonical_map_model/world_state 같은 불변 전문은 매 전송에 중복하지 않고 정확한 정본 참조로 복원한다. 실제 신규/변경 정보는 제외하지 않는다. 마지막 저장 뒤 delta만 남기는 체인은 금지한다.
 새 payload 객체를 만들되 작업 상태 자체는 삭제/축소하지 않는다. 실제 지원되는 기존 동적 namespace/runtime_flags 등에 재개 문맥을 보존할 수 있는지 계약과 read-back으로 확인한다. 필드를 거부/삭제하면 호환 실패다. 가짜 빈값이나 불변 전문을 다른 필드에 숨겨 통과시키지 않는다.
 복원은 정본+누적 world_delta+new_entities+tombstones+processed_event_ids+PC/실행/재개 문맥을 결합한다. 파일 SHA/판본/coverage 누락은 canon_source_required 또는 checkpoint_canon_recovery_required로 해당 복원을 보류한다. DB1 차단을 감추려고 대용량 LEGACY_FULL을 자동 재전송하지 않는다.
@@ -141,6 +142,7 @@ DB1의6개 baseline/changed 집합·누적 delta·신규/취소/처리event cove
 5. 같은 version의 verified 원문을 exact read-back하여 문자열·SHA-256·session/version/event/parent와 정본 결합 의미/재개맥락을 대조한다. 모두 확인돼야 저장 완료다. HTTP성공/파일명/해시문자열만으로 완료라 하지 않는다.
 6. 같은 원문으로 STATE_CHECKPOINT_RECAP을 수행하고 이후 최신 미저장 변화는 보존한다. exact load 요건을 충족한 read-back을 중복 조회하지 않는다.
 idempotent_replay는 같은attempt 존재를 뜻하므로 실제 verify/read-back 상태를 이어 확인한다. cadence 성공은 검증 뒤 반영하고 payload 내부pending을 사후 수정/재해시하지 않는다. API 객체/문자열/hash 직렬화는 서버 계약대로 하며 가정하지 않는다. 경험 비교 미실행/실패는 서버 verified와 별개로 복원 연속성 미검증을 표시한다.
+현행 V2의 연결 계약은 `public.trpg_v2_commit(session_id text, version bigint, event_id text, attempt_id text, parent_version bigint, parent_sha256 text, state_json text, state_sha256 text)` → `public.trpg_v2_verify(session_id text, version bigint, event_id text, attempt_id text, state_sha256 text)` → `public.trpg_v2_load_version(session_id text, version bigint)` 순서다. 실제 SQL 호출 시 각 인자명 앞에 `p_`가 붙고, 순서는 위와 같다. 원문 UTF-8 바이트 SHA-256를 동결하고 서버가 같은 원문/parent를 검증한다. `trpg_v2_load`는 최신 verified만, `trpg_v2_list`는 각 세션 최신 verified 메타만, `trpg_v2_inspect_pending`은 해당 세션 미확인 시도만 반환한다. 정상 재개는 pending이 아닌 verified를 선택한다. 인증 없는 Data API·일반 authenticated·anon에 데이터/RPC 권한이 없으며 권한을 풀어서 통과시키지 않는다.
 
 ## STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP
 
