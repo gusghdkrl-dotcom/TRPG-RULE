@@ -9,6 +9,8 @@ on:
       - "PROJECT_INSTRUCTIONS.md"
       - "START_GAME.md"
       - "scripts/rulebook.py"
+      - "scripts/test_rulebook_contract.py"
+      - "scripts/test_resume_semantics.py"
       - "docs/rule-migration.json"
       - "docs/validation-contract.json"
   workflow_dispatch:
@@ -25,14 +27,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate rules and export game pack
-        run: python3 scripts/rulebook.py export
-      - name: Commit refreshed download ZIP
+        with:
+          persist-credentials: true
+      - name: Validate the latest main and commit its matching game ZIP
+        shell: bash
         run: |
-          if ! git diff --quiet -- dist/TRPG-RULE-project.zip; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # GitHub Actions may start before a later README/DEVLOG commit
+          # reaches main. Regenerate from the actual remote HEAD, not an
+          # outdated checkout; retry only after a legitimate push race.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git checkout -B zip-export origin/main
+            python3 scripts/rulebook.py check
+            python3 scripts/test_rulebook_contract.py
+            python3 scripts/test_resume_semantics.py
+            python3 scripts/rulebook.py export
+            git diff --check
+            if git diff --quiet -- dist/TRPG-RULE-project.zip; then
+              echo "Verified: released ZIP matches current main."
+              exit 0
+            fi
             git add dist/TRPG-RULE-project.zip
             git commit -m "Refresh dist game ZIP from verified rule sources"
-            git push origin HEAD:main
-          fi
+            if git push origin HEAD:main; then
+              echo "Verified: refreshed ZIP pushed to main."
+              exit 0
+            fi
+            echo "Main advanced during ZIP export; retrying from new HEAD."
+          done
+          echo "ZIP refresh failed after five remote-head attempts" >&2
+          exit 1
