@@ -6,7 +6,8 @@
 - 추가 점검: CI 워크플로를 최신 main fetch→검증→ZIP export→동일 여부 대조→필요 시 커밋/푸시로 개정했다. 원격 main에 후속 커밋이 끼어들면 최신 HEAD부터 다시 생성하도록 최대5회 비강제 푸시 재시도를 넣었다.
 - 첫 검증 실패와 수정: 강화된 CI 실행 42603727702에서 `scene_context_missing` 고의 훼손 시험이 거부되지 않은 오류가 확인됐다. V2 스키마 설명에 `scene_context`라는 토큰이 앞쪽에 추가되면서 종전 테스트가 엉뚱한 첫 출현을 치환한 것이 원인이다. 회귀 테스트를 단순 토큰 대신 STATE_EXPERIENCE_CONTINUITY의 필수 맥락 표 행 전체를 겨냥하도록 고쳤고, 검사 약화/검사 제거 없이 다시 실행했다.
 - 재검증: GitHub Actions [42603907035](https://github.com/gusghdkrl-dotcom/TRPG-RULE/actions/runs/42603907035) 성공. `rulebook.py check`에서154개 규칙/403개 원문/361개 이전ID/154개 의미계약 통과, `test_rulebook_contract.py`에서63건 고의 훼손 모두 거부, `test_resume_semantics.py`에서 합성30건 통과, `rulebook.py export`에서12파일+manifest ZIP 재생성 및 저장소의 ZIP과 바이트 동일 판정. ZIP은 `dist/TRPG-RULE-project.zip`, Git blob SHA `32ed50a8b9eb9de39e2451f9aba4377e63f4d3d1`, 81,971바이트.
-- 적용 범위: 공개 룰 저장소의 자동화·회귀테스트·이력만 추가 수정했고, private 캠페인 정본/실제 세이브/인증값을 커밋하거나 Supabase DB에 추가 쓰기하지 않았다. 실제 캠페인의 장기 재개/비공개 백업 왕복은 별도 미검증 상태로 남긴다.
+- 문서 정합성: `docs/STATE_FLOW.md`의 삭제된 Supabase 유지/운영 미변경 문구를 새 `trpg-state-v2` 검증 저장 경로로 바꿨고, `docs/SAVE_CONTINUITY_REVIEW.md`의 구형 동적 namespace 및 실제 Supabase 수용 미검증 표현을 V2 합성 테스트와 실게임 미검증 범위로 구분했다. `docs/sql/document_bound_payload_v1.sql`은 현재 배포 금지/역사적 참고용으로 표시해 신규 V2 SQL과 혼동하지 않도록 했다.
+- 적용 범위: 공개 룰 저장소의 자동화·회귀테스트·저장 설명·이력만 추가 수정했고, private 캠페인 정본/실제 세이브/인증값을 커밋하거나 Supabase DB에 추가 쓰기하지 않았다. 실제 캠페인의 장기 재개/비공개 백업 왕복은 별도 미검증 상태로 남긴다.
 
 ## 2026-11-09 — Supabase 상태 저장소 V2 전면 재구축
 
