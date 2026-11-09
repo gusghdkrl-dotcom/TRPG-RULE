@@ -21,6 +21,15 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('early_exit_hazards_require_plot_optin',lambda r:change(r,'rules/04-setup.md','조사/의뢰/핵심 장소 방문에 동의해야만 모든 위험이 켜지고 초반 귀가에는 아무 원인도 닿지 않는 설계는 보완한다','모든 위험은 본편을 수락한 뒤에만 시작하고 초반 귀가는 무조건 안전하게 한다')),
+ ('leaving_intent_spawns_attack',lambda r:change(r,'rules/04-setup.md','출발 의도 자체를 공격 스위치로 쓰지 않고','출발 의도 자체를 새 공격과 봉쇄의 스위치로 쓰고')),
+ ('schedule_only_escape_design_passes',lambda r:change(r,'rules/04-setup.md','단순 운항 일정/요금만 두고 생존 위협이 없거나, 본편 수락/최종 의례에만 모든 위해를 모아 두면 이탈 설계는 미완료다','초기 이탈은 운항 일정과 요금만 정하면 설계 완료다')),
+ ('escape_harm_warning_only',lambda r:change(r,'rules/04-setup.md','도달한 위해는 담당 판정 뒤 HP·SAN·부상·광기·소모·추격 지속·사망 가능성으로 실제 처리한다','탈출 중 도달한 위해는 경고만 출력하고 실제 피해는 적용하지 않는다')),
+ ('escape_charges_flat_hp_san',lambda r:change(r,'rules/04-setup.md','대가는 실제 명중/노출/소모에서 발생하며 출구 통행료처럼 고정 HP/SAN을 차감하지 않는다','출구를 지날 때 누구나 고정 HP와 SAN을 차감한다')),
+ ('failed_escape_returns_safe',lambda r:change(r,'rules/06-play.md','이탈 실패는 자동 안전 귀환이 아니며 현재 위치·부상/광기·손실·남은 수단/추격을 유지한다','이탈에 실패하면 피해와 추격을 없애고 안전 구역에 도착시킨다')),
+ ('transport_booking_finishes_campaign',lambda r:change(r,'rules/06-play.md','떠나겠다는 의사·교통편 확보·한 구역 이동만으로 엔딩을 확정하지 않고','떠나겠다고 하거나 교통편을 확보하면 즉시 엔딩을 확정하고')),
+ ('canon_omits_escape_survival_design',lambda r:change(r,'rules/07-state.md','운항 일정이나 ‘안전하면 철수’라는 결론만으로 이탈 설계를 대신하지 않는다','정본의 이탈 설계는 운항 일정과 안전하면 철수라는 결론만으로 대신한다')),
+ ('uninjured_escape_forbidden',lambda r:change(r,'rules/04-setup.md','준비·협력·회피/예방에 성공해 무상처로 벗어날 가능성도 보존하며 피해를 입어야만 엔딩 자격을 주지 않는다','준비와 예방에 성공했어도 반드시 피해를 입어야 엔딩 자격을 준다')),
  ('horror_left_abstract_after_procedures',lambda r:change(r,'rules/04-setup.md','의식/장치의 발동·중지 절차만 상세하고 공포는 ‘기괴한 공간/무서운 존재’로 비어 있으면 해당 체험을 보완한다','의식과 장치의 절차가 상세하면 공포가 추상적이어도 설계 완료다')),
  ('all_horror_forced_guilt_symbolism',lambda r:change(r,'rules/04-setup.md','모든 형상을 죄책감/심리의 상징으로 만들거나 설정 해설을 들어야만 대응하게 하지 않는다','모든 공포를 PC의 죄책감 상징으로 만들고 설정 해설을 들은 뒤 대응하게 한다')),
  ('climax_payoff_only_in_recap',lambda r:change(r,'rules/04-setup.md','마지막에 회상/설명하는 것으로 완료하지 않는다','마지막에 회상/설명하는 것만으로 완료한다')),

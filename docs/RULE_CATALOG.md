@@ -6,6 +6,8 @@
 
 원작의 공포와 주요 진실 전후의 의미/선택·대응/결말 변화는 FULL_DIVE_CROSS_ANALYSIS/SCENARIO_BLUEPRINT, 절정의 준비/관계/선택 회수와 조기 해결은 FINAL_THREAT_DESIGN/CAUSAL_ENDGAME_PRECOMMIT, 행동 중 접촉/후속은 CLUE_FUNCTION/STORY_NPC/KEEPER_SCENE_SELECTION에서 다룬다. COMPATIBILITY_GATE는 운용 가능한 조건과 서사의 깊이를 구분해 대조한다. 신규 캠페인의 원작 의미→공포의 형상/공간→행동 중 체험은 FULL_DIVE_CROSS_ANALYSIS, 누적 경험→결정적 대응의 실제 활용은 FINAL_THREAT_DESIGN에서 구체화하며 기존 캠페인 재개는 재설계하지 않는다.
 
+신규 캠페인의 초기 귀가/우회·의도적 탈출의 위험권/경로·추적/차단·대응/실패 설계는 SCENARIO_BLUEPRINT/HARM_ECOLOGY, 완성도 대조는 COMPATIBILITY_GATE, 초기 정본 보존은 PRIVATE_CANON_DOCUMENT다. 실제 이동의 잔존 위협은 ACTIVE_DANGER_CONTINUITY, 위해는 REACHED_DANGER_EXECUTION_GATE, 실제 안전/이탈 판정은 ENDING_FINALIZATION_GATE에서 처리한다. 일반 철수 인정과 떠나겠다는 의사만으로 무위험 엔딩을 주는 처리를 구분한다.
+
 | 규칙 ID | 담당 본문 |
 |---|---|
 | ACTIVE_DANGER_CONTINUITY | [05-world.md](../rules/05-world.md#active_danger_continuity) |
