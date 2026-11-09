@@ -21,6 +21,13 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('horror_left_abstract_after_procedures',lambda r:change(r,'rules/04-setup.md','의식/장치의 발동·중지 절차만 상세하고 공포는 ‘기괴한 공간/무서운 존재’로 비어 있으면 해당 체험을 보완한다','의식과 장치의 절차가 상세하면 공포가 추상적이어도 설계 완료다')),
+ ('all_horror_forced_guilt_symbolism',lambda r:change(r,'rules/04-setup.md','모든 형상을 죄책감/심리의 상징으로 만들거나 설정 해설을 들어야만 대응하게 하지 않는다','모든 공포를 PC의 죄책감 상징으로 만들고 설정 해설을 들은 뒤 대응하게 한다')),
+ ('climax_payoff_only_in_recap',lambda r:change(r,'rules/04-setup.md','마지막에 회상/설명하는 것으로 완료하지 않는다','마지막에 회상/설명하는 것만으로 완료한다')),
+ ('every_item_required_at_climax',lambda r:change(r,'rules/04-setup.md','모든 경험/인물/물품의 사용, 고정 보스전·새 퍼즐·필수 손실은 요구하지 않는다','모든 경험과 물품을 사용하고 고정 보스전과 필수 손실을 거쳐야 한다')),
+ ('resume_triggers_scenario_redesign',lambda r:change(r,'rules/04-setup.md','기존 캠페인의 새 채팅 재개는 신규 생성이 아니며 이 보강을 이유로 저장된 정본·진행을 재설계하지 않는다','기존 캠페인도 새 채팅에서 재개할 때마다 이 기준으로 정본과 진행을 다시 설계한다')),
+ ('shock_twist_required_to_pass',lambda r:change(r,'rules/04-setup.md','주요 동기를 더 복잡하게 만들거나 목표를 뒤집는 충격적 반전을 합격 조건으로 추가하지 않는다','복잡한 동기와 목표를 뒤집는 충격적 반전이 있어야 설계에 합격한다')),
+ ('simple_prevention_rejected_for_climax',lambda r:change(r,'rules/04-setup.md','예방/우회로 난관을 없애거나 간단한 차단으로 해결해도 인정하고','예방이나 간단한 차단은 무효로 하고 반드시 마지막 난관을 거치게 하며')),
  ('truth_without_meaning_or_choice',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','원작의 핵심 진실은 겪은 현상/인물/물건의 의미와 목표·신뢰·위협·대응·결말에 실질적 차이를 만든다','핵심 진실은 결말 뒤 설명으로만 제공한다.')),
  ('truth_invented_after_discovery',lambda r:change(r,'rules/04-setup.md','핵심 진실은 앞서 겪을 현상·물건·인물 행동의 의미를 바꾸는 사전 원인으로 설계한다','진실은 발견 뒤 이전 사실에 맞춰 소급 발명한다')),
  ('central_cause_left_as_unknown',lambda r:change(r,'rules/04-setup.md','이번 사건의 의미와 결정적 선택을 떠받치는 내막은 ‘알 수 없는 힘’으로 비워 두지 않는다','이번 사건의 핵심 원인은 알 수 없는 힘으로만 둔다')),

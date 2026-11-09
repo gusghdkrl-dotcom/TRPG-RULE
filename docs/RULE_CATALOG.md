@@ -4,7 +4,7 @@
 
 생성 완료의 실제 인과/체험·변화 조건·대응/탈출은 SCENARIO_BLUEPRINT/WORLD_RULE_HOMAGE_DNA/FINAL_THREAT_DESIGN, 빈 연결 보완 시점은 COMPATIBILITY_GATE, 인물 관계는 STORY_NPC, 종결/정본 보존은 ENDING_FINALIZATION_GATE/PRIVATE_CANON_DOCUMENT가 담당한다. 아래 기존 ID/담당 링크를 재사용하며 새 검수 단계나 별도 게임용 문서를 추가하지 않는다.
 
-원작의 공포와 주요 진실 전후의 의미/선택·대응/결말 변화는 FULL_DIVE_CROSS_ANALYSIS/SCENARIO_BLUEPRINT, 절정의 준비/관계/선택 회수와 조기 해결은 FINAL_THREAT_DESIGN/CAUSAL_ENDGAME_PRECOMMIT, 행동 중 접촉/후속은 CLUE_FUNCTION/STORY_NPC/KEEPER_SCENE_SELECTION에서 다룬다. COMPATIBILITY_GATE는 운용 가능한 조건과 서사의 깊이를 구분해 대조한다.
+원작의 공포와 주요 진실 전후의 의미/선택·대응/결말 변화는 FULL_DIVE_CROSS_ANALYSIS/SCENARIO_BLUEPRINT, 절정의 준비/관계/선택 회수와 조기 해결은 FINAL_THREAT_DESIGN/CAUSAL_ENDGAME_PRECOMMIT, 행동 중 접촉/후속은 CLUE_FUNCTION/STORY_NPC/KEEPER_SCENE_SELECTION에서 다룬다. COMPATIBILITY_GATE는 운용 가능한 조건과 서사의 깊이를 구분해 대조한다. 신규 캠페인의 원작 의미→공포의 형상/공간→행동 중 체험은 FULL_DIVE_CROSS_ANALYSIS, 누적 경험→결정적 대응의 실제 활용은 FINAL_THREAT_DESIGN에서 구체화하며 기존 캠페인 재개는 재설계하지 않는다.
 
 | 규칙 ID | 담당 본문 |
 |---|---|
