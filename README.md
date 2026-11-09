@@ -8,6 +8,8 @@
 
 **[최신 프로젝트 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/TRPG-RULE-project.zip)**
 
+별도 신규 캠페인: **[SCREAM_survival_rebuild_project.zip 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/SCREAM_survival_rebuild_project.zip)**. 사용자가 이 패키지만 예외로 공개 승인했다. 범인·숨은 설정을 포함하므로 플레이어는 먼저 PLAYER_BRIEFING.md를 확인한다. 공통 룰북 ZIP과 별도이며, 기존 캠페인 정본/진행을 교체하는 세이브가 아니다.
+
 1. ZIP의 PROJECT_INSTRUCTIONS.md를 프로젝트 지침에 복사한다.
 2. 기존 게임용 룰북 소스를 제거/교체하고 sources의 **9개 Markdown(00-index~08-visual)**을 등록한다. 구판·개발 문서·삭제된09-notebook을 함께 남겨 검색이 섞이지 않게 한다. 실제 캠페인 비공개 정본은 별도로 보존한다.
 3. START_GAME.md로 새 게임을 준비한다. 필수는 인원1~3·인지도·대사건/연대기. 시작 시드는 실제 Python 자동 생성이다.
