@@ -431,6 +431,12 @@ begin
    then raise exception 'loadout_boundary_locked'; end if;
    return jsonb_build_object('boundary',p_boundary,'reused',true);
  end if;
+ -- New writes: slot 1/2 must belong to current class.
+ -- Legacy identical loadout replay remains valid above.
+ select faction into v_faction from trpg_cards.card_catalog where card_id=p_asset;
+ if v_faction<>v_class then raise exception 'slot1_requires_class_asset'; end if;
+ select faction into v_faction from trpg_cards.card_catalog where card_id=p_enhancement;
+ if v_faction<>v_class then raise exception 'slot2_requires_class_enhancement'; end if;
  if p_boundary<>'start' then
    select * into v_start from trpg_cards.loadouts
    where campaign_id=p_campaign_id and player_id=p_player_id and boundary_key='start';
