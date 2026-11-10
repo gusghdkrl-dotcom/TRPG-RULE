@@ -122,7 +122,7 @@ def export():
     (target/'sources').mkdir(parents=True)
     for path in RULES.glob('*.md'):shutil.copyfile(path,target/'sources'/path.name)
     for name in ['PROJECT_INSTRUCTIONS.md','START_GAME.md']:shutil.copyfile(ROOT/name,target/name)
-    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~08-visual의 9개 최신 소스로 교체\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하세요.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
+    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~09-cards의 10개 최신 소스로 교체\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하세요.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
     manifest={str(p.relative_to(target)):__import__('hashlib').sha256(p.read_bytes()).hexdigest() for p in sorted(target.rglob('*')) if p.is_file()}
     (target/'SHA256.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     archive=ROOT/'dist/TRPG-RULE-project.zip'
