@@ -1544,7 +1544,9 @@
       "gm_checkpoint_history",
       "gm_sessions",
       "최초 연결/실제 변경",
-      "STATE_SAVE_FAILURE_CONTINUE"
+      "STATE_SAVE_FAILURE_CONTINUE",
+      "GitHub 세이브/미러는 생성하지 않는다",
+      "Supabase 비공개 정본 원문"
     ]
   },
   {
@@ -1557,7 +1559,7 @@
       "ENDING_CONDITIONS",
       "정본에 확정돼 있어도 아직 발생 완료는 아니다",
       "새 revision",
-      "비밀 본문을 넣지",
+      "비밀을 넣지",
       "필수 절의 제목/원인 요약만으로 완성하지 않는다",
       "해당 절의 실제 entity/ref와 본문으로 보존하고 COMPATIBILITY_GATE로 대조한다",
       "별도 검토 파일/고정 양식/서버 필드·매 턴 정본 재작성은 추가하지 않는다",
@@ -1574,7 +1576,10 @@
       "NPC_BASELINES",
       "DRIVER_BASELINES",
       "**기존 HIDDEN_TRUTH/WORLD_RULES에 첫 사건부터 모든 주요 사건의 불가역 발생",
-      "첫 사건만 있고 후속 사건이 비어 있으면 미완성이다"
+      "첫 사건만 있고 후속 사건이 비어 있으면 미완성이다",
+      "trpg_private.gm_canon_documents",
+      "실제 원본 Markdown 파일",
+      "SHA-256 검증"
     ]
   },
   {
@@ -1608,7 +1613,8 @@
       "new_entities/tombstones/processed_event_ids",
       "LEGACY_FULL",
       "거부/삭제하면 호환 실패",
-      "재개 문맥"
+      "재개 문맥",
+      "Supabase gm_canon_documents.file_sha256"
     ]
   },
   {
@@ -1725,25 +1731,28 @@
       "verify",
       "exact read-back",
       "복원 연속성 미검증",
-      "최신 미저장 변화는 보존"
+      "최신 미저장 변화는 보존",
+      "신규 setup_bootstrap 전 원본 .md와 같은 내용",
+      "동일성만 확인한다"
     ]
   },
   {
     "rule": "STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP",
     "contains": [
-      "동일 원문",
-      "gm-checkpoints",
-      "verified-gm-snapshots-2026-10-30",
-      "24시간 자동 동기화는 없다"
+      "Supabase의 정확한 canon revision",
+      "모든 정상 저장 경계",
+      "GitHub verified snapshot",
+      "추가 미러를 생성/갱신하지 않고",
+      "정본 원문은 신규 캠페인/개정 때만 저장"
     ]
   },
   {
     "rule": "STATE_GITHUB_FAILOVER_PROTOCOL",
     "contains": [
-      "supabase_latest_unconfirmed",
-      "snapshots/emergency/",
-      "github_emergency_verified",
-      "자동 승격·삭제·덮어쓰기·재번호 부여 금지"
+      "GitHub 자동 백업·비상 체크포인트 저장·failover는 폐지",
+      "STATE_SAVE_FAILURE_CONTINUE",
+      "새 private GitHub JSON/meta/manifest를 만들지 않는다",
+      "과거 백업 대조"
     ]
   },
   {
@@ -1773,7 +1782,8 @@
       "마지막질문",
       "말못함을 이해못함으로 바꾸지",
       "로드 자체/현실경과는 게임조건을 진행시키는 행동이 아니다",
-      "permanent_cards_enabled"
+      "permanent_cards_enabled",
+      "GitHub를 자동 조회하거나 신규 세이브를 생성하지 않는다"
     ]
   },
   {
