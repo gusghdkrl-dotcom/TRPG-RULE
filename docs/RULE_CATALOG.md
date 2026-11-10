@@ -1,6 +1,6 @@
 # 전체 규칙 위치
 
-개발용 색인. 현행 실행 ID만 표시한다. 이전361개 대응은 rule-reorganization.json, 최초403개 원문 대응은 rule-migration.json.
+개발용 색인. 현행 실행 ID만 표시한다. 영구 카드의 신규 18개 ID는 09-cards.md에 포함한다. 이전361개 대응은 rule-reorganization.json, 최초403개 원문 대응은 rule-migration.json.
 
 생성 완료의 실제 인과/체험·변화 조건·대응/탈출은 SCENARIO_BLUEPRINT/WORLD_RULE_HOMAGE_DNA/FINAL_THREAT_DESIGN, 빈 연결 보완 시점은 COMPATIBILITY_GATE, 인물 관계는 STORY_NPC, 종결/정본 보존은 ENDING_FINALIZATION_GATE/PRIVATE_CANON_DOCUMENT가 담당한다. 아래 기존 ID/담당 링크를 재사용하며 새 검수 단계나 별도 게임용 문서를 추가하지 않는다.
 
@@ -8,6 +8,24 @@
 
 신규 캠페인의 초기 귀가/우회·의도적 탈출의 위험권/경로·추적/차단·대응/실패 설계는 SCENARIO_BLUEPRINT/HARM_ECOLOGY, 완성도 대조는 COMPATIBILITY_GATE, 초기 정본 보존은 PRIVATE_CANON_DOCUMENT다. 실제 이동의 잔존 위협은 ACTIVE_DANGER_CONTINUITY, 위해는 REACHED_DANGER_EXECUTION_GATE, 실제 안전/이탈 판정은 ENDING_FINALIZATION_GATE에서 처리한다. 일반 철수 인정과 떠나겠다는 의사만으로 무위험 엔딩을 주는 처리를 구분한다.
 
+| CARD_SYSTEM_SCOPE | [09-cards.md](../rules/09-cards.md#card_system_scope) |
+| CARD_EQUIP_AND_ASSET | [09-cards.md](../rules/09-cards.md#card_equip_and_asset) |
+| CARD_ENHANCEMENT_TRIGGER | [09-cards.md](../rules/09-cards.md#card_enhancement_trigger) |
+| CARD_ASSET_GU | [09-cards.md](../rules/09-cards.md#card_asset_gu) |
+| CARD_ASSET_SE | [09-cards.md](../rules/09-cards.md#card_asset_se) |
+| CARD_ASSET_RO | [09-cards.md](../rules/09-cards.md#card_asset_ro) |
+| CARD_ASSET_WI | [09-cards.md](../rules/09-cards.md#card_asset_wi) |
+| CARD_ASSET_SU | [09-cards.md](../rules/09-cards.md#card_asset_su) |
+| CARD_ASSET_NE | [09-cards.md](../rules/09-cards.md#card_asset_ne) |
+| CARD_ENHANCEMENT_GU | [09-cards.md](../rules/09-cards.md#card_enhancement_gu) |
+| CARD_ENHANCEMENT_SE | [09-cards.md](../rules/09-cards.md#card_enhancement_se) |
+| CARD_ENHANCEMENT_RO | [09-cards.md](../rules/09-cards.md#card_enhancement_ro) |
+| CARD_ENHANCEMENT_WI | [09-cards.md](../rules/09-cards.md#card_enhancement_wi) |
+| CARD_ENHANCEMENT_SU | [09-cards.md](../rules/09-cards.md#card_enhancement_su) |
+| CARD_ENHANCEMENT_NE | [09-cards.md](../rules/09-cards.md#card_enhancement_ne) |
+| CARD_REWARD_DRAFT | [09-cards.md](../rules/09-cards.md#card_reward_draft) |
+| CARD_PERMANENT_GROWTH | [09-cards.md](../rules/09-cards.md#card_permanent_growth) |
+| CARD_PLAYER_STORAGE | [09-cards.md](../rules/09-cards.md#card_player_storage) |
 | 규칙 ID | 담당 본문 |
 |---|---|
 | ACTIVE_DANGER_CONTINUITY | [05-world.md](../rules/05-world.md#active_danger_continuity) |
