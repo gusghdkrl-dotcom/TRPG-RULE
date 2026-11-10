@@ -21,6 +21,16 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('card_scope_type_lost',lambda r:change(r,'rules/09-cards.md','자산(Asset) 33장','자산 32장')),
+ ('card_asset_guardian_companion_missing',lambda r:change(r,'rules/09-cards.md','`[GU-A-3]`','`[GU-A-X]`')),
+ ('card_asset_wildcard_companion_missing',lambda r:change(r,'rules/09-cards.md','`[WI-A-4]`','`[WI-A-X]`')),
+ ('card_neutral_cargo_replaced',lambda r:change(r,'rules/09-cards.md','밀폐 운반통','접이식 관찰 거울')),
+ ('card_survivor_death_ignored',lambda r:change(r,'rules/09-cards.md','HP 1이 남도록 1회 경감','HP 0으로 죽음을 확정')),
+ ('card_growth_probability_changed',lambda r:change(r,'rules/09-cards.md','**80%**','**99%**')),
+ ('card_slot_requirements_omitted',lambda r:change(r,'rules/09-cards.md','자산 전용1','자산 전용0')),
+ ('card_bonus_double_dice',lambda r:change(r,'rules/09-cards.md','같은 판정에 함께 사용 불가','같은 판정에서 중첩 가능')),
+ ('card_reward_current_class_removed',lambda r:change(r,'rules/09-cards.md','현재 클래스','다른 클래스')),
+ ('card_rule_route_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','| 09-cards.md |','| 09-missing.md |')),
  ('start_loadout_expanded',lambda r:change(r,'rules/04-setup.md','직업 관련 필수 물품 정확히 1개','시작부터 장비 여러 개')),
  ('kit_counts_as_one',lambda r:change(r,'rules/04-setup.md','별개로 사용할 수 있는 여러 도구가 든 키트','키트 안의 무료 별도 도구 전부 지급')),
  ('starting_item_not_acquired_in_world',lambda r:change(r,'rules/04-setup.md','정상적인 획득','자동으로 지급')),
