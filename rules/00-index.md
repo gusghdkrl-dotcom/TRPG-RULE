@@ -1,6 +1,6 @@
 # 규칙 색인
 
-이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 상시 장착 HUD는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
+영구 카드 자산·강화·성장과 효과별 발동·등급·해금은 09-cards가 담당한다. 이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 상시 장착 HUD는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
 
 규칙판: 생존 호러 통합 경량판 2026-11-08. 상시 이야기·묘사·페이싱은 PROJECT_INSTRUCTIONS.md, 아래는 필요한 수치/상태/절차를 찾는 경로다. 같은 판본의 필요한 본문과 현재 상태가 확인 가능하면 재사용하고 유실/변경/충돌 부분만 조회한다. 매 응답 색인이나 전 규칙을 다시 읽지 않는다.
 
@@ -26,6 +26,10 @@
 | 실제 이탈/종결·다섯 엔딩 후 출력 | [ENDING_FINALIZATION_GATE](06-play.md#ending_finalization_gate) · [OPTIONAL_POST_CREDITS_VIEWS](06-play.md#optional_post_credits_views) |
 | 필요한 정본·현재 맥락·DB 접근 | [PRIVATE_CANON_ACCESS_ROUTER](07-state.md#private_canon_access_router) · [STATE_WORKING_CONTEXT](07-state.md#state_working_context) · [STATE_EXPERIENCE_CONTINUITY](07-state.md#state_experience_continuity) · [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
 | 저장·정합성·복구·새채팅 재개 | [STATE_CADENCE](07-state.md#state_cadence) · [STATE_COMMIT](07-state.md#state_commit) · [STATE_INTEGRITY](07-state.md#state_integrity) · [STATE_RESUME](07-state.md#state_resume) · [STATE_COMPATIBILITY](07-state.md#state_compatibility) |
+| 영구 카드 소속·등급·4슬롯·자산 구현 | [CARD_SYSTEM_SCOPE](09-cards.md#card_system_scope) · [CARD_EQUIP_AND_ASSET](09-cards.md#card_equip_and_asset) |
+| 장착 강화 발동·특수 보너스·수치 예외 | [CARD_ENHANCEMENT_TRIGGER](09-cards.md#card_enhancement_trigger) · [CARD_ENHANCEMENT_GU](09-cards.md#card_enhancement_gu) · [CARD_ENHANCEMENT_NE](09-cards.md#card_enhancement_ne) |
+| 클래스별 자산 33장·강화 33장 | [CARD_ASSET_GU](09-cards.md#card_asset_gu) · [CARD_ASSET_NE](09-cards.md#card_asset_ne) · [CARD_ENHANCEMENT_SE](09-cards.md#card_enhancement_se) |
+| 영구 성장·4후보 드래프트·플레이어 소유/저장 | [CARD_PERMANENT_GROWTH](09-cards.md#card_permanent_growth) · [CARD_REWARD_DRAFT](09-cards.md#card_reward_draft) · [CARD_PLAYER_STORAGE](09-cards.md#card_player_storage) |
 | 지도·프로필·장면/참고 이미지 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) · [EVENT_DRIVEN_VISUAL_ROUTER](08-visual.md#event_driven_visual_router) · [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference) |
 
 사실 정본은 해당 캠페인의 정확한 문서 판본+현재 누적 상태다. 룰북의 일반 예시를 실제 NPC·단서·수치로 복사하지 않는다. ID/enum은 연결 식별자이며 실제 지원되지 않는 도구·입력·저장 기능을 만들지 않는다.
