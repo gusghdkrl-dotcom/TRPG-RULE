@@ -1,5 +1,13 @@
 # 개발 일지
 
+## 2026-11-10 — 닉네임만으로 카드 컬렉션 접속 허용 (소규모 신뢰형)
+
+- 사용자 지시: 플레이 인원은 2~3명 수준이므로 별도 계정·비밀번호·추가 신원 확인 없이 **닉네임만으로 기존 UUID와 카드 컬렉션에 접근**하도록 바꾼다. 닉네임을 아는 제삼자의 계정 접근·장착/보상 선택 대리 위험은 명시적으로 수용한다.
+- 실제 Supabase 적용: `trpg-state-v2`에 `public.card_login`, `card_lookup`, `card_join`, `card_link_pc`, `card_equip`, `card_rewards`, `card_pick_reward`의 공개 RPC 7개를 생성하고 `anon`/`authenticated` 실행을 허용했다. 공개 API에서 비공개 `trpg_cards` 소유·성장·장착을 조회/변경하되 기존 제약(장착 규칙·기본18·중복 소유/보상)은 함수 내부에서 검사한다.
+- 별도 공개하지 않은 영역: `trpg_cards` 원본 스키마와 테이블의 광범위한 CRUD/삭제, 기존 `public.gm_checkpoint_history`와 `trpg_v2_*` 저장 RPC/비공개 정본. GM이 실제 종결 여부를 검증해 후보를 발행해야 하고, 새 회차 난수의 정본은 Python이다. **익명 경로의 Python 성장 굴림 인자 조작을 기술적으로 증명/방어하지 못한다**는 한계도 보존한다.
+- 검증: SQL `SET LOCAL ROLE anon`에서 닉네임 신규 등록/기존 대소문자 재조회·기본18·캠페인 참가·PC 연결·4슬롯 장착·후보 조회·기발행 카드 보상 선택/소유19 및 **비공개 원본 테이블 직접 조회 거부** 확인. 모든 시험은 BEGIN/ROLLBACK으로 영구 테스트 레코드0. 공개 API의 HTTP 프런트엔드 UX는 직접 시뮬레이션하지 않았다.
+- GitHub: 새 SQL `docs/sql/trpg-card-nickname-public-v1.sql`, `docs/CARD_SYSTEM_RUNTIME.md`, `START_GAME.md`, `rules/04-setup.md`, `rules/07-state.md`, `docs/DEVELOPING_PERMANENT_CARD_SYSTEM.md`에 변경 기록. 프로젝트 ZIP은 GitHub Actions의 검증 결과로 별도 판정한다.
+
 ## 2026-11-10 — 영구 카드 시스템: Supabase UUID·드래프트 백엔드 설치와 게임 연결
 
 - 사용자 확정: 일반 보너스 주사위와 영구 강화 특수 보너스는 같은 판정에서 **동시 사용 금지**. 종결 4후보의 개별 풀이 비면 해당 칸 null, 전부 소진 시 보상 없음·나중에 소급 지급 없음. 성장 효과는 **플레이어 영구 UUID와 신규 PC identity 연결 시** 8대 기본 특성에 스냅샷으로 적용하며 기존 PC에 재적용하지 않는다.
