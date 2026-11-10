@@ -1,5 +1,5 @@
 -- 2026-11-11 additive migration; original card_link_pc and historical character snapshots unchanged.
--- OFF suppresses the new PC's characteristic bonuses only; account growth and rewards persist.
+-- Legacy false parameter supports existing compatibility flows only; new-session OFF skips all card RPCs, classes, loadouts, growth bonuses, and rewards.
 begin;
 CREATE OR REPLACE FUNCTION trpg_cards.link_character_with_growth_mode(p_campaign_id text, p_player_id uuid, p_pc_id text, p_base_stats jsonb, p_permanent_growth boolean)
  RETURNS jsonb

@@ -16,7 +16,7 @@
 | `card_lookup(p_nickname)` | 존재 여부·현재 컬렉션 조회, 없으면 새로 만들지 않음 |
 | `card_join(p_nickname,p_campaign_id,p_class,p_mode,p_session_id)` | 캠페인 생성/기존 확인·참가·클래스 고정 |
 | `card_link_pc(p_nickname,p_campaign_id,p_pc_id,p_base_stats)` | 기존 호환 경로: 누적 성장 항상 적용(ON)·스냅샷 고정 |
-| `card_link_pc_with_growth_mode(p_nickname,p_campaign_id,p_pc_id,p_base_stats,p_permanent_growth)` | 신규 첫 설정 영구 성장 적용 ON/OFF를 반영. false는 이번 PC 보너스0, 영구 계정 성장/보상 그대로 보존 |
+| `card_link_pc_with_growth_mode(p_nickname,p_campaign_id,p_pc_id,p_base_stats,p_permanent_growth)` | ON 캠페인에서 true로 기존 누적 영구 성장 적용. false는 이전 호환용 함수 인자일 뿐, 현재 OFF 캠페인에서는 **이 RPC 자체를 호출하지 않음** |
 | `card_equip(p_nickname,p_campaign_id,p_boundary,p_asset,p_enhancement,p_flex_a,p_flex_b)` | 소유·클래스·장착 슬롯·고정 경계 검사 후 장착 |
 | `card_rewards(p_nickname,p_campaign_id)` | 미소유 후보 풀 및 이미 발행된 드래프트 조회 |
 | `card_pick_reward(p_nickname,p_campaign_id,p_event_key,p_choice,p_python_roll)` | **이미 키퍼가 정당하게 발행한** 보상에 대해 한 옵션만 선택·저장 |
