@@ -1,5 +1,18 @@
 # 통합 경량판 대표·경계 대조
 
+## 2026-11-11 — Supabase 비공개 정본 원문+체크포인트 단일 저장
+
+| 조건 | 기대 결과 |
+|---|---|
+| 새 캠페인 정본 | 실제 PRIVATE_CANON .md 원본 전달 + Supabase 비공개 테이블에 동일 전문 등록 및 SHA-256·본문 read-back 검증 |
+| 첫 저장 | 정본 전체 검증 후 canon_ref와 DOCUMENT_BOUND/DB1 setup_bootstrap commit/verify/load_version 일치 |
+| 정기·수동·종결 세이브 | Supabase verified history만 추가 저장하고 GitHub snapshot/manifest/비상 JSON 생성 없음 |
+| 새 채팅 로드 | Supabase의 정확한 campaign/canon/revision 정본과 verified 동적 상태를 결합해 실제 맥락 복구 |
+| 충돌·개정 | 기존 revision을 UPDATE하지 않고 새 revision 삽입·기존 해시와 완전 비교 |
+| DB 오류 | 미확인 attempt/현재 작업 상태 보존. 프로젝트 .md 파일은 정본 비상 원문이지 새 GitHub 백업을 요구하지 않음 |
+| 구판 | 기존 checkpoint·GitHub 역사 사본 삭제/변조·자동 이관 금지 |
+
+
 ## 영구 카드 66장·성장 8종의 정식 규칙 통합 대조 (2026-11-10)
 
 | 실제 조건·상황 | 보존할 결과 / 금지할 처리 | 담당 |

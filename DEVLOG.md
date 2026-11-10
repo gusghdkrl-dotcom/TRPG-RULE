@@ -1,5 +1,12 @@
 # 개발 일지
 
+## 2026-11-11 — 정본 Markdown도 Supabase에 영속 저장·GitHub 세이브 미러 중지
+
+- 신규 캠페인의 PRIVATE_CANON 전체 원문을 Supabase private `trpg_private.gm_canon_documents`에 저장/동일 SHA-256 read-back하고, 동일 .md 파일을 소유자에게 전달해 프로젝트 소스에 보관하도록 한다. schema 미노출·anon/auth 불허·RLS·기존 revision UPDATE/DELETE 방지·해시 CHECK/PK 적용. 현재 동적 `gm_checkpoint_history`/trpg_v2_*는 유지.
+- setup_bootstrap/play_start/30턴/수동/종결 저장 시 GitHub verified/비상 미러·manifest 추가 쓰기/자동 failover 중단. 과거 GitHub 백업·verified 체크포인트 원문은 그대로 둔다. 규칙·시작문·README·검증 기준·대표 사례와 회귀 테스트 반영.
+- Supabase에서 합성 정본 insert→exact select/해시 비교 후 fixture 청소 테스트 성공. 현재 실제 신규 캠페인 정본 원문은 없어 신규 게임의 end-to-end 생성/새 채팅 복원은 아직 검증하지 않았다.
+
+
 ## 2026-11-11 — 모든 주요 사건의 필연적 발생·생존 중심 개정
 
 - 첫 사건뿐 아니라 모든 주요 재난·습격·변형·붕괴의 발생은 PC가 막을 수 없는 독립 인과로 확정. PC는 후속 피해·확산·구조·국지적 격퇴·생존/철수를 바꾼다. HP/SAN·사망 강제나 적/봉쇄 사후 발명, 안전 취소는 금지.

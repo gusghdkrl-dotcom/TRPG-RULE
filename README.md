@@ -68,7 +68,7 @@ ZIP에는 실행 지침·시작 입력·게임용 소스·업로드 안내·SHA2
 
 PC d100은 플레이어, 그 밖의 실제 무작위는 Python 실행을 사용한다. 실제 입력 폼이 없으면 채팅 입력으로 진행한다. 룰북은 클라이언트에 없는 입력/검색/파일 기능을 만들지 않는다.
 
-저장 수단은 **비공개 프로젝트 정본 + 새 Supabase `trpg-state-v2` 검증 체크포인트(DOCUMENT_BOUND/DB1, `state_schema_version=TRPG_STATE_V2`) + 인증된 비공개 GitHub 백업/비상본**이다. 신규 Supabase project ref는 `taoaffdyssqtnjszumpq`이고, 서버 RPC와 정확한 호출/검증/복원 계약은 [07-state](rules/07-state.md)의 STATE_CANON_SAVE_BINDING·STATE_COMMIT에 있다. [DB V2 재구축 SQL](docs/sql/trpg-state-v2.sql)은 구형 DB를 복제하지 않고 독립 구축하기 위한 이력이다. 신규 DB에서 합성 2버전의 commit→verify→같은 version exact read-back/SHA, 부모충돌 차단, 중복attempt 재생, 필수문맥·coverage 거부와 권한 제한을 검증했으며 테스트 저장본은 제거했다. 실제 비공개 캠페인의 정본 결합·장기재개 및 인증된 private GitHub 백업 왕복은 별도 검증이 필요하다. 차단/실패는 완료라 하지 않고 현재 확인 가능한 플레이는 계속한다. 기존20턴 정본 재독·30턴 저장 경계는 유지하고 같은 원문/상태를 재사용한다.
+저장 수단은 **Supabase `trpg-state-v2`의 비공개 정본 전문(`trpg_private.gm_canon_documents`) + 검증된 동적 체크포인트(`public.gm_checkpoint_history`, DOCUMENT_BOUND/DB1) + 소유자에게 전달하는 동일 원문 .md 파일**이다. 게임 정상 저장·복원에서 GitHub 자동 미러·비상 세이브를 생성하지 않는다. 신규 Supabase project ref는 `taoaffdyssqtnjszumpq`이고, 서버 RPC와 정확한 호출/검증/복원 계약은 [07-state](rules/07-state.md)의 STATE_CANON_SAVE_BINDING·STATE_COMMIT에 있다. [DB V2 재구축 SQL](docs/sql/trpg-state-v2.sql)은 구형 DB를 복제하지 않고 독립 구축하기 위한 이력이며, [신규 비공개 정본 테이블 SQL](docs/sql/trpg-private-canon-v1.sql)은 개정 저장 구조를 기록한다. 신규 DB에서 합성 2버전의 commit→verify→같은 version exact read-back/SHA, 부모충돌 차단, 중복attempt 재생, 필수문맥·coverage 거부와 권한 제한을 검증했으며 테스트 저장본은 제거했다. 신규 비공개 정본 테이블에서 합성 문서 insert/전체 원문·SHA read-back 및 접근 차단을 확인했다. 실제 캠페인의 새 정본 저장/장기재개 결합은 신규 게임에서 검증해야 하며, 과거 GitHub 백업은 삭제하지 않고 신규 자동 미러만 중단한다. 차단/실패는 완료라 하지 않고 현재 확인 가능한 플레이는 계속한다. 기존20턴 정본 재독·30턴 저장 경계는 유지하고 같은 원문/상태를 재사용한다.
 
 검증 명령:
 
