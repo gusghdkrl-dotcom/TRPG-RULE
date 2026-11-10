@@ -79,7 +79,7 @@ mutations=[
  ('major_incident_not_inevitable',lambda r:change(r,'rules/04-setup.md','캠페인 전체의 모든 주요 재난·습격·변형·붕괴·확산은 PC가 발생 자체를 예방할 수 없는 사건으로 정본에 확정한다','첫 사건만 필연적이고 다른 주요 사건은 전부 예방 가능하다')),
  ('major_incident_cannot_reduce_harm',lambda r:change(r,'rules/04-setup.md','PC는 발생 후 피해·확산·구조·일부 적 격퇴·퇴로·생존을 바꾼다','PC의 행동과 무관하게 피해와 사망을 확정한다')),
  ('world_only_first_inevitable',lambda r:change(r,'rules/05-world.md','**모든 주요 사건의 독립적 발생**','**첫 도입 사건의 독립적 발생**')),
- ('ending_erases_all_incidents',lambda r:change(r,'rules/06-play.md','필연적 주요 사건의 발생 자체를 지우는 전면 구원 대신','필연적 주요 사건의 발생 자체를 지우는 전면 구원을 허용하며')),
+ ('ending_erases_all_incidents',lambda r:change(r,'rules/06-play.md','필연적 주요 사건의 발생 자체를 지우는 전면 구원 대신','모든 사건을 미리 막으면 세계 전체를 구할 수 있다')),
  ('canon_leaves_later_incidents_blank',lambda r:change(r,'rules/07-state.md','첫 사건만 있고 후속 사건이 비어 있으면 미완성이다','첫 사건만 있으면 후속 사건은 비워도 된다')),
  ('retired_keeper_footer_returns',lambda r:(r/'PROJECT_INSTRUCTIONS.md').write_text((r/'PROJECT_INSTRUCTIONS.md').read_text()+'\n#### 🎬 키퍼 4요소\n#### 1. 반복 표시\n')),
  ('rulebook_requires_keeper_footer',lambda r:change(r,'rules/06-play.md','키퍼 원칙·숙지 문구·준수 보고를 게임 응답에 반복 출력하지 않는다','매 응답의 마지막에 키퍼 원칙과 숙지 문구를 표시한다')),
