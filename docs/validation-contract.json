@@ -1793,5 +1793,198 @@
       "무료 시작 장비 여러 개",
       "전문 분야 후보 A/B/C를 제공"
     ]
+  },
+  {
+    "rule": "CARD_SYSTEM_SCOPE",
+    "contains": [
+      "자산(Asset) 33장",
+      "강화(Enhancement) 33장",
+      "성장(Growth) 8종",
+      "자산9+강화9=18장"
+    ],
+    "instruction_contains": [
+      "| 09-cards.md |"
+    ]
+  },
+  {
+    "rule": "CARD_EQUIP_AND_ASSET",
+    "contains": [
+      "자산 전용1",
+      "챕터 경계에서 강화만 교체",
+      "직업 필수 시작물품 1개와 **별도로**",
+      "새 무게·하중 규칙"
+    ]
+  },
+  {
+    "rule": "CARD_ENHANCEMENT_TRIGGER",
+    "contains": [
+      "기본은 **어려운 성공**",
+      "같은 판정에 함께 사용 불가",
+      "판정 전에 실제 판돈",
+      "HP 1이 남도록 1회 경감"
+    ]
+  },
+  {
+    "rule": "CARD_ASSET_GU",
+    "contains": [
+      "`[GU-A-0]`",
+      "`[GU-A-1]`",
+      "`[GU-A-2]`",
+      "`[GU-A-3]`",
+      "`[GU-A-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ASSET_SE",
+    "contains": [
+      "`[SE-A-0]`",
+      "`[SE-A-1]`",
+      "`[SE-A-2]`",
+      "`[SE-A-3]`",
+      "`[SE-A-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ASSET_RO",
+    "contains": [
+      "`[RO-A-0]`",
+      "`[RO-A-1]`",
+      "`[RO-A-2]`",
+      "`[RO-A-3]`",
+      "`[RO-A-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ASSET_WI",
+    "contains": [
+      "`[WI-A-0]`",
+      "`[WI-A-1]`",
+      "`[WI-A-2]`",
+      "`[WI-A-3]`",
+      "`[WI-A-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ASSET_SU",
+    "contains": [
+      "`[SU-A-0]`",
+      "`[SU-A-1]`",
+      "`[SU-A-2]`",
+      "`[SU-A-3]`",
+      "`[SU-A-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ASSET_NE",
+    "contains": [
+      "`[NE-A-0]`",
+      "`[NE-A-1]`",
+      "`[NE-A-2]`",
+      "`[NE-A-3]`",
+      "`[NE-A-4]`",
+      "`[NE-A-5]`",
+      "`[NE-A-6]`",
+      "`[NE-A-7]`"
+    ]
+  },
+  {
+    "rule": "CARD_ENHANCEMENT_GU",
+    "contains": [
+      "`[GU-E-0]`",
+      "`[GU-E-1]`",
+      "`[GU-E-2]`",
+      "`[GU-E-3]`",
+      "`[GU-E-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ENHANCEMENT_SE",
+    "contains": [
+      "`[SE-E-0]`",
+      "`[SE-E-1]`",
+      "`[SE-E-2]`",
+      "`[SE-E-3]`",
+      "`[SE-E-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ENHANCEMENT_RO",
+    "contains": [
+      "`[RO-E-0]`",
+      "`[RO-E-1]`",
+      "`[RO-E-2]`",
+      "`[RO-E-3]`",
+      "`[RO-E-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ENHANCEMENT_WI",
+    "contains": [
+      "`[WI-E-0]`",
+      "`[WI-E-1]`",
+      "`[WI-E-2]`",
+      "`[WI-E-3]`",
+      "`[WI-E-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ENHANCEMENT_SU",
+    "contains": [
+      "`[SU-E-0]`",
+      "`[SU-E-1]`",
+      "`[SU-E-2]`",
+      "`[SU-E-3]`",
+      "`[SU-E-4]`"
+    ]
+  },
+  {
+    "rule": "CARD_ENHANCEMENT_NE",
+    "contains": [
+      "`[NE-E-0]`",
+      "`[NE-E-1]`",
+      "`[NE-E-2]`",
+      "`[NE-E-3]`",
+      "`[NE-E-4]`",
+      "`[NE-E-5]`",
+      "`[NE-E-6]`",
+      "`[NE-E-7]`"
+    ]
+  },
+  {
+    "rule": "CARD_REWARD_DRAFT",
+    "contains": [
+      "현재 클래스",
+      "전체 클래스 랜덤",
+      "성장",
+      "중립",
+      "30:15:5",
+      "후보 풀이 소진되면"
+    ]
+  },
+  {
+    "rule": "CARD_PERMANENT_GROWTH",
+    "contains": [
+      "근력 성장",
+      "체력 성장",
+      "체격 성장",
+      "민첩 성장",
+      "외모 성장",
+      "지능 성장",
+      "정신력 성장",
+      "교육 성장",
+      "80%",
+      "50%",
+      "25%",
+      "10%"
+    ]
+  },
+  {
+    "rule": "CARD_PLAYER_STORAGE",
+    "contains": [
+      "닉네임 연결",
+      "스냅샷",
+      "종결·지급",
+      "공개"
+    ]
   }
 ]
