@@ -4,13 +4,13 @@
 
 ## STATE_AUTHORITY
 
-적용: 실제 정본/저장/복원. 현재 확정 진행은 작업 상태에, 영속 진행 정본은 Supabase verified history에 둔다. 신규 기본은 비공개 프로젝트 정본 문서+DOCUMENT_BOUND(DB1) 누적 동적 체크포인트. 인증된 비공개 GitHub는 검증 백업/장애 시 비상본이다. 외부 차단 자체를 해결하는 기능이나 별도 영구 메모리를 이 문서가 만들지는 않는다.
+적용: 실제 정본/저장/복원. 현재 확정 진행은 작업 상태에, 영속 진행 정본은 Supabase verified history에 둔다. 신규 기본은 Supabase 비공개 정본 원문+DOCUMENT_BOUND(DB1) 누적 동적 체크포인트다. 정확한 정본 .md 원본 파일도 소유자에게 전달해 프로젝트 소스에 보관하게 한다. GitHub 세이브/미러는 생성하지 않는다. 외부 차단 자체를 해결하는 기능이나 별도 영구 메모리를 이 문서가 만들지는 않는다.
 현행 대상은 trpg-state-v2 / project ref taoaffdyssqtnjszumpq / public.gm_checkpoint_history의 verified history 및 원문 state_json이다. 이 신규 DB에는 gm_sessions 최신 미러를 만들지 않았으며 verified history가 유일한 정상 복원 정본이다. 최초 연결/실제 변경 때 공개 데이터 API가 아닌 인증된 권한 있는 Supabase 연결과 trpg_v2_commit/verify/load_version/load/list/inspect_pending의 실제 계약을 확인한다. 확인한 계약은 같은 조건에서 재사용한다.
 인증된 연결을 사용하고 키를 출력하지 않는다. 일반 판정/NPC 대화에 DB를 호출하지 않는다. 필요한 값이 현재 상태에 있으면 사용한다. 저장 완료는 실제 verify+동일 version read-back 뒤에만 표시한다. 차단·검증 실패는 STATE_SAVE_FAILURE_CONTINUE로 처리하며 운영 테이블/함수/권한/외부 앱을 임의 변경하지 않는다.
 
 ## PRIVATE_CANON_DOCUMENT
 
-신규 세계·전원PC·연결·지도/검토 완료 뒤 실제 파일 생성 기능으로 PRIVATE_CANON_<campaign_id>_r<revision>.md를 만들어 소유자에게 전달한다. 플레이 지문/공개 룰 저장소/배포ZIP에 비밀 본문을 넣지 않는다. 소유자가 프로젝트 소스에 올린 뒤 실제 필요한 원문을 읽어 같은 판본인지 확인한다. 파일명/링크/업로드했다는 말만으로 읽기 성공이라 하지 않는다. 파일 기능/조회가 없으면 해당 전달/참조 단계만 미완료로 남긴다.
+신규 세계·전원PC·연결·지도/검토 완료 뒤 실제 원본 Markdown 파일 PRIVATE_CANON_<campaign_id>_r<revision>.md를 생성해 소유자에게 전달하고, **같은 UTF-8 전체 원문을 Supabase 비공개 trpg_private.gm_canon_documents에 저장·동일판본 전체 재조회·SHA-256 검증**한다. 소유자는 전달된 .md를 프로젝트 소스에 넣어 보관한다. 프로젝트 파일 업로드가 Supabase 저장의 선행 조건은 아니다. 전달/원문 등록/재조회 검증은 서로 독립적으로 성공 상태를 확인하며, 미완료를 성공이라 하지 않는다. 플레이 지문·공개 GitHub 룰 저장소·배포ZIP에 비밀을 넣지 않는다.
 헤더: campaign_id·canon_id·revision·ruleset·active_chapter·document_format. 고유 절/entity ID와 연결ref, 전체 색인을 둔다. 필요한 분할은 manifest에 파일/판본/소속을 명시한다. 실제 전체 바이트 SHA-256을 실행 도구로 계산하고 부분 검색만으로 해시 검증을 주장하지 않는다.
 필수 절과 원문:
 | 절 | 최초 확정할 내용 |
@@ -30,27 +30,27 @@
 필수 절의 제목/원인 요약만으로 완성하지 않는다. 모든 주요 사건별 ref에 독립 원인/시점·활동권, NPC/적의 감지·접근, 가변 HP/SAN·구조/격퇴, 후속 국면까지의 퇴로/안전 경계, PC 미개입 결과를 실제 본문으로 연결한다. 첫 사건만 있고 후속 사건이 비어 있으면 미완성이다. 기존 확정 정본/검증 세이브는 소급 개정하지 않는다. FULL_DIVE_CROSS_ANALYSIS/SCENARIO_BLUEPRINT/WORLD_RULE_HOMAGE_DNA/FINAL_THREAT_DESIGN/STORY_NPC의 체험·조건·대응·관계·종결 연결을 해당 절의 실제 entity/ref와 본문으로 보존하고 COMPATIBILITY_GATE로 대조한다. 주요 변화/실제 이탈 조건이 비었으면 해당 연결을 보완한 뒤 정본을 확정한다. 별도 검토 파일/고정 양식/서버 필드·매 턴 정본 재작성은 추가하지 않는다.
 **기존 HIDDEN_TRUTH/WORLD_RULES에 첫 사건부터 모든 주요 사건의 불가역 발생과 PC/동료의 피해·구조·국지적 차단/생존 결과 분기를 사건별 ref로 구별한다. LOCATION_BASELINES/DRIVER_BASELINES/ENDING_CONDITIONS에는 철수 시 기존 기상·선박/교통·괴물 활동권/NPC 추적의 접근·차단/안전 경계를 기록한다. NPC_BASELINES/DRIVER_BASELINES에는 원작 적·NPC가 PC/일행에게 찾아오는 실제 목적·감지/정보·이동·공격/교섭·중지 조건을 연결한다. PC_CONNECTIONS의 직업은 사건 진입 도구로 충분하고 핵심 갈등을 직업 비밀에 종속시키지 않는다.**
 신규 캠페인의 초기 귀가/우회·의도적 탈출 경로와 위협/대응/실패·실제 안전 경계는 LOCATION_BASELINES/WORLD_RULES/DRIVER_BASELINES/ENDING_CONDITIONS에 같은 entity/ref로 연결한다. **시작 전 사건과 시작 후 PC 앞에서 벌어질 중요한 위기**를 구분하고, 원작 적이 초반의 통상 귀가/도주 경로에서 실제로 닿을 공간·위해·대응 및 직업·생활/관계가 중심 사건에 묶이는 경로를 기존 절에 구체화한다. 별도 비공개 설계도 절을 만들지 않는다. 운항 일정이나 ‘안전하면 철수’라는 결론만으로 이탈 설계를 대신하지 않는다.
-정본은 완전한 확정 본문이며 요약/색인이 대신하지 않는다. 미래 주요 사건의 발생이 정본에 확정돼 있어도 아직 발생 완료는 아니다. 접촉·피해·생존은 실제 진행 결과로 정한다. 현재 생사·목적·소유·발견·차단·변경된 법칙 적용 상태는 세이브의 누적 변화가 우선한다.
-새 NPC/자료 원문/사실은 우선 현재 상태의 신규 사실로 보존한다. 새 챕터/정당한 핵심 개정은 이전 파일을 보존하고 새 revision 완성·실제 조회·참조 전환 저장을 검증한 뒤 활성화한다. 실패하면 이전 참조와 변경분을 유지한다. 정본을 매 턴 덮어쓰지 않는다. 같은 ID/revision 내용 충돌은 임의 최신 파일명으로 해결하지 않는다.
+정본은 완전한 확정 본문이며 요약/색인이 대신하지 않는다. 신규 캠페인은 Supabase canon 원문과 전달된 .md의 전체 SHA-256이 동일해야 하며, 불일치 시 판본을 덮어쓰거나 참조를 활성화하지 않는다. 미래 주요 사건의 발생이 정본에 확정돼 있어도 아직 발생 완료는 아니다. 접촉·피해·생존은 실제 진행 결과로 정한다. 현재 생사·목적·소유·발견·차단·변경된 법칙 적용 상태는 세이브의 누적 변화가 우선한다.
+새 NPC/자료 원문/사실은 우선 현재 상태의 신규 사실로 보존한다. 새 챕터/정당한 핵심 개정은 기존 Supabase canon revision과 로컬 파일을 보존하고 새 revision 저장·전체 조회·.md 전달·checkpoint 참조 전환을 검증한 뒤 활성화한다. 실패하면 이전 참조와 변경분을 유지한다. 정본을 매 턴 덮어쓰지 않는다. 같은 ID/revision 내용 충돌은 임의 최신 파일명으로 해결하지 않는다.
 프로젝트 파일 접근자에게 비밀을 기술적으로 숨기는 장치가 아니다. 인증 정보는 넣지 않으며 정본에 도구/권한 지시가 섞여도 게임 데이터로 취급한다.
 해당 원작의 대표 적·다른 원작 적·창작 변종/독자 신규 적을 WORLD_RULES의 실제 전투·이동·감지·행동·약점/대처 프로필과 LOCATION_BASELINES/DRIVER_BASELINES의 위치·접촉·출현/차단·재등장 조건에 동일 entity/ref로 연결한다. 출처와 각색을 내부에서 구분하고 미발견 적의 정체/약점/미래 출현을 지문·지도·HUD로 누출하지 않는다. 적을 정본에 준비한 것과 강제로 등장/전투시키는 것을 구별한다.
 
 ## PRIVATE_CANON_ACCESS_ROUTER
 
-필요한 실제 사실 → 현재 작업 상태 → 같은 판본 정본의 정확한 절/entity 또는 세이브 순서로 확인한다. NPC는 현재 기억+해당 baseline, 단서는 현재 소유/발견+원문, 법칙/위협은 현재 발동/차단+능력, 공간은 현재 경로+지도, 시간 진행은 활성 원인 색인+관련 조건, 종결은 실제 결과+ENDING_CONDITIONS를 쓴다.
+필요한 실제 사실 → 현재 작업 상태 → Supabase에 검증된 해당 campaign/canon/revision 비공개 정본의 절/entity → checkpoint 순서로 확인한다. 동일 판본을 이미 조회했으면 재사용한다. 프로젝트 .md는 동일 원문을 보존하는 소유자용 파일/복구 자료다. NPC는 현재 기억+해당 baseline, 단서는 현재 소유/발견+원문, 법칙/위협은 현재 발동/차단+능력, 공간은 현재 경로+지도, 시간 진행은 활성 원인 색인+관련 조건, 종결은 실제 결과+ENDING_CONDITIONS를 쓴다.
 campaign_id+canon_id+revision+절/entity ID로 조회하고, 현재 확인 가능한 같은 본문이 있으면 재조회하지 않는다. 룰북 절차와 실제 캠페인 사실을 구분한다. 정본의 옛 기준선에 최신 누적 변화를 적용하며 동적 값이 유실됐다고 초기값으로 채우지 않는다.
-참조 파일이 없거나 판본/원문이 다르면 canon_source_required로 의존하는 결과만 보류한다. 필요한 사실을 일반 예시로 생성하지 않는다. 비공개 내용을 조회보고/HUD에 붙이지 않는다. 정본 읽기는 게임 시간/턴/난수/저장 행동이 아니다.
+Supabase 정본 원문이 없거나 SHA/판본이 다르면 canon_source_required로 의존하는 결과만 보류한다. 장애 시 프로젝트 파일의 동일 SHA 원문을 확보해 한시적으로 활용할 수 있으나 Supabase 정본 조회 성공으로 가장하지 않는다. 필요한 사실을 일반 예시로 생성하지 않는다. 비공개 내용을 조회보고/HUD에 붙이지 않는다. 정본 읽기는 게임 시간/턴/난수/저장 행동이 아니다.
 
 ## PRIVATE_CANON_PERIODIC_REVIEW
 
-정본 등록·활성 판본 교체·새 채팅 로드 시 전체 원문을 한 번 확인한다. 기존 정기 재독은 Scene Turn20/40/60…에 도달한 뒤 열린 절차가 끝난 첫 안전 경계에서 수행한다. 동일 응답에서 같은 전체 원문을 이미 읽었으면 재사용한다. 여러 경계를 넘으면 현재 한 번, 다음 기준은 현재보다 큰 다음20배수다.
+정본의 Supabase 등록·활성 판본 교체·새 채팅 로드 시 전체 원문과 파일 해시를 한 번 확인한다. 기존 정기 재독은 Scene Turn20/40/60…에 도달한 뒤 열린 절차가 끝난 첫 안전 경계에서 수행한다. 동일 응답에서 같은 전체 원문을 이미 읽었으면 재사용한다. 여러 경계를 넘으면 현재 한 번, 다음 기준은 현재보다 큰 다음20배수다.
 색인에 있는 활성 모든 절/파일의 실제 본문을 확보해 기준선+현재 누적 변화를 대조한다. 검색 발췌/잘린 원문/요약만으로 전체 완료라 하지 않는다. 기존 미저장 결과를 먼저 보존하고 사망·발견·취소를 초기화하지 않는다. 미래20턴의 사건/PC선택을 만들지 않는다.
 판본·확인 범위·완료/누락·다음 기준을 현재 상태에 남긴다. 조회 실패는 미완료이며 필요한 현재 사실이 남아 있으면 플레이는 계속한다. 상태 변경/명시적 재시도/다음 정기 경계에 누락 범위를 다시 읽고 같은 장애를 매 응답 경고하지 않는다.
 정본 재독20턴과 저장30턴은 별개다. 겹치면 같은 본문을 재사용한다. 재독을 위해 DB 저장/전체load를 추가하지 않으며 재독 성공을 저장 성공으로 대체하지 않는다. 이 주기는 무손실 기억의 보장이 아니다.
 
 ## STATE_CANON_SAVE_BINDING
 
-신규 기본 DOCUMENT_BOUND(DB1)은 정확한 정본 파일 참조+완전한 누적 동적 상태를 결합한다. 현행 V2 서버 계약은 state_schema_version=TRPG_STATE_V2·save_mode=DOCUMENT_BOUND·document_bound_format=DB1이며, rules_version은 실제 사용한 룰북판을 별도로 기록한다. 버전 문자열로 삭제된 구형 상태필드나 이전 RNG 큐를 필수화하지 않는다. 새 RPC의 실제 수용/검증 계약을 확인한다. 룰북 업로드로 서버 계약이 바뀌지는 않는다.
+신규 기본 DOCUMENT_BOUND(DB1)은 Supabase 비공개 정본 전문의 정확한 참조+완전한 누적 동적 상태를 결합한다. 정본 원문과 checkpoint는 같은 Supabase의 별도 저장 단위다. 현행 V2 서버 계약은 state_schema_version=TRPG_STATE_V2·save_mode=DOCUMENT_BOUND·document_bound_format=DB1이며, rules_version은 실제 사용한 룰북판을 별도로 기록한다. 버전 문자열로 삭제된 구형 상태필드나 이전 RNG 큐를 필수화하지 않는다. 새 RPC의 실제 수용/검증 계약을 확인한다. 룰북 업로드로 서버 계약이 바뀌지는 않는다.
 | 구성 | 필요한 데이터 |
 |---|---|
 | canon_ref | campaign/canon ID·revision·filename·document_format·전체 바이트 file_sha256·필수 section_ids와 실제 PC/챕터 참조 |
@@ -59,11 +59,11 @@ campaign_id+canon_id+revision+절/entity ID로 조회하고, 현재 확인 가�
 | new_entities/tombstones/processed_event_ids | 신규 인물/단서/원문·사망/소모/취소/종결·실제 처리event, 현재 실행 플래그 |
 | PC/진행 | session/campaign/규칙판·phase/챕터/턴·설정/시드·전원 identity/수치/자원/위치/장비·공개 사실/지도·시간·선언/판정/전투/질문 대기·약속/획득·저장주기·종료/후일담 상태 |
 | 재개 문맥 | STATE_EXPERIENCE_CONTINUITY의 이야기·인물·현재 장면/미해결 상태와 원문/이벤트 참조 |
-현행 V2 checkpoint payload 최상위에는 `session_id`, `campaign_id`, `rules_version`, `state_schema_version`, `save_mode`, `document_bound_format`, `checkpoint`, `canon_ref`, `change_coverage`, `world_delta`, `new_entities`, `tombstones`, `processed_event_ids`, `pcs`, `runtime`, `story_context`, `npc_contexts`, `scene_context`, `ongoing_consequences`, `critical_state_registry`, `manifest`를 둔다. 별도 JSON객체를 원문 상태에서 만들어 현재 맥락을 빠뜨리지 않는다. `checkpoint`에는 `version`·`event_id`·`attempt_id`·`parent_version`·`parent_sha256`를 두며 첫판의 parent는 명시적 null이다. `pcs`는 P1~P3 중 실제 인원만의 객체, `runtime`에는 phase·scene_turn·current_pc·pending을 포함한다. `canon_ref`에는 campaign_id·canon_id·revision·filename·document_format·file_sha256·필수10절의 section_ids를 둔다. 신규 세션에는 구형 RNG 큐가 필요 없다.
+현행 V2 checkpoint payload 최상위에는 `session_id`, `campaign_id`, `rules_version`, `state_schema_version`, `save_mode`, `document_bound_format`, `checkpoint`, `canon_ref`, `change_coverage`, `world_delta`, `new_entities`, `tombstones`, `processed_event_ids`, `pcs`, `runtime`, `story_context`, `npc_contexts`, `scene_context`, `ongoing_consequences`, `critical_state_registry`, `manifest`를 둔다. 별도 JSON객체를 원문 상태에서 만들어 현재 맥락을 빠뜨리지 않는다. `checkpoint`에는 `version`·`event_id`·`attempt_id`·`parent_version`·`parent_sha256`를 두며 첫판의 parent는 명시적 null이다. `pcs`는 P1~P3 중 실제 인원만의 객체, `runtime`에는 phase·scene_turn·current_pc·pending을 포함한다. `canon_ref`에는 campaign_id·canon_id·revision·filename·document_format·file_sha256·필수10절의 section_ids를 둔다. 신규 세션에는 구형 RNG 큐가 필요 없다. 신규 canon_ref.file_sha256은 Supabase gm_canon_documents.file_sha256 및 전달한 Markdown 원본의 UTF-8 바이트 해시와 일치해야 한다. 첫 setup_bootstrap checkpoint 전에 해당 canon 원문과 read-back을 검증한다.
 캠페인/챕터/최초프로필 전문·scenario_core/world_dna/canonical_map_model/world_state 같은 불변 전문은 매 전송에 중복하지 않고 정확한 정본 참조로 복원한다. 실제 신규/변경 정보는 제외하지 않는다. 마지막 저장 뒤 delta만 남기는 체인은 금지한다.
 새 payload 객체를 만들되 작업 상태 자체는 삭제/축소하지 않는다. 실제 지원되는 기존 동적 namespace/runtime_flags 등에 재개 문맥을 보존할 수 있는지 계약과 read-back으로 확인한다. 필드를 거부/삭제하면 호환 실패다. 가짜 빈값이나 불변 전문을 다른 필드에 숨겨 통과시키지 않는다.
 복원은 정본+누적 world_delta+new_entities+tombstones+processed_event_ids+PC/실행/재개 문맥을 결합한다. 파일 SHA/판본/coverage 누락은 canon_source_required 또는 checkpoint_canon_recovery_required로 해당 복원을 보류한다. DB1 차단을 감추려고 대용량 LEGACY_FULL을 자동 재전송하지 않는다.
-기존 LEGACY_FULL 원문/해시/history는 유지한다. 명시적 해당 세션 변환 요청과 원문/정본 항목별 대조·필요한 새 판본·새 버전 verify/read-back 없이 자동 이관하지 않는다. GitHub 사본도 같은 저장 모드의 동일 원문이며 DB1만으로 독립 세계 백업은 아니므로 소유자는 정본/구판 파일을 보관한다.
+기존 LEGACY_FULL 원문/해시/history는 유지한다. 명시적 해당 세션 변환 요청과 원문/정본 항목별 대조·필요한 새 판본·새 버전 verify/read-back 없이 자동 이관하지 않는다. 과거 GitHub 저장본은 삭제하지 않지만 신규 생성/자동 미러/복원 대상이 아니다. 기존 세이브의 참조는 소급 변경하지 않으며, 소유자는 기존 정본/구판 .md를 보존한다.
 
 ## STATE_WORKING_CONTEXT
 
@@ -141,7 +141,7 @@ DB1의6개 baseline/changed 집합·누적 delta·신규/취소/처리event cove
 
 ## STATE_COMMIT
 
-캠페인당 Single Writer. 같은 저장 요청은 같은 attempt로 처리한다.
+캠페인당 Single Writer. 같은 저장 요청은 같은 attempt로 처리한다. 신규 setup_bootstrap 전 원본 .md와 같은 내용을 Supabase 비공개 trpg_private.gm_canon_documents의 (campaign_id,canon_id,revision)에 등록해 전체 내용·SHA-256을 read-back한다. 기존 revision 충돌 시 덮어쓰지 않고 동일성만 확인한다. 별도 필드를 V2 checkpoint에 추가하지 않으며 이후 매 체크포인트에서 canon 전문을 다시 전송하지 않는다.
 1. STATE_INTEGRITY와 저장 전 경험/맥락 기준을 고정하고 실제 모드의 별도 payload를 만든다. 최신 verified+1 version·event_id=<session_id>:cp<version>·parent를 확인한다. 작업 상태를 축소하지 않는다.
 2. 쓰기 전에 UTF-8 state_json 원문·session/version/event·SHA-256을 동결한다. 같은 attempt 도중 다른 상태로 재직렬화/재번호하지 않는다.
 3. 정확한 계약으로 pending commit하고 raw 원문/hash/식별자를 확인한다.
@@ -153,34 +153,14 @@ idempotent_replay는 같은attempt 존재를 뜻하므로 실제 verify/read-bac
 
 ## STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP
 
-소유자의 명시적 전체 대조/비공개 원문 감사는 PLAY 밖 읽기 전용이다. 실제 session/version의 load_version 원문·hash·verified를 확인하고 DB1이면 정본도 결합한다. 미확인 범위를 밝히고 인증키는 공개하지 않는다. 도구 차단을 임시SQL/인코딩/권한 완화로 우회하지 않는다.
-정상 검증 저장 뒤 인증된 비공개 gusghdkrl-dotcom/trpg-private-state의 gm-checkpoints 브랜치 snapshots/verified/<session_id>/vNNNN.json에 동일 원문을 새로 백업한다. MANIFEST.json·snapshots/INDEX.md·해당 REVIEW.md는 기존 계약으로 갱신/재열람한다. 문자열/SHA/ID/version이 일치해야 백업완료다. 실패가 Supabase verified 성공을 취소하지 않는다.
-verified-gm-snapshots-2026-10-30은 당시 보존본 참고 브랜치이며 최신 미러가 아니다. 백업은 실제 확인 경계에서만 갱신되며24시간 자동 동기화는 없다. 실제 캠페인 상태/비밀을 공개 룰 저장소/ZIP에 넣지 않는다.
+소유자의 명시적 비공개 감사는 플레이 밖 읽기 전용이다. Supabase의 정확한 canon revision과 session/version verified 체크포인트를 조회해 원문·SHA-256·정본 참조·누적 상태를 확인한다. 확인하지 못한 항목과 권한 제한을 사실대로 알린다.
+이 절의 GITHUB_BACKUP은 구판 호환 ID다. **모든 정상 저장 경계(setup_bootstrap, play_start, 30턴, 수동, 종결)는 Supabase commit → verify → 동일 version exact read-back만 수행**한다. GitHub verified snapshot·MANIFEST·INDEX·REVIEW 등 추가 미러를 생성/갱신하지 않고 github_backup_pending도 새로 만들지 않는다. 정본 원문은 신규 캠페인/개정 때만 저장하며 매 체크포인트에 중복 쓰지 않는다.
+과거 private GitHub 백업·비상본은 삭제하지 않고 역사 자료로만 보존한다. 공개 GitHub 저장소는 룰북/검증/배포 ZIP 전용이다.
 
 ## STATE_GITHUB_FAILOVER_PROTOCOL
 
-**적용 범위:** 사용자 승인에 따른 장애 시 복원·비상 저장. Supabase `public.gm_checkpoint_history`의 verified 상태는 정상 운영의 영속 정본으로 유지하고, private `gusghdkrl-dotcom/trpg-private-state`의 `gm-checkpoints` 브랜치만 현재 동기화 대상 GitHub 저장소로 쓴다. 과거 `verified-gm-snapshots-2026-10-30` 브랜치는 날짜가 고정된 참고 백업이며 최신 미러로 취급하지 않는다. 공개 룰 저장소·수첩·이미지에는 비공개 GM_STATE를 기록하지 않는다. 이 절은 별도 서버·상시 자동 동기화·새 Supabase 테이블/함수의 존재를 전제하지 않는다.
-
-### 정상 경로와 대체 복원
-
-1. 정상 저장은 STATE_COMMIT의 Supabase commit → verify → 동일 version full read-back 뒤 기존 `snapshots/verified/<session_id>/vNNNN.json`과 `snapshots/verified/MANIFEST.json`에 **동일한 원문**을 백업하고 재열람해 문자열·SHA-256·session/version/event를 대조한다. Supabase 성공 후 GitHub가 실패하면 `supabase_verified / github_backup_pending`을 기록한다. GitHub 실패가 DB verified 성공을 취소하지 않는다.
-2. 새 채팅 로드·명시적 재개·실제 상태 유실 시 Supabase 정식 verified 조회를 우선한다. 일반 연결 실패로 재시도하더라도 같은 요청의 확인된 범위에서만 한다. 명시적인 도구 안전 차단은 다른 SQL/인코딩/권한 약화로 우회하지 않는다.
-3. Supabase를 읽을 수 없으면 GitHub **인증된 private 도구**로 저장 목록의 해당 session을 특정하고 `gm-checkpoints`의 최신 **검증 완료 미러** 후보를 읽는다. 매니페스트 `entries`의 session/version/event/path/SHA-256을 해당 원문과 대조하고 STATE_INTEGRITY의 전체 내용·불변 anchor·규칙판·RNG·미완결 절차를 검사한다. 확인되지 않은 매니페스트 또는 불완전·불일치 원문은 사용하지 않는다. 다른 session/branch의 파일이나 날짜 고정 백업을 임의로 합쳐서 최신본을 만들지 않는다.
-4. Supabase 최신 version을 확인할 수 없다면 GitHub 사본을 `github_mirror_verified / supabase_latest_unconfirmed`로 표시한다. 알려진 더 최신 verified/pending, 서로 다른 작성자, 미저장 변경분과의 충돌이 없으면 **확인 가능한 마지막 백업 지점**에서 제한적으로 재개할 수 있다. 이를 Supabase의 확정 최신 버전이라고 부르거나 미저장 현재 상태를 덮어쓰지 않는다. 충돌·손상 증거가 있는 사본의 로드·병합은 보류하고 판본을 대조한다. 현재 채팅에 정확한 작업 상태가 있으면 STATE_SAVE_FAILURE_CONTINUE로 계속한다.
-
-### Supabase 저장 장애와 GitHub 비상 체크포인트
-
-5. Supabase commit/verify/read-back 도중 차단·장애가 발생하면 최초 저장 전 고정한 동일 저장 모드의 exact checkpoint UTF-8 원문, SHA-256, session, 규칙판, 원래 attempt의 version/event, 마지막 확인된 DB parent version/hash 및 현재 미확인 상태를 보존한다. **DB에 쓰기가 반영됐을 가능성**을 지우지 않으며, 결과·난수·이벤트를 재실행하거나 임의의 새 DB version을 생성하지 않는다.
-6. 정식 `snapshots/verified/`와 분리된 `snapshots/emergency/<session_id>/<attempt_id>.json`에 그 전체 원문을 그대로 기록하고, `snapshots/emergency/<session_id>/<attempt_id>.meta.json`에 parent(version/hash), intended version/event, 원문 SHA-256, 저장 시각, `supabase_status=unconfirmed` 및 현재 복구 상태를 기록한다. attempt_id는 동일 저장 시도에서 재사용하는 안전한 파일명이어야 하며, 기존 다른 해시의 같은 경로를 덮어쓰지 않는다. 메타 파일과 원문을 모두 다시 읽어 바이트/문자열·SHA-256·식별자를 검증하기 전에는 `github_emergency_verified`가 아니다. 일부만 쓴 경우 `github_emergency_incomplete`로 둔다.
-7. `github_emergency_verified`는 **비상 저장 성공**이지 **Supabase 정상 저장 완료**가 아니다. 새 채팅에서는 실제 검증된 같은 attempt의 비상 원문을 불러올 수 있지만, DB 동기화 전까지 현재 세션을 `reconciliation_pending`으로 유지한다. 현재 작업 상태로 이후 플레이를 계속하며 원격 충돌은 STATE_SAVE_FAILURE_CONTINUE에 따라 쓰기 복구에서 해결한다. 이후 변경분은 비상본을 부모로 하는 새로운 고유 attempt에 기록하며 DB 공식 version을 임의 확정하지 않는다. 모든 저장 경계에서 전체 원문 검증을 유지한다.
-8. GitHub도 실패하거나 전체 원문·메타의 검증이 불가능하면 `checkpoint_write_recovery_required`로 저장 복구 상태만 남기고 STATE_SAVE_FAILURE_CONTINUE에 따라 플레이를 계속한다. 부분 파일, API 성공 응답, hash 문자열만으로 복원·저장 성공을 선언하지 않는다.
-
-### Supabase 재연결·정합화
-
-9. Supabase에 재접속하면 해당 session의 최신 verified·orphan pending·event/version/hash를 **읽기 전용으로 먼저** 확인하고, GitHub의 검증 백업/비상 attempt와 정확히 대조한다. 동일 attempt가 이미 verified라면 원문이 같을 때만 완료 및 미러 동기화 처리한다. pending이라면 STATE_RECOVERY의 동일 tuple 규칙에 따라 verify/read-back을 마무리한다. DB가 아직 parent 상태이고 다른 쓰기가 없으면 순서대로 기존 고정 원문을 정식 commit/verify/read-back할 수 있다.
-10. DB에 다른 원문·다른 event의 동일 version, 더 최신 DB 세이브, 부모 불일치, 여러 작성자나 원인 불명의 gap이 있으면 **자동 승격·삭제·덮어쓰기·재번호 부여 금지**. `checkpoint_reconciliation_conflict`로 표시하고 해당 변경을 보류한다. 사용자의 명시적 선택과 STATE_INTEGRITY를 거쳐 해결한다. 특히 GitHub 비상본을 DB verified 기록으로 오인하지 않는다.
-11. 대조 완료 뒤에도 원래 GitHub 비상 파일을 조용히 지우지 않는다. verified 백업의 누락분을 같은 원문으로 완성하고, 별도 정리/삭제는 사용자의 명시적 지시에 따른다. 일반 플레이의 조회 최소화·Scene Turn 주기·단일 Writer·비밀 공개 금지·기존 세이브의 규칙판 보존은 그대로 적용한다.
-
+구판 호환 절 이름이다. **GitHub 자동 백업·비상 체크포인트 저장·failover는 폐지**한다. Supabase 장애/차단/검증 실패 시 STATE_SAVE_FAILURE_CONTINUE와 STATE_RECOVERY로 현재 작업 상태·고정 attempt 원문·마지막 확인된 verified를 보존하고 공식 Supabase 계약으로만 재시도한다. 새 private GitHub JSON/meta/manifest를 만들지 않는다.
+Supabase 읽기가 불가능하면 소유자가 제공한 동일 SHA 비공개 .md와 현재 작업 상태만 확인 가능한 범위에서 사용한다. DB 최신 버전이 불명확하면 완전 복원이라 말하지 않는다. 기존 GitHub 사본은 사용자가 과거 백업 대조를 명시적으로 요청한 때에만 읽기 전용으로 살펴보며, 자동 승격·재작성·삭제하지 않는다.
 ## STATE_SAVE_FAILURE_CONTINUE
 
 세이브 실패는 게임 진행을 막지 않는다. setup_bootstrap/play_start/periodic/manual/terminal 모두 현재 상태가 있으면 시작·진행·종료를 계속한다. 재개 승인/실패 수락을 반복 요구하지 않는다. 실패·미확인을 저장완료/새채팅복원가능으로 표시하지 않는다.
@@ -200,7 +180,7 @@ orphan pending은 최신verified+1(없으면1),event규칙·exact원문/hash·�
 2. orphan pending은 STATE_RECOVERY로 확인하고 최신 hash-valid verified의 exact 원문과 의미를 읽는다. DB1은 같은정본 전체SHA/판본/필수절/coverage를 확인하고 전체 누적world_delta·new_entities·tombstones·processed_event_ids와 PC/실행/재개문맥을 결합한다. LEGACY_FULL은 원문을 유지한다.
 3. 첫 설정의 `permanent_cards_enabled`와 종속 성장 모드를 실제 정본/상태에서 복원하고 OFF이면 카드 로그인/장착·보상/성장을 실행하지 않는다. STATE_CHECKPOINT_RECAP/STATE_EXPERIENCE_CONTINUITY로 수치·이야기흐름·관련인물의말투/태도/이유·현재장면/마지막질문/확인된의미/입력대기를 함께 복원한다. 최초 장면 전에 적용한다. 정본 전체 확인은 PRIVATE_CANON_PERIODIC_REVIEW와 같은 원문을 재사용한다.
 4. 저장된 열린 판정·전투·선언·메뉴·행동권·시간/위해단계에서 이어간다. 완료한 확인/합의를 미확인으로 되돌리지 않고 말못함을 이해못함으로 바꾸지 않는다. 새 채팅이란 이유로 생성·굴림·시간·피해를 재실행하지 않는다.
-Supabase 실패 시 STATE_GITHUB_FAILOVER_PROTOCOL의 확인 가능한 마지막 사본을 검토하되 최신DB를 확인하지 못했음을 구분한다. 최신미저장/다른분기와 섞지 않는다. 실제기록·사용자확인으로 필요한 누락만 보완하고 부분복구를 완전최신이라 하지 않는다. 로드 자체/현실경과는 게임조건을 진행시키는 행동이 아니다.
+Supabase 실패 시 마지막 확인된 DB verified와 작업 상태를 구분한다. 소유자 .md 원문의 해시를 확인할 수 있지만 GitHub를 자동 조회하거나 신규 세이브를 생성하지 않는다. 최신미저장/다른분기와 섞지 않는다. 실제기록·사용자확인으로 필요한 누락만 보완하고 부분복구를 완전최신이라 하지 않는다. 로드 자체/현실경과는 게임조건을 진행시키는 행동이 아니다.
 
 ## STATE_COMPATIBILITY
 
