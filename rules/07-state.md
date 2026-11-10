@@ -92,7 +92,7 @@ campaign_id+canon_id+revision+절/entity ID로 조회하고, 현재 확인 가�
 ## STATE_IDENTITY
 
 P1/P2/P3는 참가 슬롯, PC identity는 인물 식별이다. 참가 인원/실제 슬롯/대상PC가 일치해야 한다. 같은 슬롯의 새 인물은 새identity이며 과거 인물의 개인 배경·시트·성장·이미지를 상속하지 않는다. 공개 사실은 파티 지식으로 유지한다.
-**영구 카드 플레이어 ID는 PC identity/P슬롯과 별개의 UUID**다. **닉네임만으로 연결하는 신뢰형 운영**을 사용자 지시에 따라 적용한다. 중복 없는 닉네임을 입력하면 `public.card_login` 익명 RPC 또는 권한 있는 키퍼 연결로 영구 UUID·기본18·소유·성장을 확인한다. 로그인·비밀번호·추가 인증을 요구하지 않으며, **같은 닉네임은 같은 UUID이고 닉네임 사칭 가능성은 의도적으로 수용한다**. PC 연결 시 `trpg_cards.link_character`(또는 `public.card_link_pc`)가 그 시점의 성장 단계를 `applied_stats` 스냅샷으로 확정하고 같은 PC 재로드에서는 재적용하지 않는다. UUID/카드 소유·성장은 별도 영속 카드 DB에, PC 실물·동행·HP/SAN·실제 세계 상태는 종전 verified checkpoint에 둔다. 공개 `card_*`는 **원래 GM 세이브 RPC의 접근권을 바꾸지 않는다**. 두 저장 영역의 성공·실패를 혼동하지 않는다.
+**영구 카드 플레이어 ID는 PC identity/P슬롯과 별개의 UUID**다. 자산·강화 카드의 실제 능력·소실/소모 및 영구 성장 적용/보상·장착은 09-cards.md의 CARD_SYSTEM_SCOPE·CARD_EQUIP_AND_ASSET·CARD_PLAYER_STORAGE를 따른다. **닉네임만으로 연결하는 신뢰형 운영**을 사용자 지시에 따라 적용한다. 중복 없는 닉네임을 입력하면 `public.card_login` 익명 RPC 또는 권한 있는 키퍼 연결로 영구 UUID·기본18·소유·성장을 확인한다. 로그인·비밀번호·추가 인증을 요구하지 않으며, **같은 닉네임은 같은 UUID이고 닉네임 사칭 가능성은 의도적으로 수용한다**. PC 연결 시 `trpg_cards.link_character`(또는 `public.card_link_pc`)가 그 시점의 성장 단계를 `applied_stats` 스냅샷으로 확정하고 같은 PC 재로드에서는 재적용하지 않는다. UUID/카드 소유·성장은 별도 영속 카드 DB에, PC 실물·동행·HP/SAN·실제 세계 상태는 종전 verified checkpoint에 둔다. 공개 `card_*`는 **원래 GM 세이브 RPC의 접근권을 바꾸지 않는다**. 두 저장 영역의 성공·실패를 혼동하지 않는다.
 NPC/entity·원문·약속·물건·이벤트는 이름이 아닌 stable ref로 연결한다. 메뉴/대화/판정·중단 작업에는 현재 담당과 실제 선언 범위를 남겨 로드 후 자동 수락/실행하지 않는다. 이전에 형성/전달된 사건 연루와 완료한 확인도 보존한다.
 
 ## STATE_EXPERIENCE_CONTINUITY
