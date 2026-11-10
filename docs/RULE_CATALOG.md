@@ -8,24 +8,6 @@
 
 신규 캠페인의 초기 귀가/우회·의도적 탈출의 위험권/경로·추적/차단·대응/실패 설계는 SCENARIO_BLUEPRINT/HARM_ECOLOGY, 완성도 대조는 COMPATIBILITY_GATE, 초기 정본 보존은 PRIVATE_CANON_DOCUMENT다. 실제 이동의 잔존 위협은 ACTIVE_DANGER_CONTINUITY, 위해는 REACHED_DANGER_EXECUTION_GATE, 실제 안전/이탈 판정은 ENDING_FINALIZATION_GATE에서 처리한다. 일반 철수 인정과 떠나겠다는 의사만으로 무위험 엔딩을 주는 처리를 구분한다.
 
-| CARD_SYSTEM_SCOPE | [09-cards.md](../rules/09-cards.md#card_system_scope) |
-| CARD_EQUIP_AND_ASSET | [09-cards.md](../rules/09-cards.md#card_equip_and_asset) |
-| CARD_ENHANCEMENT_TRIGGER | [09-cards.md](../rules/09-cards.md#card_enhancement_trigger) |
-| CARD_ASSET_GU | [09-cards.md](../rules/09-cards.md#card_asset_gu) |
-| CARD_ASSET_SE | [09-cards.md](../rules/09-cards.md#card_asset_se) |
-| CARD_ASSET_RO | [09-cards.md](../rules/09-cards.md#card_asset_ro) |
-| CARD_ASSET_WI | [09-cards.md](../rules/09-cards.md#card_asset_wi) |
-| CARD_ASSET_SU | [09-cards.md](../rules/09-cards.md#card_asset_su) |
-| CARD_ASSET_NE | [09-cards.md](../rules/09-cards.md#card_asset_ne) |
-| CARD_ENHANCEMENT_GU | [09-cards.md](../rules/09-cards.md#card_enhancement_gu) |
-| CARD_ENHANCEMENT_SE | [09-cards.md](../rules/09-cards.md#card_enhancement_se) |
-| CARD_ENHANCEMENT_RO | [09-cards.md](../rules/09-cards.md#card_enhancement_ro) |
-| CARD_ENHANCEMENT_WI | [09-cards.md](../rules/09-cards.md#card_enhancement_wi) |
-| CARD_ENHANCEMENT_SU | [09-cards.md](../rules/09-cards.md#card_enhancement_su) |
-| CARD_ENHANCEMENT_NE | [09-cards.md](../rules/09-cards.md#card_enhancement_ne) |
-| CARD_REWARD_DRAFT | [09-cards.md](../rules/09-cards.md#card_reward_draft) |
-| CARD_PERMANENT_GROWTH | [09-cards.md](../rules/09-cards.md#card_permanent_growth) |
-| CARD_PLAYER_STORAGE | [09-cards.md](../rules/09-cards.md#card_player_storage) |
 | 규칙 ID | 담당 본문 |
 |---|---|
 | ACTIVE_DANGER_CONTINUITY | [05-world.md](../rules/05-world.md#active_danger_continuity) |
@@ -37,11 +19,29 @@
 | BUTTERFLY_AND_LIVING_WORLD | [05-world.md](../rules/05-world.md#butterfly_and_living_world) |
 | CAMPAIGN_SETUP_PIPELINE | [04-setup.md](../rules/04-setup.md#campaign_setup_pipeline) |
 | CANONICAL_CAMPAIGN_MAP | [08-visual.md](../rules/08-visual.md#canonical_campaign_map) |
+| CARD_ASSET_GU | [09-cards.md](../rules/09-cards.md#card_asset_gu) |
+| CARD_ASSET_NE | [09-cards.md](../rules/09-cards.md#card_asset_ne) |
+| CARD_ASSET_RO | [09-cards.md](../rules/09-cards.md#card_asset_ro) |
+| CARD_ASSET_SE | [09-cards.md](../rules/09-cards.md#card_asset_se) |
+| CARD_ASSET_SU | [09-cards.md](../rules/09-cards.md#card_asset_su) |
+| CARD_ASSET_WI | [09-cards.md](../rules/09-cards.md#card_asset_wi) |
+| CARD_ENHANCEMENT_GU | [09-cards.md](../rules/09-cards.md#card_enhancement_gu) |
+| CARD_ENHANCEMENT_NE | [09-cards.md](../rules/09-cards.md#card_enhancement_ne) |
+| CARD_ENHANCEMENT_RO | [09-cards.md](../rules/09-cards.md#card_enhancement_ro) |
+| CARD_ENHANCEMENT_SE | [09-cards.md](../rules/09-cards.md#card_enhancement_se) |
+| CARD_ENHANCEMENT_SU | [09-cards.md](../rules/09-cards.md#card_enhancement_su) |
+| CARD_ENHANCEMENT_TRIGGER | [09-cards.md](../rules/09-cards.md#card_enhancement_trigger) |
+| CARD_ENHANCEMENT_WI | [09-cards.md](../rules/09-cards.md#card_enhancement_wi) |
+| CARD_EQUIP_AND_ASSET | [09-cards.md](../rules/09-cards.md#card_equip_and_asset) |
+| CARD_PERMANENT_GROWTH | [09-cards.md](../rules/09-cards.md#card_permanent_growth) |
+| CARD_PLAYER_STORAGE | [09-cards.md](../rules/09-cards.md#card_player_storage) |
+| CARD_REWARD_DRAFT | [09-cards.md](../rules/09-cards.md#card_reward_draft) |
+| CARD_SYSTEM_SCOPE | [09-cards.md](../rules/09-cards.md#card_system_scope) |
 | CAUSAL_ENDGAME_PRECOMMIT | [04-setup.md](../rules/04-setup.md#causal_endgame_precommit) |
 | CAUSAL_MULTI_PHASE_THREAT | [03-danger.md](../rules/03-danger.md#causal_multi_phase_threat) |
 | CAUSAL_SAFETY_AND_SOUND | [05-world.md](../rules/05-world.md#causal_safety_and_sound) |
-| CHARACTERISTIC_VS_SKILL | [02-checks.md](../rules/02-checks.md#characteristic_vs_skill) |
 | CHARACTER_VISUAL_CANON | [08-visual.md](../rules/08-visual.md#character_visual_canon) |
+| CHARACTERISTIC_VS_SKILL | [02-checks.md](../rules/02-checks.md#characteristic_vs_skill) |
 | CHASE | [03-danger.md](../rules/03-danger.md#chase) |
 | CINEMATIC_ACTION_CONTINUITY | [06-play.md](../rules/06-play.md#cinematic_action_continuity) |
 | CINEMATIC_ELLIPSIS | [06-play.md](../rules/06-play.md#cinematic_ellipsis) |
@@ -89,12 +89,12 @@
 | HP_AND_DEATH | [02-checks.md](../rules/02-checks.md#hp_and_death) |
 | HYPOTHESIS_TEST | [05-world.md](../rules/05-world.md#hypothesis_test) |
 | IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL | [02-checks.md](../rules/02-checks.md#impossible_actions_and_rule_of_cool) |
+| IN_WORLD_DOCUMENT_HANDOUT | [05-world.md](../rules/05-world.md#in_world_document_handout) |
 | INSANITY_CONDITIONS | [03-danger.md](../rules/03-danger.md#insanity_conditions) |
 | INVENTORY | [05-world.md](../rules/05-world.md#inventory) |
 | INVESTIGATION_SKILL_ROUTING | [02-checks.md](../rules/02-checks.md#investigation_skill_routing) |
 | INVESTIGATOR_DEPTH_PROTOCOL | [04-setup.md](../rules/04-setup.md#investigator_depth_protocol) |
 | INVESTIGATOR_INCIDENT_COUPLING | [05-world.md](../rules/05-world.md#investigator_incident_coupling) |
-| IN_WORLD_DOCUMENT_HANDOUT | [05-world.md](../rules/05-world.md#in_world_document_handout) |
 | KEEPER_SCENE_SELECTION | [06-play.md](../rules/06-play.md#keeper_scene_selection) |
 | LOCATION_VISUAL_CANON | [08-visual.md](../rules/08-visual.md#location_visual_canon) |
 | LONG_ACTION_EARLIEST_INTERRUPTION | [06-play.md](../rules/06-play.md#long_action_earliest_interruption) |
@@ -105,8 +105,8 @@
 | MELEE_OPPOSED | [03-danger.md](../rules/03-danger.md#melee_opposed) |
 | MULTI_PC_SPOTLIGHT_CONTRACT | [06-play.md](../rules/06-play.md#multi_pc_spotlight_contract) |
 | NARRATIVE_TECHNIQUES | [05-world.md](../rules/05-world.md#narrative_techniques) |
-| NORMALIZED_TABLE_INDEX | [04-setup.md](../rules/04-setup.md#normalized_table_index) |
 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | [05-world.md](../rules/05-world.md#no_clean_exit_horror_architecture) |
+| NORMALIZED_TABLE_INDEX | [04-setup.md](../rules/04-setup.md#normalized_table_index) |
 | NPC_AGENDA_AND_SECRECY | [05-world.md](../rules/05-world.md#npc_agenda_and_secrecy) |
 | NPC_AGENDA_INTERVENTION | [05-world.md](../rules/05-world.md#npc_agenda_intervention) |
 | NPC_INTERACTION_VOICE_COMPACT | [05-world.md](../rules/05-world.md#npc_interaction_voice_compact) |
@@ -119,7 +119,6 @@
 | PC_APPEARANCE_FROM_APP | [04-setup.md](../rules/04-setup.md#pc_appearance_from_app) |
 | PC_DERIVED_STATS | [04-setup.md](../rules/04-setup.md#pc_derived_stats) |
 | PC_SKILL_START_VALUES | [04-setup.md](../rules/04-setup.md#pc_skill_start_values) |
-| STARTING_EQUIPMENT_MINIMAL | [04-setup.md](../rules/04-setup.md#starting_equipment_minimal) |
 | PERSONAL_CASH_LEDGER | [05-world.md](../rules/05-world.md#personal_cash_ledger) |
 | PLAYER_D100 | [02-checks.md](../rules/02-checks.md#player_d100) |
 | PLAYER_FACING_KOREAN_LOCALIZATION | [05-world.md](../rules/05-world.md#player_facing_korean_localization) |
@@ -150,6 +149,8 @@
 | START_BRIEFING_FOG | [04-setup.md](../rules/04-setup.md#start_briefing_fog) |
 | START_MAP_HANDOUT_GATE | [08-visual.md](../rules/08-visual.md#start_map_handout_gate) |
 | START_SETTINGS_GATE | [04-setup.md](../rules/04-setup.md#start_settings_gate) |
+| STARTING_EQUIPMENT_MINIMAL | [04-setup.md](../rules/04-setup.md#starting_equipment_minimal) |
+| STAT_DRAFT_GENERATION | [04-setup.md](../rules/04-setup.md#stat_draft_generation) |
 | STATE_ACCESS_ROUTER | [07-state.md](../rules/07-state.md#state_access_router) |
 | STATE_AUTHORITY | [07-state.md](../rules/07-state.md#state_authority) |
 | STATE_CADENCE | [07-state.md](../rules/07-state.md#state_cadence) |
@@ -167,15 +168,14 @@
 | STATE_SCHEMA | [07-state.md](../rules/07-state.md#state_schema) |
 | STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP | [07-state.md](../rules/07-state.md#state_verified_owner_audit_and_github_backup) |
 | STATE_WORKING_CONTEXT | [07-state.md](../rules/07-state.md#state_working_context) |
-| STAT_DRAFT_GENERATION | [04-setup.md](../rules/04-setup.md#stat_draft_generation) |
 | STORY_NPC | [05-world.md](../rules/05-world.md#story_npc) |
 | STORY_SCALE | [04-setup.md](../rules/04-setup.md#story_scale) |
 | SUCCESS_LEVELS | [02-checks.md](../rules/02-checks.md#success_levels) |
 | THREAT_TIERS | [03-danger.md](../rules/03-danger.md#threat_tiers) |
 | TURN_INCREMENT | [06-play.md](../rules/06-play.md#turn_increment) |
 | UNDERLYING_INSANITY | [03-danger.md](../rules/03-danger.md#underlying_insanity) |
-| VISUALIZATION_CANON_BOUNDARY | [08-visual.md](../rules/08-visual.md#visualization_canon_boundary) |
 | VISUAL_ASSET_PERSISTENCE_BOUNDARY | [08-visual.md](../rules/08-visual.md#visual_asset_persistence_boundary) |
+| VISUALIZATION_CANON_BOUNDARY | [08-visual.md](../rules/08-visual.md#visualization_canon_boundary) |
 | WEB_VISUAL_REFERENCE | [08-visual.md](../rules/08-visual.md#web_visual_reference) |
 | WORLD_INITIATIVE_EXECUTION | [05-world.md](../rules/05-world.md#world_initiative_execution) |
 | WORLD_PC_INPUT | [04-setup.md](../rules/04-setup.md#world_pc_input) |
