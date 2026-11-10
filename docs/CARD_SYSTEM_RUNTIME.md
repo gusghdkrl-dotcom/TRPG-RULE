@@ -1,5 +1,7 @@
 # 영구 플레이어 ID·컬렉션·드래프트 Supabase 운영 계약 (2026-11-10)
 
+> **실제 카드의 능력·수치·발동 원문 정본은 [rules/09-cards.md](../rules/09-cards.md)이다.** 본 문서는 닉네임/UUID·저장·보상 API 호출과 실제 도구/접속 조건만 다룬다.
+
 > **실제로 설치된 백엔드**: Supabase 프로젝트 `trpg-state-v2` (ref `taoaffdyssqtnjszumpq`)의 **비공개 스키마 `trpg_cards`**. 기존 `public.gm_checkpoint_history`와 저장 RPC/실제 세계 상태는 수정하지 않는다. 설치 SQL 사본: [trpg-card-collection-v1.sql](sql/trpg-card-collection-v1.sql). 익명 닉네임 접속용 추가 SQL: [trpg-card-nickname-public-v1.sql](sql/trpg-card-nickname-public-v1.sql). 실제 연결 없는 임의 가상 값·성공 신고 금지.
 >
 > **닉네임만 사용하는 신뢰 운영 [사용자 명시 승인]**: 2~3명의 소규모 지인용으로 **로그인·비밀번호 없이 닉네임 입력만으로 플레이어 UUID에 접속**한다. `public.card_login` 등 지정한 7개 RPC는 `anon`/`authenticated`에서 호출 가능하다. **닉네임을 아는 누구나 그 사람의 카드 계정을 열람하거나 장착·보상 선택을 대신할 수 있다**는 사칭 위험을 사용자가 수용했다. 대신 원본 `trpg_cards` 테이블의 직접 쓰기·대량 삭제와 **`public.gm_checkpoint_history` 및 원래 게임 세이브 RPC**는 열지 않았다. 익명 카드 API는 의도적인 보안 완화이며 인터넷 공개 인증 서비스가 아니다.
