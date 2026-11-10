@@ -1,4 +1,4 @@
--- Supabase migration exposed nickname-only card portal, 2026-11-10.
+-- Supabase migrations exposed nickname-only card portal and fixed existing-session joins, 2026-11-10.
 -- Player explicitly chose nickname-only access without login for 2-3 trusted people.
 -- Any party knowing a nickname may assume that identity; this is NOT account security.
 -- Original gm checkpoint tables, RPC, and full game states remain protected.
@@ -24,12 +24,24 @@ CREATE OR REPLACE FUNCTION public.card_join(p_nickname text, p_campaign_id text,
  SET search_path TO 'pg_catalog'
 AS $function$
 declare v_login jsonb; v_uuid uuid; v_campaign jsonb; v_member jsonb;
+  v_mode text; v_existing_session text;
 begin
  v_login:=trpg_cards.register_player(p_nickname);
  v_uuid:=(v_login->>'player_id')::uuid;
- v_campaign:=trpg_cards.open_campaign(p_campaign_id,p_mode,p_session_id);
+ select campaign_mode, source_session_id into v_mode,v_existing_session
+ from trpg_cards.campaigns where campaign_id=p_campaign_id;
+ if not found then
+   v_campaign:=trpg_cards.open_campaign(p_campaign_id,p_mode,p_session_id);
+ else
+   if v_mode is distinct from p_mode then raise exception 'campaign_mode_conflict'; end if;
+   if p_session_id is not null and p_session_id is distinct from v_existing_session then
+     raise exception 'campaign_session_conflict';
+   end if;
+   v_campaign:=jsonb_build_object('campaign_id',p_campaign_id,'mode',v_mode);
+ end if;
  v_member:=trpg_cards.enroll_player(p_campaign_id,v_uuid,p_class);
- return jsonb_build_object('player_id',v_uuid,'nickname',(select nickname from trpg_cards.players where id=v_uuid),
+ return jsonb_build_object('player_id',v_uuid,
+  'nickname',(select nickname from trpg_cards.players where id=v_uuid),
   'campaign',v_campaign,'membership',v_member);
 end $function$
 
