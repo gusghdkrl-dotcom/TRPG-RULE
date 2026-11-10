@@ -15,16 +15,17 @@
 필수 절과 원문:
 | 절 | 최초 확정할 내용 |
 |---|---|
-| CANON_INDEX | 식별·판본·전체 절/entity/ref·파일 목록 |
+| CANON_INDEX | 식별·판본·전체 절/entity/ref·파일 목록·첫 설정 `permanent_cards_enabled` 및 종속 `permanent_growth_enabled` ON/OFF(항상 동일) |
 | WORLD_BASELINE | 원작/시대/생활·원작 핵심 사건/세력/대표 적·세계 법칙/공포의 실제 규모·이번 각색의 구분 |
 | HIDDEN_TRUTH | 깊은 원인/진실·원작 중심 사건과 PC의 독자 사건/진입 경로·시작 전/후 핵심 변화·PC에게 도달할 실제 원인/세력·주요 소재의 목적/중요성·조건부 진행·분기 |
 | WORLD_RULES | 법칙·대표/창작 적의 능력/감지/추적·발동/차단·HP/SAN 위해/처치·최종 위험 대응 |
-| NPC_BASELINES | 정체/기본Voice·목적/우선순위/경계·지식·관계·초기 배치·PC 부재 시 자발적 행동/수단/성패 |
+| NPC_BASELINES | 정체/기본Voice·목적/우선순위/경계·지식·관계·초기 배치·PC 직업/관계·일상에 실제 도달하는 행동/연락·부재 시 자발적 행동/수단/성패 |
 | EVIDENCE_BASELINES | 단서 의미/원문·원래 소유/위치·접근/발견·활용·실제 조작/오인이 있다면 조작 주체/동기/허위 범위/검증·여파 |
-| LOCATION_BASELINES | 장소·경로·지도 연결/접근·위협 접촉/도주/귀가·안전 경계·공개 투영 구분 |
-| DRIVER_BASELINES | 화면 밖 원인·미개입/업무 뒤 귀가 시 진행·발동/취소·독립 NPC 대응·실제 위해 접촉/차단/후속 |
-| ENDING_CONDITIONS | 예방/해결/부분 성공/차단/탈출/철수/방치/실패·종결·인물/시설/공동체의 실제 보존/손실·잔존 위험 |
+| LOCATION_BASELINES | 장소·경로·지도 연결/접근·초기 귀가/도주와 원작 적/환경의 활동권 충돌·위협 접촉/회피/안전 경계·공개 투영 구분 |
+| DRIVER_BASELINES | 화면 밖 원인·게임 시작 전/후 주요 변화의 발동/취소·PC 생활/이동/관계에 향하는 실제 NPC/적/환경 행동·미개입/귀가 진행·실제 위해 접촉/차단/후속 |
+| ENDING_CONDITIONS | 예방/해결/부분 성공/차단/탈출/철수/방치/실패·초기 이탈 위험권 돌파/차단 후 실제 안전 경계·종결·인물/시설/공동체의 실제 보존/손실·잔존 위험 |
 | PC_CONNECTIONS | 최초PC프로필 원문/참조·직업/생활/관계가 원작 대사건의 중심 세력·대표 적/위험과 직접 충돌해 관여/생존/해결을 바꿀 접점·확정 과거/연루 경로·공개 범위 |
+**비공개 정본 CANON_INDEX와 동적 상태에 캠페인 전원의 카드·성장 ON/OFF를 기록한다. OFF이면 카드/클래스/장착/영구 보상 관련 진행과 entity/ref를 만들지 않는다.** 별도 비공개 제작 절/파일은 만들지 않고 원작 위협과 PC 일상·직업/관계의 충돌, 시작 후 대사건 변화와 초기 이탈의 실제 위험·대응은 위 기존 HIDDEN_TRUTH/WORLD_RULES/NPC_BASELINES/LOCATION_BASELINES/DRIVER_BASELINES/PC_CONNECTIONS/ENDING_CONDITIONS에 연결한다.
 신규 캠페인/미확정 챕터의 원작 중심 사건과 PC의 별도 이야기는 **위 기존 필수 절들 자체에** 실제 entity/ref·원인·진행·위협·체험·대응·결과로 연결한다. 원작의 공포/세력/대표 적을 배경 소문으로만 남기거나 단순 수문 고장/금속판 범죄를 대사건 전체로 축소하지 않는다. PC의 의뢰 수락과 무관한 발동/억제·접근/감지/추적/전달·실제 HP/SAN/사회적 손실·회피/차단/실패 뒤 상태를 해당 절에 확정한다. PC가 업무 후 귀가/조기 도주/미개입하더라도 실제 안전 경계와 남은 세계/NPC의 독립 진행·구조/실패·후속 여파를 연결한다. 조작/오인 자료는 필요할 때만 사실과 허위의 구분·조작 주체·동기·출처/확인 경로·선택의 효과를 기록한다. 예방/해결/부분 성공/철수/실패/방치에 실질 차이가 없거나 원작 특유의 위험이 실제로 닿지 않는다면 설계 미완료다. 반전·고정 피해/전투를 강제하거나 성공한 차단·안전을 취소하지 않는다. **별도 설계도 절/파일·서버 필드를 만들지 않는다.**
 필수 절의 제목/원인 요약만으로 완성하지 않는다. FULL_DIVE_CROSS_ANALYSIS/SCENARIO_BLUEPRINT/WORLD_RULE_HOMAGE_DNA/FINAL_THREAT_DESIGN/STORY_NPC의 체험·조건·대응·관계·종결 연결을 해당 절의 실제 entity/ref와 본문으로 보존하고 COMPATIBILITY_GATE로 대조한다. 주요 변화/실제 이탈 조건이 비었으면 해당 연결을 보완한 뒤 정본을 확정한다. 별도 검토 파일/고정 양식/서버 필드·매 턴 정본 재작성은 추가하지 않는다.
 신규 캠페인의 초기 귀가/우회·의도적 탈출 경로와 위협/대응/실패·실제 안전 경계는 LOCATION_BASELINES/WORLD_RULES/DRIVER_BASELINES/ENDING_CONDITIONS에 같은 entity/ref로 연결한다. **시작 전 사건과 시작 후 PC 앞에서 벌어질 중요한 위기**를 구분하고, 원작 적이 초반의 통상 귀가/도주 경로에서 실제로 닿을 공간·위해·대응 및 직업·생활/관계가 중심 사건에 묶이는 경로를 기존 절에 구체화한다. 별도 비공개 설계도 절을 만들지 않는다. 운항 일정이나 ‘안전하면 철수’라는 결론만으로 이탈 설계를 대신하지 않는다.
@@ -81,7 +82,7 @@ campaign_id+canon_id+revision+절/entity ID로 조회하고, 현재 확인 가�
 보존 범위는 정본+동적 체크포인트를 결합한 전체 논리 상태다. 실제 경로/필드 허용은 확인된 서버 계약을 따른다.
 | 범위 | 보존할 정보 |
 |---|---|
-| 식별/세계 | session/campaign/version/event/parent·규칙판·정본판본·phase/챕터/종료, 설정의 실제 입력/미입력·start_seed와 생성 출처·확정 세계/지도 참조 |
+| 식별/세계 | session/campaign/version/event/parent·규칙판·정본판본·phase/챕터/종료, 설정의 실제 입력/미입력·`permanent_cards_enabled`/종속 `permanent_growth_enabled`·start_seed와 생성 출처·확정 세계/지도 참조 |
 | PC | identity/참가슬롯·공개프로필·특성/기능·HP/SAN/Luck/MOV/DB/Build·위치/현금/소지품(실제 점유·오른손/왼손·착용·빠른 접근·사용 준비)·부상/광기/진행성 위해·일일SAN기준/누적·회복 사용 |
 | 인물/세계 변화 | NPC 생사/목적/지식/위치/Voice·상대별관습/합의/역할/다음행동·장소/경로/시설/소유/접근·낙하/인계 물품의 위치·공개된 원문·신규/취소/처리event |
 | 이야기/경험 | 주요 원인/발견/목표 변화·관계/공동경험·태도 이유·준비/약속/획득·진행/차단/잔존 위험과 조건·STATE_EXPERIENCE_CONTINUITY의 연결 맥락 |
@@ -93,7 +94,7 @@ campaign_id+canon_id+revision+절/entity ID로 조회하고, 현재 확인 가�
 ## STATE_IDENTITY
 
 P1/P2/P3는 참가 슬롯, PC identity는 인물 식별이다. 참가 인원/실제 슬롯/대상PC가 일치해야 한다. 같은 슬롯의 새 인물은 새identity이며 과거 인물의 개인 배경·시트·성장·이미지를 상속하지 않는다. 공개 사실은 파티 지식으로 유지한다.
-**영구 카드 플레이어 ID는 PC identity/P슬롯과 별개의 UUID**다. 자산·강화 카드의 실제 능력·소실/소모 및 영구 성장 적용/보상·장착은 09-cards.md의 CARD_SYSTEM_SCOPE·CARD_EQUIP_AND_ASSET·CARD_PLAYER_STORAGE를 따른다. **닉네임만으로 연결하는 신뢰형 운영**을 사용자 지시에 따라 적용한다. 중복 없는 닉네임을 입력하면 `public.card_login` 익명 RPC 또는 권한 있는 키퍼 연결로 영구 UUID·기본18·소유·성장을 확인한다. 로그인·비밀번호·추가 인증을 요구하지 않으며, **같은 닉네임은 같은 UUID이고 닉네임 사칭 가능성은 의도적으로 수용한다**. PC 연결 시 `trpg_cards.link_character`(또는 `public.card_link_pc`)가 그 시점의 성장 단계를 `applied_stats` 스냅샷으로 확정하고 같은 PC 재로드에서는 재적용하지 않는다. UUID/카드 소유·성장은 별도 영속 카드 DB에, PC 실물·동행·HP/SAN·실제 세계 상태는 종전 verified checkpoint에 둔다. 공개 `card_*`는 **원래 GM 세이브 RPC의 접근권을 바꾸지 않는다**. 두 저장 영역의 성공·실패를 혼동하지 않는다.
+**`permanent_cards_enabled=false`이면 카드 UUID/가입·클래스/장착·영구 성장 PC 링크/보상·효과를 생성/복원하지 않는다.** 값이 확인되지 않으면 기존 정본/체크포인트에서 먼저 확인하며 임의 ON으로 되돌리지 않는다. **ON에서만** 영구 카드 플레이어 ID는 PC identity/P슬롯과 별개의 UUID다. 자산·강화 카드의 실제 능력·소실/소모 및 영구 성장 적용/보상·장착은 09-cards.md의 CARD_SYSTEM_SCOPE·CARD_EQUIP_AND_ASSET·CARD_PLAYER_STORAGE를 따른다. **닉네임만으로 연결하는 신뢰형 운영**을 사용자 지시에 따라 적용한다. 중복 없는 닉네임을 입력하면 `public.card_login` 익명 RPC 또는 권한 있는 키퍼 연결로 영구 UUID·기본18·소유·성장을 확인한다. 로그인·비밀번호·추가 인증을 요구하지 않으며, **같은 닉네임은 같은 UUID이고 닉네임 사칭 가능성은 의도적으로 수용한다**. PC 연결 시 `trpg_cards.link_character`(또는 `public.card_link_pc`)가 그 시점의 성장 단계를 `applied_stats` 스냅샷으로 확정하고 같은 PC 재로드에서는 재적용하지 않는다. UUID/카드 소유·성장은 별도 영속 카드 DB에, PC 실물·동행·HP/SAN·실제 세계 상태는 종전 verified checkpoint에 둔다. 공개 `card_*`는 **원래 GM 세이브 RPC의 접근권을 바꾸지 않는다**. 두 저장 영역의 성공·실패를 혼동하지 않는다.
 NPC/entity·원문·약속·물건·이벤트는 이름이 아닌 stable ref로 연결한다. 메뉴/대화/판정·중단 작업에는 현재 담당과 실제 선언 범위를 남겨 로드 후 자동 수락/실행하지 않는다. 이전에 형성/전달된 사건 연루와 완료한 확인도 보존한다.
 
 ## STATE_EXPERIENCE_CONTINUITY
@@ -196,7 +197,7 @@ orphan pending은 최신verified+1(없으면1),event규칙·exact원문/hash·�
 새채팅/명시로드/실제상태유실 때 적용한다. 현재 상태가 있는데 저장만 실패했다고 재로드하지 않는다.
 1. 실제 연결·소유권·session을 확인하고 표시이름/P슬롯만으로 선택하지 않는다. 종료 상태면 게임을 재개하지 않고 남은 종료/다섯후일담만 복구한다.
 2. orphan pending은 STATE_RECOVERY로 확인하고 최신 hash-valid verified의 exact 원문과 의미를 읽는다. DB1은 같은정본 전체SHA/판본/필수절/coverage를 확인하고 전체 누적world_delta·new_entities·tombstones·processed_event_ids와 PC/실행/재개문맥을 결합한다. LEGACY_FULL은 원문을 유지한다.
-3. STATE_CHECKPOINT_RECAP/STATE_EXPERIENCE_CONTINUITY로 수치·이야기흐름·관련인물의말투/태도/이유·현재장면/마지막질문/확인된의미/입력대기를 함께 복원한다. 최초 장면 전에 적용한다. 정본 전체 확인은 PRIVATE_CANON_PERIODIC_REVIEW와 같은 원문을 재사용한다.
+3. 첫 설정의 `permanent_cards_enabled`와 종속 성장 모드를 실제 정본/상태에서 복원하고 OFF이면 카드 로그인/장착·보상/성장을 실행하지 않는다. STATE_CHECKPOINT_RECAP/STATE_EXPERIENCE_CONTINUITY로 수치·이야기흐름·관련인물의말투/태도/이유·현재장면/마지막질문/확인된의미/입력대기를 함께 복원한다. 최초 장면 전에 적용한다. 정본 전체 확인은 PRIVATE_CANON_PERIODIC_REVIEW와 같은 원문을 재사용한다.
 4. 저장된 열린 판정·전투·선언·메뉴·행동권·시간/위해단계에서 이어간다. 완료한 확인/합의를 미확인으로 되돌리지 않고 말못함을 이해못함으로 바꾸지 않는다. 새 채팅이란 이유로 생성·굴림·시간·피해를 재실행하지 않는다.
 Supabase 실패 시 STATE_GITHUB_FAILOVER_PROTOCOL의 확인 가능한 마지막 사본을 검토하되 최신DB를 확인하지 못했음을 구분한다. 최신미저장/다른분기와 섞지 않는다. 실제기록·사용자확인으로 필요한 누락만 보완하고 부분복구를 완전최신이라 하지 않는다. 로드 자체/현실경과는 게임조건을 진행시키는 행동이 아니다.
 

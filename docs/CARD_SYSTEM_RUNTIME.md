@@ -23,7 +23,7 @@
 
 예: `select public.card_login('나의닉네임');`. 실제 앱에서는 POST `/rest/v1/rpc/card_login`에 `{"p_nickname":"나의닉네임"}` 형식으로 요청한다. **테이블 전체 SELECT/UPDATE/DELETE는 익명 권한에 포함되지 않는다.**
 
-**성장 적용 설정:** 새 캠페인 첫 설정에서 ON/OFF(비우면 ON)를 확정하고 모든 새 PC 연결에 동일한 `p_permanent_growth`를 전달한다. OFF는 누적 영구 성장 레벨·성장 보상을 비활성화하거나 삭제하는 것이 아니라 **이번 PC에게 누적 성장 보너스만 적용하지 않는 것**이다. 기존 `character_links` 테이블에 OFF의 `applied_growth` 8종0/원본 `applied_stats` 스냅샷을 저장하고, 기존 동일 PC 재연결 시 확정된 스냅샷을 보존한다. 배포용 additive SQL 계약은 `docs/sql/trpg-card-permanent-growth-mode-v1.sql`. OFF에 모드 지원 RPC가 없으면 기존 ON 전용 경로로 성공을 가장하지 않는다.
+**캠페인 카드 시스템 전체 ON/OFF:** OFF이면 카드 계정/UUID·클래스/장착/도감·자산/강화 효과·영구 성장 PC 링크·카드/성장 보상 및 **모든 공개/비공개 카드 RPC를 실행하지 않는다**. 기존 영구 계정 소유/레벨은 보존하고 캠페인 모드는 CANON_INDEX/검증된 동적 상태에서 복원한다. ON이면 기존 카드/성장 기능을 사용하며 `card_link_pc_with_growth_mode(...,true)`로 연결한다. 이전에 설치된 `false` 성장 모드 함수는 호환용으로 남지만 OFF 세션에서 호출하지 않는다.
 
 **신뢰 모델 주의:** 닉네임을 기억하는 다른 사람이 `card_login`·`card_equip`·`card_pick_reward`를 대신 부를 수 있다. 성장 선택의 `p_python_roll` 값도 퍼블릭 경로에서는 서버가 Python 원본을 재검증하지 못한다. 약속한 소규모 운영 이외의 계정 분리·공정성 보안은 제공하지 않는다는 뜻이다.
 

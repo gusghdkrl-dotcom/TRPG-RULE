@@ -518,8 +518,9 @@
       "미확정 조건에 의존하는",
       "이후 부분 응답",
       "2명으로 자동 결정하지",
-      "영구 성장 적용: ON / OFF",
-      "permanent_growth_enabled=true/false"
+      "permanent_growth_enabled=true/false",
+      "영구 카드·성장 시스템: ON / OFF",
+      "permanent_cards_enabled=true/false"
     ]
   },
   {
@@ -576,7 +577,9 @@
       "09-cards.md",
       "상세 효과 확인 불가",
       "4개의 슬롯을 먼저 선택",
-      "장착 가능한 실제 보유 카드만"
+      "장착 가능한 실제 보유 카드만",
+      "permanent_cards_enabled=true",
+      "OFF 캠페인에서는"
     ]
   },
   {
@@ -595,8 +598,10 @@
       "4슬롯 우선 선택",
       "전체 도감",
       "card_link_pc_with_growth_mode",
-      "OFF에서는",
-      "스냅샷"
+      "스냅샷",
+      "permanent_cards_enabled=true",
+      "OFF이면 카드 로그인",
+      "OFF는 카드 PC 연결 RPC"
     ]
   },
   {
@@ -1475,7 +1480,9 @@
       "초기에 실제 안전/종결이 성립하면 추가 관문 없이 인정한다",
       "떠나겠다는 의사·교통편 확보·한 구역 이동만으로 엔딩을 확정하지 않고",
       "이탈 실패는 자동 안전 귀환이 아니며 현재 위치·부상/광기·손실·남은 수단/추격을 유지한다",
-      "실제 플레이에서 충분한 난관을 피해"
+      "실제 플레이에서 충분한 난관을 피해",
+      "permanent_cards_enabled=true",
+      "OFF 세션의 챕터"
     ]
   },
   {
@@ -1541,7 +1548,10 @@
       "위 기존 필수 절들 자체에",
       "별도 설계도 절/파일·서버 필드를 만들지 않는다",
       "예방/해결/부분 성공/철수/실패/방치",
-      "시작 전 사건과 시작 후 PC 앞에서 벌어질 중요한 위기"
+      "시작 전 사건과 시작 후 PC 앞에서 벌어질 중요한 위기",
+      "permanent_cards_enabled",
+      "NPC_BASELINES",
+      "DRIVER_BASELINES"
     ]
   },
   {
@@ -1609,7 +1619,9 @@
       "연결 맥락",
       "전투/추격/광기",
       "후일담완료항목",
-      "폐기 기능의 신규 상태를 만들지"
+      "폐기 기능의 신규 상태를 만들지",
+      "permanent_cards_enabled",
+      "permanent_growth_enabled"
     ]
   },
   {
@@ -1618,7 +1630,8 @@
       "새identity",
       "중단 작업",
       "같은 슬롯",
-      "stable ref"
+      "stable ref",
+      "permanent_cards_enabled=false"
     ]
   },
   {
@@ -1736,7 +1749,8 @@
       "이야기흐름",
       "마지막질문",
       "말못함을 이해못함으로 바꾸지",
-      "로드 자체/현실경과는 게임조건을 진행시키는 행동이 아니다"
+      "로드 자체/현실경과는 게임조건을 진행시키는 행동이 아니다",
+      "permanent_cards_enabled"
     ]
   },
   {
@@ -1881,7 +1895,9 @@
       "SETUP_UI_FIXED_CONTRACT",
       "이 표현 규격은 카드의 기계적 등급/효과를 바꾸지 않는다",
       "도감과 장착 화면",
-      "성장8종은 별도 탭"
+      "성장8종은 별도 탭",
+      "permanent_cards_enabled=true",
+      "OFF에서는 닉네임"
     ],
     "instruction_contains": [
       "| 09-cards.md |"
@@ -2127,8 +2143,9 @@
       "50%",
       "25%",
       "10%",
-      "영구 성장 적용 ON/OFF",
-      "card_link_pc_with_growth_mode"
+      "card_link_pc_with_growth_mode",
+      "영구 카드·성장 시스템 ON/OFF",
+      "OFF이면 카드 시스템"
     ]
   },
   {
@@ -2138,8 +2155,9 @@
       "스냅샷",
       "종결·지급",
       "공개",
-      "permanent_growth_enabled",
-      "보너스0"
+      "**ON에서만**",
+      "OFF에서는 카드 PC 연결",
+      "**ON 캠페인만**"
     ]
   }
 ]

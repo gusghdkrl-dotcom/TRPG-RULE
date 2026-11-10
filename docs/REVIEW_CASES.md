@@ -278,3 +278,13 @@
 | 성장 설정 OFF | 새 PC의 applied_growth 8종0, applied_stats 원본, 영구 계정 성장 레벨/보상 그대로 보존 |
 | 이미 연결된 PC의 재진입 | 기존 스냅샷 유지, ON/OFF를 소급 적용·초기화하지 않음 |
 | OFF RPC 실패 | 이전 ON 경로로 대체하지 않고 연결 미완료로 정직하게 보고 |
+
+## 2026-11-11 카드 전체 OFF 및 비공개 제작·상태 연결
+
+| 시나리오 | 기대 |
+|---|---|
+| OFF 새 시작 | 카드 닉네임·UUID 등록/기본 카드 지급/클래스/도감/장착·카드 효과·성장 PC 링크 전부 생략, 일반 PC/시나리오는 진행 |
+| OFF 챕터·대사건 종결 | 카드/성장 보상 후보/난수/지급 및 카드 RPC 호출 없음. 이후 ON에서 소급 지급 없음 |
+| ON 후속 캠페인 | 기존 계정 보유 카드/성장 레벨 그대로 사용, OFF로 인한 삭제/초기화 없음 |
+| OFF 재개 | CANON_INDEX의 permanent_cards_enabled=false 및 종속 성장 모드 유지, 부당한 카드 시스템 부활 없음 |
+| 새 비공개 정본 | 기존 NPC_BASELINES/LOCATION_BASELINES/DRIVER_BASELINES/ENDING_CONDITIONS에 시작 후 PC에게 향하는 원작 적·NPC·위협과 정상 귀가/퇴로의 실제 대응 인과를 연결 |

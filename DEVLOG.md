@@ -1,5 +1,11 @@
 # 개발 일지
 
+## 2026-11-11 — 영구 카드·성장 전면 OFF 경로와 비공개 정본 연결
+
+- 사용자 정정: OFF는 영구 성장 특성 보너스만 생략하는 게 아니라 **해당 캠페인의 카드 시스템 전체를 건너뛰는 일반 CoC 모드**. 닉네임/카드 UUID·기본 지급·주 클래스/도감·자산/강화 장착/발동·누적 성장 PC 적용·챕터/종결 카드/성장 후보/보상을 모두 생략. 기존 영구 계정/레벨·과거 보상은 보존하고 다음 ON에서 재사용.
+- START_SETTINGS_GATE/CAMPAIGN_SETUP_PIPELINE/SETUP_UI_FIXED_CONTRACT·09-cards·06-play 종결·07-state CANON_INDEX/STATE_SCHEMA/STATE_IDENTITY/STATE_RESUME·START_GAME/카드 운영 계약·검증 계약/사례에 반영. 서버의 이전 `p_permanent_growth=false` 함수는 유지하지만 OFF 게임에 호출하지 않는다. 운영 DB/기존 세이브 소급 변경 없음.
+- 원작 위협/사건이 PC에 향하는 설계도는 이미 기존 비공개 정본 HIDDEN_TRUTH/WORLD_RULES/PC_CONNECTIONS에 연결되어 있으며 이번에 NPC_BASELINES/LOCATION_BASELINES/DRIVER_BASELINES/ENDING_CONDITIONS의 초반 원인·위협·퇴장 경로를 명료화했다. 실제 《빛 없는 등대》 확정 비공개 정본은 접근 가능한 파일에서 찾지 못했으므로 원문 변경은 하지 않았다.
+
 ## 2026-11-11 — 플레이 도중 닥치는 원작 사건 및 영구 성장 적용 ON/OFF
 
 - 이번 지적: 첫 시작 이전에 대형 사고/희생이 모두 끝나거나 PC가 원작 적·위협을 경험하지 않고 즉시 귀가하는 구조를 방지. 사건이 단지 화면 밖에서 자립하는 것을 넘어서 PC의 생활·직업·관계·동선에 도달해야 한다.
