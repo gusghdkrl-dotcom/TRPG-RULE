@@ -1,8 +1,26 @@
 # 영구 플레이어 ID·컬렉션·드래프트 Supabase 운영 계약 (2026-11-10)
 
-> **실제로 설치된 백엔드**: Supabase 프로젝트 `trpg-state-v2` (ref `taoaffdyssqtnjszumpq`)의 **비공개 스키마 `trpg_cards`**. 기존 `public.gm_checkpoint_history`와 저장 RPC/실제 세계 상태는 수정하지 않는다. 설치 SQL 사본: [trpg-card-collection-v1.sql](sql/trpg-card-collection-v1.sql). 실제 연결 없는 임의 가상 값·성공 신고 금지.
+> **실제로 설치된 백엔드**: Supabase 프로젝트 `trpg-state-v2` (ref `taoaffdyssqtnjszumpq`)의 **비공개 스키마 `trpg_cards`**. 기존 `public.gm_checkpoint_history`와 저장 RPC/실제 세계 상태는 수정하지 않는다. 설치 SQL 사본: [trpg-card-collection-v1.sql](sql/trpg-card-collection-v1.sql). 익명 닉네임 접속용 추가 SQL: [trpg-card-nickname-public-v1.sql](sql/trpg-card-nickname-public-v1.sql). 실제 연결 없는 임의 가상 값·성공 신고 금지.
 >
-> **인증 경계**: 닉네임은 플레이어 UUID를 조회하는 표시 이름이지 본인 인증 증명이 아니다. 현재는 키퍼의 **권한 있는 Supabase 연결만** 사용할 수 있고, `anon`/`authenticated` 역할은 `trpg_cards`의 사용·조회·RPC 실행 권한이 없다. 외부 사용자에게 닉네임만으로 접근하는 공개 API를 열지 않는다. 다중 사용자 대외 서비스에서는 신원 검증(예: 인증 계정/별도 소유 확인)을 추가하기 전까지 외부 자가 로그인을 제공하지 않는다.
+> **닉네임만 사용하는 신뢰 운영 [사용자 명시 승인]**: 2~3명의 소규모 지인용으로 **로그인·비밀번호 없이 닉네임 입력만으로 플레이어 UUID에 접속**한다. `public.card_login` 등 지정한 7개 RPC는 `anon`/`authenticated`에서 호출 가능하다. **닉네임을 아는 누구나 그 사람의 카드 계정을 열람하거나 장착·보상 선택을 대신할 수 있다**는 사칭 위험을 사용자가 수용했다. 대신 원본 `trpg_cards` 테이블의 직접 쓰기·대량 삭제와 **`public.gm_checkpoint_history` 및 원래 게임 세이브 RPC**는 열지 않았다. 익명 카드 API는 의도적인 보안 완화이며 인터넷 공개 인증 서비스가 아니다.
+
+## 닉네임만 사용하는 공개 API (로그인·비밀번호 없음)
+
+기존 카드 시스템과 세계/GM 상태를 구분한다. 별도 사용자 계정 인증은 없으며 **익명 Supabase publishable key를 사용하는 클라이언트**가 다음 `public` RPC를 호출한다. 이 키는 일반 앱 공개 연결용이지 소유자 인증키가 아니다.
+
+| 공개 RPC | 닉네임으로 가능한 동작 |
+|---|---|
+| `card_login(p_nickname)` | 새 닉네임 UUID 생성·기본18 지급 또는 기존 동일 UUID 조회; 보유 카드·성장·캠페인 반환 |
+| `card_lookup(p_nickname)` | 존재 여부·현재 컬렉션 조회, 없으면 새로 만들지 않음 |
+| `card_join(p_nickname,p_campaign_id,p_class,p_mode,p_session_id)` | 캠페인 생성/기존 확인·참가·클래스 고정 |
+| `card_link_pc(p_nickname,p_campaign_id,p_pc_id,p_base_stats)` | 새 PC 연결 시 누적 성장 적용·스냅샷 고정 |
+| `card_equip(p_nickname,p_campaign_id,p_boundary,p_asset,p_enhancement,p_flex_a,p_flex_b)` | 소유·클래스·장착 슬롯·고정 경계 검사 후 장착 |
+| `card_rewards(p_nickname,p_campaign_id)` | 미소유 후보 풀 및 이미 발행된 드래프트 조회 |
+| `card_pick_reward(p_nickname,p_campaign_id,p_event_key,p_choice,p_python_roll)` | **이미 키퍼가 정당하게 발행한** 보상에 대해 한 옵션만 선택·저장 |
+
+예: `select public.card_login('나의닉네임');`. 실제 앱에서는 POST `/rest/v1/rpc/card_login`에 `{"p_nickname":"나의닉네임"}` 형식으로 요청한다. **테이블 전체 SELECT/UPDATE/DELETE는 익명 권한에 포함되지 않는다.**
+
+**신뢰 모델 주의:** 닉네임을 기억하는 다른 사람이 `card_login`·`card_equip`·`card_pick_reward`를 대신 부를 수 있다. 성장 선택의 `p_python_roll` 값도 퍼블릭 경로에서는 서버가 Python 원본을 재검증하지 못한다. 약속한 소규모 운영 이외의 계정 분리·공정성 보안은 제공하지 않는다는 뜻이다.
 
 ## 1. 서버에 생성된 객체
 
@@ -22,7 +40,7 @@
 
 ## 2. 게임 시작: 닉네임 연결 → 클래스 → PC
 
-키퍼는 사용자로부터 닉네임을 받아 권한 있는 Supabase 연결로 조회/등록한다. 닉네임은 2~24자, 양끝 공백 제거, 중복 불가. **기존 닉네임 사용은 같은 UUID를 재사용**한다. 단 외부인의 닉네임 사칭을 막는 인증 수단은 별도다.
+닉네임은 2~24자, 양끝 공백 제거, 중복 불가. **같은 닉네임을 입력하면 별도 확인 없이 같은 UUID로 접속**한다. 소유자 검증·비밀번호·OTP를 요구하지 않는다. 키퍼는 권한 있는 연결로 기존 비공개 함수도 사용할 수 있지만, 닉네임 사용자 본인은 로그인 없는 아래 공개 RPC로 접속 가능하다.
 
 ```sql
 -- 신규면 UUID 생성 및 기본 18장 최초 지급, 기존이면 같은 UUID/소유 상태 조회
@@ -85,12 +103,12 @@ select trpg_cards.save_loadout(
 
 ## 5. 보안·운영 테스트 결과
 
-- `trpg_cards`는 API 공개 스키마가 아니고 모든 테이블에 RLS 적용. `anon`, `authenticated`에 스키마 사용, 테이블 조회, 관련 함수 실행 권한 없음.
+- `trpg_cards` 원본 스키마는 비공개이고 모든 테이블에 RLS 적용. `anon`, `authenticated`가 원본 스키마/테이블 및 비공개 함수에 직접 접근하지는 못한다. 대신 **지정한 `public.card_*` 7개 보안 검증 함수**는 익명 호출 허용.
 - 기존 게임 저장 테이블 `public.gm_checkpoint_history`나 `trpg_v2_*` 함수를 수정하지 않음.
 - DB 트랜잭션 롤백 테스트: 닉네임 재연결, 기본18장, 4슬롯 장착, 신규PC 성장 적용, 기존 PC 비소급, 드래프트 최초 발행/선택 재시도, 성장 80% 성공/실패, 전체 소진 보상 없음 **통과**.
 - 테스트 데이터는 **ROLLBACK** 처리했으므로 영구 플레이어/드래프트 기록을 남기지 않음.
-- 현재 운영상 **선행 종결 검증과 Python RNG·후보 전달은 키퍼가 수행**해야 함. 함수가 미래의 경기 종결 이벤트를 알아서 감지하거나 자동 체크하는 백그라운드 서버는 아님.
-- **검증이 추가로 필요한 영역**: 실전 신규 캠페인 엔드투엔드 시뮬레이션, 실제 Supabase 사용 연결이 끊겼을 때의 상태 복구, 동시 플레이어의 동일 닉네임 사칭 방지, 캠페인/챕터별 종결의 서버 자동 증명, 새 카드 추가 시 마이그레이션. 공개 서비스 전 별도 Auth/소유권 검증 필수.
+- 현재 운영상 **선행 종결 검증과 Python RNG·후보 발행은 키퍼가 수행**해야 함. 이미 발행한 보상은 익명 닉네임 사용자가 `public.card_pick_reward`로 선택할 수 있다. 성장 Lv.1 이후의 `p_python_roll` 값은 **키퍼가 실제 Python에서 생성해 전달해야 하며**, 사용자가 가짜 숫자를 내면 DB 자체는 구별하지 못한다. 이는 로그인 생략을 허용한 소규모 신뢰 운영의 약점이다. 함수가 미래 경기 종결 이벤트를 자동 감지하지는 않는다.
+- **검증이 추가로 필요한 영역**: 실전 신규 캠페인 전체 흐름, HTTP API 클라이언트에서 실제 닉네임 UX, 연결 장애 복구, 캠페인/챕터 종결의 서버 자동 증명, 새 카드 업데이트. **닉네임 사칭 방지는 의도적으로 제외**했으므로 플레이어 2~3명 외에 URL/닉네임이 알려지면 제삼자 접속이 가능하다.
 
 ## 6. 카드 규칙의 현재 확정 변경
 
