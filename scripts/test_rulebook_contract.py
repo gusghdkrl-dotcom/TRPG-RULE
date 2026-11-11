@@ -21,6 +21,15 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('crisis_all_in_first_ninety_minutes',lambda r:change(r,'rules/04-setup.md','모든 주요 재난을 시작 뒤 1~2시간에 압축하거나','모든 주요 재난을 시작 뒤 90분 안에 압축한다')),
+ ('world_event_same_time_as_pc_contact',lambda r:change(r,'rules/04-setup.md','사건이 일어나는 시점, 그 소식이 도달하는 시점, PC가 대응할 수 있는 시점을 하나로 뭉치지 않는다','사건 시작 즉시 PC가 모든 비밀과 현장을 알아차린다')),
+ ('periodic_extra_attacks_as_pacing',lambda r:change(r,'rules/04-setup.md','임의로 30분마다 새 공격/시계 알림을 배치하지 않는다','30분마다 새로운 적이 반드시 공격한다')),
+ ('pivotal_intervention_window_removed',lambda r:change(r,'rules/04-setup.md','**사건 시각·장면 여유·실제 이동 가능성의 사전 대조:**','등장 인물의 실제 이동 시간은 검토하지 않는다')),
+ ('living_world_does_not_record_arrival',lambda r:change(r,'rules/07-state.md','**신규 정본의 실재 시간축·행동 가능 창·후속 생활:**','각 사건은 발생만 기록하고 PC가 언제 도달하는지는 기록하지 않는다')),
+ ('offscreen_event_instant_teleport',lambda r:change(r,'rules/05-world.md','**실제 사건 시각과 영향 도달의 차이:**','먼 NPC는 알 수 없는 비밀도 즉시 전부 전달한다')),
+ ('late_arrival_everyone_waits',lambda r:change(r,'rules/05-world.md','늦게 도착한 곳은 이미 떠난 사람·변경된 시설/여파로 보여준다','PC가 늦어도 모든 NPC는 같은 자리에서 정지한다')),
+ ('staged_hazards_freeze_for_player',lambda r:change(r,'rules/06-play.md','실제 위험(침수·연기·공격·산소·급박한 구조)은 해당 속도를 유지','실제 위험은 PC가 준비될 때까지 중단')),
+ ('fiction_time_measured_by_chat_turns',lambda r:change(r,'rules/06-play.md','미래 사건의 등장 횟수·상승하는 시한/조우 속도를 채팅 턴 수로 맞추지 않는다','매 세 턴마다 새 사건을 발동한다')),
  ('party_only_threat_when_split',lambda r:change(r,'rules/04-setup.md','**분산 이전부터 성립하는 생존 위협의 실효성:**','적은 파티가 나뉠 때만 출현한다')),
  ('combined_party_immune',lambda r:change(r,'rules/04-setup.md','전원이 함께 있어도 진지하게 감지·방어/전투·구조·우회·퇴각·준비를 고민할 만큼','넷이 뭉치면 모든 위협이 자동 사라진다')),
  ('npc_consent_auto_follower',lambda r:change(r,'rules/04-setup.md','**NPC의 동행·복종은 특별한 합의이지 기본값이 아니다:**','NPC는 처음 본 PC의 모든 명령을 따른다')),
