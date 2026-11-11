@@ -21,6 +21,15 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('no_lethal_danger_preparation',lambda r:change(r,'rules/04-setup.md','**신규 캠페인의 실제 위해·SAN 위기 설계:**','위험은 말로만 경고한다')),
+ ('harm_warning_only_allowed',lambda r:change(r,'rules/04-setup.md',"'치명적일 수 있다'는 설명이나 경고 HUD만으로 완료하지 않는다","경고 HUD만 있으면 위해 설계를 완료한다")),
+ ('harm_mandatory_fatality',lambda r:change(r,'rules/04-setup.md','무조건적인 구제나 강제 사망을 예약하지 않는다','모든 플레이어 중 한 명의 사망을 확정한다')),
+ ('no_horror_canon_connections',lambda r:change(r,'rules/07-state.md','**신규 정본의 실제 피해·광기 접점:**','SAN과 HP는 그때그때 정한다')),
+ ('narrative_overwrites_sanity',lambda r:change(r,'rules/03-danger.md','적격한 고강도 노출은 최종 보스전까지 미루거나 편의상 낮은 Tier로 바꾸지 않는다','SAN 위해는 절정에서만 1점 깎는다')),
+ ('roll_before_pc_defence',lambda r:change(r,'rules/05-world.md','필요한 PC 선언/방어·d100 입력을 받은 뒤 실제 판정','PC가 입력하기 전에 부상과 광기를 확정')),
+ ('preflight_invents_enemy_scaling',lambda r:change(r,'rules/04-setup.md','1명이라 공격을 자동 빗나가게 하거나 3명이라 숨은 증원을 더하지 않는다','PC 인원에 맞춰 보이지 않는 적을 계속 만든다')),
+ ('preflight_performs_real_future_rolls',lambda r:change(r,'rules/04-setup.md','미래 플레이를 실행하거나 미리 굴리는 절차가 아니다','가상 검사에서 모든 전투를 미리 굴리고 확정한다')),
+ ('compatibility_certifies_live_balance',lambda r:change(r,'rules/04-setup.md','서면 정합성만으로 실전 밸런스를 보증하지 않는다','서면 설계만 하면 실전 밸런스는 완벽히 보증된다')),
  ('videogame_script_imported',lambda r:change(r,'rules/04-setup.md','레벨 클리어 순서·필수 열쇠/퍼즐·방마다 전리품','모든 방에 정해진 아이템과 전투가 있다')),
  ('keeper_role_erased',lambda r:change(r,'rules/04-setup.md','룰북은 판정과 창작 원칙, 비공개 정본은 처음부터 존재하는 사람·적·장소·수단·원인과 가능한 결과의 인과','키퍼는 모든 미래 PC 행동을 미리 작성한다')),
  ('single_solution_required',lambda r:change(r,'rules/04-setup.md','미리 짜 둔 한 가지 정답이나 특정 기능 성공을 모든 PC에게 강제하지 않는다','유일한 정답이 없으면 퍼즐은 진행되지 않는다')),
