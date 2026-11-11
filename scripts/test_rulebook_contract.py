@@ -21,6 +21,12 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('videogame_script_imported',lambda r:change(r,'rules/04-setup.md','레벨 클리어 순서·필수 열쇠/퍼즐·방마다 전리품','모든 방에 정해진 아이템과 전투가 있다')),
+ ('keeper_role_erased',lambda r:change(r,'rules/04-setup.md','룰북은 판정과 창작 원칙, 비공개 정본은 처음부터 존재하는 사람·적·장소·수단·원인과 가능한 결과의 인과','키퍼는 모든 미래 PC 행동을 미리 작성한다')),
+ ('single_solution_required',lambda r:change(r,'rules/04-setup.md','미리 짜 둔 한 가지 정답이나 특정 기능 성공을 모든 PC에게 강제하지 않는다','유일한 정답이 없으면 퍼즐은 진행되지 않는다')),
+ ('canon_world_prep_replaced_by_improv',lambda r:change(r,'rules/07-state.md',"추상적으로 '키퍼가 알아서 적/보상/퍼즐을 추가'라고 비워 두지 않는다","핵심 적·물품·장소는 키퍼가 즉흥 생성한다")),
+ ('world_forces_game_phases',lambda r:change(r,'rules/05-world.md','퀘스트 수락·정해진 퍼즐 해법·고정 전리품/보스 페이즈','퀘스트 수락 후 고정 보스 페이즈를 필수 진행')),
+ ('compatibility_allows_empty_canon',lambda r:change(r,'rules/04-setup.md','반대로 중요한 물리 사실과 전력을 키퍼 즉흥에 전부 미루어도 설계 미완료다','적의 수치와 장소는 플레이 중 만들어도 언제나 설계 완료다')),
  ('tiered_roster_dropped',lambda r:change(r,'rules/04-setup.md','신규 캠페인 필수 다층 적대 생태·단계별 전력 로스터','원작 몬스터 3마리만 생성')),
  ('variant_enemy_tier_dropped',lambda r:change(r,'rules/04-setup.md','하급·변형·중급(중간 보스)·상급·최종 보스','하급만 존재')),
  ('finite_enemy_roster_missing',lambda r:change(r,'rules/04-setup.md','하급 세 마리와 지휘자 하나로 나머지 단계를 비워 두거나','하급 세 마리와 지휘자 하나만 만들면 완료이며')),
