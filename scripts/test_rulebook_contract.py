@@ -21,6 +21,16 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('party_only_threat_when_split',lambda r:change(r,'rules/04-setup.md','**분산 이전부터 성립하는 생존 위협의 실효성:**','적은 파티가 나뉠 때만 출현한다')),
+ ('combined_party_immune',lambda r:change(r,'rules/04-setup.md','전원이 함께 있어도 진지하게 감지·방어/전투·구조·우회·퇴각·준비를 고민할 만큼','넷이 뭉치면 모든 위협이 자동 사라진다')),
+ ('npc_consent_auto_follower',lambda r:change(r,'rules/04-setup.md','**NPC의 동행·복종은 특별한 합의이지 기본값이 아니다:**','NPC는 처음 본 PC의 모든 명령을 따른다')),
+ ('npc_every_instruction_must_fail',lambda r:change(r,'rules/04-setup.md','모든 명령을 자동 거절하지 않는다','모든 명령을 자동 거절한다')),
+ ('npc_refusal_means_betrayal',lambda r:change(r,'rules/05-world.md','불신·자기 일 우선·명령 거부·이별은 곧 적대나 배신이 아니다','NPC가 거절했다면 반드시 적대/배신이다')),
+ ('npc_new_danger_free_obedience',lambda r:change(r,'rules/05-world.md','새로운 위험·전투·사람을 버리고 떠남','새로운 위험·전투·사람을 버리고 떠남도 PC 지시로 자동 실행')),
+ ('npc_past_success_is_revoked',lambda r:change(r,'rules/05-world.md','사회 판정으로 성립한 합의/설득 성공','성공한 모든 사회 판정은 NPC가 나중에 취소')),
+ ('enemy_waits_for_split',lambda r:change(r,'rules/05-world.md', "적도 PC가 '어디 갈까' 고민할 때 공격을 유예하거나 파티가 흩어질 때까지 기다리지 않는다","적은 PC가 팀을 나누어야만 공격한다")),
+ ('split_player_controls_npc',lambda r:change(r,'rules/06-play.md','동행 NPC를 PC가 조종하는 추가 말로 쓰지 않고','NPC는 PC가 자유롭게 조종하는 추가 캐릭터')),
+ ('danger_no_actual_contact_in_full_party',lambda r:change(r,'rules/07-state.md','**근본 위협과 NPC의 협력 경계를 새 정본에 선확정:**','적은 도달하지 않고 경고로만 남는다')),
  ('world_only_quest_locations',lambda r:change(r,'rules/04-setup.md','사건 진행에 필요한 장소만 만들지 않고','사건 진행에 필요한 장소만 만든다')),
  ('world_rooms_not_lived_in',lambda r:change(r,'rules/04-setup.md','**배치된 공간 전체의 핍진한 내용:**','방에는 플레이어가 원할 때마다 임의 물품을 만든다')),
  ('pivotal_place_no_causal_reason',lambda r:change(r,'rules/04-setup.md','**핵심 장소·필연적 국면의 인과적 강제력:**','키퍼가 가라고 하는 곳에 반드시 가야 한다')),
