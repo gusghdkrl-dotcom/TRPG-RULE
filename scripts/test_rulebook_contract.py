@@ -21,6 +21,18 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('reactive_event_fixed_time_only',lambda r:change(r,'rules/04-setup.md','**유동적 발생 구간·반응형 사건 진행·최종 데드라인:**','모든 사건을 정확히 20시 10분에 발동한다')),
+ ('reactive_event_uses_story_progress',lambda r:change(r,'rules/04-setup.md','서사 진행도','PC가 단서를 세 개 모으면 자동으로 적을 생성한다')),
+ ('reactive_event_no_hard_deadline',lambda r:change(r,'rules/04-setup.md','최초 발생 가능 시간대·기존 원인/전제 조건·독립 주체의 행동·최종 발동 시한','PC가 준비할 때까지 사건이 기다린다')),
+ ('stalled_time_world_freezes',lambda r:change(r,'rules/04-setup.md','**정체 시 직접 다가오는 세계:**','PC가 행동할 때까지 적과 재난을 일시정지한다')),
+ ('party_size_monster_hp_multiplier',lambda r:change(r,'rules/04-setup.md','PC 수 × 고정 적 수/HP·피해량 배율','PC 수만큼 보스 HP와 피해량을 반드시 곱한다')),
+ ('new_party_members_spawn_monsters',lambda r:change(r,'rules/04-setup.md','정본 확정/플레이 시작 뒤 PC 수·현재 HP·연승/철수 의도에 맞춰 적을 새로 생성/회복','누구든 합류하면 적을 무한 생성한다')),
+ ('game_runtime_checks_story_progress',lambda r:change(r,'rules/05-world.md','**유동적인 사건 발생 구간과 마감의 실제 처리:**','키퍼는 채팅 메시지 수를 세어서 모든 이벤트를 발동한다')),
+ ('stalled_chat_input_drives_clock',lambda r:change(r,'rules/05-world.md','판정 대기, 플레이어의 현실 숙고, 채팅 메시지의 양은 0시간','플레이어가 생각하면 30분이 지났다고 한다')),
+ ('party_size_runtime_tunes_enemy',lambda r:change(r,'rules/05-world.md','**정본 확정 뒤에는 적 전력을 동적으로 스케일하지 않음:**','플레이 도중 캐릭터 수에 맞춰 적의 체력과 수를 변경한다')),
+ ('scene_progress_auto_clock',lambda r:change(r,'rules/06-play.md','**반응형 사건 시간은 극중 상태의 결과:**','키퍼의 장면 번호에 따라 적을 즉석 생성한다')),
+ ('private_canon_lacks_reactive_deadline',lambda r:change(r,'rules/07-state.md','**유동 시계·데드라인의 비공개 확정 및 실제 진행 상태:**','재난 마감 시간과 발생 전제를 기록하지 않는다')),
+ ('private_canon_party_scaling_unbounded',lambda r:change(r,'rules/07-state.md','**생성 시 참가 인원별 위협 구성의 확정 경계:**','PC 수에 따라 적은 언제든 생성 가능하다')),
  ('crisis_all_in_first_ninety_minutes',lambda r:change(r,'rules/04-setup.md','모든 주요 재난을 시작 뒤 1~2시간에 압축하거나','모든 주요 재난을 시작 뒤 90분 안에 압축한다')),
  ('world_event_same_time_as_pc_contact',lambda r:change(r,'rules/04-setup.md','사건이 일어나는 시점, 그 소식이 도달하는 시점, PC가 대응할 수 있는 시점을 하나로 뭉치지 않는다','사건 시작 즉시 PC가 모든 비밀과 현장을 알아차린다')),
  ('periodic_extra_attacks_as_pacing',lambda r:change(r,'rules/04-setup.md','임의로 30분마다 새 공격/시계 알림을 배치하지 않는다','30분마다 새로운 적이 반드시 공격한다')),
