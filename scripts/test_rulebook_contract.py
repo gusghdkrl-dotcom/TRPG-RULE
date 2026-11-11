@@ -21,6 +21,17 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('main_stage_all_ends_after_social_time',lambda r:change(r,'rules/04-setup.md','**메인 무대의 유효 체류 시간과 사건 지속성:**','정상적인 생활/탐험은 다 놓치는 지름길이다')),
+ ('main_stage_exploration_punished',lambda r:change(r,'rules/04-setup.md','정상적인 생활 교류·자발적인 탐험/준비를 충분히 즐겼더니 주요 목표와 모든 관계·대응 기회가 이미 끝나 있는 구조','메인 무대의 모든 생존자와 목표는 30분 뒤에 소멸한다')),
+ ('important_boss_cannot_die',lambda r:change(r,'rules/04-setup.md','**핵심 적대자의 초기 충돌·생존 수단과 사건 인과:**','중요 보스는 어떤 공격으로도 죽지 않는다')),
+ ('important_boss_auto_escapes_capture',lambda r:change(r,'rules/04-setup.md','지휘자의 중요성을 이유로 플레이어가 성공시킨 사살·체포·봉쇄를 강제로 실패 처리하거나 불사/자동 탈출을 부여하지 않는다','플롯에 필요하면 체포를 즉시 무효화한다')),
+ ('single_critical_executor_can_be_killed',lambda r:change(r,'rules/04-setup.md','필연적 주요 재난의 발생 원인은 실행자 개인의 생존과 분리해 사전 구성','필연적 사건은 지휘관 한 명에게만 의존해도 된다')),
+ ('early_boss_defeat_not_compared',lambda r:change(r,'rules/04-setup.md','**메인 무대 체류·중요 적 조기 제압 교차 대조:**','미래 보스의 조기 사망은 검증할 필요가 없다')),
+ ('world_boss_escape_without_roll',lambda r:change(r,'rules/05-world.md','**핵심 적대자의 전술적 후퇴와 정당한 조기 격퇴:**','보스는 무조건 순간이동하여 탈출한다')),
+ ('world_retreat_ignores_blockade',lambda r:change(r,'rules/05-world.md','후퇴·탈출은 실제 거리/위치·기능·행동 기회·대항·봉쇄 상태에 맞게 처리','후퇴는 모든 봉쇄와 거리 제한을 무시한다')),
+ ('scene_socializing_causes_deadline_skip',lambda r:change(r,'rules/06-play.md',"서사 진도를 '못 뺐다'는 이유로 적/이벤트를 앞당기지 않는다",'대화가 길면 적이 즉시 공격한다')),
+ ('canon_main_stage_no_time_to_live',lambda r:change(r,'rules/07-state.md','**메인 무대의 유효 체험 기간·사건 지속 상태:**','메인 무대는 일상 교류 중 모든 사건이 끝난다')),
+ ('canon_protects_boss_by_instant_spawn',lambda r:change(r,'rules/07-state.md','보스 무적/자동 도주·사후 소환·새 부하 증원·성공한 포획 취소','원래 인물의 즉사와 체포를 무조건 취소')),
  ('skip_core_crisis_by_refusal',lambda r:change(r,'rules/04-setup.md','**사건 안으로 들어가게 하는 불가피한 현실과 이후의 철수:**','PC가 관심 없으면 모든 초기 재난과 괴이는 취소')),
  ('force_pc_action_to_core_room',lambda r:change(r,'rules/04-setup.md','재난 속에 진입할 수밖에 없는 상황','PC를 강제로 등대로 이동시켜 조사를 선언하게 한다')),
  ('enemy_always_waits_in_room',lambda r:change(r,'rules/04-setup.md','**적의 역할이 다른 다층 필드 배치:**','적은 모든 장소에서 고정 대기하며 이동하지 않는다')),
