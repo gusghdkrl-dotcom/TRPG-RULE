@@ -21,6 +21,17 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('npc_population_only_core_cast',lambda r:change(r,'rules/04-setup.md','**살아 있는 다층 NPC 생태계:**','NPC는 중심 사건 담당자 세 명만 만든다')),
+ ('npc_population_no_location_causality',lambda r:change(r,'rules/04-setup.md','인물·장소·물품·사건이 양방향 인과로 일치','어느 NPC든 아무 방에 상관없이 배치한다')),
+ ('npc_quest_and_party_roles_fixed',lambda r:change(r,'rules/04-setup.md',"처음부터 '퀘스트 주는 사람'·'동료'·'배신자'라는 고정 플레이어 대상 역할로 배치하지 않는다","각 NPC는 퀘스트 제공자 또는 동료로만 배치한다")),
+ ('npc_absence_no_independent_life',lambda r:change(r,'rules/04-setup.md','PC를 만나지 않아도 할 다음 행동/미개입 여파','PC가 만나야만 다음 행동을 한다')),
+ ('npc_random_spawns_from_nothing',lambda r:change(r,'rules/04-setup.md','랜덤 NPC 조우에는 사전 존재·현재 위치/목표','랜덤 NPC는 필요하면 무한히 만들어낸다')),
+ ('npc_forced_betrayal',lambda r:change(r,'rules/05-world.md','플롯 충격용 무근거 배신/전원 배신','모든 NPC는 무조건 배신한다')),
+ ('npc_omniscient',lambda r:change(r,'rules/05-world.md','NPC는 PC 전체 대화/미발견 진실을 알지 못한다','NPC는 누구나 채팅 전체를 안다')),
+ ('npc_door_spawn',lambda r:change(r,'rules/05-world.md','방을 열었다는 이유로 대기 중인 NPC가 갑자기 출현하지 않는다','방을 열면 미리 준비하지 않은 NPC가 자동 출현한다')),
+ ('npc_join_without_consent',lambda r:change(r,'rules/05-world.md','새 PC 약속·지출·협력 동의는 대신 정하지 않는다','키퍼가 PC의 모든 동의를 대신한다')),
+ ('npc_canon_can_ignore_absent_people',lambda r:change(r,'rules/07-state.md','만나지 않은 NPC도 증발하지 않으며','만나지 않은 NPC는 기록에서 제거한다')),
+ ('npc_compatibility_forces_all_meetings',lambda r:change(r,'rules/04-setup.md','모든 NPC를 만나는 순회/강제 배신·동행·고정 조우 횟수','모든 NPC는 반드시 지정된 순서로 만나고 배신한다')),
  ('instant_retreat_skips_disaster',lambda r:change(r,'rules/04-setup.md','재난·습격의 발생은 거절·무관여·즉시 귀가 선언으로 취소되지 않는다','철수 선언하면 모든 재난은 취소된다')),
  ('retreat_requires_wound',lambda r:change(r,'rules/07-state.md','유효한 회피·무상처 생존·성공한 안전/철수는 취소하지 않는다','적어도 한 명에게 반드시 심각한 손상을 준다')),
  ('original_world_delayed_until_boss',lambda r:change(r,'rules/04-setup.md','**원작 고유의 공포는 게임 초입부터:**','원작의 공포는 최종 보스전에서만 시작')),
