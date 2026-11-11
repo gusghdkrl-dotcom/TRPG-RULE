@@ -26,7 +26,7 @@ mutations=[
  ('npc_consent_auto_follower',lambda r:change(r,'rules/04-setup.md','**NPC의 동행·복종은 특별한 합의이지 기본값이 아니다:**','NPC는 처음 본 PC의 모든 명령을 따른다')),
  ('npc_every_instruction_must_fail',lambda r:change(r,'rules/04-setup.md','모든 명령을 자동 거절하지 않는다','모든 명령을 자동 거절한다')),
  ('npc_refusal_means_betrayal',lambda r:change(r,'rules/05-world.md','불신·자기 일 우선·명령 거부·이별은 곧 적대나 배신이 아니다','NPC가 거절했다면 반드시 적대/배신이다')),
- ('npc_new_danger_free_obedience',lambda r:change(r,'rules/05-world.md','새로운 위험·전투·사람을 버리고 떠남','새로운 위험·전투·사람을 버리고 떠남도 PC 지시로 자동 실행')),
+ ('npc_new_danger_free_obedience',lambda r:change(r,'rules/05-world.md','새로운 위험·전투·사람을 버리고 떠남','위험한 전투나 타인을 두고 떠나는 일도 PC 지시로 자동 실행')),
  ('npc_past_success_is_revoked',lambda r:change(r,'rules/05-world.md','사회 판정으로 성립한 합의/설득 성공','성공한 모든 사회 판정은 NPC가 나중에 취소')),
  ('enemy_waits_for_split',lambda r:change(r,'rules/05-world.md', "적도 PC가 '어디 갈까' 고민할 때 공격을 유예하거나 파티가 흩어질 때까지 기다리지 않는다","적은 PC가 팀을 나누어야만 공격한다")),
  ('split_player_controls_npc',lambda r:change(r,'rules/06-play.md','동행 NPC를 PC가 조종하는 추가 말로 쓰지 않고','NPC는 PC가 자유롭게 조종하는 추가 캐릭터')),
