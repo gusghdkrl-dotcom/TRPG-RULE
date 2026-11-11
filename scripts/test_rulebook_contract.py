@@ -21,6 +21,15 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('tiered_roster_dropped',lambda r:change(r,'rules/04-setup.md','신규 캠페인 필수 다층 적대 생태·단계별 전력 로스터','원작 몬스터 3마리만 생성')),
+ ('variant_enemy_tier_dropped',lambda r:change(r,'rules/04-setup.md','하급·변형·중급(중간 보스)·상급·최종 보스','하급만 존재')),
+ ('finite_enemy_roster_missing',lambda r:change(r,'rules/04-setup.md','하급 세 마리와 지휘자 하나로 나머지 단계를 비워 두거나','하급 세 마리와 지휘자 하나만 만들면 완료이며')),
+ ('side_events_require_player_optin',lambda r:change(r,'rules/04-setup.md','메인/사이드 사건의 독립적 상황망','플레이어가 수락해야만 사이드 사건 시작')),
+ ('final_boss_no_escape',lambda r:change(r,'rules/04-setup.md','사전 발견 가능한 공략/철수 경로','불가능한 강제 보스전')),
+ ('canon_tier_roster_omitted',lambda r:change(r,'rules/07-state.md','향후 신규 세계 정본의 적대 전력·사이드 사건 완성 게이트','괴물 세 마리만 기록')),
+ ('world_unlimited_reinforcements',lambda r:change(r,'rules/05-world.md','새로운 페이즈/무한 재출현/기습용 순간이동','예고 없는 무한 증원')),
+ ('state_enemy_deaths_disappear',lambda r:change(r,'rules/07-state.md','개체/집단별 생사·HP·위치·발견/표적·자원·봉쇄/격퇴','적 개체는 매번 초기값으로 복구')),
+ ('project_instructions_tiers_removed',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','원작형 하급·변형·중급(중간 보스)·상급·최종 보스','적당한 적 몇 마리')),
  ('card_scope_type_lost',lambda r:change(r,'rules/09-cards.md','자산(Asset) 33장','자산 32장')),
  ('card_asset_guardian_companion_missing',lambda r:change(r,'rules/09-cards.md','`[GU-A-3]`','`[GU-A-X]`')),
  ('card_asset_wildcard_companion_missing',lambda r:change(r,'rules/09-cards.md','`[WI-A-4]`','`[WI-A-X]`')),
