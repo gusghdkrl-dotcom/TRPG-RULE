@@ -21,6 +21,16 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('skip_core_crisis_by_refusal',lambda r:change(r,'rules/04-setup.md','**사건 안으로 들어가게 하는 불가피한 현실과 이후의 철수:**','PC가 관심 없으면 모든 초기 재난과 괴이는 취소')),
+ ('force_pc_action_to_core_room',lambda r:change(r,'rules/04-setup.md','재난 속에 진입할 수밖에 없는 상황','PC를 강제로 등대로 이동시켜 조사를 선언하게 한다')),
+ ('enemy_always_waits_in_room',lambda r:change(r,'rules/04-setup.md','**적의 역할이 다른 다층 필드 배치:**','적은 모든 장소에서 고정 대기하며 이동하지 않는다')),
+ ('enemy_telepathic_tracking',lambda r:change(r,'rules/04-setup.md','**추적자**는 실제 목표를 발견하거나 흔적을 확보했을 때만','추적자는 PC 위치를 언제나 알고 따라붙는다')),
+ ('original_horror_only_final_boss',lambda r:change(r,'rules/04-setup.md','**원작 초반 직접 노출과 지역별 소규모 생활 사건:**','원작 공포는 최종 보스전에만 등장한다')),
+ ('micro_events_all_plot_quests',lambda r:change(r,'rules/04-setup.md','핵심 사건과 직접 관련 없는 작은 분쟁','생활 사건은 모두 핵심 퀘스트를 준다')),
+ ('keeper_teleports_player_core',lambda r:change(r,'rules/05-world.md','**핵심 거점에 이르게 하는 현재의 재난, 움직일 권한은 PC:**','키퍼가 PC를 갑자기 필수 장소로 순간이동한다')),
+ ('keeper_spawns_roaming_monsters',lambda r:change(r,'rules/05-world.md','**배회자·추적자·압박자의 필드 실행:**','모든 방에 새로운 몬스터를 무한 생성한다')),
+ ('micro_npc_quests_on_every_visit',lambda r:change(r,'rules/05-world.md','**작은 생활 사건의 도달과 종료:**','열 때마다 무관한 NPC가 새 퀘스트를 준다')),
+ ('canon_no_patrol_or_personal_items',lambda r:change(r,'rules/07-state.md','**적의 순찰·배회/추적과 소규모 생활 사건의 구체적 배치:**','적은 항상 같은 방에 고정하고 생활소품은 만들지 않는다')),
  ('reactive_event_fixed_time_only',lambda r:change(r,'rules/04-setup.md','**유동적 발생 구간·반응형 사건 진행·최종 데드라인:**','모든 사건을 정확히 20시 10분에 발동한다')),
  ('reactive_event_uses_story_progress',lambda r:change(r,'rules/04-setup.md','서사 진행도','PC가 단서를 세 개 모으면 자동으로 적을 생성한다')),
  ('reactive_event_no_hard_deadline',lambda r:change(r,'rules/04-setup.md','최초 발생 가능 시간대·기존 원인/전제 조건·독립 주체의 행동·최종 발동 시한','PC가 준비할 때까지 사건이 기다린다')),
