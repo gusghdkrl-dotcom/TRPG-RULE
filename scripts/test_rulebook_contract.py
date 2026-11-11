@@ -21,6 +21,14 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('pc_identity_separate_step',lambda r:change(r,'rules/04-setup.md','**PC 특성 A/B/C 선택 화면:**','성별 이름 나이 별도 신규 단계')),
+ ('pc_identity_requires_all_three',lambda r:change(r,'rules/04-setup.md','세 항목은 모두 선택이며 공란이면','세 항목을 반드시 전부 입력해야 하며')),
+ ('pc_identity_rerolls_stats',lambda r:change(r,'rules/04-setup.md','A/B/C의 8특성·Luck을 재추첨/재배열하지 않는다','성별을 바꾸면 A/B/C 전체를 다시 추첨한다')),
+ ('pc_identity_disregards_user_choice',lambda r:change(r,'rules/04-setup.md','입력한 항목을 자동 생성값으로 덮어쓰거나','입력한 항목을 자동 생성값으로 덮어쓰고')),
+ ('old_profession_skills_restored',lambda r:change(r,'rules/04-setup.md','직업 기능7개를 도출하고**60 / 55 / 50 / 45 / 40 / 35 / 30**','직업 기능7개를 도출하고65 / 60 / 55 / 50 / 45 / 40 / 35')),
+ ('old_hobby_skill_restored',lambda r:change(r,'rules/04-setup.md','취미 기능1개를 직업 확정 뒤 고르고**30**','취미 기능1개를 직업 확정 뒤 고르고40')),
+ ('old_pc_skills_retroactively_changed',lambda r:change(r,'rules/04-setup.md','기존 확정 PC의 직업/기능·성장 스냅샷과 세이브에는 하향 수치를 소급 적용하지 않는다','확정된 PC도 즉시 모든 직업 기능을 낮춘다')),
+ ('pc_identity_name_equals_card_nickname',lambda r:change(r,'rules/04-setup.md','카드 계정 닉네임을 기본정보로 오인하거나 덮어쓰지 않는다','카드 계정 닉네임을 PC 이름으로 강제한다')),
  ('no_lethal_danger_preparation',lambda r:change(r,'rules/04-setup.md','**신규 캠페인의 실제 위해·SAN 위기 설계:**','위험은 말로만 경고한다')),
  ('harm_warning_only_allowed',lambda r:change(r,'rules/04-setup.md',"'치명적일 수 있다'는 설명이나 경고 HUD만으로 완료하지 않는다","경고 HUD만 있으면 위해 설계를 완료한다")),
  ('harm_mandatory_fatality',lambda r:change(r,'rules/04-setup.md','무조건적인 구제나 강제 사망을 예약하지 않는다','모든 플레이어 중 한 명의 사망을 확정한다')),
