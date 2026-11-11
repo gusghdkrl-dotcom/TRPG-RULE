@@ -10,6 +10,8 @@
 
 ## PRIVATE_CANON_DOCUMENT
 
+**신규 정본의 체험 간격·활용·적 접점 연결:** 신규 캠페인/미확정 챕터의 HIDDEN_TRUTH/DRIVER_BASELINES에 주요 사건 사이의 실제 준비·이동/전파·목표 지속과 최종 시한을, WORLD_BASELINE/LOCATION_BASELINES/NPC_BASELINES에 일상·교류·탐험·정비/회복의 실제 활동 및 소요·안전 경계를, WORLD_RULES/LOCATION_BASELINES/DRIVER_BASELINES에 동일 유한 적의 공간·목적별 관측/대응 차이를 같은 사건·위치·개체 ref로 기록한다. EVIDENCE_BASELINES의 주요 발견은 추가 서류/증언 검증 의무가 아니라 실제 행동·관계·수단·위협 변화로 연결한다. 정상적인 생활/준비 경로에서 메인 목표·유효 기회가 일괄 소진되거나 준비한 수단을 쓸 국면이 없으면 신규 정본 확정 전에 이 연결을 보완한다. 이미 발생한 긴급 위해·정당한 개별 실패·실제 철수 성공은 그대로 보존한다. **기존 확정 정본/verified 체크포인트에는 소급 적용하지 않는다.**
+
 신규 세계·전원PC·연결·지도/검토 완료 뒤 실제 원본 Markdown 파일 PRIVATE_CANON_<campaign_id>_r<revision>.md를 생성해 소유자에게 전달하고, **같은 UTF-8 전체 원문을 Supabase 비공개 trpg_private.gm_canon_documents에 저장·동일판본 전체 재조회·SHA-256 검증**한다. 소유자는 전달된 .md를 프로젝트 소스에 넣어 보관한다. 프로젝트 파일 업로드가 Supabase 저장의 선행 조건은 아니다. 전달/원문 등록/재조회 검증은 서로 독립적으로 성공 상태를 확인하며, 미완료를 성공이라 하지 않는다. 플레이 지문·공개 GitHub 룰 저장소·배포ZIP에 비밀을 넣지 않는다.
 헤더: campaign_id·canon_id·revision·ruleset·active_chapter·document_format. 고유 절/entity ID와 연결ref, 전체 색인을 둔다. 필요한 분할은 manifest에 파일/판본/소속을 명시한다. 실제 전체 바이트 SHA-256을 실행 도구로 계산하고 부분 검색만으로 해시 검증을 주장하지 않는다.
 필수 절과 원문:
