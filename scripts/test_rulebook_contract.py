@@ -22,7 +22,7 @@ def validate(root):
 
 mutations=[
  ('instant_retreat_skips_disaster',lambda r:change(r,'rules/04-setup.md','재난·습격의 발생은 거절·무관여·즉시 귀가 선언으로 취소되지 않는다','철수 선언하면 모든 재난은 취소된다')),
- ('retreat_requires_wound',lambda r:change(r,'rules/07-state.md','개별 HP/SAN 손실을 예정하거나 무상처 탈출을 금지하지 않는다','적어도 한 명에게 반드시 심각한 손상을 준다')),
+ ('retreat_requires_wound',lambda r:change(r,'rules/07-state.md','유효한 회피·무상처 생존·성공한 안전/철수는 취소하지 않는다','적어도 한 명에게 반드시 심각한 손상을 준다')),
  ('original_world_delayed_until_boss',lambda r:change(r,'rules/04-setup.md','**원작 고유의 공포는 게임 초입부터:**','원작의 공포는 최종 보스전에서만 시작')),
  ('rooms_no_canon_objects',lambda r:change(r,'rules/04-setup.md','**방마다 살아 있는 세계가 있는 탐험:**','모든 방의 내용은 열 때 아무거나 생성한다')),
  ('random_encounter_spawns_infinite_monsters',lambda r:change(r,'rules/04-setup.md','새 적/생존자 무제한 생성','새 적과 생존자를 무한 생성')),
