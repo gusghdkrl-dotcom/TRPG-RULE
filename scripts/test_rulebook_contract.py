@@ -21,6 +21,15 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('world_only_quest_locations',lambda r:change(r,'rules/04-setup.md','사건 진행에 필요한 장소만 만들지 않고','사건 진행에 필요한 장소만 만든다')),
+ ('world_rooms_not_lived_in',lambda r:change(r,'rules/04-setup.md','**배치된 공간 전체의 핍진한 내용:**','방에는 플레이어가 원할 때마다 임의 물품을 만든다')),
+ ('pivotal_place_no_causal_reason',lambda r:change(r,'rules/04-setup.md','**핵심 장소·필연적 국면의 인과적 강제력:**','키퍼가 가라고 하는 곳에 반드시 가야 한다')),
+ ('pivotal_place_forces_pc',lambda r:change(r,'rules/07-state.md','**핵심 장소의 접근 필요와 분기:**','모든 주요 장소를 필수 방문 목록으로 만든다')),
+ ('party_split_auto_damage',lambda r:change(r,'rules/04-setup.md','분리했기 때문에 자동 피해·모든 NPC 배신·숨은 적 생성·주사위 페널티','파티가 분리하면 무조건 1d6 피해와 모든 NPC 배신')),
+ ('split_npc_mandatory_betrayal',lambda r:change(r,'rules/05-world.md','NPC 동행 또는 파티 분리만으로 배신을 예약','NPC 동행 시 무조건 배신을 예약')),
+ ('split_parties_telepathic',lambda r:change(r,'rules/05-world.md','자동으로 알거나 대응할 수 없다','둘이 떨어져도 자동으로 정보 공유하고 구조할 수 있다')),
+ ('split_timeline_double_charge',lambda r:change(r,'rules/06-play.md','두 팀의 동시 경과는 한 번만 정산한다','두 팀의 시간을 각각 더해 두 배로 진행한다')),
+ ('split_canon_no_separate_information',lambda r:change(r,'rules/07-state.md','**분리 상태·동행 NPC의 위험 연결:**','플레이어가 분리되어도 모든 물품과 정보는 합친다')),
  ('npc_population_only_core_cast',lambda r:change(r,'rules/04-setup.md','**살아 있는 다층 NPC 생태계:**','NPC는 중심 사건 담당자 세 명만 만든다')),
  ('npc_population_no_location_causality',lambda r:change(r,'rules/04-setup.md','인물·장소·물품·사건이 양방향 인과로 일치','어느 NPC든 아무 방에 상관없이 배치한다')),
  ('npc_quest_and_party_roles_fixed',lambda r:change(r,'rules/04-setup.md',"처음부터 '퀘스트 주는 사람'·'동료'·'배신자'라는 고정 플레이어 대상 역할로 배치하지 않는다","각 NPC는 퀘스트 제공자 또는 동료로만 배치한다")),
