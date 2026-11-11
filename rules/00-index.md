@@ -4,7 +4,7 @@
 
 신규 세계/미확정 챕터의 원작 중심축+새 주인공의 사건, 실제 위협/피해·미개입/귀가/해결의 인과 설계도는 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT의 기존 HIDDEN_TRUTH·WORLD_RULES·DRIVER_BASELINES·ENDING_CONDITIONS 및 관련 절을 따르고 COMPATIBILITY_GATE로 내용의 중대성과 실행 연결을 대조한다. 단서의 오인/기만은 실제 NPC/자료의 원인·공개 범위와 해결된 성과를 보존한다.
 
-영구 카드 자산·강화·성장과 효과별 발동·등급·해금은 09-cards가 담당한다. 이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 상시 장착 HUD는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
+영구 카드 자산·강화·성장과 효과별 발동·등급·해금은 09-cards가 담당한다. 이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 상시 장착 HUD는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적의 단계별 개체 전력·중간/최종 보스·사이드 사건은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
 
 규칙판: 생존 호러 통합 경량판 2026-11-08. 상시 이야기·묘사·페이싱은 PROJECT_INSTRUCTIONS.md, 아래는 필요한 수치/상태/절차를 찾는 경로다. 같은 판본의 필요한 본문과 현재 상태가 확인 가능하면 재사용하고 유실/변경/충돌 부분만 조회한다. 매 응답 색인이나 전 규칙을 다시 읽지 않는다.
 
@@ -19,6 +19,7 @@
 | SAN·광기·회복 | [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) · [SAN_ROLL](03-danger.md#san_roll) · [INSANITY_CONDITIONS](03-danger.md#insanity_conditions) · [DIEGETIC_SAN_RECOVERY](03-danger.md#diegetic_san_recovery) |
 | 전투·총기·추격·위해 | [COMBAT_ORDER](03-danger.md#combat_order) · [MELEE_OPPOSED](03-danger.md#melee_opposed) · [FIREARMS](03-danger.md#firearms) · [CHASE](03-danger.md#chase) · [EXTREME_HAZARDS](03-danger.md#extreme_hazards) |
 | 신규 시작·원작·PC/전체 카드 도감·슬롯 중심 장착·등급별 UI | [START_SETTINGS_GATE](04-setup.md#start_settings_gate) · [SETUP_UI_FIXED_CONTRACT](04-setup.md#setup_ui_fixed_contract) · [CAMPAIGN_SETUP_PIPELINE](04-setup.md#campaign_setup_pipeline) · [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) · [STAT_DRAFT_GENERATION](04-setup.md#stat_draft_generation) · [PROFESSION_DRAFT](04-setup.md#profession_draft) · [STARTING_EQUIPMENT_MINIMAL](04-setup.md#starting_equipment_minimal) |
+| 신규 캠페인 적군 단계별 로스터·하급/변형/중간 보스/상급/최종 보스·위치/개체 수/공략·독립 사이드 사건망 | [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [FINAL_THREAT_DESIGN](04-setup.md#final_threat_design) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) | 
 | 원작 공포의 형상/공간·체험·진실/선택·상황망/변화 조건·절정 활용/탈출·완성도 대조 | [FULL_DIVE_CROSS_ANALYSIS](04-setup.md#full_dive_cross_analysis) · [STORY_SCALE](04-setup.md#story_scale) · [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [FINAL_THREAT_DESIGN](04-setup.md#final_threat_design) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
 | 탐구·원문·가설 | [CLUE_FUNCTION](05-world.md#clue_function) · [IN_WORLD_DOCUMENT_HANDOUT](05-world.md#in_world_document_handout) · [HYPOTHESIS_TEST](05-world.md#hypothesis_test) |
 | NPC 목적·선제 행동·말투·관계 | [NPC_AGENDA_AND_SECRECY](05-world.md#npc_agenda_and_secrecy) · [NPC_AGENDA_INTERVENTION](05-world.md#npc_agenda_intervention) · [NPC_INTERACTION_VOICE_COMPACT](05-world.md#npc_interaction_voice_compact) · [RELATIONSHIP_AND_NPC_MEMORY](05-world.md#relationship_and_npc_memory) |
