@@ -39,6 +39,15 @@
 
 `load_chronicle_honors(team_id)`는 **권한 있는 키퍼 서버 내부**에서 훈장/선택 상태를 재독하며 원래 카드 보유 `acquisition_event`, 기존 성장 레벨과 원장 정합 여부를 표시한다. 직접 플레이어 UI에 전체 개인 이벤트/비밀을 투사하지 않는다. 일반 `anon`/`authenticated` 직접 RPC·테이블 접근 금지.
 
+## 9차 다인 혼합 A/B와 일반 수령 실원장 합동 회귀
+
+- 2인/3인 팀 모두 V2 verified 2장 연대기 성공·본부 귀환·마틴 평가를 거쳐 각자 `chronicle_special_options` → `resolve_chronicle_special` (A 직접 카드 또는 B 확정 성장) 처리.
+- 각 요원의 최종 보통 챕터도 `approve_general_reward` → `offer_general_reward` → `resolve_general_reward`까지 실행해 원래 `trpg_cards.drafts.status=resolved` 및 카드 소유/성장 증가 확인. 특별/일반 양쪽 `load_*_rewards/honors` 정합, 중복 지급 없음.
+- 후속 verified 실패 임무에서는 새 훈장/완주 보상을 주지 않고 앞선 **실제 지급 완료 `resolved` 일반 보상 및 특별 A/B·훈장·영구 자격** 보존.
+- 보상 개인 이벤트의 `audience`는 자기 요원 1명뿐; 보상 처리가 개인 NPC 관계·클라라 대화를 멋대로 생성하지 않음.
+- 테스트는 적격 `draft_pool` 고정 후보에 의한 보상 경로 검사이지 실제 Python SystemRandom 희귀도 추첨 검증이 아님. SQL 2개 `docs/sql/dev/tests/trpg_hq_phase9_*_rollback.sql`; 상세 `TIME_AGENT_MULTIPLAYER_REWARDS_REGRESSION.md`.
+- 열린 일반 후보가 다른 경로에서 소유되면 원래 카드 엔진에서는 같은 카드 중복 수령 거부/다른 슬롯 수령 가능하지만 **HQ 특별 A를 통한 순서 충돌은 다음 단계**로 남음.
+
 ## 8차 동일 정식 요원 후속 연대기 실제 검증
 
 - 이미 첫 완주에서 인증된 동일 `player_id`·팀으로 별도 연대기 2장 verified 완료. `approve_chronicle_completion` 결과는 새 훈장1, 새로운 최초 정식 인증0. 원래 `hq_agent_full_certifications.first_mission_id`와 발급 시각 영구 보존.
