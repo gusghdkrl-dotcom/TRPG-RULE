@@ -1,5 +1,11 @@
 # 개발 일지
 
+## 2026-11-13 — 신규 PC 기본 HP +1 (비소급)
+
+- 신규 생성 PC의 시작/현재/최대 HP를 `floor((최종 CON+최종 SIZ)/10)+1`로 한 번 계산한다. 영구성장 ON인 신규 PC는 최초 링크에서 검증한 적용 CON/SIZ를 사용한다.
+- 기존 PC/세이브 및 NPC·적·동물 HP, 중상·즉사·빈사·치료·무기/괴물 피해식·SAN·카드 효과·서버 저장 계약은 변경하지 않는다.
+- HP_AND_DEATH, PC_DERIVED_STATS, STATE_COMPATIBILITY와 해당 검증 계약만 갱신했다. GitHub Actions에서 규칙·회귀 검사와 배포 ZIP 자동 갱신을 검증한다. 미래 개발 백로그 #3/#5 미변경.
+
 ## 2026-11-13 — 정기 자동 저장 주기 30 → 40 Scene Turn 단독 변경
 
 - 요청 범위대로 Scene Turn 40/80/120…마다 첫 안전한 경계에서 정기 저장을 시도하도록 `07-state.md#STATE_CADENCE`와 `06-play.md#TURN_INCREMENT`의 참조만 갱신했다. 구형 next_scene_turn의 정기 주기값은 다음 40배수로 재산정하며 이전 verified 저장본을 변경하지 않는다.

@@ -137,8 +137,8 @@ def sample_stats(rng):
 ## PC_DERIVED_STATS
 
 확정된 8특성에서 계산한다. 생성 뒤 파생값의 공식으로 기존 특성을 바꾸지 않는다.
-- HP=floor((CON+SIZ)/10).
-- initial/current/base max SAN은 [SAN_CORE](03-danger.md#san_core)의 **신규 PC 산식** `max(50,min(99,floor(60+0.4×(최종 POW−50))))`을 적용한다. POW 자체·HP/DB/Build/MOV는 이 변경으로 수정하지 않으며, 구판 확정 PC는 비소급이다.
+- **신규 생성 PC의 시작/현재/최대 HP** = floor((최종 CON+최종 SIZ)/10)+1. 영구 카드·성장 ON에서는 실제 확정된 적용 CON/SIZ를 사용하고, PC 최초 생성에 단 한 번 반영한다. 기존 확정 PC·NPC·적·동물에는 소급 적용하지 않는다. 실제 피해·중상·치료·사망은 [HP_AND_DEATH](02-checks.md#hp_and_death)를 따른다.
+- initial/current/base max SAN은 [SAN_CORE](03-danger.md#san_core)의 **신규 PC 산식** `max(50,min(99,floor(60+0.4×(최종 POW−50))))`을 적용한다. 이 SAN 산식 자체는 POW/DB/Build/MOV를 변경하지 않으며, 신규 PC HP +1은 위 HP 산식에서만 따로 처리한다. 구판 확정 PC는 비소급이다.
 - DB/Build는 [DAMAGE_BONUS_AND_BUILD](02-checks.md#damage_bonus_and_build) 표를 사용한다.
 - MOV=8. DEX≥70이면 9, DEX≤40이면 7. 이 MOV는 기존 하우스룰이다.
 - Luck은 선택한 특성 안에 붙은 20~80 생성값이다.
