@@ -9,6 +9,17 @@
 - 개발 Supabase 보안 자문: 새 HQ 자료는 `anon`/일반 `authenticated` 접근 거부, 신규 훈장/인증 불변 트리거 3종 확인. 원래 공개 카드 RPC `SECURITY DEFINER` 8개 익명/인증 실행 경고는 별도 보안 검토 항목에 유지; 임의 권한 변경 없음.
 - 이식 전 현재 운영 `main` HEAD 재조회 + 00-index/최신 룰·배포물 호환 대조 필수.
 
+## 7차 — 2~3인 연대기 실제 SQL 9개 회귀 통과 (2026-11-12)
+
+- 개발 Supabase에 마이그레이션 **23개** 적용(6차 21개 + 7차 phase7a/7b 2개).
+- 발견 결함: 1장 CHAPTER_TERMINAL failed가 최종 종료가 아니라는 이유로 미션이 field_active에 남아 다음 챕터를 준비할 수 있었음. phase7a DB 트리거로 검증된 중간 실패 즉시 전체 임무 failed 처리 및 상태 되돌리기 거부.
+- 추가 오류 경계: 사망한 PC를 귀환자로 적거나 전원 귀환하지 않았는데 CHRONICLE_TERMINAL completed를 쓰면 phase7b에서 verified checkpoint PC 명단/생사/등록된 요원 UUID와 대조해 종료 확인을 거부.
+- **9개 통과**: two_survive, three_survive, two_one_dead, three_failed, three_missing, two_early_failed, dead_labeled_win, dead_returned, two_all_dead. 2/3인 성공에서 각각 첫 인증·훈장 2/3개, 실패 시 새 인증·훈장·특별 지급 0. 기존 1장 일반 보상 승인 보존. 전원 사망 0명 귀환/본부 시간 +0분.
+- 테스트 도중 만든 모든 가입 요원/미션/원작 테스트 정본/verified 체크포인트·보상 원장은 서브트랜잭션 **롤백**. 현재 개발 DB 기존 완료 시험 기록과 보상은 그대로.
+- 재현 SQL: docs/sql/dev/tests/trpg_hq_phase7_multi_team_rollback_regression.sql. 상세 증거: docs/development/TIME_AGENT_MULTIPLAYER_CHRONICLE_REGRESSION.md.
+- **검증 한계**: 가상 다인 요원에게 훈련 자격 플래그를 테스트 범위에서 직접 설정한 것으로, 실제 대사건 완료 RPC·실제 PC 사망/생존 특성의 상호 연동을 완료한 뜻이 아님. 기존 일반 보상은 승인 원장 보존이며 카드 지급 완료 검증은 별도.
+- 미완: 두 번째 연대기 성공/실패, 보상 A/B 다인 개별 선택 및 기존 카드 드래프트 실제 지급, checkpoint 평가 누락·비정상 판본, 다팀 경합, 게임 키퍼 연결, 최신 main 호환성.
+
 ## 6차 — 연대기 전체 완주/정식 인증/훈장 + 특별 A/B 보상 (2026-11-12)
 
 **DEV ONLY — 세 마이그레이션 설치와 실제 저장·재독 테스트 완료, 실제 게임 키퍼 자동 호출은 미구현.**
