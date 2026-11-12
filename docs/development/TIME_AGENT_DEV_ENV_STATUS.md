@@ -9,6 +9,17 @@
 - 개발 Supabase 보안 자문: 새 HQ 자료는 `anon`/일반 `authenticated` 접근 거부, 신규 훈장/인증 불변 트리거 3종 확인. 원래 공개 카드 RPC `SECURITY DEFINER` 8개 익명/인증 실행 경고는 별도 보안 검토 항목에 유지; 임의 권한 변경 없음.
 - 이식 전 현재 운영 `main` HEAD 재조회 + 00-index/최신 룰·배포물 호환 대조 필수.
 
+## 11차 — 첫 본부 진입·입단/NPC 업무·정본→출격→귀환→보상·다음 게임 기본 루프 (2026-11-12)
+
+- 사용자 새로운 우선순위: **세밀한 NPC 대화/관계별 말투 동기화는 후속**, 먼저 본부 ON 입장/입단식/8명 NPC 기능/출격/현지 verified 종료/귀환/마틴·클라라·도미닉/다음 본부 자유 플레이의 **실제 진행 구조**를 완성할 것. 2인 이상 한 명씩 순차 처리; 병렬 스트레스 시험은 후순위.
+- DEV migration 11a `trpg_hq_phase11a_entry_induction_npc_loop_router.sql`: `hq_entry_sessions`(본부 최초/반복 방문 키), `hq_agent_inductions`(실제 입단 장면 참가자만), 8종 `hq_npc_service_catalog`; `begin_hq_on_visit`, `record_hq_induction`, `hq_loop_status`. 첫 신입은 입구, 이후 새 ON은 동기화실, 현지 segment field_active는 본부 이벤트 없이 현지 세이브로 재개.
+- DEV migration 11b `trpg_hq_phase11b_verified_briefing_and_full_loop.sql`: `hq_martin_briefings` 실제 공개 브리핑+정본 SHA/소목표 버전, 현지 PC/기존 4슬롯·입단/정본 검증 `hq_field_preflight`, `record_martin_formal_briefing`, `depart_after_actual_briefing`, `hq_full_loop_next`. 준비 누락/공식 브리핑 없으면 출격 차단. 실제 사용자 출격 선택은 여전히 명시 입력 필요.
+- **발견·수정**: 일반 도미닉 보상 `approved`가 열린 상태에서도 훈련 인증 안내를 먼저 노출하는 11b 라우터 오류. migration 11c `trpg_hq_phase11c_keep_pending_reward_first.sql`로 미선택 보상 안내 우선, 재시험 통과.
+- 검증 SQL `trpg_hq_phase11_entry_to_field_rollback.sql`: 2인 새 입구·실제 입단 장면9분/재방문 동기화실/현지 게임 중 본부 재입장 금지/8 NPC 서비스 경로/중복 입단·시간 방지 **통과**.
+- 검증 SQL `trpg_hq_phase11_full_major_loop_rollback.sql`: 가상 1인 **입구 → 입단식 → 기존 카드 캠페인/현지 PC 링크·4슬롯 → private canon SHA → 마틴 실제 브리핑 → 제이든 출격 → V2 commit/verify → 종료 확인 → 본부 귀환 +4320분 → 마틴 평가·보상 승인 → 도미닉 실제 일반 드래프트 resolved → 대사건 훈련 자격 → 본부 자유 활동 → 다음 새 게임 동기화실** 전체 통과. 브리핑 없이 출격 시도는 거부.
+- 전부 가상 인물/시나리오/PC/마틴 평가/선택을 이용한 DEV DB 시험이며 **서브트랜잭션 롤백**, 실제 플레이어 행동·실제 ChatGPT 키퍼 실행과는 명백히 다름. 새 실제 게임 프로젝트의 ON/OFF 첫 화면/원작 세계 제작·키퍼 현지 플레이·후일담5개/클라라 관측 후속·제이든/마틴/도미닉 실제 대화·보상 Python 난수는 아직 미연결.
+- 11차 DEV migration 3개 추가(기존 23개에서 **26개 예정, 마지막 list_migrations 재확인**). 운영 main/운영 DB/기존 시작문서/룰북/배포 ZIP에 미적용. 상세/남은 P0 작업: `TIME_AGENT_HQ_RUNTIME_LOOP_FIRST.md` 및 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
+
 ## 10차 종료 시 운영 검증 저장·비공개 정본 증가 관측
 
 - 읽기 전용 운영 DB 조회: 기존 8차의 verified 체크포인트7·비공개 정본8에서 **현재 8·9건**, 보유카드18/성장0. 최신 checkpoint `LB1926-S12-P1-SESSION01` verified v1, 생성시각 `2026-11-12 11:17:29 UTC`; 신규 canon `LB1926-S12-P1` / `LB1926-KEEPER-CANON` r1, 생성시각 `2026-11-12 11:13:42 UTC`. 누가 별도 저장했는지는 확인 불가.
