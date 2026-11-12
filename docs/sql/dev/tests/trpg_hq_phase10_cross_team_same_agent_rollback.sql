@@ -10,7 +10,7 @@ create temporary table hq10_cross_team_reports(
 do $t$
 declare
   r record;
-  agent constant uuid:='e0c56a38-d1c6-4814-9468-2b54c3ca59e8'::uuid;
+  agent uuid;
   teams uuid[];
   missions uuid[];
   camps text[];
@@ -41,6 +41,7 @@ begin
   loop
     report:=null;
     begin
+      agent:=(trpg_cards.register_player('HQ10_'||r.scenario)->>'player_id')::uuid;
       teams:='{}'::uuid[];
       missions:='{}'::uuid[];
       camps:='{}'::text[];
@@ -52,9 +53,8 @@ begin
         from trpg_cards.owned_cards where player_id=agent;
       select coalesce((select level from trpg_cards.growth_levels
         where player_id=agent and stat='POW'),0) into initial_growth;
-      if first_cert is null or initial_medals<>1
-        or (select qualification from trpg_hq.hq_agents where agent_id=agent)<>'full_agent' then
-        raise exception 'existing_full_agent_fixture_missing';
+      if first_cert is not null or initial_medals<>0 then
+        raise exception 'new_test_agent_must_have_no_first_certification';
       end if;
 
       for t in 1..2 loop
@@ -83,6 +83,11 @@ begin
           'hq10-'||r.scenario||'-team-'||t,
           array[agent])->>'team_id')::uuid;
         teams:=array_append(teams,teamid);
+        if t=1 then
+          -- Synthetic eligibility used only inside this rollback test.
+          update trpg_hq.hq_agents set qualification='training_qualified',
+             training_completed=true where agent_id=agent;
+        end if;
         campaign:='hq10-'||r.scenario||'-camp-'||t;
         sess:='hq10-'||r.scenario||'-session-'||t;
         camps:=array_append(camps,campaign);
@@ -163,8 +168,14 @@ begin
         select revision into rev from trpg_hq.hq_teams where team_id=teamid;
         approval:=trpg_hq.approve_chronicle_completion(
           seg,rev,'DEV10 독립 팀의 검증된 연대기 전체 완주');
+        if t=1 then
+          select first_mission_id into first_cert
+            from trpg_hq.hq_agent_full_certifications where player_id=agent;
+          if first_cert is distinct from missionid then
+            raise exception 'hq10_first_certificate_not_bound_to_first_mission';end if;
+        end if;
         if approval->>'applied'<>'true'
-          or (approval->>'new_full_certifications')::integer<>0
+          or (approval->>'new_full_certifications')::integer<>case when t=1 then 1 else 0 end
           or (approval->>'medals')::integer<>1 then
           raise exception 'hq10_invalid_completion: %',approval;end if;
       end loop;
@@ -244,6 +255,7 @@ begin
         'previous_membership_closed_before_next_join',true,
         'two_distinct_verified_chronicles',true,
         'first_formal_certificate_stays_one',true,
+        'synthetic_initial_first_certificate',true,
         'two_new_honors',2,
         'global_card_or_growth_ledger_consistent',true,
         'cross_team_same_card_rejected_and_alternative_valid',
