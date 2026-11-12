@@ -51,7 +51,41 @@
 - `anon` 및 `authenticated`의 `trpg_hq` 스키마 사용 권한 없음; `anon`의 HQ 사건 SELECT 및 함수 EXECUTE 없음. 신규 모든 HQ 테이블 RLS 활성화.
 - 아직 동시 쓰기 스트레스 시험, 실제 ChatGPT 프로젝트의 도구 호출, 새 채팅 복원, 인증 모델, 현지 종료 검증을 통합 테스트한 것은 아니다.
 
-## 미구현 / 다음 구간
+## 2차 구현 및 검증 (2026-11-12, 테스트 DB에서 실제 실행)
+
+**GitHub 개발 브랜치와 독립 Supabase 테스트 프로젝트에만 설치. 운영 DB·운영 카드·실제 세이브 불변.** 이전 1차 작성 시의 미구현 목록은 아래 본 절 및 후속 계획으로 갱신한다.
+
+### 실제 적용한 개발용 SQL (추가 3개 마이그레이션)
+
+- `docs/sql/dev/trpg_hq_phase2_dispatch_return.sql`: `prepare_mission`, `start_segment`, `confirm_segment_terminal`, `return_segment`. 임무-현지 `campaign_id/session_id` 연결, 사전 목표/위험 등급, verified 체크포인트·실제 비공개 정본 SHA 연결, 귀환 1회당 정확히 4,320분.
+- `docs/sql/dev/trpg_hq_phase2b_invariants_and_load.sql`: 종료 결과의 DB 제약·임무 내 고유 `finalization_event_id` 보장, `load_team` 현재 스냅샷 + 최근 100 사건, `load_events_page` 전체 역사 페이지 조회. **비공개 NPC 상태를 담으므로 원문을 플레이어 UI에 그대로 공개하지 않을 것.**
+- `docs/sql/dev/trpg_hq_phase2c_chronicle.sql`: `prepare_next_chapter`. 동일 연대기에서 이전 챕터의 검증된 실제 귀환이 있어야 다음 챕터를 등록·출격할 수 있게 연결.
+
+### HQ ON 신규 DB1 속성 — 개발용 제안, 운영 룰북 미적용
+
+- `runtime.hq = {enabled:true, mission_id:<UUID>, segment_key:<챕터 고유 ID>}`
+- `runtime.ending_state = {scope:CAMPAIGN_TERMINAL|CHAPTER_TERMINAL|CHRONICLE_TERMINAL, status:completed|failed, finalization_event_id:<실제 종료 이벤트 ID>, returning_agent_ids:[<실제로 귀환 가능한 요원 UUID>]}`
+- 서버는 본부 임무와 검증된 현지 `session_id`/`campaign_id`/segment, `canon_ref`와 불변 `gm_canon_documents`의 전체 SHA, 체크포인트의 실해시·부모·최신 verified 상태를 확인한다. 실제 귀환 가능 요원이 없으면 +3일 지급을 거부한다. 단 **DB의 해시·필드 검증은 실제 서사 결과의 의미적 타당성을 스스로 판정하지 못한다.** 키퍼의 룰북 절차와 실플레이 세이브 검증이 추가되어야 한다.
+- 본부 내부 시간은 시작점이 확정되지 않은 논리 경과 분. `return_segment`는 `terminal_confirmed` 상태의 실제 생존 귀환 요원이 존재할 때에만 진행; 고유 `return:<segment_id>` 사건으로 멱등성 보장. 기존 `OFF` 또는 레거시 `ON` 체크포인트를 자동 HQ 귀환으로 해석하지 않는다.
+
+### 실제 검증 결과
+
+1. **대사건**: 본부 15분에 출격한 가상 요원 → 실제 `trpg_v2_commit/verify`로 가상 현지 `DB1` 저장 → 정확한 해시/정본 대조 `terminal_confirmed` → 첫 귀환 15+4320=4335분. 재호출은 `applied:false`, 시간 4335분 불변.
+2. 잘못된 체크포인트 SHA는 거부. 마틴 면담 기록의 같은 `event_key` 재사용·오래된 팀 revision은 거부. 기존 지식 보존과 타인 NPC 지식 비전파 확인.
+3. **연대기 1장**: 같은 세계·캠페인의 첫 장 `CHAPTER_TERMINAL` verified 후 +4320분. 전체 임무는 계속 활성.
+4. **연대기 최종 2장**: `prepare_next_chapter` + 새로운 챕터 식별자로 실제 verified v2 부모해시 체인 확인. 1장 checkpoint를 2장 증거로 재사용하려는 요청 거부. `CHRONICLE_TERMINAL` 귀환 뒤 총 8640분(6일), 귀환 기록 2건, 전체 임무 `completed`. 재실행에도 이중 +3일 없음.
+5. **부정 테스트**: 별도 가상 요원의 출격 후 verified 세이브가 하나도 없는 상황에서 terminal 확인 및 귀환 시도는 모두 거부. 팀 경과 0분, 귀환 사건 0건 유지.
+6. **로드**: `load_team`에서 팀원, 마틴의 독립적 기억, 누적 시간, 임무/챕터, 사건 수 조회 성공.
+7. **권한**: `anon`/`authenticated`의 HQ 스키마 사용 권한 없음. 익명자의 `hq_mission_segments` SELECT·`return_segment`·`load_team` 호출 권한 없음.
+8. 실제 테스트 DB 결과: verified 가상 체크포인트 3개, 완료 임무 2개(대사건+연대기), 귀환 사건 총 3건. 가상 플레이어 3명은 **운영 계정과 별도**.
+
+### 2차 구현이 아직 의미하지 않는 것
+
+- ChatGPT 테스트 프로젝트에서 실제 플레이하면서 Supabase 함수 호출/저장/복원이 자동으로 실행되는지는 **아직 통합 테스트 안 됨**.
+- `ending_state` 내용의 인과적 진실성을 서버가 독자 검증하는 것은 아니므로 저장한 현지 종결의 실제 확인·후일담·NPC 생사·성공/실패 의미 규칙을 런타임과 연결해야 함.
+- 마틴 공식 수행 평가/승인, 훈련 자격 변경, 클라라 세계 후속 아카이브, 도미닉 실제 카드 보상/성장 지급, 실제 HQ 신규 첫 입단 장면·ON/OFF 라우팅, 연대기 치명상/대사건 재투입은 미구현. 운영판 이식은 승인/백업 전 금지.
+
+## Phase1 당시 미구현 / 다음 구간 (2차 결과는 위 최신 절 참조)
 
 1. **검증된 현지 종료 판정과 귀환당 +3일의 정확히 1회 처리**: 서버가 `verified` 원본·정본을 교차 확인하는 전용 함수. 최종 챕터/실패/재투입/로드/중복을 구별.
 2. **마틴 평가·도미닉 기존 카드 보상 발행/실제 해결**: 기존 `trpg_cards` 지급 원장이 유일 권위. 연대기 완주 확정 선택/성장 RPC 별도 필요.
