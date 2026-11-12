@@ -50,6 +50,6 @@
 | 장착 강화 발동·특수 보너스·수치 예외 | [CARD_ENHANCEMENT_TRIGGER](09-cards.md#card_enhancement_trigger) · [CARD_ENHANCEMENT_GU](09-cards.md#card_enhancement_gu) · [CARD_ENHANCEMENT_NE](09-cards.md#card_enhancement_ne) |
 | 클래스별 자산 33장·강화 33장 | [CARD_ASSET_GU](09-cards.md#card_asset_gu) · [CARD_ASSET_NE](09-cards.md#card_asset_ne) · [CARD_ENHANCEMENT_SE](09-cards.md#card_enhancement_se) |
 | 영구 성장·4후보 드래프트·플레이어 소유/저장 | [CARD_PERMANENT_GROWTH](09-cards.md#card_permanent_growth) · [CARD_REWARD_DRAFT](09-cards.md#card_reward_draft) · [CARD_PLAYER_STORAGE](09-cards.md#card_player_storage) |
-| 지도·프로필·장면/참고 이미지 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) · [EVENT_DRIVEN_VISUAL_ROUTER](08-visual.md#event_driven_visual_router) · [HQ_NPC_FIXED_PORTRAIT_ASSET_ROUTER](08-visual.md#hq_npc_fixed_portrait_asset_router) · [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference) |
+| 지도·프로필·장면/참고 이미지 | [MAP_RUNTIME_INTERACTION](08-visual.md#map_runtime_interaction) · [EVENT_DRIVEN_VISUAL_ROUTER](08-visual.md#event_driven_visual_router) · [HQ_NPC_FIXED_PORTRAIT_ASSET_ROUTER](08-visual.md#hq_npc_fixed_portrait_asset_router) · [HQ_FIRST_INDUCTION_PORTRAIT_REVEAL](08-visual.md#hq_first_induction_portrait_reveal) · [WEB_VISUAL_REFERENCE](08-visual.md#web_visual_reference) |
 
 사실 정본은 해당 캠페인의 정확한 문서 판본+현재 누적 상태다. 룰북의 일반 예시를 실제 NPC·단서·수치로 복사하지 않는다. ID/enum은 연결 식별자이며 실제 지원되지 않는 도구·입력·저장 기능을 만들지 않는다.
