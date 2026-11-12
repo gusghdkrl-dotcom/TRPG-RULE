@@ -43,7 +43,8 @@ begin
    ('three_missing',3,'missing'),
    ('three_failed',3,'failed'),
    ('two_early_failed',2,'early_failed'),
-   ('dead_labeled_win',2,'dead_false_success')
+   ('dead_labeled_win',2,'dead_false_success'),
+   ('two_all_dead',2,'all_dead')
  ) c(scenario,participants,outcome)
  loop
   v_report:=null;
@@ -106,17 +107,22 @@ begin
       for v_j in 1..cs.participants loop
         v_pcs:=v_pcs||jsonb_build_object('P'||v_j,
           jsonb_build_object('player_id',v_ids[v_j]::text,
-            'alive',not(v_j=2 and ((cs.outcome='death' and v_ch=2) or (cs.outcome='early_failed' and v_ch=1) or (cs.outcome='dead_false_success' and v_ch=2)))));
+            'alive',not((v_j=2 and ((cs.outcome='death' and v_ch=2)
+             or (cs.outcome='early_failed' and v_ch=1)
+             or (cs.outcome='dead_false_success' and v_ch=2)))
+             or (cs.outcome='all_dead' and v_ch=1))));
       end loop;
       v_return:=v_ids;
-      if (v_ch=2 and cs.outcome in ('death','missing','dead_false_success'))
+      if cs.outcome='all_dead' and v_ch=1 then
+        v_return:='{}'::uuid[];
+      elsif (v_ch=2 and cs.outcome in ('death','missing','dead_false_success'))
         or (v_ch=1 and cs.outcome='early_failed') then
         v_return:=array_remove(v_return,v_ids[2]);
       end if;
       v_scope:=case when v_ch=1 then 'CHAPTER_TERMINAL'
         else 'CHRONICLE_TERMINAL' end;
       v_status:=case when (v_ch=2 and cs.outcome in ('death','failed'))
-         or (v_ch=1 and cs.outcome='early_failed')
+         or (v_ch=1 and cs.outcome in ('early_failed','all_dead'))
         then 'failed' else 'completed' end;
 
       v_checkpoint:=jsonb_set(v_checkpoint,'{campaign_id}',to_jsonb(v_campaign));
@@ -170,6 +176,25 @@ begin
         raise exception 'DEV7_ROLLBACK_COMPLETED';
       end if;
       perform trpg_hq.confirm_segment_terminal(v_segment,v_ch,v_sha,v_rev);
+      if cs.outcome='all_dead' and v_ch=1 then
+        if (select status from trpg_hq.hq_missions where mission_id=v_mission)<>'failed'
+          then raise exception 'all_dead_not_failed'; end if;
+        select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
+        begin
+          perform trpg_hq.return_segment(v_segment,v_rev);
+          raise exception 'no_survivor_wrongly_returned';
+        exception when others then
+          if sqlerrm<>'hq_return_requires_confirmed_terminal_and_surviving_returnee'
+            then raise; end if;
+        end;
+        if (select hq_elapsed_minutes from trpg_hq.hq_teams where team_id=v_team)<>0
+          then raise exception 'all_dead_return_time_wrongly_elapsed';end if;
+        v_report:=jsonb_build_object('participants',cs.participants,
+          'outcome','entire_team_dead_no_return_no_reward',
+          'medals',0,'first_certificates',0,'automatic_special_payouts',0,
+          'all_synthetic_changes_rolled_back',true);
+        raise exception 'DEV7_ROLLBACK_COMPLETED';
+      end if;
       select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
       perform trpg_hq.return_segment(v_segment,v_rev);
       select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
