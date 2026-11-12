@@ -14,6 +14,15 @@
 - 마지막 조회에서 운영 비공개 정본 **8건**(이전 7건에서 1건 증가), verified 체크포인트6/카드18/성장0. 가장 최근 추가된 정본은 별도 현행 규칙판을 사용한 원작 캠페인 기록으로 보이며 실제 생성 주체는 미확인. 이번 본부 작업은 운영 DB에 SELECT만 실행했고 `trpg_hq` 운영 스키마 없음.
 - 향후 이식은 이 신규 정본을 포함한 **당시 실제 운영 데이터 전체**를 보호하고 새로 HEAD/규칙판을 확인한 뒤에만 수행. 과거 7건 기준으로 복원하거나 덮어쓰지 말 것.
 
+## 최신 8차 개발 인수인계 — 2026-11-12
+
+- DEV ONLY: GitHub `dev/time-agent-hq`, Supabase `trpg-time-agent-dev` (project `tvrfuljncwefbioasxgo`). **마이그레이션 23개 유지**. 이번 8차는 기존 저장 함수가 요구를 충족해 코드 수정 없이 실제 회귀 SQL/결과 문서만 추가.
+- 실제 첫 인증·훈장·영웅 카드가 있는 개발 정식 요원을 같은 UUID/팀으로 사용해 **두 번째 새로운 연대기 2장 verified 완주**. 원래 첫 인증 1건 그대로, 신규 훈장 1·특별 B `POW` 성장 확정 +1, 중복 재실행 및 A 재선택 거부 검증.
+- 이후 같은 요원의 **세 번째 별도 연대기를 verified 최종 실패**시키고 신규 훈장 0, 과거 두 완주 훈장/첫 인증/기존 카드와 성장 보상 모두 보존 검증. 재접속 훈장 2건 읽기 정합. 두 합성 연대기/원장/시간 변동은 테스트 종료 시 **서브트랜잭션 롤백**.
+- SQL `docs/sql/dev/tests/trpg_hq_phase8_repeat_chronicle_rollback.sql`. 상세 문서 `docs/development/TIME_AGENT_REPEAT_CHRONICLE_REGRESSION.md`.
+- 다음 개발 P1은 **2~3인 혼합 A/B + 기존 일반 챕터 드래프트 실제 수령/후속 실패 보존**, 그다음 다팀 동시성/특별 후보 전부 소진, 실제 HP·죽음 직전 특성 연동과 본부/키퍼 통합. 작업 후 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`, `TIME_AGENT_DEV_ENV_STATUS.md` 갱신.
+- 운영 DB 및 운영 `main`에는 아직 본부 기능을 적용하지 않았으며, 운영 최신 룰북과의 호환/정본 백업·이식은 여전히 별도 미완.
+
 ## 최신 7차 개발 인수인계 — 2026-11-12
 
 - DEV ONLY: GitHub dev/time-agent-hq, Supabase trpg-time-agent-dev. 마이그레이션 총 **23개**. 운영 main/운영 Supabase에는 아직 이식하지 않음.
