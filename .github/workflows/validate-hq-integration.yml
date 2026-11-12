@@ -27,6 +27,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/rulebook.py check
+          python3 scripts/check_hq_release_contract.py
           python3 scripts/test_rulebook_contract.py
           python3 scripts/test_resume_semantics.py
           python3 scripts/test_stat_generation.py
