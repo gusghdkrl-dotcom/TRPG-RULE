@@ -39,6 +39,13 @@
 
 `load_chronicle_honors(team_id)`는 **권한 있는 키퍼 서버 내부**에서 훈장/선택 상태를 재독하며 원래 카드 보유 `acquisition_event`, 기존 성장 레벨과 원장 정합 여부를 표시한다. 직접 플레이어 UI에 전체 개인 이벤트/비밀을 투사하지 않는다. 일반 `anon`/`authenticated` 직접 RPC·테이블 접근 금지.
 
+## 10차 지급 순서·영구 요원 팀 이전 경계 회귀
+
+- 실제 HQ 특별 A와 일반 챕터 `offered` 드래프트의 중복 카드 소유 충돌은 동일 카드 중복 지급 거부·미해결 일반 다른 슬롯 수령 가능. 일반 카드 먼저 `resolved` 후 동일 특별 A를 시도하면 특별 선택권은 `awaiting_choice`로 보존·다른 미보유 A 카드 수령 가능. 양쪽 모두 재시도 멱등, 기존 보상 원장 일치.
+- 본부 `hq_one_active_team_per_agent` 인덱스는 영구 UUID당 **활성 팀 1개**를 강제하고 있었다. 합성 첫 팀 이탈 후 새 팀에 참여한 동일 UUID는 첫 정식 인증1/각 완주 훈장2. 카드/성장 글로벌 소유는 원래 `trpg_cards` 원장 그대로, 다른 팀이 이미 받은 카드와 같은 A를 수령하려 하면 거부하되 선택권은 유지.
+- 두 합법 완주 훈장의 같은 POW B 성장0→1→2 가능하지만 Lv.4→5 이후 다른 훈장으로 Lv.6 불가; 선택권 유지해 Lv.5 미만 다른 성장 직접 선택 가능.
+- 실제 독립 연결에서 SQL 행 잠금의 시간상 경합은 관측하지 못해 **물리적 병렬 동시성은 별도 미검증**, DB를 고쳤다고 주장하지 않음. 재현 SQL `docs/sql/dev/tests/trpg_hq_phase10_*_rollback.sql`, 상세 `TIME_AGENT_REWARD_CONCURRENCY_AND_TEAM_OWNERSHIP.md`. 모든 새 가상 자료 롤백, 새 마이그레이션 없음.
+
 ## 9차 다인 혼합 A/B와 일반 수령 실원장 합동 회귀
 
 - 2인/3인 팀 모두 V2 verified 2장 연대기 성공·본부 귀환·마틴 평가를 거쳐 각자 `chronicle_special_options` → `resolve_chronicle_special` (A 직접 카드 또는 B 확정 성장) 처리.
