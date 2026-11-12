@@ -1,8 +1,8 @@
 {
   "schema": "time-agent-hq-npc-portraits-v1",
-  "branch": "dev/time-agent-hq",
+  "branch": "main",
   "approval": "User-designated fixed NPC official portraits; source uploads verified locally",
-  "activation": "GitHub DEV branch PNG upload verified on 2026-11-13: all eight files exist and match expected Git blob SHA-1 and byte size. Actual display in a target ChatGPT game runtime remains independently untested.",
+  "activation": "Official portrait files are SHA-256/Git-blob verified in the integrated repository. Runtime image display in ChatGPT must be tested independently.",
   "asset_type": "image/png",
   "assets": [
     {
@@ -16,7 +16,7 @@
       "height": 1448,
       "approved": true,
       "github_verified": true,
-      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-STAFF-01-martin-hale.png"
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/main/assets/hq-npc/HQ-STAFF-01-martin-hale.png"
     },
     {
       "npc_id": "HQ-STAFF-02",
@@ -29,7 +29,7 @@
       "height": 1448,
       "approved": true,
       "github_verified": true,
-      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-STAFF-02-jayden-cole.png"
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/main/assets/hq-npc/HQ-STAFF-02-jayden-cole.png"
     },
     {
       "npc_id": "HQ-STAFF-03",
@@ -42,7 +42,7 @@
       "height": 1448,
       "approved": true,
       "github_verified": true,
-      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-STAFF-03-clara-bennett.png"
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/main/assets/hq-npc/HQ-STAFF-03-clara-bennett.png"
     },
     {
       "npc_id": "HQ-STAFF-04",
@@ -55,7 +55,7 @@
       "height": 1448,
       "approved": true,
       "github_verified": true,
-      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-STAFF-04-dominic-reed.png"
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/main/assets/hq-npc/HQ-STAFF-04-dominic-reed.png"
     },
     {
       "npc_id": "HQ-AGENT-01",
@@ -68,7 +68,7 @@
       "height": 1448,
       "approved": true,
       "github_verified": true,
-      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-AGENT-01-samira-kadir.png"
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/main/assets/hq-npc/HQ-AGENT-01-samira-kadir.png"
     },
     {
       "npc_id": "HQ-AGENT-02",
@@ -81,7 +81,7 @@
       "height": 1448,
       "approved": true,
       "github_verified": true,
-      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-AGENT-02-leo-navarro.png"
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/main/assets/hq-npc/HQ-AGENT-02-leo-navarro.png"
     },
     {
       "npc_id": "HQ-AGENT-03",
@@ -94,7 +94,7 @@
       "height": 1448,
       "approved": true,
       "github_verified": true,
-      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-AGENT-03-choi-seorin.png"
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/main/assets/hq-npc/HQ-AGENT-03-choi-seorin.png"
     },
     {
       "npc_id": "HQ-AGENT-04",
@@ -107,7 +107,7 @@
       "height": 1448,
       "approved": true,
       "github_verified": true,
-      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-AGENT-04-maya-singh.png"
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/main/assets/hq-npc/HQ-AGENT-04-maya-singh.png"
     }
   ],
   "upload_status": "verified_original_png_8_of_8",

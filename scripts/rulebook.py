@@ -122,7 +122,27 @@ def export():
     (target/'sources').mkdir(parents=True)
     for path in RULES.glob('*.md'):shutil.copyfile(path,target/'sources'/path.name)
     for name in ['PROJECT_INSTRUCTIONS.md','START_GAME.md']:shutil.copyfile(ROOT/name,target/name)
-    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~09-cards의 10개 최신 소스로 교체\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하세요.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
+    # HQ portraits are official fixed assets, not new AI-generated profiles.
+    # Verify all eight original PNG bytes before the release archive is constructed.
+    npc_manifest = ROOT/'assets/hq-npc/manifest.json'
+    if npc_manifest.exists():
+        import hashlib
+        asset_root = (ROOT/'assets/hq-npc').resolve()
+        data = json.loads(npc_manifest.read_text(encoding='utf-8'))
+        entries = data.get('assets', [])
+        if len(entries) != 8 or len({item['npc_id'] for item in entries}) != 8:
+            raise SystemExit('HQ portrait manifest must contain eight unique NPC identities')
+        for item in entries:
+            source = (ROOT/item['file_path']).resolve()
+            if not source.is_relative_to(asset_root) or not source.is_file():
+                raise SystemExit(f"HQ portrait missing or outside asset directory: {item['npc_id']}")
+            if hashlib.sha256(source.read_bytes()).hexdigest() != item['sha256']:
+                raise SystemExit(f"HQ portrait SHA-256 mismatch: {item['npc_id']}")
+            destination = target/item['file_path']
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, destination)
+        shutil.copyfile(npc_manifest,target/'assets/hq-npc/manifest.json')
+    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~09-cards의 10개 최신 소스로 교체\nassets/hq-npc/* → 시간본부 NPC 공식 이미지 8장과 manifest.json (ON 전용)\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하세요.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
     manifest={str(p.relative_to(target)):__import__('hashlib').sha256(p.read_bytes()).hexdigest() for p in sorted(target.rglob('*')) if p.is_file()}
     (target/'SHA256.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     archive=ROOT/'dist/TRPG-RULE-project.zip'
