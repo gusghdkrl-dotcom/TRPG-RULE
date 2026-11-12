@@ -9,6 +9,13 @@
 - 개발 Supabase 보안 자문: 새 HQ 자료는 `anon`/일반 `authenticated` 접근 거부, 신규 훈장/인증 불변 트리거 3종 확인. 원래 공개 카드 RPC `SECURITY DEFINER` 8개 익명/인증 실행 경고는 별도 보안 검토 항목에 유지; 임의 권한 변경 없음.
 - 이식 전 현재 운영 `main` HEAD 재조회 + 00-index/최신 룰·배포물 호환 대조 필수.
 
+## 10차 — 혼합 보상 지급 순서·영구 요원 팀 이전/성장 한도 회귀 (2026-11-12)
+
+- 개발 DB에서 `trpg_hq_phase10_cross_order_special_vs_draft_rollback.sql` 실행: 실제 HQ `offer_general_reward` 후 같은 카드 `resolve_chronicle_special A` 지급 → 기존 일반 첫 슬롯 중복 수령 거부, 다른 유효 슬롯 `resolved`; **반대 순서** 일반 수령 후 같은 특별 A 거부, 미선택 특별 훈장 보존·다른 미보유 카드 수령 성공. 2인/3인 모두 보상 원장 일치·재호출 무변경·후속 실패 이전 보상 보존. 가상 자료 전체 롤백.
+- `trpg_hq_phase10_cross_team_same_agent_rollback.sql` 실제 3시나리오 통과. 같은 UUID로 활성 팀 둘 가입은 기존 partial UNIQUE `hq_one_active_team_per_agent`가 **거부**. 가상 첫 팀 완료 뒤 합성 `left_at_minutes`로 명시적 이탈→새 팀 새 연대기 완료를 수행. 첫 인증 영구 1건, 팀별 새 훈장 2건. **다른 팀의 같은 카드 중복 불가**, 거부된 두 번째 특별 선택권은 보존. 서로 다른 정당한 훈장 B 두 개는 같은 영구 POW에 0→1→2, Lv.4→5 뒤 다음 POW 요구는 거부·다른 STR 성장 선택 가능. 모두 테스트 후 롤백.
+- 두 병렬 SQL 연결로 기존 팀행 `FOR UPDATE` 경합을 관측하려 했으나, 잠금 보유 겹침이 확인되지 않아 **실제 동시 트랜잭션 안전은 미검증**으로 기록. 동시성 통과로 오인 금지.
+- 구현/후속 경계 보고 `docs/development/TIME_AGENT_REWARD_CONCURRENCY_AND_TEAM_OWNERSHIP.md`. 카드/성장 기존 RPC/정본 변경 없이 실제 검증 수행. 새 DB 마이그레이션 없음 — 총 **23개 유지**. 운영 환경에 미적용.
+
 ## 9차 — 2~3인 혼합 특별 A/B와 일반 카드 드래프트 실제 지급 확인 (2026-11-12)
 
 - GitHub 테스트 SQL `docs/sql/dev/tests/trpg_hq_phase9_mixed_rewards_rollback.sql` 실제 개발 DB 실행 성공. **2인** 특별 A카드1·B성장1 + 일반 챕터 카드1·성장1 (총 일반 `resolved`2). **3인** 특별 A카드2·B성장1 + 일반 카드2·성장1 (일반 `resolved`3). 각자의 영구 UUID에만 보유·성장이 들어감.
