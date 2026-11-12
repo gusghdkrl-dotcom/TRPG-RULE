@@ -17,6 +17,14 @@
 - 전체 기능/근거/남은 차단 사항: `docs/development/TIME_AGENT_NPC_RELATION_RUNTIME_CONTRACT.md`, `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
 - **구분할 미완료**: DB는 요원별 문맥을 반환하지만 ChatGPT 게임 키퍼가 실제 NPC 말투를 구사하며 본문에 안전하게 사용하는 엔드투엔드 시험은 아직 없음. 입력된 발화/청취/변경 사유의 실제 장면 인과는 DB만으로 증명 불가. 팀 공동 `record_event`의 자유형 `summary/event_data` 등에는 별도 공개 필터·엄격한 호출 계약 추가 필요. NPC↔NPC 기억·관계, 사용자 인증, 동시 호출, 연대기 특별 완주/정식 요원 인증도 다음 작업.
 
+### 5차-C: 클라라 동일 자료의 요원별 추가 질문 (검증 완료)
+
+- 새 SQL `docs/sql/dev/trpg_hq_phase5c_clara_repeat_personal_questions.sql`: 이미 팀에 공개된 동일 기록에 대해서도 각 요원의 **새로운 실제 질문**을 고유 `question_key`로 저장. `clara_record_followup_question`와 `hq_clara_followup_questions`, `load_npc_agent_context` 조회 병합 구현. 최초 공개는 기존 `clara_release` 1회만 유지.
+- A 요원의 기존 최초 공개 질문 4건 + 후속 질문 1건 = 개별 5건. 가상 임시 B의 동일 기록 질문은 별도로 1건으로 복원되며 A의 질문 5건 불변. 임시 B 시험 레코드/팀 편입은 DB 서브트랜잭션 롤백, 기본 팀 1명 유지.
+- 중복 재요청 `applied:false`, 기존 질문 키 다른 내용/다른 팀 요원 접근/과거 질문 변조 차단. 새 공동 이벤트에서 질문 내용/질문자 UUID 유출 0건, 시간 추가 0분. NPC 태도 자동 변화 없음.
+- **아직 미완료**: 실제 AI 키퍼가 A/B의 별도 자료 질문을 문맥으로 읽고 표현하는 게임 UI 통합, 새 질문이 발생한 실제 시점/동기의 의미적 검증, 개인 질문/공동 내용에 대한 공개 투영 구현.
+- Supabase 보안 Advisor에서 기존 닉네임 기반 `public` SECURITY DEFINER 함수 8개에 익명 실행 경고 존재. 새 `trpg_hq` 함수와 테이블에는 `anon`/일반 `authenticated`의 직접 접근 불가 확인; 기존 공개 카드 함수 권한을 임의 변경하지 않음. 후속 보안 검토 백로그에 추가.
+
 ## 4차 — 클라라 영구 아카이브 구현 및 실저장 검증 (2026-11-12)
 
 **모든 개발·테스트는 `trpg-time-agent-dev` 전용. 운영 DB와 본 프로젝트의 기존 룰북/세이브는 변경하지 않았다.**
