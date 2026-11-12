@@ -9,6 +9,11 @@
 - 개발 Supabase 보안 자문: 새 HQ 자료는 `anon`/일반 `authenticated` 접근 거부, 신규 훈장/인증 불변 트리거 3종 확인. 원래 공개 카드 RPC `SECURITY DEFINER` 8개 익명/인증 실행 경고는 별도 보안 검토 항목에 유지; 임의 권한 변경 없음.
 - 이식 전 현재 운영 `main` HEAD 재조회 + 00-index/최신 룰·배포물 호환 대조 필수.
 
+## 8차 종료 시 운영 DB 별도 저장 증가 관측
+
+- 운영 verified 체크포인트 **7건**(7차 확인 6건에서 1건 증가). 최신 행 `session-53ed85595344472b8c978afb7d9a4c77` v1 verified, 생성시간 `2026-11-12 10:50:45 UTC`. 비공개 정본8건·소유카드18건·본부 스키마 미설치. 본부 개발 중 운영 DB에는 SELECT만 수행했으며 증가 경위/주체는 확인하지 못했다.
+- 8차 합성 후속 연대기 데이터 유출 검사: `hq8-%` 미션/검증 저장/비공개 정본 **각 0건**, 원래 개발 인증1/훈장1/선택해결1·기존 카드20건 유지. 운영 `main` SHA `b23b35d...` 별도 유지.
+
 ## 8차 — 동일 정식 요원의 두 번째 완주/세 번째 실패 실DB 롤백형 검증 (2026-11-12)
 
 - 재현 SQL: `docs/sql/dev/tests/trpg_hq_phase8_repeat_chronicle_rollback.sql`; 검증 보고: `TIME_AGENT_REPEAT_CHRONICLE_REGRESSION.md`.
