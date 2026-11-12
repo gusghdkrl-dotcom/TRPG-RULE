@@ -2,7 +2,7 @@
   "schema": "time-agent-hq-npc-portraits-v1",
   "branch": "dev/time-agent-hq",
   "approval": "User-designated fixed NPC official portraits; source uploads verified locally",
-  "activation": "Use a portrait only when its binary is actually present on the active branch and its Git blob SHA-1 matches the expected value below. The manifest alone does NOT assert upload success.",
+  "activation": "GitHub DEV branch PNG upload verified on 2026-11-13: all eight files exist and match expected Git blob SHA-1 and byte size. Actual display in a target ChatGPT game runtime remains independently untested.",
   "asset_type": "image/png",
   "assets": [
     {
@@ -14,7 +14,8 @@
       "bytes": 3065340,
       "width": 1086,
       "height": 1448,
-      "approved": true
+      "approved": true,
+      "github_verified": true
     },
     {
       "npc_id": "HQ-STAFF-02",
@@ -25,7 +26,8 @@
       "bytes": 3014038,
       "width": 1086,
       "height": 1448,
-      "approved": true
+      "approved": true,
+      "github_verified": true
     },
     {
       "npc_id": "HQ-STAFF-03",
@@ -36,7 +38,8 @@
       "bytes": 3051329,
       "width": 1086,
       "height": 1448,
-      "approved": true
+      "approved": true,
+      "github_verified": true
     },
     {
       "npc_id": "HQ-STAFF-04",
@@ -47,7 +50,8 @@
       "bytes": 3113180,
       "width": 1086,
       "height": 1448,
-      "approved": true
+      "approved": true,
+      "github_verified": true
     },
     {
       "npc_id": "HQ-AGENT-01",
@@ -58,7 +62,8 @@
       "bytes": 3079774,
       "width": 1086,
       "height": 1448,
-      "approved": true
+      "approved": true,
+      "github_verified": true
     },
     {
       "npc_id": "HQ-AGENT-02",
@@ -69,7 +74,8 @@
       "bytes": 3072675,
       "width": 1086,
       "height": 1448,
-      "approved": true
+      "approved": true,
+      "github_verified": true
     },
     {
       "npc_id": "HQ-AGENT-03",
@@ -80,7 +86,8 @@
       "bytes": 2843086,
       "width": 1086,
       "height": 1448,
-      "approved": true
+      "approved": true,
+      "github_verified": true
     },
     {
       "npc_id": "HQ-AGENT-04",
@@ -91,7 +98,9 @@
       "bytes": 2850083,
       "width": 1086,
       "height": 1448,
-      "approved": true
+      "approved": true,
+      "github_verified": true
     }
-  ]
+  ],
+  "upload_status": "verified_original_png_8_of_8"
 }
