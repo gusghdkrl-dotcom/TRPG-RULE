@@ -42,7 +42,8 @@ begin
    ('two_one_dead',2,'death'),
    ('three_missing',3,'missing'),
    ('three_failed',3,'failed'),
-   ('two_early_failed',2,'early_failed')
+   ('two_early_failed',2,'early_failed'),
+   ('two_death_fake_success',2,'dead_false_success')
  ) c(scenario,participants,outcome)
  loop
   v_report:=null;
@@ -105,10 +106,10 @@ begin
       for v_j in 1..cs.participants loop
         v_pcs:=v_pcs||jsonb_build_object('P'||v_j,
           jsonb_build_object('player_id',v_ids[v_j]::text,
-            'alive',not(v_j=2 and ((cs.outcome='death' and v_ch=2) or (cs.outcome='early_failed' and v_ch=1)))));
+            'alive',not(v_j=2 and ((cs.outcome='death' and v_ch=2) or (cs.outcome='early_failed' and v_ch=1) or (cs.outcome='dead_false_success' and v_ch=2)))));
       end loop;
       v_return:=v_ids;
-      if (v_ch=2 and cs.outcome in ('death','missing'))
+      if (v_ch=2 and cs.outcome in ('death','missing','dead_false_success'))
         or (v_ch=1 and cs.outcome='early_failed') then
         v_return:=array_remove(v_return,v_ids[2]);
       end if;
@@ -149,6 +150,25 @@ begin
       perform public.trpg_v2_verify(
         v_session,v_ch,v_session||':cp'||v_ch,'attempt-'||v_ch,v_sha);
       select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
+      if cs.outcome='dead_false_success' and v_ch=2 then
+        begin
+          perform trpg_hq.confirm_segment_terminal(v_segment,v_ch,v_sha,v_rev);
+          raise exception 'dead_player_confirmed_as_successful_chronicle';
+        exception when others then
+          if sqlerrm<>'hq_chronicle_verified_death_requires_failed_terminal'
+            then raise;end if;
+        end;
+        if exists(select 1 from trpg_hq.hq_chronicle_honors h
+          join trpg_hq.hq_chronicle_completions c on c.mission_id=h.mission_id
+          where c.mission_id=v_mission) then
+          raise exception 'unearned_medals_despite_dead_player';
+        end if;
+        v_report:=jsonb_build_object('participants',cs.participants,
+         'outcome','verified_dead_agent_rejected_despite_false_success_label',
+         'medals',0,'first_certificates',0,'automatic_special_payouts',0,
+         'all_synthetic_changes_rolled_back',true);
+        raise exception 'DEV7_ROLLBACK_COMPLETED';
+      end if;
       perform trpg_hq.confirm_segment_terminal(v_segment,v_ch,v_sha,v_rev);
       select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
       perform trpg_hq.return_segment(v_segment,v_rev);
@@ -162,6 +182,12 @@ begin
         if (select status from trpg_hq.hq_missions where mission_id=v_mission)<>'failed' then
           raise exception 'early_chapter_death_did_not_fail_mission';
         end if;
+        begin
+          update trpg_hq.hq_missions set status='field_active' where mission_id=v_mission;
+          raise exception 'failed_mission_reactivated_by_direct_update';
+        exception when others then
+          if sqlerrm<>'hq_chronicle_failed_mission_cannot_reactivate' then raise;end if;
+        end;
         select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
         begin
           perform trpg_hq.prepare_next_chapter(v_mission,'chapter:02',v_session,v_rev);
