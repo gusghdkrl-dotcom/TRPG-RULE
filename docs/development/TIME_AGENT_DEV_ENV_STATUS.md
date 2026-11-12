@@ -2,6 +2,16 @@
 
 > 이 문서는 **개발 브랜치에서 진행한 실제 작업 기록**이다. `main`이나 운영 DB의 구현 상태가 아니다. 최종 게임 정본은 아직 기존 `START_GAME.md`, `rules/*` 및 v0.8 설계와 구별해야 한다.
 
+## 3차-A — 마틴의 정성 평가 저장 기능 (개발 DB 검증)
+
+- 개발 SQL: `docs/sql/dev/trpg_hq_phase3a_evaluation.sql`. 테스트 DB 마이그레이션 `dev_hq_phase3a_qualitative_evaluation` 실제 적용.
+- `trpg_hq.evaluate_segment(segment_id, expected_revision, grade, objective_results, assessment, observed_outcomes)`는 **실제 verified 종료·귀환 완료된 구간에서만** 공식 평가를 기록한다.
+- S/A/B/C/F 등급, 사전 소목표의 원래 ID별 달성/부분달성/미달성/불가능 결과 및 실제 이유, 서술형 총평·관측한 실제 성과를 기록한다. 미리 부여하지 않은 소목표를 끼워 넣으면 거부한다.
+- 마틴의 평가를 해당 원래 `terminal_event_id` 및 verified 체크포인트 버전과 함께 저장하며, 변경 없이 재호출 시 `applied:false`, 다른 평가로 사후 덮어쓰기는 거부.
+- 실제 가상 대사건: 2개 원래 소목표를 근거로 B 등급 공식 평가 저장. 동등 반복은 추가 기록이 없고 다른 S 등급으로 바꾸려는 호출은 거부. 본부 시각은 4,335분 유지. `mission_evaluated` 사건 1건만 생성. 익명 실행 권한 없음.
+- **주의:** 실제 평가를 내리는 근거는 현지 플레이 정본/후일담과 NPC의 합당한 지식에 따라 키퍼가 제시해야 한다. SQL은 논리적 행/식별자 일관성을 검사하지만 공포 세계의 서사적 진위를 스스로 판단하지 못한다. 정량 진급 점수/보상은 발명하거나 지급하지 않음.
+- **남은 핵심 기능:** 평가 후 마틴의 보상 승인, 기존 `trpg_cards` 실제 발행/선택과 중복 복구, 훈련 합격/연대기 자격, 클라라 관측기록, ON 첫 입단/현지 로드/귀환 라우터, 재투입·치명상 특성, 실제 별도 ChatGPT 프로젝트 실행 검증.
+
 ## 환경 및 격리 기준
 
 - GitHub 소스: `gusghdkrl-dotcom/TRPG-RULE` → **`dev/time-agent-hq`**
