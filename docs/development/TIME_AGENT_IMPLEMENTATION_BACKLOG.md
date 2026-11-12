@@ -5,6 +5,14 @@
 > 운영 검증 기준은 `TIME_AGENT_CONCEPT_DRAFT.md` 최신 §§18,19,26,28,29,30,32; 과거 설계문서의 '미구현' 문구는 현 개발 기록과 혼동하지 말 것.
 > 각 구간은 구현일·테스트 증거·운영 변경 여부·추후 보완을 추가하는 방식으로 관리하고 미확정 항목을 억지 확정하지 않는다.
 
+## 운영 main 판본 변경 감지 — 합류 전 필수 정합성 점검
+
+- [ ] **P1: 최신 main 규칙과 개발 브랜치 재동기화/충돌 회귀 검증**. 본부 개발 기준 원본 SHA `e3b33384f8a6048fa8af072836a62771137e8d7c`에서 운영 `main`이 **별도 커밋 `808d25fe0bf77f48c3ca19200092b3ce70053eac`**으로 전진(2026-11-12 09:16:46 UTC). 커밋 메시지: `rules: PC-reached incident design, source fidelity, new SAN baseline`.
+- 운영 변경 파일: `PROJECT_INSTRUCTIONS.md`, `START_GAME.md`, `rules/00-index.md`, `rules/01-core.md`~`rules/09-cards.md` (12개). 특히 새 SAN 기준, 신화 기능 수치 제거, 사건 접촉 인과 및 세이브 판본 호환성 의미가 HQ 출격/PC 생성/현지 세이브에 영향을 줄 수 있음.
+- **본부 브랜치에서 운영 main에 푸시/병합한 것이 아님**. 이 채팅의 쓰기는 `dev/time-agent-hq`의 개발 문서/SQL와 개발 Supabase로만 제한됨. 원래 백업 브랜치 `backup/pre-time-agent-2026-11-12-e3b3338`는 실제 SHA `e3b33384...`로 확인됨.
+- **이식 전** 최신 `main` 룰북 diff를 대조해 HQ 개발 브랜치의 실행 루트/월드 생성/SAN/실제 DB1 저장과 충돌·회귀 여부 확인. 최신 운영 룰북을 오래된 개발판으로 덮지 않으며, 무검증 브랜치 병합 금지.
+- [ ] **P1: 운영판 새 커밋의 기존 저장본/카드/성장 호환성**을 새로운 테스트 세션에서 검증. 기존 검증 저장 자체의 소급 수정/수치 재계산 금지.
+
 ## 5차 실제 구현·테스트 기록 (2026-11-12)
 
 - [x] `docs/sql/dev/trpg_hq_phase5_personal_npc_memory.sql` 마이그레이션 설치. `hq_npc_agent_relations`와 `hq_npc_interactions` 저장, 요원별 독립 감정/지식/관계 근거, 실제 청취자 필터, 모든 NPC 8종 지원, 중복/오래된 상태/미참석자 차단.
