@@ -279,6 +279,24 @@ begin
                  outcome->'outcome'->>'type',
                'normal_draft_resolved',true,'separate_ownership',true));
          end loop;
+         -- The four player-specific reward events must name exactly their
+         -- own recipient, not send another agent's private choice to the team.
+         if (select count(*) from trpg_hq.hq_events e
+               where e.team_id=teamid and e.event_kind in (
+                 'reward_approved','reward_offered',
+                 'reward_resolved','chronicle_special_resolved')
+               and e.event_data->>'player_id'=any(
+                 select x.id::text from unnest(ids) x(id)))
+              <>4*sc.participants
+           or exists(select 1 from trpg_hq.hq_events e
+             where e.team_id=teamid and e.event_kind in (
+               'reward_approved','reward_offered',
+               'reward_resolved','chronicle_special_resolved')
+             and (jsonb_typeof(e.audience)<>'array'
+                 or jsonb_array_length(e.audience)<>1
+                 or e.audience->>0 is distinct from e.event_data->>'player_id')) then
+           raise exception 'fixture_private_reward_event_audience_crossed';
+         end if;
          if exists(select 1 from jsonb_array_elements(
            trpg_hq.load_team_rewards(teamid)) x(v)
            where x.v->>'ledger_consistent'<>'true') then
