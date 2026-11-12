@@ -39,6 +39,13 @@
 
 `load_chronicle_honors(team_id)`는 **권한 있는 키퍼 서버 내부**에서 훈장/선택 상태를 재독하며 원래 카드 보유 `acquisition_event`, 기존 성장 레벨과 원장 정합 여부를 표시한다. 직접 플레이어 UI에 전체 개인 이벤트/비밀을 투사하지 않는다. 일반 `anon`/`authenticated` 직접 RPC·테이블 접근 금지.
 
+## 7차 다인 연대기 실행 경계
+
+- phase7a_immediate_chapter_failure: 1장 등 중간 verified CHAPTER_TERMINAL failed에서도 전체 작전 상태를 즉시 failed로 확정. 다음 챕터 출격/상태 부활 거부. 기존 합법적 구조/생존과 앞선 보상 원장은 유지.
+- phase7b_chronicle_terminal_roster_consistency: verified checkpoint의 모든 등록 PC UUID 및 살아 있음 boolean을 확인. 사망한 PC가 귀환하거나 사망자·미귀환자를 두고 마지막 CHRONICLE_TERMINAL completed로 선언하면 원문 수정 없이 본부 종료 확인 거부. 최종 완주 인증은 전원 생존·귀환.
+- dev/tests/trpg_hq_phase7_multi_team_rollback_regression.sql의 9개 합성 시나리오가 설치된 트리거와 기존 V2 commit/verify/본부 RPC에서 통과. 테스트 임시 요원/보상은 롤백.
+- 실제 게임의 HP·사망 직전 생존 특성·전설 강화가 최종 사망 여부를 확정하는 원본 절차는 이 테스트의 alive 플래그 대체 입력과 구별. 2번째 완주/특별 A/B 다인 선택/운영 이식은 별도 미구현.
+
 ## 개발 DB에서 실제 수행한 테스트 (2026-11-12)
 
 - 구판 시뮬레이션에 남아 있던 **훈련 미완료 요원의 가상 연대기**는 완주 기록이 존재하더라도 정식 인증 거부. 대사건 최종 구간을 연대기 완주로 위장해 승인 시도도 거부. 사전 생성된 완주·훈장·인증 원장 0건 유지.
