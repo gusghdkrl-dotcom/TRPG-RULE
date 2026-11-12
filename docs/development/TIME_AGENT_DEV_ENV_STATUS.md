@@ -2,6 +2,43 @@
 
 > 이 문서는 **개발 브랜치에서 진행한 실제 작업 기록**이다. `main`이나 운영 DB의 구현 상태가 아니다. 최종 게임 정본은 아직 기존 `START_GAME.md`, `rules/*` 및 v0.8 설계와 구별해야 한다.
 
+## 3차-B/C — 마틴 승인·도미닉 실제 지급·훈련 자격 (2026-11-12)
+
+**모든 항목은 격리된 `trpg-time-agent-dev`에서 실제 함수 호출/원장 재조회로 확인. 실제 게임 운영 프로젝트·룰북·세이브는 미변경.**
+
+### 신규 개발 SQL과 상태
+
+- `docs/sql/dev/trpg_hq_phase3b_general_rewards.sql` → `dev_hq_phase3b_general_reward_authorize_issue_resolve` 설치.
+- `trpg_hq.hq_reward_grants`는 종료 구간·실제 플레이어 UUID 단위 승인/발행/해결/소진 상태 및 `(campaign_id,event_key,player_id)` 중복 방지 유일키를 저장. RLS 활성, 일반 클라이언트의 직접 접근 불가.
+- `approve_general_reward`는 **실제 검증 종료 + 본부 귀환 + 마틴 평가** 이후 참가 요원별 보상 승인. 대사건 `final`, 연대기 `chapter:<실제 챕터 ID>` 기존 사건 키를 사용. **현지 PC 사망 자체가 플레이어 UUID의 종결 보상 자격을 자동 박탈하지 않음.**
+- `offer_general_reward`는 원래 `trpg_cards.issue_draft`를 같은 DB 트랜잭션에서 호출하고, 적격 후보/이벤트 출처·후보 동일성을 확인하며 `approved`→`offered` 또는 `exhausted` 전환.
+- `resolve_general_reward`는 원래 `trpg_cards.resolve_draft`를 호출해 한 선택만 실제 보유 카드 또는 성장 레벨에 반영하고 본부 원장과 대조한다. 반복은 기존 결과 반환·다른 선택 거부.
+- 후보는 **키퍼의 Python SystemRandom**과 `rules/09-cards.md`의 클래스 희귀:영웅:전설 30:15:5 재정규화 및 소진 시 재분배 규칙으로 생성. DB는 `draft_pool`에 대한 적격성/중복/소진을 재검사한다. 서버가 외부 난수의 진위를 증명한다고 주장하지 않는다.
+- `docs/sql/dev/trpg_hq_phase3c_training_and_reward_resume.sql` → `dev_hq_phase3c_training_qualifications_and_reward_readback` 설치.
+- `certify_training`: 대사건 성공적 종결+실제 귀환+평가와 요원의 실제 귀환 참가를 확인한 경우 `recruit`→`training_qualified`로 1회 기록. 임무 후 귀환하지 못한 리타이어자의 훈련 완료를 자동 인정하지 않음.
+- `hq_chronicle_requires_qualified_team` 트리거: **새로 준비하는 연대기**에 참가 중인 팀원 모두 훈련 완료 필요. 기존 2차 검증 시 생성한 가상 연대기 이력은 자격 게이트 이전 테스트 픽스처로 유지하며 운영 자격 판정의 근거로 사용하지 않는다.
+- `load_team_rewards(team_id)`: 승인·발행·해결 상태와 기존 카드 DB의 실제 드래프트/결과를 함께 조회. 원장 동기화 여부를 표시해 새 채팅에서 실패 복구와 불일치 확인에 활용.
+
+### 실제 DB 테스트 결과
+
+1. 미귀환/미평가 가상 임무의 보상 승인 요청 거부. 정상 종료된 대사건 보상 승인 후 동일 요청 재실행 `applied:false`.
+2. 기본 지급 카드 `GU-A-0`을 드래프트 신규 후보로 위조하려는 요청 거부. Python SystemRandom으로 뽑은 4개 적격 후보는 정식 카드 드래프트에 1회 기록·재요청에도 최초 후보 유지.
+3. 가상 요원이 보유 18장에서 중립 강화 카드 `NE-E-6` 1장 선택: **19장**으로 증가. 재요청에도 19장 유지. 본부 `resolved`와 카드 DB `resolved` 및 실제 소유 원장 일치.
+4. 연대기 1장: 기존 성장 `CON` Lv.0 → **Lv.1 확정** (기존 규칙). 연대기 최종 2장: 성장 `CON` 재등장 **반복 강화 테스트 픽스처**를 사용하고 실제 Python 난수 71, 기존 확률 80% 적용 → Lv.2 성공. 재요청에도 추가 성장 없음. 가상 테스트용 고정 `CON` 재등장은 실제 게임의 무작위 후보 선정 방식이 아님.
+5. 다른 선택으로 과거 보상 변경 또는 후보 재추첨 요구는 거부. `trpg_hq` 익명 권한 없음; 새 보상 원장 테이블 `anon` SELECT 불가, 신규 보상 지급 함수 `anon` 실행 불가.
+6. 보상 원장 복원: 연대기 2개 원장과 기존 카드 드래프트 2개가 일치(`ledger_consistent` 결과 불일치 0건).
+7. 검증된 대사건 종료·귀환·평가 근거로 훈련 자격을 부여, 같은 요청 재실행 무변경. 별도 무자격 시험 요원은 연대기 출격 거부되고 신규 임무 0건, 기존 팀 revision 0 유지. 훈련 자격 취득 요원은 신규 연대기 준비 성공.
+
+### 구현 경계 및 남은 과제
+
+- 기존 일반 드래프트·영구 성장 데이터에 임의 보너스를 추가하지 않았다. `09-cards`의 실제 보상 발행/소유·성장 원장을 재사용했다.
+- **연대기 전체 완주 특별 보상**(영구 훈장 + 전설 제외 미보유 카드 직접 선택 *또는* Lv.5 미만 성장 1회 확정 +1)은 새 별도 RPC/원장 설계가 필요한 상태. 일반 드래프트로 대체하지 않는다.
+- **정식 요원 승격·진급 점수/임계치**는 별도 구현 대상이다. 미합의 수치는 생성하지 않는다.
+- **클라라의 관측 출처와 이후 인물들의 삶 아카이브, 실제 동기화/입단 장면, 처음 ON/OFF 라우터, 현지 5개 후일담, 사망/재투입, ChatGPT 테스트 프로젝트의 실제 자동 호출**은 아직 구현·통합 검증되지 않았다.
+- **Supabase 보안 자문**: 새 HQ 테이블에는 RLS와 비공개 권한이 있고 `anon` 직접 접근 검증 결과는 차단. 보안 자문 INFO `rls_enabled_no_policy`는 의도적인 비공개 원장 설정; WARN `anon_security_definer_function_executable`은 원래 닉네임만으로 이용하는 기존 카드 공개 RPC에 대한 기존 설계상 위험이다. 임의로 공개 권한을 확장하지 않았다.
+- 추가 검증 권장: 다인 팀/동시 요청 경쟁, 성장 실패(80% 판정 실패)와 보상 소진, 재접속에서 드래프트 미선택 복원, 전지적 NPC 기록 누출 방지, 실패한 현지 임무와 재투입 경계, 이식 시 기존 레거시 카드 ON/요원 OFF 회귀 테스트.
+
+
 ## 3차-A — 마틴의 정성 평가 저장 기능 (개발 DB 검증)
 
 - 개발 SQL: `docs/sql/dev/trpg_hq_phase3a_evaluation.sql`. 테스트 DB 마이그레이션 `dev_hq_phase3a_qualitative_evaluation` 실제 적용.
