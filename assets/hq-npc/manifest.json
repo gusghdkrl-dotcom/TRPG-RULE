@@ -1,0 +1,97 @@
+{
+  "schema": "time-agent-hq-npc-portraits-v1",
+  "branch": "dev/time-agent-hq",
+  "approval": "User-designated fixed NPC official portraits; source uploads verified locally",
+  "activation": "Use a portrait only when its binary is actually present on the active branch and its Git blob SHA-1 matches the expected value below. The manifest alone does NOT assert upload success.",
+  "asset_type": "image/png",
+  "assets": [
+    {
+      "npc_id": "HQ-STAFF-01",
+      "name": "마틴 헤일",
+      "file_path": "assets/hq-npc/HQ-STAFF-01-martin-hale.png",
+      "sha256": "499d51c4b76196c8a70be218c8eb3a811b2c3169f2c2db64e3abf96bcb4143e4",
+      "git_blob_sha1": "b76be1e6543784efc19bb42553825bcc76969940",
+      "bytes": 3065340,
+      "width": 1086,
+      "height": 1448,
+      "approved": true
+    },
+    {
+      "npc_id": "HQ-STAFF-02",
+      "name": "제이든 콜",
+      "file_path": "assets/hq-npc/HQ-STAFF-02-jayden-cole.png",
+      "sha256": "e63cc367201b2b9fdd0d38a902bc023fe82ba5eb6fd125ba530eea474367fac9",
+      "git_blob_sha1": "e65a5074cc7b5a40af9936c6b7826fd9eedc21ad",
+      "bytes": 3014038,
+      "width": 1086,
+      "height": 1448,
+      "approved": true
+    },
+    {
+      "npc_id": "HQ-STAFF-03",
+      "name": "클라라 베넷",
+      "file_path": "assets/hq-npc/HQ-STAFF-03-clara-bennett.png",
+      "sha256": "8f84c5df7864baa8b9fee99adc475317804962b06baf2ed6e85d92e8c5764f46",
+      "git_blob_sha1": "7778b3d4144c0a13caa740fc96564eec63a21e12",
+      "bytes": 3051329,
+      "width": 1086,
+      "height": 1448,
+      "approved": true
+    },
+    {
+      "npc_id": "HQ-STAFF-04",
+      "name": "도미닉 리드",
+      "file_path": "assets/hq-npc/HQ-STAFF-04-dominic-reed.png",
+      "sha256": "ef17b22aa415b0ffe5d02ca1b761bda89970d9a86131255b906e0783eb06b809",
+      "git_blob_sha1": "b9596078f4a43731c2b7b86f407f1428ee87ff03",
+      "bytes": 3113180,
+      "width": 1086,
+      "height": 1448,
+      "approved": true
+    },
+    {
+      "npc_id": "HQ-AGENT-01",
+      "name": "사미라 카디르",
+      "file_path": "assets/hq-npc/HQ-AGENT-01-samira-kadir.png",
+      "sha256": "6649d205857dc5003e3704dbbf03554765757c4a65de5df384665ea639f39134",
+      "git_blob_sha1": "cfb2f60398206035c44137f47810a5c2027fa87d",
+      "bytes": 3079774,
+      "width": 1086,
+      "height": 1448,
+      "approved": true
+    },
+    {
+      "npc_id": "HQ-AGENT-02",
+      "name": "레오 나바로",
+      "file_path": "assets/hq-npc/HQ-AGENT-02-leo-navarro.png",
+      "sha256": "a99c8a48d60ed61a6b236c586ac1f82266f2330623d8cd75ad082fdaa84a498e",
+      "git_blob_sha1": "d03ff820e2fee2bf68c22ade6d4c0863712481bb",
+      "bytes": 3072675,
+      "width": 1086,
+      "height": 1448,
+      "approved": true
+    },
+    {
+      "npc_id": "HQ-AGENT-03",
+      "name": "최서린",
+      "file_path": "assets/hq-npc/HQ-AGENT-03-choi-seorin.png",
+      "sha256": "03feff5025a7545c24afac48fb07b3cb8183367e91c72bfbbad5feb457e01c9f",
+      "git_blob_sha1": "527a9b3f422106099fd7a36f006af2fd43df71e0",
+      "bytes": 2843086,
+      "width": 1086,
+      "height": 1448,
+      "approved": true
+    },
+    {
+      "npc_id": "HQ-AGENT-04",
+      "name": "마야 싱",
+      "file_path": "assets/hq-npc/HQ-AGENT-04-maya-singh.png",
+      "sha256": "44f58d8279316a19f7d7e5f4b45d80dfcc21acf0df2fe73fa63d2ac3386f095a",
+      "git_blob_sha1": "385878bd00aba9bd0c2900aa1f9bd033c4f3a8ae",
+      "bytes": 2850083,
+      "width": 1086,
+      "height": 1448,
+      "approved": true
+    }
+  ]
+}
