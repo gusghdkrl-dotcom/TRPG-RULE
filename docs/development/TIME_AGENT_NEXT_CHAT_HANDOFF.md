@@ -33,7 +33,7 @@
 - 특별 결함과 수정: 미선택 일반 보상을 훈련 인증 안내가 가리던 진행 우선순위 오류를 11c에서 수정, 재테스트 통과.
 - **중요 아직 미완**: 새 ChatGPT 테스트 프로젝트 실제 ON/OFF 첫 설정 UI 및 Github/Supabase 권한 있는 연결, 실제 원작 제작→07-state DB1→현지 키퍼 플레이·5후일담→Clara 실제 후속 관측·도미닉 Python 난수/플레이어 선택까지 진짜 게임 전체 1회. 개발 DB의 라우팅 성공만으로 본부 UI/실전 플레이 완료라 주장하지 말 것. 운영 `main` 및 기존 DB에 자동 이식 금지.
 - 최우선 계약 `docs/development/TIME_AGENT_HQ_RUNTIME_LOOP_FIRST.md`, 최신 완료/미완 우선순위 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`; 이전 10차/9차 문서의 완료·미완은 해당 당시의 역사 기록으로 재해석. 병렬 지급 스트레스는 **후순위 기술 검사**, NPC 말투/관계별 세밀 동기화는 이후 품질 단계.
-- 개발 DB migration 11차 3개 설치, 현 23+3=26개 예상(마지막 재확인 필요). 운영팀이 이식 승인하기 전까지 `main`, `START_GAME.md`, `rules/*`, `dist/*`, 운영 Supabase 수정 없음.
+- 개발 DB migration 11차 3개 실제 설치, **총 26개 확인**. NPC 서비스 8종, 11차 생성 가상 데이터 전부 롤백(잔여 0건). 운영 DB는 조회 기준 verified 체크포인트8/비공개 정본9/보유 카드18, 운영 HQ 스키마 없음. 운영팀이 이식 승인하기 전까지 `main`, `START_GAME.md`, `rules/*`, `dist/*`, 운영 Supabase 수정 없음.
 
 ## 최신 10차 개발 인수인계 (2026-11-12)
 
