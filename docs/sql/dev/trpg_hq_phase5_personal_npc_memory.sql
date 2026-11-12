@@ -253,7 +253,7 @@ begin
        from jsonb_array_elements(x.utterances) with ordinality as v(value,ordinality)
        where (v.value->'heard_by') ? ('agent:'||p_agent_id::text)
           or v.value->>'speaker'='agent:'||p_agent_id::text))
-     ) order by x.hq_minute,x.event_key),'[]'::jsonb)
+      order by x.hq_minute,x.event_key),'[]'::jsonb)
   into v_recent from (
     select * from trpg_hq.hq_npc_interactions e
     where e.team_id=p_team_id and e.npc_key=p_npc_key
