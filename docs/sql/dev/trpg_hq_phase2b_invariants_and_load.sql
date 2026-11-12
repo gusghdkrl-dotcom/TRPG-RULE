@@ -46,7 +46,7 @@ begin
     'training_completed',a.training_completed,'chronicle_completed',a.chronicle_completed,
     'personal_state',a.personal_state,'joined_at_minutes',tm.joined_at_minutes,
     'left_at_minutes',tm.left_at_minutes)
-    order by tm.joined_at,tm.agent_id),'[]'::jsonb)
+    order by tm.joined_at_minutes,tm.agent_id),'[]'::jsonb)
   into v_members from trpg_hq.hq_team_members tm
   join trpg_hq.hq_agents a on a.agent_id=tm.agent_id
   join trpg_cards.players p on p.id=tm.agent_id where tm.team_id=p_team_id;
