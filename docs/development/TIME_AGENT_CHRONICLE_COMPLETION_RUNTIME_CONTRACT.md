@@ -39,6 +39,14 @@
 
 `load_chronicle_honors(team_id)`는 **권한 있는 키퍼 서버 내부**에서 훈장/선택 상태를 재독하며 원래 카드 보유 `acquisition_event`, 기존 성장 레벨과 원장 정합 여부를 표시한다. 직접 플레이어 UI에 전체 개인 이벤트/비밀을 투사하지 않는다. 일반 `anon`/`authenticated` 직접 RPC·테이블 접근 금지.
 
+## 8차 동일 정식 요원 후속 연대기 실제 검증
+
+- 이미 첫 완주에서 인증된 동일 `player_id`·팀으로 별도 연대기 2장 verified 완료. `approve_chronicle_completion` 결과는 새 훈장1, 새로운 최초 정식 인증0. 원래 `hq_agent_full_certifications.first_mission_id`와 발급 시각 영구 보존.
+- 새 훈장에 특별 B 성장 POW +1을 실제 지급한 뒤 중복 요청 `applied:false`, 다른 A 선택 재시도 거부. 처음 받았던 특별 A `RO-A-3` 카드/소유·획득 이벤트는 변경 없음.
+- 세 번째 연대기 verified 최종 실패 후에는 신규 훈장/인증/보상0. 이전 정식 인증·2개 훈장·과거 특별 카드·성장 레벨과 `load_chronicle_honors`의 원장 정합 유지.
+- 반복 경로 검증은 `docs/sql/dev/tests/trpg_hq_phase8_repeat_chronicle_rollback.sql`에서 실DB 수행 후 전체 **롤백**. 새 함수 마이그레이션 없이 6a/6b/6c/7a/7b 기존 계약이 충족함을 확인. 보고서 `TIME_AGENT_REPEAT_CHRONICLE_REGRESSION.md`.
+- 아직 미검증: 다인 각자 A/B 선택 및 일반 챕터 `resolved` 보상, 다팀 동시 요청, 실제 현지 PC HP/사망 확정, 최종 사용자 UI 연결.
+
 ## 7차 다인 연대기 실행 경계
 
 - phase7a_immediate_chapter_failure: 1장 등 중간 verified CHAPTER_TERMINAL failed에서도 전체 작전 상태를 즉시 failed로 확정. 다음 챕터 출격/상태 부활 거부. 기존 합법적 구조/생존과 앞선 보상 원장은 유지.
