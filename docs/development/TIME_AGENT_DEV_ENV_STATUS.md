@@ -2,6 +2,20 @@
 
 > 이 문서는 **개발 브랜치에서 진행한 실제 작업 기록**이다. `main`이나 운영 DB의 구현 상태가 아니다. 최종 게임 정본은 아직 기존 `START_GAME.md`, `rules/*` 및 v0.8 설계와 구별해야 한다.
 
+## 6차 — 연대기 전체 완주/정식 인증/훈장 + 특별 A/B 보상 (2026-11-12)
+
+**DEV ONLY — 세 마이그레이션 설치와 실제 저장·재독 테스트 완료, 실제 게임 키퍼 자동 호출은 미구현.**
+
+- 코드: `docs/sql/dev/trpg_hq_phase6a_chronicle_completion_and_medals.sql`, `docs/sql/dev/trpg_hq_phase6b_chronicle_special_choice.sql`, `docs/sql/dev/trpg_hq_phase6c_chronicle_award_integrity.sql`. 실행 계약: `TIME_AGENT_CHRONICLE_COMPLETION_RUNTIME_CONTRACT.md`. 추후 작업: `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
+- **요원 인증**: 원래 카드 캠페인의 실제 참가 요원, 훈련 합격 상태, verified 체크포인트 SHA/최신 버전/종결, 같은 세계 1~N 챕터 귀환·평가·생존 일치 → 연대기 최종 구간 1회 승인. 최초 완주만 `full_agent` 영구 인증. 대사건이나 훈련 미완료 가상 기록의 정식 완주 승인은 거부.
+- **훈장**: 검증된 연대기 `mission_id × player_id`마다 1회, 별도 `hq_chronicle_honors` 불변 원장과 `hq_agent_full_certifications` 기록. 챕터 일반 보상은 그대로 다른 시스템.
+- **특별 A/B**: A 미보유 common/rare/epic 카드 1장 직접 영구 획득(전설 제외, 무작위 없음), B Lv.5 미만 영구 성장8종 중 하나 확정 +1(난수 없음). 한 번 선택하면 변경/반복 추가 지급 거부. 모든 보상 후보 소진 시 임의 보너스 없음, 아직 대체 정책 미확정.
+- 실제 훈련 자격 요원 `e0c56a38-d1c6-4814-9468-2b54c3ca59e8`을 사용한 DEV 합성 캠페인 `hq-dev-qualified-chronicle`에서 원래 V2 `commit/verify`를 거친 1장 `CHAPTER_TERMINAL`, 2장 `CHRONICLE_TERMINAL` 저장·본부 귀환 2회(각 +4320분)·마틴 등급 B/A 실제 평가 후 완주 승인 성공.
+- 현재 시험 결과: 첫 정식 인증 **1건**, 영구 완주 훈장 **1건**, 1택 특별 보상 **1건 완료**, 선택 후보 확인 당시 미보유 카드 37종/가능 성장8종. 특별 B의 `POW` Lv.0→1 시험은 DB 실제 변경 확인 후 **롤백**. 특별 A는 개발 가상 선택으로 타 클래스 영웅 자산 `RO-A-3` 실제 신규 보유 1장; 다른 A 선택/B 재선택 금지, 재호출 `applied:false`.
+- 최종 챕터 일반 보상 `chapter:02`을 **독립적으로 승인**할 수 있는 것 검증. 실제 드래프트 발행/선택은 아직 미실행으로 `approved` 상태; 특별 보상 처리로 `trpg_cards.drafts` 수정하지 않음.
+- 원장 `load_chronicle_honors` 조회: 인증1/훈장1/선택해결1, 카드의 실제 `acquisition_event` 정합. 완주·최초 인증·훈장/선택 원문 UPDATE/DELETE 차단 확인.
+- **핵심 남은 검증**: 다인 팀 중 한 명 최종 사망, 연대기 실패·후속 챕터 실패, 같은 요원 두 번째 완주, 전체 선택 후보 소진, 일반 최종 드래프트 실제 지급, 다인/다팀 동시 실행, 실제 본부 UI 자동 인증/선택, 최신 main SAN·세이브 판본 충돌 검토. 공식 상급 계급 점수/컷 미확정이라 생성하지 않음.
+
 ## 운영 main의 별도 룰북 변경 감지 (개발과 독립, 2026-11-12)
 
 - 초기 본부 개발 분기 기준 SHA `e3b33384...`, 현재 운영 `main`은 별도 규칙 수정 커밋 `808d25fe0bf77f48c3ca19200092b3ce70053eac`으로 전진.
