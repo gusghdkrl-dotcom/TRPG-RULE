@@ -15,7 +15,8 @@
       "width": 1086,
       "height": 1448,
       "approved": true,
-      "github_verified": true
+      "github_verified": true,
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-STAFF-01-martin-hale.png"
     },
     {
       "npc_id": "HQ-STAFF-02",
@@ -27,7 +28,8 @@
       "width": 1086,
       "height": 1448,
       "approved": true,
-      "github_verified": true
+      "github_verified": true,
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-STAFF-02-jayden-cole.png"
     },
     {
       "npc_id": "HQ-STAFF-03",
@@ -39,7 +41,8 @@
       "width": 1086,
       "height": 1448,
       "approved": true,
-      "github_verified": true
+      "github_verified": true,
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-STAFF-03-clara-bennett.png"
     },
     {
       "npc_id": "HQ-STAFF-04",
@@ -51,7 +54,8 @@
       "width": 1086,
       "height": 1448,
       "approved": true,
-      "github_verified": true
+      "github_verified": true,
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-STAFF-04-dominic-reed.png"
     },
     {
       "npc_id": "HQ-AGENT-01",
@@ -63,7 +67,8 @@
       "width": 1086,
       "height": 1448,
       "approved": true,
-      "github_verified": true
+      "github_verified": true,
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-AGENT-01-samira-kadir.png"
     },
     {
       "npc_id": "HQ-AGENT-02",
@@ -75,7 +80,8 @@
       "width": 1086,
       "height": 1448,
       "approved": true,
-      "github_verified": true
+      "github_verified": true,
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-AGENT-02-leo-navarro.png"
     },
     {
       "npc_id": "HQ-AGENT-03",
@@ -87,7 +93,8 @@
       "width": 1086,
       "height": 1448,
       "approved": true,
-      "github_verified": true
+      "github_verified": true,
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-AGENT-03-choi-seorin.png"
     },
     {
       "npc_id": "HQ-AGENT-04",
@@ -99,8 +106,10 @@
       "width": 1086,
       "height": 1448,
       "approved": true,
-      "github_verified": true
+      "github_verified": true,
+      "image_url": "https://raw.githubusercontent.com/gusghdkrl-dotcom/TRPG-RULE/dev/time-agent-hq/assets/hq-npc/HQ-AGENT-04-maya-singh.png"
     }
   ],
-  "upload_status": "verified_original_png_8_of_8"
+  "upload_status": "verified_original_png_8_of_8",
+  "first_induction_portrait_use": "When a fixed NPC first becomes personally visible/identifiable to the player during the first HQ visit/induction & initial orientation only, show this exact image_url once with their introductory dialogue. Never auto-display all eight or reuse a newly generated/stock photo. Outside onboarding, only display on explicit profile/portrait request. Rendering support must be tested in the target client."
 }
