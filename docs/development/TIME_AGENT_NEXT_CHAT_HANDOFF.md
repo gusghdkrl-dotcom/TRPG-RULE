@@ -9,6 +9,16 @@
 - 현재 운영 `main` SHA: `b23b35d713ee61446f47de8785364c4ee0bdce04` (2026-11-12). 앞선 `808d25f` 이후 새 별도 문서/룰 검증·배포 ZIP 커밋 3개. 실제 최신판에 합류할 때 반드시 `main` HEAD를 다시 확인하고 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`의 충돌 점검을 수행한다.
 - 개발 Supabase 적용 마이그레이션 **총 21개**, 최신 6a/6b/6c. 운영 DB `trpg_hq` 없음, 기존 세이브6/비공개정본7/카드18 유지.
 
+## 최신 7차 개발 인수인계 — 2026-11-12
+
+- DEV ONLY: GitHub dev/time-agent-hq, Supabase trpg-time-agent-dev. 마이그레이션 총 **23개**. 운영 main/운영 Supabase에는 아직 이식하지 않음.
+- 7차 phase7a: verified 중간 챕터 실패/사망에서 연대기 임무를 즉시 failed로 만들고 다음 챕터 준비/임무 부활을 거부. phase7b: final completed인데 전원 미귀환 또는 verified PCs 중 사망자 포함, 사망자 반환 명단 포함, PC 명단 오류 등 종료 모순 차단.
+- 2~3인 9가지 가상 세이브 검증 SQL 실제 통과. 2명 정상 완주→첫 인증/훈장 2건, 3명→각3건. 사망·실패·미귀환·전원 사망/허위 성공 방어. 시험 자료는 모두 롤백.
+- 새 SQL: docs/sql/dev/trpg_hq_phase7a_immediate_chapter_failure.sql, docs/sql/dev/trpg_hq_phase7b_chronicle_terminal_roster_consistency.sql.
+- 테스트: docs/sql/dev/tests/trpg_hq_phase7_multi_team_rollback_regression.sql. 상세: docs/development/TIME_AGENT_MULTIPLAYER_CHRONICLE_REGRESSION.md.
+- 다음 우선 검증: 동일 UUID 후속 연대기 완주/실패 때 과거 정식 자격과 훈장 보존, 2~3인 특별 A/B·일반 보상 실제 지급 및 동시성/전부 소진, 현지 HP 사망 판정·생존 특성과 키퍼/본부 접속 통합. 다인 테스트의 훈련 상태는 가상 플래그로 설정했으며 실제 훈련 경험 증거가 아님.
+- 최신 운영 main 룰북과 합류 시 변경 diff 재조회. 기존 운영 DB·게임 세이브 변경 금지. 모든 미완 항목은 TIME_AGENT_IMPLEMENTATION_BACKLOG.md에서 추적.
+
 ## 최신 개발 인수인계 (2026-11-12, 6차 완료 기준)
 
 > **아래 역사적 기획 단계의 '미구현' 문구는 당시 시점의 기록이다. 실제 현재 구현/테스트는 `TIME_AGENT_DEV_ENV_STATUS.md`와 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`를 우선 확인할 것.** 현재까지의 코드는 전부 GitHub `dev/time-agent-hq` 및 별도 Supabase `trpg-time-agent-dev`에만 적용. 운영 `main`/기존 Supabase/본게임 세이브에 이식하지 않았다.
