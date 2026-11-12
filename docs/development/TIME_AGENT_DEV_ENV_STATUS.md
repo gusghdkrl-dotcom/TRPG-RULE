@@ -18,7 +18,7 @@
 - 검증 SQL `trpg_hq_phase11_entry_to_field_rollback.sql`: 2인 새 입구·실제 입단 장면9분/재방문 동기화실/현지 게임 중 본부 재입장 금지/8 NPC 서비스 경로/중복 입단·시간 방지 **통과**.
 - 검증 SQL `trpg_hq_phase11_full_major_loop_rollback.sql`: 가상 1인 **입구 → 입단식 → 기존 카드 캠페인/현지 PC 링크·4슬롯 → private canon SHA → 마틴 실제 브리핑 → 제이든 출격 → V2 commit/verify → 종료 확인 → 본부 귀환 +4320분 → 마틴 평가·보상 승인 → 도미닉 실제 일반 드래프트 resolved → 대사건 훈련 자격 → 본부 자유 활동 → 다음 새 게임 동기화실** 전체 통과. 브리핑 없이 출격 시도는 거부.
 - 전부 가상 인물/시나리오/PC/마틴 평가/선택을 이용한 DEV DB 시험이며 **서브트랜잭션 롤백**, 실제 플레이어 행동·실제 ChatGPT 키퍼 실행과는 명백히 다름. 새 실제 게임 프로젝트의 ON/OFF 첫 화면/원작 세계 제작·키퍼 현지 플레이·후일담5개/클라라 관측 후속·제이든/마틴/도미닉 실제 대화·보상 Python 난수는 아직 미연결.
-- 11차 DEV migration 3개 추가(기존 23개에서 **26개 예정, 마지막 list_migrations 재확인**). 운영 main/운영 DB/기존 시작문서/룰북/배포 ZIP에 미적용. 상세/남은 P0 작업: `TIME_AGENT_HQ_RUNTIME_LOOP_FIRST.md` 및 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
+- 11차 DEV migration 3개 추가(기존 23개에서 **26개 실제 설치·재조회 확인**). NPC 서비스 8종, 11차 합성 팀/요원/세이브/정본 **잔여 0건**. 새 본부 함수·브리핑은 anon/일반 authenticated 직접 접근 불가. 운영 main/운영 DB/기존 시작문서/룰북/배포 ZIP에 미적용. 상세/남은 P0 작업: `TIME_AGENT_HQ_RUNTIME_LOOP_FIRST.md` 및 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
 
 ## 10차 종료 시 운영 검증 저장·비공개 정본 증가 관측
 
