@@ -55,7 +55,6 @@
 | CORE_VISIBILITY | [01-core.md](../rules/01-core.md#core_visibility) |
 | CORE_WORKFLOW | [01-core.md](../rules/01-core.md#core_workflow) |
 | CORE_ZERO_HOMAGE_EXPERIENCE_GATE | [01-core.md](../rules/01-core.md#core_zero_homage_experience_gate) |
-| CTHULHU_MYTHOS_SKILL | [03-danger.md](../rules/03-danger.md#cthulhu_mythos_skill) |
 | CTHULHU_SOURCE_UNIT_ROUTING | [04-setup.md](../rules/04-setup.md#cthulhu_source_unit_routing) |
 | DAMAGE | [03-danger.md](../rules/03-danger.md#damage) |
 | DAMAGE_BONUS_AND_BUILD | [02-checks.md](../rules/02-checks.md#damage_bonus_and_build) |
@@ -104,6 +103,7 @@
 | MAP_RUNTIME_INTERACTION | [08-visual.md](../rules/08-visual.md#map_runtime_interaction) |
 | MELEE_OPPOSED | [03-danger.md](../rules/03-danger.md#melee_opposed) |
 | MULTI_PC_SPOTLIGHT_CONTRACT | [06-play.md](../rules/06-play.md#multi_pc_spotlight_contract) |
+| MYTHOS_KNOWLEDGE_FACTS | [03-danger.md](../rules/03-danger.md#mythos_knowledge_facts) |
 | NARRATIVE_TECHNIQUES | [05-world.md](../rules/05-world.md#narrative_techniques) |
 | NO_CLEAN_EXIT_HORROR_ARCHITECTURE | [05-world.md](../rules/05-world.md#no_clean_exit_horror_architecture) |
 | NORMALIZED_TABLE_INDEX | [04-setup.md](../rules/04-setup.md#normalized_table_index) |
@@ -118,6 +118,7 @@
 | PARALLEL_TIMELINE_SYNC | [06-play.md](../rules/06-play.md#parallel_timeline_sync) |
 | PC_APPEARANCE_FROM_APP | [04-setup.md](../rules/04-setup.md#pc_appearance_from_app) |
 | PC_DERIVED_STATS | [04-setup.md](../rules/04-setup.md#pc_derived_stats) |
+| PC_REACHED_EVENT_CONTRACT | [04-setup.md](../rules/04-setup.md#pc_reached_event_contract) |
 | PC_SKILL_START_VALUES | [04-setup.md](../rules/04-setup.md#pc_skill_start_values) |
 | PERSONAL_CASH_LEDGER | [05-world.md](../rules/05-world.md#personal_cash_ledger) |
 | PLAYER_D100 | [02-checks.md](../rules/02-checks.md#player_d100) |
@@ -146,6 +147,7 @@
 | SCENE_ELAPSED_TIME_SETTLEMENT | [06-play.md](../rules/06-play.md#scene_elapsed_time_settlement) |
 | SETUP_UI_FIXED_CONTRACT | [04-setup.md](../rules/04-setup.md#setup_ui_fixed_contract) |
 | SKILL_IMPROVEMENT | [02-checks.md](../rules/02-checks.md#skill_improvement) |
+| SOURCE_EXPERIENCE_CONTRACT | [04-setup.md](../rules/04-setup.md#source_experience_contract) |
 | START_BRIEFING_FOG | [04-setup.md](../rules/04-setup.md#start_briefing_fog) |
 | START_MAP_HANDOUT_GATE | [08-visual.md](../rules/08-visual.md#start_map_handout_gate) |
 | START_SETTINGS_GATE | [04-setup.md](../rules/04-setup.md#start_settings_gate) |

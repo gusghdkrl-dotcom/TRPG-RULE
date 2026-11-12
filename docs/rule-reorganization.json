@@ -241,8 +241,8 @@
     "previous_id": "CTHULHU_MYTHOS_SKILL",
     "previous_file": "rules/03-danger.md",
     "action": "수정",
-    "destination": "CTHULHU_MYTHOS_SKILL",
-    "reason": "통합 합의에 맞게 담당 본문 정리"
+    "destination": "MYTHOS_KNOWLEDGE_FACTS",
+    "reason": "신판 수치형 크툴루 신화 기능 폐지에 따라 원문 이력을 실제 관측·이해·전달된 지식 관리 절로 연결한다. 기존 세이브에는 비소급."
   },
   {
     "previous_id": "SAN_ROLL",

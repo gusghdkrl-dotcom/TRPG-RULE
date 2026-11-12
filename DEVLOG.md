@@ -1,5 +1,33 @@
 # 개발 일지
 
+## 2026-11-13 — 신규 PC 기본 HP +1 (비소급)
+
+- 신규 생성 PC의 시작/현재/최대 HP를 `floor((최종 CON+최종 SIZ)/10)+1`로 한 번 계산한다. 영구성장 ON인 신규 PC는 최초 링크에서 검증한 적용 CON/SIZ를 사용한다.
+- 기존 PC/세이브 및 NPC·적·동물 HP, 중상·즉사·빈사·치료·무기/괴물 피해식·SAN·카드 효과·서버 저장 계약은 변경하지 않는다.
+- HP_AND_DEATH, PC_DERIVED_STATS, STATE_COMPATIBILITY와 해당 검증 계약만 갱신했다. GitHub Actions에서 규칙·회귀 검사와 배포 ZIP 자동 갱신을 검증한다. 미래 개발 백로그 #3/#5 미변경.
+
+## 2026-11-13 — 정기 자동 저장 주기 30 → 40 Scene Turn 단독 변경
+
+- 요청 범위대로 Scene Turn 40/80/120…마다 첫 안전한 경계에서 정기 저장을 시도하도록 `07-state.md#STATE_CADENCE`와 `06-play.md#TURN_INCREMENT`의 참조만 갱신했다. 구형 next_scene_turn의 정기 주기값은 다음 40배수로 재산정하며 이전 verified 저장본을 변경하지 않는다.
+- 기존 setup_bootstrap·play_start·manual·terminal_pre_finalization·열린 판정/전투 중단 방지·실패 시 진행/검증절차는 동일하다. 20턴 정본 재독은 변경하지 않으며 이제 40턴 경계에서 겹치면 원문을 재사용한다.
+- 관련 문자열 검증 계약만 같은 값으로 갱신했다. 다른 규칙·시나리오·DB 스키마·영구 세이브는 수정하지 않는다. 정식 규칙 검사/회귀 테스트/배포 ZIP 결과는 GitHub Actions 기록을 따른다.
+
+## 2026-11-13 — 바텀 HUD v5.3 요약형 2열·날씨/동행·장비/카드·상태 효과 적용
+
+- 사용자 승인 시안에 따라 기존 단일 상태 카드/HP·SAN·Luck 3열을 유지하고, 아래 본문을 **동일 폭 50:50 좌우 2열의 중앙 정렬**로 통일했다: 환경↔상태·효과, 장착 장비↔메인/파우치/중요 소지품, 카드 슬롯 왼쪽①③↔오른쪽②④. 화면 좌우 패딩과 영역 간 세로 간격은 충분히 유지하며 빨간 중앙선은 그리지 않는다.
+- 실제 관측 가능한 날씨 및 동행 PC/NPC, 실제 유리/불리 상태(초록/빨강), 식사·수면 등 기존 정본에서 실제 발생한 효과/종료 조건, 긴급 위험의 한시적 경고, 현재 결과에서 바뀐 HP/SAN/Luck 증감만 표시한다. 단순 식사에 자동 버프, 완료된 SAN 회복에 상시 버프, 비공개 위험 전지적 공개, 출력용 난수를 만들지 않는다.
+- 장착 4구획과 메인/파우치 점유·**실제 물품명과 수량**을 모두 보존하고 장비명 옆에 확정 탄약·소모·파손 상태를 요약한다. 카드 ON에서 검증된 4슬롯을 간략한 효과/발동 조건/성공 단계/1회 사용 여부로 표시하되 실제 카드 규칙·DB 지급·자동 발동/실물 소유 관계는 바꾸지 않는다. OFF는 기존 일반 HUD.
+- 담당 `06-play.md#BOTTOM_HUD_CONTRACT`, 항상 보이는 `PROJECT_INSTRUCTIONS.md`의 간단 라우팅, 개발용 `docs/HUD_PREVIEW.md`, 회귀 계약 `docs/validation-contract.json` 갱신. 기존 비공개 정본, 검증 세이브, 영구 카드 원장, 본부 미래 개발 계획 및 다른 게임 메커니즘 미변경.
+- 검증: 원문 계약과 Project Instructions 글자수 상한을 사전 대조하고, GitHub Actions에서 규칙·상태 회귀 테스트 후 실제 소스와 일치하는 배포 ZIP을 공식 export/커밋하도록 함. CI/ZIP 성공 여부는 워크플로 결과를 확인해서 별도로 판단한다.
+- 첫 CI에서 회귀 변이 테스트 `status_panel_flattened`가 중복된 `Markdown 상태 카드` 문구로 인해 실패한 것을 확인했다. HUD 본문의 두 번째 동일 문구를 `Markdown 대체 형식`으로 정리해 원래 상태 카드 필수 규칙에 대한 회귀 검증이 다시 유효하도록 수정하고 재검증한다.
+
+## 2026-11-12 — 상시 프로젝트 지침 길이·룰북 색인·배포 정합성 복구
+
+- 후속 CI에서 기존 2026-11-12 신화 기능 개정과 개발 메타데이터 사이의 불일치가 확인되어 보정했다. 구판 `CTHULHU_MYTHOS_SKILL`의 이전 ID 이력은 `MYTHOS_KNOWLEDGE_FACTS`로 연결하고, 최신 3개 규칙 ID를 개발용 RULE_CATALOG에 반영했으며, 검증 계약의 옛 SAN 상한/신화 수치 성장 전제를 신규 SAN_CORE·지식 관리 규칙에 맞춰 갱신했다. **실제 SAN 계산·기존 PC 수치·게임 규칙 본문은 변경하지 않았다.**
+- `PROJECT_INSTRUCTIONS.md`를 8,375자에서 7,727자로 축약했다. PC 주도권·공개 범위·실제 위험·원작 고유 체험·주요 사건 PC 도달·장면/인물·저장 우선순위와 10개 룰북 조회 경로는 유지하며 중복된 세부 설명을 제거했다.
+- `rules/00-index.md`에서 중복 구분자(`||`)와 표 밖 잔여 링크 행을 정리했다. `README.md`의 규칙판 표기를 2026-11-12로 통일했다. 실행 규칙의 기능치·피해식·진행 조건·기존 캠페인 정본/세이브는 변경하지 않았다.
+- 개발 검증: 인스트럭션 7,800자 상한, 필수 문구·순서 171개 계약 항목, 10개 룰북 라우팅, 색인 Markdown 표 구조를 대조했다. 전체 Python 회귀 검사와 `dist/TRPG-RULE-project.zip` 공식 export/해시 검증은 main의 `Build latest game ZIP` GitHub Actions에서 수행하며 실제 실행 결과로 성공 여부를 판단한다.
+
 ## 2026-11-11 — 정본 Markdown도 Supabase에 영속 저장·GitHub 세이브 미러 중지
 
 - 신규 캠페인의 PRIVATE_CANON 전체 원문을 Supabase private `trpg_private.gm_canon_documents`에 저장/동일 SHA-256 read-back하고, 동일 .md 파일을 소유자에게 전달해 프로젝트 소스에 보관하도록 한다. schema 미노출·anon/auth 불허·RLS·기존 revision UPDATE/DELETE 방지·해시 CHECK/PK 적용. 현재 동적 `gm_checkpoint_history`/trpg_v2_*는 유지.
