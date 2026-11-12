@@ -4,6 +4,21 @@
 >
 > **중요: 실제 이식 전.** 이 문서와 개발 기획 이슈 #1의 업데이트는 기존 게임 규칙, 데이터베이스, 배포물, 현재 플레이/세이브를 바꾸지 않는다. 사용자가 별도로 **실제 이식 승인**을 하기 전에는 DB·룰북·실행 코드·배포 ZIP을 수정하지 않는다.
 
+## 최신 개발 인수인계 (2026-11-12, 6차 완료 기준)
+
+> **아래 역사적 기획 단계의 '미구현' 문구는 당시 시점의 기록이다. 실제 현재 구현/테스트는 `TIME_AGENT_DEV_ENV_STATUS.md`와 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`를 우선 확인할 것.** 현재까지의 코드는 전부 GitHub `dev/time-agent-hq` 및 별도 Supabase `trpg-time-agent-dev`에만 적용. 운영 `main`/기존 Supabase/본게임 세이브에 이식하지 않았다.
+
+- 1~3차: 본부 팀·요원·임무/챕터·검증 후 +3일 귀환, 마틴 정성 평가, 도미닉 일반 카드·성장 드래프트 실제 지급, 대사건 훈련 완료→연대기 참가 자격을 개발 DB에서 구현/검증.
+- 4차: 클라라 출처·공개 범위가 분리된 현지 사실/후속 보고 아카이브, 질문 후 공개·재접속 조회, 비공개 기록 불변/접근 제어.
+- 5차: 클라라 포함 본부 NPC 8명과 **각 요원 UUID 별 관계/실제 청취·개인 질문** 영구 저장. 공통 자료 공개와 개인 질문 분리, 상이한 요원 A/B 기억 복원 테스트.
+- **6차 최신:** `trpg_hq.approve_chronicle_completion`은 **최신 verified 최종 상태 + 모든 챕터 귀환/평가 + 전원 훈련·생존**을 확인해 영구 정식 요원 첫 인증/연대기별 훈장을 1회 등록. `chronicle_special_options` + `resolve_chronicle_special`은 **전설 제외 미보유 카드 직접 1장 또는 성장 확정 Lv+1 중 1택**, 기존 최종 챕터 보상과 독립. 완료 1건·훈장 1건·특별 A 실제 지급 1건, B 성장 경로 실제 적용+롤백 시험, 중복/변조 차단 완료.
+- 6차 실제 DEV fixture: `hq-dev-qualified-chronicle`(훈련 합격 요원), 2장 V2 검증 세이브 → 실제 본부 +3일×2 귀환 → 마틴 B/A 평가 → 정식 인증/훈장/특별 보상. `RO-A-3` 영웅 자산 직접 지급은 **개발 가상 선택**이지 사용자 실제 플레이 선택이 아니다. 일반 2장 보상은 `chapter:02` 승인 상태이며 일반 드래프트의 발행/수령은 이 가상 시나리오에서 미실행.
+- 최신 코드/절차: `docs/sql/dev/trpg_hq_phase6a_chronicle_completion_and_medals.sql`, `trpg_hq_phase6b_chronicle_special_choice.sql`, `trpg_hq_phase6c_chronicle_award_integrity.sql`, `docs/development/TIME_AGENT_CHRONICLE_COMPLETION_RUNTIME_CONTRACT.md`.
+- **다음 단계 우선순위:** (1) 2~3인 팀/1인 사망/실패·귀환 불일치 부정 검증, 두 번째 성공 연대기·전체 후보 소진 (2) 최종 기존 일반 보상 발행/선택과 특별 보상 공존·재접속 (3) 실제 ChatGPT 테스트 프로젝트 ON/OFF·입단/대화/NPC별 기억/현지 세이브/귀환/마틴/클라라/도미닉 연결 (4) 원래 현지 위험·사망/재투입·다섯 후일담 (5) 최신 운영 main 판본·SAN/세이브 호환성 및 기존 OFF 불변 회귀.
+- **본부 개발 분기 기준 원본** `e3b33384...`, 별도 운영 `main`은 독립 규칙 변경 `808d25fe0bf77f48c3ca19200092b3ce70053eac`로 전진한 상태. 새 룰북과 충돌 검사 없이 개발 브랜치를 `main`에 병합하지 말 것. 운영 DB는 따로 보호하고 이식 전 독립 백업·복원 검증.
+- 최초 자격은 정식 요원이며 상위 계급·점수/컷/직급 효과, 특별 보상 전부 소진 시 대체 규칙은 아직 확정되지 않았다. 숫자를 추측해 만들지 않는다.
+- **작업마다** GitHub `TIME_AGENT_DEV_ENV_STATUS.md`(실제 통과 증거)와 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`(완료/미완·발견 결함/작업 우선순위)를 즉시 갱신할 것.
+
 ## 1. 공식 상태
 
 - 저장소: `gusghdkrl-dotcom/TRPG-RULE` (기본 브랜치 `main`)
