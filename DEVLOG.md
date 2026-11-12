@@ -1,5 +1,11 @@
 # 개발 일지
 
+## 2026-11-12 — 상시 프로젝트 지침 길이·룰북 색인·배포 정합성 복구
+
+- `PROJECT_INSTRUCTIONS.md`를 8,375자에서 7,727자로 축약했다. PC 주도권·공개 범위·실제 위험·원작 고유 체험·주요 사건 PC 도달·장면/인물·저장 우선순위와 10개 룰북 조회 경로는 유지하며 중복된 세부 설명을 제거했다.
+- `rules/00-index.md`에서 중복 구분자(`||`)와 표 밖 잔여 링크 행을 정리했다. `README.md`의 규칙판 표기를 2026-11-12로 통일했다. 실행 규칙의 기능치·피해식·진행 조건·기존 캠페인 정본/세이브는 변경하지 않았다.
+- 개발 검증: 인스트럭션 7,800자 상한, 필수 문구·순서 171개 계약 항목, 10개 룰북 라우팅, 색인 Markdown 표 구조를 대조했다. 전체 Python 회귀 검사와 `dist/TRPG-RULE-project.zip` 공식 export/해시 검증은 main의 `Build latest game ZIP` GitHub Actions에서 수행하며 실제 실행 결과로 성공 여부를 판단한다.
+
 ## 2026-11-11 — 정본 Markdown도 Supabase에 영속 저장·GitHub 세이브 미러 중지
 
 - 신규 캠페인의 PRIVATE_CANON 전체 원문을 Supabase private `trpg_private.gm_canon_documents`에 저장/동일 SHA-256 read-back하고, 동일 .md 파일을 소유자에게 전달해 프로젝트 소스에 보관하도록 한다. schema 미노출·anon/auth 불허·RLS·기존 revision UPDATE/DELETE 방지·해시 CHECK/PK 적용. 현재 동적 `gm_checkpoint_history`/trpg_v2_*는 유지.
