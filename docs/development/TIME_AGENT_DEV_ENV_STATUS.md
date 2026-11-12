@@ -9,6 +9,15 @@
 - 개발 Supabase 보안 자문: 새 HQ 자료는 `anon`/일반 `authenticated` 접근 거부, 신규 훈장/인증 불변 트리거 3종 확인. 원래 공개 카드 RPC `SECURITY DEFINER` 8개 익명/인증 실행 경고는 별도 보안 검토 항목에 유지; 임의 권한 변경 없음.
 - 이식 전 현재 운영 `main` HEAD 재조회 + 00-index/최신 룰·배포물 호환 대조 필수.
 
+## 8차 — 동일 정식 요원의 두 번째 완주/세 번째 실패 실DB 롤백형 검증 (2026-11-12)
+
+- 재현 SQL: `docs/sql/dev/tests/trpg_hq_phase8_repeat_chronicle_rollback.sql`; 검증 보고: `TIME_AGENT_REPEAT_CHRONICLE_REGRESSION.md`.
+- **이미 첫 정식 인증·훈장·특별 카드가 있는 개발 영구 UUID 그대로** 두 번째 별도 연대기(2장)를 기존 `trpg_v2_commit/verify`, `confirm_segment_terminal`, `return_segment`, `evaluate_segment` 경로로 완주. 신규 훈장 1개·특별 선택권 1개, 신규 첫 인증은 **0건**. 원래 첫 인증 임무 ID·발급 시각도 불변.
+- 두 번째 특별 B로 POW 성장 Lv.0→1 실제 지급과 재조회 확인. 같은 B 재호출 추가 지급0, 뒤늦은 A 재선택 차단. 처음 특별 A로 획득한 `RO-A-3` 카드·지급 `acquisition_event`도 보존.
+- **세 번째 별도 연대기**를 verified 최종 실패로 종료 후 신규 훈장·인증·특별 지급 없이, 기존 첫 인증1/완주 훈장2·이전 카드 A/성장 B 모두 유지. 재접속용 `load_chronicle_honors`이 2개의 실제 원장 이력을 불일치 없이 복원.
+- 새 가상 캠페인·체크포인트·성장/훈장·팀 시간 변경은 모두 서브트랜잭션 **롤백**, 기존 개발 데이터 원래 값 유지. **코드 결함 없음·신규 마이그레이션 없음. 개발 DB 총 23개 유지**. 운영 DB/운영 GitHub에 이식하지 않음.
+- 미완 작업: 2~3인 개인별 다른 A/B 보상 선택과 실제 일반 드래프트 지급 완료, 동일 UUID 다팀 경쟁·동시성, 원작 HP/사망 직전 특성·특별 카드 상호작용, 게임 클라이언트와 신규/기존 카드 ON/OFF 실제 연결.
+
 ## 운영 DB 비공개 정본 별도 추가 관측 (2026-11-12, 7차 마지막)
 
 - 기존 운영 Supabase 조회 결과(7건)와 달리 **현재 비공개 정본 8건** 관측. 신규 최신 메타데이터는 `lightless-lighthouse-1927-51894b6f6bda`의 `lightless-lighthouse-main` revision1 / 현행 규칙판 2026-11-12 / DB 생성시간 `2026-11-12 10:47 UTC`. 본부 작업은 운영 DB에 SELECT만 수행했으며 증가 원인·실제 작성자는 확인하지 못함.
