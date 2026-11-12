@@ -30,7 +30,7 @@ begin
     insert into trpg_cards.owned_cards(player_id,card_id,acquisition_event)
     values(p,primary_card,'synthetic-special-owned-during-open-draft');
     begin
-      perform trpg_cards.resolve_draft(campaign,p,'chapter:01',1,null);
+      perform trpg_cards.resolve_draft(campaign,p,'chapter:01',1::smallint,null::integer);
       raise exception 'test_failed_duplicate_card_slot_claimed';
     exception when others then
       if sqlerrm<>'card_already_owned_before_selection' then raise; end if;
@@ -38,7 +38,7 @@ begin
     if not exists(select 1 from trpg_cards.drafts where player_id=p
        and campaign_id=campaign and event_key='chapter:01' and status='offered')
     then raise exception 'test_failed_draft_lost_after_collision';end if;
-    outcome:=trpg_cards.resolve_draft(campaign,p,'chapter:01',2,null);
+    outcome:=trpg_cards.resolve_draft(campaign,p,'chapter:01',2::smallint,null::integer);
     if outcome->>'type'<>'card' or outcome->>'card_id' is distinct from other_card
       or (select count(*) from trpg_cards.owned_cards
          where player_id=p and card_id=primary_card)<>1
