@@ -74,6 +74,18 @@
 - 기존 `record_event`의 공통 NPC `known_facts` 주입 거부, 일반 위치 갱신 유지. 새 클라라 질문 공개의 공동 event_data에 `question_text`와 `requested_by`가 없는 것 확인; 질문 원문은 개인 공개 기록에 있음.
 - `anon`은 신규 관계 테이블 SELECT와 개인 문맥 함수 EXECUTE 불가.
 
+## 클라라: 이미 공개된 같은 자료에 대한 A/B 각각의 추가 질문
+
+원래 `clara_release(record_id,player_id,revision,question)`는 **자료 1건에 최초 공개 이력 1건만** 기록한다. A에게 먼저 공개된 자료에 B가 다시 질문하거나 A가 다른 이유로 추가 질문한다면, 사실 공개를 다시 발행하지 않더라도 **개인 질문은 별도로 기록해야 한다**.
+
+- `docs/sql/dev/trpg_hq_phase5c_clara_repeat_personal_questions.sql` 추가 마이그레이션으로 `hq_clara_followup_questions`와 `clara_record_followup_question(record_id,requested_by,question_key,expected_revision,question_text)`를 구현.
+- 미공개 자료 최초 질문은 기존 `clara_release`로 출처/공개 경계를 확인하고 첫 질문 원문·질문자 UUID 저장. **이미 팀에 공개된 자료에 대한 새로운 실제 질문은 `clara_record_followup_question`**으로 고유 `question_key`를 부여해 기록. 새 질문을 했다는 사실만으로 이전 공개 자료를 다시 제공하거나 보상 지급/시간 증가 없음.
+- `load_npc_agent_context(npc:clara,agent_uuid)`의 `clara_personal_questions`은 최초 공개 질문 + 추가 개인 질문을 해당 요원 기준으로만 합친다. 이웃한 다른 요원의 질문은 자동 포함하지 않는다. 같은 질문을 반복 확인한 것이 아니라 **실제 새로운 질문이라면** 새 `question_key`여야 한다.
+- 팀 공동 `hq_events`에는 개인 질문 문구와 질문자 UUID를 넣지 않는다. 개인 질문 원문은 원래 `hq_clara_releases`와 새 `hq_clara_followup_questions`에만 보관. 불변/비공개·현재 활성 팀원 제한.
+- 실저장 검증: A 요원의 4건 최초 공개 질문+1건 별도 추가 질문=**5건** 개별 문맥 복원. 같은 `question_key` 재요청은 `applied:false`. 임시 B가 동일 기록을 다른 이유로 새 질문하는 시뮬레이션에서는 **B의 개인 이력 1건, A는 여전히 5건**이었고 시험 내역/임시 참가자는 트랜잭션 롤백으로 정리.
+- 잘못된 동일 키 다른 질문/다른 팀 소속 요원 접근/과거 추가 질문 원문 UPDATE 모두 거부. 공동 사건의 질문문·질문자 누출 0건, 질문만으로 본부 시간 추가 0분.
+- 질문을 보고 클라라의 신뢰/호감이 무조건 오르지 않는다. 실제 대화로 관계가 변했다면 별도 `record_npc_interaction`에 **실제 이유와 청취자**를 기록해야 한다. 같은 장면의 경과 시간을 양쪽 RPC에서 중복 반영하지 않는다.
+
 ## **중요한 미완료/이식 차단 항목**
 
 1. **실제 ChatGPT 키퍼와 연결 테스트 미실행**: 새 테스트 프로젝트에서 대화 직전에 `load_npc_agent_context`를 권한 있는 경로로 불러오고 A/B 별 말투·반응을 생성하는 실제 게임 테스트 필요. DB 저장 경로만으로 'NPC가 자동으로 알아서 반응'한다고 주장하면 안 됨.
