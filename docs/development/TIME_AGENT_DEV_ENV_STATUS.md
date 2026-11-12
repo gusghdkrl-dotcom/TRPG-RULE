@@ -9,6 +9,16 @@
 - 개발 Supabase 보안 자문: 새 HQ 자료는 `anon`/일반 `authenticated` 접근 거부, 신규 훈장/인증 불변 트리거 3종 확인. 원래 공개 카드 RPC `SECURITY DEFINER` 8개 익명/인증 실행 경고는 별도 보안 검토 항목에 유지; 임의 권한 변경 없음.
 - 이식 전 현재 운영 `main` HEAD 재조회 + 00-index/최신 룰·배포물 호환 대조 필수.
 
+## 9차 — 2~3인 혼합 특별 A/B와 일반 카드 드래프트 실제 지급 확인 (2026-11-12)
+
+- GitHub 테스트 SQL `docs/sql/dev/tests/trpg_hq_phase9_mixed_rewards_rollback.sql` 실제 개발 DB 실행 성공. **2인** 특별 A카드1·B성장1 + 일반 챕터 카드1·성장1 (총 일반 `resolved`2). **3인** 특별 A카드2·B성장1 + 일반 카드2·성장1 (일반 `resolved`3). 각자의 영구 UUID에만 보유·성장이 들어감.
+- V2 검증 세이브 2장·본부 귀환·마틴 평가 후 훈장/첫 정식 인증 각2/3건. 각 요원별 보상 승인/발행/선택 호출 재실행 `applied:false`, `load_team_rewards`·`load_chronicle_honors` 원장 일치, 서로 다른 UUID 간 같은 카드 독립 소유 가능.
+- 추가 별도 세션 후속 연대기 **verified 실패**에도 앞선 특별 A/B 및 실제 보통 카드·성장 보상 `resolved`와 훈장/정식 인증이 유지됨. NPC 개인 기억/클라라 질문 원장에 보상만으로 허위 관계/질문 생성 없음. 개인 보상 사건의 `audience`가 지급 당사자 1명만 포함하는지 검증 성공.
+- 모든 새 합성 요원·임무·세이브·정본·보상 내역은 **서브트랜잭션 롤백**, 이번 실사용 개발 DB 원장은 변화 없음. 후보 4개는 DB 실제 적격 풀의 **고정 선택 테스트**; 실제 Python SystemRandom·희귀도 비율 준수/소진 재분배를 이 테스트가 증명하지 않음.
+- 열린 일반 드래프트와 별도 카드 획득 중복 충돌은 **원래 `trpg_cards` 엔진 단위 시험**으로 정상: 이미 소유한 일반 후보 수령은 거부, 원래 나머지 후보는 수령 가능. **HQ의 실제 특별 A 처리와 순서 교차는 후속 통합 테스트**.
+- SQL: `docs/sql/dev/tests/trpg_hq_phase9_mixed_rewards_rollback.sql`, `docs/sql/dev/tests/trpg_hq_phase9_card_collision_rollback.sql`. 상세: `TIME_AGENT_MULTIPLAYER_REWARDS_REGRESSION.md`.
+- 신규 마이그레이션 없음 — 개발 DB **23개 유지**. 운영 본부 프로젝트에는 이식하지 않음.
+
 ## 8차 종료 시 운영 DB 별도 저장 증가 관측
 
 - 운영 verified 체크포인트 **7건**(7차 확인 6건에서 1건 증가). 최신 행 `session-53ed85595344472b8c978afb7d9a4c77` v1 verified, 생성시간 `2026-11-12 10:50:45 UTC`. 비공개 정본8건·소유카드18건·본부 스키마 미설치. 본부 개발 중 운영 DB에는 SELECT만 수행했으며 증가 경위/주체는 확인하지 못했다.
