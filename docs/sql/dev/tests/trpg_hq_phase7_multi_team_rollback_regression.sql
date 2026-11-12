@@ -43,7 +43,7 @@ begin
    ('three_missing',3,'missing'),
    ('three_failed',3,'failed'),
    ('two_early_failed',2,'early_failed'),
-   ('two_death_fake_success',2,'dead_false_success')
+   ('dead_labeled_win',2,'dead_false_success')
  ) c(scenario,participants,outcome)
  loop
   v_report:=null;
