@@ -190,9 +190,9 @@ begin
           v_segment,v_rev,'DEV7 실패를 완료로 위장한 승인');
         raise exception 'fixture_failure_incorrectly_certified_%',cs.scenario;
       exception when others then
-        if sqlerrm is distinct from case when cs.outcome='missing'
+        if sqlerrm is distinct from (case when cs.outcome='missing'
           then 'hq_chronicle_not_all_qualified_agents_survived_and_returned'
-          else 'hq_chronicle_not_verified_completed_and_evaluated' end then
+          else 'hq_chronicle_not_verified_completed_and_evaluated' end) then
           raise;
         end if;
       end;
