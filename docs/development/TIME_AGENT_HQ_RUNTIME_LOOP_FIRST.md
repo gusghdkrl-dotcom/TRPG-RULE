@@ -40,6 +40,12 @@
 - 마야 — 경험과 기준에 따른 토론·경쟁/협력, 요원과의 개인 관계는 실제 사건 이후에만 변화.
 - 네 핵심 담당자(마틴·제이든·도미닉·클라라)는 실제 필요한 장면에 등장하고, 나머지 동료는 자연스럽게 접촉한다. **8명 전원 방문·의무 대화·반복 행사 금지.** 방문은 구매·약속·대사 수락이 아니다. NPC별 개인 기억 데이터/실제 청취자 기록은 기존 5차 구조에만 근거해 갱신; 말투 미세 동기화는 후속.
 
+### 2.2a 마틴 가치관 면담의 영속 기록·후속 평가 (2026-11-13 DEV 반영)
+
+첫 입단식에서 마틴은 **세계 붕괴/참사 피해 예방과 가능한 진실 발견** 및 **현지 PC의 원래 삶·성격·가치관·안전 존중**을 직접 설명하고, 요원마다 3가지 가치관 대화 주제를 묻는다. 실제 답/유보/거절만 플레이어별로 보존한다. 구체 질문과 원문/표현·평가 원칙은 `docs/development/TIME_AGENT_MARTIN_VALUES_INTERVIEW.md`.
+
+**기존 함수로만 기록:** `trpg_hq.record_npc_interaction(team_id,event_key,expected_revision,payload)` (`npc_key='npc:martin'`, 실제 `present_agents`, `speaker_key`, 실제 `location`, `summary`, `utterances`의 `speaker`/`text`/`heard_by`, `observations`, 실제 변화만 `changes_by_agent`, `elapsed_minutes`). 실제 청취·요원 UUID에 묶으며 다른 NPC/요원에게 자동 공유하지 않는다. 응답·기록 성공/검증 전에는 영구 저장이라고 하지 않는다. 실제 필요 시 `load_npc_agent_context(team_id,'npc:martin',agent_id)`로 확인하고, 귀환 `evaluate_segment`의 `p_assessment`에는 출격 전 답과 **검증된** 현지 선택·구조·위험·진실 발견 사이의 정성적 피드백을 반영한다. 기존 S/A/B/C/F·진급·보상 산식 불변, 새 DB 필드/공개 RPC 없음. 다른 팀에서 동일 원문 자동 승계는 별도 확인 전 주장 금지.
+
 ### 2.3 실제 원작 게임 실행
 1. 팀이 작전실에서 인지도·규모·기피/지정 세계관을 선택. 기존 `04-setup` 원작 후보·현지 PC/관계·세계 설계/실제 위험·합당한 적·시대·직업 절차 실행.
 2. 영구 UUID를 기존 카드 캠페인에 연결, 전원 본래 현지 PC 생성·실제 원본 특성/성장 스냅샷, 주 클래스·4슬롯 장착을 **플레이어가 직접 확정**.
