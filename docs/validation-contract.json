@@ -312,18 +312,20 @@
     "contains": [
       "initial_san",
       "max_san",
-      "99-Cthulhu Mythos",
-      "소급 재계산하지"
+      "99 - Cthulhu Mythos",
+      "기존 캠페인의 SAN을 새 산식으로 재계산"
     ]
   },
   {
-    "rule": "CTHULHU_MYTHOS_SKILL",
+    "rule": "MYTHOS_KNOWLEDGE_FACTS",
     "contains": [
+      "기능치가 아니다",
+      "출처·내용·공개 범위",
+      "SAN_EXPOSURE_GATE"
+    ],
+    "excludes": [
       "CHRONICLE에서만",
-      "대사건에서도",
-      "0",
-      "사전에 정해진 획득량",
-      "SAN_CORE"
+      "사전에 정해진 획득량"
     ]
   },
   {

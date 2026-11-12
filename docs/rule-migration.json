@@ -620,8 +620,8 @@
     "original_line_normalized": 697,
     "source_sha256": "4fb0300220f24d486d9339560fbc03161faf60a5b2378ecd3be23e29c70a49cf",
     "action": "정리·이동",
-    "destination": "CTHULHU_MYTHOS_SKILL",
-    "reason": "본문 보존 중심의 형식·참조·삭제 기능 종속 문구 정리"
+    "destination": "MYTHOS_KNOWLEDGE_FACTS",
+    "reason": "2026-11-12 신판은 수치형 신화 기능을 폐지하고 출처·내용·공개 범위를 가진 실제 습득 지식으로 관리한다. 구판 원문 이력은 유지한다."
   },
   {
     "original_id": "SAN_ROLL",
