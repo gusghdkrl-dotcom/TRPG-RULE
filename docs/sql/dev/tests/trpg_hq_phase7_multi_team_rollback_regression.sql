@@ -162,12 +162,12 @@ begin
           perform trpg_hq.confirm_segment_terminal(v_segment,v_ch,v_sha,v_rev);
           raise exception 'dead_player_confirmed_as_successful_chronicle';
         exception when others then
-          if sqlerrm<>case when cs.outcome='missing'
+          if sqlerrm<>(case when cs.outcome='missing'
               then 'hq_chronicle_final_success_requires_all_returned'
             when cs.outcome='dead_returned'
               then 'hq_chronicle_returning_agent_not_alive'
             else 'hq_chronicle_verified_death_requires_failed_terminal'
-            end then raise;end if;
+            end) then raise;end if;
         end;
         if exists(select 1 from trpg_hq.hq_chronicle_honors h
           join trpg_hq.hq_chronicle_completions c on c.mission_id=h.mission_id
