@@ -1,12 +1,12 @@
 # 규칙 색인
 
-모든 주요 사건은 발생 자체가 필연적이며 PC는 후속 피해·구조·국지적 격퇴·생존/탈출을 바꾼다. SCENARIO_BLUEPRINT·WORLD_INITIATIVE_EXECUTION·PRIVATE_CANON_DOCUMENT를 함께 적용한다.
+모든 주요 사건은 발생 자체가 필연적이며 PC는 후속 피해·구조·국지적 격퇴·생존/탈출을 바꾼다. **주요 사건은 실제 이동·감지·전파의 인과로 PC에게 직접 위협·사건 의미의 재해석·당면 목표 충돌 중 적어도 한 가지가 도달하도록 신규 생성 시 설계한다.** SOURCE_EXPERIENCE_CONTRACT·PC_REACHED_EVENT_CONTRACT·SCENARIO_BLUEPRINT·WORLD_INITIATIVE_EXECUTION·PRIVATE_CANON_DOCUMENT를 함께 적용하며 기왕 확보한 안전을 취소하지 않는다.
 
 신규 세계/미확정 챕터의 원작 중심축+새 주인공의 사건, 실제 위협/피해·미개입/귀가/해결의 인과 설계도는 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT의 기존 HIDDEN_TRUTH·WORLD_RULES·DRIVER_BASELINES·ENDING_CONDITIONS 및 관련 절을 따르고 COMPATIBILITY_GATE로 내용의 중대성과 실행 연결을 대조한다. 단서의 오인/기만은 실제 NPC/자료의 원인·공개 범위와 해결된 성과를 보존한다.
 
 영구 카드 자산·강화·성장과 효과별 발동·등급·해금은 09-cards가 담당한다. 이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 상시 장착 HUD는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적의 단계별 개체 전력·중간/최종 보스·사이드 사건은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
 
-규칙판: 생존 호러 통합 경량판 2026-11-08. 상시 이야기·묘사·페이싱은 PROJECT_INSTRUCTIONS.md, 아래는 필요한 수치/상태/절차를 찾는 경로다. 같은 판본의 필요한 본문과 현재 상태가 확인 가능하면 재사용하고 유실/변경/충돌 부분만 조회한다. 매 응답 색인이나 전 규칙을 다시 읽지 않는다.
+규칙판: 생존 호러 통합 경량판 2026-11-12. 상시 이야기·묘사·페이싱은 PROJECT_INSTRUCTIONS.md, 아래는 필요한 수치/상태/절차를 찾는 경로다. 같은 판본의 필요한 본문과 현재 상태가 확인 가능하면 재사용하고 유실/변경/충돌 부분만 조회한다. 매 응답 색인이나 전 규칙을 다시 읽지 않는다.
 
 | 상황 | 담당 절 |
 |---|---|
@@ -16,7 +16,8 @@
 | 단계·유불리·대항 | [SUCCESS_LEVELS](02-checks.md#success_levels) · [BONUS_PENALTY_DICE](02-checks.md#bonus_penalty_dice) · [GENERIC_OPPOSED_ROLL](02-checks.md#generic_opposed_roll) |
 | PC 굴림·행운·강행 | [ROLL_INPUT_FORM_CONTRACT](02-checks.md#roll_input_form_contract) · [LUCK_SPENDING](02-checks.md#luck_spending) · [PUSHED_ROLL](02-checks.md#pushed_roll) |
 | HP·중상·치료·연대기 성장 | [HP_AND_DEATH](02-checks.md#hp_and_death) · [WOUNDS](02-checks.md#wounds) · [HEALING](02-checks.md#healing) · [SKILL_IMPROVEMENT](02-checks.md#skill_improvement) |
-| SAN·광기·회복 | [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) · [SAN_ROLL](03-danger.md#san_roll) · [INSANITY_CONDITIONS](03-danger.md#insanity_conditions) · [DIEGETIC_SAN_RECOVERY](03-danger.md#diegetic_san_recovery) |
+| 신규 PC SAN 산식·신화 수치 기능 제거·실제 지식 | [SAN_CORE](03-danger.md#san_core) · [MYTHOS_KNOWLEDGE_FACTS](03-danger.md#mythos_knowledge_facts) · [PC_DERIVED_STATS](04-setup.md#pc_derived_stats) · [STATE_COMPATIBILITY](07-state.md#state_compatibility) |
+| SAN 피해·광기·성취/휴식 회복 | [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) · [SAN_ROLL](03-danger.md#san_roll) · [SCALED_SANITY_LOSS](03-danger.md#scaled_sanity_loss) · [INSANITY_CONDITIONS](03-danger.md#insanity_conditions) · [DIEGETIC_SAN_RECOVERY](03-danger.md#diegetic_san_recovery) |
 | 전투·총기·추격·위해 | [COMBAT_ORDER](03-danger.md#combat_order) · [MELEE_OPPOSED](03-danger.md#melee_opposed) · [FIREARMS](03-danger.md#firearms) · [CHASE](03-danger.md#chase) · [EXTREME_HAZARDS](03-danger.md#extreme_hazards) |
 | 신규 시작·원작·PC/전체 카드 도감·슬롯 중심 장착·등급별 UI | [START_SETTINGS_GATE](04-setup.md#start_settings_gate) · [SETUP_UI_FIXED_CONTRACT](04-setup.md#setup_ui_fixed_contract) · [CAMPAIGN_SETUP_PIPELINE](04-setup.md#campaign_setup_pipeline) · [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) · [STAT_DRAFT_GENERATION](04-setup.md#stat_draft_generation) · [PROFESSION_DRAFT](04-setup.md#profession_draft) · [STARTING_EQUIPMENT_MINIMAL](04-setup.md#starting_equipment_minimal) |
 | 반응형 발생 시간대·실제 데드라인·PC가 세계에 미친 행동/실제 정체로 다가오는 위협·사건 상태 보존 | [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) · [SCENE_ELAPSED_TIME_SETTLEMENT](06-play.md#scene_elapsed_time_settlement) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) |
@@ -30,7 +31,8 @@
 | 신규 세계의 중상·빈사/사망·SAN·광기 위협 접점 설계, 1~3인 가상 경로 대조·후속 상태 연속성 | [HARM_ECOLOGY](04-setup.md#harm_ecology) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) · [REACHED_DANGER_EXECUTION_GATE](05-world.md#reached_danger_execution_gate) · [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) |
 | 비디오게임의 탐험·자원·공략·동료/사이드 사건을 TRPG 상황망으로 번역, 키퍼/정본 책임 경계 | [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) |
 | 신규 캠페인 적군 단계별 로스터·하급/변형/중간 보스/상급/최종 보스·위치/개체 수/공략·독립 사이드 사건망 | [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [FINAL_THREAT_DESIGN](04-setup.md#final_threat_design) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) | 
-| 원작 공포의 형상/공간·체험·진실/선택·상황망/변화 조건·절정 활용/탈출·완성도 대조 | [FULL_DIVE_CROSS_ANALYSIS](04-setup.md#full_dive_cross_analysis) · [STORY_SCALE](04-setup.md#story_scale) · [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [FINAL_THREAT_DESIGN](04-setup.md#final_threat_design) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
+| 원작 사실·원작 고유 체험/대표 적 특수 패턴·미스터리 진실의 실제 의미 | [SOURCE_EXPERIENCE_CONTRACT](04-setup.md#source_experience_contract) · [FULL_DIVE_CROSS_ANALYSIS](04-setup.md#full_dive_cross_analysis) · [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
+| 화면 밖 주요 사건이 PC에게 위협·관점 변화·목표 충돌로 실제 도달하는 접촉망 | [PC_REACHED_EVENT_CONTRACT](04-setup.md#pc_reached_event_contract) · [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) · [KEEPER_SCENE_SELECTION](06-play.md#keeper_scene_selection) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
 | 탐구·원문·가설 | [CLUE_FUNCTION](05-world.md#clue_function) · [IN_WORLD_DOCUMENT_HANDOUT](05-world.md#in_world_document_handout) · [HYPOTHESIS_TEST](05-world.md#hypothesis_test) |
 | 시대/원작에 자연스러운 전체 지도·모든 의미 있는 시설의 생활 물품/이야기, 핵심 장소를 필요하게 만드는 현실적 사건 인과·자유 경로 | [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) |
 | 분리 전에 전원이 뭉쳐도 실제 위태로운 능동 위협·적의 도달/위해, NPC 최초 신뢰/동행·지시 거절/재협상·독립 방어/이탈 | [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) · [NPC_AGENDA_AND_SECRECY](05-world.md#npc_agenda_and_secrecy) · [NPC_AGENDA_INTERVENTION](05-world.md#npc_agenda_intervention) · [ACTIVE_DANGER_CONTINUITY](05-world.md#active_danger_continuity) · [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) |
