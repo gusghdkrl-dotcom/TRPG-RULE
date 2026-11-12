@@ -86,6 +86,7 @@
 | HOMAGE_DRAFT_SELECTION | [04-setup.md](../rules/04-setup.md#homage_draft_selection) |
 | HOMAGE_TIER | [04-setup.md](../rules/04-setup.md#homage_tier) |
 | HP_AND_DEATH | [02-checks.md](../rules/02-checks.md#hp_and_death) |
+| HQ_FIELD_CONTEXT_BRIEFING | [04-setup.md](../rules/04-setup.md#hq_field_context_briefing) |
 | HQ_FIRST_ENTRY_SCENE_GATE | [04-setup.md](../rules/04-setup.md#hq_first_entry_scene_gate) |
 | HQ_FIRST_INDUCTION_PORTRAIT_REVEAL | [08-visual.md](../rules/08-visual.md#hq_first_induction_portrait_reveal) |
 | HQ_MARTIN_MISSION_ETHOS_AND_VALUES_INTERVIEW | [04-setup.md](../rules/04-setup.md#hq_martin_mission_ethos_and_values_interview) |
@@ -100,6 +101,7 @@
 | INVESTIGATOR_DEPTH_PROTOCOL | [04-setup.md](../rules/04-setup.md#investigator_depth_protocol) |
 | INVESTIGATOR_INCIDENT_COUPLING | [05-world.md](../rules/05-world.md#investigator_incident_coupling) |
 | KEEPER_SCENE_SELECTION | [06-play.md](../rules/06-play.md#keeper_scene_selection) |
+| LINKED_MAJOR_DISASTER_TIMERS | [04-setup.md](../rules/04-setup.md#linked_major_disaster_timers) |
 | LOCATION_VISUAL_CANON | [08-visual.md](../rules/08-visual.md#location_visual_canon) |
 | LONG_ACTION_EARLIEST_INTERRUPTION | [06-play.md](../rules/06-play.md#long_action_earliest_interruption) |
 | LORE_DRIVEN_PUZZLES | [06-play.md](../rules/06-play.md#lore_driven_puzzles) |
