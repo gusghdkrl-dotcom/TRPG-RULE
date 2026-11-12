@@ -24,6 +24,17 @@
 - 운영 verified checkpoint **8건**, 비공개 canon **9건**, 카드18/성장0, HQ 운영 스키마 없음. 최신 기록은 `LB1926-S12-P1` 임무 원작 정본 r1 및 `LB1926-S12-P1-SESSION01` verified v1로 관측됨. 이번 본부 개발이 만든 기록이 아니라 운영 DB 읽기 중 관측한 별도 증가이며 원인/작성자는 미확정.
 - GitHub 운영 `main` HEAD `b23b35d713ee61446f47de8785364c4ee0bdce04`, dev 브랜치 별개. 운영으로 이식하기 전 최신 당시의 원래 세이브·정본·카드 자료 전체를 독립 백업·복원 검증할 것.
 
+## ★ 최신 11차 인수인계 — 실제 플레이 루프 우선 (2026-11-12)
+
+**사용자의 최신 우선순위가 이전 문서의 '11차 병렬 지급 스트레스'·NPC 대화 미세 동기화 우선 계획보다 우선한다.** NPC 8명은 구조적 역할/실제 기능/기존 개인 관계 DB까지 유지하고 말투·관계별 미세 대사·NPC↔NPC 자율 생활은 후순위. **우선 완성할 게임 경험:** ON 첫 입구→입단/면담→8명 기능을 경험할 수 있는 본부→작전실 세계 선택·PC/장착/정본→마틴 공식 하달→제이든 출격→원작 생존 공포/세이브→검증 엔딩/귀환→마틴 평가/승인→클라라 관심인물 관측→도미닉 일반/특별 실제 플레이어별 보상→휴게실/새 임무.
+
+- 개발 DB 설치: `docs/sql/dev/trpg_hq_phase11a_entry_induction_npc_loop_router.sql`, `trpg_hq_phase11b_verified_briefing_and_full_loop.sql`, `trpg_hq_phase11c_keep_pending_reward_first.sql`. ON 첫 입장/입단 기록/다음 동기화실/현지 이어하기, NPC 8종 서비스, 완성된 현지 PC/장착/비공개 정본 확인 후 마틴 공개 브리핑·제이든 출격, verified 귀환/마틴/도미닉/훈련 자격 순서 통합.
+- 실제 DEV 합성 SQL 회귀 `docs/sql/dev/tests/trpg_hq_phase11_entry_to_field_rollback.sql`, `trpg_hq_phase11_full_major_loop_rollback.sql` 통과. 첫 입장→입단→캠페인/현지 PC/장착→마틴 브리핑→출격→verified 대사건 완료→본부+4320분→마틴 평가·보상 승인→도미닉 실제 4후보 일반 드래프트 선택→훈련 자격→다음 ON 동기화실. 전부 **개발용 가상 데이터 롤백**, 실제 게임 선택 아님.
+- 특별 결함과 수정: 미선택 일반 보상을 훈련 인증 안내가 가리던 진행 우선순위 오류를 11c에서 수정, 재테스트 통과.
+- **중요 아직 미완**: 새 ChatGPT 테스트 프로젝트 실제 ON/OFF 첫 설정 UI 및 Github/Supabase 권한 있는 연결, 실제 원작 제작→07-state DB1→현지 키퍼 플레이·5후일담→Clara 실제 후속 관측·도미닉 Python 난수/플레이어 선택까지 진짜 게임 전체 1회. 개발 DB의 라우팅 성공만으로 본부 UI/실전 플레이 완료라 주장하지 말 것. 운영 `main` 및 기존 DB에 자동 이식 금지.
+- 최우선 계약 `docs/development/TIME_AGENT_HQ_RUNTIME_LOOP_FIRST.md`, 최신 완료/미완 우선순위 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`; 이전 10차/9차 문서의 완료·미완은 해당 당시의 역사 기록으로 재해석. 병렬 지급 스트레스는 **후순위 기술 검사**, NPC 말투/관계별 세밀 동기화는 이후 품질 단계.
+- 개발 DB migration 11차 3개 설치, 현 23+3=26개 예상(마지막 재확인 필요). 운영팀이 이식 승인하기 전까지 `main`, `START_GAME.md`, `rules/*`, `dist/*`, 운영 Supabase 수정 없음.
+
 ## 최신 10차 개발 인수인계 (2026-11-12)
 
 - 개발 브랜치 `dev/time-agent-hq` / 개발 Supabase `trpg-time-agent-dev`; **마이그레이션 23개 유지**. 이번 10차는 SQL 테스트+문서만 추가, 본게임 운영 main/DB는 읽기 조회 외 변경 금지.
