@@ -44,7 +44,8 @@ begin
    ('three_failed',3,'failed'),
    ('two_early_failed',2,'early_failed'),
    ('dead_labeled_win',2,'dead_false_success'),
-   ('two_all_dead',2,'all_dead')
+   ('two_all_dead',2,'all_dead'),
+   ('dead_returned',3,'dead_returned')
  ) c(scenario,participants,outcome)
  loop
   v_report:=null;
@@ -109,7 +110,7 @@ begin
           jsonb_build_object('player_id',v_ids[v_j]::text,
             'alive',not((v_j=2 and ((cs.outcome='death' and v_ch=2)
              or (cs.outcome='early_failed' and v_ch=1)
-             or (cs.outcome='dead_false_success' and v_ch=2)))
+             or (cs.outcome in ('dead_false_success','dead_returned') and v_ch=2)))
              or (cs.outcome='all_dead' and v_ch=1))));
       end loop;
       v_return:=v_ids;
@@ -121,7 +122,7 @@ begin
       end if;
       v_scope:=case when v_ch=1 then 'CHAPTER_TERMINAL'
         else 'CHRONICLE_TERMINAL' end;
-      v_status:=case when (v_ch=2 and cs.outcome in ('death','failed'))
+      v_status:=case when (v_ch=2 and cs.outcome in ('death','failed','dead_returned'))
          or (v_ch=1 and cs.outcome in ('early_failed','all_dead'))
         then 'failed' else 'completed' end;
 
@@ -156,13 +157,17 @@ begin
       perform public.trpg_v2_verify(
         v_session,v_ch,v_session||':cp'||v_ch,'attempt-'||v_ch,v_sha);
       select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
-      if cs.outcome='dead_false_success' and v_ch=2 then
+      if cs.outcome in ('dead_false_success','missing','dead_returned') and v_ch=2 then
         begin
           perform trpg_hq.confirm_segment_terminal(v_segment,v_ch,v_sha,v_rev);
           raise exception 'dead_player_confirmed_as_successful_chronicle';
         exception when others then
-          if sqlerrm<>'hq_chronicle_verified_death_requires_failed_terminal'
-            then raise;end if;
+          if sqlerrm<>case when cs.outcome='missing'
+              then 'hq_chronicle_final_success_requires_all_returned'
+            when cs.outcome='dead_returned'
+              then 'hq_chronicle_returning_agent_not_alive'
+            else 'hq_chronicle_verified_death_requires_failed_terminal'
+            end then raise;end if;
         end;
         if exists(select 1 from trpg_hq.hq_chronicle_honors h
           join trpg_hq.hq_chronicle_completions c on c.mission_id=h.mission_id
@@ -170,9 +175,18 @@ begin
           raise exception 'unearned_medals_despite_dead_player';
         end if;
         v_report:=jsonb_build_object('participants',cs.participants,
-         'outcome','verified_dead_agent_rejected_despite_false_success_label',
+         'outcome',case when cs.outcome='missing'
+                   then 'missing_member_rejected_despite_false_success_label'
+                 when cs.outcome='dead_returned'
+                   then 'dead_member_illegally_in_return_list_rejected'
+                 else 'verified_dead_agent_rejected_despite_false_success_label' end,
          'medals',0,'first_certificates',0,'automatic_special_payouts',0,
-         'all_synthetic_changes_rolled_back',true);
+         'all_synthetic_changes_rolled_back',true,
+         'chapter1_general_reward_preserved',
+          case when cs.outcome='missing' then
+           (select count(*)=1 from trpg_hq.hq_reward_grants
+             where campaign_id=v_campaign and event_key='chapter:01' and status='approved')
+          else null end);
         raise exception 'DEV7_ROLLBACK_COMPLETED';
       end if;
       perform trpg_hq.confirm_segment_terminal(v_segment,v_ch,v_sha,v_rev);
@@ -222,7 +236,7 @@ begin
         end;
         exit;
       end if;
-      if v_ch=1 and cs.outcome in ('death','missing','failed') then
+      if v_ch=1 and cs.outcome in ('death','missing','failed','dead_returned') then
         select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
         perform trpg_hq.approve_general_reward(v_segment,v_ids[1],
           v_rev,'DEV7 첫 장 완료에 대한 독립 일반 보상');
