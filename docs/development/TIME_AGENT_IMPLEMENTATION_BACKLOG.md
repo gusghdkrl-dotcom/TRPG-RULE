@@ -25,7 +25,7 @@
 - [ ] **P3: 기술적 진짜 병렬 DB 부하 경합/데드락 스트레스 시험**. 플레이는 요원 A 지급 완료 후 B로 넘어가는 순차 처리, **기본 멱등·재전송 방어는 이미 필수/유지**. 개발 단계에서 병렬 가능성 때문에 실제 본부 루프 작업을 미루지 않음.
 - [ ] **미확정 정책**: 팀 신입/경력 혼합의 정확한 입단 절차/클리어 0 실패 재방문, 모든 특별/일반 카드 보상 후보 소진 시 선택권 처리, 실제 팀 탈퇴 승인·다른 팀 입단. 임의 결심/보상/대사를 생성하지 않음.
 
-자세한 **실행 계약/11차 실제 검증**: `docs/development/TIME_AGENT_HQ_RUNTIME_LOOP_FIRST.md`. 재현 SQL `docs/sql/dev/tests/trpg_hq_phase11_entry_to_field_rollback.sql`, `trpg_hq_phase11_full_major_loop_rollback.sql`. 모두 합성 데이터 롤백, 현재 운영판 이식 전.
+자세한 **실행 계약/11차 실제 검증**: `docs/development/TIME_AGENT_HQ_RUNTIME_LOOP_FIRST.md`. 재현 SQL `docs/sql/dev/tests/trpg_hq_phase11_entry_to_field_rollback.sql`, `trpg_hq_phase11_full_major_loop_rollback.sql`. 모두 합성 데이터 롤백. **실제 검증 완료: DEV 마이그레이션 26개, NPC 서비스 8종, 11차 테스트 잔여 0건, 운영 DB 기존 자료 및 main 불변.** 현재 운영판 이식 전.
 
 ## 10차 마지막 운영 보호 기준선 업데이트 (2026-11-12)
 
