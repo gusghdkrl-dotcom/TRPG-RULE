@@ -37,7 +37,7 @@ declare
   report jsonb;
   special_card text;
 begin
-  for r in select * from (values ('card_dedup'),('growth_serial')) d(scenario)
+  for r in select * from (values ('card_dedup'),('growth_serial'),('growth_cap')) d(scenario)
   loop
     report:=null;
     begin
@@ -219,7 +219,7 @@ begin
           or (select count(*) from trpg_cards.owned_cards where player_id=agent)
            <>initial_cards+2 then
           raise exception 'hq10_cards_not_globally_exactly_once';end if;
-      else
+      elsif r.scenario='growth_serial' then
         for t in 1..2 loop
           select revision into rev from trpg_hq.hq_teams where team_id=teams[t];
           res:=trpg_hq.resolve_chronicle_special(
@@ -237,6 +237,38 @@ begin
           missions[1],agent,rev,'growth','POW');
         if res->>'applied'<>'false' then
           raise exception 'hq10_repeat_growth_granted';end if;
+      else
+        -- Synthetic pre-existing Lv4, one valid medal brings it to Lv5;
+        -- another medal cannot pay a Lv6 but remains individually redeemable.
+        insert into trpg_cards.growth_levels(player_id,stat,level)
+          values(agent,'POW',4);
+        select revision into rev from trpg_hq.hq_teams where team_id=teams[1];
+        res:=trpg_hq.resolve_chronicle_special(missions[1],agent,rev,'growth','POW');
+        if (res->'outcome'->>'before_level')::integer<>4
+          or (res->'outcome'->>'after_level')::integer<>5 then
+          raise exception 'hq10_growth_cap_first_award_failed';end if;
+        select revision into rev from trpg_hq.hq_teams where team_id=teams[2];
+        begin
+          perform trpg_hq.resolve_chronicle_special(
+            missions[2],agent,rev,'growth','POW');
+          raise exception 'hq10_growth_level_six_awarded';
+        exception when others then
+          if sqlerrm<>'hq_special_growth_already_max_level' then raise;end if;
+        end;
+        if not exists(select 1 from trpg_hq.hq_chronicle_honors
+          where mission_id=missions[2] and player_id=agent
+            and status='awaiting_choice') then
+          raise exception 'hq10_growth_cap_rejection_destroyed_choice';end if;
+        if exists(select 1 from jsonb_array_elements(
+            trpg_hq.chronicle_special_options(missions[2],agent)->'eligible_growth') x(val)
+            where x.val->>'stat'='POW') then
+          raise exception 'hq10_maxed_growth_still_offered';end if;
+        res:=trpg_hq.resolve_chronicle_special(missions[2],agent,rev,'growth','STR');
+        if (res->>'applied'<>'true'
+          or (res->'outcome'->>'after_level')::integer<>1
+          or coalesce((select level from trpg_cards.growth_levels
+             where player_id=agent and stat='POW'),0)<>5 then
+          raise exception 'hq10_other_eligible_growth_not_resolved';end if;
       end if;
       if exists(select 1 from jsonb_array_elements(
            trpg_hq.load_chronicle_honors(teams[1])) x(value)
@@ -262,6 +294,10 @@ begin
           case when r.scenario='card_dedup' then true else null end,
         'cross_team_separate_growth_awards_both_applied',
           case when r.scenario='growth_serial' then true else null end,
+        'max_growth_level_5_never_overwritten',
+          case when r.scenario='growth_cap' then true else null end,
+        'unclaimable_growth_keeps_honor_choice_pending_until_alternative_selected',
+          case when r.scenario='growth_cap' then true else null end,
         'actual_parallel_connections_tested',false,
         'all_synthetic_changes_rolled_back',true);
       raise exception 'HQ10_SUCCESS_ROLLBACK';
