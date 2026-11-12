@@ -5,6 +5,12 @@
 > 운영 검증 기준은 `TIME_AGENT_CONCEPT_DRAFT.md` 최신 §§18,19,26,28,29,30,32; 과거 설계문서의 '미구현' 문구는 현 개발 기록과 혼동하지 말 것.
 > 각 구간은 구현일·테스트 증거·운영 변경 여부·추후 보완을 추가하는 방식으로 관리하고 미확정 항목을 억지 확정하지 않는다.
 
+## 6차 종료 시 운영 main 최신 전진 확인 (2026-11-12)
+
+- [ ] **P1: 최신 운영 main `b23b35d713ee61446f47de8785364c4ee0bdce04` 호환성 재대조**. 기존 기록한 `808d25f` 이후 독립 변경 3커밋: `11bdcf2`(프로젝트 지침 문자 수/룰 색인), `31219d1`(SAN·Mythos 규칙 레지스트리 메타데이터), `b23b35d`(dist 게임 ZIP 재생성). 본부 dev 브랜치에서 수정한 것이 아니다.
+- 새 변경 파일: `PROJECT_INSTRUCTIONS.md`, `rules/00-index.md`, `docs/validation-contract.json`, `docs/rule-migration.json`, `docs/rule-reorganization.json`, `docs/RULE_CATALOG.md`, `README.md`, `DEVLOG.md`, `dist/TRPG-RULE-project.zip`. **실제 운영 배포 ZIP과 새 최신 정본**을 dev 코드로 덮어쓰거나 승인 없는 병합 금지.
+- 원칙: 향후 `main`의 더 새로운 SHA가 나오면 해당 HEAD 기준 diff를 다시 읽고 단지 이 SHA가 '영원한 최신'이라고 가정하지 않는다.
+
 ## 운영 main 판본 변경 감지 — 합류 전 필수 정합성 점검
 
 - [ ] **P1: 최신 main 규칙과 개발 브랜치 재동기화/충돌 회귀 검증**. 본부 개발 기준 원본 SHA `e3b33384f8a6048fa8af072836a62771137e8d7c`에서 운영 `main`이 **별도 커밋 `808d25fe0bf77f48c3ca19200092b3ce70053eac`**으로 전진(2026-11-12 09:16:46 UTC). 커밋 메시지: `rules: PC-reached incident design, source fidelity, new SAN baseline`.
