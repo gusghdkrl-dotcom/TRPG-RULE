@@ -19,6 +19,14 @@
 - 별도 운영 게임 세이브가 진행되어 verified 체크포인트가 **7건**으로 증가(이전 6건). 최신 기록 `session-53ed85595344472b8c978afb7d9a4c77` v1, `2026-11-12 10:50:45 UTC`. 비공개 정본8건·보유카드18건, 운영 `trpg_hq` 없음.
 - 개발 SQL은 운영 DB에 적용하지 않았고 운영 `main` SHA `b23b35d...` 불변. 이식 시 이전 카운트 대신 당시의 실제 최신 데이터 전체를 백업/복원 대상으로 삼는다.
 
+## 최신 10차 개발 인수인계 (2026-11-12)
+
+- 개발 브랜치 `dev/time-agent-hq` / 개발 Supabase `trpg-time-agent-dev`; **마이그레이션 23개 유지**. 이번 10차는 SQL 테스트+문서만 추가, 본게임 운영 main/DB는 읽기 조회 외 변경 금지.
+- **실제 두 보상 순서 통합**: HQ의 일반 `offered`→특별 A 동일 카드 선획득→해당 일반 슬롯 거부/다른 슬롯 지급. 또는 일반 `resolved`→특별 A 같은 카드 거부/미선택 권리 보존→다른 A 카드 수령. 2/3인 실제 V2 verified 연대기 픽스처에서 확인, 일반/특별 보상과 NPC 개인 기억 분리, 후속 실패에도 보존.
+- **동일 영구 UUID 다팀 경계**: 기존 partial UNIQUE 인덱스 `hq_one_active_team_per_agent`가 동시 활성 가입을 이미 거부. 합성 테스트에서 첫 팀 완주 후 별도 소속 종료를 명시하고 다음 팀으로 이동하면, 인증은 첫 1회/훈장은 두 완주별 2개. 이전 팀의 소유/성장도 같은 UUID로 유지. 카드 중복 차단, 다른 카드 선택; POW B 두 번 합법 지급 및 Lv.5 초과 거부·선택권 유지 검증.
+- **한계**: 단순 병렬 SQL 쿼리로 행 잠금 경합을 실제 관측하지 못했으므로 물리적 동시 카드/성장 지급 안정성은 **아직 검증 전**. 2개 완료 보상·동시 미해결 선택권을 준비한 두 별도 트랜잭션 테스트 필요. 실제 팀 이탈·입단 UX/플레이어 승인, 카드 후보 모두 중복된 경우, 실제 Python SystemRandom/희귀도 추첨, 최신 main 룰/기존 OFF 경로/실제 키퍼 NPC 대화·보상 연결도 계속 P1 미완.
+- 재현 SQL `docs/sql/dev/tests/trpg_hq_phase10_cross_order_special_vs_draft_rollback.sql` 및 `trpg_hq_phase10_cross_team_same_agent_rollback.sql`; 상세 문서 `TIME_AGENT_REWARD_CONCURRENCY_AND_TEAM_OWNERSHIP.md`. 새 채팅에서 먼저 이 문서와 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`의 현재 완료/미완을 구분해 확인할 것.
+
 ## 최신 9차 개발 인수인계 — 2026-11-12
 
 - DEV ONLY: GitHub `dev/time-agent-hq`, Supabase `trpg-time-agent-dev`. **마이그레이션 23개 그대로**. 기존 함수로 다인 혼합 특별/일반 지급이 통과해 새 운영/개발 DB 변경 불필요.
