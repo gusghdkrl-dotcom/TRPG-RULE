@@ -4,6 +4,11 @@
 >
 > **중요: 실제 이식 전.** 이 문서와 개발 기획 이슈 #1의 업데이트는 기존 게임 규칙, 데이터베이스, 배포물, 현재 플레이/세이브를 바꾸지 않는다. 사용자가 별도로 **실제 이식 승인**을 하기 전에는 DB·룰북·실행 코드·배포 ZIP을 수정하지 않는다.
 
+### 운영 최신판 유의 (6차 종료 시 확인)
+
+- 현재 운영 `main` SHA: `b23b35d713ee61446f47de8785364c4ee0bdce04` (2026-11-12). 앞선 `808d25f` 이후 새 별도 문서/룰 검증·배포 ZIP 커밋 3개. 실제 최신판에 합류할 때 반드시 `main` HEAD를 다시 확인하고 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`의 충돌 점검을 수행한다.
+- 개발 Supabase 적용 마이그레이션 **총 21개**, 최신 6a/6b/6c. 운영 DB `trpg_hq` 없음, 기존 세이브6/비공개정본7/카드18 유지.
+
 ## 최신 개발 인수인계 (2026-11-12, 6차 완료 기준)
 
 > **아래 역사적 기획 단계의 '미구현' 문구는 당시 시점의 기록이다. 실제 현재 구현/테스트는 `TIME_AGENT_DEV_ENV_STATUS.md`와 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`를 우선 확인할 것.** 현재까지의 코드는 전부 GitHub `dev/time-agent-hq` 및 별도 Supabase `trpg-time-agent-dev`에만 적용. 운영 `main`/기존 Supabase/본게임 세이브에 이식하지 않았다.
