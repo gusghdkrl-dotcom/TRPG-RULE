@@ -175,7 +175,7 @@ begin
             raise exception 'hq10_first_certificate_not_bound_to_first_mission';end if;
         end if;
         if approval->>'applied'<>'true'
-          or (approval->>'new_full_certifications')::integer<>case when t=1 then 1 else 0 end
+          or (approval->>'new_full_certifications')::integer <> (case when t=1 then 1 else 0 end)
           or (approval->>'medals')::integer<>1 then
           raise exception 'hq10_invalid_completion: %',approval;end if;
       end loop;
