@@ -264,7 +264,7 @@ begin
             where x.val->>'stat'='POW') then
           raise exception 'hq10_maxed_growth_still_offered';end if;
         res:=trpg_hq.resolve_chronicle_special(missions[2],agent,rev,'growth','STR');
-        if (res->>'applied'<>'true'
+        if res->>'applied'<>'true'
           or (res->'outcome'->>'after_level')::integer<>1
           or coalesce((select level from trpg_cards.growth_levels
              where player_id=agent and stat='POW'),0)<>5 then
