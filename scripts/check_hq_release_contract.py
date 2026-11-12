@@ -38,21 +38,21 @@ for name in PHASES:
     source=ROOT/'docs/sql/dev'/name
     assert source.is_file(), f'Missing migration: {name}'
     body=source.read_text(encoding='utf-8')
-    uncommented=re.sub(r'--[^\\n]*','',body)
+    uncommented=re.sub(r'--[^\n]*','',body)
     assert 'trpg_hq' in uncommented, f'Not a HQ-only migration: {name}'
     for fragment in REQUIRED.get(name,[]):
         assert fragment.lower() in body.lower(), f'{name}: missing {fragment}'
     forbidden=[
-        r'\\b(?:drop|truncate)\\s+(?:table|schema)\\b',
-        r'\\b(?:create|alter|drop)\\s+(?:table|schema|function)\\s+(?:if\\s+not\\s+exists\\s+|if\\s+exists\\s+)?(?:public|trpg_cards|trpg_private)\\.',
-        r'\\b(?:delete\\s+from|update|insert\\s+into)\\s+(?:public\\.gm_checkpoint_history|trpg_private\\.gm_canon_documents|trpg_private\\.gm_cleanup_archive)\\b',
-        r'\\bgrant\\s+[^;]+\\bto\\s+(?:public|anon|authenticated)\\b',
+        r'\b(?:drop|truncate)\s+(?:table|schema)\b',
+        r'\b(?:create|alter|drop)\s+(?:table|schema|function)\s+(?:if\s+not\s+exists\s+|if\s+exists\s+)?(?:public|trpg_cards|trpg_private)\.',
+        r'\b(?:delete\s+from|update|insert\s+into)\s+(?:public\.gm_checkpoint_history|trpg_private\.gm_canon_documents|trpg_private\.gm_cleanup_archive)\b',
+        r'\bgrant\s+[^;]+\bto\s+(?:public|anon|authenticated)\b',
     ]
     for p in forbidden:
         assert not re.search(p,uncommented,re.IGNORECASE), f'Unsafe legacy-object statement: {name}: {p}'
 for name in ('hq_readonly_preflight.sql','hq_readonly_postflight.sql'):
     text=(ROOT/'docs/sql/release'/name).read_text(encoding='utf-8')
-    stripped=re.sub(r'--[^\\n]*','',text)
-    assert re.match(r'^\\s*SELECT\\s',stripped,re.IGNORECASE)
-    assert not re.search(r'\\b(?:insert|update|delete|drop|truncate|create|alter|grant|revoke|call|do)\\b',stripped,re.IGNORECASE),f'Unsafe read-only SQL: {name}'
+    stripped=re.sub(r'--[^\n]*','',text)
+    assert re.match(r'^\s*SELECT\s',stripped,re.IGNORECASE)
+    assert not re.search(r'\b(?:insert|update|delete|drop|truncate|create|alter|grant|revoke|call|do)\b',stripped,re.IGNORECASE),f'Unsafe read-only SQL: {name}'
 print('PASS: 21 ordered HQ-only SQL source phases; legacy mutation and public grants barred; audit SQL read-only')
