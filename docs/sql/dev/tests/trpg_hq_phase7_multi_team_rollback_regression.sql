@@ -41,7 +41,8 @@ begin
    ('three_survive',3,'success'),
    ('two_one_dead',2,'death'),
    ('three_missing',3,'missing'),
-   ('three_failed',3,'failed')
+   ('three_failed',3,'failed'),
+   ('two_early_failed',2,'early_failed')
  ) c(scenario,participants,outcome)
  loop
   v_report:=null;
@@ -104,15 +105,17 @@ begin
       for v_j in 1..cs.participants loop
         v_pcs:=v_pcs||jsonb_build_object('P'||v_j,
           jsonb_build_object('player_id',v_ids[v_j]::text,
-            'alive',not(cs.outcome='death' and v_ch=2 and v_j=2)));
+            'alive',not(v_j=2 and ((cs.outcome='death' and v_ch=2) or (cs.outcome='early_failed' and v_ch=1)))));
       end loop;
       v_return:=v_ids;
-      if v_ch=2 and cs.outcome in ('death','missing') then
+      if (v_ch=2 and cs.outcome in ('death','missing'))
+        or (v_ch=1 and cs.outcome='early_failed') then
         v_return:=array_remove(v_return,v_ids[2]);
       end if;
       v_scope:=case when v_ch=1 then 'CHAPTER_TERMINAL'
         else 'CHRONICLE_TERMINAL' end;
-      v_status:=case when v_ch=2 and cs.outcome in ('death','failed')
+      v_status:=case when (v_ch=2 and cs.outcome in ('death','failed'))
+         or (v_ch=1 and cs.outcome='early_failed')
         then 'failed' else 'completed' end;
 
       v_checkpoint:=jsonb_set(v_checkpoint,'{campaign_id}',to_jsonb(v_campaign));
@@ -155,6 +158,19 @@ begin
         'DEV7 가상 다인 연대기 마틴 평가',
         jsonb_build_object('synthetic',true,'scenario',cs.scenario));
       v_previous_sha:=v_sha;
+      if cs.outcome='early_failed' and v_ch=1 then
+        if (select status from trpg_hq.hq_missions where mission_id=v_mission)<>'failed' then
+          raise exception 'early_chapter_death_did_not_fail_mission';
+        end if;
+        select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
+        begin
+          perform trpg_hq.prepare_next_chapter(v_mission,'chapter:02',v_session,v_rev);
+          raise exception 'early_chapter_failure_allowed_next_chapter';
+        exception when others then
+          if sqlerrm<>'hq_not_active_chronicle' then raise;end if;
+        end;
+        exit;
+      end if;
       if v_ch=1 and cs.outcome in ('death','missing','failed') then
         select revision into v_rev from trpg_hq.hq_teams where team_id=v_team;
         perform trpg_hq.approve_general_reward(v_segment,v_ids[1],
@@ -206,7 +222,8 @@ begin
       end if;
       select count(*) into v_general from trpg_hq.hq_reward_grants
        where campaign_id=v_campaign and event_key='chapter:01' and status='approved';
-      if v_general<>1 then
+      if (cs.outcome='early_failed' and v_general<>0)
+        or (cs.outcome<>'early_failed' and v_general<>1) then
         raise exception 'fixture_prior_chapter_approved_reward_deleted';
       end if;
     end if;
@@ -219,7 +236,7 @@ begin
       'medals',v_medals,
       'first_certificates',v_certificates,
       'chapter1_general_reward_preserved',
-        case when cs.outcome='success' then null else v_general=1 end,
+        case when cs.outcome in ('success','early_failed') then null else v_general=1 end,
       'automatic_special_payouts',v_payouts,
       'all_synthetic_changes_rolled_back',true);
     raise exception 'DEV7_ROLLBACK_COMPLETED';
