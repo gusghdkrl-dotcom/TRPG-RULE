@@ -2,6 +2,21 @@
 
 > 이 문서는 **개발 브랜치에서 진행한 실제 작업 기록**이다. `main`이나 운영 DB의 구현 상태가 아니다. 최종 게임 정본은 아직 기존 `START_GAME.md`, `rules/*` 및 v0.8 설계와 구별해야 한다.
 
+## 5차 — NPC별 요원 관계·개별 청취/클라라 질문 보호 (2026-11-12)
+
+**개발 환경에서 실행·검증. 기존 본프로젝트 main 및 운영 Supabase는 변경하지 않음.**
+
+- 적용 SQL: `docs/sql/dev/trpg_hq_phase5_personal_npc_memory.sql`, `docs/sql/dev/trpg_hq_phase5b_personal_boundary_guard.sql`.
+- 새 표: `hq_npc_agent_relations`(팀·NPC·요원 UUID별 영구 태도/지식/관계 현재값), `hq_npc_interactions`(불변 사건/발화자/청취자/실제 변화 이유·시간).
+- 새 RPC: `record_npc_interaction`(한 대화에서 실제 청취 요원에 한정한 개인 기억 저장), `load_npc_agent_context`(요원별 대화·관계·클라라 실제 개인질문 기록 재독). 익명 조회 금지, 사용자에게 GM 원문 직접 출력 금지.
+- 구식 `record_event`의 NPC 공통 상태에 개인 `known_facts`/태도/관계를 저장하려는 요청은 차단, NPC 일반 위치 갱신은 허용. `clara_release` 새 기록의 질문 원문/질문자 UUID는 공동 이벤트 데이터에 넣지 않음.
+- 가상 2인 요원 A/B 클라라 장면: A는 현지 인물 안부, B는 관측법 관심. `load_npc_agent_context`는 **A/B 각 2개 실제 청취 대사만** 반환; A가 별도 후속 질문을 하면 A 관계 revision 1→2, B revision 1/새 질문 없음 유지.
+- 마틴과 A 별도 상담은 마틴-B 관계를 만들지 않음. 제이든·도미닉·사미라·레오·최서린·마야까지 총 8종 NPC 테스트 데이터 기록 성공. 개인 질문은 기존 클라라의 해당 요원 질문 3건을 개별 문맥으로 실제 재조회.
+- 같은 사건 재요청 중복 저장/시간 증가 없음. 미참석자 기록·청취자 위조, 구식 공통 NPC 개인지식 주입, 낡은 revision, 이미 저장된 원문 변경, 다른 event_key 내용 재사용 시도 모두 거부. 함수/테이블 `anon` 접근 차단.
+- 개인 질문 원문 보호 추가 실제 검증: 새 클라라 `clara_release` 후 공동 `hq_events.event_data`에 `question_text` 및 `requested_by`가 **모두 없음**, 개인 기록 원장에만 원문 보존. 과거 가상 테스트 기록은 보존하고 소급 정리하지 않음.
+- 전체 기능/근거/남은 차단 사항: `docs/development/TIME_AGENT_NPC_RELATION_RUNTIME_CONTRACT.md`, `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
+- **구분할 미완료**: DB는 요원별 문맥을 반환하지만 ChatGPT 게임 키퍼가 실제 NPC 말투를 구사하며 본문에 안전하게 사용하는 엔드투엔드 시험은 아직 없음. 입력된 발화/청취/변경 사유의 실제 장면 인과는 DB만으로 증명 불가. 팀 공동 `record_event`의 자유형 `summary/event_data` 등에는 별도 공개 필터·엄격한 호출 계약 추가 필요. NPC↔NPC 기억·관계, 사용자 인증, 동시 호출, 연대기 특별 완주/정식 요원 인증도 다음 작업.
+
 ## 4차 — 클라라 영구 아카이브 구현 및 실저장 검증 (2026-11-12)
 
 **모든 개발·테스트는 `trpg-time-agent-dev` 전용. 운영 DB와 본 프로젝트의 기존 룰북/세이브는 변경하지 않았다.**
