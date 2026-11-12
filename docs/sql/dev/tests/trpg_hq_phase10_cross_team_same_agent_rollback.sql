@@ -1,6 +1,7 @@
 -- PHASE 10 DEV ONLY: same permanent agent UUID on two HQ teams/campaigns.
 -- Both completed missions earn distinct honors, but global card/growth
--- inventories remain per UUID. No same-card duplication; growth max uses
+-- inventories remain per UUID. Dual ACTIVE membership is forbidden by the
+-- existing unique index; this validates sequential membership change. No same-card duplication; growth max uses
 -- canonical trpg_cards row. All created fixtures & awards roll back.
 create temporary table hq10_cross_team_reports(
  scenario text not null,result jsonb not null
@@ -57,6 +58,27 @@ begin
       end if;
 
       for t in 1..2 loop
+        if t=2 then
+          -- No two active team memberships for one permanent agent.
+          -- The existing unique partial index is authoritative: test it.
+          begin
+            perform trpg_hq.create_team(
+              'hq10-'||r.scenario||'-illegal-duplicate',
+              array[agent]);
+            raise exception 'hq10_duplicate_active_team_was_accepted';
+          exception when unique_violation then
+            if position('hq_one_active_team_per_agent' in sqlerrm)=0 then
+              raise;end if;
+          end;
+          -- Synthetic prior-team departure AFTER verified return/approval,
+          -- never an implicit/real player's consent. Leave old honors intact.
+          update trpg_hq.hq_team_members
+            set left_at_minutes=(select hq_elapsed_minutes
+              from trpg_hq.hq_teams where team_id=teams[1])
+            where team_id=teams[1] and agent_id=agent
+              and left_at_minutes is null;
+          if not found then raise exception 'hq10_fixture_prior_team_not_exited';end if;
+        end if;
         teamid:=(trpg_hq.create_team(
           'hq10-'||r.scenario||'-team-'||t,
           array[agent])->>'team_id')::uuid;
@@ -217,7 +239,9 @@ begin
         raise exception 'hq10_not_two_new_honors';end if;
       report:=jsonb_build_object(
         'same_permanent_agent_uuid',true,
-        'two_distinct_active_team_keys',true,
+        'two_distinct_historical_team_keys',true,
+        'two_simultaneously_active_team_memberships_rejected',true,
+        'previous_membership_closed_before_next_join',true,
         'two_distinct_verified_chronicles',true,
         'first_formal_certificate_stays_one',true,
         'two_new_honors',2,
