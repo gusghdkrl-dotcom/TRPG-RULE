@@ -19,6 +19,16 @@
 - 별도 운영 게임 세이브가 진행되어 verified 체크포인트가 **7건**으로 증가(이전 6건). 최신 기록 `session-53ed85595344472b8c978afb7d9a4c77` v1, `2026-11-12 10:50:45 UTC`. 비공개 정본8건·보유카드18건, 운영 `trpg_hq` 없음.
 - 개발 SQL은 운영 DB에 적용하지 않았고 운영 `main` SHA `b23b35d...` 불변. 이식 시 이전 카운트 대신 당시의 실제 최신 데이터 전체를 백업/복원 대상으로 삼는다.
 
+## 최신 9차 개발 인수인계 — 2026-11-12
+
+- DEV ONLY: GitHub `dev/time-agent-hq`, Supabase `trpg-time-agent-dev`. **마이그레이션 23개 그대로**. 기존 함수로 다인 혼합 특별/일반 지급이 통과해 새 운영/개발 DB 변경 불필요.
+- 2인 verified 연대기 전체 성공: 요원 1 특별 A 카드, 요원 2 특별 B 성장 POW+1, 두 사람 모두 최종 일반 보상 실제 `resolved`(카드 1, 성장 STR+1). 3인: A/B/A 특별(카드2/성장1), 각자 보통 카드·성장/카드 총3건 실제 `resolved`. 개인 UUID별 보유 원장·원래 카드/성장 DB·본부 원장 상호 일치.
+- 이어서 같은 팀의 새 연대기 verified **실패** 처리: 앞선 일반 지급·특별 선택·영구 인증/훈장 모두 보존, 실패 임무 신규 훈장0. 보상별 개인 `audience` 정확히 자기 요원만 포함; NPC 개인 관계/클라라 질문 자동 생성 없음. 모든 가상 팀/미션/보상은 서브트랜잭션 롤백.
+- 일반 보상 후보 네 종류는 **현재 `draft_pool` 적격값에서 고정 선택한 SQL 테스트 값**으로 실제 `offer_general_reward`/ `resolve_general_reward`를 실행했다. **Python SystemRandom/09-cards 실전 희귀도 가중치 검증 아님**. 실제 플레이어 대신 결정한 게임 선택도 아님.
+- 별도 원본 카드 엔진 단위 테스트: 열린 드래프트에 제시된 카드를 다른 획득 경로에서 먼저 얻으면 중복 지급 거부 및 다른 유효 슬롯 수령 가능. **HQ 특별 A 함수와 열린 드래프트 순서 교차는 미검증**.
+- 재현 SQL `docs/sql/dev/tests/trpg_hq_phase9_mixed_rewards_rollback.sql`, `trpg_hq_phase9_card_collision_rollback.sql`; 보고 `docs/development/TIME_AGENT_MULTIPLAYER_REWARDS_REGRESSION.md`.
+- **다음 P1:** 열린 일반 드래프트↔HQ 특별 A 순서 충돌 통합, 같은 UUID의 두 팀 동시성/잠금, 실제 희귀도·Python 후보 난수/성장 실패 판정, 실제 ChatGPT 키퍼 ON/OFF+개인별 NPC 말투·보상 A/B UI 연결. 최신 운영 main/SAN·HP·체크포인트·원작 카드 정본 충돌 검증 및 운영 전체 독립 백업 전 이식 금지.
+
 ## 최신 8차 개발 인수인계 — 2026-11-12
 
 - DEV ONLY: GitHub `dev/time-agent-hq`, Supabase `trpg-time-agent-dev` (project `tvrfuljncwefbioasxgo`). **마이그레이션 23개 유지**. 이번 8차는 기존 저장 함수가 요구를 충족해 코드 수정 없이 실제 회귀 SQL/결과 문서만 추가.
