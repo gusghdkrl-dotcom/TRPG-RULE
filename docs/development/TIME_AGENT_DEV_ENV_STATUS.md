@@ -1,0 +1,304 @@
+# 시간요원 본부 — 개발 환경 실행 현황 (DEV ONLY)
+
+> 이 문서는 **개발 브랜치에서 진행한 실제 작업 기록**이다. `main`이나 운영 DB의 구현 상태가 아니다. 최종 게임 정본은 아직 기존 `START_GAME.md`, `rules/*` 및 v0.8 설계와 구별해야 한다.
+
+## 6차 종료 시 운영 main 별도 전진 감지
+
+- 최종 운영 브랜치 확인 SHA `b23b35d713ee61446f47de8785364c4ee0bdce04`. 이전 `808d25f` 이후 3커밋 추가: 프로젝트 지침/규칙 색인, SAN/Mythos 메타데이터·검증 계약, 배포 ZIP 리빌드. 모두 본부 개발 브랜치와 **독립**.
+- 운영 DB는 검증 체크포인트 6건, 비공개 정본 7건, 보유 카드 18건, 성장 기록 0건, `trpg_hq` 운영 스키마 없음. 추가 쓰기는 개발 Supabase에만 수행.
+- 개발 Supabase 보안 자문: 새 HQ 자료는 `anon`/일반 `authenticated` 접근 거부, 신규 훈장/인증 불변 트리거 3종 확인. 원래 공개 카드 RPC `SECURITY DEFINER` 8개 익명/인증 실행 경고는 별도 보안 검토 항목에 유지; 임의 권한 변경 없음.
+- 이식 전 현재 운영 `main` HEAD 재조회 + 00-index/최신 룰·배포물 호환 대조 필수.
+
+## 12차 — 실제 START_GAME·04-setup의 본부 ON 진입 통합 (2026-11-12)
+
+- DEV GitHub `START_GAME.md`는 최신 운영 `main` 내용에서 출발해 **게임 시작 명령 자체**가 ON(1~3인·닉네임만→본부) / OFF(기존 일반 TRPG 세계/PC 시작)를 선택하게 변경. ON 세계 선택·현지 PC/기존 카드 장착·V2 저장은 본부 작전실 단계에 유지. 출격 시 원작 규칙 00~09를 호출하고 실제 verified 종결→본부 귀환/평가/보상 반복.
+- `rules/04-setup.md`는 실제 최신 main 기준 ON 최초/본부 작전실→기존 CAMPAIGN_SETUP_PIPELINE 라우팅을 신설. `PROJECT_INSTRUCTIONS.md` 및 기타 룰북 00~03·05~09 총10개는 최신 운영 main과 **바이트 내용 동일** 확인.
+- 이전 ZIP의 대체 인스트럭션/별도 HQ 시작 파일 등은 사용 금지. DEV 브랜치에서만 실제 시작/설정 연결을 수정했으며 운영 `main`/Supabase·기존 저장은 변경하지 않음. **실제 ChatGPT 키퍼 전체 실행/새 ON/OFF 화면·권한있는 DEV RPC/신규 정본 V2 검증까지 아직 추가 시험 필요**. DB 신규 마이그레이션 없음, 11차 실제 설치 26개 유지.
+- 상세 `TIME_AGENT_START_GAME_NATIVE_INTEGRATION.md`.
+
+## 11차 — 첫 본부 진입·입단/NPC 업무·정본→출격→귀환→보상·다음 게임 기본 루프 (2026-11-12)
+
+- 사용자 새로운 우선순위: **세밀한 NPC 대화/관계별 말투 동기화는 후속**, 먼저 본부 ON 입장/입단식/8명 NPC 기능/출격/현지 verified 종료/귀환/마틴·클라라·도미닉/다음 본부 자유 플레이의 **실제 진행 구조**를 완성할 것. 2인 이상 한 명씩 순차 처리; 병렬 스트레스 시험은 후순위.
+- DEV migration 11a `trpg_hq_phase11a_entry_induction_npc_loop_router.sql`: `hq_entry_sessions`(본부 최초/반복 방문 키), `hq_agent_inductions`(실제 입단 장면 참가자만), 8종 `hq_npc_service_catalog`; `begin_hq_on_visit`, `record_hq_induction`, `hq_loop_status`. 첫 신입은 입구, 이후 새 ON은 동기화실, 현지 segment field_active는 본부 이벤트 없이 현지 세이브로 재개.
+- DEV migration 11b `trpg_hq_phase11b_verified_briefing_and_full_loop.sql`: `hq_martin_briefings` 실제 공개 브리핑+정본 SHA/소목표 버전, 현지 PC/기존 4슬롯·입단/정본 검증 `hq_field_preflight`, `record_martin_formal_briefing`, `depart_after_actual_briefing`, `hq_full_loop_next`. 준비 누락/공식 브리핑 없으면 출격 차단. 실제 사용자 출격 선택은 여전히 명시 입력 필요.
+- **발견·수정**: 일반 도미닉 보상 `approved`가 열린 상태에서도 훈련 인증 안내를 먼저 노출하는 11b 라우터 오류. migration 11c `trpg_hq_phase11c_keep_pending_reward_first.sql`로 미선택 보상 안내 우선, 재시험 통과.
+- 검증 SQL `trpg_hq_phase11_entry_to_field_rollback.sql`: 2인 새 입구·실제 입단 장면9분/재방문 동기화실/현지 게임 중 본부 재입장 금지/8 NPC 서비스 경로/중복 입단·시간 방지 **통과**.
+- 검증 SQL `trpg_hq_phase11_full_major_loop_rollback.sql`: 가상 1인 **입구 → 입단식 → 기존 카드 캠페인/현지 PC 링크·4슬롯 → private canon SHA → 마틴 실제 브리핑 → 제이든 출격 → V2 commit/verify → 종료 확인 → 본부 귀환 +4320분 → 마틴 평가·보상 승인 → 도미닉 실제 일반 드래프트 resolved → 대사건 훈련 자격 → 본부 자유 활동 → 다음 새 게임 동기화실** 전체 통과. 브리핑 없이 출격 시도는 거부.
+- 전부 가상 인물/시나리오/PC/마틴 평가/선택을 이용한 DEV DB 시험이며 **서브트랜잭션 롤백**, 실제 플레이어 행동·실제 ChatGPT 키퍼 실행과는 명백히 다름. 새 실제 게임 프로젝트의 ON/OFF 첫 화면/원작 세계 제작·키퍼 현지 플레이·후일담5개/클라라 관측 후속·제이든/마틴/도미닉 실제 대화·보상 Python 난수는 아직 미연결.
+- 11차 DEV migration 3개 추가(기존 23개에서 **26개 실제 설치·재조회 확인**). NPC 서비스 8종, 11차 합성 팀/요원/세이브/정본 **잔여 0건**. 새 본부 함수·브리핑은 anon/일반 authenticated 직접 접근 불가. 운영 main/운영 DB/기존 시작문서/룰북/배포 ZIP에 미적용. 상세/남은 P0 작업: `TIME_AGENT_HQ_RUNTIME_LOOP_FIRST.md` 및 `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
+
+## 10차 종료 시 운영 검증 저장·비공개 정본 증가 관측
+
+- 읽기 전용 운영 DB 조회: 기존 8차의 verified 체크포인트7·비공개 정본8에서 **현재 8·9건**, 보유카드18/성장0. 최신 checkpoint `LB1926-S12-P1-SESSION01` verified v1, 생성시각 `2026-11-12 11:17:29 UTC`; 신규 canon `LB1926-S12-P1` / `LB1926-KEEPER-CANON` r1, 생성시각 `2026-11-12 11:13:42 UTC`. 누가 별도 저장했는지는 확인 불가.
+- 10차 본부는 운영 DB에 **SELECT만**, 운영 HQ 스키마 없음, `main` SHA `b23b35d...` 불변. 개발 DB의 HQ 테스트 임무/요원/팀/세이브/카드 유출 **모두0**, 기존 정식 인증1·훈장1·특별 지급1·완주1 유지. 개발 마이그레이션23개 유지.
+
+## 10차 — 혼합 보상 지급 순서·영구 요원 팀 이전/성장 한도 회귀 (2026-11-12)
+
+- 개발 DB에서 `trpg_hq_phase10_cross_order_special_vs_draft_rollback.sql` 실행: 실제 HQ `offer_general_reward` 후 같은 카드 `resolve_chronicle_special A` 지급 → 기존 일반 첫 슬롯 중복 수령 거부, 다른 유효 슬롯 `resolved`; **반대 순서** 일반 수령 후 같은 특별 A 거부, 미선택 특별 훈장 보존·다른 미보유 카드 수령 성공. 2인/3인 모두 보상 원장 일치·재호출 무변경·후속 실패 이전 보상 보존. 가상 자료 전체 롤백.
+- `trpg_hq_phase10_cross_team_same_agent_rollback.sql` 실제 3시나리오 통과. 같은 UUID로 활성 팀 둘 가입은 기존 partial UNIQUE `hq_one_active_team_per_agent`가 **거부**. 가상 첫 팀 완료 뒤 합성 `left_at_minutes`로 명시적 이탈→새 팀 새 연대기 완료를 수행. 첫 인증 영구 1건, 팀별 새 훈장 2건. **다른 팀의 같은 카드 중복 불가**, 거부된 두 번째 특별 선택권은 보존. 서로 다른 정당한 훈장 B 두 개는 같은 영구 POW에 0→1→2, Lv.4→5 뒤 다음 POW 요구는 거부·다른 STR 성장 선택 가능. 모두 테스트 후 롤백.
+- 두 병렬 SQL 연결로 기존 팀행 `FOR UPDATE` 경합을 관측하려 했으나, 잠금 보유 겹침이 확인되지 않아 **실제 동시 트랜잭션 안전은 미검증**으로 기록. 동시성 통과로 오인 금지.
+- 구현/후속 경계 보고 `docs/development/TIME_AGENT_REWARD_CONCURRENCY_AND_TEAM_OWNERSHIP.md`. 카드/성장 기존 RPC/정본 변경 없이 실제 검증 수행. 새 DB 마이그레이션 없음 — 총 **23개 유지**. 운영 환경에 미적용.
+
+## 9차 — 2~3인 혼합 특별 A/B와 일반 카드 드래프트 실제 지급 확인 (2026-11-12)
+
+- GitHub 테스트 SQL `docs/sql/dev/tests/trpg_hq_phase9_mixed_rewards_rollback.sql` 실제 개발 DB 실행 성공. **2인** 특별 A카드1·B성장1 + 일반 챕터 카드1·성장1 (총 일반 `resolved`2). **3인** 특별 A카드2·B성장1 + 일반 카드2·성장1 (일반 `resolved`3). 각자의 영구 UUID에만 보유·성장이 들어감.
+- V2 검증 세이브 2장·본부 귀환·마틴 평가 후 훈장/첫 정식 인증 각2/3건. 각 요원별 보상 승인/발행/선택 호출 재실행 `applied:false`, `load_team_rewards`·`load_chronicle_honors` 원장 일치, 서로 다른 UUID 간 같은 카드 독립 소유 가능.
+- 추가 별도 세션 후속 연대기 **verified 실패**에도 앞선 특별 A/B 및 실제 보통 카드·성장 보상 `resolved`와 훈장/정식 인증이 유지됨. NPC 개인 기억/클라라 질문 원장에 보상만으로 허위 관계/질문 생성 없음. 개인 보상 사건의 `audience`가 지급 당사자 1명만 포함하는지 검증 성공.
+- 모든 새 합성 요원·임무·세이브·정본·보상 내역은 **서브트랜잭션 롤백**, 이번 실사용 개발 DB 원장은 변화 없음. 후보 4개는 DB 실제 적격 풀의 **고정 선택 테스트**; 실제 Python SystemRandom·희귀도 비율 준수/소진 재분배를 이 테스트가 증명하지 않음.
+- 열린 일반 드래프트와 별도 카드 획득 중복 충돌은 **원래 `trpg_cards` 엔진 단위 시험**으로 정상: 이미 소유한 일반 후보 수령은 거부, 원래 나머지 후보는 수령 가능. **HQ의 실제 특별 A 처리와 순서 교차는 후속 통합 테스트**.
+- SQL: `docs/sql/dev/tests/trpg_hq_phase9_mixed_rewards_rollback.sql`, `docs/sql/dev/tests/trpg_hq_phase9_card_collision_rollback.sql`. 상세: `TIME_AGENT_MULTIPLAYER_REWARDS_REGRESSION.md`.
+- 신규 마이그레이션 없음 — 개발 DB **23개 유지**. 운영 본부 프로젝트에는 이식하지 않음.
+
+## 8차 종료 시 운영 DB 별도 저장 증가 관측
+
+- 운영 verified 체크포인트 **7건**(7차 확인 6건에서 1건 증가). 최신 행 `session-53ed85595344472b8c978afb7d9a4c77` v1 verified, 생성시간 `2026-11-12 10:50:45 UTC`. 비공개 정본8건·소유카드18건·본부 스키마 미설치. 본부 개발 중 운영 DB에는 SELECT만 수행했으며 증가 경위/주체는 확인하지 못했다.
+- 8차 합성 후속 연대기 데이터 유출 검사: `hq8-%` 미션/검증 저장/비공개 정본 **각 0건**, 원래 개발 인증1/훈장1/선택해결1·기존 카드20건 유지. 운영 `main` SHA `b23b35d...` 별도 유지.
+
+## 8차 — 동일 정식 요원의 두 번째 완주/세 번째 실패 실DB 롤백형 검증 (2026-11-12)
+
+- 재현 SQL: `docs/sql/dev/tests/trpg_hq_phase8_repeat_chronicle_rollback.sql`; 검증 보고: `TIME_AGENT_REPEAT_CHRONICLE_REGRESSION.md`.
+- **이미 첫 정식 인증·훈장·특별 카드가 있는 개발 영구 UUID 그대로** 두 번째 별도 연대기(2장)를 기존 `trpg_v2_commit/verify`, `confirm_segment_terminal`, `return_segment`, `evaluate_segment` 경로로 완주. 신규 훈장 1개·특별 선택권 1개, 신규 첫 인증은 **0건**. 원래 첫 인증 임무 ID·발급 시각도 불변.
+- 두 번째 특별 B로 POW 성장 Lv.0→1 실제 지급과 재조회 확인. 같은 B 재호출 추가 지급0, 뒤늦은 A 재선택 차단. 처음 특별 A로 획득한 `RO-A-3` 카드·지급 `acquisition_event`도 보존.
+- **세 번째 별도 연대기**를 verified 최종 실패로 종료 후 신규 훈장·인증·특별 지급 없이, 기존 첫 인증1/완주 훈장2·이전 카드 A/성장 B 모두 유지. 재접속용 `load_chronicle_honors`이 2개의 실제 원장 이력을 불일치 없이 복원.
+- 새 가상 캠페인·체크포인트·성장/훈장·팀 시간 변경은 모두 서브트랜잭션 **롤백**, 기존 개발 데이터 원래 값 유지. **코드 결함 없음·신규 마이그레이션 없음. 개발 DB 총 23개 유지**. 운영 DB/운영 GitHub에 이식하지 않음.
+- 미완 작업: 2~3인 개인별 다른 A/B 보상 선택과 실제 일반 드래프트 지급 완료, 동일 UUID 다팀 경쟁·동시성, 원작 HP/사망 직전 특성·특별 카드 상호작용, 게임 클라이언트와 신규/기존 카드 ON/OFF 실제 연결.
+
+## 운영 DB 비공개 정본 별도 추가 관측 (2026-11-12, 7차 마지막)
+
+- 기존 운영 Supabase 조회 결과(7건)와 달리 **현재 비공개 정본 8건** 관측. 신규 최신 메타데이터는 `lightless-lighthouse-1927-51894b6f6bda`의 `lightless-lighthouse-main` revision1 / 현행 규칙판 2026-11-12 / DB 생성시간 `2026-11-12 10:47 UTC`. 본부 작업은 운영 DB에 SELECT만 수행했으며 증가 원인·실제 작성자는 확인하지 못함.
+- 운영 verified 체크포인트6/보유카드18/성장0 유지, `trpg_hq` 운영 스키마 없음. 과거 7건 기준 백업/이식 계획은 현재 8건(향후 새 증가분 포함)을 기준으로 재검증 필요. DEV 회귀 테스트 참가자/세이브 유출 0 확인.
+
+## 7차 — 2~3인 연대기 실제 SQL 9개 회귀 통과 (2026-11-12)
+
+- 개발 Supabase에 마이그레이션 **23개** 적용(6차 21개 + 7차 phase7a/7b 2개).
+- 발견 결함: 1장 CHAPTER_TERMINAL failed가 최종 종료가 아니라는 이유로 미션이 field_active에 남아 다음 챕터를 준비할 수 있었음. phase7a DB 트리거로 검증된 중간 실패 즉시 전체 임무 failed 처리 및 상태 되돌리기 거부.
+- 추가 오류 경계: 사망한 PC를 귀환자로 적거나 전원 귀환하지 않았는데 CHRONICLE_TERMINAL completed를 쓰면 phase7b에서 verified checkpoint PC 명단/생사/등록된 요원 UUID와 대조해 종료 확인을 거부.
+- **9개 통과**: two_survive, three_survive, two_one_dead, three_failed, three_missing, two_early_failed, dead_labeled_win, dead_returned, two_all_dead. 2/3인 성공에서 각각 첫 인증·훈장 2/3개, 실패 시 새 인증·훈장·특별 지급 0. 기존 1장 일반 보상 승인 보존. 전원 사망 0명 귀환/본부 시간 +0분.
+- 테스트 도중 만든 모든 가입 요원/미션/원작 테스트 정본/verified 체크포인트·보상 원장은 서브트랜잭션 **롤백**. 현재 개발 DB 기존 완료 시험 기록과 보상은 그대로.
+- 재현 SQL: docs/sql/dev/tests/trpg_hq_phase7_multi_team_rollback_regression.sql. 상세 증거: docs/development/TIME_AGENT_MULTIPLAYER_CHRONICLE_REGRESSION.md.
+- **검증 한계**: 가상 다인 요원에게 훈련 자격 플래그를 테스트 범위에서 직접 설정한 것으로, 실제 대사건 완료 RPC·실제 PC 사망/생존 특성의 상호 연동을 완료한 뜻이 아님. 기존 일반 보상은 승인 원장 보존이며 카드 지급 완료 검증은 별도.
+- 미완: 두 번째 연대기 성공/실패, 보상 A/B 다인 개별 선택 및 기존 카드 드래프트 실제 지급, checkpoint 평가 누락·비정상 판본, 다팀 경합, 게임 키퍼 연결, 최신 main 호환성.
+
+## 6차 — 연대기 전체 완주/정식 인증/훈장 + 특별 A/B 보상 (2026-11-12)
+
+**DEV ONLY — 세 마이그레이션 설치와 실제 저장·재독 테스트 완료, 실제 게임 키퍼 자동 호출은 미구현.**
+
+- 코드: `docs/sql/dev/trpg_hq_phase6a_chronicle_completion_and_medals.sql`, `docs/sql/dev/trpg_hq_phase6b_chronicle_special_choice.sql`, `docs/sql/dev/trpg_hq_phase6c_chronicle_award_integrity.sql`. 실행 계약: `TIME_AGENT_CHRONICLE_COMPLETION_RUNTIME_CONTRACT.md`. 추후 작업: `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
+- **요원 인증**: 원래 카드 캠페인의 실제 참가 요원, 훈련 합격 상태, verified 체크포인트 SHA/최신 버전/종결, 같은 세계 1~N 챕터 귀환·평가·생존 일치 → 연대기 최종 구간 1회 승인. 최초 완주만 `full_agent` 영구 인증. 대사건이나 훈련 미완료 가상 기록의 정식 완주 승인은 거부.
+- **훈장**: 검증된 연대기 `mission_id × player_id`마다 1회, 별도 `hq_chronicle_honors` 불변 원장과 `hq_agent_full_certifications` 기록. 챕터 일반 보상은 그대로 다른 시스템.
+- **특별 A/B**: A 미보유 common/rare/epic 카드 1장 직접 영구 획득(전설 제외, 무작위 없음), B Lv.5 미만 영구 성장8종 중 하나 확정 +1(난수 없음). 한 번 선택하면 변경/반복 추가 지급 거부. 모든 보상 후보 소진 시 임의 보너스 없음, 아직 대체 정책 미확정.
+- 실제 훈련 자격 요원 `e0c56a38-d1c6-4814-9468-2b54c3ca59e8`을 사용한 DEV 합성 캠페인 `hq-dev-qualified-chronicle`에서 원래 V2 `commit/verify`를 거친 1장 `CHAPTER_TERMINAL`, 2장 `CHRONICLE_TERMINAL` 저장·본부 귀환 2회(각 +4320분)·마틴 등급 B/A 실제 평가 후 완주 승인 성공.
+- 현재 시험 결과: 첫 정식 인증 **1건**, 영구 완주 훈장 **1건**, 1택 특별 보상 **1건 완료**, 선택 후보 확인 당시 미보유 카드 37종/가능 성장8종. 특별 B의 `POW` Lv.0→1 시험은 DB 실제 변경 확인 후 **롤백**. 특별 A는 개발 가상 선택으로 타 클래스 영웅 자산 `RO-A-3` 실제 신규 보유 1장; 다른 A 선택/B 재선택 금지, 재호출 `applied:false`.
+- 최종 챕터 일반 보상 `chapter:02`을 **독립적으로 승인**할 수 있는 것 검증. 실제 드래프트 발행/선택은 아직 미실행으로 `approved` 상태; 특별 보상 처리로 `trpg_cards.drafts` 수정하지 않음.
+- 원장 `load_chronicle_honors` 조회: 인증1/훈장1/선택해결1, 카드의 실제 `acquisition_event` 정합. 완주·최초 인증·훈장/선택 원문 UPDATE/DELETE 차단 확인.
+- **핵심 남은 검증**: 다인 팀 중 한 명 최종 사망, 연대기 실패·후속 챕터 실패, 같은 요원 두 번째 완주, 전체 선택 후보 소진, 일반 최종 드래프트 실제 지급, 다인/다팀 동시 실행, 실제 본부 UI 자동 인증/선택, 최신 main SAN·세이브 판본 충돌 검토. 공식 상급 계급 점수/컷 미확정이라 생성하지 않음.
+
+## 운영 main의 별도 룰북 변경 감지 (개발과 독립, 2026-11-12)
+
+- 초기 본부 개발 분기 기준 SHA `e3b33384...`, 현재 운영 `main`은 별도 규칙 수정 커밋 `808d25fe0bf77f48c3ca19200092b3ce70053eac`으로 전진.
+- `main` 커밋은 SAN 초기값/회복·PC에 실제 도달하는 사건·원작 충실도·룰북 판본 등을 수정했고 `START_GAME`/00~09 룰북까지 포함. **본부 기능 개발 브랜치에서 만든 변경이 아님**.
+- 기존 백업 `backup/pre-time-agent-2026-11-12-e3b3338` 확인 유지. 현재 운영 DB 체크포인트/비공개 정본/보유카드 원장은 비교한 기존 수량대로 유지.
+- 출격 규칙/현지 PC 생성·SAN·DB1 세이브·연대기 종료를 실제 ChatGPT 게임에 연결하기 전, **최신 운영 룰북을 기준으로 선택적 변경 통합과 회귀 테스트**가 필수. 자동 병합/기존 룰북 덮어쓰기 금지. 자세한 미완 항목: `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
+
+
+## 5차 — NPC별 요원 관계·개별 청취/클라라 질문 보호 (2026-11-12)
+
+**개발 환경에서 실행·검증. 기존 본프로젝트 main 및 운영 Supabase는 변경하지 않음.**
+
+- 적용 SQL: `docs/sql/dev/trpg_hq_phase5_personal_npc_memory.sql`, `docs/sql/dev/trpg_hq_phase5b_personal_boundary_guard.sql`.
+- 새 표: `hq_npc_agent_relations`(팀·NPC·요원 UUID별 영구 태도/지식/관계 현재값), `hq_npc_interactions`(불변 사건/발화자/청취자/실제 변화 이유·시간).
+- 새 RPC: `record_npc_interaction`(한 대화에서 실제 청취 요원에 한정한 개인 기억 저장), `load_npc_agent_context`(요원별 대화·관계·클라라 실제 개인질문 기록 재독). 익명 조회 금지, 사용자에게 GM 원문 직접 출력 금지.
+- 구식 `record_event`의 NPC 공통 상태에 개인 `known_facts`/태도/관계를 저장하려는 요청은 차단, NPC 일반 위치 갱신은 허용. `clara_release` 새 기록의 질문 원문/질문자 UUID는 공동 이벤트 데이터에 넣지 않음.
+- 가상 2인 요원 A/B 클라라 장면: A는 현지 인물 안부, B는 관측법 관심. `load_npc_agent_context`는 **A/B 각 2개 실제 청취 대사만** 반환; A가 별도 후속 질문을 하면 A 관계 revision 1→2, B revision 1/새 질문 없음 유지.
+- 마틴과 A 별도 상담은 마틴-B 관계를 만들지 않음. 제이든·도미닉·사미라·레오·최서린·마야까지 총 8종 NPC 테스트 데이터 기록 성공. 개인 질문은 기존 클라라의 해당 요원 질문 3건을 개별 문맥으로 실제 재조회.
+- 같은 사건 재요청 중복 저장/시간 증가 없음. 미참석자 기록·청취자 위조, 구식 공통 NPC 개인지식 주입, 낡은 revision, 이미 저장된 원문 변경, 다른 event_key 내용 재사용 시도 모두 거부. 함수/테이블 `anon` 접근 차단.
+- 개인 질문 원문 보호 추가 실제 검증: 새 클라라 `clara_release` 후 공동 `hq_events.event_data`에 `question_text` 및 `requested_by`가 **모두 없음**, 개인 기록 원장에만 원문 보존. 과거 가상 테스트 기록은 보존하고 소급 정리하지 않음.
+- 전체 기능/근거/남은 차단 사항: `docs/development/TIME_AGENT_NPC_RELATION_RUNTIME_CONTRACT.md`, `TIME_AGENT_IMPLEMENTATION_BACKLOG.md`.
+- **구분할 미완료**: DB는 요원별 문맥을 반환하지만 ChatGPT 게임 키퍼가 실제 NPC 말투를 구사하며 본문에 안전하게 사용하는 엔드투엔드 시험은 아직 없음. 입력된 발화/청취/변경 사유의 실제 장면 인과는 DB만으로 증명 불가. 팀 공동 `record_event`의 자유형 `summary/event_data` 등에는 별도 공개 필터·엄격한 호출 계약 추가 필요. NPC↔NPC 기억·관계, 사용자 인증, 동시 호출, 연대기 특별 완주/정식 요원 인증도 다음 작업.
+
+### 5차-C: 클라라 동일 자료의 요원별 추가 질문 (검증 완료)
+
+- 새 SQL `docs/sql/dev/trpg_hq_phase5c_clara_repeat_personal_questions.sql`: 이미 팀에 공개된 동일 기록에 대해서도 각 요원의 **새로운 실제 질문**을 고유 `question_key`로 저장. `clara_record_followup_question`와 `hq_clara_followup_questions`, `load_npc_agent_context` 조회 병합 구현. 최초 공개는 기존 `clara_release` 1회만 유지.
+- A 요원의 기존 최초 공개 질문 4건 + 후속 질문 1건 = 개별 5건. 가상 임시 B의 동일 기록 질문은 별도로 1건으로 복원되며 A의 질문 5건 불변. 임시 B 시험 레코드/팀 편입은 DB 서브트랜잭션 롤백, 기본 팀 1명 유지.
+- 중복 재요청 `applied:false`, 기존 질문 키 다른 내용/다른 팀 요원 접근/과거 질문 변조 차단. 새 공동 이벤트에서 질문 내용/질문자 UUID 유출 0건, 시간 추가 0분. NPC 태도 자동 변화 없음.
+- **아직 미완료**: 실제 AI 키퍼가 A/B의 별도 자료 질문을 문맥으로 읽고 표현하는 게임 UI 통합, 새 질문이 발생한 실제 시점/동기의 의미적 검증, 개인 질문/공동 내용에 대한 공개 투영 구현.
+- Supabase 보안 Advisor에서 기존 닉네임 기반 `public` SECURITY DEFINER 함수 8개에 익명 실행 경고 존재. 새 `trpg_hq` 함수와 테이블에는 `anon`/일반 `authenticated`의 직접 접근 불가 확인; 기존 공개 카드 함수 권한을 임의 변경하지 않음. 후속 보안 검토 백로그에 추가.
+
+## 4차 — 클라라 영구 아카이브 구현 및 실저장 검증 (2026-11-12)
+
+**모든 개발·테스트는 `trpg-time-agent-dev` 전용. 운영 DB와 본 프로젝트의 기존 룰북/세이브는 변경하지 않았다.**
+
+### 신규 적용 파일
+
+- `docs/sql/dev/trpg_hq_phase4_clara_archive.sql`: `hq_clara_observations`, `hq_clara_releases` 및 `clara_record`, `clara_catalog`, `clara_release`, `clara_read_shared`.
+- `docs/sql/dev/trpg_hq_phase4b_clara_integrity.sql`: 테이블 직접 INSERT의 체크포인트 출처·세계/본부 시각·팀 연결 검증, 사후 기록 UPDATE/DELETE 차단, 비공개 기록의 직접 공개 INSERT 차단.
+- `docs/sql/dev/trpg_hq_phase4c_clara_active_membership.sql`: 자료 목록·공개·재조회는 현재 팀에 **활성 참가 중인 요원**에게만 허용.
+- `docs/development/TIME_AGENT_CLARA_RUNTIME_CONTRACT.md`: 정확한 호출 절차, 출처 필드·구분, 접근권/마음대로 '관측'을 만들어선 안 되는 경계, 테스트 및 운영 연결 전 미완료 요건.
+
+### 동작과 출처 구분
+
+- `verified_field`: 검증된 현지 세이브의 **JSON 경로와 값·SHA/버전이 정확히 일치**하는 자료만 원본 귀속. 현지 엔딩·정본은 수정·재실행하지 않음.
+- `later_report`: 귀환 이후 실제 경과에 근거한 출처·관측 방식·원문 발췌가 있는 자료만 **`attributed_report`**로 별도 저장. 외부 보고서 자체의 진위는 DB가 보장하지 않음.
+- `internal` 자료는 사용자 목록·열람에서 제외. `available`에 허용된 주제만 목록으로 표시하고, 플레이어가 **실제로 질문해 공개한 뒤**에만 본문 열람 가능. 팀에 공개한 정보는 파티 공통 공개 정보지만 본부 다른 NPC에게 자동 전달되지 않음.
+- 클라라 기록은 **append-only**. 후속 세계 변화가 새로 관측되면 새 출처/새 레코드를 추가하고 과거 검증 기록을 고치지 않음.
+- 출처 메타데이터/세계의 관측 시각과 본부의 `hq_elapsed_minutes`는 구분. 질문·열람만으로 본부 시간이 자동 경과하지 않음.
+
+### 실제 테스트 결과
+
+1. 검증된 대사건 `pcs.P1.alive=true`를 정확한 현지 관측값으로 저장; 반대값은 거부. 종료 상태 `runtime.ending_state.status=completed`의 정확한 확인도 허용.
+2. 가상 현지 생활 후속 보고서는 `attributed_report`로 저장. 본부 시각보다 미래인 수신 시점은 거부. **테스트 보고서는 가짜 테스트 출처이며 실제 현지 원작의 후속 삶을 확인한 사실이 아니다.**
+3. 총 가상 기록 **4건**, 그중 실제 질문에 따라 공개된 **3건**, 내부 전용 **1건**. 공개 전 본문 0건, 공개 후에는 해당 3건만 로드; 내부 기록 직접 공개 시도 차단.
+4. 동일 기록 재요청 `applied:false`, 다른 팀 요청 차단. 기존 자료 덮어쓰기/공개 이력 삭제/비공개 자료 우회 INSERT 모두 DB에서 거부.
+5. 활성 팀원을 가상으로 탈퇴시킨 동안 목록/본문/공개 접근을 모두 거부. 시험 종료 전에 기존 팀 참가 상태 복구.
+6. 시간 관련 테스트: 본부 기록실에서 가상 30분 활동은 `record_event`로 별도 반영, 클라라의 질의·공개/재조회는 추가 시간 0분. 최종 테스트 팀 본부 경과 **4,365분**.
+7. 기존 현지 검증 체크포인트 및 원작 세계 비공개 정본의 원문을 수정하지 않았으며, 운영 데이터도 복사하지 않았다.
+
+**아직 미완료:** 클라라가 실제 원작 세계로부터 후속 관측을 획득하는 플레이 중 인과·수단/시간 판정, 다섯 후일담과 아카이브 내용 연결, 별도 ChatGPT 테스트 프로젝트의 도구 호출 및 안전한 UI 공개 필터, 연대기 완주 특별 보상 및 정식 요원 승격, 통합 ON/OFF 시작 라우팅, 사망/재투입. 서버의 "정확한 체크포인트 값" 검증은 플레이어가 묻는 모든 후일담 내용의 서사적 진위를 자동 증명하는 장치가 아니다.
+
+
+## 3차-B/C — 마틴 승인·도미닉 실제 지급·훈련 자격 (2026-11-12)
+
+**모든 항목은 격리된 `trpg-time-agent-dev`에서 실제 함수 호출/원장 재조회로 확인. 실제 게임 운영 프로젝트·룰북·세이브는 미변경.**
+
+### 신규 개발 SQL과 상태
+
+- `docs/sql/dev/trpg_hq_phase3b_general_rewards.sql` → `dev_hq_phase3b_general_reward_authorize_issue_resolve` 설치.
+- `trpg_hq.hq_reward_grants`는 종료 구간·실제 플레이어 UUID 단위 승인/발행/해결/소진 상태 및 `(campaign_id,event_key,player_id)` 중복 방지 유일키를 저장. RLS 활성, 일반 클라이언트의 직접 접근 불가.
+- `approve_general_reward`는 **실제 검증 종료 + 본부 귀환 + 마틴 평가** 이후 참가 요원별 보상 승인. 대사건 `final`, 연대기 `chapter:<실제 챕터 ID>` 기존 사건 키를 사용. **현지 PC 사망 자체가 플레이어 UUID의 종결 보상 자격을 자동 박탈하지 않음.**
+- `offer_general_reward`는 원래 `trpg_cards.issue_draft`를 같은 DB 트랜잭션에서 호출하고, 적격 후보/이벤트 출처·후보 동일성을 확인하며 `approved`→`offered` 또는 `exhausted` 전환.
+- `resolve_general_reward`는 원래 `trpg_cards.resolve_draft`를 호출해 한 선택만 실제 보유 카드 또는 성장 레벨에 반영하고 본부 원장과 대조한다. 반복은 기존 결과 반환·다른 선택 거부.
+- 후보는 **키퍼의 Python SystemRandom**과 `rules/09-cards.md`의 클래스 희귀:영웅:전설 30:15:5 재정규화 및 소진 시 재분배 규칙으로 생성. DB는 `draft_pool`에 대한 적격성/중복/소진을 재검사한다. 서버가 외부 난수의 진위를 증명한다고 주장하지 않는다.
+- `docs/sql/dev/trpg_hq_phase3c_training_and_reward_resume.sql` → `dev_hq_phase3c_training_qualifications_and_reward_readback` 설치.
+- `certify_training`: 대사건 성공적 종결+실제 귀환+평가와 요원의 실제 귀환 참가를 확인한 경우 `recruit`→`training_qualified`로 1회 기록. 임무 후 귀환하지 못한 리타이어자의 훈련 완료를 자동 인정하지 않음.
+- `hq_chronicle_requires_qualified_team` 트리거: **새로 준비하는 연대기**에 참가 중인 팀원 모두 훈련 완료 필요. 기존 2차 검증 시 생성한 가상 연대기 이력은 자격 게이트 이전 테스트 픽스처로 유지하며 운영 자격 판정의 근거로 사용하지 않는다.
+- `load_team_rewards(team_id)`: 승인·발행·해결 상태와 기존 카드 DB의 실제 드래프트/결과를 함께 조회. 원장 동기화 여부를 표시해 새 채팅에서 실패 복구와 불일치 확인에 활용.
+
+### 실제 DB 테스트 결과
+
+1. 미귀환/미평가 가상 임무의 보상 승인 요청 거부. 정상 종료된 대사건 보상 승인 후 동일 요청 재실행 `applied:false`.
+2. 기본 지급 카드 `GU-A-0`을 드래프트 신규 후보로 위조하려는 요청 거부. Python SystemRandom으로 뽑은 4개 적격 후보는 정식 카드 드래프트에 1회 기록·재요청에도 최초 후보 유지.
+3. 가상 요원이 보유 18장에서 중립 강화 카드 `NE-E-6` 1장 선택: **19장**으로 증가. 재요청에도 19장 유지. 본부 `resolved`와 카드 DB `resolved` 및 실제 소유 원장 일치.
+4. 연대기 1장: 기존 성장 `CON` Lv.0 → **Lv.1 확정** (기존 규칙). 연대기 최종 2장: 성장 `CON` 재등장 **반복 강화 테스트 픽스처**를 사용하고 실제 Python 난수 71, 기존 확률 80% 적용 → Lv.2 성공. 재요청에도 추가 성장 없음. 가상 테스트용 고정 `CON` 재등장은 실제 게임의 무작위 후보 선정 방식이 아님.
+5. 다른 선택으로 과거 보상 변경 또는 후보 재추첨 요구는 거부. `trpg_hq` 익명 권한 없음; 새 보상 원장 테이블 `anon` SELECT 불가, 신규 보상 지급 함수 `anon` 실행 불가.
+6. 보상 원장 복원: 연대기 2개 원장과 기존 카드 드래프트 2개가 일치(`ledger_consistent` 결과 불일치 0건).
+7. 검증된 대사건 종료·귀환·평가 근거로 훈련 자격을 부여, 같은 요청 재실행 무변경. 별도 무자격 시험 요원은 연대기 출격 거부되고 신규 임무 0건, 기존 팀 revision 0 유지. 훈련 자격 취득 요원은 신규 연대기 준비 성공.
+
+### 구현 경계 및 남은 과제
+
+- 기존 일반 드래프트·영구 성장 데이터에 임의 보너스를 추가하지 않았다. `09-cards`의 실제 보상 발행/소유·성장 원장을 재사용했다.
+- **연대기 전체 완주 특별 보상**(영구 훈장 + 전설 제외 미보유 카드 직접 선택 *또는* Lv.5 미만 성장 1회 확정 +1)은 새 별도 RPC/원장 설계가 필요한 상태. 일반 드래프트로 대체하지 않는다.
+- **정식 요원 승격·진급 점수/임계치**는 별도 구현 대상이다. 미합의 수치는 생성하지 않는다.
+- **클라라의 관측 출처와 이후 인물들의 삶 아카이브, 실제 동기화/입단 장면, 처음 ON/OFF 라우터, 현지 5개 후일담, 사망/재투입, ChatGPT 테스트 프로젝트의 실제 자동 호출**은 아직 구현·통합 검증되지 않았다.
+- **Supabase 보안 자문**: 새 HQ 테이블에는 RLS와 비공개 권한이 있고 `anon` 직접 접근 검증 결과는 차단. 보안 자문 INFO `rls_enabled_no_policy`는 의도적인 비공개 원장 설정; WARN `anon_security_definer_function_executable`은 원래 닉네임만으로 이용하는 기존 카드 공개 RPC에 대한 기존 설계상 위험이다. 임의로 공개 권한을 확장하지 않았다.
+- 추가 검증 권장: 다인 팀/동시 요청 경쟁, 성장 실패(80% 판정 실패)와 보상 소진, 재접속에서 드래프트 미선택 복원, 전지적 NPC 기록 누출 방지, 실패한 현지 임무와 재투입 경계, 이식 시 기존 레거시 카드 ON/요원 OFF 회귀 테스트.
+
+
+## 3차-A — 마틴의 정성 평가 저장 기능 (개발 DB 검증)
+
+- 개발 SQL: `docs/sql/dev/trpg_hq_phase3a_evaluation.sql`. 테스트 DB 마이그레이션 `dev_hq_phase3a_qualitative_evaluation` 실제 적용.
+- `trpg_hq.evaluate_segment(segment_id, expected_revision, grade, objective_results, assessment, observed_outcomes)`는 **실제 verified 종료·귀환 완료된 구간에서만** 공식 평가를 기록한다.
+- S/A/B/C/F 등급, 사전 소목표의 원래 ID별 달성/부분달성/미달성/불가능 결과 및 실제 이유, 서술형 총평·관측한 실제 성과를 기록한다. 미리 부여하지 않은 소목표를 끼워 넣으면 거부한다.
+- 마틴의 평가를 해당 원래 `terminal_event_id` 및 verified 체크포인트 버전과 함께 저장하며, 변경 없이 재호출 시 `applied:false`, 다른 평가로 사후 덮어쓰기는 거부.
+- 실제 가상 대사건: 2개 원래 소목표를 근거로 B 등급 공식 평가 저장. 동등 반복은 추가 기록이 없고 다른 S 등급으로 바꾸려는 호출은 거부. 본부 시각은 4,335분 유지. `mission_evaluated` 사건 1건만 생성. 익명 실행 권한 없음.
+- **주의:** 실제 평가를 내리는 근거는 현지 플레이 정본/후일담과 NPC의 합당한 지식에 따라 키퍼가 제시해야 한다. SQL은 논리적 행/식별자 일관성을 검사하지만 공포 세계의 서사적 진위를 스스로 판단하지 못한다. 정량 진급 점수/보상은 발명하거나 지급하지 않음.
+- **남은 핵심 기능:** 평가 후 마틴의 보상 승인, 기존 `trpg_cards` 실제 발행/선택과 중복 복구, 훈련 합격/연대기 자격, 클라라 관측기록, ON 첫 입단/현지 로드/귀환 라우터, 재투입·치명상 특성, 실제 별도 ChatGPT 프로젝트 실행 검증.
+
+## 환경 및 격리 기준
+
+- GitHub 소스: `gusghdkrl-dotcom/TRPG-RULE` → **`dev/time-agent-hq`**
+- 운영 GitHub 기준 커밋: `e3b33384f8a6048fa8af072836a62771137e8d7c`
+- 운영 Supabase 프로젝트: `trpg-state-v2` / `taoaffdyssqtnjszumpq` (**읽기 전용 기준, 이 개발 작업으로는 변경 금지**)
+- 독립 테스트 Supabase: `trpg-time-agent-dev` / `tvrfuljncwefbioasxgo` (서울, PostgreSQL 17)
+- ChatGPT: 사용자가 새 별도 테스트 프로젝트를 생성했다고 확인했으나, 이 채팅에서는 해당 프로젝트의 파일/설정에 직접 접근하거나 수정하지 못한다.
+- 본부 구현이 완료되기 전 운영 `START_GAME.md`, 00~09 룰북, `dist/` 및 기존 세이브/카드/실제 정본을 변경하지 않는다.
+- 최초 합의와 최신 확정/미확정 경계는 `docs/development/TIME_AGENT_CONCEPT_DRAFT.md` v0.8 §§0–33을 따른다.
+
+## 실제 설치된 개발 DB 구조
+
+테스트 프로젝트에 다음 순서로 Supabase 마이그레이션을 적용하고 성공 결과를 확인했다.
+
+1. `dev_baseline_trpg_state_v2`: 원본 `docs/sql/trpg-state-v2.sql` → `public.gm_checkpoint_history`와 저장 RPC.
+2. `dev_baseline_trpg_card_collection_v1`: `docs/sql/dev/bootstrap_trpg_card_collection_v1.sql` → `trpg_cards` 9개 테이블 및 카드 66종.
+3. `dev_baseline_card_nickname_public_v1`: `docs/sql/dev/bootstrap_trpg_card_nickname_public_v1.sql` → 기존 공개 카드 닉네임 함수.
+4. `dev_baseline_card_growth_mode_v1`: `docs/sql/dev/bootstrap_trpg_card_growth_mode_v1.sql` → 영구 성장 모드 연결.
+5. `dev_baseline_trpg_private_canon_v1`: 원본 `docs/sql/trpg-private-canon-v1.sql` → 비공개 세계 정본 테이블/불변 트리거.
+6. `dev_hq_phase1_schema_and_event_ledger`: `docs/sql/dev/trpg_hq_phase1.sql` → 신규 `trpg_hq` 영구 기록 스키마.
+
+**참고:** 기존 카드 SQL 자료의 일부 함수 종료 `end $function$` 뒤 세미콜론이 빠져 원본 그대로는 빈 DB에 재설치되지 않았다. 운영 원본은 수정하지 않고 개발 전용 부트스트랩 파일에 필요한 세미콜론과 마이그레이션 래퍼 처리만 보정했다. `docs/sql/document_bound_payload_v1.sql`은 명시적으로 ARCHIVE 전용이므로 설치하지 않았다. 실제 운영 DB가 이 설치 스크립트와 완전히 동일한지 확인하는 회귀 검증은 별도로 필요하다.
+
+### 신규 `trpg_hq` v1 테이블
+
+- `hq_agents`: 기존 `trpg_cards.players.id` UUID 연결과 훈련/정식 자격 저장(실제 자격 변경 기능은 미구현).
+- `hq_teams` / `hq_team_members`: 팀·멤버·팀별 HQ 논리 시간(분)·동시 수정용 revision.
+- `hq_actor_states`: NPC/요원별 현재 기억/관계/지식 상태. 다른 인물에게 지식 자동 공유 없음.
+- `hq_missions` / `hq_mission_segments`: 임무 ↔ 캠페인/챕터/세션 연결을 위한 틀. **현재는 외부 검증 종료/귀환/평가/지급을 수행하지 않음.**
+- `hq_events`: 사건 고유키, 시점, 발화자, 실제 청취자, 공개 대상, 중요한 발언/근거를 저장.
+
+### 현재 설치된 함수
+
+- `trpg_hq.create_team(team_key, agent_ids)`: 기존 카드 플레이어 1–3명을 팀에 등록. 동일 팀 키의 반복 요청은 멤버 동일성을 검사.
+- `trpg_hq.jsonb_deep_merge(base, patch)`: 기존 관계/지식의 다른 중첩 필드를 없애지 않도록 병합.
+- `trpg_hq.record_event(...)`: 원자적 이벤트 이력 + 팀 시각/스냅샷 + 지정된 인물의 상태 변경. 동일 사건·내용 반복 시 중복 적용 없음; 동일 키 다른 내용 거부; 기대 revision 불일치 거부. `mission_return`, `reward_granted` 등 보호 이벤트는 이 일반 함수에서 거부하며 별도 검증 절차 구현 전까지 사용하지 않음.
+
+### 실제 통과한 개발 테스트 (2026-11-12)
+
+- 테스트 전용 가상 닉네임 `HQ_DEV_SMOKE_01`을 새 **개발 DB에만** 등록해 기존 카드 시작 지급 18장 확인.
+- 단일 테스트 팀 생성 확인. 진짜 플레이어 계정/카드/세이브는 복사하지 않음.
+- 입단 면담 사건 1회 저장: revision 1, HQ 경과 10분.
+- 같은 키·내용 재실행: `applied=false`, revision 1/10분 유지.
+- 후속 대화 기록 및 중첩 상태 병합: revision 2, 총 15분; 원래 마틴 지식과 새로 알게 된 정보 모두 남음.
+- 관련 없는 클라라의 기억 레코드 생성 없음.
+- 기대 revision 0으로 새 사건 쓰기 시 충돌 거부. 기존 사건 키에 다른 내용으로 쓰기 시 충돌 거부. 두 요청 후 revision 2 / 15분 / 사건 2건 유지.
+- `anon` 및 `authenticated`의 `trpg_hq` 스키마 사용 권한 없음; `anon`의 HQ 사건 SELECT 및 함수 EXECUTE 없음. 신규 모든 HQ 테이블 RLS 활성화.
+- 아직 동시 쓰기 스트레스 시험, 실제 ChatGPT 프로젝트의 도구 호출, 새 채팅 복원, 인증 모델, 현지 종료 검증을 통합 테스트한 것은 아니다.
+
+## 2차 구현 및 검증 (2026-11-12, 테스트 DB에서 실제 실행)
+
+**GitHub 개발 브랜치와 독립 Supabase 테스트 프로젝트에만 설치. 운영 DB·운영 카드·실제 세이브 불변.** 이전 1차 작성 시의 미구현 목록은 아래 본 절 및 후속 계획으로 갱신한다.
+
+### 실제 적용한 개발용 SQL (추가 3개 마이그레이션)
+
+- `docs/sql/dev/trpg_hq_phase2_dispatch_return.sql`: `prepare_mission`, `start_segment`, `confirm_segment_terminal`, `return_segment`. 임무-현지 `campaign_id/session_id` 연결, 사전 목표/위험 등급, verified 체크포인트·실제 비공개 정본 SHA 연결, 귀환 1회당 정확히 4,320분.
+- `docs/sql/dev/trpg_hq_phase2b_invariants_and_load.sql`: 종료 결과의 DB 제약·임무 내 고유 `finalization_event_id` 보장, `load_team` 현재 스냅샷 + 최근 100 사건, `load_events_page` 전체 역사 페이지 조회. **비공개 NPC 상태를 담으므로 원문을 플레이어 UI에 그대로 공개하지 않을 것.**
+- `docs/sql/dev/trpg_hq_phase2c_chronicle.sql`: `prepare_next_chapter`. 동일 연대기에서 이전 챕터의 검증된 실제 귀환이 있어야 다음 챕터를 등록·출격할 수 있게 연결.
+
+### HQ ON 신규 DB1 속성 — 개발용 제안, 운영 룰북 미적용
+
+- `runtime.hq = {enabled:true, mission_id:<UUID>, segment_key:<챕터 고유 ID>}`
+- `runtime.ending_state = {scope:CAMPAIGN_TERMINAL|CHAPTER_TERMINAL|CHRONICLE_TERMINAL, status:completed|failed, finalization_event_id:<실제 종료 이벤트 ID>, returning_agent_ids:[<실제로 귀환 가능한 요원 UUID>]}`
+- 서버는 본부 임무와 검증된 현지 `session_id`/`campaign_id`/segment, `canon_ref`와 불변 `gm_canon_documents`의 전체 SHA, 체크포인트의 실해시·부모·최신 verified 상태를 확인한다. 실제 귀환 가능 요원이 없으면 +3일 지급을 거부한다. 단 **DB의 해시·필드 검증은 실제 서사 결과의 의미적 타당성을 스스로 판정하지 못한다.** 키퍼의 룰북 절차와 실플레이 세이브 검증이 추가되어야 한다.
+- 본부 내부 시간은 시작점이 확정되지 않은 논리 경과 분. `return_segment`는 `terminal_confirmed` 상태의 실제 생존 귀환 요원이 존재할 때에만 진행; 고유 `return:<segment_id>` 사건으로 멱등성 보장. 기존 `OFF` 또는 레거시 `ON` 체크포인트를 자동 HQ 귀환으로 해석하지 않는다.
+
+### 실제 검증 결과
+
+1. **대사건**: 본부 15분에 출격한 가상 요원 → 실제 `trpg_v2_commit/verify`로 가상 현지 `DB1` 저장 → 정확한 해시/정본 대조 `terminal_confirmed` → 첫 귀환 15+4320=4335분. 재호출은 `applied:false`, 시간 4335분 불변.
+2. 잘못된 체크포인트 SHA는 거부. 마틴 면담 기록의 같은 `event_key` 재사용·오래된 팀 revision은 거부. 기존 지식 보존과 타인 NPC 지식 비전파 확인.
+3. **연대기 1장**: 같은 세계·캠페인의 첫 장 `CHAPTER_TERMINAL` verified 후 +4320분. 전체 임무는 계속 활성.
+4. **연대기 최종 2장**: `prepare_next_chapter` + 새로운 챕터 식별자로 실제 verified v2 부모해시 체인 확인. 1장 checkpoint를 2장 증거로 재사용하려는 요청 거부. `CHRONICLE_TERMINAL` 귀환 뒤 총 8640분(6일), 귀환 기록 2건, 전체 임무 `completed`. 재실행에도 이중 +3일 없음.
+5. **부정 테스트**: 별도 가상 요원의 출격 후 verified 세이브가 하나도 없는 상황에서 terminal 확인 및 귀환 시도는 모두 거부. 팀 경과 0분, 귀환 사건 0건 유지.
+6. **로드**: `load_team`에서 팀원, 마틴의 독립적 기억, 누적 시간, 임무/챕터, 사건 수 조회 성공.
+7. **권한**: `anon`/`authenticated`의 HQ 스키마 사용 권한 없음. 익명자의 `hq_mission_segments` SELECT·`return_segment`·`load_team` 호출 권한 없음.
+8. 실제 테스트 DB 결과: verified 가상 체크포인트 3개, 완료 임무 2개(대사건+연대기), 귀환 사건 총 3건. 가상 플레이어 3명은 **운영 계정과 별도**.
+
+### 2차 구현이 아직 의미하지 않는 것
+
+- ChatGPT 테스트 프로젝트에서 실제 플레이하면서 Supabase 함수 호출/저장/복원이 자동으로 실행되는지는 **아직 통합 테스트 안 됨**.
+- `ending_state` 내용의 인과적 진실성을 서버가 독자 검증하는 것은 아니므로 저장한 현지 종결의 실제 확인·후일담·NPC 생사·성공/실패 의미 규칙을 런타임과 연결해야 함.
+- 마틴 공식 수행 평가/승인, 훈련 자격 변경, 클라라 세계 후속 아카이브, 도미닉 실제 카드 보상/성장 지급, 실제 HQ 신규 첫 입단 장면·ON/OFF 라우팅, 연대기 치명상/대사건 재투입은 미구현. 운영판 이식은 승인/백업 전 금지.
+
+## Phase1 당시 미구현 / 다음 구간 (2차 결과는 위 최신 절 참조)
+
+1. **검증된 현지 종료 판정과 귀환당 +3일의 정확히 1회 처리**: 서버가 `verified` 원본·정본을 교차 확인하는 전용 함수. 최종 챕터/실패/재투입/로드/중복을 구별.
+2. **마틴 평가·도미닉 기존 카드 보상 발행/실제 해결**: 기존 `trpg_cards` 지급 원장이 유일 권위. 연대기 완주 확정 선택/성장 RPC 별도 필요.
+3. **클라라 이후 세계 아카이브**: 검증된 현지 상태와 관측 시점/출처 연결. 미래 전지적 조회 금지.
+4. **ON 입단·본부 장면 → 현지 시작/로드 → 귀환**을 개발 브랜치 실행 룰북에 연결하고 테스트 ZIP 제작. `OFF`와 기존 카드 ON 레거시 세션은 불변.
+5. 입단 면담·휴게실 관계·시간 등 실제 새 테스트 ChatGPT 프로젝트를 통한 체험/장면 경계 및 영속 복원 확인.
+6. 훈련 사망 NPC 재투입·연대기 치명상 특성 및 카드 충돌은 담당 규칙의 정확한 수치·예외를 확정한 뒤 구현.
+7. 전 과정을 테스트 DB에서 검증한 뒤 **운영 DB 백업과 이식 계획을 다시 검토**하고 명시적으로 승인받아 운영에 적용. 개발 프로젝트는 운영 안정화 뒤 삭제.
+
+## 실행/보안 주의
+
+- 테스트 프로젝트 ID를 운영 프로젝트 ID와 바꾸어 입력하지 말 것.
+- 현지 게임의 운영 데이터, 실제 비공개 세계 원문, 실제 이용자의 개인/카드 데이터는 개발 프로젝트에 복제하지 말 것.
+- GitHub `dev/time-agent-hq`의 SQL은 일부 단계만 검증된 개발 자료로, 현재 `main`이나 운영 `trpg-state-v2`에 그대로 적용할 수 있는 완성본이 아님.
+- 연대기 계급 점수/컷, 원작 지리/본부 실측, 사망 방지 정확한 수치는 미확정. 테스트 편의상 정본으로 채우지 말 것.

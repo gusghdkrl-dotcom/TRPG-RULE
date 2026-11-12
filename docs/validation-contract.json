@@ -516,21 +516,21 @@
   {
     "rule": "START_SETTINGS_GATE",
     "contains": [
-      "필수 입력은 참가 인원1~3명",
+      "참가 인원 1~3명",
       "인지도",
       "대사건/연대기",
-      "시작 시드는 Python SystemRandom",
+      "시작 시드는 기존 Python SystemRandom 1~100 자동 생성",
       "1~100",
-      "핵심/시작 시드 숫자를 입력받지",
+      "핵심/시작 시드 숫자를 플레이어에게 입력받지",
       "미확정 조건에 의존하는",
       "이후 부분 응답",
-      "2명으로 자동 결정하지",
-      "permanent_growth_enabled=true/false",
-      "영구 카드·성장 시스템: ON / OFF",
-      "permanent_cards_enabled=true/false",
-      "첫 설정 화면 맨 위에",
-      "ON일 때만 P1~PN 닉네임 입력",
-      "설정 확정 후 P슬롯에 연결"
+      "참가자 수를 자동 2명으로 확정하지",
+      "permanent_growth_enabled=true",
+      "요원 활성화 ON/OFF",
+      "permanent_cards_enabled=true",
+      "요원 활성화 ON/OFF(미입력 기본 ON)",
+      "ON이면 참가자 슬롯별 고유 영구 닉네임",
+      "확정한 이후에만 UUID에 연결"
     ]
   },
   {
@@ -590,15 +590,15 @@
       "장착 가능한 실제 보유 카드만",
       "permanent_cards_enabled=true",
       "OFF 캠페인에서는",
-      "**첫 설정 화면 고정 UX:**",
+      "**첫 설정 화면 고정 UX — 기존 영구 카드 토글 화면 폐기:**",
       "ON+1명은 P1만",
       "ON+2명은 P1/P2",
       "ON+3명은 P1/P2/P3",
-      "OFF+1~3명은 닉네임칸 0개",
+      "OFF이면 닉네임 입력칸을 숨기고",
       "**닉네임 검증:**",
       "2~24자·빈칸 불가",
       "설정 확정하고 다음 단계로",
-      "**제출/서버 연결에서 제외**",
+      "숨기고 제출에서 제외",
       "**PC 특성 A/B/C 선택 화면:**",
       "성별·이름·나이",
       "모두 선택이며 공란이면",
@@ -611,7 +611,7 @@
     "rule": "CAMPAIGN_SETUP_PIPELINE",
     "contains": [
       "원작 A~D",
-      "전원 PC 생성",
+      "전원 현지 PC 생성",
       "세계·시나리오",
       "setup_bootstrap",
       "play_start",
@@ -1760,15 +1760,17 @@
   {
     "rule": "OPTIONAL_POST_CREDITS_VIEWS",
     "contains": [
-      "기본 엔딩의 다섯",
-      "별도의 응답에서 자세하고 몰입되게",
+      "본부 OFF에서는",
+      "각 편은 별도의 응답에서 자세히 펼치고",
       "Highlight Reel",
       "The Silent Stage",
       "Cast & Crew",
       "The Hidden Truth",
       "Ultimate Butterfly",
-      "완료 항목",
-      "후속 캠페인/진행 세계 비밀"
+      "완료 편·다음 편 대기",
+      "후속 캠페인/진행 세계 비밀",
+      "기존과 같이 엔딩 직후의 기본 다섯 후속 출력이다",
+      "플레이어가 **클라라에게 명시적으로 지난 임무 후일담을 요청했을 때**"
     ]
   },
   {
@@ -2488,6 +2490,48 @@
       "**ON에서만**",
       "OFF에서는 카드 PC 연결",
       "**ON 캠페인만**"
+    ]
+  },
+  {
+    "rule": "HQ_FIRST_ENTRY_SCENE_GATE",
+    "contains": [
+      "Phase EXTERIOR",
+      "Phase INTERIOR",
+      "본부 입장",
+      "제이든",
+      "미선언 이동"
+    ]
+  },
+  {
+    "rule": "HQ_MARTIN_MISSION_ETHOS_AND_VALUES_INTERVIEW",
+    "contains": [
+      "소중한 사람",
+      "trpg_hq.record_npc_interaction",
+      "현지 PC"
+    ]
+  },
+  {
+    "rule": "HQ_ON_CAMPAIGN_ROUTER",
+    "contains": [
+      "HQ_FIRST_ENTRY_SCENE_GATE",
+      "CAMPAIGN_SETUP_PIPELINE",
+      "ENDING_FINALIZATION_GATE"
+    ]
+  },
+  {
+    "rule": "HQ_NPC_FIXED_PORTRAIT_ASSET_ROUTER",
+    "contains": [
+      "assets/hq-npc/manifest.json",
+      "OFF",
+      "8장의 공식 PNG 원본"
+    ]
+  },
+  {
+    "rule": "HQ_FIRST_INDUCTION_PORTRAIT_REVEAL",
+    "contains": [
+      "외부 프롤로그",
+      "HQ-STAFF-02",
+      "HQ-STAFF-01"
     ]
   }
 ]
