@@ -86,6 +86,11 @@
 | HOMAGE_DRAFT_SELECTION | [04-setup.md](../rules/04-setup.md#homage_draft_selection) |
 | HOMAGE_TIER | [04-setup.md](../rules/04-setup.md#homage_tier) |
 | HP_AND_DEATH | [02-checks.md](../rules/02-checks.md#hp_and_death) |
+| HQ_FIRST_ENTRY_SCENE_GATE | [04-setup.md](../rules/04-setup.md#hq_first_entry_scene_gate) |
+| HQ_FIRST_INDUCTION_PORTRAIT_REVEAL | [08-visual.md](../rules/08-visual.md#hq_first_induction_portrait_reveal) |
+| HQ_MARTIN_MISSION_ETHOS_AND_VALUES_INTERVIEW | [04-setup.md](../rules/04-setup.md#hq_martin_mission_ethos_and_values_interview) |
+| HQ_NPC_FIXED_PORTRAIT_ASSET_ROUTER | [08-visual.md](../rules/08-visual.md#hq_npc_fixed_portrait_asset_router) |
+| HQ_ON_CAMPAIGN_ROUTER | [04-setup.md](../rules/04-setup.md#hq_on_campaign_router) |
 | HYPOTHESIS_TEST | [05-world.md](../rules/05-world.md#hypothesis_test) |
 | IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL | [02-checks.md](../rules/02-checks.md#impossible_actions_and_rule_of_cool) |
 | IN_WORLD_DOCUMENT_HANDOUT | [05-world.md](../rules/05-world.md#in_world_document_handout) |
