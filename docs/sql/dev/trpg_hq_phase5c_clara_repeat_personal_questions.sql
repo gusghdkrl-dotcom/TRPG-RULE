@@ -157,7 +157,7 @@ begin
     'experienced_interactions',v_recent,
     'clara_personal_questions',v_clara_questions
   );
-end $hq$
+end $hq$;
 
 create trigger hq_clara_followups_immutable
  before update or delete on trpg_hq.hq_clara_followup_questions
