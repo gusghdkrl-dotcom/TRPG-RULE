@@ -2,7 +2,7 @@
 
 개발용 색인. 현행 실행 ID만 표시한다. 영구 카드의 신규 18개 ID는 09-cards.md에 포함한다. 이전361개 대응은 rule-reorganization.json, 최초403개 원문 대응은 rule-migration.json.
 
-생성 완료의 실제 인과/체험·변화 조건·대응/탈출은 SCENARIO_BLUEPRINT/WORLD_RULE_HOMAGE_DNA/FINAL_THREAT_DESIGN, 빈 연결 보완 시점은 COMPATIBILITY_GATE, 인물 관계는 STORY_NPC, 종결/정본 보존은 ENDING_FINALIZATION_GATE/PRIVATE_CANON_DOCUMENT가 담당한다.
+생성 완료의 실제 인과·독립 주요 E와 중간 작업·과거 사건의 분류/다층 체험·사이드 깊이/다경로 접촉은 SCENARIO_BLUEPRINT, **플레이 가능 사건만 집계하고 원작 체험/1인 위험·미등록 참조·저장 식별자를 대조하는 최종 문턱은 COMPATIBILITY_GATE**, 개별 NPC의 목소리·관계 실행은 STORY_NPC, 초기 NPC/시설·사건 ref 연결은 PRIVATE_CANON_DOCUMENT, 실제 사이드 장면·목표 반환은 WORLD_INITIATIVE_EXECUTION/KEEPER_SCENE_SELECTION, 종결은 ENDING_FINALIZATION_GATE가 담당한다.
 **원작 대명제 목표망 개편 담당:** SOURCE_EXPERIENCE_CONTRACT는 원작 고유성, SCENARIO_BLUEPRINT는 **거대 대명제·다수 주요(대사건 8~12)/사이드(18~30) 사건의 실제 사전 제작·다경로 후속 목표망·지속적으로 서로 다른 사이드 노출**, LINKED_MAJOR_DISASTER_TIMERS는 **신규 사건의 상태/인과 발동과 서사 시간표 금지, 구판 고정/상대 타이머 비소급**, PC_REACHED_EVENT_CONTRACT는 PC별 실제 접촉, PRIVATE_CANON_DOCUMENT/STATE_WORKING_CONTEXT는 기존 절/상태, WORLD_INITIATIVE_EXECUTION/SCENE_CONSEQUENCE_RULE/KEEPER_SCENE_SELECTION은 목표 선택·장면 실행, SCENE_ELAPSED_TIME_SETTLEMENT는 **물리적인 시간만** 관리한다. 신규 필수 정본 절/미지원 DB 필드 불필요.
 기존 목적을 이어가는 경로와 원작 체험 접촉은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 현장에서 확정하는 일상적 후속 사건은 SCENE_CONSEQUENCE_RULE, 장면·다인 선택 경계는 KEEPER_SCENE_SELECTION, 실제 확정 뒤 연속성은 STATE_WORKING_CONTEXT가 담당한다. 새로운 이벤트 전용 DB 필드나 규칙 ID는 만들지 않는다. 아래 기존 ID/담당 링크를 재사용하며 새 검수 단계나 별도 게임용 문서를 추가하지 않는다.
 
