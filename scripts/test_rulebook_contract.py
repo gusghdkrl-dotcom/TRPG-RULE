@@ -21,6 +21,12 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('scene_replaces_valid_delivery_objective',lambda r:change(r,'rules/05-world.md','기존 목적이 유효하면 그 실행을 계속한다','첫 위협이 해결되면 배송 목적을 반드시 삭제한다')),
+ ('scene_invents_unplanned_boss',lambda r:change(r,'rules/05-world.md','미리 없던 적·핵심 물품·숨은 세력·핵심 진실을 보충하지 않는다','새 보스와 아이템을 자유롭게 추가한다')),
+ ('scene_forces_event_when_quiet',lambda r:change(r,'rules/05-world.md','의미 있는 접촉이 없으면 조용한 진행도 유효하다','조용하면 무조건 인카운터를 발생시킨다')),
+ ('keeper_loses_split_pc_objective',lambda r:change(r,'rules/06-play.md','2~3인에서는 각 PC의 현재 목적과 관측 범위를 따로 유지한다','모든 PC는 공통 목표와 지식을 자동 공유한다')),
+ ('canon_forces_scripted_followups',lambda r:change(r,'rules/07-state.md','모든 후속 장면을 사전에 대본으로 고정하지 않는다','모든 후속 장면과 PC 행동을 사전 대본대로 진행한다')),
+ ('new_reactive_encounter_not_remembered',lambda r:change(r,'rules/07-state.md','새로운 사건은 실제 확정된 뒤 기존 누적 변화에 기록한다','즉흥 사건은 상태에 남기지 않고 재방문 시 다시 생성한다')),
  ('main_stage_all_ends_after_social_time',lambda r:change(r,'rules/04-setup.md','**메인 무대의 유효 체류 시간과 사건 지속성:**','정상적인 생활/탐험은 다 놓치는 지름길이다')),
  ('main_stage_exploration_punished',lambda r:change(r,'rules/04-setup.md','정상적인 생활 교류·자발적인 탐험/준비를 충분히 즐겼더니 주요 목표와 모든 관계·대응 기회가 이미 끝나 있는 구조','메인 무대의 모든 생존자와 목표는 30분 뒤에 소멸한다')),
  ('important_boss_cannot_die',lambda r:change(r,'rules/04-setup.md','**핵심 적대자의 초기 충돌·생존 수단과 사건 인과:**','중요 보스는 어떤 공격으로도 죽지 않는다')),
