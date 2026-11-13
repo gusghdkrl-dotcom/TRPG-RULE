@@ -44,6 +44,7 @@ def validate():
                 errors.append(f'{path.name}: missing rule anchor {url}')
     instructions = (ROOT/'PROJECT_INSTRUCTIONS.md').read_text()
     start_text = (ROOT/'START_GAME.md').read_text()
+    index_text = (ROOT/'rules/00-index.md').read_text()
     if len(instructions)>7800:
         errors.append('Project Instructions exceeds 7,800 Unicode characters')
     routes=re.findall(r'^\| (\d{2}-[a-z-]+\.md) \| (.+) \|$',instructions,re.M)
@@ -109,6 +110,10 @@ def validate():
             if fragment not in start_text:errors.append(f'START_GAME: missing {rid} entrypoint {fragment}')
         for fragment in check.get('start_excludes',[]):
             if fragment in start_text:errors.append(f'START_GAME: conflicting {rid} entrypoint {fragment}')
+        for fragment in check.get('index_contains',[]):
+            if fragment not in index_text:errors.append(f'00-index: missing {rid} router {fragment}')
+        for fragment in check.get('index_excludes',[]):
+            if fragment in index_text:errors.append(f'00-index: conflicting {rid} router {fragment}')
         order=check.get('instruction_order',[])
         if order:
             positions=[instructions.find(fragment) for fragment in order]
