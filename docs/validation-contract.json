@@ -2507,7 +2507,12 @@
     "contains": [
       "소중한 사람",
       "trpg_hq.record_npc_interaction",
-      "현지 PC"
+      "현지 PC",
+      "실제 입단 수락 전에 가치관 질문을 하지 않는다",
+      "아무것도 모르는 후보에게 설명",
+      "첫 본부 시설 오리엔테이션",
+      "첫 시설 안내를 건너뛰고 곧바로 임무를 배정하지 않는다",
+      "명시적 입단 의사 확인"
     ]
   },
   {
@@ -2515,7 +2520,9 @@
     "contains": [
       "HQ_FIRST_ENTRY_SCENE_GATE",
       "CAMPAIGN_SETUP_PIPELINE",
-      "ENDING_FINALIZATION_GATE"
+      "ENDING_FINALIZATION_GATE",
+      "수락 후 교육·면담과 실제 시설 안내",
+      "임무 준비를 요청했을 때에만"
     ]
   },
   {
