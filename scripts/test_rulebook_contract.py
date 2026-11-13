@@ -61,7 +61,7 @@ mutations=[
  ('world_scale_filler_npc',lambda r:change(r,'rules/04-setup.md',"플레이 가능한 독립 주요 사건 8~12개와 개별 서사를 가진 사이드 18~30개",'이름 없는 NPC를 30명 더 생성한다')),
  ('side_events_never_reach_party',lambda r:change(r,'rules/04-setup.md',"**사이드 사건·현장 소품·메인 하위 과제를 분류:**",'사이드는 스스로 NPC를 찾아야만 한다')),
  ('new_mandate_bound_to_arbitrary_delay',lambda r:change(r,'rules/04-setup.md','**신규 세계: 사건 ID는 시간 슬롯이 아니라 상태·인과·목표 연결 ID:**','모든 주요 사건은 20분 뒤 무조건 발생한다')),
- ('new_canon_removes_goal_graph',lambda r:change(r,'rules/07-state.md',"**새 비공개 정본의 중심축은 '대명제 → 주요 사건은행 → 목표망 → 사이드 사건은행'이다:**",'대명제 연결망은 플레이하며 만들자')),
+ ('new_canon_removes_goal_graph',lambda r:change(r,'rules/07-state.md',"**새 비공개 정본의 중심축은 '대명제 → 독립 주요 사건 → 결과별 목표망 → 독립 사이드'다:**",'대명제 연결망은 플레이하며 만들자')),
  ('new_canon_drops_world_expansion',lambda r:change(r,'rules/07-state.md',"**사건 수량과 실질 깊이는 구별하여 정본에 고정:**",'NPC와 장비를 충분히 준비하지 않아도 된다')),
  ('new_state_autocommits_offer',lambda r:change(r,'rules/07-state.md',"제안만 보았는데 수락/성공으로 변경하지 않는다",'NPC가 의뢰하면 자동 수락한다')),
  ('world_sides_invisible',lambda r:change(r,'rules/05-world.md',"**자율적인 사이드 접촉 실행 — 반복·복붙 금지:**",'사이드 사건은 화면 밖에 숨긴다')),
