@@ -21,6 +21,8 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('new_world_uses_old_relative_gate',lambda r:change(r,'rules/04-setup.md','**원인 기반 사건·목표망과 인원별 전력 사전 대조:**','신규 세계는 이전 사건 종료 후 20분에 다음 사건을 연다')),
+ ('world_completion_restarts_relative_delay',lambda r:change(r,'rules/05-world.md','**세계 사건의 실제 종료 판정:**','새 정본도 앞 사건 종료 시 다음 재난을 예약한다')),
  ('mandate_replaced_by_minor_repair',lambda r:change(r,'rules/04-setup.md','**거대 대명제와 진입 경로부터 설계:**','대명제는 작은 발전기 수리다')),
  ('mandate_drops_original_experience',lambda r:change(r,'rules/04-setup.md','**원작이 대명제의 원인:**','원작 이름만 사용하면 충분하다')),
  ('mandate_has_only_single_obstacle',lambda r:change(r,'rules/04-setup.md','**다층 필수 국면과 목표망:**','한 번만 적을 물리치면 바로 끝난다')),

@@ -8,7 +8,8 @@
 - `07-state PRIVATE_CANON_DOCUMENT/STATE_WORKING_CONTEXT`: 기존 절의 HIDDEN_TRUTH/DRIVER_BASELINES/PC_CONNECTIONS를 중심으로 대명제 후보·선택된 중심축·필수/중간/사이드 목표의 경로와 NPC·도구·전조 ref를 연결한다. 기존 작업 상태/누적 delta·PC별 정보로 활성 목표·실제 참여/거절·후속 상태를 관리한다. 신규 DB 컬럼/파일/개체 순간 생성 없음.
 - `05-world WORLD_INITIATIVE_EXECUTION/SCENE_CONSEQUENCE_RULE`, `06-play KEEPER_SCENE_SELECTION`: 현재 목적과 NPC/적의 실제 상태에서 정본의 다음 목표와 잦은 사이드 기회를 관측 가능하게 제공한다. 원작 세계에 맞는 부수 NPC/생활·작은 사건은 즉흥 창작할 수 있으나 필수 원인·핵심 진실·유한 적 전력은 사후 발명하지 않는다. 실제 PC 선택과 결과·정당한 안전은 보존한다.
 - `PROJECT_INSTRUCTIONS.md`는 길이 제한 때문에 원래의 장면 서술 문장 735자를 줄여 쓰지 않고 `06-play KEEPER_SCENE_SELECTION`으로 통째로 이전, 기존 조회 경로만 남기고 거대 대명제·세계 증축·목표 연결의 매 응답 핵심 기준을 배치했다. 지침 전체 길이는 7,334자(유니코드 코드포인트 기준, 실제 7,800자 이하). 기존 세이브·시나리오·본부/카드/HP/SAN/운영 DB는 변경하지 않는다.
-- 색인과 `docs/validation-contract.json`을 수정하고, 구형 상대 타이머 우선순위를 요구하던 변이 검사 앵커를 현재 계약으로 갱신했다. 대명제 축소·원작 누락·목표 단절·세계 증축 누락·사이드 미노출·임의 시계/수락 강제·상시 서술 이전 유실을 막는 **14개 부정 회귀 사례**를 추가했다.
+- 구형 시간표 검사 절과 세계 사건 종료 담당 절에 남아 있던 신규 연쇄형 상대 유예 문구 3곳을 현재 원인 기반 계약으로 교체하고, 기존 타이머는 구판 비소급 경로로만 유지한다. 이 충돌 재발에 대한 부정 회귀 2개 추가.
+- 색인과 `docs/validation-contract.json`을 수정하고, 구형 상대 타이머 우선순위를 요구하던 변이 검사 앵커를 현재 계약으로 갱신했다. 대명제 축소·원작 누락·목표 단절·세계 증축 누락·사이드 미노출·임의 시계/수락 강제·상시 서술 이전 유실을 막는 **16개 부정 회귀 사례**를 추가했다.
 - 검증 방법: GitHub Actions에서 `rulebook.py check`, `test_rulebook_contract.py`, `test_resume_semantics.py`, `check_hq_release_contract.py`, `test_compare_hq_db_baselines.py`, `test_stat_generation.py`, `test_python_random.py`, `rulebook.py export` 순서로 실행/확인. 정적 문서 검증은 실제 모델의 장면 연결 품질, NPC 현장 판단, 신규 세계 전체 생성의 수량/밀도와 운영 DB 쓰기 성공을 입증하지 않는다. 장면 기반 실전 회귀는 별도로 검증한다.
 
 ## 2026-11-14 — 기존 STATE 보존형 목적 연속성·반응형 후속 사건 실행
