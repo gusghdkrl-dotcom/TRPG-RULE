@@ -2,7 +2,7 @@ name: Build latest game ZIP
 
 on:
   push:
-    branches: [main]
+    branches: [fix/hq-recruit-orientation-20261113]
     paths:
       - ".github/workflows/update-project-zip.yml"
       - "rules/**"
@@ -27,7 +27,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: project-zip-main
+  group: project-zip-hq-onboard-stage
   cancel-in-progress: false
 
 jobs:
@@ -47,8 +47,8 @@ jobs:
           # reaches main. Regenerate from the actual remote HEAD, not an
           # outdated checkout; retry only after a legitimate push race.
           for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            git checkout -B zip-export origin/main
+            git fetch origin fix/hq-recruit-orientation-20261113
+            git checkout -B zip-export origin/fix/hq-recruit-orientation-20261113
             python3 scripts/rulebook.py check
             python3 scripts/test_rulebook_contract.py
             python3 scripts/test_resume_semantics.py
@@ -64,7 +64,7 @@ jobs:
             fi
             git add dist/TRPG-RULE-project.zip
             git commit -m "Refresh dist game ZIP from verified rule sources"
-            if git push origin HEAD:main; then
+            if git push origin HEAD:fix/hq-recruit-orientation-20261113; then
               echo "Verified: refreshed ZIP pushed to main."
               exit 0
             fi
