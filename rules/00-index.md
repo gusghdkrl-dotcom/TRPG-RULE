@@ -1,6 +1,6 @@
 # 규칙 색인
 
-모든 주요 사건은 발생 자체가 필연적이며 PC는 후속 피해·구조·국지적 격퇴·생존/탈출을 바꾼다. **주요 사건은 실제 이동·감지·전파의 인과로 PC에게 직접 위협·사건 의미의 재해석·당면 목표 충돌 중 적어도 한 가지가 도달하도록 신규 생성 시 설계한다.** SOURCE_EXPERIENCE_CONTRACT·PC_REACHED_EVENT_CONTRACT·SCENARIO_BLUEPRINT·WORLD_INITIATIVE_EXECUTION·PRIVATE_CANON_DOCUMENT를 함께 적용하며 기왕 확보한 안전을 취소하지 않는다.
+주요 위기는 PC 수락 없이 사전 인과로 움직이되 실제 차단된 국지 사건은 예방/종결로 확정하고 남은 독립 원인만 진행한다. PC는 피해·구조·격퇴·생존/탈출을 바꾼다. **주요 사건은 실제 이동·감지·전파의 인과로 PC에게 직접 위협·사건 의미의 재해석·당면 목표 충돌 중 적어도 한 가지가 도달하도록 신규 생성 시 설계한다.** SOURCE_EXPERIENCE_CONTRACT·PC_REACHED_EVENT_CONTRACT·SCENARIO_BLUEPRINT·WORLD_INITIATIVE_EXECUTION·PRIVATE_CANON_DOCUMENT를 함께 적용하며 기왕 확보한 안전을 취소하지 않는다.
 
 신규 세계/미확정 챕터의 원작 중심축+새 주인공의 사건, 실제 위협/피해·미개입/귀가/해결의 인과 설계도는 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT의 기존 HIDDEN_TRUTH·WORLD_RULES·DRIVER_BASELINES·ENDING_CONDITIONS 및 관련 절을 따르고 COMPATIBILITY_GATE로 내용의 중대성과 실행 연결을 대조한다. 단서의 오인/기만은 실제 NPC/자료의 원인·공개 범위와 해결된 성과를 보존한다.
 

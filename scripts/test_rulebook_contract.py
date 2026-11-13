@@ -21,6 +21,13 @@ def validate(root):
     with redirect_stdout(StringIO()):checker.validate()
 
 mutations=[
+ ('start_legacy_event_schedule_returns',lambda r:change(r,'START_GAME.md','**신규 목표망의 상태·인과 기반 진행:**','**유동적 사건 시간대 + 최종 데드라인 + 능동적 접근:**')),
+ ('start_adds_global_deadline',lambda r:change(r,'START_GAME.md','새 주요 사건의 예약 시각·전역 데드라인을 만들지 않는다','새 주요 사건의 최종 발생 데드라인을 준비한다')),
+ ('start_disallows_prevention',lambda r:change(r,'START_GAME.md','실행 수단이 모두 차단된 국지 위협은 예방/종결','실행 수단이 전멸해도 재난은 반드시 발생')),
+ ('instruction_cancels_prevention',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','실행 수단이 모두 제거된 국지 위협은 예방/종결로 인정한다','실행 수단이 제거돼도 국지 재난은 강제로 발생한다')),
+ ('canon_forces_prevented_disaster',lambda r:change(r,'rules/04-setup.md','이미 실행 불가로 차단된 국지 재난은 발생 처리하지 않고','실행자가 모두 사라진 국지 재난도 무조건 발생시키고')),
+ ('finale_denies_local_prevention',lambda r:change(r,'rules/04-setup.md','실제 사전 원인·실행 수단 전체를 차단한 국지 사건은 예방/조기 종결로 인정한다','실행 수단 전체를 막아도 국지 사건은 반드시 발생한다')),
+
  ('state_auto_accept_from_contact',lambda r:change(r,"rules/07-state.md","제안만 보았는데 수락/성공으로 변경하지 않는다","퀘스트 보임=수락 완료")),
  ('scene_side_disguised_micro',lambda r:change(r,"rules/06-play.md","E 하위 작업·장면 소품은 그 자체의 역할로 제공하되","일회성 물품 발견을 독립 S로 취급")),
  ('world_next_objective_omniscient',lambda r:change(r,"rules/05-world.md","그걸 알릴 주체가 사실을 모르거나 해당 장소에 없으면","누구든 다음 목표를 전지적으로 설명")),
@@ -243,7 +250,7 @@ mutations=[
  ('major_incident_not_inevitable',lambda r:change(r,'rules/04-setup.md','주요 재난/습격/확산은 PC가 퀘스트를 받거나 특정 장소에 도착할 때','첫 사건만 필연적이고 다른 주요 사건은 전부 예방 가능하다')),
  ('major_incident_cannot_reduce_harm',lambda r:change(r,'rules/04-setup.md','PC·동료의 HP/SAN 피해·죽음·동행·해결 방식은 실제 상황과 판정에 맡긴다','PC의 행동과 무관하게 피해와 사망을 확정한다')),
  ('world_only_first_inevitable',lambda r:change(r,'rules/05-world.md','**모든 주요 사건의 독립적 발생**','**첫 도입 사건의 독립적 발생**')),
- ('ending_erases_all_incidents',lambda r:change(r,'rules/06-play.md','필연적 주요 사건의 발생 자체를 지우는 전면 구원 대신','모든 사건을 미리 막으면 세계 전체를 구할 수 있다')),
+ ('ending_erases_all_incidents',lambda r:change(r,'rules/06-play.md','실제 남은 독립 원인을 임의로 지우지 않되','남은 독립 원인도 키퍼가 전부 지워 준다')),
  ('canon_leaves_later_incidents_blank',lambda r:change(r,'rules/07-state.md','첫 사건만 있고 후속 사건이 비어 있으면 미완성이다','첫 사건만 있으면 후속 사건은 비워도 된다')),
  ('canon_supabase_source_missing',lambda r:change(r,'rules/07-state.md','trpg_private.gm_canon_documents에 저장·동일판본 전체 재조회·SHA-256 검증','파일 이름만 작성하고 저장 성공으로 표시')),
  ('canon_github_mirror_returned',lambda r:change(r,'rules/07-state.md','GitHub 자동 백업·비상 체크포인트 저장·failover는 폐지','GitHub 자동 백업·비상 체크포인트 저장·failover는 필수')),

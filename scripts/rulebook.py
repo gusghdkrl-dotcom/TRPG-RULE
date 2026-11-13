@@ -43,6 +43,7 @@ def validate():
             elif anchor and anchor not in {rid.lower() for rid,p in ids.items() if p==target}:
                 errors.append(f'{path.name}: missing rule anchor {url}')
     instructions = (ROOT/'PROJECT_INSTRUCTIONS.md').read_text()
+    start_text = (ROOT/'START_GAME.md').read_text()
     if len(instructions)>7800:
         errors.append('Project Instructions exceeds 7,800 Unicode characters')
     routes=re.findall(r'^\| (\d{2}-[a-z-]+\.md) \| (.+) \|$',instructions,re.M)
@@ -104,6 +105,10 @@ def validate():
             if fragment not in instructions:errors.append(f'Project Instructions: missing {rid} reminder {fragment}')
         for fragment in check.get('instruction_excludes',[]):
             if fragment in instructions:errors.append(f'Project Instructions: obsolete {rid} reminder {fragment}')
+        for fragment in check.get('start_contains',[]):
+            if fragment not in start_text:errors.append(f'START_GAME: missing {rid} entrypoint {fragment}')
+        for fragment in check.get('start_excludes',[]):
+            if fragment in start_text:errors.append(f'START_GAME: conflicting {rid} entrypoint {fragment}')
         order=check.get('instruction_order',[])
         if order:
             positions=[instructions.find(fragment) for fragment in order]
