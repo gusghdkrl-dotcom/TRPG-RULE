@@ -6,6 +6,8 @@
 신규 현지 공개 내레이션·PC별 대명제 연결은 START_GAME/SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT/KEEPER_SCENE_SELECTION, 획득형 수납 확장은 INVENTORY/BOTTOM_HUD_CONTRACT, 실제 발동 기준 상대 물리 소요는 SCENE_ELAPSED_TIME_SETTLEMENT 담당. 신규 사건 예약 시간표는 만들지 않는다.
 발작은 INSANITY_CONDITIONS 발동→BOUTS_OF_MADNESS 실제 PC 행동 기회 2회→정상 행동권 복귀, UNDERLYING_INSANITY는 신규 지속 광기 폐지/기존 검증 세이브 호환 ID 담당. 기존 치료·SAN 회복/의료품은 이번 변경 없음.
 
+신규 HP 0은 HP_AND_DEATH/WOUNDS의 의식불명으로 통합하고 Dying/매 라운드 CON 사망 판정/안정화는 제거, 실제 단일 최대HP 이상 치명타/위해는 유지한다. HEALING의 전문 일회용 처치 키트만 1d3+2(3~5)로 변경. 새 일반 E는 필수 현장 체험이면서도 속도전이 아니며, SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT에 개인별 실제 유도 사건·작은 목표/생활·관계·선택적 S/준비와 거대 당근의 누적 회수를 정본으로 잇고 WORLD_INITIATIVE_EXECUTION/KEEPER_SCENE_SELECTION이 실제 호흡과 선택을 지킨다.
+
 생성 완료의 실제 인과·독립 주요 E와 중간 작업·과거 사건의 분류/다층 체험·사이드 깊이/다경로 접촉은 SCENARIO_BLUEPRINT, **플레이 가능 사건만 집계하고 원작 체험/1인 위험·미등록 참조·저장 식별자를 대조하는 최종 문턱은 COMPATIBILITY_GATE**, 개별 NPC의 목소리·관계 실행은 STORY_NPC, 초기 NPC/시설·사건 ref 연결은 PRIVATE_CANON_DOCUMENT, 실제 사이드 장면·목표 반환은 WORLD_INITIATIVE_EXECUTION/KEEPER_SCENE_SELECTION, 종결은 ENDING_FINALIZATION_GATE가 담당한다.
 신규 일반 E는 전원 필수 고유 현장 체험을 목표로 하며, PC별 직업/생활·귀가·우회/분리 루트를 시작 전 사전 인과로 연결한다. 이 부분은 SCENARIO_BLUEPRINT/COMPATIBILITY_GATE/PRIVATE_CANON_DOCUMENT/WORLD_INITIATIVE_EXECUTION/ENDING_FINALIZATION_GATE가 소유한다. 기본 최종 철수는 E 완주 뒤 거대 당근에서, 실제 전면 해결·안전·사망/확정 구판은 예외로 보호.
 
