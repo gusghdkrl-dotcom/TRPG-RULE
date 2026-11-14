@@ -6,6 +6,8 @@
 
 영구 카드 자산·강화·성장과 효과별 발동·등급·해금은 09-cards가 담당한다. 이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 간편 HUD·PC별 당근/판정 시 카드 표시는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적의 단계별 개체 전력·중간/최종 보스·사이드 사건은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
 
+신규 공개 세계 오프닝·PC별 관여 동기는 START_GAME/SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT/KEEPER_SCENE_SELECTION, 파밍 후 의료 가방+3·호환 무기 운반구+2·등짐 메인+2의 획득/실물 수납은 INVENTORY/BOTTOM_HUD_CONTRACT, 실제 발동 시각 기준 상대 물리 소요는 SCENE_ELAPSED_TIME_SETTLEMENT를 따른다. 기존 세이브 비소급.
+
 규칙판: 생존 호러 통합 경량판 2026-11-12. 상시 이야기·묘사·페이싱은 PROJECT_INSTRUCTIONS.md, 아래는 필요한 수치/상태/절차를 찾는 경로다. 같은 판본의 필요한 본문과 현재 상태가 확인 가능하면 재사용하고 유실/변경/충돌 부분만 조회한다. 매 응답 색인이나 전 규칙을 다시 읽지 않는다.
 
 | 상황 | 담당 절 |
