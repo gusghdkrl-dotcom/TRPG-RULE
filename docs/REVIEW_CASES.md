@@ -60,7 +60,7 @@
 | 특수 보너스와 일반 보너스 | **같은 판정에 병용 불가**, 특수 카드당 캠페인1회·사전 선언, 낮은 후보값=본 행동/높은 후보값=해당 강화. PC d100은 플레이어 입력. 일반 보너스는 낮은 값으로 본 행동·강화 함께 판정 | BONUS_PENALTY_DICE / CARD_ENHANCEMENT_TRIGGER |
 | 기회주의자 판돈/위험 | 플레이어가 사전에 물건/퇴로/HP 위험을 직접 선택한 경우에만 카드 대가. 손실 조건은 세계 실제 물리·동의 범위에서 처리, 카드를 끼었다는 이유로 자동 물건 상실/HP 손상 금지 | CARD_ENHANCEMENT_WI / CARD_ENHANCEMENT_TRIGGER |
 | 생존자 「다 끝난 줄 알았지?」 | 이미 사망 확정 뒤 부활시키지 않음. 물리적 생존 가능 시 **HP 0 이하가 되기 직전** 적격 물리 피해를 경감해 HP 1 유지, 캠페인 1회. 중상·출혈 등 실제 효과/다음 공격은 유지 | CARD_ENHANCEMENT_SU / CARD_ENHANCEMENT_TRIGGER / HP_AND_DEATH |
-| 응급 꾸러미/야전 구호 세트/응급처치 강화 | 실물 의료품과 실제 판정·회복 가능한 부상 범위를 먼저 확인하고, 새 캠페인은 적격 카드의 2회분 1d2·3회분 1d3·조건부 +1을 원래 판정/소모/동일 부상 1회성 한도에서 적용. 중상 해제 조건과 빈사 안정화 및 비전투 Scene Turn 처리 유지 | CARD_ASSET_NE / CARD_ASSET_GU / CARD_ENHANCEMENT_NE / HEALING |
+| 응급 꾸러미/야전 구호 세트/응급처치 강화 | 실물 의료품과 실제 판정·회복 가능한 부상 범위를 먼저 확인하고, 신규 캠페인은 중립 간이 응급 꾸러미 **1개(1d2)**·수호자 야전 구호 세트 **1개(1d3+1)** 실물 지급만, 사용 시 성공/실패 불문 전체 소모. 같은 피해의 남은 HP는 별도 의료품/행동으로 반복 회복 가능하며 어려운 성공 카드 +1은 해당 치료에만. 중상 해제 조건과 빈사 안정화 및 비전투 Scene Turn 처리 유지 | CARD_ASSET_NE / CARD_ASSET_GU / CARD_ENHANCEMENT_NE / HEALING |
 | 대사건 종료/연대기 챕터 종료 | 실제 검증된 종결 후 ①현재 클래스 ②전체 클래스 ③성장 ④중립 중 미보유/미만렙 후보만 뽑아 선택 1회 기록. 카드 후보가 부족하면 해당 칸 비움, 전부 소진이면 보상 없음. 연대기 전체 종료 중복 지급 금지 | CARD_REWARD_DRAFT / ENDING_FINALIZATION_GATE |
 | 플레이어 성장과 새로운 PC | 성장 STR/CON/SIZ/DEX/APP/INT/POW/EDU 최대5레벨, 획득1레벨 확정/재도전 80·50·25·10%. PC UUID 연결 순간 성장 반영 스냅샷 저장, 기존 PC에 소급 적용/시트 이중 합산 금지 | CARD_PERMANENT_GROWTH / CARD_PLAYER_STORAGE / STATE_IDENTITY |
 | 자산 동행 동물의 실제 위험 | 동물의 종·훈련·위치·부상/이탈/사망이 실제 반영. 종류에 없는 능력·자동 복종·부활/재소환·PC 미선언 판단 금지 | CARD_ASSET_GU / CARD_ASSET_WI / CARD_ASSET_SU |
@@ -188,7 +188,11 @@
 | 회피동단계·반격동단계 | 회피성공/반격은공격개시자우세. 일반대항과구분 | MELEE_OPPOSED |
 | 준비총기·엄폐도약 | 발사순서DEX+50, 엄폐Dodge성공공격자패널티1·성패무관다음공격포기 | COMBAT_ORDER / FIREARMS |
 | HP11에서단일6피해 | 중상,CON실패의식불명. 중상없는HP0은빈사아닌의식불명 | HP_AND_DEATH / WOUNDS |
-| 파우치의료품 | 신규 캠페인은 실제 재료 1회분·판정·시간 소모 후 성공1d2, 중상 해제 불가·같은 부상 HP 회복 1회. 구판은 기존 값 보존 | HEALING |
+| 신규 1회용 의료품 B안 | PC당 붕대/간이 꾸러미 1개·구급상자/야전 구호 세트 1개·전문 키트 1개씩 최대. 같은 기능·종류의 다른 이름/카드로 중복 소지 금지. 가방+3도 상한을 늘리지 않음. 중복 발견 시 버리거나 인계/보관 선택, 기존 물건 자동 소멸 금지 | INVENTORY / CARD_ASSET_NE / CARD_ASSET_GU |
+| 동일 HP 손실의 반복 치료 | HP 5 손실 후 붕대 +2, 구급상자 굴림 +4라도 적용 +3으로 완전 회복. 각 1회용품 전체 소모·독립 실제 치료 행동/판정. HP 원인별 횟수 원장 불필요. 중상은 별도 의학/현장 조건 없이는 남음 | HEALING / WOUNDS |
+| 필수 일반 E · 다양한 PC 경로 | 신규 일반 E 모두 고유 현장 장소가 있으며 정상 귀가·우회/분리·다른 목적 경로에도 PC별 현장 도달의 현실적 이유와 기존 통로를 시작 전 정본에 연결. 뉴스나 P1 방문으로 P2 현장 완료 금지. 보스 강제 생존·순간 이동·사후 길막도 금지 | SCENARIO_BLUEPRINT / PRIVATE_CANON_DOCUMENT / WORLD_INITIATIVE_EXECUTION |
+| 마지막 일반 E 이후 철수·대명제 | 일반적인 최종 철수/대명제 해결은 각 활성 PC가 E 현장 체험을 마친 이후에 준비. 중간 치료·후퇴/국지 격퇴는 정상이며, 실제 전면 차단·완전 안전·사망을 취소할 신규 위협을 만들어 E를 완수시키지 않음 | ENDING_FINALIZATION_GATE / SCENARIO_BLUEPRINT |
+| 파우치의료품 | 신규 캠페인에서 붕대 1개 사용 시 판정 성공 1d2 HP, 실패여도 아이템 전체 소모. 같은 HP 손실에 다른 1회용 의료품으로 다시 치료 가능. 구판 소모/회복 값은 그대로 | HEALING |
 | 하루시작SAN53·손실6+5·중간회복3 | 누적11로장기광기기준충족. 분모/손실을회복/로드로초기화하지않음 | INSANITY_CONDITIONS |
 | 단일SAN5손실 | INT성공발작/실패즉시발작모면 | INSANITY_CONDITIONS |
 | 신규 광기 발작 중/종료 | 실제 1d10 발작 종류 후 해당 PC 행동 기회 정확히 2회(다른 PC 턴·메타·로드 제외)만 일시 강제. 행동 기회 두 번 이후 즉시 정상 선택권 복귀, 자동 Insane·별도 치료·상시 환각 없음. 실제 SAN/HP·위치·관계·당일 누적 손실은 보존. 구판 verified 발작/Insane 비소급 | BOUTS_OF_MADNESS / UNDERLYING_INSANITY / STATE_WORKING_CONTEXT |
