@@ -40,7 +40,7 @@ mutations=[
  ('hud_bag_inventory_hidden_again',lambda r:change(r,'rules/06-play.md','인벤토리 전체 목록은 매 일반 HUD에 상시 표시한다','인벤토리 전체 목록을 매 일반 HUD에서 숨긴다')),
  ('new_hp_bonus_reverted',lambda r:change(r,'rules/02-checks.md','floor((최종 CON + 최종 SIZ) / 10) + 2','floor((최종 CON + 최종 SIZ) / 10) + 1')),
  ('pc_zero_requires_rescuer',lambda r:change(r,'rules/02-checks.md','**신규 PC의 HP 0 — 다른 PC의 실제 구조 가능성:**','**HP0은 언제나 의식불명:**')),
- ('pc_zero_rescuer_loss_matters',lambda r:change(r,'rules/02-checks.md','**구조·사망의 지속 조건:**','**PC 구조를 잃어도 계속 생존:**')),
+ ('pc_zero_rescuer_loss_matters',lambda r:change(r,'rules/02-checks.md','구조 가능한 다른 PC가 전원 사망하거나','구조 가능한 다른 PC가 전원 사망해도 무조건 생존하거나')),
  ('combat_healing_returns',lambda r:change(r,'rules/02-checks.md','전투·추격 및 즉각적인 현장 위해 중에는 HP 회복 치료를 실행하지 않는다','전투 중에는 HP 회복 치료를 즉시 실행한다')),
  ('wound_con_unconscious_reintroduced',lambda r:change(r,'rules/02-checks.md','중상 직후 CON 실패만으로 의식불명을 만들지 않는다','중상 직후 CON 실패만으로 의식불명 처리한다')),
  ('dying_death_loop_returns',lambda r:change(r,'rules/02-checks.md','Dying/빈사 상태·라운드별 CON 사망 굴림·빈사 안정화 절차를 생성하지 않는다','중상 HP0에서는 Dying과 매 라운드 CON 실패 사망을 적용한다')),
