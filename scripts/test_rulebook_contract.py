@@ -19,6 +19,9 @@ def move_priority_last(root):
 def validate(root):
     checker.ROOT=root;checker.RULES=root/'rules'
     with redirect_stdout(StringIO()):checker.validate()
+    # START_GAME is the actual entrypoint, outside rules/*.md guard extraction.
+    if '**원작 확인이 먼저:**' not in (root/'START_GAME.md').read_text():
+        raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
  ('spine_missing',lambda r:change(r,'rules/04-setup.md','필수 E의 참조 순서·선행 기점·고유한 서사 기능·누적 의미·대명제 결산 연결','E 이름만 나열하고 순서는 정하지 않는다')),
