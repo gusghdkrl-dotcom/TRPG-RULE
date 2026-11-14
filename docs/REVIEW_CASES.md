@@ -136,7 +136,7 @@
 | 판정이 있거나 없는 일반 게임 응답 | 본문/필요 입력과 현재 상태/인벤토리·있는 공개 판정만 표시. 키퍼 원칙·숙지 문구·준수 보고를 반복하지 않으며 상시 본문의 실행 기준은 유지 | 지침: 일반 게임 응답의 출력 / BOTTOM_HUD_CONTRACT |
 | 실제 버튼/패널 UI가 지원되는 클라이언트 | 같은 번호/라벨/intent의 전체너비 세로 알약형 버튼과 단일 상태 카드 우선. 지원되는 UI를 이유 없이 텍스트 목록으로 낮추는 것은 거부 | GUIDED_ACTION_RETURN / BOTTOM_HUD_CONTRACT |
 | 실제 버튼/패널 UI가 없거나 실패함 | 선택별 번호·아이콘·대상·할 일을 빈 줄로 분리한 Markdown과 상태 카드 제공. 가짜 HTML/링크·실제 클릭/렌더 성공 주장은 거부 | GUIDED_ACTION_RETURN / BOTTOM_HUD_CONTRACT |
-| 자원/위치/시간/상태와 가방 표시 | 자원 아이콘/라벨·실제 UI의3칸/큰 자원 수치, Markdown은3단계 자원 행·좁은 화면은 독립 행. 시각/위치/현금은 상시, 실제 상태는 조건부. 메인/파우치/중요 물품은 아이콘·점유량·실제 각 물품의 별도 영역/문단 유지. 통합 소지품 한 줄은 거부 | BOTTOM_HUD_CONTRACT |
+| 자원/위치/시간/상태와 가방 표시 | HP/SAN/Luck·PC별 🥕·위치/시간/현금·메인/파우치 점유량 상시. 평시 전체 물품은 반복하지 않으나 사용/변경/요청 시 실제 물품명·Stack수량·구획을 펼친다. 장착 실물/중요 물품의 중복·누락은 거부 | BOTTOM_HUD_CONTRACT |
 | 서식 변경 시 물품 소지 위치가 미확인 | 기존 위치/수량/점유량 보존하고 필요한 상태만 복구. 패널을 채우기 위한 재배치/물품 생성·중복 표시는 거부 | BOTTOM_HUD_CONTRACT / INVENTORY |
 | 거래 없는 일반 응답·현금0·미지급 대금 | 현금은 매 HUD에 실제 잔액/통화,0도0으로 표시. 미지급은 실제 조건/별도 금액이며 잔액에 더하지 않음. 유실은 미확인/해당 복구 | BOTTOM_HUD_CONTRACT / PERSONAL_CASH_LEDGER |
 | 메인/파우치 물품이 중요한 단서/도구가 됨 | 기존 소지/점유 보존. 중요 물품 영역으로 중복 복사하거나0칸으로 옮기지 않음. 실제 별도 가벼운 키템만 표시 | BOTTOM_HUD_CONTRACT / INVENTORY |
@@ -203,8 +203,8 @@
 | 익숙한경로20분이동 | 실제충돌없으면출발~도착한번,도착후상호작용기회.재검색/전원행동질문없음 | ROUTINE_MOVEMENT_FAST_PATH |
 | 5분작업과12분이동병렬 | 5분지점중단이면이동7분남음.12분재계산/25분합산없음 | PARALLEL_TIMELINE_SYNC |
 | 다음PC교대 | 자연스러운결과경계·대기우선,고정3/5회·준비A없음,교대시간0 | MULTI_PC_SPOTLIGHT_CONTRACT |
-| 정상응답 | 본문/필요입력+정확HUD/인벤토리.별도씬요약·연출의도없음 | BOTTOM_HUD_CONTRACT |
-| 메인/파우치/소지물 | 목록/점유량상시,삭제한무료직업품/버프/태그/수첩은신규생성없음 | INVENTORY / STATE_SCHEMA |
+| 정상응답 | 본문/필요입력+간편HUD/PC별 메인 당근/수납량. 상세 물품은 필요시. 별도씬요약·연출의도없음 | BOTTOM_HUD_CONTRACT |
+| 메인/파우치/소지물 | 메인/파우치 점유량·필요 물품은 HUD 상시, 전체 목록은 사용/변경/요청 시. 실제 물품·장착·저장은 보존 | INVENTORY / STATE_SCHEMA |
 | 공개대항결과 | 요구·PC/상대실제값·단계·비교/결과1~2줄.비공개사건/전체시트는숨김 | BOTTOM_HUD_CONTRACT |
 | 이미지실패 | 텍스트계속.시작지도는같은공간연결도로대체·이미지성공으로가장하지않음 | START_MAP_HANDOUT_GATE |
 | 종료 | 실제성과/손실·열린대응먼저,다섯후일담은한응답씩자세히.이미지Gate로잠그지않음 | ENDING_FINALIZATION_GATE / OPTIONAL_POST_CREDITS_VIEWS |
@@ -385,3 +385,19 @@
 | 원작을 충실하게 따른다는 이유로 NPC/PC의 미래 죽음, 고정 전투/수락/결말을 사전 강제 | 시작 전에 실제로 성립한 원작 사실만 고정하고 PC 개입 이후의 인과·성공/실패·안전은 실제 선택/판정대로 갱신 | SCENARIO_BLUEPRINT / PRIVATE_CANON_DOCUMENT |
 
 공식 원작 근거: Chaosium, *The Lightless Beacon* (2019), https://www.chaosium.com/content/FreePDFs/WeAreAllUs/2019/The%20Lightless%20Beacon%20-%20Call%20of%20Cthulhu.pdf . 원문 전체나 키퍼 비밀을 게임 배포 ZIP에 복제하지 않는다.
+
+
+## 2026-11-14 다인 PC·당근 HUD·브리핑·씬 전환 통합 회귀
+
+| 상황 | 합격/탈락 경계 | 담당 규칙 |
+|---|---|---|
+| ON 출격 때 동기화 현지인의 직업만 소개 | 탈락. 마틴 브리핑에 P1~PN 현지 인물이 직전 무엇을 하고 있었고 왜 지금 여기 있는지·아직 할 일·당장 가능한 행동을 구체적으로 설명. 본부 임무와 개인 목적 구별, 첫 장면 일치 | HQ_FIELD_CONTEXT_BRIEFING / PRIVATE_CANON_DOCUMENT |
+| OFF 신규 시작과 기존 ON 세이브 재개 | OFF 첫 장면에는 같은 공개 출발 사실. 재개한 캠페인에는 과거 출격 브리핑·출발 목적 초기화 금지 | START_BRIEFING_FOG / STATE_RESUME |
+| P1은 메인 E 대응, P2는 S 세 개만 진행 | 탈락. P2의 인지·현재 추구 가능한 별도 메인 E/작은 목표 ref·실제 접촉 경로 확보. S/보상/생활만으로 메인 미터 성공 금지 | SCENARIO_BLUEPRINT / SCENE_CONSEQUENCE_RULE / BOTTOM_HUD_CONTRACT |
+| P2가 식사를 즐기면서 별도 메인 목표가 열림 | 정상. S를 작은 메인 당근으로 변환하지 않고 식사와 독립적인 기존 메인 방향은 그대로 표시. 복귀·수락 강제 없음 | SCENE_CONSEQUENCE_RULE / BOTTOM_HUD_CONTRACT |
+| P1에게만 알려진 적 이동을 P2 HUD에 출력 | 실패. 개인 지식/관측·전달 경로 분리, 전지적 정보 공유·억지 합류 금지 | PC_REACHED_EVENT_CONTRACT / STATE_WORKING_CONTEXT |
+| P1의 위험/직접 결과가 끝난 뒤 새로운 무관한 장면을 또 독점 | 실패. 실제 성취·NPC 반응·짧은 여운 뒤 오래 기다린 행동 가능한 P2에 카메라 교대 | MULTI_PC_SPOTLIGHT_CONTRACT / QUIET_AFTERMATH_BEAT |
+| 열린 공격·굴림을 자르거나 P2 부재인데 턴 수 동일화 | 실패. 긴급 대응·동시 시간선·미해결 선택 우선, 무의미한 교대와 교대 시 경과 금지 | MULTI_PC_SPOTLIGHT_CONTRACT / PARALLEL_TIMELINE_SYNC |
+| 하단 HUD가 카드 4칸·모든 소지품을 계속 나열 | 실패. 간결한 HP/SAN/Luck·PC별 🥕·위치/시간/현금·상태/장비·메인/파우치 점유량 상시, 카드 슬롯 제거 | BOTTOM_HUD_CONTRACT |
+| 상시 카드가 안 보인다는 이유로 판정 전 선택/장착 강화가 누락 | 실패. 판정 전 선택 효과·무판정 시작/보호 효과를 원문대로 처리하고 관련 시점에만 해당 카드 표시 | CARD_EQUIP_AND_ASSET / BOTTOM_HUD_CONTRACT |
+| 소지품 목록을 요약하자 실제 물품이 잊히거나 사용 시 확인 못함 | 실패. 실제 위치·수량·장착/파손/인계 상태 계속 보존, 물품 사용·변동/용량 충돌·요청 때 상세 구획 공개 | INVENTORY / BOTTOM_HUD_CONTRACT / STATE_WORKING_CONTEXT |
