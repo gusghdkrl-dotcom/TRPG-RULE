@@ -373,3 +373,15 @@
 | ON 후속 캠페인 | 기존 계정 보유 카드/성장 레벨 그대로 사용, OFF로 인한 삭제/초기화 없음 |
 | OFF 재개 | CANON_INDEX의 permanent_cards_enabled=false 및 종속 성장 모드 유지, 부당한 카드 시스템 부활 없음 |
 | 새 비공개 정본 | 기존 NPC_BASELINES/LOCATION_BASELINES/DRIVER_BASELINES/ENDING_CONDITIONS에 시작 후 PC에게 향하는 원작 적·NPC·위협과 정상 귀가/퇴로의 실제 대응 인과를 연결 |
+
+
+## 원작 시나리오 조사·대명제 보존 회귀 (신규 생성에만)
+
+| 실제 실패 사례 | 신규 정본의 합격/탈락 기준 | 담당 규칙 |
+|---|---|---|
+| 《The Lightless Beacon》의 공식 사건은 밀수 금화 회수 습격과 등대 파손·난파·섬 생존인데, 원작을 조사하지 않고 거짓 항로 조작·연안 관리 갈등으로 대체 | 원작의 선행 난파·캐시디의 금화 발견·교단의 회수 습격·등대 파손·승객의 생존 위기를 중심 인과로 보존해야 한다. 작은 트위스트/다경로는 가능하지만 원작의 위협 동기·생존 상황을 교체하면 탈락 | FULL_DIVE_CROSS_ANALYSIS / SOURCE_EXPERIENCE_CONTRACT / SCENARIO_BLUEPRINT / COMPATIBILITY_GATE |
+| 공식 원작 제목/괴물 목록만 확인하고 중심 사건과 적의 목적은 기억으로 채움 | 공식 본문/확인 가능한 신뢰 출처의 조사 범위와 미확인 사실을 기록. 핵심 인과 미확인이면 비공개 신규 정본 확정 불가 | SOURCE_EXPERIENCE_CONTRACT / PRIVATE_CANON_DOCUMENT |
+| 대명제를 '등대·항로 시설 정상화'로 만들고 실제 PC의 생존·원작 공포·미개입 결과는 거의 무관 | 원작 특유의 위협·PC의 당면 필요·실패 손실/대응 차이를 기존 ref로 증명. 원작보다 억지로 큰 세계 재난은 만들지 않음 | SCENARIO_BLUEPRINT / COMPATIBILITY_GATE |
+| 원작을 충실하게 따른다는 이유로 NPC/PC의 미래 죽음, 고정 전투/수락/결말을 사전 강제 | 시작 전에 실제로 성립한 원작 사실만 고정하고 PC 개입 이후의 인과·성공/실패·안전은 실제 선택/판정대로 갱신 | SCENARIO_BLUEPRINT / PRIVATE_CANON_DOCUMENT |
+
+공식 원작 근거: Chaosium, *The Lightless Beacon* (2019), https://www.chaosium.com/content/FreePDFs/WeAreAllUs/2019/The%20Lightless%20Beacon%20-%20Call%20of%20Cthulhu.pdf . 원문 전체나 키퍼 비밀을 게임 배포 ZIP에 복제하지 않는다.
