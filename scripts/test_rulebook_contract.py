@@ -394,7 +394,7 @@ mutations=[
  ('intro_first_event_never_in_window',lambda r:change(r,'rules/04-setup.md','본편 시작 뒤 두 번째~서른 번째로 처리되는 유효 행동 턴 안에','첫 사건은 31턴 이후에만 직접 발생한다')),
  ('intro_30_turn_spawn',lambda r:change(r,'rules/04-setup.md','30턴째 자동 발동 스위치','30번째 턴에 새 괴물을 자동 소환')),
  ('intro_long_wait_clock_frozen',lambda r:change(r,'rules/04-setup.md','물리 시간을 정지하거나 막은 사건을 다시 만들지 않는다','서른 턴 전까지 물리 시간을 정지한다')),
- ('intro_pc2_denied_life',lambda r:change(r,'rules/04-setup.md','P1만 생활을 체험하고 P2/P3는 첫 사고부터 등장','P1만 생활을 체험하고 P2/P3는 첫 사고부터 등장해도 통과')),
+ ('intro_pc2_denied_life',lambda r:change(r,'rules/04-setup.md','P1만 생활을 체험하고 P2/P3는 첫 사고부터 등장','P2/P3의 생활 기회 없이 첫 장면부터 사고를 경험해도 합격')),
  ('intro_resume_restarts',lambda r:change(r,'rules/07-state.md','첫 장면으로 되돌리거나 행동 턴을 1로 초기화하여 사고를 다시 예약하지 않는다','재개 때마다 생활 도입을 새로 시작하고 E를 다시 소환한다')),
  ('intro_world_turn_trigger',lambda r:change(r,'rules/05-world.md','자동 발동·NPC 순간이동·사건 가속 버튼이 아니다','30번째 턴이 오면 적을 자동 생성한다')),
  ('intro_routine_off_removed',lambda r:change(r,'START_GAME.md','**첫 현지 장면은 반드시 생활·업무:**','**OFF는 사고 현장에서 시작:**')),
