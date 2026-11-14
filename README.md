@@ -44,6 +44,8 @@ ZIP에는 실행 지침·시작 입력·게임용 소스·업로드 안내·SHA2
 
 ## 이번 판의 주요 변경
 
+- **2026-11-14 네 계층 통합:** 신규 세계를 대명제 → 명시된 필수 중대 기점 → 구간의 작은 목표와 선택적 생활/휴게 층으로 설계한다. 작은 목표마다 새 의뢰를 붙이지 않고, 기존 메인 방향이 남으면 유지하며 마지막 방향이 닫힐 때만 준비된 후속을 잇는다. 원작다운 생활·관계·탐험은 정상 경로에서 계속 접할 수 있고 필수 진도/보상 관문으로 삼지 않는다. 이미 성립한 세계 변화와 가변 피해·조기 차단을 구별하며 기존 캠페인/HQ·카드·판정/저장 수치는 유지한다. [설계 결정·대조/한계](docs/FOUR_LAYER_SCENARIO_REVIEW.md).
+
 - **2026-11-10 패치:** 신규 PC 시작 장비를 직업 관련 필수 물품 정확히1개로 제한하고, 추가 장비는 실제 세계의 발견·파밍·거래·수리·협력으로 얻는다. 별도 전문 분야 선택 및 연대기 전문성 성장 규칙은 신규 생성에서 제거했다(구판 확정 정보 보존). 판정 발동은 의미 있는 불확실성/실패 위험·실제 대립·규칙상 발동·제한적 극적 우연의 네 가지로 정리하고, 무관한 판정/임의 보상/강제 피해는 금지한다.
 
 - 이후 신규 세계는 초반 귀가/우회·관여 축소와 의도적 탈출도 위협·대응·실패가 있는 생존 경로로 준비한다. 위험권/출구·경로별 추적/차단/노출·우회/준비·실패 결과·바깥 안전을 정본에 연결하고 실제 위해는 HP/SAN·부상/광기·소모·사망 가능성까지 처리한다. 떠나겠다는 선언/교통편 확보만으로 엔딩을 주지 않으며 실제 이탈 실패와 잔존 상태도 유지한다. 고정 피해·사후 봉쇄·확보한 안전 취소는 없고 기존 캠페인은 재설계하지 않는다.
@@ -84,6 +86,7 @@ python3 scripts/test_python_random.py
 python3 scripts/test_stat_generation.py
 python3 scripts/test_resume_semantics.py
 python3 scripts/test_rulebook_contract.py
+python3 scripts/test_four_layer_scenarios.py
 python3 scripts/check_hq_release_contract.py
 python3 scripts/test_compare_hq_db_baselines.py
 python3 scripts/rulebook.py export

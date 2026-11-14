@@ -10,6 +10,7 @@ on:
       - "START_GAME.md"
       - "scripts/rulebook.py"
       - "scripts/test_rulebook_contract.py"
+      - "scripts/test_four_layer_scenarios.py"
       - "scripts/test_resume_semantics.py"
       - "scripts/test_stat_generation.py"
       - "scripts/test_python_random.py"
@@ -51,6 +52,7 @@ jobs:
             git checkout -B zip-export origin/main
             python3 scripts/rulebook.py check
             python3 scripts/test_rulebook_contract.py
+            python3 scripts/test_four_layer_scenarios.py
             python3 scripts/test_resume_semantics.py
             python3 scripts/check_hq_release_contract.py
             python3 scripts/test_compare_hq_db_baselines.py
