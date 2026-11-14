@@ -401,3 +401,18 @@
 | 하단 HUD가 카드 4칸·모든 소지품을 계속 나열 | 실패. 간결한 HP/SAN/Luck·PC별 🥕·위치/시간/현금·상태/장비·메인/파우치 점유량 상시, 카드 슬롯 제거 | BOTTOM_HUD_CONTRACT |
 | 상시 카드가 안 보인다는 이유로 판정 전 선택/장착 강화가 누락 | 실패. 판정 전 선택 효과·무판정 시작/보호 효과를 원문대로 처리하고 관련 시점에만 해당 카드 표시 | CARD_EQUIP_AND_ASSET / BOTTOM_HUD_CONTRACT |
 | 소지품 목록을 요약하자 실제 물품이 잊히거나 사용 시 확인 못함 | 실패. 실제 위치·수량·장착/파손/인계 상태 계속 보존, 물품 사용·변동/용량 충돌·요청 때 상세 구획 공개 | INVENTORY / BOTTOM_HUD_CONTRACT / STATE_WORKING_CONTEXT |
+
+
+## 2026-11-15 — 첫 생활·업무 도입과 유효 행동 2~30턴 최초 E
+
+| 검증 사례 | 합격 조건/실패 반례 | 담당 절 |
+|---|---|---|
+| 원작이 사고 직후/전투 한가운데서 시작 | 새 신규 게임은 **그 사고 이전의 실제 생활·업무를 플레이할 수 있는 시작 위치**로 생성한다. 원작 원인·고정 과거 불변. 사고 직후로 곧바로 시작/설명만 한 뒤 사고로 점프하면 실패 | SCENARIO_BLUEPRINT / KEEPER_SCENE_SELECTION / PRIVATE_CANON_DOCUMENT |
+| OFF 첫 장면·ON 동기화 뒤 첫 장면 | PC가 왜 이곳에 있고 무엇을 하던 중인지, NPC가 어떤 생활을 하는지 알면서 **첫 행동·대화**를 선택. ON 브리핑을 실제 장면으로 대체하거나 PC 행동을 자동 수행하면 실패 | START_GAME / HQ_FIELD_CONTEXT_BRIEFING |
+| 2~30 턴 시작 사건 경계 | 첫 E의 정상적인 실제 인과 접촉은 **유효한 완료 행동 2~30회** 사이를 사전 준비한다. 사건 이전 생활과 인물 교류가 실제 가능해야 하며 1턴 즉시 참사·31턴 이후 사실상 단절인 정본은 실패 | COMPATIBILITY_GATE / TURN_INCREMENT |
+| 아무 조작 없이 30턴째 이벤트 팝업 | 실패. 30번째 턴은 자동 NPC/적 생성·턴 기반 물리 시간/전역 재난 시계가 아니다. 현장에서 실제 사람·수단/거리/전파가 닿는 것만 사건 | WORLD_INITIATIVE_EXECUTION / SCENE_ELAPSED_TIME_SETTLEMENT |
+| 설정 문답·난수 입력·HUD 갱신 30회 | 유효 행동+0, 첫 E 트리거 금지. 진행된 실제 플레이 행동/대화만 TURN_INCREMENT가 정산 | TURN_INCREMENT |
+| P1 생활을 충분히 경험했으나 P2/P3 첫 장면은 사고로 시작 | 신규 세계 준비 실패. 각 PC의 실제 일·관계·주변 공간과 첫 행동 기회를 사전 구성, 다른 사람의 패스/부재로 물리적 세계가 정지해서도 안 됨 | COMPATIBILITY_GATE / MULTI_PC_SPOTLIGHT_CONTRACT |
+| 1회 장시간 이동/대기·사건 선제 격퇴·안전 경계 | 실제 물리 시간·차단/조기 안전 우선. 턴 숫자에 맞춰 위험을 정지하거나 같은 사고를 다시 발생시키면 실패 | SCENARIO_BLUEPRINT / WORLD_INITIATIVE_EXECUTION / STATE_WORKING_CONTEXT |
+| 도입 중 저장·재개, 또는 시작 뒤 기존 verified 세이브 불러오기 | 누적 Scene Turn/개인 지식·E 처리 결과 유지, 첫 생활/최초 사고 재생 금지. 기존 확정 시작시점 소급 재작성 금지 | STATE_WORKING_CONTEXT / STATE_RESUME |
+| 첫 E를 정상 접촉한 이후의 주요 사건 | 기존 세계 인과에 따라 발생, 2~30 턴 상한을 이후 E마다 적용하면 실패 | SCENARIO_BLUEPRINT / WORLD_INITIATIVE_EXECUTION |
