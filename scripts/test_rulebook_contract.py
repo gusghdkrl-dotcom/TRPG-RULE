@@ -345,6 +345,8 @@ mutations=[
  ('major_incident_growth',lambda r:change(r,'rules/02-checks.md','CHRONICLE(연대기)에서만','모든 규모에서')),
  ('growth_cap',lambda r:change(r,'rules/02-checks.md','상한은 95','상한은 100')),
  ('san_accumulation',lambda r:change(r,'rules/03-danger.md','회복은 누적 손실을 차감하지 않는다','회복은 손실을 지운다')),
+ ('madness_two_turns_removed',lambda r:change(r,'rules/03-danger.md','발작 지속은 정확히 2턴','발작은 매번 1~2턴 임의 결정')),
+ ('permanent_insane_restored',lambda r:change(r,'rules/03-danger.md','발작 후 지속 Insane 상태가 없다','발작 후 지속 Insane 상태를 유지한다')),
  ('san_recovery',lambda r:change(r,'rules/03-danger.md','극중 하루 1회 SAN 1d3','매 응답 SAN 1d6')),
  ('drowning_scope',lambda r:change(r,'rules/03-danger.md','행동 구간마다 CON1회','채팅마다 CON1회')),
  ('opposed_digits',lambda r:change(r,'rules/02-checks.md','결합 결과 00은 100','결합 결과 00은 0')),

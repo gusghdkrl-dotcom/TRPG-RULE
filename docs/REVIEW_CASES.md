@@ -191,6 +191,7 @@
 | 파우치의료품 | 신규 캠페인은 실제 재료 1회분·판정·시간 소모 후 성공1d2, 중상 해제 불가·같은 부상 HP 회복 1회. 구판은 기존 값 보존 | HEALING |
 | 하루시작SAN53·손실6+5·중간회복3 | 누적11로장기광기기준충족. 분모/손실을회복/로드로초기화하지않음 | INSANITY_CONDITIONS |
 | 단일SAN5손실 | INT성공발작/실패즉시발작모면 | INSANITY_CONDITIONS |
+| 신규 광기 발작 중/종료 | 실제 1d10 발작 종류 후 해당 PC 행동 기회 정확히 2회(다른 PC 턴·메타·로드 제외)만 일시 강제. 행동 기회 두 번 이후 즉시 정상 선택권 복귀, 자동 Insane·별도 치료·상시 환각 없음. 실제 SAN/HP·위치·관계·당일 누적 손실은 보존. 구판 verified 발작/Insane 비소급 | BOUTS_OF_MADNESS / UNDERLYING_INSANITY / STATE_WORKING_CONTEXT |
 | 안전한충분휴식 | 하루1회1d3·최대치이내, 광기자동치료없음.같은휴식중복없음 | DIEGETIC_SAN_RECOVERY |
 | 질식중대화/굴림입력·실제행동 | 입력마다피해없음.실제위험구간CON1회/전투라운드1회·실패1d6 | EXTREME_HAZARDS |
 | 대사건에서기능성장요구 | 신규영구수치상승없음.획득/지식/현재치회복은유효 | SKILL_IMPROVEMENT / CTHULHU_MYTHOS_SKILL |
