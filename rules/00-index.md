@@ -4,9 +4,9 @@
 
 신규 세계/미확정 챕터의 원작 중심축+새 주인공의 사건, 실제 위협/피해·미개입/귀가/해결의 인과 설계도는 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT의 기존 HIDDEN_TRUTH·WORLD_RULES·DRIVER_BASELINES·ENDING_CONDITIONS 및 관련 절을 따르고 COMPATIBILITY_GATE로 내용의 중대성과 실행 연결을 대조한다. 단서의 오인/기만은 실제 NPC/자료의 원인·공개 범위와 해결된 성과를 보존한다.
 
-영구 카드 자산·강화·성장과 효과별 발동·등급·해금은 09-cards가 담당한다. 이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 간편 HUD·PC별 당근/판정 시 카드 표시는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적의 단계별 개체 전력·중간/최종 보스·사이드 사건은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
+영구 카드 자산·강화·성장과 효과별 발동·등급·해금은 09-cards가 담당한다. 이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 간편 HUD·가방 실물 목록 상시/PC별 당근/판정 시 카드 표시는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적의 단계별 개체 전력·중간/최종 보스·사이드 사건은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
 
-신규 공개 세계 오프닝·PC별 관여 동기는 START_GAME/SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT/KEEPER_SCENE_SELECTION, 파밍 후 의료 가방+3·호환 무기 운반구+2·등짐 메인+2의 획득/실물 수납은 INVENTORY/BOTTOM_HUD_CONTRACT, 실제 발동 시각 기준 상대 물리 소요는 SCENE_ELAPSED_TIME_SETTLEMENT를 따른다. 기존 세이브 비소급.
+신규 공개 세계 오프닝·PC별 원래 인물상/관여 동기는 START_GAME/INVESTIGATOR_DEPTH_PROTOCOL/HQ_FIELD_CONTEXT_BRIEFING/PRIVATE_CANON_DOCUMENT/KEEPER_SCENE_SELECTION, 파밍 후 의료 가방+3·호환 무기 운반구+2·등짐 메인+2의 획득/실물 수납은 INVENTORY/BOTTOM_HUD_CONTRACT, 실제 발동 시각 기준 상대 물리 소요는 SCENE_ELAPSED_TIME_SETTLEMENT를 따른다. 기존 세이브 비소급.
 
 규칙판: 생존 호러 통합 경량판 2026-11-12. 상시 이야기·묘사·페이싱은 PROJECT_INSTRUCTIONS.md, 아래는 필요한 수치/상태/절차를 찾는 경로다. 같은 판본의 필요한 본문과 현재 상태가 확인 가능하면 재사용하고 유실/변경/충돌 부분만 조회한다. 매 응답 색인이나 전 규칙을 다시 읽지 않는다.
 
@@ -17,6 +17,7 @@
 | 일반 행동 판정·기능/난이도 | [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate) · [INVESTIGATION_SKILL_ROUTING](02-checks.md#investigation_skill_routing) · [DIFFICULTY_ASSIGNMENT](02-checks.md#difficulty_assignment) |
 | 단계·유불리·대항 | [SUCCESS_LEVELS](02-checks.md#success_levels) · [BONUS_PENALTY_DICE](02-checks.md#bonus_penalty_dice) · [GENERIC_OPPOSED_ROLL](02-checks.md#generic_opposed_roll) |
 | PC 굴림·행운·강행 | [ROLL_INPUT_FORM_CONTRACT](02-checks.md#roll_input_form_contract) · [LUCK_SPENDING](02-checks.md#luck_spending) · [PUSHED_ROLL](02-checks.md#pushed_roll) |
+| 신규 PC HP 보정·의료품 등급/1회성 처치·카드 치료량 | [HP_AND_DEATH](02-checks.md#hp_and_death) · [HEALING](02-checks.md#healing) · [PC_DERIVED_STATS](04-setup.md#pc_derived_stats) · [CARD_ASSET_GU](09-cards.md#card_asset_gu) · [CARD_ASSET_NE](09-cards.md#card_asset_ne) |
 | HP·중상·치료·연대기 성장 | [HP_AND_DEATH](02-checks.md#hp_and_death) · [WOUNDS](02-checks.md#wounds) · [HEALING](02-checks.md#healing) · [SKILL_IMPROVEMENT](02-checks.md#skill_improvement) |
 | 신규 PC SAN 산식·신화 수치 기능 제거·실제 지식 | [SAN_CORE](03-danger.md#san_core) · [MYTHOS_KNOWLEDGE_FACTS](03-danger.md#mythos_knowledge_facts) · [PC_DERIVED_STATS](04-setup.md#pc_derived_stats) · [STATE_COMPATIBILITY](07-state.md#state_compatibility) |
 | SAN 피해·광기·성취/휴식 회복 | [SAN_EXPOSURE_GATE](03-danger.md#san_exposure_gate) · [SAN_ROLL](03-danger.md#san_roll) · [SCALED_SANITY_LOSS](03-danger.md#scaled_sanity_loss) · [INSANITY_CONDITIONS](03-danger.md#insanity_conditions) · [DIEGETIC_SAN_RECOVERY](03-danger.md#diegetic_san_recovery) |

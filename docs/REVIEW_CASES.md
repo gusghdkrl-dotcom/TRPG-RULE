@@ -60,7 +60,7 @@
 | 특수 보너스와 일반 보너스 | **같은 판정에 병용 불가**, 특수 카드당 캠페인1회·사전 선언, 낮은 후보값=본 행동/높은 후보값=해당 강화. PC d100은 플레이어 입력. 일반 보너스는 낮은 값으로 본 행동·강화 함께 판정 | BONUS_PENALTY_DICE / CARD_ENHANCEMENT_TRIGGER |
 | 기회주의자 판돈/위험 | 플레이어가 사전에 물건/퇴로/HP 위험을 직접 선택한 경우에만 카드 대가. 손실 조건은 세계 실제 물리·동의 범위에서 처리, 카드를 끼었다는 이유로 자동 물건 상실/HP 손상 금지 | CARD_ENHANCEMENT_WI / CARD_ENHANCEMENT_TRIGGER |
 | 생존자 「다 끝난 줄 알았지?」 | 이미 사망 확정 뒤 부활시키지 않음. 물리적 생존 가능 시 **HP 0 이하가 되기 직전** 적격 물리 피해를 경감해 HP 1 유지, 캠페인 1회. 중상·출혈 등 실제 효과/다음 공격은 유지 | CARD_ENHANCEMENT_SU / CARD_ENHANCEMENT_TRIGGER / HP_AND_DEATH |
-| 응급 꾸러미/야전 구호 세트/응급처치 강화 | 실물 의료품과 실제 판정·회복 가능한 부상 범위를 먼저 확인하고, 적격 카드의 2회분 1d3·3회분 1d6·조건부 +1 등 **명시된 효과만** 더함. 중상 해제 조건과 빈사 안정화 및 비전투 Scene Turn 처리 유지 | CARD_ASSET_NE / CARD_ASSET_GU / CARD_ENHANCEMENT_NE / HEALING |
+| 응급 꾸러미/야전 구호 세트/응급처치 강화 | 실물 의료품과 실제 판정·회복 가능한 부상 범위를 먼저 확인하고, 새 캠페인은 적격 카드의 2회분 1d2·3회분 1d3·조건부 +1을 원래 판정/소모/동일 부상 1회성 한도에서 적용. 중상 해제 조건과 빈사 안정화 및 비전투 Scene Turn 처리 유지 | CARD_ASSET_NE / CARD_ASSET_GU / CARD_ENHANCEMENT_NE / HEALING |
 | 대사건 종료/연대기 챕터 종료 | 실제 검증된 종결 후 ①현재 클래스 ②전체 클래스 ③성장 ④중립 중 미보유/미만렙 후보만 뽑아 선택 1회 기록. 카드 후보가 부족하면 해당 칸 비움, 전부 소진이면 보상 없음. 연대기 전체 종료 중복 지급 금지 | CARD_REWARD_DRAFT / ENDING_FINALIZATION_GATE |
 | 플레이어 성장과 새로운 PC | 성장 STR/CON/SIZ/DEX/APP/INT/POW/EDU 최대5레벨, 획득1레벨 확정/재도전 80·50·25·10%. PC UUID 연결 순간 성장 반영 스냅샷 저장, 기존 PC에 소급 적용/시트 이중 합산 금지 | CARD_PERMANENT_GROWTH / CARD_PLAYER_STORAGE / STATE_IDENTITY |
 | 자산 동행 동물의 실제 위험 | 동물의 종·훈련·위치·부상/이탈/사망이 실제 반영. 종류에 없는 능력·자동 복종·부활/재소환·PC 미선언 판단 금지 | CARD_ASSET_GU / CARD_ASSET_WI / CARD_ASSET_SU |
@@ -136,7 +136,7 @@
 | 판정이 있거나 없는 일반 게임 응답 | 본문/필요 입력과 현재 상태/인벤토리·있는 공개 판정만 표시. 키퍼 원칙·숙지 문구·준수 보고를 반복하지 않으며 상시 본문의 실행 기준은 유지 | 지침: 일반 게임 응답의 출력 / BOTTOM_HUD_CONTRACT |
 | 실제 버튼/패널 UI가 지원되는 클라이언트 | 같은 번호/라벨/intent의 전체너비 세로 알약형 버튼과 단일 상태 카드 우선. 지원되는 UI를 이유 없이 텍스트 목록으로 낮추는 것은 거부 | GUIDED_ACTION_RETURN / BOTTOM_HUD_CONTRACT |
 | 실제 버튼/패널 UI가 없거나 실패함 | 선택별 번호·아이콘·대상·할 일을 빈 줄로 분리한 Markdown과 상태 카드 제공. 가짜 HTML/링크·실제 클릭/렌더 성공 주장은 거부 | GUIDED_ACTION_RETURN / BOTTOM_HUD_CONTRACT |
-| 자원/위치/시간/상태와 가방 표시 | HP/SAN/Luck·PC별 🥕·위치/시간/현금·메인/파우치 점유량 상시. 평시 전체 물품은 반복하지 않으나 사용/변경/요청 시 실제 물품명·Stack수량·구획을 펼친다. 장착 실물/중요 물품의 중복·누락은 거부 | BOTTOM_HUD_CONTRACT |
+| 자원/위치/시간/상태와 가방 표시 | HP/SAN/Luck·PC별 🥕·위치/시간/현금·메인/파우치/실제 확장 가방의 점유량 및 내용물 실물명·Stack수량·구획을 매 일반 HUD에 상시. 카드 4슬롯은 상시 노출하지 않는다. 장착 실물/중요 물품의 중복·누락은 거부 | BOTTOM_HUD_CONTRACT |
 | 서식 변경 시 물품 소지 위치가 미확인 | 기존 위치/수량/점유량 보존하고 필요한 상태만 복구. 패널을 채우기 위한 재배치/물품 생성·중복 표시는 거부 | BOTTOM_HUD_CONTRACT / INVENTORY |
 | 거래 없는 일반 응답·현금0·미지급 대금 | 현금은 매 HUD에 실제 잔액/통화,0도0으로 표시. 미지급은 실제 조건/별도 금액이며 잔액에 더하지 않음. 유실은 미확인/해당 복구 | BOTTOM_HUD_CONTRACT / PERSONAL_CASH_LEDGER |
 | 메인/파우치 물품이 중요한 단서/도구가 됨 | 기존 소지/점유 보존. 중요 물품 영역으로 중복 복사하거나0칸으로 옮기지 않음. 실제 별도 가벼운 키템만 표시 | BOTTOM_HUD_CONTRACT / INVENTORY |
@@ -188,7 +188,7 @@
 | 회피동단계·반격동단계 | 회피성공/반격은공격개시자우세. 일반대항과구분 | MELEE_OPPOSED |
 | 준비총기·엄폐도약 | 발사순서DEX+50, 엄폐Dodge성공공격자패널티1·성패무관다음공격포기 | COMBAT_ORDER / FIREARMS |
 | HP11에서단일6피해 | 중상,CON실패의식불명. 중상없는HP0은빈사아닌의식불명 | HP_AND_DEATH / WOUNDS |
-| 파우치의료품 | 실제행동/시간·성공1d3, 중상해제불가. 시간정지없음 | HEALING |
+| 파우치의료품 | 신규 캠페인은 실제 재료 1회분·판정·시간 소모 후 성공1d2, 중상 해제 불가·같은 부상 HP 회복 1회. 구판은 기존 값 보존 | HEALING |
 | 하루시작SAN53·손실6+5·중간회복3 | 누적11로장기광기기준충족. 분모/손실을회복/로드로초기화하지않음 | INSANITY_CONDITIONS |
 | 단일SAN5손실 | INT성공발작/실패즉시발작모면 | INSANITY_CONDITIONS |
 | 안전한충분휴식 | 하루1회1d3·최대치이내, 광기자동치료없음.같은휴식중복없음 | DIEGETIC_SAN_RECOVERY |
@@ -203,7 +203,7 @@
 | 익숙한경로20분이동 | 실제충돌없으면출발~도착한번,도착후상호작용기회.재검색/전원행동질문없음 | ROUTINE_MOVEMENT_FAST_PATH |
 | 5분작업과12분이동병렬 | 5분지점중단이면이동7분남음.12분재계산/25분합산없음 | PARALLEL_TIMELINE_SYNC |
 | 다음PC교대 | 자연스러운결과경계·대기우선,고정3/5회·준비A없음,교대시간0 | MULTI_PC_SPOTLIGHT_CONTRACT |
-| 정상응답 | 본문/필요입력+간편HUD/PC별 메인 당근/수납량. 상세 물품은 필요시. 별도씬요약·연출의도없음 | BOTTOM_HUD_CONTRACT |
+| 정상응답 | 본문/필요입력+간편HUD/PC별 메인 당근/구획별 가방 실물명·수량 상시. 판정 상세만 필요시. 별도씬요약·연출의도없음 | BOTTOM_HUD_CONTRACT |
 | 메인/파우치/소지물 | 메인/파우치 점유량·필요 물품은 HUD 상시, 전체 목록은 사용/변경/요청 시. 실제 물품·장착·저장은 보존 | INVENTORY / STATE_SCHEMA |
 | 공개대항결과 | 요구·PC/상대실제값·단계·비교/결과1~2줄.비공개사건/전체시트는숨김 | BOTTOM_HUD_CONTRACT |
 | 이미지실패 | 텍스트계속.시작지도는같은공간연결도로대체·이미지성공으로가장하지않음 | START_MAP_HANDOUT_GATE |
@@ -398,7 +398,7 @@
 | P1에게만 알려진 적 이동을 P2 HUD에 출력 | 실패. 개인 지식/관측·전달 경로 분리, 전지적 정보 공유·억지 합류 금지 | PC_REACHED_EVENT_CONTRACT / STATE_WORKING_CONTEXT |
 | P1의 위험/직접 결과가 끝난 뒤 새로운 무관한 장면을 또 독점 | 실패. 실제 성취·NPC 반응·짧은 여운 뒤 오래 기다린 행동 가능한 P2에 카메라 교대 | MULTI_PC_SPOTLIGHT_CONTRACT / QUIET_AFTERMATH_BEAT |
 | 열린 공격·굴림을 자르거나 P2 부재인데 턴 수 동일화 | 실패. 긴급 대응·동시 시간선·미해결 선택 우선, 무의미한 교대와 교대 시 경과 금지 | MULTI_PC_SPOTLIGHT_CONTRACT / PARALLEL_TIMELINE_SYNC |
-| 하단 HUD가 카드 4칸·모든 소지품을 계속 나열 | 실패. 간결한 HP/SAN/Luck·PC별 🥕·위치/시간/현금·상태/장비·메인/파우치 점유량 상시, 카드 슬롯 제거 | BOTTOM_HUD_CONTRACT |
+| 하단 HUD가 카드 4칸·모든 소지품을 계속 나열 | 실패. 간결한 HP/SAN/Luck·PC별 🥕·위치/시간/현금·상태/장비와 구획별 모든 현재 소지품 상시, 카드 4슬롯 제거 | BOTTOM_HUD_CONTRACT |
 | 상시 카드가 안 보인다는 이유로 판정 전 선택/장착 강화가 누락 | 실패. 판정 전 선택 효과·무판정 시작/보호 효과를 원문대로 처리하고 관련 시점에만 해당 카드 표시 | CARD_EQUIP_AND_ASSET / BOTTOM_HUD_CONTRACT |
 | 소지품 목록을 요약하자 실제 물품이 잊히거나 사용 시 확인 못함 | 실패. 실제 위치·수량·장착/파손/인계 상태 계속 보존, 물품 사용·변동/용량 충돌·요청 때 상세 구획 공개 | INVENTORY / BOTTOM_HUD_CONTRACT / STATE_WORKING_CONTEXT |
 
