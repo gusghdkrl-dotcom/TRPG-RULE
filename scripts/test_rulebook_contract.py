@@ -123,7 +123,7 @@ mutations=[
  ('scene_new_required_phase',lambda r:change(r,"rules/06-play.md","추가 단계·대면·후일 손실을 강제하지 않는다","이기더라도 반드시 다음 페이즈를 진행한다")),
  ('start_legacy_clock_main_header',lambda r:change(r,"START_GAME.md","**신규 주요 결과의 실제 후속 연결:**","**기본 시계는 최초 사건 이후 유예가 지나면 다음 발생**")),
  ('index_regresses_to_deadline',lambda r:change(r,"rules/00-index.md","주요 결과별 전달자·정보·실물 이동의 물리적 경로","반응형 발생 시간대·실제 데드라인")),
- ('instruction_depth_shortcut',lambda r:change(r,"PROJECT_INSTRUCTIONS.md","독립 주요 사건의 선택·상태 변화·후속 결과와 사건/사이드의 양·질","E의 이름과 개수만 맞추면 완성")),
+ ('scenario_depth_shortcut',lambda r:change(r,"rules/04-setup.md","정본의 중심은 살아 있는 세계와 플레이 가능한 상황망이다","E의 이름과 개수만 맞추면 완성")),
  ('start_legacy_event_schedule_returns',lambda r:change(r,'START_GAME.md','**신규 목표망의 상태·인과 기반 진행:**','**유동적 사건 시간대 + 최종 데드라인 + 능동적 접근:**')),
  ('start_adds_global_deadline',lambda r:change(r,'START_GAME.md','새 주요 사건의 예약 시각·전역 데드라인을 만들지 않는다','새 주요 사건의 최종 발생 데드라인을 준비한다')),
  ('start_disallows_prevention',lambda r:change(r,'START_GAME.md','실행 수단이 모두 차단된 국지 위협은 예방/종결','실행 수단이 전멸해도 재난은 반드시 발생')),
