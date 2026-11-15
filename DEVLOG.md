@@ -2,6 +2,8 @@
 
 ## 2026-11-15 — 새 기능의 세이브 의미 수납/재개 보호 정리 (V2 스키마 유지)
 
+- **CI 실패·원인·교정:** GitHub Actions Run `43692917460`에서 룰북 기본 check는 통과했으나 새 부정 회귀 `save_hud_color_mutates_items`가 실제로 금지해야 할 문구를 바꿔도 통과했다. `STATE_CANON_SAVE_BINDING` 계약의 contains에 바로 그 HUD 색상/원장 분리 문구를 추가해 이 회귀가 실패하도록 최소 교정한다. 게임 본문/DB/정본·저장 값은 수정하지 않는다.
+
 - **현행 점검:** GitHub main의 STATE_CANON_SAVE_BINDING/STATE_WORKING_CONTEXT/STATE_INTEGRITY/STATE_RESUME와 실제 Supabase `trpg-state-v2`를 읽기 전용으로 비교. 운영 V2/DB1 verified checkpoint 12건과 기존 함수/비공개 정본 테이블은 존재하며, 현재 여러 세션의 목표 기록이 `current_carrot/main_goal_ref/active_main_goals` 등 여러 표현으로 공존한다. 이는 서버 실패 증거가 아니라 **메인 E/PC별 체험·재개 의미의 표준화 부족 가능성**이다.
 - **최소 패치:** 정본은 그대로 두고 기존 JSON 안 `world_delta.drivers[E-ref]`의 실제 E 세계 상태, `story_context.main_track_by_pc`의 PC별 E·인지/현장 체험·작은 목표/S 활동, `ongoing_consequences`의 물리 위해·HP0 구조자/이송/중단, `pcs/runtime/scene_context`의 소지·판정·행동권·시간, `processed_event_ids`의 중복 억제, `change_coverage`의 6개 delta 키 일치와 재개/저장 의미 검사를 명확히 했다. HUD의 양식·초록/빨강 변화는 확정 자원에서만 투영하고 저장 이벤트를 발생시키지 않는다.
 - **호환:** 새 최상위 JSON·SQL/DB 컬럼·RPC·별도 상태 머신·세이브 엔진 없음. 기존 verified 원문·정본 revision·실제 운영 DB/카드/HQ/과거 판정 불변. 다음 새 체크포인트에서는 기존 확정 ref/출처가 있을 때만 표준 문맥에 연결, 구판 키를 추측해서 마이그레이션하지 않음.
