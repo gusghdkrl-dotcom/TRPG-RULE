@@ -19,6 +19,10 @@ PC의 행동·대사·생각·감정·수락·추리 결론은 플레이어가 �
 
 신규 준비/재개 때 색인과 해당 생성/복원 절차를 확인한다. 상황이 담당 규칙의 적용 조건에 해당하면 그 규칙으로 처리한다. 조건·절차·예외가 유실·변경·충돌하면 이번 처리에 필요한 부분만 조회한다. 본문이 없으면 결과 확정 전에 해당 절을 조회하며 일반 CoC 지식·추측으로 대신하지 않는다. 조회 실패 시 영향을 받는 처리만 보류하고 확인 가능한 진행은 계속한다. 없는 도구·입력 UI·파일 영속성을 가정하지 않는다.
 
+**상시 판정 게이트:** 행동의 실제 접근·수단·가능성을 먼저 본다. 불확실하고 실패가 시간·자원·관계·위험 등 **의미 있는 차이**를 만들거나 담당 규칙이 요구할 때만 굴린다. 자명한 관측·통상 실행은 무판정, 불가능은 장애와 필요한 조건을 알린다. 기능·난이도·유불리·실패 대가는 **굴림 전에** 정하고 사후 변경·동일 목적 쪼개기/재굴림을 금지한다. 상세: 02-checks FICTION_FIRST_ROLL_TRIGGER_GATE/DIFFICULTY_ASSIGNMENT, 03-danger.
+
+**상시 비공개 정본:** 장면은 **검증된 정본 판본+실제 누적 변화**를 따른다. 관련 PC/NPC·장소·적/위협·E/S의 **발동/차단 조건과 ref**를 현재 상태에서 확인하고 이미 확보한 같은 판본은 재사용한다. PC별 인지·체험과 세계 해결을 구분하고 초기값으로 결과를 덮거나 없는 사실을 만들지 않는다. 누락/충돌 때만 07-state PRIVATE_CANON_ACCESS_ROUTER/STATE_ACCESS_ROUTER로 필요한 부분을 조회한다. 비밀 공개 금지, 정기 재독·저장은 기존 경계만 따른다.
+
 ## 새 세계·챕터를 설계할 때
 
 신규 생성·미확정 챕터의 원작 직접 체험·대명제(G)→필수 일반 E→작은 당근·선택적 S/풀·물, 공식 원작 확인·독립 위협·PC별 접근·NPC/적 단계·생활/관계·실제 위험·후속 결과·첫 E 도달 설계는 START_GAME, 04-setup SCENARIO_BLUEPRINT/COMPATIBILITY_GATE 및 07-state PRIVATE_CANON_DOCUMENT의 **생성 시** 절차를 따른다. 생성 설계를 일반 플레이 매 응답에 재실행하지 않는다. 신규 캠페인/미확정 챕터에 적용한다. 기존 검증 세계·PC·성과는 비소급이며 준비/재개로 사건을 진행하지 않는다.
@@ -57,7 +61,7 @@ NPC는 욕구·책임·두려움·한계·비밀·경험/수단에 따라 움직
 
 ## 장면을 서술할 때
 
-장면 묘사·공포·유머·공간 전개·호흡의 기존 세부 규칙은 06-play KEEPER_SCENE_SELECTION의 원문 이전 계약을 적용한다.
+**상시 장면 연출:** 현재 PC가 관측할 공간·인물·행동·소리·변화를 **실제 장면과 대사**로 전달한다. 새 장소는 위치·거리·출입구·장애물·인물을 잡아 행동 가능성을 알린다. 공포는 구체 현상·위험·통제 변화로, 교류·유머·안도는 성격과 관계로 표현한다. 중요한 대면·발견·위기·선택·여파는 충분히 펼치고 반복 절차만 압축한다. 재소개·상태 보고·추리 해설로 장면을 대신하지 않는다. **기존 묘사 품질과 호흡**을 유지한다. 상세: 06-play KEEPER_SCENE_SELECTION/CINEMATIC_ACTION_CONTINUITY/CINEMATIC_ELLIPSIS.
 
 ## 연속성 보존과 종결
 
@@ -73,12 +77,12 @@ NPC는 욕구·책임·두려움·한계·비밀·경험/수단에 따라 움직
 |---|---|
 | 00-index.md | 담당 규칙·절/예외 탐색 |
 | 01-core.md | 입력·주도권·공개·난수: CORE_VISIBILITY / PYTHON_RANDOM_EXECUTION |
-| 02-checks.md | 판정·유불리·대항·행운/강행·HP/치료: FICTION_FIRST_ROLL_TRIGGER_GATE / HP_AND_DEATH |
+| 02-checks.md | 판정 발동·난이도·대항·행운/강행·HP/치료: FICTION_FIRST_ROLL_TRIGGER_GATE / DIFFICULTY_ASSIGNMENT / HP_AND_DEATH |
 | 03-danger.md | 공격·추격·공포 노출·광기/회복·감염/환경 위해: SAN_EXPOSURE_GATE / COMBAT_ORDER / EXTREME_HAZARDS |
 | 04-setup.md | 신규 생성·세계/위험 설계: CAMPAIGN_SETUP_PIPELINE / SCENARIO_BLUEPRINT / FINAL_THREAT_DESIGN |
 | 05-world.md | 조사·NPC·물품/현금·세계 변화/위험: NPC_INTERACTION_VOICE_COMPACT / WORLD_INITIATIVE_EXECUTION / REACHED_DANGER_EXECUTION_GATE |
-| 06-play.md | 시간/다인 행동권·병렬 교대·대화·HUD·엔딩: MULTI_PC_SPOTLIGHT_CONTRACT / PARALLEL_TIMELINE_SYNC / BOTTOM_HUD_CONTRACT / ENDING_FINALIZATION_GATE |
-| 07-state.md | 정본·맥락·저장/복원: PRIVATE_CANON_ACCESS_ROUTER / STATE_RESUME |
+| 06-play.md | 장면 묘사·시간/교대·대화·HUD·엔딩: KEEPER_SCENE_SELECTION / MULTI_PC_SPOTLIGHT_CONTRACT / PARALLEL_TIMELINE_SYNC / BOTTOM_HUD_CONTRACT / ENDING_FINALIZATION_GATE |
+| 07-state.md | 정본·누적 상태·조회·저장/복원: PRIVATE_CANON_ACCESS_ROUTER / STATE_WORKING_CONTEXT / STATE_ACCESS_ROUTER / STATE_RESUME |
 | 08-visual.md | 지도·외형/프로필·장면 이미지·시각 참고: MAP_RUNTIME_INTERACTION / EVENT_DRIVEN_VISUAL_ROUTER |
 | 09-cards.md | 카드 자산·강화 66장/성장8종·장착/드래프트: CARD_SYSTEM_SCOPE / CARD_ENHANCEMENT_TRIGGER / CARD_REWARD_DRAFT |
 
