@@ -34,6 +34,16 @@ JSON Pointer는 해당 **논리 상태의 실제 경로**다. 고정/동적 사�
 
 도구는 지정한 probe만 비교한다. 저장 전에 기록하지 않은 사실, 누락된 probe 자체, 잘못된 근거의 진위를 자동 발견하지 못한다. critical_state_registry/원본 작업 상태와의 coverage 검토가 반드시 별도로 필요하다. 두 JSON을 똑같이 만들었다는 사실은 실제 서비스 저장 성공을 입증하지 않는다.
 
+## 2026-11-15 — 최근 기능의 V2 저장 수납 대조
+
+운영 `trpg-state-v2`를 읽기 전용으로 확인했다. `public.gm_checkpoint_history`는 `TRPG_STATE_V2/DOCUMENT_BOUND/DB1` verified 12건, `trpg_private.gm_canon_documents`는 별도 판본 보관이며 운영 함수 시그니처는 `trpg_v2_commit/verify/load_version` 원문 계약과 일치한다. 기존 verified 1건의 복사된 JSON을 SQL 안에서 합성 변형해 추가한 `story_context.main_track_by_pc`가 V2 검증기에 수용되는지도 읽기 전용으로 확인했다(1/1, 실제 세이브 변경 없음). 실제 checkpoint의 `story_context` 및 `pcs`에는 `current_carrot`, `main_goal_ref`, `active_main_goals` 등 서로 다른 진도 명명 사례가 존재한다. 이는 과거 세이브가 무효라는 뜻이 아니라 **현재 ref/PC별 경험을 한 가지 의미로 복원하는 규칙이 약한 것**이다. 실제 사용자의 원문·ID/비공개 진실은 이 문서에 싣지 않는다.
+
+- 새 체크포인트의 PC별 E 공개 방향·인지/접근/체험·선택 활동은 기존 `story_context.main_track_by_pc` 재개 문맥을 권장 표준으로, E의 세계 발생·부분/완전 해결·실제 남은 원인은 `world_delta.drivers[E-ref]`를 기준으로 한다. 구판 저장의 다른 명칭은 원문 근거와 정본 ref를 확인한 경우에만 연결하고 자동 재작성하지 않는다.
+- 화재/침수/적·감염의 실제 물리 경과와 HP0의 다른 PC 구조·이송 조건은 `ongoing_consequences` 및 `pcs/scene_context`에 보존한다. 부분 작업·S 완료·PC1 선행 도착은 E 세계 완료나 PC2 체험 완료를 의미하지 않는다. 플레이 중 정상 해결/회복·사망은 재개 때문에 취소/재발동되지 않는다.
+- HP/SAN/Luck·현금·장착/가방별 실물·수량·소모/위치의 원장이 HUD의 출처다. 고정 바텀 HUD와 🟢/🔴 증감은 결과를 투영할 뿐 새로운 재화/소지품 장부나 매턴 저장/이벤트가 아니다. `scene_context`의 실제 마지막 결과/표시 경계만 활용해 이전 턴의 증감을 재상영하지 않는다.
+- 저장 전 작업 사실 → 전체 누적 DB1 구성 → 원문 검증 → canon+verified exact read-back → **세계 E/PC별 목표·구조·열린 입력·소지·진행 위험을 포함한 의미 대조**를 한다. V2 SQL은 객체/coverage/PC 슬롯 등 구조를 확인하지만 이 관계들을 의미적으로 모두 검증하는 것은 아니다. 새 필수 테이블/컬럼/DB 쓰기·구판 소급 마이그레이션은 필요하지 않다.
+- 이 점검은 **운영 메타데이터·필드명·현재 SQL 구조만** 읽고 실제 개별 캠페인의 플레이 재현·검증 저장/로드 왕복을 실행하지 않았다. 서버 접근 성공과 저장 품질을 혼동하지 않는다.
+
 ## 통합판 맥락 보강
 
 현재 저장은 구조화된 값과 story_context / npc_contexts / scene_context / ongoing_consequences를 같은 사실/ref로 연결한다. 이야기의 목표 변화 이유·상대별 말투/태도 이유·마지막 질문과 응답자·진행 중 동작·차단된 원인의 조건을 포함한다. 새 Supabase TRPG_STATE_V2 서버는 이 네 맥락을 최상위 JSON 객체로 수용하고 원문 그대로 보존한다. `pcs`·`runtime`·`world_delta` 등 동적 현재값과 원래 작업 상태의 의미/범위를 대조해야 하며, 단순 JSON 구조 검증만으로 실제 맥락 충실도를 보장하지 않는다.

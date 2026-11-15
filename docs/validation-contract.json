@@ -2213,7 +2213,12 @@
       "LEGACY_FULL",
       "거부/삭제하면 호환 실패",
       "재개 문맥",
-      "Supabase gm_canon_documents.file_sha256"
+      "Supabase gm_canon_documents.file_sha256",
+      "**신규 동적 저장의 의미 소유권(기존 DB1 수납):**",
+      "story_context.main_track_by_pc",
+      "구조자 전원 사망",
+      "change_coverage.changed_entity_ids",
+      "새 최상위 필드·테이블/RPC"
     ]
   },
   {
@@ -2272,7 +2277,10 @@
       "후일담완료항목",
       "폐기 기능의 신규 상태를 만들지",
       "permanent_cards_enabled",
-      "permanent_growth_enabled"
+      "permanent_growth_enabled",
+      "| E/G·개인별 당근 |",
+      "| 구조·현장 위기 |",
+      "| 고정 HUD 투영 |"
     ]
   },
   {
@@ -2317,7 +2325,9 @@
       "재개맥락",
       "과거snapshot으로 메우지",
       "고정된 경험 검증 기준",
-      "서버 JSON구조 검사만으로"
+      "서버 JSON구조 검사만으로",
+      "**이번 규칙판의 저장 전 의미 대조:**",
+      "서버가 객체형만 수용했다는 사실"
     ]
   },
   {
@@ -2405,7 +2415,10 @@
       "말못함을 이해못함으로 바꾸지",
       "로드 자체/현실경과는 게임조건을 진행시키는 행동이 아니다",
       "permanent_cards_enabled",
-      "GitHub를 자동 조회하거나 신규 세이브를 생성하지 않는다"
+      "GitHub를 자동 조회하거나 신규 세이브를 생성하지 않는다",
+      "**신규 의미 복원 순서:**",
+      "current_carrot/main_goal_ref/active_main_goals",
+      "화면 밖 위해의 시각"
     ]
   },
   {

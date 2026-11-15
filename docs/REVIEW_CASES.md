@@ -140,6 +140,10 @@
 | 서식 변경 시 물품 소지 위치가 미확인 | 기존 위치/수량/점유량 보존하고 필요한 상태만 복구. 패널을 채우기 위한 재배치/물품 생성·중복 표시는 거부 | BOTTOM_HUD_CONTRACT / INVENTORY |
 | 거래 없는 일반 응답·현금0·미지급 대금 | 현금은 매 HUD에 실제 잔액/통화,0도0으로 표시. 미지급은 실제 조건/별도 금액이며 잔액에 더하지 않음. 유실은 미확인/해당 복구 | BOTTOM_HUD_CONTRACT / PERSONAL_CASH_LEDGER |
 | 메인/파우치 물품이 중요한 단서/도구가 됨 | 기존 소지/점유 보존. 중요 물품 영역으로 중복 복사하거나0칸으로 옮기지 않음. 실제 별도 가벼운 키템만 표시 | BOTTOM_HUD_CONTRACT / INVENTORY |
+| 신규 E 부분 해결 직후 PC1 현장 대응 중 / PC2는 아직 미도달, 둘 다 다른 S 진행 가능 | `world_delta.drivers[E]`는 부분 해결만, `story_context.main_track_by_pc`는 PC별 E-ref·체험·현재 활동을 분리. PC2 자동 체험/정보 전파·E 자동 종료·다른 S를 메인으로 승격 금지 | STATE_CANON_SAVE_BINDING / STATE_WORKING_CONTEXT / STATE_RESUME |
+| HP0 의식불명 PC를 다른 PC가 구조 중 수동 저장, 재개 뒤 같은 현장에서 행동 재개 | 실제 구조자/도달 경로/진행 상태/현장 위해·행동권/열린 판정과 물리 시간이 이어짐. 구판 HP0 모두 의식불명·자동 치유·즉사/구조 불능 누락/구조자 행동 대필 금지 | STATE_WORKING_CONTEXT / STATE_INTEGRITY / STATE_RESUME |
+| 구조 중 물품 인계·붕대 소모·HP 회복 후 HUD 초록/빨강 표시 | 현재 `pcs`의 확정 자원/실물 구획·실제 상태 및 저장된 결과 출처가 기준. HUD 변동 색상을 아이템/HP 복제·새 event로 저장하지 않으며 재개 후 과거 변화 재표시 금지 | STATE_WORKING_CONTEXT / STATE_SCHEMA / BOTTOM_HUD_CONTRACT |
+| 신규 체크포인트에서 기존 world_delta.drivers E가 변화 없고 PC 목표만 바뀜 | `story_context`에 실제 인지/목표 출처만 반영. `change_coverage.changed_entity_ids.drivers`에 가짜 변화 추가하지 않고 서버 계약의 여섯 영역 일치 유지 | STATE_CANON_SAVE_BINDING / STATE_INTEGRITY |
 | 실제 새 저장 경계가 없음·과거 저장 성공만 있음 | 저장 성공 알림을 반복하지 않음. 실제 새 경계에서 검증한 결과만 카드 밖 아래 한 줄로 표시하며 UI 때문에 저장 호출 없음 | BOTTOM_HUD_CONTRACT / STATE_COMMIT |
 | 화면 예시의 선택5개·PC/물품/차량을 모방하려 함 | 실제 성립하는 선택과 현재 PC 상태만 사용.5개 채우기·예시 수치/소지품/차량 지급·고정 비용/부재 안내는 거부 | GUIDED_ACTION_RETURN / BOTTOM_HUD_CONTRACT |
 | 바텀 HUD 기본 형식(일반 장면·전투·사이드·복귀) | 한 장의 고정 순서: 🎬 PC/직업 → HP/SAN/Luck 3열 → 🥕 메인/현재 상황 → 위치/시간/날씨 → 동행/현금 → 장착 → 메인/파우치 전체 → 필요한 상태/판정/이번 변화만 아래 조건부. S 중에도 메인 교체·물품 중복·기본 행 생략 금지 | BOTTOM_HUD_CONTRACT |

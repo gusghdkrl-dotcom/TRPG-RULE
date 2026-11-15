@@ -3,6 +3,7 @@
 현행 실행 정본은 rules/07-state.md다. 2026-11-09부터 인증된 새 Supabase `trpg-state-v2` (project ref `taoaffdyssqtnjszumpq`)의 `public.gm_checkpoint_history` verified 원문을 사용한다. 서버 스키마는 `TRPG_STATE_V2`, 저장모드는 DOCUMENT_BOUND(DB1)이며, 개발/이전 검증기를 복사하지 않았다. 실제 설치 SQL은 [trpg-state-v2.sql](sql/trpg-state-v2.sql)이다.
 
 1. 실제생성/로드한정본과누적상태에서현재작업범위를구성한다.
+   신규 저장도 기존 V2/DB1 JSON 구조를 사용한다. `world_delta.drivers`는 일반 E의 실제 세계 변화, `story_context.main_track_by_pc`는 P슬롯별 E 참조/공개 가능 방향·체험·현재 별도 활동, `ongoing_consequences`는 물리 재난·HP0 구조/이송 과정, `pcs/runtime/scene_context`는 실제 자원/소지/행동권·열린 단계, `processed_event_ids`는 실제 적용 event 중복 방지다. 6개 world_delta의 키는 change_coverage의 changed_entity_ids와 일치시킨다. 새 SQL 컬럼/RPC가 아니라 기존 JSON 수납 의미의 일관된 사용이다.
 2. 결과가생길때해당현재값과이야기/인물/장면의연결만갱신한다.변화없는전체정보를매번다시쓰지않는다.
 3. 저장전원래작업상태에서중요값/관계/출처/입력대기/재개문맥의기준을고정한다.
 4. DB1은정확한canon_ref+누적delta/신규/취소/처리event+PC/실행/재개문맥의별도payload를구성한다.현재상태를축소하지않는다.

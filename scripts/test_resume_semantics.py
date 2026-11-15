@@ -17,6 +17,15 @@ state['resume_context']={
                   'completed_check':'speech_understood','ongoing_action':'holding_gate'},
  'ongoing_consequences':{'THREAT_A':{'status':'blocked','condition':'gate_held','applied':['EVENT_A']}}
 }
+state['resume_context']['story_context']['main_track_by_pc']={
+ 'P1':{'e_ref':'E_SYN','public_direction':'reach_station','experience':'on_site','activity_ref':'S_SYN','source_ref':'EVENT_A'},
+ 'P2':{'e_ref':'E_SYN','public_direction':'travel_to_station','experience':'not_arrived','activity_ref':None,'source_ref':'EVENT_B'}
+}
+state['resume_context']['ongoing_consequences']['RESCUE_SYN']={
+ 'patient':'P1','rescuer':'P2','access':'reachable','stage':'evacuation_pending','threat':'THREAT_A'
+}
+state['resume_context']['scene_context']['last_presented_change_ref']='EVENT_A'
+state['resume_context']['story_context']['world_e_ref']='E_SYN_PARTIAL'
 paths=['/session','/turn','/canon_revision','/entities/ENTITY_A/communication','/entities/ENTITY_A/held_item',
        '/agreement','/route','/pending','/processed','/optional','/resume_context']
 def at(obj,path):
@@ -48,6 +57,10 @@ mutations=[
  lambda s:s['resume_context']['scene_context'].update(answer_owner='PC_B'),
  lambda s:s['resume_context']['scene_context'].update(ongoing_action='idle'),
  lambda s:s['resume_context']['ongoing_consequences']['THREAT_A'].update(status='active'),
+ lambda s:s['resume_context']['story_context']['main_track_by_pc']['P2'].update(experience='on_site'),
+ lambda s:s['resume_context']['story_context'].update(world_e_ref='E_SYN_DONE'),
+ lambda s:s['resume_context']['ongoing_consequences']['RESCUE_SYN'].update(access='unreachable'),
+ lambda s:s['resume_context']['scene_context'].pop('last_presented_change_ref'),
 ]
 for mutate in mutations:
     bad=deepcopy(state);mutate(bad);assert not compare(probes,bad)['passed'];cases+=1

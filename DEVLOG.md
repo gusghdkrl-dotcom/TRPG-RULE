@@ -1,5 +1,13 @@
 # 개발 일지
 
+## 2026-11-15 — 새 기능의 세이브 의미 수납/재개 보호 정리 (V2 스키마 유지)
+
+- **현행 점검:** GitHub main의 STATE_CANON_SAVE_BINDING/STATE_WORKING_CONTEXT/STATE_INTEGRITY/STATE_RESUME와 실제 Supabase `trpg-state-v2`를 읽기 전용으로 비교. 운영 V2/DB1 verified checkpoint 12건과 기존 함수/비공개 정본 테이블은 존재하며, 현재 여러 세션의 목표 기록이 `current_carrot/main_goal_ref/active_main_goals` 등 여러 표현으로 공존한다. 이는 서버 실패 증거가 아니라 **메인 E/PC별 체험·재개 의미의 표준화 부족 가능성**이다.
+- **최소 패치:** 정본은 그대로 두고 기존 JSON 안 `world_delta.drivers[E-ref]`의 실제 E 세계 상태, `story_context.main_track_by_pc`의 PC별 E·인지/현장 체험·작은 목표/S 활동, `ongoing_consequences`의 물리 위해·HP0 구조자/이송/중단, `pcs/runtime/scene_context`의 소지·판정·행동권·시간, `processed_event_ids`의 중복 억제, `change_coverage`의 6개 delta 키 일치와 재개/저장 의미 검사를 명확히 했다. HUD의 양식·초록/빨강 변화는 확정 자원에서만 투영하고 저장 이벤트를 발생시키지 않는다.
+- **호환:** 새 최상위 JSON·SQL/DB 컬럼·RPC·별도 상태 머신·세이브 엔진 없음. 기존 verified 원문·정본 revision·실제 운영 DB/카드/HQ/과거 판정 불변. 다음 새 체크포인트에서는 기존 확정 ref/출처가 있을 때만 표준 문맥에 연결, 구판 키를 추측해서 마이그레이션하지 않음.
+- **검증:** 수정 파일 전체의 문서 계약 180/180, 회귀 변형 원문 407개 anchor 존재를 정적 대조. 운영 Supabase의 기존 verified 체크포인트 1건을 SQL 내부의 합성 JSON 수납 검사에만 사용해 `story_context.main_track_by_pc`가 기존 V2 검증기에서 수용됨(1/1)을 읽기 전용으로 확인. 실제 개별 캠페인의 commit/verify/load 및 재개 플레이, 전체 CI 및 합성 테스트 실행은 별도 검증 대상으로 남긴다. 공개 소스에는 개인 실제 세이브/정본 원문·키를 포함하지 않음.
+
+
 ## 2026-11-15 — 생성 시 단일 조기 성공의 메인 단절 방지 및 바텀 HUD 형식·증감 색상 고정
 
 - **실제 실패 사례:** The Lightless Beacon 테스트 정본의 첫 항로 사고를 성공적으로 막으면 후속 대부분이 해당 난파/섬 진입에 종속되어 전체 조기 종료 가능. 8개의 E/거대 G 이름은 있지만 최종 실제 대응·E 성과별 상태 변화가 서술적 목록에 머물고, 당근 HUD의 행 순서와 이번 자원 변화의 색상 규격이 명확하지 않음. 테스트 시나리오 원본·세이브는 이번 패치에서 수정하지 않음.
