@@ -96,6 +96,7 @@ mutations=[
  ('pi_forces_each_followup',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','목적이 끝났다고 **GO·임무를 자동 발급하거나','모든 작은 목표는 직접 후속이 있어야 하고')),
  ('pi_life_optional_to_prepare',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','풀·물은 선택적이며 메인 관문이 아니다.','풀·물은 필요하면 즉흥 생성하되')),
  ('old_each_goal_rule_returns',lambda r:change(r,'rules/04-setup.md','**PC 목적 종료와 자유로운 후속 접촉:**','**PC 목적 종료와 자유로운 후속 접촉:**\n**매 단계의 다음 목표와 풍부한 실제 체험 보장:**')),
+ ('pc_source_flavor_only_regression',lambda r:change(r,'rules/04-setup.md','**PC-원작 연결의 대체 가능성 반례:**','**PC 직업은 원작 위기와 무관한 기능 장식:**')),
  ('source_new_story_erased',lambda r:change(r,'rules/04-setup.md','원작의 주요 사건·발생 이유·적의 목적·핵심 참극/위험','원작 핵심은 보존하지 않고 새 음모를 만든다')),
  ('source_research_skipped',lambda r:change(r,'rules/04-setup.md','공식 시나리오 본문·공식 설정·신뢰할 출처를 세계 생성 전에 실제로 확인한다','제목과 장르만으로 시나리오를 추측해도 된다')),
  ('source_core_cause_replaced',lambda r:change(r,'rules/04-setup.md','원작의 중심 문제를 별도 지역 음모·시설 관리·새 재난으로 교체하지 않는다','원작 사건을 항로 관리로 전부 대체한다')),
