@@ -25,7 +25,7 @@ PC의 행동·대사·생각·감정·수락·추리 결론은 플레이어가 �
 
 ## 새 세계·챕터를 설계할 때
 
-신규 생성·미확정 챕터의 원작 직접 체험은 04-setup SCENARIO_BLUEPRINT/COMPATIBILITY_GATE와 07-state PRIVATE_CANON_DOCUMENT, START_GAME을 따른다. **G/E는 세계의 중심 원인·주요 사건 ID이지 PC에게 주어지는 필수 퀘스트가 아니다.** 원작 위협·PC별 실제 접촉과 대응·NPC 자율 행동·결과별 세계 변화·생활/S를 신규 정본에 준비한다. 일반 플레이 중 생성 검수 반복 금지. 신규 캠페인/미확정 챕터에 적용한다. 기존 검증 세계·성과는 비소급.
+신규 생성·미확정 챕터의 원작 직접 체험은 04-setup SCENARIO_BLUEPRINT/FINAL_THREAT_DESIGN/COMPATIBILITY_GATE, 07-state PRIVATE_CANON_DOCUMENT, START_GAME을 따른다. **G/E는 PC 필수 퀘스트가 아닌 원작 세계의 원인·주요 사건**이고 같은 중심 적의 여러 실제 위해 국면도 가능하다. 1~3인 PC별 출발 생활·숨은 원작 인과/접근/실시간 원격 개입, 실제 HP/SAN 위험·NPC 자율 행동·결과별 후속·조기 해결/철수를 준비한다. **고정 E/S 수, 적 5등급, 첫 E 턴 범위, 전원 현장 방문을 강요하지 않는다.** 생활·S는 독립 선택이며 기존 검증 세계·안전은 비소급.
 
 ## 플레이 중 사건과 위험이 진행할 때
 
