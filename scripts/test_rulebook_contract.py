@@ -409,6 +409,7 @@ mutations=[
  ('every_routine_is_important',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','생존·목표·수단·관계·진실 이해·이후 선택을 바꾸는 순간','모든 접수와 확인을 별도 장면으로')),
  ('lookup_failure_guessed_success',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','조회 실패 시 영향을 받는 처리만 보류하고 확인 가능한 진행은 계속한다','조회 실패 시 결과를 추측해 확정한다')),
  ('routine_without_decision_stops',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','이미 선언한 목적/발언의 통상 실행에 새 판단이 없으면','이미 선언한 통상 확인도 매번 멈춰')),
+ ('always_on_carrot_lookup_suppressed',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','**당근 상시 조회:**','**당근은 게임 시작 때만 조회:**')),
  ('always_on_roll_precommit',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','**굴림 전에**','**굴림 이후**')),
  ('always_on_private_canon_baseline',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','검증된 정본 판본+실제 누적 변화','초기 정본으로 최신 상태를 덮어쓰기')),
  ('always_on_scene_not_status_only',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','실제 장면과 대사','상태 보고만')),
