@@ -2218,8 +2218,7 @@
       "story_context.main_track_by_pc",
       "구조자 전원 사망",
       "change_coverage.changed_entity_ids",
-      "새 최상위 필드·테이블/RPC",
-      "HUD 색상/레이아웃은 저장 원장이 아닌 06-play의 표시 규칙"
+      "새 최상위 필드·테이블/RPC"
     ]
   },
   {
@@ -2281,7 +2280,8 @@
       "permanent_growth_enabled",
       "| E/G·개인별 당근 |",
       "| 구조·현장 위기 |",
-      "| 고정 HUD 투영 |"
+      "| 고정 HUD 투영 |",
+      "HUD 색상/레이아웃은 저장 원장이 아닌 06-play의 표시 규칙"
     ]
   },
   {

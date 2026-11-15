@@ -3,6 +3,7 @@
 ## 2026-11-15 — 새 기능의 세이브 의미 수납/재개 보호 정리 (V2 스키마 유지)
 
 - **CI 실패·원인·교정:** GitHub Actions Run `43692917460`에서 룰북 기본 check는 통과했으나 새 부정 회귀 `save_hud_color_mutates_items`가 실제로 금지해야 할 문구를 바꿔도 통과했다. `STATE_CANON_SAVE_BINDING` 계약의 contains에 바로 그 HUD 색상/원장 분리 문구를 추가해 이 회귀가 실패하도록 최소 교정한다. 게임 본문/DB/정본·저장 값은 수정하지 않는다.
+- **후속 CI 정확한 교정:** Run `43693071697`은 문자열이 없어서가 아니라 해당 문구의 실제 소유 규칙이 `STATE_SCHEMA`인데 `STATE_CANON_SAVE_BINDING` contains에 추가해 실패했다. 실제 소유 절의 contains로 이동했으며 규칙 본문·테스트 코드·DB는 수정하지 않는다.
 
 - **현행 점검:** GitHub main의 STATE_CANON_SAVE_BINDING/STATE_WORKING_CONTEXT/STATE_INTEGRITY/STATE_RESUME와 실제 Supabase `trpg-state-v2`를 읽기 전용으로 비교. 운영 V2/DB1 verified checkpoint 12건과 기존 함수/비공개 정본 테이블은 존재하며, 현재 여러 세션의 목표 기록이 `current_carrot/main_goal_ref/active_main_goals` 등 여러 표현으로 공존한다. 이는 서버 실패 증거가 아니라 **메인 E/PC별 체험·재개 의미의 표준화 부족 가능성**이다.
 - **최소 패치:** 정본은 그대로 두고 기존 JSON 안 `world_delta.drivers[E-ref]`의 실제 E 세계 상태, `story_context.main_track_by_pc`의 PC별 E·인지/현장 체험·작은 목표/S 활동, `ongoing_consequences`의 물리 위해·HP0 구조자/이송/중단, `pcs/runtime/scene_context`의 소지·판정·행동권·시간, `processed_event_ids`의 중복 억제, `change_coverage`의 6개 delta 키 일치와 재개/저장 의미 검사를 명확히 했다. HUD의 양식·초록/빨강 변화는 확정 자원에서만 투영하고 저장 이벤트를 발생시키지 않는다.
