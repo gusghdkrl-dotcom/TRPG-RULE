@@ -3,7 +3,7 @@
 ## 2026-11-16 — Issue #8 후속: PC 고유 원작 인과·정본 실행 품질
 
 - **재현 원인:** The Lightless Beacon 1인 정본에서 채집인의 기능·현장 관측은 원작 위기와 접촉하나 여행객으로 바꾸어도 적·NPC·근본 결과가 거의 같음. 첫 항해 위험 예방 뒤 PC 고유 원작 접점, 색인에만 있는 핵심 공간, NPC/적 다음 행동, S의 결과, 비무장 1인 대응/사망 인계도 생성 단계에서 충분히 검증하지 못함.
-- **보완:** WORLD_PC_INPUT에 PC 확정 생활/관계→원작 핵심 개체/ref→숨은 의미→물리/정보 접촉→상대 반응·결말 변화와 대체 가능성 불합격 기준을 추가. SCENARIO_BLUEPRINT 호출, COMPATIBILITY_GATE의 첫 성공/장소/인물/S/위험 검수, PRIVATE_CANON_DOCUMENT 10절의 실행 ref·기존 인계 라우팅 연결. PROJECT_INSTRUCTIONS 상시 생성 원칙 최소 보강. 기존 validation-contract 앵커 및 1개 부정 회귀 보존·추가.
+- **보완·동시 작업 통합:** 바로 앞선 `f2d6550`에서 이미 추가된 04-setup/07-state의 PC 원작 인과·NPC·장소·S·사망 인계 규칙은 보존. WORLD_PC_INPUT에 **무관한 여행자 대체 불합격 기준**을 보강하고 SCENARIO_BLUEPRINT/기존 COMPATIBILITY_GATE에서 발동, PRIVATE_CANON_DOCUMENT의 자료·실물 묘사 상충만 추가 대조. 중복으로 새로 쓴 규칙 문구는 제거했다. PROJECT_INSTRUCTIONS 신규 생성 상시 기준, validation-contract 기존 항목 및 1개 부정 회귀를 반영했다.
 - **보호:** 현재 업로드한 비공개 정본, 기존 verified 세이브와 정본 비소급. PC 미선언 과거·기억/감정·비밀 혈통·강제 접촉 금지. 원작과 정당한 조기 예방·철수·안전, 자율 NPC·적, HP/SAN·다인 시간·본부/카드·기존 저장·DB 계약 그대로.
 - **검증 한계:** 정적 계약/부정 회귀·배포 ZIP/CI의 실제 결과는 별도 확인. 새로운 AI 정본 자동 생성·독립 키퍼 실전 품질은 이 문서 수정으로 입증되지 않음.
 
