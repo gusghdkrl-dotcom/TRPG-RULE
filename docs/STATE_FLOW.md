@@ -1,5 +1,8 @@
 # 상태·저장·재개 흐름
 
+신규/독립 재시험은 실제 최신 룰북·배포 ID와 새 campaign/session으로 설계→정본 초안/최초 STATE→그 작성물의 COMPATIBILITY_GATE→동일 원문 등록/첫 출력·저장 순서를 따른다. 재개는 기존 정본/verified 누적 상태를 보존한다. 룰북 수정으로 이전 캠페인을 자동 재생성하거나 DB 스키마를 바꾸지 않는다. 첫 위치/미실행 행동·NPC 위치/소유는 동일 초기 사실에서 투영하며 적의 추적/경비/배회 현재 위치·마지막 실제 정보·다음 행동/중단은 기존 동적 수납에 잇는다. 로컬 테스트 요약과 운영 checkpoint/서버 verified를 구별한다.
+
+
 현행 실행 정본은 rules/07-state.md다. 2026-11-09부터 인증된 새 Supabase `trpg-state-v2` (project ref `taoaffdyssqtnjszumpq`)의 `public.gm_checkpoint_history` verified 원문을 사용한다. 서버 스키마는 `TRPG_STATE_V2`, 저장모드는 DOCUMENT_BOUND(DB1)이며, 개발/이전 검증기를 복사하지 않았다. 실제 설치 SQL은 [trpg-state-v2.sql](sql/trpg-state-v2.sql)이다.
 
 1. 실제생성/로드한정본과누적상태에서현재작업범위를구성한다.

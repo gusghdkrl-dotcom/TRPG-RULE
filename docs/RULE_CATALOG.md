@@ -1,6 +1,6 @@
 # 규칙 담당 색인
 
-실행 정본은 PROJECT_INSTRUCTIONS.md·START_GAME.md·rules/*.md다. 이 표는 규칙 ID별 담당 본문을 찾는 개발용 색인이며 추가 규칙이 아니다. 신규 설계 04-setup → 실제 실행 05-world → 종결 06-play → 정본/상태 07-state로 조회한다. 전체 판본과 호환 경계는 RULESET.json 및 STATE_IDENTITY/STATE_COMPATIBILITY를 따른다.
+실행 정본은 PROJECT_INSTRUCTIONS.md·START_GAME.md·rules/*.md다. 이 표는 규칙 ID별 담당 본문을 찾는 개발용 색인이며 추가 규칙이 아니다. 신규 설계04 → 정본 초안/최초 상태07 → 작성 결과 대조04 → 실제 실행05 → 종결06 → 상태 보존/재개07로 조회한다. 추적·경비·배회 전력의 생성은 SCENARIO_BLUEPRINT, 실제 행동은 WORLD_INITIATIVE_EXECUTION, 현재 정보/위치의 보존은 STATE_WORKING_CONTEXT가 맡는다. 전체 판본과 호환 경계는 RULESET.json 및 STATE_IDENTITY/STATE_COMPATIBILITY를 따른다.
 
 | 규칙 ID | 담당 본문 |
 |---|---|

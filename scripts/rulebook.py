@@ -150,7 +150,18 @@ def export():
     (target/'sources').mkdir(parents=True)
     for path in RULES.glob('*.md'):shutil.copyfile(path,target/'sources'/path.name)
     for name in ['PROJECT_INSTRUCTIONS.md','START_GAME.md']:shutil.copyfile(ROOT/name,target/name)
-    (target/'RULESET.json').write_text(json.dumps(release_identity(),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    identity = release_identity()
+    (target/'RULESET.json').write_text(json.dumps(identity,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    # A readable copy helps project-source retrieval when JSON is not indexed.
+    # Metadata stays outside the 12 hashed sources, avoiding a self hash cycle.
+    (target/'RULESET.md').write_text(
+        '# 현재 룰북 배포 식별자\n\n'
+        f"rules_version: `{identity['rules_version']}`\n\n"
+        '같은 ZIP의 RULESET.json과 동일한 메타데이터입니다. 게임 정본/세이브가 아닙니다.\n'
+        '신규 정본과 기존 저장 계약의 rules_version에 이 실제 식별자를 사용합니다.\n'
+        '기존 캠페인은 당시 판본으로 재개하고 날짜 표제만으로 구판을 바꾸지 않습니다.\n'
+        'SHA256.json으로 실제 소스 일치를 확인하고 혼합 파일/미확인은 검증 완료로 표시하지 않습니다.\n',
+        encoding='utf-8')
     # HQ portraits are official fixed assets, not new AI-generated profiles.
     # Verify all eight original PNG bytes before the release archive is constructed.
     npc_manifest = ROOT/'assets/hq-npc/manifest.json'
@@ -171,7 +182,7 @@ def export():
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source, destination)
         shutil.copyfile(npc_manifest,target/'assets/hq-npc/manifest.json')
-    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~09-cards의 10개 최신 소스로 교체\nassets/hq-npc/* → 시간본부 NPC 공식 이미지 8장과 manifest.json (ON 전용)\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\nRULESET.json → 함께 보관/등록하고 신규 저장의 기존 rules_version에 정확한 식별자를 기록\nSHA256.json → 배포 파일 바이트 검증; RULESET.json의 source_files는 실행 소스 12개를 식별\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하고 과거 rules_version을 바꾸지 마세요.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
+    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~09-cards의 10개 최신 소스로 교체\nassets/hq-npc/* → 시간본부 NPC 공식 이미지 8장과 manifest.json (ON 전용)\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\nRULESET.json + RULESET.md → 같은 ZIP에서 함께 프로젝트 소스로 등록; JSON 조회 불가 시 읽기용 Markdown의 실제 식별자를 확인\n신규 저장의 기존 rules_version에 정확한 식별자를 기록\nSHA256.json → 배포 파일 바이트 검증; RULESET.json의 source_files는 실행 소스 12개를 식별\nGitHub main 수정은 이미 업로드된 프로젝트 파일/이전 채팅을 자동 교체하지 않습니다.\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하고 과거 rules_version을 바꾸지 마세요.\n독립 재시험은 새 campaign/session·새 정본/최초 STATE를 만들고 옛 테스트 세이브를 자동 로드하지 않습니다.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
     manifest={str(p.relative_to(target)):__import__('hashlib').sha256(p.read_bytes()).hexdigest() for p in sorted(target.rglob('*')) if p.is_file()}
     (target/'SHA256.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     archive=ROOT/'dist/TRPG-RULE-project.zip'

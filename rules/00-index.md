@@ -3,6 +3,8 @@
 현재 담당 본문으로 조회한다. 신규 세계 설계는 04-setup SCENARIO_BLUEPRINT/COMPATIBILITY_GATE, 실제 진행은 05-world WORLD_INITIATIVE_EXECUTION/SCENE_CONSEQUENCE_RULE, 종결은 06-play ENDING_FINALIZATION_GATE, 정본/누적 저장과 판본은 07-state가 담당한다. **참가 PC 전원이 각 E를 현장에서 직접 체험한 뒤 최종 국면에 진입하며 원격 기여는 체험으로 인정하지 않는다.** 개별 공격 차단/피해 0과 E 위기 발생 보장을 구별한다. 과거 verified 정본·세이브는 당시 판본/성과대로 보존한다. 개발/요약/역사 문서를 실행 규칙으로 혼합하지 않는다.
 
 
+신규/독립 테스트와 재개 구별·배포 확인은 STATE_AUTHORITY/STATE_IDENTITY, 실제 정본 초안과 최초 STATE의 연결은 CAMPAIGN_SETUP_PIPELINE/STATE_CANON_SAVE_BINDING, 작성 결과의 완료 대조는 COMPATIBILITY_GATE다. 추적·지속 압박/경비·수호/배회·순찰 전력은 SCENARIO_BLUEPRINT, 실제 다음 행동과 상태 보존은 WORLD_INITIATIVE_EXECUTION/STATE_WORKING_CONTEXT를 조회한다.
+
 | 상황 | 담당 절 |
 |---|---|
 | 입력 의미·주도권·공개 범위 | [PLAYER_INPUT_NAMESPACE_ROUTER](01-core.md#player_input_namespace_router) · [CORE_AGENCY](01-core.md#core_agency) · [CORE_VISIBILITY](01-core.md#core_visibility) |

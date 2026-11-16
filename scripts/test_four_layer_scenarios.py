@@ -2,8 +2,9 @@
 """Finite, offline four-layer design probes, NOT a game engine or AI play test.
 
 The invented source and partial canon below are public synthetic data. Three E
-nodes exercise ordering; this is not a full 8-12 E / 18-30 S campaign. Test-only
-keys are not a save schema. See docs/FOUR_LAYER_SCENARIO_REVIEW.md.
+nodes exercise ordering, first-state handoff and distinct enemy roles; this is
+not a complete campaign. Test-only keys are not a save schema.
+See docs/GENERATION_HANDOFF_REVIEW.md and docs/FOUR_LAYER_SCENARIO_REVIEW.md.
 """
 from collections import deque
 from copy import deepcopy
@@ -26,9 +27,12 @@ CANON = {
     'fixed_loss': 'The lower tram tunnel collapsed before the opening.',
     'spine': ['E14', 'E03', 'E27'],  # Deliberately not numeric order.
     'events': {
-        'E14': {'after': [], 'meaning': 'Loss of ordinary transit; choose how to reach shelter.'},
-        'E03': {'after': ['E14'], 'meaning': 'Protect residents and decide which shelter can stay usable.'},
-        'E27': {'after': ['E03'], 'meaning': 'Use preserved people/tools to contain the source or leave.'},
+        'E14': {'after': [], 'meaning': 'Loss of ordinary transit; choose how to reach shelter.',
+                'ends_in': 'shelter_reached'},
+        'E03': {'after': ['E14'], 'meaning': 'Protect residents and decide which shelter can stay usable.',
+                'ends_in': 'residents_protected'},
+        'E27': {'after': ['E03'], 'meaning': 'Reconnect the isolation station while protecting its operators.',
+                'ends_in': 'isolation_station_connected'},
         'E99': {'after': [], 'meaning': 'Independent offscreen damage; not a spine completion.'},
     },
     'places': ['station', 'quay', 'shelter', 'ridge', 'outside'],
@@ -39,6 +43,7 @@ CANON = {
         'R_boat': ('quay', 'shelter', 6, 'boat'),
         'R_ridge': ('shelter', 'ridge', 12, None),
         'R_exit': ('ridge', 'outside', 9, None),
+        'R_return': ('shelter', 'station', 7, None),
     },
     'goals': {
         'M_delivery': {'place': 'shelter', 'toward': 'E14', 'direct_next': None},
@@ -65,6 +70,43 @@ CANON = {
     },
     'spine_gates': [],  # No side-count, elapsed-time or goal-completion quota.
     'side_required_for_main': [],
+    # Concrete facts for this finite sample, not fields for a production save.
+    'preparation': {
+        'first_place': 'station',
+        'finale': {'starts_in': 'isolation_station_connected',
+                   'finishes_in': 'source_isolated_and_people_outside',
+                   'necessary_fact': 'F_source_brief',
+                   'residual_cause': 'The echo travels through stone after every raider is gone.',
+                   'actual_use': 'Identify and cut the resonant link before crossing the stone exit.'},
+        'hostiles': {
+            'H_tracker': {'role': 'pursue', 'kind': 'human', 'place': 'station',
+                          'knows': ['boot_trace'], 'next_route': 'R_walk',
+                          'target': 'the witnessed radio thief',
+                          'stop': 'no trace beyond shelter; search entrance then report back'},
+            'H_guard': {'role': 'guard', 'kind': 'human', 'place': 'ridge',
+                        'knows': [], 'target': 'isolation_key',
+                        'stop': 'leave only after relief or actual danger to the key'},
+            'H_patrol': {'role': 'roam', 'kind': 'human', 'place': 'shelter',
+                         'knows': [], 'next_route': 'R_return',
+                         'target': 'the station-shelter supply route',
+                         'stop': 'return to shelter if the bridge is physically blocked'},
+        },
+        'items': {'isolation_key': {'quantity': 1, 'place': 'ridge', 'owner': 'H_guard'},
+                  'bandage': {'quantity': 1, 'place': 'shelter', 'owner': 'N_keeper'}},
+        'holdings': {'ridge': {'isolation_key': 1}, 'shelter': {'bandage': 1}},
+        'hazard': {'exposure': 'crossing the already damaged ridge catwalk',
+                   'response': 'secure the existing handline before crossing',
+                   'failure': 'falling damage from the fixed platform height',
+                   'damage': '1d6', 'stop': 'reach the intact platform or leave the catwalk'},
+        'recovery': {'item': 'bandage', 'safe_place': 'shelter',
+                     'access': 'ask its actual owner; refusal leaves the handline bypass available'},
+        'failure_flow': ['pc_terminated', 'check_existing_companion_inheritance',
+                         'campaign_failed_if_no_actor'],
+        'san_rewards': [{'achievement': 'source_isolated', 'event': 'SYNTH_SOURCE_RESOLVED',
+                         'methods': ['sever_link', 'seal_link']},
+                        {'achievement': 'residents_saved', 'event': 'SYNTH_RESIDENTS_SAVED',
+                         'methods': ['escort', 'safe_shelter']}],
+    },
 }
 
 
@@ -161,6 +203,53 @@ def inspect(canon, state):
                 errors.add('finale_before_all_pc_field_experience')
             if ref not in state['world_events']:
                 errors.add('crisis_did_not_occur')
+    # These probes inspect the sample's already written facts. They do not
+    # certify arbitrary prose or simulate future PC choices/dice.
+    prep = canon['preparation']
+    if state['phase'] == 'setup':
+        expected = {pc: prep['first_place'] for pc in state['pcs']}
+        if state.get('initial_public') != expected or state.get('initial_private') != expected:
+            errors.add('initial_projection_conflict')
+    roles = {h.get('role') for h in prep['hostiles'].values()}
+    if not {'pursue', 'guard', 'roam'} <= roles:
+        errors.add('missing_enemy_role')
+    for h in prep['hostiles'].values():
+        if (h.get('place') not in canon['places'] or not h.get('target') or not h.get('stop')
+                or h.get('role') in ('pursue', 'roam') and h.get('next_route') not in canon['routes']):
+            errors.add('unprepared_enemy_action')
+    for action in state.get('hostile_actions', []):
+        h = prep['hostiles'][action['actor']]
+        if not set(action.get('used_information', [])) <= set(h['knows']):
+            errors.add('enemy_omniscience')
+        if action.get('route'):
+            a, b, duration, _ = canon['routes'][action['route']]
+            if a != h['place'] or action['destination'] != b or action['elapsed'] < duration:
+                errors.add('enemy_teleport_or_frozen_time')
+        if h['role'] == 'guard' and action['destination'] != h['place'] and not action.get('actual_leave_reason'):
+            errors.add('guard_abandons_post_without_cause')
+    final = prep['finale']
+    if canon['spine']:
+        last_state = canon['events'][canon['spine'][-1]].get('ends_in')
+        if final['starts_in'] != last_state or final['finishes_in'] == last_state:
+            errors.add('last_e_finale_boundary')
+    if not all(final.get(k) for k in ('necessary_fact', 'residual_cause', 'actual_use')):
+        errors.add('truth_is_only_password')
+    for ref, item in prep['items'].items():
+        holdings = [(place, items.get(ref, 0)) for place, items in prep['holdings'].items() if items.get(ref)]
+        if sum(q for _, q in holdings) != item['quantity'] or holdings != [(item['place'], item['quantity'])]:
+            errors.add('duplicate_or_missing_resource')
+    if not all(prep['hazard'].get(k) for k in ('exposure', 'response', 'failure', 'damage', 'stop')):
+        errors.add('hazard_only_warning')
+    recovery = prep['recovery']
+    if recovery['item'] not in prep['items'] or recovery['safe_place'] not in canon['places'] or not recovery['access']:
+        errors.add('recovery_only_promise')
+    if prep['failure_flow'] != ['pc_terminated', 'check_existing_companion_inheritance', 'campaign_failed_if_no_actor']:
+        errors.add('campaign_failed_before_inheritance')
+    reward_events = {}
+    for reward in prep['san_rewards']:
+        if reward['achievement'] in reward_events and reward_events[reward['achievement']] != reward['event']:
+            errors.add('same_achievement_paid_twice')
+        reward_events[reward['achievement']] = reward['event']
     return errors, visible
 
 
@@ -264,6 +353,55 @@ def main():
     c = deepcopy(CANON); c['goals']['M_delivery']['place'] = 'invented_destination'
     bad(s, 'dangling_goal', c)
 
+    # First state and actual role data must exist before calling a world ready.
+    s = snapshot(count=2); s['phase'] = 'setup'
+    s['initial_public'] = {pc: 'station' for pc in s['pcs']}
+    s['initial_private'] = deepcopy(s['initial_public']); good(s)
+    s['initial_private']['P2'] = 'shelter'; bad(s, 'initial_projection_conflict')
+    s['initial_private']['P2'] = 'not_decided'; bad(s, 'initial_projection_conflict')
+    s = snapshot()
+    for actor in ('H_tracker', 'H_guard', 'H_patrol'):
+        c = deepcopy(CANON); del c['preparation']['hostiles'][actor]
+        bad(s, 'missing_enemy_role', c)
+    c = deepcopy(CANON)
+    c['preparation']['hostiles']['H_tracker']['stop'] = ''
+    bad(s, 'unprepared_enemy_action', c)
+    s['hostile_actions'] = [
+        {'actor': 'H_tracker', 'route': 'R_walk', 'destination': 'shelter',
+         'elapsed': 7, 'used_information': ['boot_trace']},
+        {'actor': 'H_guard', 'destination': 'ridge', 'used_information': []},
+        {'actor': 'H_patrol', 'route': 'R_return', 'destination': 'station',
+         'elapsed': 7, 'used_information': []},
+    ]; good(s)
+    s['pcs']['P1']['place'] = 'ridge'
+    s['pcs']['P1']['facts'].append('F_source_brief')
+    good(s)  # tracker still uses its old real trace, not the PC's new knowledge
+    s['hostile_actions'][0]['used_information'] = ['F_source_brief']
+    bad(s, 'enemy_omniscience')
+    s['hostile_actions'][0]['used_information'] = ['boot_trace']
+    s['hostile_actions'][0]['elapsed'] = 0; bad(s, 'enemy_teleport_or_frozen_time')
+    s['hostile_actions'][0]['elapsed'] = 7
+    s['hostile_actions'][1]['destination'] = 'station'; bad(s, 'guard_abandons_post_without_cause')
+    s = snapshot()
+    c = deepcopy(CANON)
+    c['preparation']['finale']['finishes_in'] = c['events']['E27']['ends_in']
+    bad(s, 'last_e_finale_boundary', c)
+    for missing in ('necessary_fact', 'residual_cause', 'actual_use'):
+        c = deepcopy(CANON); c['preparation']['finale'][missing] = ''
+        bad(s, 'truth_is_only_password', c)
+    c = deepcopy(CANON); c['preparation']['holdings']['station'] = {'bandage': 1}
+    bad(s, 'duplicate_or_missing_resource', c)
+    c = deepcopy(CANON); c['preparation']['hazard']['damage'] = ''
+    bad(s, 'hazard_only_warning', c)
+    c = deepcopy(CANON); c['preparation']['recovery']['item'] = 'invented_medical_item'
+    bad(s, 'recovery_only_promise', c)
+    c = deepcopy(CANON); c['preparation']['failure_flow'].reverse()
+    bad(s, 'campaign_failed_before_inheritance', c)
+    c = deepcopy(CANON)
+    c['preparation']['san_rewards'].append(
+        {'achievement': 'source_isolated', 'event': 'SYNTH_SAME_SUCCESS_SECOND_NAME'})
+    bad(s, 'same_achievement_paid_twice', c)
+
     # Offline preservation probes use existing V2 containers, not new columns.
     # This is a partial snapshot, not a valid production commit payload.
     preserved = {
@@ -273,7 +411,9 @@ def main():
             'E03': {'world': 'prevented', 'reason': 'existing_executor_captured'},
             'M_repair': {'result': 'failed', 'direct_next': None},
             'S_song': {'decision': 'refused', 'npc_activity': 'continues'},
-        }},
+        }, 'npcs': {'H_tracker': {'place': 'station', 'last_known_pc_place': 'station',
+                                 'information': ['boot_trace'], 'next_route': 'R_walk',
+                                 'stop': 'no trace beyond shelter'}}},
         'story_context': {'spine': ['E14', 'E03', 'E27'],
                           'known_open': {'P1': ['M_ridge'], 'P2': ['M_contain']}},
         'scene_context': {'awaiting': 'P1', 'offer': 'M_ridge', 'accepted': False},
@@ -301,6 +441,8 @@ def main():
             lambda x: x['ongoing_consequences'].update(legacy_timer='recreated'),
             lambda x: x['processed_event_ids'].append('SYNTH_E14_RESOLVED'),
             lambda x: x['world_delta']['drivers']['M_repair'].update(direct_next='invented_goal'),
+            lambda x: x['world_delta']['npcs']['H_tracker'].update(last_known_pc_place='ridge'),
+            lambda x: x['world_delta']['npcs']['H_tracker'].update(stop=''),
         ]
         for mutate in mutations:
             altered = deepcopy(preserved); mutate(altered)
