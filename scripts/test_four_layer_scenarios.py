@@ -73,6 +73,13 @@ CANON = {
     # Concrete facts for this finite sample, not fields for a production save.
     'preparation': {
         'first_place': 'station',
+        'party_history': 'The investigators repaired the same valley tram last winter.',
+        'main_places': ['shelter', 'ridge'],
+        'outside_place': 'outside',
+        'boss': {'ref': 'H_echo_warden', 'place': 'ridge', 'hp': 18,
+                 'attack': '1d8', 'origin': 'the already released stone resonance',
+                 'limit': 'cannot cross a severed resonant link',
+                 'discovery': 'F_source_brief'},
         'finale': {'starts_in': 'isolation_station_connected',
                    'finishes_in': 'source_isolated_and_people_outside',
                    'necessary_fact': 'F_source_brief',
@@ -206,6 +213,23 @@ def inspect(canon, state):
     # These probes inspect the sample's already written facts. They do not
     # certify arbitrary prose or simulate future PC choices/dice.
     prep = canon['preparation']
+    if len(state['pcs']) > 1 and not prep.get('party_history'):
+        errors.add('strangers_in_new_party')
+    # Before entering the main venue, no normal physical route goes straight
+    # outside. This checks a finite map, not the wording "entry is guaranteed".
+    seen, pending = set(), [prep['first_place']]
+    while pending:
+        place = pending.pop()
+        if place in seen or place in prep['main_places']:
+            continue
+        seen.add(place)
+        if place == prep['outside_place']:
+            errors.add('main_stage_bypass')
+        pending.extend(b for a, b, _, _ in canon['routes'].values() if a == place)
+    boss = prep.get('boss') or {}
+    if (not all(boss.get(k) for k in ('ref', 'hp', 'attack', 'origin', 'limit', 'discovery'))
+            or boss.get('place') not in prep['main_places']):
+        errors.add('unprepared_final_boss')
     if state['phase'] == 'setup':
         expected = {pc: prep['first_place'] for pc in state['pcs']}
         if state.get('initial_public') != expected or state.get('initial_private') != expected:
@@ -402,6 +426,23 @@ def main():
         {'achievement': 'source_isolated', 'event': 'SYNTH_SAME_SUCCESS_SECOND_NAME'})
     bad(s, 'same_achievement_paid_twice', c)
 
+    # New party and mandatory venue checks retain later voluntary separation.
+    s = snapshot(count=2); s['phase'] = 'setup'
+    s['initial_public'] = s['initial_private'] = {'P1': 'station', 'P2': 'station'}
+    good(s)
+    c = deepcopy(CANON); c['preparation']['party_history'] = ''
+    bad(s, 'strangers_in_new_party', c)
+    s['initial_private'] = {'P1': 'station', 'P2': 'quay'}
+    bad(s, 'initial_projection_conflict')
+    s = snapshot(count=2); s['pcs']['P2']['place'] = 'shelter'
+    good(s)  # real separation after starting together does not require reunion
+    c = deepcopy(CANON)
+    c['routes']['R_early_rescue'] = ('quay', 'outside', 6, 'boat')
+    bad(s, 'main_stage_bypass', c)
+    c = deepcopy(CANON); c['preparation']['boss'] = None
+    bad(s, 'unprepared_final_boss', c)
+    c = deepcopy(CANON); c['preparation']['boss']['place'] = 'outside'
+    bad(s, 'unprepared_final_boss', c)
     # Offline preservation probes use existing V2 containers, not new columns.
     # This is a partial snapshot, not a valid production commit payload.
     preserved = {

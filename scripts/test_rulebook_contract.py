@@ -132,7 +132,7 @@ mutations=[
  ('checkpoint_github_backup_restored',lambda r:change(r,'rules/07-state.md','GitHub verified snapshot·MANIFEST·INDEX·REVIEW 등 추가 미러를 생성/갱신하지 않고','GitHub verified snapshot·MANIFEST·INDEX·REVIEW를 매번 생성하고')),
  ('retired_keeper_footer_returns',lambda r:(r/'PROJECT_INSTRUCTIONS.md').write_text((r/'PROJECT_INSTRUCTIONS.md').read_text()+'\n#### 🎬 키퍼 4요소\n#### 1. 반복 표시\n')),
  ('rulebook_requires_keeper_footer',lambda r:change(r,'rules/06-play.md','키퍼 원칙·숙지 문구·준수 보고를 게임 응답에 반복 출력하지 않는다','매 응답의 마지막에 키퍼 원칙과 숙지 문구를 표시한다')),
- ('experience_replaced_by_proof',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','추리·미스터리는 대응과 선택을 바꾸는 요소다','모든 진행은 진상 입증을 위한 조사다')),
+ ('experience_replaced_by_proof',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','추리·미스터리는 대응과 선택을 바꾼다','모든 진행은 진상 입증을 위한 조사다')),
  ('generic_source_reskin',lambda r:change(r,'rules/04-setup.md','원작 이름·가면·지명·용어만 바꾸어도 같은 자료 수사로 진행되는 설계는 다시 구성한다','원작의 이름만 바꾸면 체험 설계가 완성된다')),
  ('all_choices_investigation',lambda r:change(r,'rules/06-play.md','매번 자료 찾기/증언 묻기/재확인만 나열하지 않는다','모든 선택지를 자료 찾기와 증언 확인으로 구성한다')),
  ('experience_save_only_clues',lambda r:change(r,'rules/07-state.md','단서 목록만으로 현재 경험을 대신하지 않으며','현재 경험은 단서 목록만으로 대체하며')),
@@ -159,9 +159,9 @@ mutations=[
  ('danger_waits_for_optin',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','플레이어가 위험한 선택지를 고를 때까지 기다리지 않는다','위험 선택지를 고를 때까지 위협을 중지한다')),
  ('san_deferred_to_finale',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','SAN 규칙을 적용하고 전투나 절정까지 미루지 않는다','SAN 처리는 최종전에만 적용한다')),
  ('fixed_injury_quota',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','피해·희생·감염을 할당하지 않는다','매 장면 피해를 할당한다')),
- ('guess_missing_mechanics',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','본문이 없으면 결과 확정 전에 해당 절을 조회','본문이 없으면 일반 기억으로 처리')),
+ ('guess_missing_mechanics',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','누락/변경/충돌만 결과 확정 전에 조회','본문이 없으면 일반 기억으로 처리')),
  ('keeper_principle_rewritten',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','세계·적·NPC·환경은 실제 목적·정보·수단·위치·조건으로 먼저 움직인다','플레이어의 대응과 무관하게 예정된 사건을 실행한다')),
- ('keeper_rule_application_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','준비·세계 생성·플레이·상태 관리·저장·복원·종결의 규칙은 아래 상황별 라우팅을 따른다.','')),
+ ('keeper_rule_application_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','각 상황의 담당 원문과00-index의 상세 절/예외를 따른다.','')),
  ('core_player_agency_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','PC의 행동·대사·생각·감정·수락·추리 결론은 플레이어가 결정한다','PC의 행동과 감정을 키퍼가 결정한다')),
  ('rulebook_file_route_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','| 08-visual.md |','| 88-missing.md |')),
  ('rulebook_route_wrong_owner',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','SAN_EXPOSURE_GATE / COMBAT_ORDER','HEALING / COMBAT_ORDER')),
@@ -172,7 +172,7 @@ mutations=[
  ('regenerate_existing_canon',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','기존 검증 세계·안전은 비소급','기존 세계도 매 응답 다시 생성한다')),
  ('meta_advances_danger',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','메타 질문·재표시는 답만 제공하며 극중 시간·위험을 진행시키지 않는다','메타 질문마다 시간과 위협을 진행한다')),
  ('every_routine_is_important',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','생존·목표·수단·관계·진실 이해·이후 선택을 바꾸는 순간','모든 접수와 확인을 별도 장면으로')),
- ('lookup_failure_guessed_success',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','조회 실패 시 영향을 받는 처리만 보류하고 확인 가능한 진행은 계속한다','조회 실패 시 결과를 추측해 확정한다')),
+ ('lookup_failure_guessed_success',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','조회 실패는 해당 처리만 보류한다','조회 실패 시 결과를 추측해 확정한다')),
  ('routine_without_decision_stops',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','이미 선언한 목적/발언의 통상 실행에 새 판단이 없으면','이미 선언한 통상 확인도 매번 멈춰')),
  ('always_on_carrot_lookup_suppressed',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','**세계 사건·PC 목적·정체 방지:**','**당근은 게임 시작 때만 조회:**')),
  ('always_on_roll_precommit',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','**굴림 전에**','**굴림 이후**')),
@@ -406,6 +406,26 @@ mutations=[
  ('handoff_diegetic_san_recovery_1',lambda r:change(r,'rules/03-danger.md','같은 문제를 사살/유인/봉쇄 등 다른 방법으로 해결한 대안은 공통 성취와 소진 이벤트에 묶는다','[missing actual prepared fact]')),
  ('handoff_diegetic_san_recovery_2',lambda r:change(r,'rules/03-danger.md','서로 다른 보상 ID를 붙였다는 이유만으로 같은 성취를 두 번 지급하지 않는다','[missing actual prepared fact]')),
 ]
+
+# Current speed/party/stage/boss regressions; existing mutations remain.
+mutations += [
+ ('speed_regular_turn_no_unnecessary_tools',lambda r:change(r,'rules/01-core.md','실제 난수·정기 재독/저장·복원/이미지 경계가 없으면 검색·Python·DB 호출 없이',"[regressed execution boundary]")),
+ ('speed_dependent_random_not_batched',lambda r:change(r,'rules/01-core.md','앞 결과가 후속 조건을 바꾸는 경계만 나눈다',"[regressed execution boundary]")),
+ ('speed_preserves_obligations',lambda r:change(r,'rules/01-core.md','속도를 이유로 실제 난수·필수 원문·저장 검증·중요 서술/전체 인벤토리 HUD를 생략하지 않는다',"[regressed execution boundary]")),
+ ('party_known_same_place',lambda r:change(r,'rules/04-setup.md','서로 아는 사이이며 같은 정확한 장소에서 함께 시작한다',"[regressed execution boundary]")),
+ ('party_resume_does_not_rejoin',lambda r:change(r,'rules/04-setup.md','현지 재개는 저장된 관계/위치를 보존',"[regressed execution boundary]")),
+ ('main_stage_cannot_be_bypassed',lambda r:change(r,'rules/04-setup.md','섬이 메인인데 상륙 전에 구명정/구조선으로 안전 귀가하는 정상 경로는 두지 않는다',"[regressed execution boundary]")),
+ ('missing_e_not_replaced_by_other_e',lambda r:change(r,'rules/04-setup.md','다른 E의 폭풍·사후 보고/시신으로 빠진 E를 대체하지 않는다',"[regressed execution boundary]")),
+ ('ammunition_compatibility_required',lambda r:change(r,'rules/04-setup.md','같은 구경 표기만으로 호환/공용 총량을 합산하지 않는다',"[regressed execution boundary]")),
+ ('setting_specific_final_boss',lambda r:change(r,'rules/04-setup.md','딥원(심해인)을 실제 상위 위협·최종 보스',"[regressed execution boundary]")),
+ ('final_boss_is_actual_entity',lambda r:change(r,'rules/04-setup.md','기상/수리 작업만으로 최종 대면을 대체하지 않는다',"[regressed execution boundary]")),
+ ('early_boss_kill_is_preserved',lambda r:change(r,'rules/04-setup.md','대체 보스를 사후 추가하지 않는다',"[regressed execution boundary]")),
+ ('truth_is_operative_not_password',lambda r:change(r,'rules/04-setup.md','무관한 금의 기원/조직명을 모른다는 이유로 막지 않는다',"[regressed execution boundary]")),
+ ('party_shared_scene',lambda r:change(r,'rules/06-play.md','함께 있는 하나의 씬',"[regressed execution boundary]")),
+ ('inheritance_before_campaign_failure',lambda r:change(r,'rules/06-play.md','전원 원래 PC의 HP/SAN0만으로 캠페인 FAIL을 먼저 확정하지 않고',"[regressed execution boundary]")),
+ ('reward_common_consumption',lambda r:change(r,'rules/03-danger.md','동일 위험 해소라면 공통 성취로 묶고',"[regressed execution boundary]")),
+]
+
 with tempfile.TemporaryDirectory() as tmp:
     baseline=Path(tmp)/'baseline';(baseline/'docs').mkdir(parents=True)
     shutil.copytree(ROOT/'rules',baseline/'rules')

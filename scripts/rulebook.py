@@ -59,6 +59,8 @@ def validate(*, semantic_checks=True):
     index_text = (ROOT/'rules/00-index.md').read_text()
     if len(instructions)>7800:
         errors.append('Project Instructions exceeds 7,800 Unicode characters')
+    if len(start_text)>7800:
+        errors.append('Start Game instructions exceeds 7,800 Unicode characters')
     routes=re.findall(r'^\| (\d{2}-[a-z-]+\.md) \| (.+) \|$',instructions,re.M)
     expected_routes={p.name for p in RULES.glob('*.md')}
     if len(routes)!=len(expected_routes) or {name for name,_ in routes}!=expected_routes:
