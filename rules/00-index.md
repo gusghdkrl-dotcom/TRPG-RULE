@@ -4,7 +4,7 @@
 
 신규 주요 E의 객관적 원인·상태/차단과 PC별 현장 또는 실제 실시간 원격 개입·정보/선택/철수는 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT/WORLD_INITIATIVE_EXECUTION/ENDING_FINALIZATION_GATE를 따른다. **E 8~12/S 18~30, 첫 E 2~30턴, 적 5등급, 전원 E 현장 완주**는 신규 생성/종결 의무가 아니다. 확정된 구판 세이브·원작 세계의 독립 재난과 이미 획득한 안전은 보존한다.
 
-신규 캠페인의 **불가역 G·필수 진실 발견/생존 동기·ENDING_CONDITIONS 전 전체 탈출 불가·소수 적의 지속 능동 추적**은 SCENARIO_BLUEPRINT/HARM_ECOLOGY/CAUSAL_ENDGAME_PRECOMMIT→PRIVATE_CANON_DOCUMENT→WORLD_INITIATIVE_EXECUTION/ACTIVE_DANGER_CONTINUITY→ENDING_FINALIZATION_GATE에서 실행한다. 국지 피해 감소·구조 성공과 PC 행동/감정 주도권은 보존한다. 구판 검증 상태 비소급.
+신규 캠페인의 **불가역 G·필수 진실 이해/생존 동기·마지막 봉쇄/실제 탈출 시련 전 전체 탈출 불가·대표 적과 예비 실행자 선확정·후속 E의 인과적 발생/자율 추적**은 SCENARIO_BLUEPRINT/HARM_ECOLOGY/CAUSAL_ENDGAME_PRECOMMIT→PRIVATE_CANON_DOCUMENT→WORLD_INITIATIVE_EXECUTION/ACTIVE_DANGER_CONTINUITY→ENDING_FINALIZATION_GATE에서 실행한다. 국지 피해 감소·구조 성공과 PC 행동/감정 주도권은 보존한다. 구판 검증 상태 비소급.
 신규 생성 시 PC별 생활·관계·책임과 원작 중심 인과의 연결은 SCENARIO_BLUEPRINT의 깊은 PC 연결 합격 기준, PRIVATE_CANON_DOCUMENT의 PC_CONNECTIONS·HIDDEN_TRUTH·NPC/LOCATION/EVIDENCE/DRIVER/ENDING ref를 사용한다. 직업 기능·거래처만 남은 연결, 조기 예방 후 접촉 공백, 원작 적 전력/물품의 축약, 초기 적·NPC의 자율 이동·위험 실제 접촉 부족, 중요 단서 내용 미확정·진실→결말 단절은 COMPATIBILITY_GATE에서 불합격으로 본다.
 신규 세계/미확정 챕터의 원작 중심축+새 주인공의 사건, 실제 위협/피해·미개입/귀가/해결의 인과 설계도는 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT의 기존 HIDDEN_TRUTH·WORLD_RULES·DRIVER_BASELINES·ENDING_CONDITIONS 및 관련 절을 따르고 COMPATIBILITY_GATE로 내용의 중대성과 실행 연결을 대조한다. 단서의 오인/기만은 실제 NPC/자료의 원인·공개 범위와 해결된 성과를 보존한다.
 
