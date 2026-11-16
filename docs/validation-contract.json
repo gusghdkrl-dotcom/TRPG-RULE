@@ -859,6 +859,7 @@
   {
     "rule": "SCENARIO_BLUEPRINT",
     "contains": [
+      "**중요 단서·문서의 내용 사전 확정:**",
       "기본 조우 두 개체를 세계의 총 병력으로 오해하거나",
       "WORLD_PC_INPUT의 PC-원작 고유 인과",
       "조건부 진행 설계도",

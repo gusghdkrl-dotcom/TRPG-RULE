@@ -7,7 +7,8 @@
 - **수정:** 04-setup SOURCE_EXPERIENCE_CONTRACT 원작 적·NPC·실물/장소/확장 확인, SCENARIO_BLUEPRINT/ HARM_ECOLOGY의 세계 처음부터 존재하는 유한 전력과 독립 수색·환경/관계 압박, EVIDENCE 단서 실제 문구·날짜/소유, 진실→개인 이해관계→대응/ENDING의 실제 변화 강화. COMPATIBILITY_GATE에서 대사건의 정상 활동·초기 대피/우회/위기·발견/결말 경로 반례를 대조. 07-state PRIVATE_CANON_DOCUMENT의 동일 10절 저장 계약을 강화하고 강제 E 현장 방문 문구 제거. 인스트럭션/색인 라우팅을 소폭 정리, 기존 validation-contract와 부정 회귀 세 건만 추가.
 - **보호/적용:** 신규 생성·미확정 챕터에만 적용, 기존 Lightless Beacon 정본 S87/검증 세이브 비소급. 원작 단일 적·단편에 허위 군단 의무화 금지; 전투/희생/고정 수·시간표/필수 진상 입증 금지; 실제 정당하게 얻은 안전과 플레이어 선택 보호. 실제 시작 전부터 위협권/원인 준비를 요구하되 피해/도주 실패 강제하지 않는다. 새 DB/UI/HP·SAN·카드·본부·다인 시간 계약 없음.
 - **검증:** GitHub 원문 앵커/인스트럭션 글자 수 확인. GitHub Actions에서 check/부정 회귀/export 확인 필요. 독립 모델의 새 정본 생성·실전 플레이는 미검증.
- - **CI 실패 및 복구:** 최초 run `43817465385`에서 수정 전 텍스트 앵커 3개가 사라져 `rulebook.py check`가 실패함. SCENARIO_BLUEPRINT의 '작품 규모와 실행 가능한 깊이', HARM_ECOLOGY의 치명 위해/SAN 및 HUD만으로 완료 금지 기존 앵커를 동일 의미의 새 원문 앵커로 치환. 게임 규칙 추가 변경 없이 검증 계약만 동기화함. 재실행 CI 결과 별도 확인.
+ - **CI 회귀 교정:** run `43817623368`에서 check는 PASS였으나 신규 `clue_text_left_until_discovery` 부정 회귀가 본문 중 비보호 표현만 바꾸어 유효하게 실패하지 않음. 동일 기존 검증 계약의 SCENARIO_BLUEPRINT에 핵심 단서 사전 확정 앵커를 추가하고 부정 사례가 그 앵커를 직접 훼손하도록 수정. 게임 내용·새 테스트 프레임워크 변경 없음. 재검증 결과 별도.
+- **CI 실패 및 복구:** 최초 run `43817465385`에서 수정 전 텍스트 앵커 3개가 사라져 `rulebook.py check`가 실패함. SCENARIO_BLUEPRINT의 '작품 규모와 실행 가능한 깊이', HARM_ECOLOGY의 치명 위해/SAN 및 HUD만으로 완료 금지 기존 앵커를 동일 의미의 새 원문 앵커로 치환. 게임 규칙 추가 변경 없이 검증 계약만 동기화함. 재실행 CI 결과 별도 확인.
 
 
 
