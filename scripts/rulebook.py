@@ -18,7 +18,7 @@ def registry():
 def sources():
     return [ROOT/'PROJECT_INSTRUCTIONS.md', ROOT/'START_GAME.md', *sorted(RULES.glob('*.md'))]
 
-def validate():
+def validate(*, semantic_checks=True):
     errors = []
     ids = registry()
     for path in sources():
@@ -91,42 +91,48 @@ def validate():
     if set(re.findall(r'^\| ([A-Z][A-Z0-9_]+) \|',catalog,re.M))!=ids.keys():
         errors.append('Rule catalog does not match active registry')
     # These cross-system dependencies are checked against the current authoritative sections.
-    checks=json.loads((ROOT/'docs/validation-contract.json').read_text())
-    for check in checks:
-        rid=check['rule']
-        if rid not in ids:
-            errors.append(f'Contract rule missing: {rid}');continue
-        body=ids[rid].read_text().split('## '+rid+'\n',1)[1].split('\n## ',1)[0]
-        for fragment in check.get('contains',[]):
-            if fragment not in body:errors.append(f'{rid}: missing invariant {fragment}')
-        for fragment in check.get('excludes',[]):
-            if fragment in body:errors.append(f'{rid}: obsolete/conflicting text {fragment}')
-        # Critical play reminders must survive edits to the always-on instructions.
-        for fragment in check.get('instruction_contains',[]):
-            if fragment not in instructions:errors.append(f'Project Instructions: missing {rid} reminder {fragment}')
-        for fragment in check.get('instruction_excludes',[]):
-            if fragment in instructions:errors.append(f'Project Instructions: obsolete {rid} reminder {fragment}')
-        for fragment in check.get('start_contains',[]):
-            if fragment not in start_text:errors.append(f'START_GAME: missing {rid} entrypoint {fragment}')
-        for fragment in check.get('start_excludes',[]):
-            if fragment in start_text:errors.append(f'START_GAME: conflicting {rid} entrypoint {fragment}')
-        for fragment in check.get('index_contains',[]):
-            if fragment not in index_text:errors.append(f'00-index: missing {rid} router {fragment}')
-        for fragment in check.get('index_excludes',[]):
-            if fragment in index_text:errors.append(f'00-index: conflicting {rid} router {fragment}')
-        order=check.get('instruction_order',[])
-        if order:
-            positions=[instructions.find(fragment) for fragment in order]
-            if (len(set(order))!=len(order)
-                    or any(instructions.count(fragment)!=1 for fragment in order)
-                    or positions!=sorted(positions)):
-                errors.append(f'Project Instructions: missing, duplicated or reordered {rid} execution sections')
+    checks = []
+    if semantic_checks:
+        checks=json.loads((ROOT/'docs/validation-contract.json').read_text())
+        for check in checks:
+            rid=check['rule']
+            if rid not in ids:
+                errors.append(f'Contract rule missing: {rid}');continue
+            body=ids[rid].read_text().split('## '+rid+'\n',1)[1].split('\n## ',1)[0]
+            for fragment in check.get('contains',[]):
+                if fragment not in body:errors.append(f'{rid}: missing invariant {fragment}')
+            for fragment in check.get('excludes',[]):
+                if fragment in body:errors.append(f'{rid}: obsolete/conflicting text {fragment}')
+            # Critical play reminders must survive edits to the always-on instructions.
+            for fragment in check.get('instruction_contains',[]):
+                if fragment not in instructions:errors.append(f'Project Instructions: missing {rid} reminder {fragment}')
+            for fragment in check.get('instruction_excludes',[]):
+                if fragment in instructions:errors.append(f'Project Instructions: obsolete {rid} reminder {fragment}')
+            for fragment in check.get('start_contains',[]):
+                if fragment not in start_text:errors.append(f'START_GAME: missing {rid} entrypoint {fragment}')
+            for fragment in check.get('start_excludes',[]):
+                if fragment in start_text:errors.append(f'START_GAME: conflicting {rid} entrypoint {fragment}')
+            for fragment in check.get('index_contains',[]):
+                if fragment not in index_text:errors.append(f'00-index: missing {rid} router {fragment}')
+            for fragment in check.get('index_excludes',[]):
+                if fragment in index_text:errors.append(f'00-index: conflicting {rid} router {fragment}')
+            order=check.get('instruction_order',[])
+            if order:
+                positions=[instructions.find(fragment) for fragment in order]
+                if (len(set(order))!=len(order)
+                        or any(instructions.count(fragment)!=1 for fragment in order)
+                        or positions!=sorted(positions)):
+                    errors.append(f'Project Instructions: missing, duplicated or reordered {rid} execution sections')
     if errors:raise SystemExit('\n'.join(errors))
-    print(f'PASS: {len(ids)} unique rules; {len(migration)} original blocks and {len(reorganization)} parent IDs accounted for; {len(checks)} semantic guard groups; UTF-8, links, code fences, retired routing, catalog and instruction length')
+    mode = f'{len(checks)} semantic guard groups' if semantic_checks else 'structural integrity only (semantic checks opt-in)'
+    print(f'PASS: {len(ids)} unique rules; {len(migration)} original blocks and {len(reorganization)} parent IDs accounted for; {mode}; UTF-8, links, code fences, retired routing, catalog and instruction length')
     return ids
 
+def check():
+    return validate(semantic_checks=False)
+
 def export():
-    ids=validate()
+    ids=validate(semantic_checks=False)
     target=ROOT/'build/project-pack'
     if target.exists():shutil.rmtree(target)
     (target/'sources').mkdir(parents=True)
@@ -180,5 +186,5 @@ def stats():
     print(json.dumps({'original_characters':baseline['characters'],'current_game_documents_characters':current,'reduction_percent':round((1-current/baseline['characters'])*100,1),'project_instruction_characters':len((ROOT/'PROJECT_INSTRUCTIONS.md').read_text()),'rules':len(registry())},ensure_ascii=False,indent=2))
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['check','export','stats']);a=ap.parse_args()
-    {'check':validate,'export':export,'stats':stats}[a.action]()
+    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['check','deep-check','export','stats']);a=ap.parse_args()
+    {'check':check,'deep-check':validate,'export':export,'stats':stats}[a.action]()
