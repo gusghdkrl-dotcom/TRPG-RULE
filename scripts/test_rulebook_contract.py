@@ -24,6 +24,9 @@ def validate(root):
         raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
+ ('threats_are_map_props',lambda r:change(r,'rules/04-setup.md','움직이지 않는 적 2~3명을 놓은 것','이름만 있는 적 두 마리도 충분함')),
+ ('clue_text_left_until_discovery',lambda r:change(r,'rules/04-setup.md','발견하는 순간 발췌를 정한다','단서는 플레이 도중 임의 생성')),
+ ('source_encounter_count_as_world_total',lambda r:change(r,'rules/04-setup.md','기본 조우 두 개체를 세계의 총 병력으로 오해하거나','기본 조우 두 개체를 세계 전체 수로 고정')),
  ('spine_missing',lambda r:change(r,'rules/04-setup.md','**주요 인과의 선행조건·세계 ID:**','E 이름만 나열하고 순서는 정하지 않는다')),
  ('id_is_spine',lambda r:change(r,'rules/04-setup.md','E 번호/필수 방문/PC별 완주를 세계의 순서나 종결 게이트로 삼지 않는다','E01부터 번호대로 전부 체험시킨다')),
  ('world_waits_for_spine',lambda r:change(r,'rules/04-setup.md','선행 PC 방문을 기다려 멈추지 않는다','앞 기점 종료 전 NPC 세계 활동도 멈춘다')),
