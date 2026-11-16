@@ -1,5 +1,8 @@
 # 시간요원 본부 고정 NPC 8인 — 승인된 외형 참고 기준
 
+> **개발/설치 이력 자료:** 아래 작성 시점의 DEV 표기·예정/미구현 설명은 당시 이력이다. 현행 설치 목록은 docs/sql/release/README.md, 게임 실행은 rules/04-setup.md HQ_ON_CAMPAIGN_ROUTER·rules/09-cards.md CARD_PLAYER_STORAGE, 고정 인물은 rules/08-visual.md가 정본이다. 이 문서는 게임 ZIP에 포함되지 않으며 실행 필수 참조가 아니다. 운영 상태·API 성공은 실제 연결에서 별도 확인한다.
+
+
 - 구분: 기존 NPC 설정을 보존하고 **2026-11-13 대화에서 직접 확정한 배우 참고·외형 디테일을 보강**한 개발 문서
 - 상태: **기존 설정 확정 + 사용자 제공 공식 PNG 8장 GitHub DEV 원본 등록 검증 완료(2026-11-13)**. `assets/hq-npc/manifest.json`과 실제 8개 PNG가 파일별 Git blob SHA-1·바이트 수 일치. 단, 각 ChatGPT 게임 실행 환경에서 이미지가 표시되는지는 별도 테스트 대상이다.
 - 우선 근거: 기존 `docs/development/TIME_AGENT_CONCEPT_DRAFT.md` §6.3·관련 후속 확정 절, `rules/08-visual.md`의 `CHARACTER_VISUAL_CANON`, `VISUAL_ASSET_PERSISTENCE_BOUNDARY`

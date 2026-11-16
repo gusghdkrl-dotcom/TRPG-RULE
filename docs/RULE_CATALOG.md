@@ -1,27 +1,6 @@
-# 전체 규칙 위치
+# 규칙 담당 색인
 
-개발용 색인. 현행 실행 ID만 표시한다. 영구 카드의 신규 18개 ID는 09-cards.md에 포함한다. 이전361개 대응은 rule-reorganization.json, 최초403개 원문 대응은 rule-migration.json.
-
-현행 신규 PC HP +2는 HP_AND_DEATH/PC_DERIVED_STATS, 과거 +1 확정 PC의 비소급은 STATE_COMPATIBILITY, 의료품 B안의 종류별 1개·일회용/반복 HP 치료·구급상자 1d3+1은 HEALING/INVENTORY/CARD_ASSET_GU/CARD_ASSET_NE에, 본래 현지 PC 인물상 브리핑은 INVESTIGATOR_DEPTH_PROTOCOL/HQ_FIELD_CONTEXT_BRIEFING/PRIVATE_CANON_DOCUMENT/FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT에, 가방 물품 상시는 INVENTORY/BOTTOM_HUD_CONTRACT에 둔다. 검증된 기존 세이브 비소급.
-신규 현지 공개 내레이션·PC별 대명제 연결은 START_GAME/SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT/KEEPER_SCENE_SELECTION, 획득형 수납 확장은 INVENTORY/BOTTOM_HUD_CONTRACT, 실제 발동 기준 상대 물리 소요는 SCENE_ELAPSED_TIME_SETTLEMENT 담당. 신규 사건 예약 시간표는 만들지 않는다.
-발작은 INSANITY_CONDITIONS 발동→BOUTS_OF_MADNESS 실제 PC 행동 기회 2회→정상 행동권 복귀, UNDERLYING_INSANITY는 신규 지속 광기 폐지/기존 검증 세이브 호환 ID 담당. 기존 치료·SAN 회복/의료품은 이번 변경 없음.
-
-신규 PC HP 0은 HP_AND_DEATH/WOUNDS의 **같은 현장 실제 구조 가능한 다른 PC**가 있으면 의식불명, 없으면 사망이라는 현행 조건을 따른다. 중상 단독 CON 의식불명과 Dying/라운드별 사망/안정화 절차는 폐기된 상태다. HEALING의 전투/추격 중 HP 회복 불가, 실제 안전 확보 뒤 일회용 처치/효력과 구판 검증 값은 보존한다. **신규 E는 현장·실시간 원격 개입/미개입과 객관적 발생·차단이 별개이며 모든 PC 고유 현장 체험을 의무로 만들지 않는다.** 원작 대표 적의 실제 위해·SAN/회피/격퇴는 04-setup/07-state를, 이동·엔딩/후일담은 06-play를 따른다.
-
-생성 완료의 실제 인과·독립 주요 E와 중간 작업·과거 사건의 분류/다층 체험·사이드 깊이/다경로 접촉은 SCENARIO_BLUEPRINT, **플레이 가능 사건만 집계하고 원작 체험/1인 위험·미등록 참조·저장 식별자를 대조하는 최종 문턱은 COMPATIBILITY_GATE**, 개별 NPC의 목소리·관계 실행은 STORY_NPC, 초기 NPC/시설·사건 ref 연결은 PRIVATE_CANON_DOCUMENT, 실제 사이드 장면·목표 반환은 WORLD_INITIATIVE_EXECUTION/KEEPER_SCENE_SELECTION, 종결은 ENDING_FINALIZATION_GATE가 담당한다.
-신규 E는 원작 중심 위기의 서로 다른 실효 국면·독립 세계 발생/차단/결과를 준비하되 **모든 활성 PC의 모든 E 현장 방문·E/S 수량·적 5종·첫 E 턴 제한을 강제하지 않는다**. 직접 현장과 유효한 실시간 원격 개입은 모두 체험 가능하며 세계에서 해결된 E와 PC별 지식/경험은 구별한다. SCENARIO_BLUEPRINT/COMPATIBILITY_GATE/PRIVATE_CANON_DOCUMENT/WORLD_INITIATIVE_EXECUTION/ENDING_FINALIZATION_GATE가 생성→실행→저장→종결에서 이를 연결한다. 실제 근본 해결·부분 구조/생존·철수·전멸과 기존 verified 결과/세이브 비소급을 보호한다.
-
-**신규 중심 재난·필수 진실·엔딩 게이트:** SCENARIO_BLUEPRINT/CAUSAL_ENDGAME_PRECOMMIT은 신규 G의 최초 불가역 발발, PC별 생존 압박과 핵심 HIDDEN_TRUTH 발견의 필수 이유, 마지막 탈출 조건을 준비한다. HARM_ECOLOGY/PRIVATE_CANON_DOCUMENT는 원래 유한 적의 지속 활동·국지 피해/대응과 전체 위험권의 봉쇄/해제·단서/대응 실물을 확정한다. WORLD_INITIATIVE_EXECUTION/ACTIVE_DANGER_CONTINUITY는 실제 압박을 진행하고 ENDING_FINALIZATION_GATE는 진실/해제 조건 달성 후에만 정상 철수를 확정한다. 기존 조기 전면 예방/중도 안전 철수 허용은 신규 생성에 비적용, 기존 verified 비소급.
-**신규 원작 전력·위협 접촉 깊이:** SOURCE_EXPERIENCE_CONTRACT는 원작 적/NPC·장소/물품·단서와 선택 확장 근거를, SCENARIO_BLUEPRINT/HARM_ECOLOGY는 원래 활동하는 적/환경·NPC가 통상 PC 경로에 도달하는 위험과 진실→대응·결말을 설계한다. PRIVATE_CANON_DOCUMENT는 10절에 최초 개체·동선·자원·핵심 단서 문구를 선확정하고 COMPATIBILITY_GATE가 축약/정체·조기 무료 탈출 반례를 불합격 처리한다. 정당한 실제 안전·구판 verified는 비소급.
-**신규 PC별 원작 인과 깊이:** SCENARIO_BLUEPRINT에서 생활/관계/책임의 실제 중심 위기 충돌과 발견 전후 대응/결과를 준비, PRIVATE_CANON_DOCUMENT의 기존 10절 ref에 연결, COMPATIBILITY_GATE에서 직업 기능만의 얕은 연결·초기 예방 뒤 빈 경로·NPC/적/핵심 장소/S 실행 공백을 확인한다. 기존 verified 비소급.
-**세계 E와 PC별 목적·접촉의 실행 경계:** SCENARIO_BLUEPRINT는 원작 중심 원인/재난의 실제 위협·PC별 생활/숨은 인과 연결·중대 E 발동/차단/구조/퇴각·미개입 상태를 사전 확정한다. FINAL_THREAT_DESIGN은 PC가 실제 결정적 행동을 수행할 다국면/조건부 근본 해결·부분 결과를 준비하며 COMPATIBILITY_GATE는 분리/원격·외부 교구 지원/단기 안전·조기 적 격퇴·철수의 직접 플레이 경로를 대조한다. WORLD_INITIATIVE_EXECUTION은 세계 자율 진행, STATE_WORKING_CONTEXT는 PC별 인지·원격/현장 경험을 분리한다. 공개 🎯 HUD는 현재 PC의 실제 목적/관측만 표시한다.
-
-**세계 사건·생활·접촉의 담당:** SOURCE_EXPERIENCE_CONTRACT는 원작 고유 사실·위협/생활 체험, SCENARIO_BLUEPRINT는 원작 중심 G/주요 E의 조건·선택적 S·PC별 연결, LINKED_MAJOR_DISASTER_TIMERS는 신규 시간표 금지/구판 호환, PC_REACHED_EVENT_CONTRACT는 현장 또는 실시간 원격 개입·미관측 구별, FINAL_THREAT_DESIGN은 실제 PC 주인공성·근본 대응, WORLD_INITIATIVE_EXECUTION은 세계 자율 행동·접촉, SCENE_CONSEQUENCE_RULE은 목적 종료/진행 공백 방지, ENDING_FINALIZATION_GATE는 실제 해결·안전/철수·사망/잔존 위험, PRIVATE_CANON_DOCUMENT/STATE_WORKING_CONTEXT는 정본/누적 상태를 각각 담당한다. 상세 규칙은 단일 소유 절에서 조회한다.
-기존 목적을 이어가는 경로와 원작 체험 접촉은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 현장에서 확정하는 일상적 후속 사건은 SCENE_CONSEQUENCE_RULE, 장면·다인 선택 경계는 KEEPER_SCENE_SELECTION, 실제 확정 뒤 연속성은 STATE_WORKING_CONTEXT가 담당한다. 새로운 이벤트 전용 DB 필드나 규칙 ID는 만들지 않는다. 아래 기존 ID/담당 링크를 재사용하며 새 검수 단계나 별도 게임용 문서를 추가하지 않는다.
-
-원작의 공포와 주요 진실 전후의 의미/선택·대응/결말 변화는 FULL_DIVE_CROSS_ANALYSIS/SCENARIO_BLUEPRINT, 절정의 준비/관계/선택 회수와 조기 해결은 FINAL_THREAT_DESIGN/CAUSAL_ENDGAME_PRECOMMIT, 행동 중 접촉/후속은 CLUE_FUNCTION/STORY_NPC/KEEPER_SCENE_SELECTION에서 다룬다. COMPATIBILITY_GATE는 운용 가능한 조건과 서사의 깊이를 구분해 대조한다. 신규 캠페인의 원작 의미→공포의 형상/공간→행동 중 체험은 FULL_DIVE_CROSS_ANALYSIS, 누적 경험→결정적 대응의 실제 활용은 FINAL_THREAT_DESIGN에서 구체화하며 기존 캠페인 재개는 재설계하지 않는다.
-
-신규 캠페인의 초기 귀가/우회·의도적 탈출의 위험권/경로·추적/차단·대응/실패 설계는 SCENARIO_BLUEPRINT/HARM_ECOLOGY, 완성도 대조는 COMPATIBILITY_GATE, 초기 정본 보존은 PRIVATE_CANON_DOCUMENT다. 실제 이동의 잔존 위협은 ACTIVE_DANGER_CONTINUITY, 위해는 REACHED_DANGER_EXECUTION_GATE, 실제 안전/이탈 판정은 ENDING_FINALIZATION_GATE에서 처리한다. 일반 철수 인정과 떠나겠다는 의사만으로 무위험 엔딩을 주는 처리를 구분한다.
+실행 정본은 PROJECT_INSTRUCTIONS.md·START_GAME.md·rules/*.md다. 이 표는 규칙 ID별 담당 본문을 찾는 개발용 색인이며 추가 규칙이 아니다. 신규 설계 04-setup → 실제 실행 05-world → 종결 06-play → 정본/상태 07-state로 조회한다. 전체 판본과 호환 경계는 RULESET.json 및 STATE_IDENTITY/STATE_COMPATIBILITY를 따른다.
 
 | 규칙 ID | 담당 본문 |
 |---|---|

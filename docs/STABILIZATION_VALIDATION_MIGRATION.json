@@ -1,0 +1,2282 @@
+{
+  "reason": "2026-11-17 approved consolidation; current owner clauses replace copied/contradictory text guards; no game/API execution claimed",
+  "groups": [
+    {
+      "rule": "SKILL_IMPROVEMENT",
+      "retired_copied_anchors": [
+        "대사건은 기능/특성 등 영구 스탯 성장 없음"
+      ],
+      "current_owner": "rules/02-checks.md"
+    },
+    {
+      "rule": "FIREARMS",
+      "retired_copied_anchors": [
+        "다음 공격 행동을 포기"
+      ],
+      "current_owner": "rules/03-danger.md"
+    },
+    {
+      "rule": "SETUP_UI_FIXED_CONTRACT",
+      "retired_copied_anchors": [
+        "일반 채팅",
+        "별도 전환 승인",
+        "후보·수치를 다시 뽑지",
+        "선택 대기는 하나",
+        "중립(NE) 카드는 어느 클래스 수에도 합산하지 않는다",
+        "이미지 생성 요청으로 해석하지 않는다",
+        "중립은 회색",
+        "희귀 청록",
+        "전설 금색",
+        "보유/선택/장착을 혼동하지 않는다",
+        "**이름 바로 앞에는 색상 있는 클래스 고유 아이콘**",
+        "**카드 이름 글자색에는 실제 희귀도 색상**",
+        "수호자 파란 방패",
+        "탐구자 노란 눈",
+        "무법자 초록 열쇠",
+        "기회주의자 보라 주사위",
+        "생존자 빨간 배낭",
+        "중립 회색 원형",
+        "전체 66장",
+        "보유 N/66",
+        "영구 성장8종",
+        "카드명 검색",
+        "더 보기/페이지 이동",
+        "09-cards.md",
+        "상세 효과 확인 불가",
+        "4개의 슬롯을 먼저 선택",
+        "장착 가능한 실제 보유 카드만",
+        "permanent_cards_enabled=true",
+        "OFF 캠페인에서는",
+        "**첫 설정 화면 고정 UX — 기존 영구 카드 토글 화면 폐기:**",
+        "ON+1명은 P1만",
+        "ON+2명은 P1/P2",
+        "ON+3명은 P1/P2/P3",
+        "OFF이면 닉네임 입력칸을 숨기고",
+        "**닉네임 검증:**",
+        "2~24자·빈칸 불가",
+        "설정 확정하고 다음 단계로",
+        "숨기고 제출에서 제외",
+        "모두 선택이며 공란이면",
+        "같은 채팅 단계",
+        "A/B/C의 8특성·Luck을 재추첨",
+        "카드 계정 닉네임을 기본정보로 오인하거나 덮어쓰지 않는다"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "CAMPAIGN_SETUP_PIPELINE",
+      "retired_copied_anchors": [
+        "전원 현지 PC 생성",
+        "세계·시나리오",
+        "첫 장면을 막지",
+        "검증된 소유 카드 자산/강화 집계",
+        "1번 주 클래스 자산 전용1",
+        "2번 주 클래스 강화 전용1",
+        "4슬롯 우선 선택",
+        "전체 도감",
+        "permanent_cards_enabled=true",
+        "OFF이면 카드 로그인",
+        "OFF는 카드 PC 연결 RPC",
+        "1단계에서 이미 검증·확정한 P1~PN 카드 닉네임을 재질문하지 않고",
+        "동일 화면에서 특성+Luck A/B/C와 선택 입력 성별·이름·나이 함께 확정",
+        "SCENARIO_BLUEPRINT의 네 계층(원작 분석·대명제 선정·필수 뼈대·작은 목표/생활 접점)"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT",
+      "retired_copied_anchors": [
+        "신규 시작 장비는 STARTING_EQUIPMENT_MINIMAL의 1개뿐"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "SCENARIO_BLUEPRINT",
+      "retired_copied_anchors": [
+        "기본 조우 두 개체를 세계의 총 병력으로 오해하거나",
+        "WORLD_PC_INPUT의 PC-원작 고유 인과",
+        "조건부 진행 설계도",
+        "생존 대응과 발견",
+        "중대한 난관",
+        "원래 목적/중요성/악용/활용",
+        "조사/의뢰 수락은 사건 발생 스위치가 아니다",
+        "실제 위협과 손실 가능성",
+        "조기에 해결",
+        "당면 목적 → 세계의 변화와 직접 경험 → 행동/관계/수단 선택 → 실제 결과 → 달라진 상황과 다음 목적",
+        "정본의 중심은 살아 있는 세계와 플레이 가능한 상황망이다",
+        "진상 입증을 모든 장면의 목표로 삼지 않는다",
+        "행위자·수단/권한·접근/정보 전달 경로·발동 조건·관측 결과·차단 방법",
+        "발동/억제 조건·관측 현상·접근/피해·가능한 대응·차단/실패 뒤 상태",
+        "가능성만으로 설계 완료라 하지 않는다",
+        "필수 물건의 기준 소유/위치는 하나로 정하고 실제 복수 사본은 각각 구분한다",
+        "핵심 진실은 앞서 겪을 현상·물건·인물 행동의 의미를 바꾸는 사전 원인으로 설계한다",
+        "반전 횟수/고정 단계·인물 배신·필수 희생은 할당하지 않는다",
+        "이번 사건의 의미와 결정적 선택을 떠받치는 내막은 ‘알 수 없는 힘’으로 비워 두지 않는다",
+        "우주론 전체와 원작이 남긴 불가해함은 미지로 남길 수 있고",
+        "새 진실을 만들기 위해 확정 과거·능력·소유·성과를 소급 변경하지 않는다",
+        "자연스러운 귀가·우회·관여 축소와 의도적 도주가 실제 위험권을 지나는 생존 경로",
+        "조사/의뢰/핵심 장소 방문에 동의해야만 모든 위험이 켜지고 초반 귀가에는 아무 원인도 닿지 않는 설계는 보완한다",
+        "출발 의도 자체를 공격 스위치로 쓰지 않고",
+        "NPC는 실제 인지/전달·위치/시간·수단이 있어야 가로막을 수 있다",
+        "원작의 상징적 대표 적을 비공개 정본에 반드시 구현",
+        "완전 신규 창작 적",
+        "약점·회피/격퇴/봉쇄/탈출",
+        "원작의 핵심 사건/세력·대표 적",
+        "새로운 주인공/사건/인물",
+        "기존 WORLD_BASELINE/HIDDEN_TRUTH/WORLD_RULES/DRIVER_BASELINES/ENDING_CONDITIONS",
+        "PC 중심 접촉",
+        "초반 철수의 난관",
+        "메인/사이드 사건의 독립적 상황망",
+        "NPC가 생활/업무·구조·물품·거래·피난처·관계·공적 대응에서",
+        "**비디오게임의 재미를 TRPG로 번역하는 준비/운영 경계:**",
+        "레벨 클리어 순서·필수 열쇠/퍼즐·방마다 전리품",
+        "룰북은 판정과 창작 원칙, 비공개 정본은 처음부터 존재하는 사람·적·장소·수단·원인과 가능한 결과의 인과",
+        "정본은 플레이 가능한 기반이지 PC 행동",
+        "미리 짜 둔 한 가지 정답이나 특정 기능 성공을 모든 PC에게 강제하지 않는다",
+        "방마다 전리품",
+        "고정 보상을 부여하지 않는다",
+        "키퍼의 현장 진행",
+        "**원작 고유의 공포는 게임 초입부터:**",
+        "**방마다 살아 있는 세계가 있는 탐험:**",
+        "**유한한 조건부 무작위 인카운터:**",
+        "**여러 장소에 분산한 추리의 재료:**",
+        "새 적/생존자 무제한 생성",
+        "**세계→시대/지역 전체 공간→시설/물품/사람→중심 사건의 접촉과 역검증:**",
+        "인물·장소·물품·사건이 양방향 인과로 일치",
+        "복수로 분산 준비",
+        "처음부터 '퀘스트 주는 사람'·'동료'·'배신자'라는 고정 플레이어 대상 역할로 배치하지 않는다",
+        "**우연한 접촉은 세계에서 발생한다:**",
+        "랜덤 NPC 조우에는 사전 존재·현재 위치/목표",
+        "없는 인물 무한 생성",
+        "사건 진행에 필요한 장소만 만들지 않고",
+        "**배치된 공간 전체의 핍진한 내용:**",
+        "**핵심 장소·필연적 국면의 인과적 강제력:**",
+        "그곳의 접근이 필요해지는지",
+        "**파티 분리의 독립적 실질 위험을 사전 설계:**",
+        "분리했기 때문에 자동 피해·모든 NPC 배신·숨은 적 생성·주사위 페널티",
+        "공동 대응의 유리함과 분산의 대가",
+        "**분산 이전부터 성립하는 생존 위협의 실효성:**",
+        "전원이 함께 있어도 진지하게 감지·방어/전투·구조·우회·퇴각·준비를 고민할 만큼",
+        "근본 위협의 도달·위해/자율 행동 설계가 부족",
+        "**NPC의 동행·복종은 특별한 합의이지 기본값이 아니다:**",
+        "거절할 지시·협력 조건·독립 행동/계획 변경",
+        "기본적인 협력이 성립한 뒤에도 위험한 곳 선행 정찰",
+        "모든 명령을 자동 거절하지 않는다",
+        "**지역별 압박과 호흡을 분리:**",
+        "임의로 30분마다 새 공격/시계 알림을 배치하지 않는다",
+        "**정체 시 직접 다가오는 세계:**",
+        "위험한 선택을 하지 않았다는 이유만으로 NPC·적이 모든 일을 멈추지도 않는다",
+        "**참가 인원에 따른 사전 위협 규모 설계:**",
+        "PC 수 × 고정 적 수/HP·피해량 배율",
+        "정본 확정/플레이 시작 뒤 PC 수·현재 HP·연승/철수 의도에 맞춰 적을 새로 생성/회복",
+        "**사건 안으로 들어가게 하는 불가피한 현실과 이후의 철수:**",
+        "재난 속에 진입할 수밖에 없는 상황",
+        "**추적자**는 실제 목표를 발견하거나 흔적을 확보했을 때만",
+        "**원작 초반 직접 노출과 지역별 소규모 생활 사건:**",
+        "핵심 사건과 직접 관련 없는 작은 분쟁",
+        "**메인 무대의 유효 체류 시간과 사건 지속성:**",
+        "정상적인 생활 교류·자발적인 탐험/준비를 충분히 즐겼더니 주요 목표와 모든 관계·대응 기회가 이미 끝나 있는 구조",
+        "**핵심 적대자의 초기 충돌·생존 수단과 사건 인과:**",
+        "지휘자의 중요성을 이유로 플레이어가 성공시킨 사살·체포·봉쇄를 강제로 실패 처리하거나 불사/자동 탈출을 부여하지 않는다",
+        "필연적 주요 재난의 발생 원인은 실행자 개인의 생존과 분리해 사전 구성",
+        "**기존 목적을 살리는 열린 사건망:**",
+        "PC가 직업·생활/보호 책임·현재 목적을 유지하거나 우회·거부해도",
+        "PC 가족사·감정/조사 결심·수락을 대필하지 않고",
+        "**시나리오 시간표의 사용 금지:**",
+        "발생 시각을 예약해서 메인 진행을 설계하지 않는다",
+        "**목표망의 깊이와 자연스러운 분량:**",
+        "**세계 인과와 PC에게 닿는 목표의 분리:**",
+        "**첫 충격과 이후의 필수 재난 — 독립 원인:**",
+        "한 목표가 신속히 해결돼도 후속 국면/사이드 후보가 충분하고",
+        "세계에서 발생함, NPC가 알아챔, PC가 직접 경험함을 구별",
+        "주요 재난/습격/확산은 PC가 퀘스트를 받거나 특정 장소에 도착할 때",
+        "PC·동료의 HP/SAN 피해·죽음·동행·해결 방식은 실제 상황과 판정에 맡긴다",
+        "'다른 루트에서는 누군가가 전할 수 있다'",
+        "**반복 NPC는 다시 만날 이유와 행동을 가진 개인으로 완성:**",
+        "동일한 연기 지시를 모든 NPC에 복제하는 것은 캐릭터 준비가 아니다",
+        "한 사건 거절 뒤",
+        "PC와 무관하게 지금 할 구체 행동",
+        "'다른 루트에서는 누군가가 전할 수 있다'라는 공통 복붙",
+        "**주요 E의 실제 깊이·중복 탈락 기준:**",
+        "이 E를 빼거나 인접 E에 합쳐도",
+        "독립 E 집계에서 제외하고 하위 목표/현장 변화로 남긴다",
+        "최종 세계 결산·후일담은",
+        "**결과별 접촉 경로는 물리·정보 상태로 증명:**",
+        "정보라면 최초 인지자→내용→전달 결심/목적",
+        "이미 준비한 다른 현재 행동 가능성/정당한 안전·종결",
+        "세계가 발생함·NPC가 알게 됨·PC가 듣거나 관측함",
+        "시작·기점 사이·이동 여정·휴식처의 정상 경로마다 실제 관측/교류 가능한 생활·탐험·휴게 접점을 분산 준비한다",
+        "본래 목적은 원작 세계의 생활감·관계·안도·몰입이다",
+        "S 수락/완료만이 필수 사건·핵심 단서·주요 보상/성장을 얻는 유일한 길이어서는 안 된다",
+        "모든 S 동시 발동·매 전투 행동의 팝업·휴식 중 강제 사건은 요구하지 않는다",
+        "**원작 대명제 우선·직접 필요:**",
+        "원작의 실제 중심 사건과 직결되는가",
+        "P1만 사건을 겪고 P2는 S 세 개만 수행하는 경로",
+        "개별 PC의 중심 대명제 관여 이유",
+        "개별 물리 소요의 상대 기점",
+        "**원작 재난 규모와 피해 완화의 경계:**",
+        "G 전체를 예방하게 설계하지 않는다",
+        "이후의 국지 공격·HP/SAN 위해·NPC 사상/물적 손실",
+        "**단일 조기 성공에 대비한 예비 인과(신규 생성):**",
+        "**단일 조기 성공에 대비한 예비 인과(신규 생성):**",
+        "국지 보호/안전은 인정",
+        "**세계 사건 E와 PC의 실제 목적 분리:**",
+        "진행 공백 방지는 별도 당근 발급이 아니라 세계의 실제 후속 경로를 준비하는 일이다",
+        "기존 선택 가능한 상황이 남으면 직접 후속 없음도 합격이며 새 단서/의뢰를 억지로 발행하지 않는다",
+        "기관 도착·다른 PC 합류·추가 S를 메인 진행의 유일한 관문으로 만들지 않는다",
+        "E는 GO/S 완료 횟수나 턴으로 열지 않는다",
+        "**PC별 목적·중심 위기 접촉 경로:**",
+        "**PC 목적 종료와 자유로운 후속 접촉:**",
+        "**주요 인과의 선행조건·세계 ID:**",
+        "E 번호/필수 방문/PC별 완주를 세계의 순서나 종결 게이트로 삼지 않는다",
+        "선행 PC 방문을 기다려 멈추지 않는다",
+        "타 PC가 오기를 기다려 국면/해결을 멈추지 않는다",
+        "**E 사이의 생활·인과적 호흡:**",
+        "**중심 재난의 세계 발생과 PC별 체험의 분리:**",
+        "사전 적 풀의 조건부 개체 생성은 허용",
+        "모든 PC의 동일 현장 방문",
+        "**PC별 출발 목적과 서로 다른 실제 접촉:**",
+        "중심 위기/적의 원인·약점·핵심 자원은 시작 전에 기록",
+        "과거에 끝난 사건, 같은 싸움 반복은 하위 활동/배경으로 분류",
+        "**원작 중심 위기의 실질 규모로 비교:**",
+        "고정 수량 목표와 예외 변명 절차를 사용하지 않는다",
+        "시나리오 규모에 맞춰 준비한다",
+        "원작 위협은 PC가 거절·무관여·즉시 귀가를 선언했다고 소멸하지 않는다",
+        "**원작 적합한 실행 가능한 다층 위협의 의무 준비:**",
+        "**복수 적대 세력형:**",
+        "초기 생활·탐험/구조·중간 교전·절정에 실제로 대응해야 할 다른 위협 양상",
+        "별도 적 개체/종류를 모두 강제로 만드는 의무는 폐기",
+        "**첫 원작 위기의 행동 도달·인과 접촉:**",
+        "최초 E를 턴·예정 시각으로 강제 호출하지 않는다",
+        "실제 감지·접근·위해/단서로 닿는 경로",
+        "각 PC가 실제 생활과 NPC 반응을 경험할 기회를 보존",
+        "**원작 중심 재난의 독립 인과와 손실·주도권 분리:**",
+        "**사전 콘텐츠 깊이와 원작 규모:**",
+        "같은 중심 적/원인을 공유해도",
+        "실시간 원격 개입",
+        "**PC별 직접 참여와 정당한 미개입 경로 검사:**"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "FINAL_THREAT_DESIGN",
+      "retired_copied_anchors": [
+        "격화·차단 조건",
+        "필요한 이해·준비·획득",
+        "독립5축 추첨",
+        "결정적 난관은 현재 원인이 만든 구체적 상황과 접근/실패 영향으로 정한다",
+        "근원 전체의 소멸·고정 보스전·모든 진상 규명은 공통 필수가 아니다",
+        "앞선 선택/관계·준비·치른 대가가 해결 방식·생존·손실·여파에 함께 쓰이게 한다",
+        "작업 완료 보고나 더 강한 적의 등장만으로 절정을 대신하지 않는다",
+        "앞서 겪을 주요 사건·형성 가능한 관계·얻거나 잃을 준비/수단이 어떤 구체적 행동·협력·차단·구조·포기/탈출을 가능하게 하고",
+        "마지막에 회상/설명하는 것으로 완료하지 않는다",
+        "모든 경험/인물/물품의 사용, 고정 보스전·새 퍼즐·필수 손실은 요구하지 않는다",
+        "이미 시작된 난관에서 피해를 줄이거나 국지적 차단·생존/탈출에 성공하면 인정하고",
+        "PC가 실제 조건을 충족한 근본 해결이나 조기 격퇴를 뒤늦게 무효화하지 않는다",
+        "원작 전문가 NPC는 실제 전문지식"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "HARM_ECOLOGY",
+      "retired_copied_anchors": [
+        "움직이지 않는 적 2~3명을 놓은 것",
+        "실제 가능한 위험",
+        "전투 외에도",
+        "실제 처리",
+        "피해 횟수·필수 희생·강제 감염은 없다",
+        "도달한 위해는 담당 판정 뒤 HP·SAN·부상·광기·소모·추격 지속·사망 가능성으로 실제 처리한다",
+        "실패하면 안전 지점에 못 닿거나 위험권에 남을 수 있으며 같은 시도를 무료 재굴림/무손실 성공으로 바꾸지 않는다",
+        "대가는 실제 명중/노출/소모에서 발생하며 출구 통행료처럼 고정 HP/SAN을 차감하지 않는다",
+        "준비·협력·후속 위해 회피/차단에 성공해 무상처로 벗어날 가능성도 보존하며 피해를 입어야만 엔딩 자격을 주지 않는다",
+        "**신규 캠페인의 실제 위해·SAN 위기 설계:**",
+        "육체적 중상·HP0/사망 가능성",
+        "HUD 경고, 지도 곳곳에 움직이지 않는 적 2~3명을 놓은 것",
+        "원래 원인·개체/환경/사건 ID·처음 위치",
+        "공격/환경 피해식",
+        "**여파와 회복의 실제 연결:**",
+        "무조건적인 구제나 강제 사망을 예약하지 않는다"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "CAUSAL_ENDGAME_PRECOMMIT",
+      "retired_copied_anchors": [
+        "직접 손실 위험이 있다",
+        "개별 공격·인명/시설 피해는 실제 준비·구조/방어로 완화",
+        "실제 지도/기상·통신",
+        "복수의 서로 다른 원작 적합한 물리/인물/현상 경로",
+        "사후 새 길막/무적/적 증원은 실패다",
+        "자동 추리·강제 수사 대사·정보 누출"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "COMPATIBILITY_GATE",
+      "retired_copied_anchors": [
+        "**진실 발견·적 자율 행동·종결 연결의 반례:**",
+        "**원작 적·NPC·장소·자원 축약과 위협 접촉 밀도의 반례:**",
+        "직업 수사/동료 사망·거래 인맥",
+        "의미 없는 공정",
+        "개수/턴/회차 목표",
+        "문의/서류 확인뿐이면 체험 설계 미완료다",
+        "실제 정본의 참조된 원인·조건·장소/인물·대응·결과",
+        "가능성만 적고 발동/억제·체험 접점·대응·실제 안전/종결이 비었으면 그 연결은 미완료다",
+        "매 응답 전수 검토·검토표 출력·추가 검수 모델/저장 호출은 만들지 않는다",
+        "운용 가능한 인과와 서사의 깊이를 따로 대조한다",
+        "그 진실을 빼도 모든 경험/선택/결과가 같고 피해 대상 수·작업량·설명 분량만 늘면 서사 심화를 보완한다",
+        "기술적 조건을 갖췄다는 이유만으로 시나리오 품질 검토를 완료하지 않는다",
+        "기존 캠페인의 새 채팅 재개는 신규 생성이 아니며 이 보강을 이유로 저장된 정본·진행을 재설계하지 않는다",
+        "주요 동기를 더 복잡하게 만들거나 목표를 뒤집는 충격적 반전을 합격 조건으로 추가하지 않는다",
+        "공포를 기술 절차 뒤 설명으로만 두거나 관계/준비가 결말 회상에만 등장하면 그 연결은 미완료다",
+        "정상 동선을 따라 관여를 줄이는 분기와 초반부터 의도적으로 이탈하는 분기",
+        "단순 운항 일정/요금만 두고 생존 위협이 없거나, 본편 수락/최종 의례에만 모든 위해를 모아 두면 이탈 설계는 미완료다",
+        "이 생성 보강은 이후 신규 캠페인에 적용하며 기존 캠페인 재개를 소급 재설계하지 않는다",
+        "미래 플레이를 실행하거나 미리 굴리는 절차가 아니다",
+        "서면 정합성만으로 실전 밸런스를 보증하지 않는다",
+        "**시대 공간·핵심 목적지·분산 탐험 사전 대조:**",
+        "사건 기능과 무관해도 존재하는지",
+        "PC1+NPC1 / PC2+NPC2",
+        "**근본 위협·NPC 자율성 시뮬레이션 없는 사전 대조:**",
+        "전원 상태에서도 실제 적이 먼저 찾아오거나 환경 재난이 도달",
+        "NPC의 완벽한 무조건 협조",
+        "NPC마다 첫 합류·동행 중 새로운 위험 지시",
+        "회피 가능한 전조·우회/대응",
+        "일률적인 인원별 적/HP 배율이나 무조건 피해 할당은 사용하지 않고",
+        "**신규 목표망·구판 시간 호환의 분리 검사:**",
+        "메인 E번호별 개시 시각·전 사건 종료+유예·플레이 진도 시계를 작성했다면",
+        "**고정 시간표 없이도 콘텐츠가 이어지는가:**",
+        "**주요 적 조기 제압·사이드 선택과 다경로 회귀:**",
+        "존재하지 않는 실행자를 행동시킨 유령 작전",
+        "**구조/위협·1~3인과 사건 은행의 교차 대조:**",
+        "**원작 핵심 접점과 지역별 충분한 사이드 밀도:**",
+        "**원작 고유 체험·위협 대비의 실효 검증:**",
+        "적의 통상 1~2회 명중에 쓰러질 비무장 1인",
+        "**실제 참조·지형·물품·저장 프로비넌스 게이트:**",
+        "미등록 ref를 가리키거나, 상위 지명/시설 별칭을 장소 ID인 것처럼",
+        "pending/last_verified",
+        "모든 NPC를 만나게 하는 순회·자동 동행/배신·강제 사이드 수락은 정본 완성 조건이 아니다",
+        "**주요 사건 깊이의 사전 반례 대조:**",
+        "독립 주요 사건 집계 불합격",
+        "작동하지 않는 수신기로 무전 수신",
+        "서면 대조가 실제 플레이 성공을 증명하지는 않는다",
+        "화면 밖 활성 목록만 있음, 메인 정체 때만 생활 발동, 모든 S 동시 팝업",
+        "사이드 완료가 메인의 유일한 해금/필수 보상 관문이면 실패다",
+        "무한한 모든 자유 선언을 사전 증명했다거나 정적 합격으로 실제 AI 플레이·서버 저장을 검증했다고 주장하지 않는다",
+        "**일반 E별 인수 대조:**",
+        "작은 목표 완료 할당으로 다음 E 해금",
+        "**단일 초기 성공·거대 당근의 실행 인수:**",
+        "**단일 초기 성공·거대 당근의 실행 인수:**",
+        "**단일 초기 성공·거대 당근의 실행 인수:**",
+        "**세계 G/E·PC별 목적·생활/독립 S의 인수 대조:**",
+        "작은 활동에 직접 후속이 없어도",
+        "**원작 규모에 맞는 실효 사건·생활 깊이 검수:**",
+        "**물리 시간·세계 상태·PC별 경로의 분리 검사:**",
+        "PC 수에 따른 사후 적/HP 배율·필수 피해를 배정하지 않는다",
+        "적이 이름만 있고 구체 위해식/전조·대응·위치가 없다면 생성 실패다",
+        "**첫 현지 생활과 원작 위기의 인과 접촉 검수:**"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "STORY_NPC",
+      "retired_copied_anchors": [
+        "동행자는0명",
+        "고정6단계나 호감 점수는 없다",
+        "증언자/기관 창구를 넘어 함께 움직이고 갈등/유머/도움/손실을 겪을 사람",
+        "어떤 실제 변화가 협력·역할 분담·갈등·이탈을 바꾸는지",
+        "전원 과거표·강제 배신/희생·PC의 사전 친밀감은 추가하지 않는다",
+        "새 비밀은 이미 성립한 도움/합의/성과를 무효로 하지 않는다",
+        "모든 동료를 배신자나 피해자로 만들지 않고",
+        "**NPC는 스토리 소품이 아닌 지역 주민:**",
+        "끝내 만나지 않음",
+        "플롯 충격용 무근거 배신/전원 배신",
+        "**중요/반복 NPC는 관측 가능한 개성이 있는 사람:**",
+        "자신이 알고 모르는 정보",
+        "이후 재회/도움·정보/거절 경계"
+      ],
+      "current_owner": "rules/05-world.md"
+    },
+    {
+      "rule": "NPC_AGENDA_AND_SECRECY",
+      "retired_copied_anchors": [
+        "동의·조건부 협력·대안·보류·거절",
+        "성공 뒤 새 거절 경계",
+        "**태도의 형성과 변화:**",
+        "NPC가 자신 또는 보호할 사람을 위해 먼저 제안",
+        "성공을 보장한 예정 장면",
+        "NPC는 PC 전체 대화/미발견 진실을 알지 못한다",
+        "**동행 NPC는 자동으로 믿을 수 있는 두 번째 PC가 아니다:**",
+        "원래 확정된 의도·목표/준비",
+        "NPC 동행 또는 파티 분리만으로 배신을 예약",
+        "**NPC는 PC의 무료 부하가 아니다:**",
+        "승낙·제한적 협력·대안/역제안·보류·명시적 거절",
+        "새로운 위험·전투·사람을 버리고 떠남",
+        "사회 판정으로 성립한 합의/설득 성공",
+        "**믿음과 배신은 다른 판단:**",
+        "불신·자기 일 우선·명령 거부·이별은 곧 적대나 배신이 아니다"
+      ],
+      "current_owner": "rules/05-world.md"
+    },
+    {
+      "rule": "NPC_AGENDA_INTERVENTION",
+      "retired_copied_anchors": [
+        "PC의 명령 없이",
+        "수락이 필요한",
+        "**필드 인물의 독립 움직임:**",
+        "방을 열었다는 이유로 대기 중인 NPC가 갑자기 출현하지 않는다",
+        "만나지 않은 인물도 행동과 생존/관계의 미개입 여파",
+        "새 PC 약속·지출·협력 동의는 대신 정하지 않는다",
+        "**자율적 협력의 실제 범위:**",
+        "새로운 지시가 합의 범위 밖이거나",
+        "적도 PC가 '어디 갈까' 고민할 때 공격을 유예하거나 파티가 흩어질 때까지 기다리지 않는다"
+      ],
+      "current_owner": "rules/05-world.md"
+    },
+    {
+      "rule": "DEATH_AND_INHERITANCE",
+      "retired_copied_anchors": [
+        "살아있는 동행 NPC",
+        "영구 관전"
+      ],
+      "current_owner": "rules/05-world.md"
+    },
+    {
+      "rule": "NO_CLEAN_EXIT_HORROR_ARCHITECTURE",
+      "retired_copied_anchors": [
+        "전체 위험권 이탈은 중심 진실 이해"
+      ],
+      "current_owner": "rules/05-world.md"
+    },
+    {
+      "rule": "SCENARIO_CAUSAL_PROGRESS_MODEL",
+      "retired_copied_anchors": [
+        "예상 밖 유효 해결"
+      ],
+      "current_owner": "rules/05-world.md"
+    },
+    {
+      "rule": "WORLD_INITIATIVE_EXECUTION",
+      "retired_copied_anchors": [
+        "현재 장소 밖",
+        "정확히 한 번",
+        "인과 선행조건",
+        "실제 도달",
+        "현실 대기",
+        "모든 원인을 매 응답 다시 읽지",
+        "NPC·원작 적·환경의 행동을 PC의 일상/직업",
+        "**모든 주요 사건의 독립적 발생**",
+        "격퇴된 동일 적을 부활시키거나",
+        "사이드 사건은 NPC 목적·일상/사회적 관계·자원",
+        "**키퍼는 비디오게임의 스크립트가 아니라 세계의 현재 원인과 실제 플레이어 선택을 실행한다.**",
+        "퀘스트 수락·정해진 퍼즐 해법·고정 전리품/보스 페이즈",
+        "의미 있는 현장 경험은 펼치되 소진된 이동·작업은 압축한다",
+        "**철수의 도달 위험:**",
+        "초기 재난이나 원작 고유의 실제 접촉을 건너뛰어 무난한 귀가로 압축하지 않는다",
+        "**방 탐험과 유한한 인카운터의 실행:**",
+        "기존 존재의 생사·위치·이동 수단·정보·소모",
+        "**사적 기록과 진실의 다중 접점:**",
+        "**시대·지역에 원래 있는 공간의 방문:**",
+        "키퍼가 그곳에 갈 사건 동기를 뒤늦게 만들거나",
+        "**분리된 일행의 실제 위험·효율:**",
+        "자동으로 알거나 대응할 수 없다",
+        "늘어난 접촉 가능성/부족한 지원",
+        "**연속 위기 사이에 남는 체험과 선택:**",
+        "**정체한 PC에게 접근하는 능동적 위협:**",
+        "판정 대기, 플레이어의 현실 숙고, 채팅 메시지의 양은 0시간",
+        "**정본 확정 뒤에는 적 전력을 동적으로 스케일하지 않음:**",
+        "플레이어가 늘었거나 파티가 분리됐다는 이유만으로 새 적을 생성하거나",
+        "**핵심 거점에 이르게 하는 현재의 재난, 움직일 권한은 PC:**",
+        "**배회자·추적자·압박자의 필드 실행:**",
+        "모든 적이 PC 위치를 자동 알아내는 유도 추적",
+        "**작은 생활 사건의 도달과 종료:**",
+        "**메인 무대의 지속적인 실제 문제:**",
+        "**핵심 적대자의 전술적 후퇴와 정당한 조기 격퇴:**",
+        "후퇴·탈출은 실제 거리/위치·기능·행동 기회·대항·봉쇄 상태에 맞게 처리",
+        "**일상 체험을 시나리오 진행 시계로 벌주지 않음:**",
+        "**자율적인 사이드 접촉 실행 — 반복·복붙 금지:**",
+        "개별 S마다 ‘주체가 원래 무엇을 하다 누구에게 어떤 소식·요청/흔적을 언제/어디로 전달하는가’",
+        "메인 E 수리/서류·방의 고정 소품을 독립 S의 반복 완료/새 퀘스트로 처리하지 않는다",
+        "메인 진행/정체와 무관하게 NPC 생활과 S의 자율 결과를 관련 실제 경과만큼 처리한다",
+        "실행 수단을 실제 차단한 국지 사건은 예방/종결로 처리한다",
+        "**중대 E의 실제 체험·결과 차이:**",
+        "실제 예방·조기 제압·협력·부분/완전 성공",
+        "**신규 주요 E의 원인·상태 기반 실행:**",
+        "**PC 목적 뒤 실제 세계 연결:**",
+        "**세계 발생·PC별 관측·독립 접촉:**",
+        "일어난 손실·늦은 도착·조기 차단/무상처·안전을 모두 보존",
+        "무료 부활/증원으로 보존하지 않는다",
+        "**첫 E의 인과적 생활 접촉:**",
+        "**각 PC의 원작 위기 접촉과 미경험의 보존:**",
+        "**사전 적 풀의 현장 생성 실행:**"
+      ],
+      "current_owner": "rules/05-world.md"
+    },
+    {
+      "rule": "SCENE_CONSEQUENCE_RULE",
+      "retired_copied_anchors": [
+        "실제 세계 반응",
+        "매 장면 보상/손실/진전 점수",
+        "새 증거나 완벽한 진상 규명이 없어도",
+        "미래 사건표에 없는 일은 발생 불가라고 세계를 멈추지 않는다",
+        "**후속 경로의 현재 상태 확인:**",
+        "죽거나 제압된 실행자의 발신·이동",
+        "**메인 접점 소실 시 실제 후속 상황으로 연결(진행 중 포함):**",
+        "**PC별 목적 공백·S 혼동 금지:**",
+        "**메인 접점 소실 시 실제 후속 상황으로 연결(진행 중 포함):**",
+        "**메인 접점 소실 시 실제 후속 상황으로 연결(진행 중 포함):**",
+        "S 보상/생활 선택만으로 E를 완료·해금 처리하지 않는다",
+        "**결과 뒤 현재 PC가 접근 가능한 실제 선택의 검증:**",
+        "기존 선언 목적이 있으면 우선 유지하고",
+        "신규 정본 설계 결함",
+        "국지 안전"
+      ],
+      "current_owner": "rules/05-world.md"
+    },
+    {
+      "rule": "KEEPER_SCENE_SELECTION",
+      "retired_copied_anchors": [
+        "**관측 가능한 세계 변화로 목표를 연결:**",
+        "**서로 다른 사이드의 실제 접촉과 장면 깊이:**",
+        "E 하위 작업·장면 소품은 그 자체의 역할로 제공하되",
+        "**독립 주요 국면의 장면 깊이:**",
+        "추가 단계·대면·후일 손실을 강제하지 않는다",
+        "메인 방향이 뚜렷해도 접점을 생략하지 않으며 참여를 필수 진도·핵심 보상의 조건으로 만들지 않는다",
+        "**새 캠페인의 생활 도입 게이트:**",
+        "첫 현지의 세계관 오프닝",
+        "생활을 회상 컷신으로 대체하거나",
+        "**비공개 세계 E와 공개 PC 장면의 분리:**"
+      ],
+      "current_owner": "rules/06-play.md"
+    },
+    {
+      "rule": "ENDING_FINALIZATION_GATE",
+      "retired_copied_anchors": [
+        "전체 위험권 밖의 철수/귀환",
+        "성장 대기도 종료를 막지",
+        "모든 증거/모든 E 방문",
+        "실제 장소·거리·수단·조류/환경",
+        "마지막 진실/탈출 조건 전에는 열리지 않는",
+        "진실/탈출 조건 전에는 열리지 않는",
+        "지역 안의 안전",
+        "정본의 적 풀·실제 조건 없이 갑자기 적·폭풍·무적 장벽/추적 능력",
+        "permanent_cards_enabled=true",
+        "OFF 세션의 챕터",
+        "**철수·도주 선언 처리:**",
+        "PC 전멸 또는 사전 정본의 불가역 실패",
+        "**신규 캠페인 HIDDEN_TRUTH·ENDING_CONDITIONS 필수 게이트:**"
+      ],
+      "current_owner": "rules/06-play.md"
+    },
+    {
+      "rule": "PRIVATE_CANON_DOCUMENT",
+      "retired_copied_anchors": [
+        "**실전 접촉과 진실→결말의 정본 경로:**",
+        "**원작 적 전력·장소·자원의 선확정 수납:**",
+        "직업은 사건 진입 수단일 수 있지만 개인의 원작 중심 인과를 대신하지 못한다",
+        "자료 발췌·물품 외형/개수/소유의 확정 내용도",
+        "**PC별 깊은 원작 인과의 필수 기록:**",
+        "전체 바이트 SHA-256",
+        "필수 절",
+        "새 revision",
+        "비밀을 넣지",
+        "필수 절의 제목/원인 요약만으로 완성하지 않는다",
+        "해당 절의 실제 entity/ref와 본문으로 보존하고 COMPATIBILITY_GATE로 대조한다",
+        "별도 검토 파일/고정 양식/서버 필드·매 턴 정본 재작성은 추가하지 않는다",
+        "초기 귀가/우회·의도적 탈출 경로와 위협/대응/실패·실제 안전 경계",
+        "운항 일정이나 ‘안전하면 철수’라는 결론만으로 이탈 설계를 대신하지 않는다",
+        "원작의 대표 적",
+        "동일 entity/ref",
+        "누출하지 않는다",
+        "위 기존 필수 절들 자체에",
+        "별도 설계도 절/파일·서버 필드를 만들지 않는다",
+        "예방/해결/부분 성공/철수/실패/방치",
+        "시작 전 사건과 시작 후 PC 앞에서 벌어질 중요한 위기",
+        "**기존 HIDDEN_TRUTH/WORLD_RULES에 이미 성립한 불가역 세계 변화/손실",
+        "첫 사건만 있고 후속 사건이 비어 있으면 미완성이다",
+        "실제 원본 Markdown 파일",
+        "SHA-256 검증",
+        "**TRPG 기반 정본의 준비 범위:**",
+        "처음부터 존재하는 사실/자원·활동 전력과 조건부 적 풀의 근원/한도",
+        "정해진 열쇠/기술 하나·보스전·아이템 수집",
+        "추상적으로 '키퍼가 알아서 적/보상/퍼즐을 추가'라고 비워 두지 않는다",
+        "**신규 정본의 실제 피해·광기 접점:**",
+        "초반·중반·후반의 서로 다른 생존 난관",
+        "어떤 대응/판정 뒤 HP·SAN·부상·광기·사망 가능성에 도달하는지",
+        "**탐험·자원·동료·성취의 실제 연결:**",
+        "키퍼의 즉흥 진행에 맡길 것은 통상적인 미확정 생활 세부",
+        "**원작 첫 체험·철수 위기·방별 실제 내용·조우 후보:**",
+        "아무런 재난 체험 없이 철수 선언 한 번으로 무해한 귀가 엔딩",
+        "유효한 회피·무상처 생존·성공한 안전/철수는 취소하지 않는다",
+        "사적 생활 기록/소도구의 구체적 내용",
+        "상호 보완적인 일부",
+        "**NPC 관련 절별 위치:**",
+        "**동행자·임무·배신은 가능성이지 할당량이 아니다:**",
+        "미리 PC를 해하려 접근한 인물은",
+        "만나지 않은 NPC도 증발하지 않으며",
+        "**핵심 장소의 접근 필요와 분기:**",
+        "**핵심 장소의 접근 필요와 분기:**",
+        "**분리 상태·동행 NPC의 위험 연결:**",
+        "동행 NPC가 자동 안전장치거나 NPC 분리가 무조건 배신/사망",
+        "PC1+NPC1 / PC2+NPC2",
+        "**근본 위협과 NPC의 협력 경계를 새 정본에 선확정:**",
+        "전원 PC/협력 NPC가 함께 위험 지역을 이동",
+        "전원이 함께 있어도 전혀 위협이 닿지 않아",
+        "최초 PC 신뢰 범위·동행을 허락/거절할 구체 이유",
+        "거절은 인물의 실제 사정에 따른 선택이고 배신/적대와 다르다",
+        "**생성 시 참가 인원별 위협 구성의 확정 경계:**",
+        "PC 수/부상·진도에 연동된 자동 증원·보스 HP/피해 배율",
+        "**신규 정본의 불가피한 사건 진입과 실제 철수 경계:**",
+        "**적의 순찰·배회/추적과 소규모 생활 사건의 구체적 배치:**",
+        "실제 시간/소음·단서/목격 등 발동",
+        "주요 사건과 관계없는 작은 갈등/작업",
+        "**메인 무대의 유효 체험 기간·사건 지속 상태:**",
+        "**중요 적의 최초 노출·후퇴/조기 사살과 필연 사건 독립성:**",
+        "보스 무적/자동 도주·풀 밖 사후 소환·근거 없는 부하 증원·성공한 포획 취소",
+        "**신규 정본의 기존 목적·열린 후속 접촉:**",
+        "조사 거부/우회/구조 요청",
+        "**새 정본의 주요 사건은 개시 시계가 아니라 상태 전이:**",
+        "**시나리오 목표망과 물리 시간의 분리:**",
+        "**살아 있는 NPC의 개별성·관계망·실제 후속 행동:**",
+        "**지역·실내 지도·실물 정본의 참조 무결성:**",
+        "별칭→정식 장소 ID",
+        "하나의 단일 선박/보트/권총/문서는 두 위치에서 동시에 소유/작동할 수 없다",
+        "첫 만남에 업무·피로에 맞는 고유 말투",
+        "**독립 E의 깊이와 결산은 동일 정본 참조로 구별:**",
+        "결산만 있는 노드는",
+        "**후속 연결의 실행 가능한 출처·전달 흔적:**",
+        "세계 원인 성립/세계 사건 발생/NPC 인지/PC별 전달",
+        "연락 경로가 막힌 분기는",
+        "**원작 기반 인과의 출처 기록(기존 10절):**",
+        "**PC별 출발·고유 원작 연결·선택 정본(기존 10절):**",
+        "E 해금·완료와 동일시하지 않고",
+        "새 정본 절·서버 컬럼/강제 UI는 만들지 않고",
+        "정상 경로에서 NPC/현상/장소가 실제 정보·거리/수단으로 접촉 가능해야 한다",
+        "**사건 수량 할당 대신 실행 가능한 원작 경험을 확정:**",
+        "**새 비공개 정본의 기존 10절·세계/PC 분리:**",
+        "**원작에 맞는 실효 위협·생활의 정본 완성 게이트:**",
+        "각 E에 모든 PC가 방문해야 하는 필수 현장 ID를 요구하지 않는다",
+        "아직 생성되지 않은 적 풀의 프로필·근원·상한"
+      ],
+      "current_owner": "rules/07-state.md"
+    },
+    {
+      "rule": "STATE_WORKING_CONTEXT",
+      "retired_copied_anchors": [
+        "실제 변화가 있을 때",
+        "저장 때까지 미루지",
+        "현재 장소 밖도 포함",
+        "비밀 메모",
+        "개체/집단별 생사·HP·위치·발견/표적·자원·봉쇄/격퇴",
+        "**반응형 후속의 지속성:**",
+        "새로운 사건은 실제 확정된 뒤 기존 누적 변화에 기록한다",
+        "새 서버 컬럼·임의 event ID/영구 기억 기능을 만든 것으로 간주하지 않으며",
+        "**현재 목표망·분류된 E/S와 개인별 누적 접촉 상태:**",
+        "제안만 보았는데 수락/성공으로 변경하지 않는다",
+        "다른 PC의 당근·미전달 비밀·독립 S를 지금 PC의 메인으로 섞지 않는다",
+        "**신규 도입 상태의 저장·재개:**",
+        "첫 장면으로 되돌리거나 행동 턴을 1로 초기화하여 사고를 다시 예약하지 않는다",
+        "새 작은 당근 연결",
+        "새 작은 연결이 다음 장면에도 유효한 선택/접촉으로 남도록 보존",
+        "**선택적 중간 활동 접점·재개:**",
+        "HUD 목표 공백 자체로 새 GO를 발행하지 않는다",
+        "**E 세계 상태·PC별 목적의 재개:**",
+        "다음 장면에도 유효한 선택/접촉으로 남도록 보존",
+        "기존 STORY/SCENE/ongoing_consequences·world_delta의 지원되는 namespace/실제 event ID",
+        "**활성 세계 E와 PC별 실제 체험/선택의 비공개 연결:**"
+      ],
+      "current_owner": "rules/07-state.md"
+    },
+    {
+      "rule": "CARD_ENHANCEMENT_TRIGGER",
+      "retired_copied_anchors": [
+        "기본은 **어려운 성공**",
+        "같은 판정에 함께 사용 불가",
+        "판정 전에 실제 판돈",
+        "HP 1이 남도록 1회 경감"
+      ],
+      "current_owner": "rules/09-cards.md"
+    },
+    {
+      "rule": "CARD_PLAYER_STORAGE",
+      "retired_copied_anchors": [
+        "닉네임 연결",
+        "종결·지급",
+        "**ON에서만**",
+        "OFF에서는 카드 PC 연결",
+        "**ON 캠페인만**"
+      ],
+      "current_owner": "rules/09-cards.md"
+    },
+    {
+      "rule": "HQ_FIRST_ENTRY_SCENE_GATE",
+      "retired_copied_anchors": [
+        "Phase EXTERIOR",
+        "Phase INTERIOR",
+        "미선언 이동"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "HQ_ON_CAMPAIGN_ROUTER",
+      "retired_copied_anchors": [
+        "ENDING_FINALIZATION_GATE",
+        "수락 후 교육·면담과 실제 시설 안내",
+        "임무 준비를 요청했을 때에만"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "HQ_NPC_FIXED_PORTRAIT_ASSET_ROUTER",
+      "retired_copied_anchors": [
+        "8장의 공식 PNG 원본"
+      ],
+      "current_owner": "rules/08-visual.md"
+    },
+    {
+      "rule": "LINKED_MAJOR_DISASTER_TIMERS",
+      "retired_copied_anchors": [
+        "**시간의 유일한 역할 — 세계/플레이 물리 경과:**",
+        "**이미 확정된 구판/재개만 비소급:**",
+        "**신규 세계: E-ref는 원인·세계 상태와 PC별 관측을 연결하는 ID:**",
+        "**개별 E의 실행 가능한 조건:**"
+      ],
+      "current_owner": "rules/04-setup.md"
+    },
+    {
+      "rule": "PC_REACHED_EVENT_CONTRACT",
+      "retired_copied_anchors": [
+        "이미 실행 불가로 차단된 국지 재난은 발생 처리하지 않고"
+      ],
+      "current_owner": "rules/04-setup.md"
+    }
+  ],
+  "retired_duplicate_mutations": [
+    {
+      "case": "truth_free_exit",
+      "file": "rules/06-play.md",
+      "old": "**신규 캠페인 HIDDEN_TRUTH·ENDING_CONDITIONS 필수 게이트:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "threats_are_map_props",
+      "file": "rules/04-setup.md",
+      "old": "움직이지 않는 적 2~3명을 놓은 것",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "source_encounter_count_as_world_total",
+      "file": "rules/04-setup.md",
+      "old": "기본 조우 두 개체를 세계의 총 병력으로 오해하거나",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "spine_missing",
+      "file": "rules/04-setup.md",
+      "old": "**주요 인과의 선행조건·세계 ID:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "id_is_spine",
+      "file": "rules/04-setup.md",
+      "old": "E 번호/필수 방문/PC별 완주를 세계의 순서나 종결 게이트로 삼지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_waits_for_spine",
+      "file": "rules/04-setup.md",
+      "old": "선행 PC 방문을 기다려 멈추지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "small_goal_requires_next",
+      "file": "rules/04-setup.md",
+      "old": "기존 선택 가능한 상황이 남으면 직접 후속 없음도 합격이며 새 단서/의뢰를 억지로 발행하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pc2_only_side_is_carrot",
+      "file": "rules/04-setup.md",
+      "old": "P1만 사건을 겪고 P2는 S 세 개만 수행하는 경로",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pc_start_goal_canon_missing",
+      "file": "rules/07-state.md",
+      "old": "**PC별 출발·고유 원작 연결·선택 정본(기존 10절):**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pc2_private_goal_autoshared",
+      "file": "rules/07-state.md",
+      "old": "다른 PC의 당근·미전달 비밀·독립 S를 지금 PC의 메인으로 섞지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_s_fills_carrot",
+      "file": "rules/05-world.md",
+      "old": "S 보상/생활 선택만으로 E를 완료·해금 처리하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "goal_gap_world_checks_late",
+      "file": "rules/05-world.md",
+      "old": "**메인 접점 소실 시 실제 후속 상황으로 연결(진행 중 포함):**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "goal_gap_world_no_recovery",
+      "file": "rules/05-world.md",
+      "old": "**메인 접점 소실 시 실제 후속 상황으로 연결(진행 중 포함):**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "goal_gap_state_false_absence",
+      "file": "rules/07-state.md",
+      "old": "**선택적 중간 활동 접점·재개:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "early_e_success_collapses_campaign",
+      "file": "rules/04-setup.md",
+      "old": "**단일 초기 성공·거대 당근의 실행 인수:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "p2_arrival_erases_p1_solution",
+      "file": "rules/04-setup.md",
+      "old": "타 PC가 오기를 기다려 국면/해결을 멈추지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "preparation_rewrites_disaster",
+      "file": "rules/04-setup.md",
+      "old": "G 전체를 예방하게 설계하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "e_partial_work_marks_complete",
+      "file": "rules/07-state.md",
+      "old": "E 해금·완료와 동일시하지 않고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "mandatory_event_speedrun",
+      "file": "rules/04-setup.md",
+      "old": "**E 사이의 생활·인과적 호흡:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "start_source_personal_prebrief_lost",
+      "file": "START_GAME.md",
+      "old": "마틴은 이때 각 현지 PC의 동기화 직전 행동",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "mandatory_e_is_optional",
+      "file": "rules/04-setup.md",
+      "old": "**중심 재난의 세계 발생과 PC별 체험의 분리:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "last_carrot_missing",
+      "file": "rules/04-setup.md",
+      "old": "기관 도착·다른 PC 합류·추가 S를 메인 진행의 유일한 관문으로 만들지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "small_goals_quota",
+      "file": "rules/04-setup.md",
+      "old": "E는 GO/S 완료 횟수나 턴으로 열지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "unlimited_is_infinite_spawning",
+      "file": "rules/04-setup.md",
+      "old": "진행 공백 방지는 별도 당근 발급이 아니라 세계의 실제 후속 경로를 준비하는 일이다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "grass_only_offscreen",
+      "file": "rules/04-setup.md",
+      "old": "시작·기점 사이·이동 여정·휴식처의 정상 경로마다 실제 관측/교류 가능한 생활·탐험·휴게 접점을 분산 준비한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "grass_reward_gate",
+      "file": "rules/04-setup.md",
+      "old": "S 수락/완료만이 필수 사건·핵심 단서·주요 보상/성장을 얻는 유일한 길이어서는 안 된다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "grass_all_popup",
+      "file": "rules/04-setup.md",
+      "old": "모든 S 동시 발동·매 전투 행동의 팝업·휴식 중 강제 사건은 요구하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "mandatory_damage",
+      "file": "rules/04-setup.md",
+      "old": "새 보스·무료 증원/피해 강제 금지",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "spine_overrides_terminal",
+      "file": "rules/04-setup.md",
+      "old": "모든 PC의 동일 현장 방문",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "informed_start_forgets",
+      "file": "rules/04-setup.md",
+      "old": "**PC별 출발 목적과 서로 다른 실제 접촉:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "future_carrier_improvised",
+      "file": "rules/04-setup.md",
+      "old": "중심 위기/적의 원인·약점·핵심 자원은 시작 전에 기록",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "side_only_counts_main",
+      "file": "rules/04-setup.md",
+      "old": "**세계 G/E·PC별 목적·생활/독립 S의 인수 대조:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "normal_no_next_rejected",
+      "file": "rules/04-setup.md",
+      "old": "작은 활동에 직접 후속이 없어도",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "life_waits_for_stall",
+      "file": "rules/05-world.md",
+      "old": "메인 진행/정체와 무관하게 NPC 생활과 S의 자율 결과를 관련 실제 경과만큼 처리한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "no_goal_invent_key",
+      "file": "rules/05-world.md",
+      "old": "**메인 접점 소실 시 실제 후속 상황으로 연결(진행 중 포함):**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "clear_main_skips_life",
+      "file": "rules/06-play.md",
+      "old": "메인 방향이 뚜렷해도 접점을 생략하지 않으며 참여를 필수 진도·핵심 보상의 조건으로 만들지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "load_recreates_spine",
+      "file": "rules/07-state.md",
+      "old": "**E 세계 상태·PC별 목적의 재개:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "load_forces_followup",
+      "file": "rules/07-state.md",
+      "old": "다음 장면에도 유효한 선택/접촉으로 남도록 보존",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "state_unsupported_namespace",
+      "file": "rules/07-state.md",
+      "old": "기존 STORY/SCENE/ongoing_consequences·world_delta의 지원되는 namespace/실제 event ID",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "plan_changes_server_schema",
+      "file": "rules/07-state.md",
+      "old": "새 정본 절·서버 컬럼/강제 UI는 만들지 않고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "start_ignores_layers",
+      "file": "START_GAME.md",
+      "old": "**신규 세계 인과·생활 준비:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pi_forces_each_followup",
+      "file": "PROJECT_INSTRUCTIONS.md",
+      "old": "목적이 끝났다고 **GO·임무를 자동 발급하거나",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "old_each_goal_rule_returns",
+      "file": "rules/04-setup.md",
+      "old": "**PC 목적 종료와 자유로운 후속 접촉:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "original_mandate_not_prioritized",
+      "file": "rules/04-setup.md",
+      "old": "**원작 대명제 우선·직접 필요:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "source_canon_verification_removed",
+      "file": "rules/07-state.md",
+      "old": "**원작 기반 인과의 출처 기록(기존 10절):**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "source_start_lookup_dropped",
+      "file": "START_GAME.md",
+      "old": "**원작 확인이 먼저:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "major_looks_different_but_plays_same",
+      "file": "rules/04-setup.md",
+      "old": "이 E를 빼거나 인접 E에 합쳐도",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "ending_summary_counts_as_e",
+      "file": "rules/04-setup.md",
+      "old": "최종 세계 결산·후일담은",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "major_depth_gate_missing",
+      "file": "rules/04-setup.md",
+      "old": "**주요 사건 깊이의 사전 반례 대조:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "major_depth_faux_pass",
+      "file": "rules/04-setup.md",
+      "old": "독립 주요 사건 집계 불합격",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "route_no_knowledge_chain",
+      "file": "rules/04-setup.md",
+      "old": "정보라면 최초 인지자→내용→전달 결심/목적",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "route_prevention_overturned",
+      "file": "rules/04-setup.md",
+      "old": "이미 준비한 다른 현재 행동 가능성/정당한 안전·종결",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "route_broken_receiver_allowed",
+      "file": "rules/04-setup.md",
+      "old": "작동하지 않는 수신기로 무전 수신",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "route_static_review_claims_play",
+      "file": "rules/04-setup.md",
+      "old": "서면 대조가 실제 플레이 성공을 증명하지는 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_ending_summary_as_e",
+      "file": "rules/07-state.md",
+      "old": "결산만 있는 노드는",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_knowledge_visibility_collapsed",
+      "file": "rules/07-state.md",
+      "old": "세계 원인 성립/세계 사건 발생/NPC 인지/PC별 전달",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_contact_path_optional",
+      "file": "rules/07-state.md",
+      "old": "연락 경로가 막힌 분기는",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_major_auto_resolved",
+      "file": "rules/05-world.md",
+      "old": "**중대 E의 실제 체험·결과 차이:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_quick_win_invalidated",
+      "file": "rules/05-world.md",
+      "old": "실제 예방·조기 제압·협력·부분/완전 성공",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_dead_messenger_makes_contact",
+      "file": "rules/05-world.md",
+      "old": "죽거나 제압된 실행자의 발신·이동",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scene_new_required_phase",
+      "file": "rules/06-play.md",
+      "old": "추가 단계·대면·후일 손실을 강제하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "start_legacy_clock_main_header",
+      "file": "START_GAME.md",
+      "old": "**신규 주요 결과의 실제 후속 연결:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scenario_depth_shortcut",
+      "file": "rules/04-setup.md",
+      "old": "정본의 중심은 살아 있는 세계와 플레이 가능한 상황망이다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "start_legacy_event_schedule_returns",
+      "file": "START_GAME.md",
+      "old": "**신규 목표망의 상태·인과 기반 진행:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "start_adds_global_deadline",
+      "file": "START_GAME.md",
+      "old": "새 주요 사건의 예약 시각·전역 데드라인을 만들지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "start_disallows_prevention",
+      "file": "START_GAME.md",
+      "old": "실행 수단이 모두 차단된 국지 위협은 예방/종결",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "instruction_cancels_prevention",
+      "file": "PROJECT_INSTRUCTIONS.md",
+      "old": "실행 수단이 모두 제거된 국지 위협은 예방/종결로 인정한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_forces_prevented_disaster",
+      "file": "rules/04-setup.md",
+      "old": "이미 실행 불가로 차단된 국지 재난은 발생 처리하지 않고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "finale_denies_local_prevention",
+      "file": "rules/04-setup.md",
+      "old": "PC가 실제 조건을 충족한 근본 해결이나 조기 격퇴를 뒤늦게 무효화하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "state_auto_accept_from_contact",
+      "file": "rules/07-state.md",
+      "old": "제안만 보았는데 수락/성공으로 변경하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scene_side_disguised_micro",
+      "file": "rules/06-play.md",
+      "old": "E 하위 작업·장면 소품은 그 자체의 역할로 제공하되",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_next_objective_omniscient",
+      "file": "rules/05-world.md",
+      "old": "**결과 뒤 현재 PC가 접근 가능한 실제 선택의 검증:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_s_counts_main_repair",
+      "file": "rules/05-world.md",
+      "old": "메인 E 수리/서류·방의 고정 소품을 독립 S의 반복 완료/새 퀘스트로 처리하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_duplicate_object",
+      "file": "rules/07-state.md",
+      "old": "하나의 단일 선박/보트/권총/문서는 두 위치에서 동시에 소유/작동할 수 없다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_no_developed_npc",
+      "file": "rules/07-state.md",
+      "old": "첫 만남에 업무·피로에 맞는 고유 말투",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_unfilled_side_contact",
+      "file": "rules/07-state.md",
+      "old": "정상 경로에서 NPC/현상/장소가 실제 정보·거리/수단으로 접촉 가능해야 한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_unverified_save_claim",
+      "file": "rules/04-setup.md",
+      "old": "pending/last_verified",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_unregistered_location_ref",
+      "file": "rules/04-setup.md",
+      "old": "미등록 ref를 가리키거나, 상위 지명/시설 별칭을 장소 ID인 것처럼",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "solo_unavoidable_one_hit",
+      "file": "rules/04-setup.md",
+      "old": "적의 통상 1~2회 명중에 쓰러질 비무장 1인",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_template_voice",
+      "file": "rules/04-setup.md",
+      "old": "동일한 연기 지시를 모든 NPC에 복제하는 것은 캐릭터 준비가 아니다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "side_boilerplate_contact",
+      "file": "rules/04-setup.md",
+      "old": "'다른 루트에서는 누군가가 전할 수 있다'라는 공통 복붙",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "main_preplay_event_inflation",
+      "file": "rules/04-setup.md",
+      "old": "과거에 끝난 사건, 같은 싸움 반복은 하위 활동/배경으로 분류",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "false_deep_mandate_candidates",
+      "file": "rules/04-setup.md",
+      "old": "**원작 중심 위기의 실질 규모로 비교:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scenario_main_bank_shrunk",
+      "file": "rules/04-setup.md",
+      "old": "고정 수량 목표와 예외 변명 절차를 사용하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scenario_starts_from_numbered_clock",
+      "file": "rules/04-setup.md",
+      "old": "**시나리오 시간표의 사용 금지:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "side_contacts_only_one_route",
+      "file": "rules/04-setup.md",
+      "old": "한 사건 거절 뒤",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scenario_only_four_major",
+      "file": "rules/04-setup.md",
+      "old": "**원작 규모에 맞는 실효 사건·생활 깊이 검수:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scenario_boss_protected_by_script",
+      "file": "rules/04-setup.md",
+      "old": "**주요 적 조기 제압·사이드 선택과 다경로 회귀:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_side_bank_missing",
+      "file": "rules/07-state.md",
+      "old": "**사건 수량 할당 대신 실행 가능한 원작 경험을 확정:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_no_successor_goals",
+      "file": "rules/07-state.md",
+      "old": "**새 비공개 정본의 기존 10절·세계/PC 분리:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "play_repeat_same_side_offer",
+      "file": "rules/06-play.md",
+      "old": "**서로 다른 사이드의 실제 접촉과 장면 깊이:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_uses_event_number_instead_state",
+      "file": "rules/05-world.md",
+      "old": "**신규 주요 E의 원인·상태 기반 실행:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_side_bank_hidden",
+      "file": "rules/05-world.md",
+      "old": "**자율적인 사이드 접촉 실행 — 반복·복붙 금지:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "new_world_uses_old_relative_gate",
+      "file": "rules/04-setup.md",
+      "old": "**구조/위협·1~3인과 사건 은행의 교차 대조:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "mandate_replaced_by_minor_repair",
+      "file": "rules/04-setup.md",
+      "old": "**원작 중심 위기의 실질 규모로 비교:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_scale_filler_npc",
+      "file": "rules/04-setup.md",
+      "old": "**사전 콘텐츠 깊이와 원작 규모:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "new_mandate_bound_to_arbitrary_delay",
+      "file": "rules/04-setup.md",
+      "old": "**신규 세계: E-ref는 원인·세계 상태와 PC별 관측을 연결하는 ID:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "new_canon_removes_goal_graph",
+      "file": "rules/07-state.md",
+      "old": "**새 비공개 정본의 기존 10절·세계/PC 분리:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "new_canon_drops_world_expansion",
+      "file": "rules/07-state.md",
+      "old": "**사건 수량 할당 대신 실행 가능한 원작 경험을 확정:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "new_state_autocommits_offer",
+      "file": "rules/07-state.md",
+      "old": "제안만 보았는데 수락/성공으로 변경하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_sides_invisible",
+      "file": "rules/05-world.md",
+      "old": "**자율적인 사이드 접촉 실행 — 반복·복붙 금지:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scene_drops_next_goal",
+      "file": "rules/06-play.md",
+      "old": "**관측 가능한 세계 변화로 목표를 연결:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scene_forces_side_acceptance",
+      "file": "rules/06-play.md",
+      "old": "**서로 다른 사이드의 실제 접촉과 장면 깊이:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scene_replaces_valid_delivery_objective",
+      "file": "rules/05-world.md",
+      "old": "기존 선언 목적이 있으면 우선 유지하고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scene_invents_unplanned_boss",
+      "file": "rules/05-world.md",
+      "old": "신규 정본 설계 결함",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "scene_forces_event_when_quiet",
+      "file": "rules/05-world.md",
+      "old": "국지 안전",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_forces_scripted_followups",
+      "file": "rules/07-state.md",
+      "old": "조사 거부/우회/구조 요청",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "new_reactive_encounter_not_remembered",
+      "file": "rules/07-state.md",
+      "old": "새로운 사건은 실제 확정된 뒤 기존 누적 변화에 기록한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "main_stage_all_ends_after_social_time",
+      "file": "rules/04-setup.md",
+      "old": "**메인 무대의 유효 체류 시간과 사건 지속성:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "main_stage_exploration_punished",
+      "file": "rules/04-setup.md",
+      "old": "정상적인 생활 교류·자발적인 탐험/준비를 충분히 즐겼더니 주요 목표와 모든 관계·대응 기회가 이미 끝나 있는 구조",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "important_boss_cannot_die",
+      "file": "rules/04-setup.md",
+      "old": "**핵심 적대자의 초기 충돌·생존 수단과 사건 인과:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "important_boss_auto_escapes_capture",
+      "file": "rules/04-setup.md",
+      "old": "지휘자의 중요성을 이유로 플레이어가 성공시킨 사살·체포·봉쇄를 강제로 실패 처리하거나 불사/자동 탈출을 부여하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "single_critical_executor_can_be_killed",
+      "file": "rules/04-setup.md",
+      "old": "필연적 주요 재난의 발생 원인은 실행자 개인의 생존과 분리해 사전 구성",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "early_boss_defeat_not_compared",
+      "file": "rules/04-setup.md",
+      "old": "**주요 적 조기 제압·사이드 선택과 다경로 회귀:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_boss_escape_without_roll",
+      "file": "rules/05-world.md",
+      "old": "**핵심 적대자의 전술적 후퇴와 정당한 조기 격퇴:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_retreat_ignores_blockade",
+      "file": "rules/05-world.md",
+      "old": "후퇴·탈출은 실제 거리/위치·기능·행동 기회·대항·봉쇄 상태에 맞게 처리",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_main_stage_no_time_to_live",
+      "file": "rules/07-state.md",
+      "old": "**메인 무대의 유효 체험 기간·사건 지속 상태:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_protects_boss_by_instant_spawn",
+      "file": "rules/07-state.md",
+      "old": "보스 무적/자동 도주·사후 소환·새 부하 증원·성공한 포획 취소",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "skip_core_crisis_by_refusal",
+      "file": "rules/04-setup.md",
+      "old": "**사건 안으로 들어가게 하는 불가피한 현실과 이후의 철수:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "force_pc_action_to_core_room",
+      "file": "rules/04-setup.md",
+      "old": "재난 속에 진입할 수밖에 없는 상황",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "enemy_telepathic_tracking",
+      "file": "rules/04-setup.md",
+      "old": "**추적자**는 실제 목표를 발견하거나 흔적을 확보했을 때만",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "original_horror_only_final_boss",
+      "file": "rules/04-setup.md",
+      "old": "**원작 초반 직접 노출과 지역별 소규모 생활 사건:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "micro_events_all_plot_quests",
+      "file": "rules/04-setup.md",
+      "old": "핵심 사건과 직접 관련 없는 작은 분쟁",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "keeper_teleports_player_core",
+      "file": "rules/05-world.md",
+      "old": "**핵심 거점에 이르게 하는 현재의 재난, 움직일 권한은 PC:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "keeper_spawns_roaming_monsters",
+      "file": "rules/05-world.md",
+      "old": "**배회자·추적자·압박자의 필드 실행:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "micro_npc_quests_on_every_visit",
+      "file": "rules/05-world.md",
+      "old": "**작은 생활 사건의 도달과 종료:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_no_patrol_or_personal_items",
+      "file": "rules/07-state.md",
+      "old": "**적의 순찰·배회/추적과 소규모 생활 사건의 구체적 배치:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "reactive_event_fixed_time_only",
+      "file": "rules/04-setup.md",
+      "old": "**시나리오 시간표의 사용 금지:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "reactive_event_uses_story_progress",
+      "file": "rules/04-setup.md",
+      "old": "E는 GO/S 완료 횟수나 턴으로 열지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "stalled_time_world_freezes",
+      "file": "rules/04-setup.md",
+      "old": "**정체 시 직접 다가오는 세계:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "party_size_monster_hp_multiplier",
+      "file": "rules/04-setup.md",
+      "old": "PC 수 × 고정 적 수/HP·피해량 배율",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "new_party_members_spawn_monsters",
+      "file": "rules/04-setup.md",
+      "old": "정본 확정/플레이 시작 뒤 PC 수·현재 HP·연승/철수 의도에 맞춰 적을 새로 생성/회복",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "game_runtime_checks_story_progress",
+      "file": "rules/05-world.md",
+      "old": "**PC 목적 뒤 실제 세계 연결:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "stalled_chat_input_drives_clock",
+      "file": "rules/05-world.md",
+      "old": "판정 대기, 플레이어의 현실 숙고, 채팅 메시지의 양은 0시간",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "party_size_runtime_tunes_enemy",
+      "file": "rules/05-world.md",
+      "old": "**정본 확정 뒤에는 적 전력을 동적으로 스케일하지 않음:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "private_canon_lacks_reactive_deadline",
+      "file": "rules/07-state.md",
+      "old": "**새 정본의 주요 사건은 개시 시계가 아니라 상태 전이:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "private_canon_party_scaling_unbounded",
+      "file": "rules/07-state.md",
+      "old": "**생성 시 참가 인원별 위협 구성의 확정 경계:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "crisis_all_in_first_ninety_minutes",
+      "file": "rules/04-setup.md",
+      "old": "한 목표가 신속히 해결돼도 후속 국면/사이드 후보가 충분하고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_event_same_time_as_pc_contact",
+      "file": "rules/04-setup.md",
+      "old": "세계에서 발생함, NPC가 알아챔, PC가 직접 경험함을 구별",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "periodic_extra_attacks_as_pacing",
+      "file": "rules/04-setup.md",
+      "old": "임의로 30분마다 새 공격/시계 알림을 배치하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pivotal_intervention_window_removed",
+      "file": "rules/04-setup.md",
+      "old": "**물리 시간·세계 상태·PC별 경로의 분리 검사:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "living_world_does_not_record_arrival",
+      "file": "rules/07-state.md",
+      "old": "**시나리오 목표망과 물리 시간의 분리:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "offscreen_event_instant_teleport",
+      "file": "rules/05-world.md",
+      "old": "**세계 발생·PC별 관측·독립 접촉:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "late_arrival_everyone_waits",
+      "file": "rules/05-world.md",
+      "old": "일어난 손실·늦은 도착·조기 차단/무상처·안전을 모두 보존",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "party_only_threat_when_split",
+      "file": "rules/04-setup.md",
+      "old": "**분산 이전부터 성립하는 생존 위협의 실효성:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "combined_party_immune",
+      "file": "rules/04-setup.md",
+      "old": "전원이 함께 있어도 진지하게 감지·방어/전투·구조·우회·퇴각·준비를 고민할 만큼",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_consent_auto_follower",
+      "file": "rules/04-setup.md",
+      "old": "**NPC의 동행·복종은 특별한 합의이지 기본값이 아니다:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_every_instruction_must_fail",
+      "file": "rules/04-setup.md",
+      "old": "모든 명령을 자동 거절하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_refusal_means_betrayal",
+      "file": "rules/05-world.md",
+      "old": "불신·자기 일 우선·명령 거부·이별은 곧 적대나 배신이 아니다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_new_danger_free_obedience",
+      "file": "rules/05-world.md",
+      "old": "새로운 위험·전투·사람을 버리고 떠남",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_past_success_is_revoked",
+      "file": "rules/05-world.md",
+      "old": "사회 판정으로 성립한 합의/설득 성공",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "enemy_waits_for_split",
+      "file": "rules/05-world.md",
+      "old": "적도 PC가 '어디 갈까' 고민할 때 공격을 유예하거나 파티가 흩어질 때까지 기다리지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "danger_no_actual_contact_in_full_party",
+      "file": "rules/07-state.md",
+      "old": "**근본 위협과 NPC의 협력 경계를 새 정본에 선확정:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_only_quest_locations",
+      "file": "rules/04-setup.md",
+      "old": "사건 진행에 필요한 장소만 만들지 않고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_rooms_not_lived_in",
+      "file": "rules/04-setup.md",
+      "old": "**배치된 공간 전체의 핍진한 내용:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pivotal_place_no_causal_reason",
+      "file": "rules/04-setup.md",
+      "old": "**핵심 장소·필연적 국면의 인과적 강제력:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pivotal_place_forces_pc",
+      "file": "rules/07-state.md",
+      "old": "**핵심 장소의 접근 필요와 분기:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "party_split_auto_damage",
+      "file": "rules/04-setup.md",
+      "old": "분리했기 때문에 자동 피해·모든 NPC 배신·숨은 적 생성·주사위 페널티",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "split_npc_mandatory_betrayal",
+      "file": "rules/05-world.md",
+      "old": "NPC 동행 또는 파티 분리만으로 배신을 예약",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "split_parties_telepathic",
+      "file": "rules/05-world.md",
+      "old": "자동으로 알거나 대응할 수 없다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "split_canon_no_separate_information",
+      "file": "rules/07-state.md",
+      "old": "**분리 상태·동행 NPC의 위험 연결:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_population_no_location_causality",
+      "file": "rules/04-setup.md",
+      "old": "인물·장소·물품·사건이 양방향 인과로 일치",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_quest_and_party_roles_fixed",
+      "file": "rules/04-setup.md",
+      "old": "처음부터 '퀘스트 주는 사람'·'동료'·'배신자'라는 고정 플레이어 대상 역할로 배치하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_absence_no_independent_life",
+      "file": "rules/04-setup.md",
+      "old": "PC와 무관하게 지금 할 구체 행동",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_random_spawns_from_nothing",
+      "file": "rules/04-setup.md",
+      "old": "랜덤 NPC 조우에는 사전 존재·현재 위치/목표",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_forced_betrayal",
+      "file": "rules/05-world.md",
+      "old": "플롯 충격용 무근거 배신/전원 배신",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_omniscient",
+      "file": "rules/05-world.md",
+      "old": "NPC는 PC 전체 대화/미발견 진실을 알지 못한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_door_spawn",
+      "file": "rules/05-world.md",
+      "old": "방을 열었다는 이유로 대기 중인 NPC가 갑자기 출현하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_join_without_consent",
+      "file": "rules/05-world.md",
+      "old": "새 PC 약속·지출·협력 동의는 대신 정하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_canon_can_ignore_absent_people",
+      "file": "rules/07-state.md",
+      "old": "만나지 않은 NPC도 증발하지 않으며",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_compatibility_forces_all_meetings",
+      "file": "rules/04-setup.md",
+      "old": "모든 NPC를 만나게 하는 순회·자동 동행/배신·강제 사이드 수락은 정본 완성 조건이 아니다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "instant_retreat_skips_disaster",
+      "file": "rules/04-setup.md",
+      "old": "원작 위협은 PC가 거절·무관여·즉시 귀가를 선언했다고 소멸하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "retreat_requires_wound",
+      "file": "rules/07-state.md",
+      "old": "유효한 회피·무상처 생존·성공한 안전/철수는 취소하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "original_world_delayed_until_boss",
+      "file": "rules/04-setup.md",
+      "old": "**원작 고유의 공포는 게임 초입부터:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "rooms_no_canon_objects",
+      "file": "rules/04-setup.md",
+      "old": "**방마다 살아 있는 세계가 있는 탐험:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "random_encounter_spawns_infinite_monsters",
+      "file": "rules/04-setup.md",
+      "old": "새 적/생존자 무제한 생성",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "clues_locked_to_one_room",
+      "file": "rules/04-setup.md",
+      "old": "**여러 장소에 분산한 추리의 재료:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pc_identity_requires_all_three",
+      "file": "rules/04-setup.md",
+      "old": "세 항목은 모두 선택이며 공란이면",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pc_identity_rerolls_stats",
+      "file": "rules/04-setup.md",
+      "old": "A/B/C의 8특성·Luck을 재추첨/재배열하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "pc_identity_name_equals_card_nickname",
+      "file": "rules/04-setup.md",
+      "old": "카드 계정 닉네임을 기본정보로 오인하거나 덮어쓰지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "no_lethal_danger_preparation",
+      "file": "rules/04-setup.md",
+      "old": "**신규 캠페인의 실제 위해·SAN 위기 설계:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "harm_warning_only_allowed",
+      "file": "rules/04-setup.md",
+      "old": "움직이지 않는 적 2~3명을 놓은 것",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "harm_mandatory_fatality",
+      "file": "rules/04-setup.md",
+      "old": "무조건적인 구제나 강제 사망을 예약하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "no_horror_canon_connections",
+      "file": "rules/07-state.md",
+      "old": "**신규 정본의 실제 피해·광기 접점:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "preflight_invents_enemy_scaling",
+      "file": "rules/04-setup.md",
+      "old": "PC 수에 따른 사후 적/HP 배율·필수 피해를 배정하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "preflight_performs_real_future_rolls",
+      "file": "rules/04-setup.md",
+      "old": "미래 플레이를 실행하거나 미리 굴리는 절차가 아니다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "compatibility_certifies_live_balance",
+      "file": "rules/04-setup.md",
+      "old": "서면 정합성만으로 실전 밸런스를 보증하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "videogame_script_imported",
+      "file": "rules/04-setup.md",
+      "old": "레벨 클리어 순서·필수 열쇠/퍼즐·방마다 전리품",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "keeper_role_erased",
+      "file": "rules/04-setup.md",
+      "old": "룰북은 판정과 창작 원칙, 비공개 정본은 처음부터 존재하는 사람·적·장소·수단·원인과 가능한 결과의 인과",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "single_solution_required",
+      "file": "rules/04-setup.md",
+      "old": "미리 짜 둔 한 가지 정답이나 특정 기능 성공을 모든 PC에게 강제하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_world_prep_replaced_by_improv",
+      "file": "rules/07-state.md",
+      "old": "추상적으로 '키퍼가 알아서 적/보상/퍼즐을 추가'라고 비워 두지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_forces_game_phases",
+      "file": "rules/05-world.md",
+      "old": "퀘스트 수락·정해진 퍼즐 해법·고정 전리품/보스 페이즈",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "compatibility_allows_empty_canon",
+      "file": "rules/04-setup.md",
+      "old": "적이 이름만 있고 구체 위해식/전조·대응·위치가 없다면 생성 실패다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "tiered_roster_dropped",
+      "file": "rules/04-setup.md",
+      "old": "**원작 적합한 실행 가능한 다층 위협의 의무 준비:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "variant_enemy_tier_dropped",
+      "file": "rules/04-setup.md",
+      "old": "**복수 적대 세력형:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "finite_enemy_roster_missing",
+      "file": "rules/04-setup.md",
+      "old": "초기 생활·탐험/구조·중간 교전·절정에 실제로 대응해야 할 다른 위협 양상",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "side_events_require_player_optin",
+      "file": "rules/04-setup.md",
+      "old": "메인/사이드 사건의 독립적 상황망",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_tier_roster_omitted",
+      "file": "rules/07-state.md",
+      "old": "**원작에 맞는 실효 위협·생활의 정본 완성 게이트:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_unlimited_reinforcements",
+      "file": "rules/05-world.md",
+      "old": "무료 부활/증원으로 보존하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "state_enemy_deaths_disappear",
+      "file": "rules/07-state.md",
+      "old": "개체/집단별 생사·HP·위치·발견/표적·자원·봉쇄/격퇴",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "project_instructions_tiers_removed",
+      "file": "rules/04-setup.md",
+      "old": "별도 적 개체/종류를 모두 강제로 만드는 의무는 폐기",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "card_survivor_death_ignored",
+      "file": "rules/09-cards.md",
+      "old": "HP 1이 남도록 1회 경감",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "card_bonus_double_dice",
+      "file": "rules/09-cards.md",
+      "old": "같은 판정에 함께 사용 불가",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "early_exit_hazards_require_plot_optin",
+      "file": "rules/04-setup.md",
+      "old": "조사/의뢰/핵심 장소 방문에 동의해야만 모든 위험이 켜지고 초반 귀가에는 아무 원인도 닿지 않는 설계는 보완한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "leaving_intent_spawns_attack",
+      "file": "rules/04-setup.md",
+      "old": "출발 의도 자체를 공격 스위치로 쓰지 않고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "schedule_only_escape_design_passes",
+      "file": "rules/04-setup.md",
+      "old": "단순 운항 일정/요금만 두고 생존 위협이 없거나, 본편 수락/최종 의례에만 모든 위해를 모아 두면 이탈 설계는 미완료다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "escape_harm_warning_only",
+      "file": "rules/04-setup.md",
+      "old": "도달한 위해는 담당 판정 뒤 HP·SAN·부상·광기·소모·추격 지속·사망 가능성으로 실제 처리한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "escape_charges_flat_hp_san",
+      "file": "rules/04-setup.md",
+      "old": "대가는 실제 명중/노출/소모에서 발생하며 출구 통행료처럼 고정 HP/SAN을 차감하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "failed_escape_returns_safe",
+      "file": "rules/06-play.md",
+      "old": "지역 안의 안전",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "transport_booking_finishes_campaign",
+      "file": "rules/06-play.md",
+      "old": "진실/탈출 조건 전에는 열리지 않는",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_omits_escape_survival_design",
+      "file": "rules/07-state.md",
+      "old": "운항 일정이나 ‘안전하면 철수’라는 결론만으로 이탈 설계를 대신하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "uninjured_escape_forbidden",
+      "file": "rules/04-setup.md",
+      "old": "준비·협력·후속 위해 회피/차단에 성공해 무상처로 벗어날 가능성도 보존하며 피해를 입어야만 엔딩 자격을 주지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "climax_payoff_only_in_recap",
+      "file": "rules/04-setup.md",
+      "old": "마지막에 회상/설명하는 것으로 완료하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "every_item_required_at_climax",
+      "file": "rules/04-setup.md",
+      "old": "모든 경험/인물/물품의 사용, 고정 보스전·새 퍼즐·필수 손실은 요구하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "resume_triggers_scenario_redesign",
+      "file": "rules/04-setup.md",
+      "old": "기존 캠페인의 새 채팅 재개는 신규 생성이 아니며 이 보강을 이유로 저장된 정본·진행을 재설계하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "shock_twist_required_to_pass",
+      "file": "rules/04-setup.md",
+      "old": "주요 동기를 더 복잡하게 만들거나 목표를 뒤집는 충격적 반전을 합격 조건으로 추가하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "simple_prevention_rejected_for_climax",
+      "file": "rules/04-setup.md",
+      "old": "이미 시작된 난관에서 피해를 줄이거나 국지적 차단·생존/탈출에 성공하면 인정하고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "truth_without_meaning_or_choice",
+      "file": "rules/04-setup.md",
+      "old": "핵심 진실은 앞서 겪을 현상·물건·인물 행동의 의미를 바꾸는 사전 원인으로 설계한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "truth_invented_after_discovery",
+      "file": "rules/04-setup.md",
+      "old": "핵심 진실은 앞서 겪을 현상·물건·인물 행동의 의미를 바꾸는 사전 원인으로 설계한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "central_cause_left_as_unknown",
+      "file": "rules/04-setup.md",
+      "old": "이번 사건의 의미와 결정적 선택을 떠받치는 내막은 ‘알 수 없는 힘’으로 비워 두지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "climax_replaced_by_work_report",
+      "file": "rules/04-setup.md",
+      "old": "작업 완료 보고나 더 강한 적의 등장만으로 절정을 대신하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "early_success_undone_for_twist",
+      "file": "rules/04-setup.md",
+      "old": "사후 새 길막/무적/적 증원은 실패다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "victim_count_substitutes_depth",
+      "file": "rules/04-setup.md",
+      "old": "그 진실을 빼도 모든 경험/선택/결과가 같고 피해 대상 수·작업량·설명 분량만 늘면 서사 심화를 보완한다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "vague_design_marked_complete",
+      "file": "rules/04-setup.md",
+      "old": "가능성만으로 설계 완료라 하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "safety_after_generic_movement",
+      "file": "rules/06-play.md",
+      "old": "실제 장소·거리·수단·조류/환경",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_relationship_never_changes_action",
+      "file": "rules/05-world.md",
+      "old": "어떤 실제 변화가 협력·역할 분담·갈등·이탈을 바꾸는지",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "possibilities_pass_compatibility",
+      "file": "rules/04-setup.md",
+      "old": "가능성만 적고 발동/억제·체험 접점·대응·실제 안전/종결이 비었으면 그 연결은 미완료다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "full_design_review_every_reply",
+      "file": "rules/04-setup.md",
+      "old": "매 응답 전수 검토·검토표 출력·추가 검수 모델/저장 호출은 만들지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_headers_replace_actual_design",
+      "file": "rules/07-state.md",
+      "old": "필수 절의 제목/원인 요약만으로 완성하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "mandatory_boss_and_full_truth",
+      "file": "rules/04-setup.md",
+      "old": "근원 전체의 소멸·고정 보스전·모든 진상 규명은 공통 필수가 아니다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "major_incident_not_inevitable",
+      "file": "rules/04-setup.md",
+      "old": "주요 재난/습격/확산은 PC가 퀘스트를 받거나 특정 장소에 도착할 때",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "major_incident_cannot_reduce_harm",
+      "file": "rules/04-setup.md",
+      "old": "PC·동료의 HP/SAN 피해·죽음·동행·해결 방식은 실제 상황과 판정에 맡긴다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "world_only_first_inevitable",
+      "file": "rules/05-world.md",
+      "old": "**모든 주요 사건의 독립적 발생**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "ending_erases_all_incidents",
+      "file": "rules/06-play.md",
+      "old": "PC 전멸 또는 사전 정본의 불가역 실패",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_leaves_later_incidents_blank",
+      "file": "rules/07-state.md",
+      "old": "첫 사건만 있고 후속 사건이 비어 있으면 미완성이다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_supabase_source_missing",
+      "file": "rules/07-state.md",
+      "old": "trpg_private.gm_canon_documents에 저장·동일판본 전체 재조회·SHA-256 검증",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "canon_local_file_delivery_removed",
+      "file": "rules/07-state.md",
+      "old": "실제 원본 Markdown 파일 PRIVATE_CANON_<campaign_id>_r<revision>.md를 생성해 소유자에게 전달하고",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "situation_network_missing",
+      "file": "rules/04-setup.md",
+      "old": "당면 목적 → 세계의 변화와 직접 경험 → 행동/관계/수단 선택 → 실제 결과 → 달라진 상황과 다음 목적",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "npc_only_information_desk",
+      "file": "rules/05-world.md",
+      "old": "증언자/기관 창구를 넘어 함께 움직이고 갈등/유머/도움/손실을 겪을 사람",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "unlisted_future_frozen",
+      "file": "rules/05-world.md",
+      "old": "미래 사건표에 없는 일은 발생 불가라고 세계를 멈추지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "proof_required_for_all_endings",
+      "file": "rules/06-play.md",
+      "old": "모든 증거/모든 E 방문",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "source_world_immersion_lost",
+      "file": "PROJECT_INSTRUCTIONS.md",
+      "old": "원작 안에 들어온 감각을 주며",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "intro_no_playable_life",
+      "file": "rules/06-play.md",
+      "old": "생활을 회상 컷신으로 대체하거나",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "intro_first_event_never_in_window",
+      "file": "rules/04-setup.md",
+      "old": "**첫 원작 위기의 행동 도달·인과 접촉:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "intro_30_turn_spawn",
+      "file": "rules/04-setup.md",
+      "old": "최초 E를 턴·예정 시각으로 강제 호출하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "intro_long_wait_clock_frozen",
+      "file": "rules/04-setup.md",
+      "old": "실제 감지·접근·위해/단서로 닿는 경로",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "intro_pc2_denied_life",
+      "file": "rules/04-setup.md",
+      "old": "각 PC가 실제 생활과 NPC 반응을 경험할 기회를 보존",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "intro_resume_restarts",
+      "file": "rules/07-state.md",
+      "old": "첫 장면으로 되돌리거나 행동 턴을 1로 초기화하여 사고를 다시 예약하지 않는다",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "intro_world_turn_trigger",
+      "file": "rules/05-world.md",
+      "old": "**첫 E의 인과적 생활 접촉:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "intro_routine_off_removed",
+      "file": "START_GAME.md",
+      "old": "**첫 현지 장면은 플레이 가능한 생활·업무:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "first_incident_timer_removed",
+      "file": "rules/04-setup.md",
+      "old": "**이미 확정된 구판/재개만 비소급:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "nonparticipation_stalls_chain",
+      "file": "rules/04-setup.md",
+      "old": "**개별 E의 실행 가능한 조건:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "catastrophe_reduced_to_warning",
+      "file": "rules/04-setup.md",
+      "old": "**원작 중심 재난의 독립 인과와 손실·주도권 분리:**",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    },
+    {
+      "case": "hq_mission_before_request",
+      "file": "rules/04-setup.md",
+      "old": "임무 준비를 요청했을 때에만",
+      "reason": "approved policy replacement or copied text consolidated into current owner guards"
+    }
+  ],
+  "new_owner_mutations": 150,
+  "note": "Ambiguous substring mutations were consolidated into unique owning clauses; all current invariant guards remain active."
+}

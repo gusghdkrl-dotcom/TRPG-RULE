@@ -1,5 +1,8 @@
 # 영구 플레이어 ID·컬렉션·드래프트 Supabase 운영 계약 (2026-11-10)
 
+> **개발/설치 이력 자료:** 아래 작성 시점의 DEV 표기·예정/미구현 설명은 당시 이력이다. 현행 설치 목록은 docs/sql/release/README.md, 게임 실행은 rules/04-setup.md HQ_ON_CAMPAIGN_ROUTER·rules/09-cards.md CARD_PLAYER_STORAGE, 고정 인물은 rules/08-visual.md가 정본이다. 이 문서는 게임 ZIP에 포함되지 않으며 실행 필수 참조가 아니다. 운영 상태·API 성공은 실제 연결에서 별도 확인한다.
+
+
 > **실제 카드의 능력·수치·발동 원문 정본은 [rules/09-cards.md](../rules/09-cards.md)이다.** 전체 카드 도감의 효과 상세도 카드 ID 원문으로 표시한다. 실제 card_catalog는 카드 ID/소속/유형/등급/제목/기본 여부/순서만 보유하고 효과 칼럼은 없다. 기존 계정 조회로 보유/미보유·성장 단계, 정본으로 효과를 가져오며 도감 열람/검색으로 소유·장착·보상을 바꾸지 않는다. 본 문서는 닉네임/UUID·저장·보상 API 호출과 실제 도구/접속 조건만 다룬다.
 
 > **실제로 설치된 백엔드**: Supabase 프로젝트 `trpg-state-v2` (ref `taoaffdyssqtnjszumpq`)의 **비공개 스키마 `trpg_cards`**. 기존 `public.gm_checkpoint_history`와 저장 RPC/실제 세계 상태는 수정하지 않는다. 설치 SQL 사본: [trpg-card-collection-v1.sql](sql/trpg-card-collection-v1.sql). 익명 닉네임 접속용 추가 SQL: [trpg-card-nickname-public-v1.sql](sql/trpg-card-nickname-public-v1.sql). 실제 연결 없는 임의 가상 값·성공 신고 금지.

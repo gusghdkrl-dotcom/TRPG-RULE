@@ -1,18 +1,7 @@
 # 규칙 색인
 
-주요 위기는 PC 수락 없이 사전 인과로 움직이되 실제 차단된 국지 사건은 예방/종결로 확정하고 남은 독립 원인만 진행한다. PC는 피해·구조·격퇴·생존/탈출을 바꾼다. **주요 사건은 실제 이동·감지·전파의 인과로 PC에게 직접 위협·사건 의미의 재해석·당면 목표 충돌 중 적어도 한 가지가 도달하도록 신규 생성 시 설계한다.** SOURCE_EXPERIENCE_CONTRACT·PC_REACHED_EVENT_CONTRACT·SCENARIO_BLUEPRINT·WORLD_INITIATIVE_EXECUTION·PRIVATE_CANON_DOCUMENT를 함께 적용하며 기왕 확보한 안전을 취소하지 않는다.
+현재 담당 본문으로 조회한다. 신규 세계 설계는 04-setup SCENARIO_BLUEPRINT/COMPATIBILITY_GATE, 실제 진행은 05-world WORLD_INITIATIVE_EXECUTION/SCENE_CONSEQUENCE_RULE, 종결은 06-play ENDING_FINALIZATION_GATE, 정본/누적 저장과 판본은 07-state가 담당한다. **참가 PC 전원이 각 E를 현장에서 직접 체험한 뒤 최종 국면에 진입하며 원격 기여는 체험으로 인정하지 않는다.** 개별 공격 차단/피해 0과 E 위기 발생 보장을 구별한다. 과거 verified 정본·세이브는 당시 판본/성과대로 보존한다. 개발/요약/역사 문서를 실행 규칙으로 혼합하지 않는다.
 
-신규 주요 E의 객관적 원인·상태/차단과 PC별 현장 또는 실제 실시간 원격 개입·정보/선택/철수는 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT/WORLD_INITIATIVE_EXECUTION/ENDING_FINALIZATION_GATE를 따른다. **E 8~12/S 18~30, 첫 E 2~30턴, 적 5등급, 전원 E 현장 완주**는 신규 생성/종결 의무가 아니다. 확정된 구판 세이브·원작 세계의 독립 재난과 이미 획득한 안전은 보존한다.
-
-신규 캠페인의 **불가역 G·필수 진실 이해/생존 동기·마지막 봉쇄/실제 탈출 시련 전 전체 탈출 불가·대표 적과 예비 실행자 선확정·후속 E의 인과적 발생/자율 추적**은 SCENARIO_BLUEPRINT/HARM_ECOLOGY/CAUSAL_ENDGAME_PRECOMMIT→PRIVATE_CANON_DOCUMENT→WORLD_INITIATIVE_EXECUTION/ACTIVE_DANGER_CONTINUITY→ENDING_FINALIZATION_GATE에서 실행한다. 국지 피해 감소·구조 성공과 PC 행동/감정 주도권은 보존한다. 구판 검증 상태 비소급.
-신규 생성 시 PC별 생활·관계·책임과 원작 중심 인과의 연결은 SCENARIO_BLUEPRINT의 깊은 PC 연결 합격 기준, PRIVATE_CANON_DOCUMENT의 PC_CONNECTIONS·HIDDEN_TRUTH·NPC/LOCATION/EVIDENCE/DRIVER/ENDING ref를 사용한다. 직업 기능·거래처만 남은 연결, 조기 예방 후 접촉 공백, 원작 적 전력/물품의 축약, 초기 적·NPC의 자율 이동·위험 실제 접촉 부족, 중요 단서 내용 미확정·진실→결말 단절은 COMPATIBILITY_GATE에서 불합격으로 본다.
-신규 세계/미확정 챕터의 원작 중심축+새 주인공의 사건, 실제 위협/피해·미개입/귀가/해결의 인과 설계도는 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT의 기존 HIDDEN_TRUTH·WORLD_RULES·DRIVER_BASELINES·ENDING_CONDITIONS 및 관련 절을 따르고 COMPATIBILITY_GATE로 내용의 중대성과 실행 연결을 대조한다. 단서의 오인/기만은 실제 NPC/자료의 원인·공개 범위와 해결된 성과를 보존한다.
-
-영구 카드 자산·강화·성장과 효과별 발동·등급·해금은 09-cards가 담당한다. 이번 패치에서 장착·상점은 INVENTORY/PERSONAL_CASH_LEDGER, 장비 전투 준비는 COMBAT_ORDER, 간편 HUD·가방 실물 목록 상시/PC별 당근/판정 시 카드 표시는 BOTTOM_HUD_CONTRACT, 선택 대사의 직접화법은 CINEMATIC_ACTION_CONTINUITY, 직업6후보는 PROFESSION_DRAFT, 원작 대표/창작 적의 단계별 개체 전력·중간/최종 보스·사이드 사건은 SCENARIO_BLUEPRINT/PRIVATE_CANON_DOCUMENT, 특별 성공 처리는 SUCCESS_LEVELS/DAMAGE에서 다룬다.
-
-신규 공개 세계 오프닝·PC별 원래 인물상/관여 동기는 START_GAME/INVESTIGATOR_DEPTH_PROTOCOL/HQ_FIELD_CONTEXT_BRIEFING/PRIVATE_CANON_DOCUMENT/KEEPER_SCENE_SELECTION, 파밍 후 의료 가방+3·호환 무기 운반구+2·등짐 메인+2의 획득/실물 수납은 INVENTORY/BOTTOM_HUD_CONTRACT, 실제 발동 시각 기준 상대 물리 소요는 SCENE_ELAPSED_TIME_SETTLEMENT를 따른다. 기존 세이브 비소급.
-
-규칙판: 생존 호러 통합 경량판 2026-11-12. 상시 이야기·묘사·페이싱은 PROJECT_INSTRUCTIONS.md, 아래는 필요한 수치/상태/절차를 찾는 경로다. 같은 판본의 필요한 본문과 현재 상태가 확인 가능하면 재사용하고 유실/변경/충돌 부분만 조회한다. 매 응답 색인이나 전 규칙을 다시 읽지 않는다.
 
 | 상황 | 담당 절 |
 |---|---|
@@ -28,7 +17,7 @@
 | 전투·총기·추격·위해 | [COMBAT_ORDER](03-danger.md#combat_order) · [MELEE_OPPOSED](03-danger.md#melee_opposed) · [FIREARMS](03-danger.md#firearms) · [CHASE](03-danger.md#chase) · [EXTREME_HAZARDS](03-danger.md#extreme_hazards) |
 | 신규 시작·원작·PC/전체 카드 도감·슬롯 중심 장착·등급별 UI | [START_SETTINGS_GATE](04-setup.md#start_settings_gate) · [HQ_MARTIN_MISSION_ETHOS_AND_VALUES_INTERVIEW](04-setup.md#hq_martin_mission_ethos_and_values_interview) · [SETUP_UI_FIXED_CONTRACT](04-setup.md#setup_ui_fixed_contract) · [CAMPAIGN_SETUP_PIPELINE](04-setup.md#campaign_setup_pipeline) · [HOMAGE_DRAFT_SELECTION](04-setup.md#homage_draft_selection) · [STAT_DRAFT_GENERATION](04-setup.md#stat_draft_generation) · [PROFESSION_DRAFT](04-setup.md#profession_draft) · [STARTING_EQUIPMENT_MINIMAL](04-setup.md#starting_equipment_minimal) |
 | 신규 첫 현지 생활·업무 장면→원작 중심 G의 불가역 발생·PC별 생존/진실 동기, E의 실제 인과적 접촉·자율 추적/압박, 전면 예방 불가·국지 위해 완화, ENDING_CONDITIONS 전 전체 안전 이탈 불가와 최종 대응, 독립 S/생활·정본 10절 기록 | [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [HARM_ECOLOGY](04-setup.md#harm_ecology) · [CAUSAL_ENDGAME_PRECOMMIT](04-setup.md#causal_endgame_precommit) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) · [ACTIVE_DANGER_CONTINUITY](05-world.md#active_danger_continuity) · [ENDING_FINALIZATION_GATE](06-play.md#ending_finalization_gate) |
-| G/E 세계의 비공개 원인·진행/차단과 PC별 실제 지식·선택·현장/실시간 원격 대응, 목적 종료 후 기존 세계의 후속 접촉·독립 S/생활 및 진행 정체 방지 | [SCENE_CONSEQUENCE_RULE](05-world.md#scene_consequence_rule) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) · [KEEPER_SCENE_SELECTION](06-play.md#keeper_scene_selection) · [STATE_WORKING_CONTEXT](07-state.md#state_working_context) |
+| G/E 세계의 비공개 원인·진행/차단과 PC별 실제 지식·선택·현장 직접 체험과 실제 대응, 목적 종료 후 기존 세계의 후속 접촉·독립 S/생활 및 진행 정체 방지 | [SCENE_CONSEQUENCE_RULE](05-world.md#scene_consequence_rule) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) · [KEEPER_SCENE_SELECTION](06-play.md#keeper_scene_selection) · [STATE_WORKING_CONTEXT](07-state.md#state_working_context) |
 | 필수 뼈대 순서와 E ID/독립 발생의 구별·신규 주요 사건의 상태·목표망 발동, 물리 시간은 행동/위해에만 사용·구판 고정/상대 시계 비소급 | [LINKED_MAJOR_DISASTER_TIMERS](04-setup.md#linked_major_disaster_timers) · [WORLD_INITIATIVE_EXECUTION](05-world.md#world_initiative_execution) · [SCENE_ELAPSED_TIME_SETTLEMENT](06-play.md#scene_elapsed_time_settlement) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) |
 | 본부 ON 출격 전 현지 PC별 직전 행동·출발 목적+화폐·운송·통신 실무 브리핑, OFF 첫 장면 공개 | [HQ_FIELD_CONTEXT_BRIEFING](04-setup.md#hq_field_context_briefing) · [HQ_ON_CAMPAIGN_ROUTER](04-setup.md#hq_on_campaign_router) |
 | 다인 PC 병렬 세계 시각·각 PC 미선언 구간/중단·동시 사건 동기화 | [PARALLEL_TIMELINE_SYNC](06-play.md#parallel_timeline_sync) · [STATE_WORKING_CONTEXT](07-state.md#state_working_context) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) |
@@ -56,7 +45,7 @@
 | 긴장 해소/직접 결과 뒤 공평한 PC 교대·압축·대화 응답·행동 안내·간편 HUD/🥕 상시·판정 시 카드 | [CINEMATIC_ELLIPSIS](06-play.md#cinematic_ellipsis) · [NPC_REPLY_AGENCY_GATE](06-play.md#npc_reply_agency_gate) · [GUIDED_ACTION_RETURN](06-play.md#guided_action_return) · [BOTTOM_HUD_CONTRACT](06-play.md#bottom_hud_contract) |
 | 신규 초기 귀가/우회·탈출 경로의 위협/대응/실패 설계 | [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [HARM_ECOLOGY](04-setup.md#harm_ecology) · [COMPATIBILITY_GATE](04-setup.md#compatibility_gate) · [PRIVATE_CANON_DOCUMENT](07-state.md#private_canon_document) |
 | 실제 이탈/종결·다섯 엔딩 후 출력 | [ENDING_FINALIZATION_GATE](06-play.md#ending_finalization_gate) · [ENDING_PRESENTATION](06-play.md#ending_presentation) · [OPTIONAL_POST_CREDITS_VIEWS](06-play.md#optional_post_credits_views) · **ON은 제이든→마틴 뒤 클라라 요청 시에만 다섯 편, OFF는 기존 즉시 출력** |
-| E/G 세계 발생·상태/차단과 PC별 실제 관측/수락·원격 기여·NPC 자율 결과·선택 S/생활의 분리 저장 및 재개·검증 DB 접근 | [PRIVATE_CANON_ACCESS_ROUTER](07-state.md#private_canon_access_router) · [STATE_WORKING_CONTEXT](07-state.md#state_working_context) · [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
+| E/G 세계 발생·상태/차단과 PC별 실제 관측/수락·현장 체험·NPC 자율 결과·선택 S/생활의 분리 저장 및 재개·검증 DB 접근 | [PRIVATE_CANON_ACCESS_ROUTER](07-state.md#private_canon_access_router) · [STATE_WORKING_CONTEXT](07-state.md#state_working_context) · [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
 | 저장·정합성·복구·새채팅 재개 | [STATE_CADENCE](07-state.md#state_cadence) · [STATE_COMMIT](07-state.md#state_commit) · [STATE_INTEGRITY](07-state.md#state_integrity) · [STATE_RESUME](07-state.md#state_resume) · [STATE_COMPATIBILITY](07-state.md#state_compatibility) |
 | 영구 카드 소속·등급·4슬롯·자산 구현 | [CARD_SYSTEM_SCOPE](09-cards.md#card_system_scope) · [CARD_EQUIP_AND_ASSET](09-cards.md#card_equip_and_asset) |
 | 장착 강화 발동·특수 보너스·수치 예외 | [CARD_ENHANCEMENT_TRIGGER](09-cards.md#card_enhancement_trigger) · [CARD_ENHANCEMENT_GU](09-cards.md#card_enhancement_gu) · [CARD_ENHANCEMENT_NE](09-cards.md#card_enhancement_ne) |

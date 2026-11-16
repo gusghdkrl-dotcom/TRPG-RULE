@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the current document set and export only game-facing sources."""
 from __future__ import annotations
-import argparse, json, re, shutil, zipfile
+import argparse, hashlib, json, re, shutil, zipfile
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RULES = ROOT / 'rules'
@@ -17,6 +17,18 @@ def registry():
 
 def sources():
     return [ROOT/'PROJECT_INSTRUCTIONS.md', ROOT/'START_GAME.md', *sorted(RULES.glob('*.md'))]
+
+def release_identity():
+    """Identify exact game source bytes without a self-referential source hash."""
+    digests = {
+        ('sources/'+p.name if p.parent == RULES else p.name): hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in sources()
+    }
+    encoded = json.dumps(digests, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
+    digest = hashlib.sha256(encoded).hexdigest()
+    return {'rules_version': 'TRPG-RULE-2026-11-17+sha256:'+digest,
+            'source_sha256': digest, 'source_files': digests,
+            'digest_format': 'SHA-256 of UTF-8 JSON source_files; sorted keys; ensure_ascii=false; separators=comma,colon'}
 
 def validate(*, semantic_checks=True):
     errors = []
@@ -138,6 +150,7 @@ def export():
     (target/'sources').mkdir(parents=True)
     for path in RULES.glob('*.md'):shutil.copyfile(path,target/'sources'/path.name)
     for name in ['PROJECT_INSTRUCTIONS.md','START_GAME.md']:shutil.copyfile(ROOT/name,target/name)
+    (target/'RULESET.json').write_text(json.dumps(release_identity(),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     # HQ portraits are official fixed assets, not new AI-generated profiles.
     # Verify all eight original PNG bytes before the release archive is constructed.
     npc_manifest = ROOT/'assets/hq-npc/manifest.json'
@@ -158,7 +171,7 @@ def export():
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source, destination)
         shutil.copyfile(npc_manifest,target/'assets/hq-npc/manifest.json')
-    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~09-cards의 10개 최신 소스로 교체\nassets/hq-npc/* → 시간본부 NPC 공식 이미지 8장과 manifest.json (ON 전용)\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하세요.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
+    (target/'UPLOAD_GUIDE.txt').write_text('PROJECT_INSTRUCTIONS.md → 프로젝트 지침에 복사\nsources/*.md → 00-index~09-cards의 10개 최신 소스로 교체\nassets/hq-npc/* → 시간본부 NPC 공식 이미지 8장과 manifest.json (ON 전용)\nSTART_GAME.md → 새 게임 준비 때 채팅에 입력\nRULESET.json → 함께 보관/등록하고 신규 저장의 기존 rules_version에 정확한 식별자를 기록\nSHA256.json → 배포 파일 바이트 검증; RULESET.json의 source_files는 실행 소스 12개를 식별\n구판 룰북·09-notebook·개발/감사 문서는 게임 소스에서 제외하세요.\n실제 캠페인 비공개 정본과 세이브는 별도 보존하세요. 기존 캠페인은 새 설정 대신 STATE_RESUME으로 복원하고 과거 rules_version을 바꾸지 마세요.\n실제 도구 지원·Supabase 계약/저장 검증은 별도이며 룰북만으로 기능이 생기지는 않습니다.\n')
     manifest={str(p.relative_to(target)):__import__('hashlib').sha256(p.read_bytes()).hexdigest() for p in sorted(target.rglob('*')) if p.is_file()}
     (target/'SHA256.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
     archive=ROOT/'dist/TRPG-RULE-project.zip'

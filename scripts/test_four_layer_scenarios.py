@@ -78,7 +78,7 @@ def snapshot(entry='daily', count=1, hq=False):
                          'known_routes': list(CANON['routes']), 'accepted': []}
                 for i in range(1, count + 1)},
         'closed': [], 'blocked_routes': [], 'resources': ['boat'],
-        'world_events': [], 'experienced': {}, 'resolved': {},
+        'world_events': [], 'experienced': {}, 'remote': {}, 'resolved': {},
         'deliveries': [], 'sides': {}, 'legacy_timer': None,
     }
 
@@ -150,6 +150,17 @@ def inspect(canon, state):
     for ref, result in state['resolved'].items():
         if result == 'experienced' and not state['experienced'].get(ref):
             errors.add('news_is_not_experience')
+    for ref, participants in state['experienced'].items():
+        if set(participants) & set(state['remote'].get(ref, [])):
+            errors.add('remote_is_not_experience')
+    # All PCs directly experience every E before the finale. A local attack
+    # stopped without injury does not cancel the independently caused crisis.
+    if state['phase'] == 'finale' or state['status'] in ('safe_withdrawal', 'resolved'):
+        for ref in canon['spine']:
+            if not set(state['pcs']) <= set(state['experienced'].get(ref, [])):
+                errors.add('finale_before_all_pc_field_experience')
+            if ref not in state['world_events']:
+                errors.add('crisis_did_not_occur')
     return errors, visible
 
 
@@ -200,8 +211,22 @@ def main():
     # Transport failure with no real alternate route is a generation defect.
     s['closed'] = ['M_repair']; s['resources'] = []; s['blocked_routes'] = ['R_walk']
     bad(s, 'main_gap')
-    for terminal in ['safe_withdrawal', 'all_dead', 'resolved']:
-        s['status'] = terminal; good(s)
+    s['status'] = 'all_dead'; good(s)  # failure need not reach a success finale
+    for terminal in ['safe_withdrawal', 'resolved']:
+        s['status'] = terminal
+        bad(s, 'finale_before_all_pc_field_experience')
+        s['experienced'] = {e: list(s['pcs']) for e in CANON['spine']}
+        bad(s, 'crisis_did_not_occur')
+        s['world_events'] = CANON['spine'].copy(); good(s)
+        s['experienced'] = {}; s['world_events'] = []
+    for count in [1, 2, 3]:
+        s = snapshot(count=count); s['phase'] = 'finale'
+        s['world_events'] = CANON['spine'].copy()
+        s['experienced'] = {e: list(s['pcs']) for e in CANON['spine']}
+        good(s)
+        s['remote'] = {'E03': ['P1']}; bad(s, 'remote_is_not_experience')
+        s['remote'] = {}; s['experienced']['E03'].remove('P1')
+        bad(s, 'finale_before_all_pc_field_experience')
     # Split PC knowledge is independent. Offscreen occurrence grants no facts.
     s = snapshot(count=2); s['pcs']['P2']['place'] = 'shelter'
     s['pcs']['P2']['facts'] = ['F_ridge_map', 'F_source_brief']
@@ -210,8 +235,10 @@ def main():
     s['resolved']['E99'] = 'experienced'; bad(s, 'news_is_not_experience')
     s['resolved'] = {}; s['experienced'] = {'E14': ['P1']}
     s['resolved']['E14'] = 'experienced'; good(s)
-    # A valid pre-emption is a distinct resolution, not fake experienced harm.
-    s['resolved']['E03'] = 'prevented'; good(s)
+    # Preventing one attack preserves safety, while the independent E crisis
+    # occurs. Remote effects or late news never fill the missing field credit.
+    s['world_events'].append('E03')
+    s['resolved']['E03'] = 'local_attack_prevented'; good(s)
     # Real delivery conditions; no transitive/omniscient NPC knowledge.
     d = {'from': 'N_keeper', 'to': 'P1', 'fact': 'F_source_brief',
          'medium': 'radio', 'receiver_working': False, 'elapsed': 1, 'required': 1}

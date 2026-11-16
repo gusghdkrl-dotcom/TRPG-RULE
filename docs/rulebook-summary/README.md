@@ -1,5 +1,8 @@
 # TRPG-RULE — 전체 실행 문서별 구조화 요약
 
+> 이 폴더는 2447e734 기준 구판 요약 스냅샷이다. 2026-11-17 안정화 이후의 실행 규칙/새 저장 판본이 아니며 신규 프로젝트에 혼합하지 않는다. 현재 정본은 루트 PROJECT_INSTRUCTIONS.md·START_GAME.md·rules/*.md와 최신 배포 ZIP이다.
+
+
 > **기준 정본:** GitHub `main` 커밋 [`2447e73`](https://github.com/gusghdkrl-dotcom/TRPG-RULE/tree/2447e73482eb4a160cfcc22f4ec6508e25d75cd8) (`2447e73482eb4a160cfcc22f4ec6508e25d75cd8`). **읽기·감사·변경 영향 파악용 참고 문서**이며 실제 게임 규칙은 `PROJECT_INSTRUCTIONS.md`, `START_GAME.md`, `rules/*.md` 원문과 해당 캠페인의 검증 정본이다. 이 디렉터리의 요약은 새 규칙/Override가 아니며 게임 ZIP에는 포함하지 않는다.
 
 ## 전체 구성과 누락 대조
