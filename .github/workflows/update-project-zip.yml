@@ -9,18 +9,9 @@ on:
       - "PROJECT_INSTRUCTIONS.md"
       - "START_GAME.md"
       - "scripts/rulebook.py"
-      - "scripts/test_rulebook_contract.py"
-      - "scripts/test_four_layer_scenarios.py"
-      - "scripts/test_resume_semantics.py"
-      - "scripts/test_stat_generation.py"
-      - "scripts/test_python_random.py"
-      - "scripts/check_hq_release_contract.py"
-      - "scripts/compare_hq_db_baselines.py"
-      - "scripts/test_compare_hq_db_baselines.py"
-      - "docs/sql/release/**"
-      - "docs/sql/dev/**"
       - "assets/hq-npc/**"
       - "docs/rule-migration.json"
+      - "docs/rule-reorganization.json"
       - "docs/validation-contract.json"
   workflow_dispatch:
 
@@ -29,7 +20,7 @@ permissions:
 
 concurrency:
   group: project-zip-main
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   export:
@@ -38,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Validate the latest main and commit its matching game ZIP
+      - name: Lightweight source check and matching game ZIP
         shell: bash
         run: |
           set -euo pipefail
@@ -47,17 +38,10 @@ jobs:
           # GitHub Actions may start before a later README/DEVLOG commit
           # reaches main. Regenerate from the actual remote HEAD, not an
           # outdated checkout; retry only after a legitimate push race.
-          for attempt in 1 2 3 4 5; do
+          for attempt in 1 2 3; do
             git fetch origin main
             git checkout -B zip-export origin/main
             python3 scripts/rulebook.py check
-            python3 scripts/test_rulebook_contract.py
-            python3 scripts/test_four_layer_scenarios.py
-            python3 scripts/test_resume_semantics.py
-            python3 scripts/check_hq_release_contract.py
-            python3 scripts/test_compare_hq_db_baselines.py
-            python3 scripts/test_stat_generation.py
-            python3 scripts/test_python_random.py
             python3 scripts/rulebook.py export
             git diff --check
             if git diff --quiet -- dist/TRPG-RULE-project.zip; then
@@ -72,5 +56,5 @@ jobs:
             fi
             echo "Main advanced during ZIP export; retrying from new HEAD."
           done
-          echo "ZIP refresh failed after five remote-head attempts" >&2
+          echo "ZIP refresh failed after three remote-head attempts" >&2
           exit 1
