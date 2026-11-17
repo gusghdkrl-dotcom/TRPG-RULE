@@ -447,9 +447,18 @@ mutations += [
  ('san_legacy_requires_old_rules',lambda r:change(r,'rules/03-danger.md','구판 룰북 파일을 복원 조건으로 요구하지 않는다','구판 룰북으로 복원한다')),
 ]
 
+mutations += [
+ ('template_missing',lambda r:(r/'templates/PRIVATE_CANON_TEMPLATE.md').unlink()),
+ ('template_section_missing',lambda r:change(r,'templates/PRIVATE_CANON_TEMPLATE.md','## HIDDEN_TRUTH','### HIDDEN_TRUTH')),
+ ('template_section_duplicated',lambda r:change(r,'templates/PRIVATE_CANON_TEMPLATE.md','## HIDDEN_TRUTH','## HIDDEN_TRUTH\n\n## HIDDEN_TRUTH')),
+ ('template_invalid_owner',lambda r:change(r,'templates/PRIVATE_CANON_TEMPLATE.md','SOURCE_EXPERIENCE_CONTRACT','REMOVED_AUTHORING_RULE')),
+ ('template_invalid_utf8',lambda r:(r/'templates/PRIVATE_CANON_TEMPLATE.md').write_bytes(b'\xff')),
+]
+
 with tempfile.TemporaryDirectory() as tmp:
     baseline=Path(tmp)/'baseline';(baseline/'docs').mkdir(parents=True)
     shutil.copytree(ROOT/'rules',baseline/'rules')
+    shutil.copytree(ROOT/'templates',baseline/'templates')
     for name in ['PROJECT_INSTRUCTIONS.md','START_GAME.md']:shutil.copyfile(ROOT/name,baseline/name)
     for name in ['rule-migration.json','rule-reorganization.json','validation-contract.json','RULE_CATALOG.md']:
         shutil.copyfile(ROOT/'docs'/name,baseline/'docs'/name)
