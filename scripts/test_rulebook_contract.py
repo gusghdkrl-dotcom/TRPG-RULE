@@ -24,6 +24,11 @@ def validate(root):
         raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
+ ('latest_source_state_identity_0',lambda r:change(r,'rules/07-state.md','신규·기존 게임·같은 채팅·다른 채팅 재개 모두 현재 프로젝트 소스에 실제 등록된 최신 룰북','[regressed latest source policy]')),
+ ('latest_source_state_identity_1',lambda r:change(r,'rules/07-state.md','기존 checkpoint 최상위 `rules_version`과 원문/해시는 이력으로 보존한다','[regressed latest source policy]')),
+ ('latest_source_state_identity_2',lambda r:change(r,'rules/07-state.md','**아직 처리하지 않은 단계부터 최신 규칙**','[regressed latest source policy]')),
+ ('latest_source_state_identity_3',lambda r:change(r,'rules/07-state.md','최신 verified parent 다음 **새 checkpoint**','[regressed latest source policy]')),
+ ('latest_source_state_resume_0',lambda r:change(r,'rules/07-state.md','과거 룰북 파일은 필수 인계물이 아니다','[regressed latest source policy]')),
  ('pc_reached_event_contract_handoff_0',lambda r:change(r,'rules/04-setup.md','**참가 이력 기준:**','[regressed handoff boundary]')),
  ('pc_reached_event_contract_handoff_1',lambda r:change(r,'rules/04-setup.md','일시 의식불명·부재/분리·패스는 자동 탈퇴/체험 면제가 아니다','[regressed handoff boundary]')),
  ('scenario_blueprint_handoff_0',lambda r:change(r,'rules/04-setup.md','현장 위기가 끝나도 다른 곳의 독립 적/잔존 위험은 남을 수 있다','[regressed handoff boundary]')),
@@ -32,7 +37,7 @@ mutations=[
  ('state_experience_continuity_handoff_1',lambda r:change(r,'rules/07-state.md','중요도가 낮다는 이유만으로 버리지 않는다','[regressed handoff boundary]')),
  ('state_commit_handoff_0',lambda r:change(r,'rules/07-state.md','지금의 입력 대기·전투/대화 중간 지점에서 자른다','[regressed handoff boundary]')),
  ('state_resume_handoff_0',lambda r:change(r,'rules/07-state.md','그 **정확한 verified version**','[regressed handoff boundary]')),
- ('state_resume_handoff_1',lambda r:change(r,'rules/07-state.md','**전체 현재 작업 STATE JSON + 정확한 정본 .md + 일치하는 규칙 배포 정보**','[regressed handoff boundary]')),
+ ('state_resume_handoff_1',lambda r:change(r,'rules/07-state.md','**전체 현재 작업 STATE JSON + 정확한 정본 .md + 저장 출처/검증 정보**','[regressed handoff boundary]')),
  ('new_g_prevented',lambda r:change(r,'rules/04-setup.md','**신규 캠페인의 불가역 중심 재난·탈출 경계:**','**재난은 쉽게 예방된다:**')),
  ('few_enemies_static',lambda r:change(r,'rules/04-setup.md','**소수 적의 장기적 능동 압박:**','**소수 적은 가만히 기다린다:**')),
  ('clue_text_left_until_discovery',lambda r:change(r,'rules/04-setup.md','**중요 단서·문서의 내용 사전 확정:**','**핵심 단서는 플레이 도중 처음 발견할 때 생성:**')),
@@ -328,7 +333,7 @@ mutations=[
  ('stabilized_state_canon_save_binding_7',lambda r:change(r,'rules/07-state.md','SAN 0도 게임 오버이므로 이 판정에서는 false','[removed consequential contract]')),
  ('stabilized_state_canon_save_binding_9',lambda r:change(r,'rules/07-state.md','서버 변경 없이 기존 JSON','[removed consequential contract]')),
  ('stabilized_state_identity_2',lambda r:change(r,'rules/07-state.md','기존 checkpoint 최상위 `rules_version`','[removed consequential contract]')),
- ('stabilized_state_identity_3',lambda r:change(r,'rules/07-state.md','기존 저장의 `rules_version`·정본 원문/해시는 변경·재해시하지 않고','[removed consequential contract]')),
+ ('stabilized_state_identity_3',lambda r:change(r,'rules/07-state.md','기존 checkpoint 최상위 `rules_version`과 원문/해시는 이력으로 보존한다','[removed consequential contract]')),
  ('stabilized_state_working_context_1',lambda r:change(r,'rules/07-state.md','원격 기여는 체험으로 인정하지 않는다','[removed consequential contract]')),
  ('stabilized_state_working_context_2',lambda r:change(r,'rules/07-state.md','재개 후 1턴으로 초기화하거나 사건을 재예약하지 않는다','[removed consequential contract]')),
  ('stabilized_state_working_context_3',lambda r:change(r,'rules/07-state.md','실제 read-back 전 영속 성공을 주장하지 않는다','[removed consequential contract]')),
