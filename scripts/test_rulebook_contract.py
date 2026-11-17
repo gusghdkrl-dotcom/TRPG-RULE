@@ -24,6 +24,10 @@ def validate(root):
         raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
+ ('resource_recovery_budget_omitted',lambda r:change(r,'rules/04-setup.md','실제로 적용 가능한 회복을 포함한 가용 자원을 충분히 넘겨야','회복을 제외한 초기 자원만 넘기면')),
+ ('resource_only_final_recovery',lambda r:change(r,'rules/04-setup.md','최종 종료 보상/일일 수면만 있고 그 전에 계속 버틸 수단이 없는 장기 설계는 불합격','최종 종료 보상만 있어도 중간 회복 준비 완료')),
+ ('resource_live_scaling',lambda r:change(r,'rules/04-setup.md','진행 중 수치/적/노출·회복량을 몰래 조절하지 않는다','진행 중 수치/적/노출·회복량을 몰래 조절한다')),
+ ('recovery_deferred_to_finale',lambda r:change(r,'rules/03-danger.md','준비한 중간 성취가 실제 완료되면 그때 지급하며 최종전까지 보류하지 않는다','준비한 중간 성취 보상은 최종전까지 보류한다')),
  ('briefing_shared_screen_fake_privacy',lambda r:change(r,'rules/04-setup.md','같은 계정의 파일은 접근권으로 분리되지 않음','같은 계정에서도 P1 전용 표기만으로 접근권이 분리됨')),
  ('briefing_known_but_undelivered',lambda r:change(r,'rules/04-setup.md','실제 전달 전 해당 PC의 첫 현지 선택을 정보 없이 진행시키지 않는다','개인 자료를 전달하지 않아도 PC의 첫 선택을 진행한다')),
  ('briefing_bans_early_sharing',lambda r:change(r,'rules/04-setup.md','즉시 공유·부분 공개·유보는 모두 허용','첫 세션에는 개인 정보 공유를 금지')),
