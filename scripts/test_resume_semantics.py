@@ -52,6 +52,14 @@ state['resume_context']['handoff_details']={
  'submitted_check':{'owner':'ACTOR_NEW','raw':37,'stage':'received_unapplied','luck_spent':0},
  'last_presented_event':'EVENT_A','spent_card':'CARD_SYN',
 }
+# Initial personal knowledge, actual player receipt and diegetic sharing are
+# different facts even when all humans use one screen/account.
+state['resume_context']['handoff_details']['personal_briefing']={
+ 'actor_ref':'ACTOR_NEW','known_fact_refs':['PERSONAL_FACT_SYN'],
+ 'filename':'PC_BRIEF_SYN_P1_r1.md','file_sha256':'f'*64,
+ 'delivery_mode':'shared_screen_turn_reading','delivered_fact_refs':['PERSONAL_FACT_SYN'],
+ 'received_confirmed':True,'in_world_shared_with':[]
+}
 paths=['/session','/turn','/canon_revision','/entities/ENTITY_A/communication','/entities/ENTITY_A/held_item',
        '/agreement','/route','/pending','/processed','/optional','/resume_context']
 def at(obj,path):
@@ -116,6 +124,16 @@ story_mutations=[
  lambda s:s['resume_context']['story_context']['story_save']['request'].update(expected_manifest='OTHER.manifest.json'),
 ]
 mutations.extend(story_mutations)
+briefing_mutations=[
+ lambda d:d['resume_context']['handoff_details'].pop('personal_briefing'),
+ lambda d:d['resume_context']['handoff_details']['personal_briefing'].update(actor_ref='ACTOR_OLD'),
+ lambda d:d['resume_context']['handoff_details']['personal_briefing'].update(known_fact_refs=[]),
+ lambda d:d['resume_context']['handoff_details']['personal_briefing'].update(delivered_fact_refs=[]),
+ lambda d:d['resume_context']['handoff_details']['personal_briefing'].update(received_confirmed=False),
+ lambda d:d['resume_context']['handoff_details']['personal_briefing'].update(in_world_shared_with=['P2']),
+ lambda d:d['resume_context']['handoff_details']['personal_briefing'].update(filename='PC_BRIEF_SYN_P2_r1.md'),
+]
+mutations.extend(briefing_mutations)
 for mutate in mutations:
     bad=deepcopy(state);mutate(bad);assert not compare(probes,bad)['passed'];cases+=1
 # A manifest that only compares numbers must not pass declared memory coverage.

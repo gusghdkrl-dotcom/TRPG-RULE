@@ -24,6 +24,11 @@ def validate(root):
         raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
+ ('briefing_shared_screen_fake_privacy',lambda r:change(r,'rules/04-setup.md','같은 계정의 파일은 접근권으로 분리되지 않음','같은 계정에서도 P1 전용 표기만으로 접근권이 분리됨')),
+ ('briefing_known_but_undelivered',lambda r:change(r,'rules/04-setup.md','실제 전달 전 해당 PC의 첫 현지 선택을 정보 없이 진행시키지 않는다','개인 자료를 전달하지 않아도 PC의 첫 선택을 진행한다')),
+ ('briefing_bans_early_sharing',lambda r:change(r,'rules/04-setup.md','즉시 공유·부분 공개·유보는 모두 허용','첫 세션에는 개인 정보 공유를 금지')),
+ ('briefing_common_hud_leaks',lambda r:change(r,'rules/01-core.md','현재 PC가 아는 정보라도 미공유 개인 내용은 공용 지문·프로필·HUD·선택지/이유 해설에 누출하지 않는다','현재 PC가 아는 정보는 공용 HUD에 모두 표시한다')),
+ ('briefing_save_auto_shared',lambda r:change(r,'rules/07-state.md','파일 생성만으로 수령/극중 공유를 true로 기록하지 않고','파일 생성으로 수령/극중 공유를 모두 true로 기록하고')),
  ('safety_design_has_no_root_path',lambda r:change(r,'rules/04-setup.md','핵심 현장/근원에서 진실을 이용해 영구 해제할 조건','안전 장소를 선택하면 근원 대응 없이 영구 종료')),
  ('safety_no_refusal_probe',lambda r:change(r,'rules/04-setup.md','각 PC가 메인/사이드를 거절하고 가장 안전한 선택만 계속하는 경로','메인 의뢰를 모두 수락한 경로만')),
  ('safety_freeze_live_source',lambda r:change(r,'rules/05-world.md','차단한 공격/접근과 살아 있는 근원의 다음 행동을 구별한다','공격을 한 번 막으면 살아 있는 근원도 계속 정지한다')),

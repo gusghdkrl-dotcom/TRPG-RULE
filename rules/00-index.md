@@ -9,6 +9,7 @@
 |---|---|
 | 일반 턴 첫 출력 속도·반복 조회/추론·독립 난수 묶음, 규칙/서술/HUD·정기 경계 보존 | [CORE_WORKFLOW](01-core.md#core_workflow) · [PYTHON_RANDOM_EXECUTION](01-core.md#python_random_execution) · [STATE_WORKING_CONTEXT](07-state.md#state_working_context) · [STATE_ACCESS_ROUTER](07-state.md#state_access_router) |
 | 신규 다인 사전 친분·공동 장소/출발, 메인 무대 필연 진입·봉쇄와 배경 고유 최종 보스 | [INVESTIGATOR_DEPTH_PROTOCOL](04-setup.md#investigator_depth_protocol) · [SCENARIO_BLUEPRINT](04-setup.md#scenario_blueprint) · [FINAL_THREAT_DESIGN](04-setup.md#final_threat_design) · [MULTI_PC_SPOTLIGHT_CONTRACT](06-play.md#multi_pc_spotlight_contract) |
+| PC별 다른 시작 지식·공용 프로필/개인 브리핑·한 화면 순번 파일 열람·자연스러운 공유/즉시 공개 허용 | [INVESTIGATOR_DEPTH_PROTOCOL](04-setup.md#investigator_depth_protocol) · [FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT](04-setup.md#final_investigator_profile_output_contract) · [CORE_VISIBILITY](01-core.md#core_visibility) · [STATE_EXPERIENCE_CONTINUITY](07-state.md#state_experience_continuity) |
 | 입력 의미·주도권·공개 범위 | [PLAYER_INPUT_NAMESPACE_ROUTER](01-core.md#player_input_namespace_router) · [CORE_AGENCY](01-core.md#core_agency) · [CORE_VISIBILITY](01-core.md#core_visibility) |
 | 실제 난수·생성 분리 | [PYTHON_RANDOM_EXECUTION](01-core.md#python_random_execution) · [GENERATION_RNG_SEPARATION](04-setup.md#generation_rng_separation) |
 | 일반 행동 판정·기능/난이도 | [FICTION_FIRST_ROLL_TRIGGER_GATE](02-checks.md#fiction_first_roll_trigger_gate) · [INVESTIGATION_SKILL_ROUTING](02-checks.md#investigation_skill_routing) · [DIFFICULTY_ASSIGNMENT](02-checks.md#difficulty_assignment) |
