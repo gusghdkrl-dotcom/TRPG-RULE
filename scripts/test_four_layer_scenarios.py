@@ -107,6 +107,16 @@ CANON = {
                    'damage': '1d6', 'stop': 'reach the intact platform or leave the catwalk'},
         'recovery': {'item': 'bandage', 'safe_place': 'shelter',
                      'access': 'ask its actual owner; refusal leaves the handline bypass available'},
+        # Actual invented protection/cause facts, NOT a production save schema.
+        'temporary_protection': {
+            'place': 'shelter', 'capacity': 2, 'cost_per_pulse': 1,
+            'source_actor': 'H_echo_warden',
+            'trigger': 'the warden drives a pulse into the intact stone link',
+            'link': {'from': 'ridge', 'to': 'shelter', 'medium': 'stone', 'duration': 3},
+            'warning': 'the screen meter drops and the stone floor vibrates',
+            'response': 'leave the exposed slab or defend at the arriving pulse',
+            'permanent_end': 'source_isolated',
+        },
         'failure_flow': ['pc_terminated', 'check_existing_companion_inheritance',
                          'campaign_failed_if_no_actor'],
         'san_rewards': [{'achievement': 'source_isolated', 'event': 'SYNTH_SOURCE_RESOLVED',
@@ -129,7 +139,25 @@ def snapshot(entry='daily', count=1, hq=False):
         'closed': [], 'blocked_routes': [], 'resources': ['boat'],
         'world_events': [], 'experienced': {}, 'remote': {}, 'resolved': {},
         'deliveries': [], 'sides': {}, 'legacy_timer': None,
+        'source_isolated': False,
     }
+
+
+def source_contact(canon, protection, elapsed, *, source_isolated=False, link_intact=True):
+    """One explicitly started source action in this finite invented fixture.
+
+    No chat timer, damage, forced PC choice or new hostile is generated here.
+    Successful sheltering is preserved; source isolation ends future pressure.
+    """
+    remaining = protection
+    p = canon['preparation']['temporary_protection']
+    if source_isolated or not link_intact:
+        return remaining, 'no_contact'
+    if elapsed < p['link']['duration']:
+        return remaining, 'approaching'
+    if remaining >= p['cost_per_pulse']:
+        return remaining - p['cost_per_pulse'], 'attack_blocked'
+    return remaining, 'response_pending'
 
 
 def destinations(canon, state, pc):
@@ -217,6 +245,8 @@ def inspect(canon, state):
                 errors.add('crisis_did_not_occur')
             if state.get('event_end_states', {}).get(ref) != canon['events'][ref]['ends_in']:
                 errors.add('finale_before_actual_e_end')
+    if state['status'] in ('safe_withdrawal', 'resolved') and not state['source_isolated']:
+        errors.add('shelter_is_not_source_resolution')
     # These probes inspect the sample's already written facts. They do not
     # certify arbitrary prose or simulate future PC choices/dice.
     prep = canon['preparation']
@@ -274,6 +304,18 @@ def inspect(canon, state):
     recovery = prep['recovery']
     if recovery['item'] not in prep['items'] or recovery['safe_place'] not in canon['places'] or not recovery['access']:
         errors.add('recovery_only_promise')
+    protection = prep.get('temporary_protection', {})
+    link = protection.get('link', {})
+    if (protection.get('place') not in canon['places']
+            or protection.get('source_actor') != boss.get('ref')
+            or protection.get('capacity', 0) <= 0
+            or protection.get('cost_per_pulse', 0) <= 0
+            or link.get('from') != boss.get('place')
+            or link.get('to') != protection.get('place')
+            or link.get('medium') != 'stone' or link.get('duration', 0) <= 0
+            or not all(protection.get(k) for k in ('trigger', 'warning', 'response'))
+            or protection.get('permanent_end') != 'source_isolated'):
+        errors.add('temporary_protection_missing_causal_return')
     if prep['failure_flow'] != ['pc_terminated', 'check_existing_companion_inheritance', 'campaign_failed_if_no_actor']:
         errors.add('campaign_failed_before_inheritance')
     reward_events = {}
@@ -333,12 +375,15 @@ def main():
     bad(s, 'main_gap')
     s['status'] = 'all_dead'; good(s)  # failure need not reach a success finale
     for terminal in ['safe_withdrawal', 'resolved']:
+        s['source_isolated'] = False
         s['status'] = terminal
         bad(s, 'finale_before_all_pc_field_experience')
         s['experienced'] = {e: list(s['pcs']) for e in CANON['spine']}
         bad(s, 'crisis_did_not_occur')
         s['world_events'] = CANON['spine'].copy()
-        s['event_end_states'] = {e: CANON['events'][e]['ends_in'] for e in CANON['spine']}; good(s)
+        s['event_end_states'] = {e: CANON['events'][e]['ends_in'] for e in CANON['spine']}
+        bad(s, 'shelter_is_not_source_resolution')
+        s['source_isolated'] = True; good(s)
         s['experienced'] = {}; s['world_events'] = []
     for count in [1, 2, 3]:
         s = snapshot(count=count); s['phase'] = 'finale'
@@ -470,6 +515,27 @@ def main():
     bad(s, 'unprepared_final_boss', c)
     c = deepcopy(CANON); c['preparation']['boss']['place'] = 'outside'
     bad(s, 'unprepared_final_boss', c)
+    # Nominated safe choices/S refusal do not switch off the real source.
+    s = snapshot(); s['pcs']['P1']['place'] = 'shelter'
+    s['sides'] = {'S_song': 'refused', 'S_family': 'refused'}
+    good(s)
+    charges = CANON['preparation']['temporary_protection']['capacity']
+    charges, contact = source_contact(CANON, charges, 2)
+    assert (charges, contact) == (2, 'approaching'); accepted += 1
+    for expected in [1, 0]:
+        charges, contact = source_contact(CANON, charges, 3)
+        assert (charges, contact) == (expected, 'attack_blocked'); accepted += 1
+    charges, contact = source_contact(CANON, charges, 3)
+    assert (charges, contact) == (0, 'response_pending'); accepted += 1
+    # Broken contact is real safety; it must not teleport/revive to fill scenes.
+    assert source_contact(CANON, 0, 3, link_intact=False) == (0, 'no_contact'); accepted += 1
+    assert source_contact(CANON, 0, 3, source_isolated=True) == (0, 'no_contact'); accepted += 1
+    for field, value in [('trigger', ''), ('source_actor', 'invented_hunter'),
+                         ('cost_per_pulse', 0), ('response', ''), ('permanent_end', 'shelter_reached')]:
+        c = deepcopy(CANON); c['preparation']['temporary_protection'][field] = value
+        bad(s, 'temporary_protection_missing_causal_return', c)
+    c = deepcopy(CANON); c['preparation']['temporary_protection']['link']['from'] = 'station'
+    bad(s, 'temporary_protection_missing_causal_return', c)
     # Offline preservation probes use existing V2 containers, not new columns.
     # This is a partial snapshot, not a valid production commit payload.
     preserved = {
@@ -485,7 +551,11 @@ def main():
         'story_context': {'spine': ['E14', 'E03', 'E27'],
                           'known_open': {'P1': ['M_ridge'], 'P2': ['M_contain']}},
         'scene_context': {'awaiting': 'P1', 'offer': 'M_ridge', 'accepted': False},
-        'ongoing_consequences': {'R_boat': 'blocked', 'legacy_timer': 'unchanged'},
+        'ongoing_consequences': {'R_boat': 'blocked', 'legacy_timer': 'unchanged',
+            'shelter': {'scope': 'shelter screen', 'charges': 1, 'source_isolated': False,
+                        'source_actor': 'H_echo_warden', 'link': 'ridge_to_shelter_stone',
+                        'started_action_elapsed': 2, 'required_duration': 3,
+                        'last_attack': 'blocked', 'next_contact': 'approaching'}},
         'processed_event_ids': ['SYNTH_E14_RESOLVED', 'SYNTH_E03_PREVENTED'],
     }
     probes = {'format': 'RESUME_PROBES_V1', 'probes': [
@@ -511,6 +581,10 @@ def main():
             lambda x: x['world_delta']['drivers']['M_repair'].update(direct_next='invented_goal'),
             lambda x: x['world_delta']['npcs']['H_tracker'].update(last_known_pc_place='ridge'),
             lambda x: x['world_delta']['npcs']['H_tracker'].update(stop=''),
+            lambda x: x['ongoing_consequences']['shelter'].update(source_isolated=True),
+            lambda x: x['ongoing_consequences']['shelter'].update(charges=2),
+            lambda x: x['ongoing_consequences']['shelter'].update(started_action_elapsed=0),
+            lambda x: x['ongoing_consequences']['shelter'].update(last_attack='ongoing_attack'),
         ]
         for mutate in mutations:
             altered = deepcopy(preserved); mutate(altered)

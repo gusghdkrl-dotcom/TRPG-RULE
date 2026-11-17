@@ -24,6 +24,10 @@ def validate(root):
         raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
+ ('safety_design_has_no_root_path',lambda r:change(r,'rules/04-setup.md','핵심 현장/근원에서 진실을 이용해 영구 해제할 조건','안전 장소를 선택하면 근원 대응 없이 영구 종료')),
+ ('safety_no_refusal_probe',lambda r:change(r,'rules/04-setup.md','각 PC가 메인/사이드를 거절하고 가장 안전한 선택만 계속하는 경로','메인 의뢰를 모두 수락한 경로만')),
+ ('safety_freeze_live_source',lambda r:change(r,'rules/05-world.md','차단한 공격/접근과 살아 있는 근원의 다음 행동을 구별한다','공격을 한 번 막으면 살아 있는 근원도 계속 정지한다')),
+ ('safety_resume_as_permanent_immunity',lambda r:change(r,'rules/07-state.md','현재 안전을 영구 면책으로 확대하거나 종료한 공격을 다시 진행 중으로 바꾸지 않는다','현재 안전은 모든 미래의 공격 면책으로 복원한다')),
  ('story_manual_input_gate',lambda r:change(r,'rules/07-state.md','추가 입력을 안내한 뒤 응답을 끝낸다','추가 입력 없이 스토리까지 자동 생성한다')),
  ('story_automatic_creation_forbidden',lambda r:change(r,'rules/07-state.md','자동 저장만으로는 스토리 파일을 생성·재작성하거나 생성 입력을 요구하지 않는다','모든 자동 저장에서 스토리 파일을 생성한다')),
  ('story_cumulative_prefix',lambda r:change(r,'rules/07-state.md','전체 UTF-8 파일 바이트를 그대로 접두부로 보존','직전 본문을 지우고 마지막 회차만 보존')),
@@ -179,7 +183,7 @@ mutations=[
  ('fixed_injury_quota',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','피해·희생·감염을 할당하지 않는다','매 장면 피해를 할당한다')),
  ('guess_missing_mechanics',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','누락/변경/충돌만 결과 확정 전에 조회','본문이 없으면 일반 기억으로 처리')),
  ('keeper_principle_rewritten',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','세계·적·NPC·환경은 실제 목적·정보·수단·위치·조건으로 먼저 움직인다','플레이어의 대응과 무관하게 예정된 사건을 실행한다')),
- ('keeper_rule_application_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','각 상황의 담당 원문과00-index의 상세 절/예외를 따른다.','')),
+ ('keeper_rule_application_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','담당 원문과00-index의 절/예외를 따른다.','')),
  ('core_player_agency_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','PC의 행동·대사·생각·감정·수락·추리 결론은 플레이어가 결정한다','PC의 행동과 감정을 키퍼가 결정한다')),
  ('rulebook_file_route_missing',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','| 08-visual.md |','| 88-missing.md |')),
  ('rulebook_route_wrong_owner',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','SAN_EXPOSURE_GATE / COMBAT_ORDER','HEALING / COMBAT_ORDER')),

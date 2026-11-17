@@ -12,6 +12,8 @@
 
 이번 원작 변주는 유지할 세계/갈등과 바꿀 미공개 진상을 구분하고, 정체·목적·인과·공간·대응의 여러 축을 함께 설계한다. 원작을 아는 접근에도 실제 성과를 주며 플레이어가 맞힌 뒤 진실을 바꾸지 않는다. [비공개 정본 작성 폼](templates/PRIVATE_CANON_TEMPLATE.md)은 ZIP에도 포함하는 빈 참고 양식이며 실제 게임 정본이 아니다. 기존 게임의 승인된 리뉴얼은 기발생 사실/열린 입력을 고정하고 미공개·미발생 영역만 새 정본 판본으로 갱신한다.
 
+신규 시나리오는 피난·보호·전문가 위임의 **실제 효과/유지 조건 → 남은 원인의 다음 도달 → 진실을 이용한 근원 해결**을 처음부터 연결한다. 메인/사이드를 거절하고 안전한 선택만 계속해도 근원이 미해결인 채 영구 무사 생활이 되는지 실제 정본 초안으로 대조한다. 공격 차단·회복/준비의 이익과 이미 달성한 완전 해결은 보존하며, 새 능력/적을 사후 추가해 복귀를 강제하지 않는다. 담당은 [SCENARIO_BLUEPRINT](rules/04-setup.md#scenario_blueprint)·[COMPATIBILITY_GATE](rules/04-setup.md#compatibility_gate), 작성 폼도 같은 연결을 요구한다.
+
 ## 설치와 교체
 
 **[최신 프로젝트 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/TRPG-RULE-project.zip)**
