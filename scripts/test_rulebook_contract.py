@@ -24,6 +24,15 @@ def validate(root):
         raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
+ ('pc_reached_event_contract_handoff_0',lambda r:change(r,'rules/04-setup.md','**참가 이력 기준:**','[regressed handoff boundary]')),
+ ('pc_reached_event_contract_handoff_1',lambda r:change(r,'rules/04-setup.md','일시 의식불명·부재/분리·패스는 자동 탈퇴/체험 면제가 아니다','[regressed handoff boundary]')),
+ ('scenario_blueprint_handoff_0',lambda r:change(r,'rules/04-setup.md','현장 위기가 끝나도 다른 곳의 독립 적/잔존 위험은 남을 수 있다','[regressed handoff boundary]')),
+ ('ending_finalization_gate_handoff_0',lambda r:change(r,'rules/06-play.md','**모든 E의 실제 종료 상태와 마지막 E 이후 상태**','[regressed handoff boundary]')),
+ ('state_experience_continuity_handoff_0',lambda r:change(r,'rules/07-state.md','**열린 입력의 단일 소유:**','[regressed handoff boundary]')),
+ ('state_experience_continuity_handoff_1',lambda r:change(r,'rules/07-state.md','중요도가 낮다는 이유만으로 버리지 않는다','[regressed handoff boundary]')),
+ ('state_commit_handoff_0',lambda r:change(r,'rules/07-state.md','지금의 입력 대기·전투/대화 중간 지점에서 자른다','[regressed handoff boundary]')),
+ ('state_resume_handoff_0',lambda r:change(r,'rules/07-state.md','그 **정확한 verified version**','[regressed handoff boundary]')),
+ ('state_resume_handoff_1',lambda r:change(r,'rules/07-state.md','**전체 현재 작업 STATE JSON + 정확한 정본 .md + 일치하는 규칙 배포 정보**','[regressed handoff boundary]')),
  ('new_g_prevented',lambda r:change(r,'rules/04-setup.md','**신규 캠페인의 불가역 중심 재난·탈출 경계:**','**재난은 쉽게 예방된다:**')),
  ('few_enemies_static',lambda r:change(r,'rules/04-setup.md','**소수 적의 장기적 능동 압박:**','**소수 적은 가만히 기다린다:**')),
  ('clue_text_left_until_discovery',lambda r:change(r,'rules/04-setup.md','**중요 단서·문서의 내용 사전 확정:**','**핵심 단서는 플레이 도중 처음 발견할 때 생성:**')),
@@ -147,7 +156,7 @@ mutations=[
  ('inventory_hidden',lambda r:change(r,'rules/06-play.md','🎒 메인 [점유/용량]','인벤토리는 표시하지 않음')),
  ('credits_off_default_preserved',lambda r:change(r,'rules/06-play.md','기존과 같이 엔딩 직후의 기본 다섯 후속 출력이다.','요청이 있을 때만 다섯 후일담을 출력한다.')),
  ('credits_on_clara_opt_in_preserved',lambda r:change(r,'rules/06-play.md','플레이어가 **클라라에게 명시적으로 지난 임무 후일담을 요청했을 때**','본부에 귀환하면 플레이어 요청 없이 자동으로')),
- ('scene_context_missing',lambda r:change(r,'rules/07-state.md','| scene_context | 현재 행동권/장소·직전행동과 반응·대화주제/마지막질문','| omitted_context | 현재 행동권/장소·직전행동과 반응·대화주제/마지막질문')),
+ ('scene_context_missing',lambda r:change(r,'rules/07-state.md','| scene_context | 기준 세계 시각/각 PC 처리 시각·현재 장소/관측','| omitted_context | 현재 행동권/장소·직전행동과 반응·대화주제/마지막질문')),
  ('world_scale_weak',lambda r:change(r,'rules/04-setup.md','스케일은 영향권·적의 실행력·파급·숨은 진실·실패 손실·해결의 무게로 구현한다','스케일은 장식')),
  ('npc_voice_forgotten',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','상대별 호칭','일반 대화')),
  ('routine_micro_gates',lambda r:change(r,'PROJECT_INSTRUCTIONS.md','단순 확인마다 긴 대사·서류 전문·새 메뉴·입력 대기를 만들지 않는다','모든 확인에서 메뉴를 만들고 입력을 기다린다')),

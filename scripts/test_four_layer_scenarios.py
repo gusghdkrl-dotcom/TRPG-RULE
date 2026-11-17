@@ -205,11 +205,18 @@ def inspect(canon, state):
     # All PCs directly experience every E before the finale. A local attack
     # stopped without injury does not cancel the independently caused crisis.
     if state['phase'] == 'finale' or state['status'] in ('safe_withdrawal', 'resolved'):
+        participation = state.get('participation', {
+            pc: {'actor': pc, 'status': 'playing', 'joined_after': []}
+            for pc in state['pcs']})
         for ref in canon['spine']:
-            if not set(state['pcs']) <= set(state['experienced'].get(ref, [])):
+            required = {p['actor'] for p in participation.values()
+                        if p['status'] != 'terminated_spectator' and ref not in p['joined_after']}
+            if not required <= set(state['experienced'].get(ref, [])):
                 errors.add('finale_before_all_pc_field_experience')
             if ref not in state['world_events']:
                 errors.add('crisis_did_not_occur')
+            if state.get('event_end_states', {}).get(ref) != canon['events'][ref]['ends_in']:
+                errors.add('finale_before_actual_e_end')
     # These probes inspect the sample's already written facts. They do not
     # certify arbitrary prose or simulate future PC choices/dice.
     prep = canon['preparation']
@@ -330,16 +337,36 @@ def main():
         bad(s, 'finale_before_all_pc_field_experience')
         s['experienced'] = {e: list(s['pcs']) for e in CANON['spine']}
         bad(s, 'crisis_did_not_occur')
-        s['world_events'] = CANON['spine'].copy(); good(s)
+        s['world_events'] = CANON['spine'].copy()
+        s['event_end_states'] = {e: CANON['events'][e]['ends_in'] for e in CANON['spine']}; good(s)
         s['experienced'] = {}; s['world_events'] = []
     for count in [1, 2, 3]:
         s = snapshot(count=count); s['phase'] = 'finale'
         s['world_events'] = CANON['spine'].copy()
+        s['event_end_states'] = {e: CANON['events'][e]['ends_in'] for e in CANON['spine']}
         s['experienced'] = {e: list(s['pcs']) for e in CANON['spine']}
         good(s)
         s['remote'] = {'E03': ['P1']}; bad(s, 'remote_is_not_experience')
         s['remote'] = {}; s['experienced']['E03'].remove('P1')
         bad(s, 'finale_before_all_pc_field_experience')
+    # Real world end, identity and participation are independent of old slots.
+    s = snapshot(count=2); s['phase']='finale'
+    s['world_events']=CANON['spine'].copy()
+    s['event_end_states']={e:CANON['events'][e]['ends_in'] for e in CANON['spine']}
+    s['experienced']={e:['ACTOR_A'] for e in CANON['spine']}
+    s['participation']={'P1':{'actor':'ACTOR_A','status':'playing','joined_after':[]},
+                        'P2':{'actor':'ACTOR_B','status':'terminated_spectator','joined_after':[]}}
+    good(s)  # one survivor continues; death is not a missing live actor
+    s['participation']['P2']['status']='unconscious'
+    bad(s,'finale_before_all_pc_field_experience')
+    for e in CANON['spine']:s['experienced'][e].append('ACTOR_B')
+    good(s)  # previously experienced unconscious companion need not act
+    s['participation']['P2']={'actor':'ACTOR_NEW','status':'playing','joined_after':['E14','E03']}
+    bad(s,'finale_before_all_pc_field_experience')  # same slot != old identity
+    s['experienced']['E27'].append('ACTOR_NEW');good(s)  # no replay of pre-join E
+    s['event_end_states']['E03']='attack_blocked_but_residents_still_exposed'
+    bad(s,'finale_before_actual_e_end')
+    s['event_end_states']['E03']='residents_protected';good(s)
     # Split PC knowledge is independent. Offscreen occurrence grants no facts.
     s = snapshot(count=2); s['pcs']['P2']['place'] = 'shelter'
     s['pcs']['P2']['facts'] = ['F_ridge_map', 'F_source_brief']

@@ -26,12 +26,28 @@ state['resume_context']['ongoing_consequences']['RESCUE_SYN']={
 }
 state['resume_context']['scene_context']['last_presented_change_ref']='EVENT_A'
 state['resume_context']['story_context']['world_e_ref']='E_SYN_PARTIAL'
+# Fine facts survive transfer even when no immediate plot consequence exists.
+state['resume_context']['handoff_details']={
+ 'nickname':{'speaker':'NPC_SYN','listener':'ACTOR_OLD','quote':'작은 등불', 'event':'EVENT_A'},
+ 'promise':{'offered':'return_the_cup','accepted':False,'heard_by':['ACTOR_OLD']},
+ 'last_output':{'question':'어느 문을 지킬까?', 'menu':[{'number':1,'intent':'hold_north'},{'number':2,'intent':'hold_south'}]},
+ 'item':{'ref':'CUP_SYN','place':'floor_under_bench','owner':'NPC_SYN'},
+ 'hands':{'right':'LAMP_SYN','left':None},'fuel_minutes':17,
+ 'ammo':{'loaded':2,'reserve':4,'calibre':'SYN'},
+ 'tracker':{'actual_place':'yard','last_known_pc_place':'quay','trace_lost':True},
+ 'work':{'started_at':10,'elapsed':4,'remaining':6},
+ 'participation':{'slot':'P1','current_actor':'ACTOR_NEW','retired_actor':'ACTOR_OLD',
+                  'joined_after':['E14'],'inheritance_used':True,'old_private_memory':'cup_promised'},
+ 'submitted_check':{'owner':'ACTOR_NEW','raw':37,'stage':'received_unapplied','luck_spent':0},
+ 'last_presented_event':'EVENT_A','spent_card':'CARD_SYN',
+}
 paths=['/session','/turn','/canon_revision','/entities/ENTITY_A/communication','/entities/ENTITY_A/held_item',
        '/agreement','/route','/pending','/processed','/optional','/resume_context']
 def at(obj,path):
     for key in path[1:].split('/'):obj=obj[key]
     return obj
 probes={'format':'RESUME_PROBES_V1','probes':[{'path':p,'expected':deepcopy(at(state,p)),'source_ref':'SYNTHETIC_EVENT'} for p in paths]}
+probes['required_paths']=['/session','/pending','/resume_context/handoff_details','/resume_context/story_context']
 cases=0
 assert compare(probes,state)['passed'];cases+=1
 mutations=[
@@ -62,8 +78,40 @@ mutations=[
  lambda s:s['resume_context']['ongoing_consequences']['RESCUE_SYN'].update(access='unreachable'),
  lambda s:s['resume_context']['scene_context'].pop('last_presented_change_ref'),
 ]
+# Each mutation changes a real continuation fact, not an incidental test marker.
+for field, replacement in {
+ 'nickname':{'speaker':'NPC_SYN','listener':'ACTOR_NEW','quote':'小灯','event':'EVENT_A'},
+ 'promise':{'offered':'return_the_cup','accepted':True,'heard_by':['ACTOR_OLD']},
+ 'last_output':{'question':'어느 문을 지킬까?', 'menu':[{'number':1,'intent':'hold_south'},{'number':2,'intent':'hold_north'}]},
+ 'item':{'ref':'CUP_SYN','place':'pack','owner':'ACTOR_NEW'},
+ 'hands':{'right':None,'left':None},'fuel_minutes':30,
+ 'ammo':{'loaded':6,'reserve':0,'calibre':'SYN'},
+ 'tracker':{'actual_place':'yard','last_known_pc_place':'station','trace_lost':False},
+ 'work':{'started_at':10,'elapsed':0,'remaining':10},
+ 'participation':{'slot':'P1','current_actor':'ACTOR_NEW','retired_actor':'ACTOR_OLD',
+                  'joined_after':[],'inheritance_used':False,'old_private_memory':'cup_promised'},
+ 'submitted_check':{'owner':'ACTOR_NEW','raw':37,'stage':'applied','luck_spent':0},
+ 'last_presented_event':None,'spent_card':None,
+}.items():
+    mutations.append(lambda obj, f=field, v=replacement: obj['resume_context']['handoff_details'].update({f:v}))
 for mutate in mutations:
     bad=deepcopy(state);mutate(bad);assert not compare(probes,bad)['passed'];cases+=1
+# A manifest that only compares numbers must not pass declared memory coverage.
+thin=deepcopy(probes);thin['probes']=[p for p in thin['probes'] if p['path']!='/resume_context']
+assert any(e['reason']=='uncovered' for e in compare(thin,state)['errors']);cases+=1
+prefix={'format':'RESUME_PROBES_V1','required_paths':['/ab/x'],
+        'probes':[{'path':'/a','expected':{},'source_ref':'E'}]}
+assert not compare(prefix,{'a':{},'ab':{'x':1}})['passed'];cases+=1
+prefix['required_paths']=['/a/x'];prefix['probes'][0]['expected']={'x':1}
+assert compare(prefix,{'a':{'x':1}})['passed'];cases+=1
+prefix['probes'][0]['expected']={}
+assert not compare(prefix,{'a':{}})['passed'];cases+=1
+for required in [[],None,['/a','/a'],[''],['/missing/~2bad']]:
+    bad=deepcopy(probes);bad['required_paths']=required
+    try:compare(bad,state)
+    except ValueError:pass
+    else:raise AssertionError('invalid required path accepted')
+    cases+=1
 # JSON file round trip and a new interpreter, not the original object in memory.
 with tempfile.TemporaryDirectory() as tmp:
     p=Path(tmp);(p/'probes.json').write_text(json.dumps(probes));(p/'state.json').write_text(json.dumps(state))

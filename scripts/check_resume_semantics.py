@@ -12,14 +12,19 @@ from pathlib import Path
 class Missing(ValueError):
     pass
 
-def pointer(document, path):
+def segments(path):
     if not isinstance(path, str) or not path.startswith('/'):
         raise ValueError('probe path must be a non-root JSON pointer')
-    current = document
+    keys = []
     for raw in path[1:].split('/'):
         if '~' in raw.replace('~0', '').replace('~1', ''):
             raise ValueError('invalid pointer escape')
-        key = raw.replace('~1', '/').replace('~0', '~')
+        keys.append(raw.replace('~1', '/').replace('~0', '~'))
+    return keys
+
+def pointer(document, path):
+    current = document
+    for key in segments(path):
         if isinstance(current, dict) and key in current:
             current = current[key]
         elif isinstance(current, list) and key.isascii() and key.isdigit() and (key == '0' or not key.startswith('0')) and int(key) < len(current):
@@ -46,6 +51,13 @@ def compare(manifest, restored):
         raise ValueError('nonempty frozen probes required')
     paths = set()
     errors = []
+    required = manifest.get('required_paths', None)
+    if 'required_paths' in manifest:
+        if not isinstance(required, list) or not required:
+            raise ValueError('nonempty required paths expected')
+        required_keys = [segments(path) for path in required]
+        if len({tuple(keys) for keys in required_keys}) != len(required_keys):
+            raise ValueError('duplicate required path')
     for i, probe in enumerate(probes):
         if not isinstance(probe, dict) or not all(k in probe for k in ('path', 'expected', 'source_ref')):
             raise ValueError('invalid probe')
@@ -60,6 +72,16 @@ def compare(manifest, restored):
             continue
         if not same(probe['expected'], value):
             errors.append({'probe_index': i, 'reason': 'changed'})
+    if required is not None:
+        covered = [segments(path) for path in paths]
+        for i, keys in enumerate(required_keys):
+            if not any(keys[:len(prefix)] == prefix for prefix in covered):
+                errors.append({'requirement_index': i, 'reason': 'uncovered'})
+            else:
+                try:
+                    pointer(restored, required[i])
+                except Missing:
+                    errors.append({'requirement_index': i, 'reason': 'missing'})
     return {'checked': len(probes), 'passed': not errors, 'errors': errors}
 
 def load(path):
