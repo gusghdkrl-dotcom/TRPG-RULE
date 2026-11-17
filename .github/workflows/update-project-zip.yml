@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/update-project-zip.yml"
       - "rules/**"
+      - "templates/**"
       - "PROJECT_INSTRUCTIONS.md"
       - "START_GAME.md"
       - "scripts/rulebook.py"

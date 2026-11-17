@@ -76,11 +76,11 @@ mutations=[
  ('pc_source_flavor_only_regression',lambda r:change(r,'rules/04-setup.md','**PC-원작 연결의 대체 가능성 반례:**','**PC 직업은 원작 위기와 무관한 기능 장식:**')),
  ('source_new_story_erased',lambda r:change(r,'rules/04-setup.md','원작의 주요 사건·발생 이유·적의 목적·핵심 참극/위험','원작 핵심은 보존하지 않고 새 음모를 만든다')),
  ('source_research_skipped',lambda r:change(r,'rules/04-setup.md','공식 시나리오 본문·공식 설정·신뢰할 출처를 세계 생성 전에 실제로 확인한다','제목과 장르만으로 시나리오를 추측해도 된다')),
- ('source_core_cause_replaced',lambda r:change(r,'rules/04-setup.md','원작의 중심 문제를 별도 지역 음모·시설 관리·새 재난으로 교체하지 않는다','원작 사건을 항로 관리로 전부 대체한다')),
+ ('source_core_cause_replaced',lambda r:change(r,'rules/04-setup.md','세계를 무관한 지역 음모·시설 관리·새 재난으로 교체하지 않고','원작 사건을 항로 관리로 전부 대체한다')),
  ('source_reverse_gate_removed',lambda r:change(r,'rules/04-setup.md','**원작 출처·중심 인과 역검증:**','**원작 제목만 확인:**')),
  ('source_pi_new_premise',lambda r:change(r,'rules/04-setup.md','공식 시나리오 본문·공식 설정·신뢰할 출처를 세계 생성 전에 실제로 확인한다','원작 자료를 확인하지 않는다')),
  ('correct_guess_rewritten',lambda r:change(r,'rules/04-setup.md','원작 지식을 무효화하려 확정 약점을 뒤집거나 플레이어가 맞힌 뒤 정답을 바꾸지 않는다','원작을 알면 약점을 바꾸고 정답을 맞히면 뒤집는다')),
- ('twists_mandatory',lambda r:change(r,'rules/04-setup.md','반전·배신은 의무가 아니다','매번 모든 요소에 반전과 배신을 넣는다')),
+ ('twists_mandatory',lambda r:change(r,'rules/04-setup.md','모든 장면에 반전·배신을 할당하지 않는다','매번 모든 요소에 반전과 배신을 넣는다')),
  ('index_regresses_to_deadline',lambda r:change(r,"rules/00-index.md","주요 결과별 전달자·정보·실물 이동의 물리적 경로","반응형 발생 시간대·실제 데드라인")),
 
  ('side_static_item_inflation',lambda r:change(r,"rules/04-setup.md","**사이드 사건·현장 소품·메인 하위 과제를 분류:**","그림 하나 보는 것도 독립 사이드다")),
@@ -438,6 +438,13 @@ mutations += [
  ('party_shared_scene',lambda r:change(r,'rules/06-play.md','함께 있는 하나의 씬',"[regressed execution boundary]")),
  ('inheritance_before_campaign_failure',lambda r:change(r,'rules/06-play.md','전원 원래 PC의 HP/SAN0만으로 캠페인 FAIL을 먼저 확정하지 않고',"[regressed execution boundary]")),
  ('reward_common_consumption',lambda r:change(r,'rules/03-danger.md','동일 위험 해소라면 공통 성취로 묶고',"[regressed execution boundary]")),
+]
+
+mutations += [
+ ('variation_diverse_axes',lambda r:change(r,'rules/04-setup.md','서로 다른 축의 변주','[missing diverse variation]')),
+ ('variation_four_source_approaches',lambda r:change(r,'rules/04-setup.md','정체 질문, 전문가/교회 조기 요청, 원작 장소 직행, 알려진 해법 시도','[missing practical source paths]')),
+ ('renewal_preserves_played_facts',lambda r:change(r,'rules/04-setup.md','기존 캠페인의 명시적 미래 리뉴얼','[missing authorized renewal boundary]')),
+ ('san_legacy_requires_old_rules',lambda r:change(r,'rules/03-danger.md','구판 룰북 파일을 복원 조건으로 요구하지 않는다','구판 룰북으로 복원한다')),
 ]
 
 with tempfile.TemporaryDirectory() as tmp:

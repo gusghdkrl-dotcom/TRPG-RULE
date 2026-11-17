@@ -4,7 +4,7 @@
 
 **신규 안정화판 2026-11-17:** 기존 게임도 확정 상태를 복원하고 현재 소스의 최신 룰북으로 이어갑니다. 신규 저장의 정확한 판본 표기는 배포의 `RULESET.json`과 07-state STATE_IDENTITY를 따릅니다. 날짜 표제만으로 판본을 추측하지 않습니다. 현재 프로젝트의 실제 룰북과 같은 ZIP의 RULESET.json 또는 읽기용 RULESET.md를 확인하세요. GitHub 수정이 기존 업로드 파일을 자동 교체하지 않습니다. 새 세계/독립 재시험은 STATE_AUTHORITY에 따라 새 정본/초기 상태를 만들고, 기존 저장 재개 요청은 STATE_RESUME으로 보존합니다. 같은 원작 재지정만으로 옛 테스트 정본을 로드하지 마세요.
 
-원작 확인·설계는 04-setup FULL_DIVE_CROSS_ANALYSIS → SOURCE_EXPERIENCE_CONTRACT → SCENARIO_BLUEPRINT → 07-state PRIVATE_CANON_DOCUMENT의 실제 정본 초안·STATE_CANON_SAVE_BINDING의 최초 상태 → COMPATIBILITY_GATE의 그 결과물 대조 → 통과 원문 전달/등록 순서입니다. **참가 PC 전원이 각 E를 현장에서 직접 체험한 뒤 최종 국면에 진입합니다. 원격 기여는 E 체험으로 인정하지 않으며 조기 종결은 없습니다.** E 위기 자체는 시작 전에 준비한 독립 원인으로 보장하고, 공격·피해·희생의 성공을 보장하지 않습니다. 설정 시작·play_start·최초 재난의 실제 관측은 서로 다른 시점입니다.
+원작 확인·설계는 04-setup FULL_DIVE_CROSS_ANALYSIS → SOURCE_EXPERIENCE_CONTRACT(원작 보존/다양한 진상 변주) → SCENARIO_BLUEPRINT → 07-state PRIVATE_CANON_DOCUMENT의 실제 정본 초안·STATE_CANON_SAVE_BINDING의 최초 상태 → COMPATIBILITY_GATE의 그 결과물 대조 → 통과 원문 전달/등록 순서입니다. **참가 PC 전원이 각 E를 현장에서 직접 체험한 뒤 최종 국면에 진입합니다. 원격 기여는 E 체험으로 인정하지 않으며 조기 종결은 없습니다.** E 위기 자체는 시작 전에 준비한 독립 원인으로 보장하고, 공격·피해·희생의 성공을 보장하지 않습니다. 설정 시작·play_start·최초 재난의 실제 관측은 서로 다른 시점입니다.
 
 ## HQ_START_UI_CONTRACT — 신규 게임 시작 화면 단일 양식
 
