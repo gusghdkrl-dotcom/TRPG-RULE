@@ -21,6 +21,17 @@ state['resume_context']['story_context']['main_track_by_pc']={
  'P1':{'e_ref':'E_SYN','public_direction':'reach_station','experience':'on_site','activity_ref':'S_SYN','source_ref':'EVENT_A'},
  'P2':{'e_ref':'E_SYN','public_direction':'travel_to_station','experience':'not_arrived','activity_ref':None,'source_ref':'EVENT_B'}
 }
+# Story files live outside the checkpoint; exact references and the separate
+# manual workflow must survive without replacing the open gameplay input.
+state['resume_context']['story_context']['story_save']={
+ 'latest_created':{'revision':2,'filename':'STORY_SAVE_SYN_r2.md',
+                   'file_sha256':'a'*64,'manifest_filename':'STORY_SAVE_SYN_r2.manifest.json',
+                   'manifest_sha256':'b'*64,'target_save':{'session_id':'SYNTHETIC','version':3,'state_sha256':'c'*64}},
+ 'request':{'request_id':'SYN_STORY_4','target_session_id':'SYNTHETIC','target_version':4,
+            'previous_file_sha256':'a'*64,'expected_revision':3,
+            'expected_filename':'STORY_SAVE_SYN_r3.md','expected_manifest':'STORY_SAVE_SYN_r3.manifest.json',
+            'stage':'awaiting_input'}
+}
 state['resume_context']['ongoing_consequences']['RESCUE_SYN']={
  'patient':'P1','rescuer':'P2','access':'reachable','stage':'evacuation_pending','threat':'THREAT_A'
 }
@@ -94,6 +105,17 @@ for field, replacement in {
  'last_presented_event':None,'spent_card':None,
 }.items():
     mutations.append(lambda obj, f=field, v=replacement: obj['resume_context']['handoff_details'].update({f:v}))
+story_mutations=[
+ lambda s:s['resume_context']['story_context'].pop('story_save'),
+ lambda s:s['resume_context']['story_context']['story_save']['latest_created'].update(filename='STORY_SAVE_OTHER_r2.md'),
+ lambda s:s['resume_context']['story_context']['story_save']['latest_created'].update(file_sha256='d'*64),
+ lambda s:s['resume_context']['story_context']['story_save']['latest_created']['target_save'].update(version=5),
+ lambda s:s['resume_context']['story_context']['story_save']['request'].update(stage='completed'),
+ lambda s:s['resume_context']['story_context']['story_save']['request'].update(previous_file_sha256='e'*64),
+ lambda s:s['resume_context']['story_context']['story_save']['request'].update(target_version=5),
+ lambda s:s['resume_context']['story_context']['story_save']['request'].update(expected_manifest='OTHER.manifest.json'),
+]
+mutations.extend(story_mutations)
 for mutate in mutations:
     bad=deepcopy(state);mutate(bad);assert not compare(probes,bad)['passed'];cases+=1
 # A manifest that only compares numbers must not pass declared memory coverage.

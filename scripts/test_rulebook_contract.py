@@ -24,6 +24,10 @@ def validate(root):
         raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
+ ('story_manual_input_gate',lambda r:change(r,'rules/07-state.md','추가 입력을 안내한 뒤 응답을 끝낸다','추가 입력 없이 스토리까지 자동 생성한다')),
+ ('story_automatic_creation_forbidden',lambda r:change(r,'rules/07-state.md','자동 저장만으로는 스토리 파일을 생성·재작성하거나 생성 입력을 요구하지 않는다','모든 자동 저장에서 스토리 파일을 생성한다')),
+ ('story_cumulative_prefix',lambda r:change(r,'rules/07-state.md','전체 UTF-8 파일 바이트를 그대로 접두부로 보존','직전 본문을 지우고 마지막 회차만 보존')),
+ ('story_load_entire_file',lambda r:change(r,'rules/07-state.md','검색 발췌/마지막 회차/해시 확인만으로 전체 조회라 하지 않는다','마지막 회차 검색 발췌만으로 전체 조회를 완료한다')),
  ('latest_source_state_identity_0',lambda r:change(r,'rules/07-state.md','신규·기존 게임·같은 채팅·다른 채팅 재개 모두 현재 프로젝트 소스에 실제 등록된 최신 룰북','[regressed latest source policy]')),
  ('latest_source_state_identity_1',lambda r:change(r,'rules/07-state.md','기존 checkpoint 최상위 `rules_version`과 원문/해시는 이력으로 보존한다','[regressed latest source policy]')),
  ('latest_source_state_identity_2',lambda r:change(r,'rules/07-state.md','**아직 처리하지 않은 단계부터 최신 규칙**','[regressed latest source policy]')),
@@ -37,7 +41,7 @@ mutations=[
  ('state_experience_continuity_handoff_1',lambda r:change(r,'rules/07-state.md','중요도가 낮다는 이유만으로 버리지 않는다','[regressed handoff boundary]')),
  ('state_commit_handoff_0',lambda r:change(r,'rules/07-state.md','지금의 입력 대기·전투/대화 중간 지점에서 자른다','[regressed handoff boundary]')),
  ('state_resume_handoff_0',lambda r:change(r,'rules/07-state.md','그 **정확한 verified version**','[regressed handoff boundary]')),
- ('state_resume_handoff_1',lambda r:change(r,'rules/07-state.md','**전체 현재 작업 STATE JSON + 정확한 정본 .md + 저장 출처/검증 정보**','[regressed handoff boundary]')),
+ ('state_resume_handoff_1',lambda r:change(r,'rules/07-state.md','**전체 현재 작업 STATE JSON + 정확한 정본 .md + 최신 누적 스토리 전체/명세(생성됐으면) + 저장 출처/검증 정보**','[regressed handoff boundary]')),
  ('new_g_prevented',lambda r:change(r,'rules/04-setup.md','**신규 캠페인의 불가역 중심 재난·탈출 경계:**','**재난은 쉽게 예방된다:**')),
  ('few_enemies_static',lambda r:change(r,'rules/04-setup.md','**소수 적의 장기적 능동 압박:**','**소수 적은 가만히 기다린다:**')),
  ('clue_text_left_until_discovery',lambda r:change(r,'rules/04-setup.md','**중요 단서·문서의 내용 사전 확정:**','**핵심 단서는 플레이 도중 처음 발견할 때 생성:**')),
