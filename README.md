@@ -24,7 +24,7 @@
 
 **[최신 프로젝트 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/TRPG-RULE-project.zip)**
 
-**배포 상태 안내(2026-11-19 확인):** 출격별/통합 연대기 개정과 이번 선택지 3개·HUD·판정 안내 패치를 포함해, 최신 소스 기준 `python3 scripts/rulebook.py check`/`export` GitHub Actions 실행이 성공했으며 게임 ZIP이 `beb750e` 커밋에서 갱신됐다. 기존 ChatGPT 프로젝트에 이미 올린 파일은 자동 교체되지 않으므로 이 최신 ZIP의 지침·룰북·RULESET 식별자를 함께 다시 등록해야 적용된다.
+**배포 상태 안내(2026-11-19 확인):** 출격별/통합 연대기 개정, 선택지 3개·HUD·판정 전 결과 예고 제거에 이어 **키퍼식 무판정 문구 제외, 판정 수치의 하단 HUD 간략 표시, NPC·적 외형의 최초 정본 고정**을 추가했다. 최신 소스 기준 `python3 scripts/rulebook.py check`/`export` GitHub Actions 실행 `44365842883`이 성공했고 ZIP은 `5cc8ed4` 커밋에서 갱신됐다. 기존 ChatGPT 프로젝트에 이미 올린 파일은 자동 교체되지 않으므로 이 최신 ZIP의 지침·룰북·RULESET 식별자를 함께 다시 등록해야 적용된다.
 
 별도 신규 캠페인: **[SCREAM_survival_rebuild_project.zip 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/SCREAM_survival_rebuild_project.zip)**. 사용자가 이 패키지만 예외로 공개 승인했다. 범인·숨은 설정을 포함하므로 플레이어는 먼저 PLAYER_BRIEFING.md를 확인한다. 공통 룰북 ZIP과 별도이며, 기존 캠페인 정본/진행을 교체하는 세이브가 아니다.
 
