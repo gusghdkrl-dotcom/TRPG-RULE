@@ -16,6 +16,10 @@
 
 다인 시작 자료는 **공용 프로필과 PC별 개인 브리핑**을 나눈다. 각자의 실제 시작 지식은 첫 선택 전에 해당 플레이어에게 전달한다. 한 화면/계정이면 개인 파일을 한 명씩 열람하는 합의 방식이며 기술적 접근권 분리는 아니다. 시작부터 비밀 교환을 유도하지 않고 실제 대화/행동에서 공유할 기회를 두되 즉시 공유도 허용한다. [개인 브리핑·공유 화면 사용 방법](docs/PERSONAL_BRIEFING.md).
 
+## 저장소 패치 기준
+
+매 패치 전에 **[패치 규정](docs/PATCH_POLICY.md)**과 [상세 편집 절차](docs/EDITING.md)를 읽고, 완료 전에 관련 항목을 대조한다. [AGENTS.md](AGENTS.md)에 필수 참조로 지정했다. 이 문서는 개발용이며 게임 프로젝트에 등록하는 룰북/정본이나 배포 ZIP의 추가 입력물이 아니다.
+
 ## 설치와 교체
 
 **[기존 배포 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/TRPG-RULE-project.zip)**
