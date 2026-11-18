@@ -86,6 +86,7 @@
 | HQ_MARTIN_MISSION_ETHOS_AND_VALUES_INTERVIEW | [04-setup.md](../rules/04-setup.md#hq_martin_mission_ethos_and_values_interview) |
 | HQ_NPC_FIXED_PORTRAIT_ASSET_ROUTER | [08-visual.md](../rules/08-visual.md#hq_npc_fixed_portrait_asset_router) |
 | HQ_ON_CAMPAIGN_ROUTER | [04-setup.md](../rules/04-setup.md#hq_on_campaign_router) |
+| HQ_SORTIE_STORY_ARCHIVE | [07-state.md](../rules/07-state.md#hq_sortie_story_archive) |
 | HYPOTHESIS_TEST | [05-world.md](../rules/05-world.md#hypothesis_test) |
 | IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL | [02-checks.md](../rules/02-checks.md#impossible_actions_and_rule_of_cool) |
 | IN_WORLD_DOCUMENT_HANDOUT | [05-world.md](../rules/05-world.md#in_world_document_handout) |
