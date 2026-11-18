@@ -18,7 +18,9 @@
 
 ## 설치와 교체
 
-**[최신 프로젝트 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/TRPG-RULE-project.zip)**
+**[기존 배포 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/TRPG-RULE-project.zip)**
+
+**배포 상태 안내:** 이번 출격별/통합 연대기 개정은 GitHub `main`의 룰북 **원문**에 반영됐으나 `dist/TRPG-RULE-project.zip`과 그 안의 `RULESET.json`은 아직 재빌드하지 않았다. 현 ZIP만 내려받으면 새 기록 규칙이 적용되지 않는다. 최종 배포에는 `python3 scripts/rulebook.py check` 및 `python3 scripts/rulebook.py export` 실행과 결과 ZIP/SHA 검증이 필요하다. 이전 배포와 개정 원문을 혼용하지 않는다.
 
 별도 신규 캠페인: **[SCREAM_survival_rebuild_project.zip 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/main/dist/SCREAM_survival_rebuild_project.zip)**. 사용자가 이 패키지만 예외로 공개 승인했다. 범인·숨은 설정을 포함하므로 플레이어는 먼저 PLAYER_BRIEFING.md를 확인한다. 공통 룰북 ZIP과 별도이며, 기존 캠페인 정본/진행을 교체하는 세이브가 아니다.
 
