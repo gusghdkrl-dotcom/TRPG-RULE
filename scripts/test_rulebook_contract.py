@@ -24,6 +24,9 @@ def validate(root):
         raise ValueError('Original-source lookup missing from START_GAME entrypoint')
 
 mutations=[
+ ('compact_hud_restores_roll_breakdown',lambda r:change(r,'rules/06-play.md','기본/추가 d100·공통 일의 자리·후보값·양측 수치/성공 단계 비교·손실 주사위 식과 계산 과정은 기본 화면에 나열하지 않는다','기본 화면에 모든 주사위 후보와 상세 계산 과정을 표로 나열한다')),
+ ('incidental_npc_visual_not_fixed',lambda r:change(r,'rules/08-visual.md','개별 대사/행동으로 식별되는 일회 선원·행인도 최소 구별 외형을 한 번 기록한다','일회 선원·행인의 외형은 이미지 요청마다 다시 생성한다')),
+ ('compact_opposed_audit_dropped',lambda r:change(r,'rules/02-checks.md','실제 양측 목표치/원값/성공 단계·보정/비교 기준은 기존 작업 기록에 보존','실제 대항 원값과 비교 기록은 버리고 결과만 남김')),
  ('resource_recovery_budget_omitted',lambda r:change(r,'rules/04-setup.md','실제로 적용 가능한 회복을 포함한 가용 자원을 충분히 넘겨야','회복을 제외한 초기 자원만 넘기면')),
  ('resource_terminal_reward_counted_early',lambda r:change(r,'rules/04-setup.md','종결 후 보상을 종결 전 생존 자원으로 계산하지 않는다','종결 후 보상을 종결 전 생존 자원으로 계산한다')),
  ('resource_only_final_recovery',lambda r:change(r,'rules/04-setup.md','최종 종료 보상/일일 수면만 있고 그 전에 계속 버틸 수단이 없는 장기 설계는 불합격','최종 종료 보상만 있어도 중간 회복 준비 완료')),
