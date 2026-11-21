@@ -206,7 +206,7 @@
 | AI_BONUS_PENALTY_DICE | 엔진 이전 | 계산은 엔진. 부여 조건은 02-checks BONUS_PENALTY_DICE에서 보완 |
 | PLAYER_INPUT_NAMESPACE_ROUTER | 엔진·UI 이전 | "자유문장은 언제나 직접 행동 선언" 원칙 한 줄만 |
 
-### 04-setup.md — 진행 중
+### 04-setup.md — 판별 완료 (STORY_SCALE 제외)
 
 | 절 | 판별 | 방향 |
 |---|---|---|
@@ -252,6 +252,17 @@
 | PC_SKILL_START_VALUES | 유지 + 엔진 이전 | 60/55/50/45/40/35/30, 취미 30 유지 |
 | STARTING_EQUIPMENT_MINIMAL | 유지(축약) | 직업 필수품 1개 + 현장 획득. 카드 자산 문장은 보류로 분리 |
 | FINAL_INVESTIGATOR_PROFILE_OUTPUT_CONTRACT | 수정 + 엔진·UI 이전 | 공용 프로필/개인 브리핑 구분 유지. 시작 전 한 명씩 열람은 MCP 화면이 담당 |
+| START_SETTINGS_GATE | 수정 + 일부 보류 | 1회 플레이(OFF) 설정만 남김: 인원, 인지도, 규모, 배제, 직접 지정. 본부 ON 분기는 보류 |
+| SETUP_UI_FIXED_CONTRACT | 엔진·UI 이전 + 보류 | 설정 화면은 MCP UI. 클래스·도감·4슬롯 장착은 보류 |
+| HQ_FIRST_ENTRY_SCENE_GATE | 보류 | 본부 |
+| HQ_MARTIN_MISSION_ETHOS_AND_VALUES_INTERVIEW | 보류 | 본부 |
+| HQ_FIELD_CONTEXT_BRIEFING | 보류 + 일부 이동 | 본부 부분은 보류. **현지 생활 상식(화폐·교통·통신·생활)과 PC별 직전 상황 브리핑**은 본부 없이도 필요하므로 START_BRIEFING_FOG로 이동 |
+| HQ_ON_CAMPAIGN_ROUTER | 보류 | 본부·보상·평가 |
+| CAMPAIGN_SETUP_PIPELINE | 수정 | 순서 교체: 설정 → 장르 추첨 → 원작 후보·선택 → 원작 분석서 → 시나리오 → PC 생성 → 엔진 검증 + AI 핵심 질문 → 개인 정보 열람 → 시작. 카드 단계 보류 |
+| GENERATION_RNG_SEPARATION | 엔진 이전 | 생성용 시드 난수 |
+| NORMALIZED_TABLE_INDEX | 엔진 이전 | |
+| HOMAGE_TIER | 유지 | 메이저/기본/마이너 |
+| START_BRIEFING_FOG | 유지 + 보완 | 원작명 공개, 숨은 진실 비공개 유지. HQ_FIELD_CONTEXT_BRIEFING의 현지 생활 상식·PC 직전 상황 흡수 |
 
 나머지 판별 대기: 02-checks, 03-danger, 04-setup(나머지), 05-world, 06-play, 07-state, 08-visual(보류 후보), 09-cards(보류 후보).
 
