@@ -103,7 +103,7 @@
 |---|---|
 | 사망 | 함께 있을 때 동료 구출 가능 / 확정 사망 시 조건 맞는 NPC 인계 |
 | 기지와 판정 | 기발해도 판정은 한다. 아이디어와 상황에 따라 보너스·패널티 |
-| PC 관계 | 협력 기본. 서로 모르는 개인 목표로 의견 대립·분열 가능. **PC 간 배신은 없음**(배신은 NPC 몫) |
+| PC 관계 | 협력 기본. 서로 모르는 개인 목표로 의견 대립·분열 가능. **게임이 PC 간 배신을 설계하지 않음**(배신은 NPC 몫). 단 플레이어가 스스로 상대 PC를 속이거나 공격하는 것은 막지 않음 |
 | 공포 비중 | 모두 포함, 우선순위 추격 > 자원 > 배신 > 불쾌함 |
 | 이야기 흐름 | 고정 구조 없음. 원작과 선택에 따라 유동. 단 위협은 스스로 고조 |
 | 진상 | 겹겹이. 공개 여부는 플레이에 달림 |
@@ -264,6 +264,37 @@
 | HOMAGE_TIER | 유지 | 메이저/기본/마이너 |
 | START_BRIEFING_FOG | 유지 + 보완 | 원작명 공개, 숨은 진실 비공개 유지. HQ_FIELD_CONTEXT_BRIEFING의 현지 생활 상식·PC 직전 상황 흡수 |
 | STORY_SCALE | 수정 + 일부 보류 | **대사건만** 남김. 연대기는 개념만 있고 실제 작업된 적 없음 → 나중에 재설계(보류). 본부의 훈련/실전 구분 문장도 보류 |
+
+### 05-world.md (29절) — 판별 완료 (INVENTORY 세부 조정 대기)
+
+재작성 구조 제안: 04(생성)와 05(실행)에 나뉜 같은 주제를 **시스템마다 한 곳**(생성 + 실행 + 엔진 담당)으로 모은다.
+교훈: "적은 PC를 기다리지 않는다"는 규칙이 이미 있었으나 시간표 금지 + AI가 화면 밖 적을 실제로 움직이지 않아 무력했다 → 엔진이 매 턴 위협·NPC를 움직인다.
+
+| 절 | 판별 | 방향 |
+|---|---|---|
+| WORLD_INITIATIVE_EXECUTION | 유지 + 엔진 이전 | 확인→행동→도달→대응→결과. 엔진이 위협·NPC 이동, AI는 도달 장면 연출. "모든 E 전원 체험"→공동·개인 사건 |
+| ACTIVE_DANGER_CONTINUITY | 유지 → 위협 전진 통합 | 임시 안전과 남은 원인 구별 |
+| REACHED_DANGER_EXECUTION_GATE | 유지 → 통합 | 닿은 위협은 실제 판정·피해 |
+| SCENARIO_CAUSAL_PROGRESS_MODEL | 수정 | "앞 사건 종료가 자동 타이머가 되지 않는다" 삭제. 진행 추적은 엔진 |
+| SCENE_CONSEQUENCE_RULE | 수정 | 메인 접점 단절 시 "생성 결함" 대신 엔진이 감지해 위협을 당김 |
+| SCENARIO_OBJECTIVES | 유지 | |
+| BUTTERFLY_AND_LIVING_WORLD | 유지 | |
+| NO_CLEAN_EXIT_HORROR_ARCHITECTURE | 유지 → 봉쇄 규칙 통합 | |
+| SCENARIO_TERMINAL_BOUNDARY | 유지 → 최종장·종결 통합 | |
+| INVESTIGATOR_INCIDENT_COUPLING | 삭제(통합) | WORLD_PC_INPUT과 중복 |
+| GENERAL_PERSISTENT_PROJECT | 삭제 | 엔진 일반 상태로 충분 |
+| STORY_NPC / NPC_AGENDA_AND_SECRECY / NPC_AGENDA_INTERVENTION / NPC_STATS / NPC_INTERACTION_VOICE_COMPACT / RELATIONSHIP_AND_NPC_MEMORY | 유지 → 하나로 통합 + 엔진 NPC 정본 | NPC 정본 항목 정의. **NPC 간 갈등** 보완 |
+| CLUE_FUNCTION | 유지 → 진상의 층 | 절차적 조사 연쇄 금지 유지 |
+| HYPOTHESIS_TEST | 유지 | |
+| IN_WORLD_DOCUMENT_HANDOUT | 유지 | |
+| CAUSAL_SAFETY_AND_SOUND | 유지 → 서술 규칙 | |
+| INVENTORY | 수정 + 엔진 이전 | 아래 소지품 결정 참조 |
+| PERSONAL_CASH_LEDGER | 유지 + 엔진 이전 | |
+| DISTINCTIVE_EQUIPMENT_AFFORDANCE | 유지 | |
+| DEATH_AND_INHERITANCE | 유지 + 엔진 이전 | 동료 구출은 02 HP_AND_DEATH와 함께 판별 |
+| COOPERATIVE_BY_DESIGN | 유지 + 수정 | 숨은 개인 목표로 의견 대립 가능 추가. 플레이어 자발적 기만·공격은 허용 유지 |
+| NARRATIVE_TECHNIQUES | 보완 | 키퍼 서술 가이드: 적당한 분량, 몰입 문체, 좋은 예·나쁜 예 |
+| PLAYER_FACING_KOREAN_LOCALIZATION | 유지 | |
 
 나머지 판별 대기: 02-checks, 03-danger, 04-setup(나머지), 05-world, 06-play, 07-state, 08-visual(보류 후보), 09-cards(보류 후보).
 
