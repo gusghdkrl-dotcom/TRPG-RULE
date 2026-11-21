@@ -315,6 +315,32 @@
 | NARRATIVE_TECHNIQUES | 보완 | 키퍼 서술 가이드: 적당한 분량, 몰입 문체, 좋은 예·나쁜 예 |
 | PLAYER_FACING_KOREAN_LOCALIZATION | 유지 | |
 
+### 02-checks.md (19절) — 판별안 (아이디어 보너스 기준 확인 대기)
+
+원칙: 계산 규칙은 엔진이 집행하고, 룰북에는 AI가 판단할 부분(언제 굴리는가, 어떤 기능인가, 보너스·패널티를 줄 이유)만 짧게 남긴다. 카드 연동 문장은 모두 보류로 분리.
+
+| 절 | 판별 | 방향 |
+|---|---|---|
+| FICTION_FIRST_ROLL_TRIGGER_GATE | 유지(축약) | 불확실+의미 있는 실패 / 직접 대립 / 규칙이 요구 / 제한된 우연일 때만 굴림. 결과 예고 금지 유지. 컨저링 "듣기 판정 누락"은 적용 실패 |
+| PLAYER_D100 | 유지 | PC d100은 플레이어가 직접 |
+| ROLL_INPUT_FORM_CONTRACT | UI·엔진 이전 | 굴림값·행운·강행을 한 번에 받는 입력은 MCP 화면 |
+| CHARACTERISTIC_VS_SKILL | 유지 | AI 판단 기준 |
+| INVESTIGATION_SKILL_ROUTING | 유지(축약) | |
+| SUCCESS_LEVELS | 엔진 이전 | 01 크리티컬, 100 펌블, 단계 계산 |
+| DIFFICULTY_ASSIGNMENT | 유지(축약) | 난이도=작업 자체, 유불리=현재 조건. 위험 크기로 난이도 올리지 않음 |
+| BONUS_PENALTY_DICE | 보완 + 엔진 이전 | **아이디어 품질 기준 추가**(사용자 요구). 상황 기준 유지. 1:1 상쇄·최대 2개·주사위 결합은 엔진 |
+| LUCK_SPENDING | 엔진 이전 | |
+| PUSHED_ROLL | 유지(축약) + 엔진 | 구체적 방법·감수 위험 선언은 AI, 1회 제한은 엔진 |
+| GENERIC_OPPOSED_ROLL | 엔진 이전 | |
+| LUCK_ROLL | 유지(축약) | 필수 단서를 운에 잠그지 않음 |
+| IMPOSSIBLE_ACTIONS_AND_RULE_OF_COOL | 유지 | 불가능→새 수단으로 판정 가능 상태로. "기발한 돌파"의 근거 규칙 |
+| CORE_CLUE_FAIL_FORWARD | 유지 → 진상의 층 | 필수 정보는 실패 한 번으로 영구 소실 안 됨 |
+| DAMAGE_BONUS_AND_BUILD | 엔진 이전 | |
+| HP_AND_DEATH | 유지 + 엔진 이전 | **동료 구출 시스템이 이미 있음**: PC가 HP 0이 될 때 같은 현장에 구조 가능한 다른 PC가 있으면 의식불명으로 생존, 없으면 사망. 비PC는 HP 0 즉사. 한 번에 최대 HP 이상 피해면 즉사 |
+| WOUNDS | 엔진 이전 | |
+| HEALING | 유지(축약) + 엔진 | 1회용 의료품, 전투 중 회복 불가, 중상 해제 조건. 수치는 엔진 |
+| SKILL_IMPROVEMENT | 보류 | 연대기 전용 |
+
 나머지 판별 대기: 02-checks, 03-danger, 04-setup(나머지), 05-world, 06-play, 07-state, 08-visual(보류 후보), 09-cards(보류 후보).
 
 ---
