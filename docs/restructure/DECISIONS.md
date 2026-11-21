@@ -349,6 +349,26 @@
 | HEALING | 유지(축약) + 엔진 | 1회용 의료품, 전투 중 회복 불가, 중상 해제 조건. 수치는 엔진 |
 | SKILL_IMPROVEMENT | 보류 | 연대기 전용 |
 
+### 03-danger.md (20절) — 판별안 (추격 시스템 확인 대기)
+
+| 절 | 판별 | 방향 |
+|---|---|---|
+| SAN_CORE | 유지(축약) + 엔진 이전 | 시작 SAN 산식, SAN 0 게임 오버. 구판 비소급 문장 삭제 |
+| MYTHOS_KNOWLEDGE_FACTS | 유지(축약) | 신화는 기능치가 아니라 발견한 사실 |
+| SAN_ROLL | 엔진 이전 | |
+| SCALED_SANITY_LOSS | 유지(표) + 엔진 이전 | Tier 1~3 손실표. 어느 Tier인지는 AI 판단 |
+| INSANITY_CONDITIONS | 엔진 이전 | 한 번 5 이상 손실 시 INT, 하루 20% 누적 발작 |
+| BOUTS_OF_MADNESS | 유지 + 엔진 이전 | 2턴 발작, 1d10 종류는 엔진. AI는 발작 연기 범위만 |
+| UNDERLYING_INSANITY | 삭제 | 구판 호환 |
+| DIEGETIC_SAN_RECOVERY | 유지(축약) + 엔진 | 하루 1회 휴식 1d3, 성취 회복. 엔진에서 플레이 중 SAN 회복 미연결 상태라 구현 필요 |
+| COMBAT_ORDER / DAMAGE / MELEE_OPPOSED / FIGHTING_MANEUVERS / OUTNUMBERED / FIREARMS | 엔진 이전 | 엔진에 이미 대부분 구현. 카드 연동 문장 보류 |
+| THREAT_TIERS | 유지 → 적 정본 형식 | Tier 1 필멸 / 2 불사·퇴거 / 3 특정 수단으로만 무력화 → 최종장 열쇠·위험 총량과 연결 |
+| CINEMATIC_ENCOUNTER | 유지 | 전투 중 환경 활용 |
+| CHASE | **보완** | 현재 3문단뿐. 공포 1순위가 추격이므로 전용 시스템 필요 (5-9 확인 대기) |
+| EXTREME_HAZARDS | 유지(축약) + 엔진 | 독·감염·질식 등 |
+| CAUSAL_MULTI_PHASE_THREAT | 유지 → 위협 설계 통합 | HP 0 후 전량 회복 페이즈 금지 |
+| SAN_EXPOSURE_GATE | 유지 | AI 판단 기준: 언제 SAN 노출인가, 반복 노출 금지 |
+
 나머지 판별 대기: 02-checks, 03-danger, 04-setup(나머지), 05-world, 06-play, 07-state, 08-visual(보류 후보), 09-cards(보류 후보).
 
 ---
