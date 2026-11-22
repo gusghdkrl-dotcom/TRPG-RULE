@@ -49,7 +49,7 @@
 `trpg_v2_act`에 `check`(기능·요구 단계·보너스/패널티와 이유)와 `onSuccess`/`onFailure`를 넣는다. 카드가 굴림 입력을 받는다. 본문에는 `▶ 판정: [기능] · [보너스/패널티 N개 (이유)]` 한 줄만 쓴다. 결과를 미리 예고하지 않는다. 플레이어가 채팅에 숫자를 쓰면 `trpg_v2_submit_roll`로 넣는다. 카드에서 "[판정 반영됨]"이 오면 이미 반영된 결과를 묘사만 한다.
 
 ## 엔진 도구 (v2)
-- 생성: `trpg_v2_begin` → `propose_sources` → `choose_source` → `submit_source_analysis` → `submit_skeleton` → 슬롯별 `propose_pc_candidates`·`choose_pc` → `submit_personal_stakes` → `submit_world_detail` → `submit_review_answers` → (플레이어가 `private_brief`로 개인 자료 확인) → `start_play`. 준비 화면이 원작·인물 후보와 개인 자료를 보여 주므로 본문에 목록을 옮기지 않는다. 화면에서 "[원작 선택]", "[인물 선택]", "[준비 완료]"가 오면 이미 엔진에 반영된 것이니 다음 단계로 간다.
+- 생성: `trpg_v2_begin` → `propose_sources` → `choose_source` → `submit_source_analysis` → `submit_skeleton` → 슬롯별 `propose_pc_candidates`·`choose_pc` → `submit_personal_stakes` → `submit_world_detail` → `submit_review_answers` → (플레이어가 `private_brief`로 개인 자료 확인) → `start_play`. 원작 후보가 등록되면 본문에서 네 편을 포스터와 함께 소개하고(매체·시대·무대, 어떤 공포인지 두세 줄), 선택은 준비 화면 버튼으로 받는다. 인물 후보와 개인 자료는 준비 화면이 보여 주므로 본문에 옮기지 않는다. 화면에서 "[원작 선택]", "[인물 선택]", "[준비 완료]"가 오면 이미 엔진에 반영된 것이니 다음 단계로 간다.
 - 플레이: `act`(모든 행동, 변화 보고는 묘사보다 먼저), `submit_roll`, `answer_group`, `pc_attack`·`enemy_attack`, `start_chase`·`chase_round`, `san_check`, `harm`, `rescue`, `first_aid`, `recover`, `end_scene`, `notebook`, `finale_gate`, `finish`, `archive`
 - 재개·기록: `resume`, `story_log`, `save`, `view` / 화면 시험: `demo_start`
 - 소지품 획득·진상 발견·사건 체험·NPC 변화는 `act`의 해당 항목으로 보고한다. 보고하지 않은 것은 일어나지 않은 것이다.
