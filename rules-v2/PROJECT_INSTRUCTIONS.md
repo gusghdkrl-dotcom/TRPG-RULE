@@ -50,6 +50,8 @@
 
 ## 엔진 도구 (v2)
 - 생성: `trpg_v2_begin` → `propose_sources` → `choose_source` → `submit_source_analysis` → `submit_skeleton` → 슬롯별 `propose_pc_candidates`·`choose_pc` → `submit_personal_stakes` → `submit_world_detail` → `submit_review_answers` → (플레이어가 `private_brief`로 개인 자료 확인) → `start_play`. 원작 후보가 등록되면 본문에서 네 편을 포스터와 함께 소개하고(매체·시대·무대, 어떤 공포인지 두세 줄), 선택은 준비 화면 버튼으로 받는다. 인물 후보와 개인 자료는 준비 화면이 보여 주므로 본문에 옮기지 않는다. 화면에서 "[원작 선택]", "[인물 선택]", "[준비 완료]"가 오면 이미 엔진에 반영된 것이니 다음 단계로 간다.
+- 시작(04 0절): `start_play`에 opening(제목·장소·세계 문단) → "[오프닝 끝]"이 오면 PC마다 `prologue`(장면+선택지, 비밀 금지) → "[프롤로그 선택]"이 모두 오면 첫 장면을 쓰고 `act`(kind:'meta', actionMenu).
+- 이름: PC가 모르는 NPC는 겉모습으로 부른다. 이름을 알게 되면 npcChanges `introduce`로 알린다.
 - 플레이: `act`(모든 행동, 변화 보고는 묘사보다 먼저), `submit_roll`, `answer_group`, `pc_attack`·`enemy_attack`, `start_chase`·`chase_round`, `san_check`, `harm`, `rescue`, `first_aid`, `recover`, `end_scene`, `notebook`, `finale_gate`, `finish`, `archive`
 - 재개·기록: `resume`, `story_log`, `save`, `view` / 화면 시험: `demo_start`
 - 소지품 획득·진상 발견·사건 체험·NPC 변화는 `act`의 해당 항목으로 보고한다. 보고하지 않은 것은 일어나지 않은 것이다.
