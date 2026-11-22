@@ -92,7 +92,7 @@
 
 **D. 보류(나중 확장):** 연대기(재설계 필요), 본부, 카드, 장기 성장, 종결 후 본부에서 진실 듣기 도구, 지도·시각 자료, 3인 이상.
 
-**추가 시스템:** B11 추격·은신(5-9, 엔진 진행). 퍼즐 등은 해당 절 판별 때 결정.
+**추가 시스템:** B11 추격·은신(5-9, 엔진 진행). 퍼즐은 LORE_DRIVEN_PUZZLES로 충분(별도 시스템 없음).
 
 ---
 
@@ -379,6 +379,31 @@
 | EXTREME_HAZARDS | 유지(축약) + 엔진 | 독·감염·질식 등 |
 | CAUSAL_MULTI_PHASE_THREAT | 유지 → 위협 설계 통합 | HP 0 후 전량 회복 페이즈 금지 |
 | SAN_EXPOSURE_GATE | 유지 | AI 판단 기준: 언제 SAN 노출인가, 반복 노출 금지 |
+
+### 06-play.md (18절) — 판별안 (후일담·선택지 확인 대기)
+
+교훈: 시간표 금지가 이 파일에도 세 곳 더 있다 — KEEPER_SCENE_SELECTION("첫 E를 2~30턴 안에 등장시키는 강제 출현 없음"), TURN_INCREMENT("턴은 E 시계가 아니다, 카운터로 사건 예약 금지"), SCENE_ELAPSED_TIME_SETTLEMENT("E01=20:00 같은 시간표를 기다리지 않는다", "새 필수 국면을 당기거나 늦추지 않는다", "생활·탐험을 했다고 사건을 가속하지 않는다"). 모두 위협 전진 방식과 정면 충돌 → 삭제·재작성.
+
+| 절 | 판별 | 방향 |
+|---|---|---|
+| DIRECTOR_WRITER_KEEPER_CONVERGENCE | 유지 → 서술 가이드 | |
+| CINEMATIC_ACTION_CONTINUITY | 유지 | 플레이어가 쓴 대사는 원문 그대로, 선택지는 PC의 직접 대사로 |
+| NPC_REPLY_AGENCY_GATE | 유지 | NPC가 답·동의·비용을 요구하면 거기서 멈춤 |
+| CINEMATIC_ELLIPSIS | 유지 | 의미 없는 하위 단계 생략 |
+| KEEPER_SCENE_SELECTION (9.7KB) | 수정 → 서술 가이드 | 첫 오프닝, 공간 묘사, 공포 표현, 위기·탐구 호흡, 유머, 세계 사건을 직접 장면으로, 행동·관계 중심(서류 조사 순환 금지) 등 좋은 지침 유지. **"첫 E 강제 출현 없음" 삭제.** "중심 사건이 사라지면 NPC·위협에서 다음 접점 실행"은 빈 시간 금지로 |
+| QUIET_AFTERMATH_BEAT | 유지 | 큰 압박 뒤 짧은 안도·유머 |
+| TURN_INCREMENT | 수정 + 엔진 | 턴 계산은 엔진. "턴은 사건 시계가 아니다" 삭제(위협 전진이 시간·행동을 함께 씀) |
+| SCENE_ELAPSED_TIME_SETTLEMENT (6KB) | **재작성 + 엔진** | 물리 시간 정산은 엔진. 시간표 금지 문장 전부 삭제, 위협 시간 창·당김/늦춤으로 교체 |
+| ROUTINE_MOVEMENT_FAST_PATH | 유지 | |
+| LONG_ACTION_EARLIEST_INTERRUPTION | 유지 + 엔진 | |
+| MULTI_PC_SPOTLIGHT_CONTRACT | 유지 + 수정 | 공평한 카메라 이동 유지. "함께 하나의 씬이 기본" → 출발 위치는 상황에 따라 |
+| PARALLEL_TIMELINE_SYNC | 엔진 이전 | PC별 시간선 정산 |
+| GUIDED_ACTION_RETURN | 유지 + UI | 행동 선택지 + 자유 입력. 버튼 표시는 MCP 화면 |
+| BOTTOM_HUD_CONTRACT (12.7KB) | **엔진·UI 이전** | HUD는 MCP 화면이 엔진 값으로 그림. AI는 HUD를 직접 쓰지 않음. 판정 결과는 하단 짧은 표시 원칙 유지 |
+| ENDING_FINALIZATION_GATE | 유지 + 엔진 강제 | 최종장 진입·종결 조건은 엔진. "모든 E 전원 체험"→공동·개인 사건. 카드·본부·연대기 문장 보류 |
+| ENDING_PRESENTATION | 유지(OFF) + 보류(ON) | |
+| OPTIONAL_POST_CREDITS_VIEWS | 확인 대기 | OFF 다섯 편 후일담 |
+| LORE_DRIVEN_PUZZLES | 유지 | 원작·공간·물건의 작동에서 나온 퍼즐만. 별도 퍼즐 시스템 불필요 |
 
 나머지 판별 대기: 02-checks, 03-danger, 04-setup(나머지), 05-world, 06-play, 07-state, 08-visual(보류 후보), 09-cards(보류 후보).
 
