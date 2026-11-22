@@ -396,13 +396,13 @@
 | SCENE_ELAPSED_TIME_SETTLEMENT (6KB) | **재작성 + 엔진** | 물리 시간 정산은 엔진. 시간표 금지 문장 전부 삭제, 위협 시간 창·당김/늦춤으로 교체 |
 | ROUTINE_MOVEMENT_FAST_PATH | 유지 | |
 | LONG_ACTION_EARLIEST_INTERRUPTION | 유지 + 엔진 | |
-| MULTI_PC_SPOTLIGHT_CONTRACT | 유지 + 수정 | 공평한 카메라 이동 유지. "함께 하나의 씬이 기본" → 출발 위치는 상황에 따라 |
+| MULTI_PC_SPOTLIGHT_CONTRACT | 유지 + 보완(중요) | 사용자: 카메라 이동은 **매우 중요**. 상세 설계 5-11 확인 대기. "함께 하나의 씬이 기본" → 출발 위치는 상황에 따라 |
 | PARALLEL_TIMELINE_SYNC | 엔진 이전 | PC별 시간선 정산 |
-| GUIDED_ACTION_RETURN | 유지 + UI | 행동 선택지 + 자유 입력. 버튼 표시는 MCP 화면 |
+| GUIDED_ACTION_RETURN | 유지 + UI | **행동 선택지 정확히 3개 유지**(사용자 확인) + 자유 입력. 버튼 표시는 MCP 화면 |
 | BOTTOM_HUD_CONTRACT (12.7KB) | **엔진·UI 이전** | HUD는 MCP 화면이 엔진 값으로 그림. AI는 HUD를 직접 쓰지 않음. 판정 결과는 하단 짧은 표시 원칙 유지 |
 | ENDING_FINALIZATION_GATE | 유지 + 엔진 강제 | 최종장 진입·종결 조건은 엔진. "모든 E 전원 체험"→공동·개인 사건. 카드·본부·연대기 문장 보류 |
 | ENDING_PRESENTATION | 유지(OFF) + 보류(ON) | |
-| OPTIONAL_POST_CREDITS_VIEWS | 확인 대기 | OFF 다섯 편 후일담 |
+| OPTIONAL_POST_CREDITS_VIEWS | 재설계 | 사용자: 더 좋은 방식이면 교체 (5-10 확인 대기) |
 | LORE_DRIVEN_PUZZLES | 유지 | 원작·공간·물건의 작동에서 나온 퍼즐만. 별도 퍼즐 시스템 불필요 |
 
 나머지 판별 대기: 02-checks, 03-danger, 04-setup(나머지), 05-world, 06-play, 07-state, 08-visual(보류 후보), 09-cards(보류 후보).
