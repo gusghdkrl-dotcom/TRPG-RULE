@@ -258,6 +258,19 @@
 7. 극중 시각이 크게 벌어지면 뒤처진 PC를 먼저 진행(기준 초안 30분).
 8. 화면에 현재 차례 PC와 상대 PC의 마지막 위치·행동을 짧게 표시.
 
+
+### 5-12. 이야기 세이브 (확정)
+
+**목적:** AI 키퍼가 채팅을 옮겨도 **똑같은 시점에서 최대한 똑같은 환경**으로 게임을 이어 가기 위한 기능. 주된 독자는 다음 채팅의 AI 키퍼다(사람용 읽을거리는 부차).
+**이유:** 캠페인 약 500턴은 한 채팅에 담기지 않고, 새 채팅의 키퍼는 기억이 없다. 숫자 상태(엔진 복원)만으로는 NPC 말투·약속·농담·관계 변화 이유·누가 무엇을 아는지·장면 분위기가 이어지지 않는다. 같은 채팅 안에서도 길어지면 키퍼가 앞부분을 잊는다.
+
+**설계 방향**
+- 엔진이 **매 턴 자동으로** 기록을 쌓는다(저장 요청을 기다리지 않음): 플레이어 입력 원문, 키퍼 장면 출력 원문, 판정·변화, NPC 대사, 관계·약속·지식 변화.
+- 원문 전체는 DB에 보존한다(사후 "원문 미확보·축어록 누락" 재발 방지).
+- 새 채팅 재개 시 엔진이 **재개 묶음**을 키퍼에게 준다: 현재 상태 + 최근 장면 원문(말투·분위기 복원용) + 누적 이야기 요약 + NPC별 말투 예시·관계 메모 + PC별 아는 것/모르는 것 + 열린 약속·미해결 일 + 현재 위협 단계.
+- 같은 채팅 안에서도 키퍼가 필요하면 엔진에서 해당 기록을 다시 조회할 수 있다.
+- 사람이 읽는 문서 내보내기(Docs·드라이브)는 요청 시 부가 기능. 비공개 진상은 기록실에서만.
+
 ---
 
 ## 6. 절별 판별
@@ -436,6 +449,34 @@
 | ENDING_PRESENTATION | 유지(OFF) + 보류(ON) | |
 | OPTIONAL_POST_CREDITS_VIEWS | 재설계 | 5-10 엔딩·기록실 구조로 교체 |
 | LORE_DRIVEN_PUZZLES | 유지 | 원작·공간·물건의 작동에서 나온 퍼즐만. 별도 퍼즐 시스템 불필요 |
+
+### 07-state.md (21절, 97KB) — 판별 완료
+
+GPT 단독 저장 시절 절차(정본 업로드·해시·버전·복구·20턴 재독·GitHub 백업)가 대부분 → 엔진 A6 저장으로 이전·삭제.
+
+| 절 | 판별 | 방향 |
+|---|---|---|
+| STATE_AUTHORITY | 엔진 이전 | |
+| PRIVATE_CANON_DOCUMENT | 재설계 → 엔진 정본 형식 | 10개 절 양식을 새 시스템(원작 분석서·진상의 층·위협 단계·NPC 정본·적 정본·최종장 열쇠·PC 개인 이해관계)에 맞춰 재설계 |
+| PRIVATE_CANON_ACCESS_ROUTER | 엔진 이전 | |
+| PRIVATE_CANON_PERIODIC_REVIEW | 삭제 | |
+| STATE_CANON_SAVE_BINDING | 엔진 이전 | |
+| STATE_WORKING_CONTEXT | 엔진 이전 | |
+| STATE_ACCESS_ROUTER | 삭제 | |
+| STATE_SCHEMA | 엔진 이전 | 엔진 저장 형식 점검표로 사용 |
+| STATE_IDENTITY | 엔진 이전(축약) | |
+| STATE_EXPERIENCE_CONTINUITY | **유지(핵심) + 엔진** | 5-12 |
+| HQ_SORTIE_STORY_ARCHIVE | 보류 + 일부 유지 | 본부 출격 연대기 보류, 캠페인 이야기 기록은 5-12로 |
+| STATE_INTEGRITY | 엔진 이전 | |
+| STATE_CADENCE | 엔진 이전 | A6 구현됨 |
+| STATE_CHECKPOINT_RECAP | 삭제 | |
+| STATE_COMMIT | 엔진 이전 | |
+| STATE_VERIFIED_OWNER_AUDIT_AND_GITHUB_BACKUP | 삭제 | |
+| STATE_GITHUB_FAILOVER_PROTOCOL | 삭제 | |
+| STATE_SAVE_FAILURE_CONTINUE | 유지(원칙 한 줄) + 엔진 | |
+| STATE_RECOVERY | 엔진 이전 | |
+| STATE_RESUME | 엔진 이전 + 일부 유지 | 복원은 엔진, 재개 묶음으로 키퍼가 장면에 재진입 |
+| STATE_COMPATIBILITY | 삭제 | 구판 호환 |
 
 나머지 판별 대기: 02-checks, 03-danger, 04-setup(나머지), 05-world, 06-play, 07-state, 08-visual(보류 후보), 09-cards(보류 후보).
 
