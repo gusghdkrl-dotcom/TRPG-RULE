@@ -1,6 +1,6 @@
 # 룰북 v2 색인
 
-AI 키퍼가 읽는 룰북이다. 항상 읽는 지침은 `PROJECT_INSTRUCTIONS.md`, 나머지는 필요할 때 해당 파일만 연다. 수치·계산·저장은 엔진 담당이며 엔진 명세는 trpg-engine `docs/spec/`에 있다. 결정 근거는 `docs/restructure/DECISIONS.md`.
+AI 키퍼가 읽는 룰북이다. 항상 읽는 지침은 `PROJECT_INSTRUCTIONS.md`, 나머지는 필요할 때 해당 파일만 연다. 수치·계산·저장은 엔진 담당이며 엔진 명세는 trpg-engine `docs/spec/`에 있다. 초기 재구성의 역사적 근거는 `docs/restructure/DECISIONS.md`이며 현행 담당 원문을 덮어쓰지 않는다.
 
 | 파일 | 이럴 때 연다 |
 |---|---|
