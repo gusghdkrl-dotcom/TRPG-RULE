@@ -4,6 +4,12 @@
 
 [AGENTS.md](../AGENTS.md)는 필수 참조 진입점, 이 문서는 공통 규정, [EDITING.md](EDITING.md)는 파일별 배치와 편집·검증의 상세 절차다. 과거 브랜치·DEVLOG·설계 초안은 이력이며 최신 원문을 대신하지 않는다. 이 규정은 개발 작업용으로, 게임용 프로젝트 인스트럭션이나 배포 ZIP에 추가하지 않는다.
 
+## 판본별 적용 범위
+
+현재 사용자 지정 MCP v2 작업선은 `docs/restructure-decisions-20261122`의 `rules-v2/`다. `main` 최신 HEAD도 확인하되 구판 규칙·템플릿·배포를 v2 실행 권위로 섞지 않는다. 아래 `rules/*.md`·프로젝트 지침·템플릿의 역할 원칙은 v2의 담당 원문·`rules-v2/PROJECT_INSTRUCTIONS.md`·엔진 도구 스키마에 대응한다. v2 생성 폼의 실제 계약은 trpg-engine v2 스키마와 `keeperNext`이며 구판 Markdown 폼을 복사하지 않는다.
+
+v2 변경은 `python3 scripts/rulebook.py check-v2`와 `export-v2`로 검사·배포하고 `dist/TRPG-RULE-v2-project.zip`을 소스와 같은 커밋에 넣는다. 판본별 고정 주소와 manifest를 확인한다. 기존 `check`·`export`·`dist/TRPG-RULE-project.zip`은 구판용으로 보존하며 v2 검사 통과의 증거가 아니다. [EDITING.md](EDITING.md)의 구판 명령·main 반영 절차도 v2에는 이 작업선·명령·ZIP으로 대응한다. 개발 문서·실제 비공개 정본/세이브는 공통 ZIP에서 제외한다.
+
 ## 1. 최신 기준과 실제 문제 확인
 
 - GitHub `main`의 실제 최신 HEAD와 작업 트리의 기준 커밋을 확인한다. 오래된 로컬 파일로 최근 패치를 덮어쓰지 않는다.

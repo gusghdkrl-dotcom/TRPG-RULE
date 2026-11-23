@@ -1,0 +1,27 @@
+name: Verify MCP v2 rulebook ZIP
+
+on:
+  push:
+    branches: [main, docs/restructure-decisions-20261122]
+    paths: ['rules-v2/**', 'scripts/rulebook*.py', 'dist/TRPG-RULE-v2-project.zip', '.github/workflows/check-v2-rulebook.yml']
+  pull_request:
+    branches: [main, docs/restructure-decisions-20261122]
+    paths: ['rules-v2/**', 'scripts/rulebook*.py', 'dist/TRPG-RULE-v2-project.zip', '.github/workflows/check-v2-rulebook.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v2-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check v2 sources and matching release bytes
+        run: |
+          python3 scripts/rulebook.py export-v2
+          git diff --exit-code -- dist/TRPG-RULE-v2-project.zip
+          git diff --check

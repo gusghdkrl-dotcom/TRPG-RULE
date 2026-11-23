@@ -1,5 +1,11 @@
 # TRPG-RULE
 
+**MCP v2 사용 안내:** 현재 v2 개발·플레이 기준은 [`rules-v2/`](rules-v2/README.md), 작업선은 `docs/restructure-decisions-20261122`입니다. **[최신 MCP v2 룰북 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/docs/restructure-decisions-20261122/dist/TRPG-RULE-v2-project.zip)**. ZIP의 지침을 프로젝트 지침에 복사하고 같은 배포의 v2 소스를 교체하세요. MCP 앱 연결은 별도로 필요하며 기존 게임은 현재 requestId로 재개합니다. v2의 생성 폼은 엔진 도구 스키마입니다. 아래의 `rules/`·START_GAME·본부/카드·구판 ZIP 안내는 구판용이며 v2 실행 소스와 섞지 않습니다.
+
+---
+
+## 구판 독립 진행 방식 안내
+
 **현재 정본 — 생존 호러 안정화판 2026-11-18.** 프로젝트 지침·시작 입력·룰북 10개가 실행 정본이다. 본부 ON은 본부/영구 카드·성장, OFF는 일반 게임이다. 기본 ON, 인원 1~3명이며 게임 앱/서버를 새로 만드는 프로젝트는 아니다.
 
 이번 안정화는 모든 PC의 각 E 현장 직접 체험 → 모든 E 이후 최종 국면, 원격 기여 불인정·E 위기 발생 보장·조기 종결 없음으로 통일했다. 비PC HP0 즉사, SAN0 게임 오버, 전멸 무보상과 카드/판정 순서를 명확히 했다. 기존 캠페인도 확정 사실은 보존하고 진행 규칙은 현재 소스의 최신 룰북을 따른다.
