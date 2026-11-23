@@ -16,3 +16,11 @@ AI 키퍼가 읽는 룰북이다. 항상 읽는 지침은 `PROJECT_INSTRUCTIONS.
 | `06-ending.md` | 종결 조건, 엔딩, 기록실 |
 
 보류(나중 확장): 본부, 카드·장기 성장, 연대기, 지도·이미지, 3인 초과.
+
+## 설치·재개
+
+[최신 MCP v2 룰북 ZIP 다운로드](https://github.com/gusghdkrl-dotcom/TRPG-RULE/raw/refs/heads/docs/restructure-decisions-20261122/dist/TRPG-RULE-v2-project.zip)
+
+`PROJECT_INSTRUCTIONS.md`를 프로젝트 지침에 복사하고, 같은 ZIP의 나머지 v2 Markdown을 프로젝트 소스로 교체한다. 실제 설치·재개 순서는 ZIP의 `UPLOAD_GUIDE.txt`에 있다. 구판 `rules/`·START_GAME·정본 템플릿을 함께 실행하지 않는다. v2의 작성 폼은 연결된 엔진의 도구 스키마와 `keeperNext`다.
+
+MCP 앱이 연결되어야 도구를 쓸 수 있다. 기존 게임은 현재 `requestId`로 재개하며 과거 사건·시트·정본을 재생성하지 않는다. 룰북 교체는 진행 중 세계의 자동 리뉴얼이 아니다. `RULESET.json`/`RULESET.md`는 배포 출처, `SHA256.json`은 파일 바이트 확인용이다. 과거 판본 고정을 재개 조건으로 요구하지 않는다.
