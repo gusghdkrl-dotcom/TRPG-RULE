@@ -5,7 +5,7 @@
 - 02 2절: 단서는 흐른다 — 핵심(core, 판정 없이, 층마다 서로 다른 경로 3개 이상)·추가(bonus), 모든 단서는 다음 걸음(points), 장소당 2~3개, 깊은 단서의 열림 조건(opensWhen), 직업별 더 풍부한 내용. 거짓말(핵심 NPC 2명 이상, 증언 3~4줄·깨는 증거 하나 이상은 핵심 단서·깨진 뒤 반응), 엇나간 단서 1~3개. 6절 NPC 관계 칸, 8절 분량.
 - 03 3절: 핵심 NPC 정본에 중시하는 성격·관계의 끝·처음 사이·말 상대하기 실력·프로필·좋아하는 선물·개인 이야기 2개·거짓말.
 - 04 8절 관계(점수와 다섯 단계, 엔진이 계산, 퍼주기·깎기 방지, 단계 효과, 나비 효과, 핵심 NPC끼리의 파급, PC의 성격), 8-1절 가까워지기(시간·선물·개인 이야기·특별한 관계), 9절 추리(첫 살핌에 겉 단서 모두, 대면 역전재판식, 보여 주기, 엇나간 단서).
-- 엔진: relations.mjs·mystery.mjs, 도구 trpg_v2_bond·trpg_v2_confront, act의 relationEvents·show, 생성 검사 mystery_incomplete·clues_do_not_flow, audit-campaign '추리·관계'. 키퍼 지침의 'NPC와의 사이에 남을 일' 줄 수정은 승인 대기.
+- 엔진: relations.mjs·mystery.mjs, 도구 trpg_v2_bond·trpg_v2_confront, act의 relationEvents·show, 생성 검사 mystery_incomplete·clues_do_not_flow, audit-campaign '추리·관계'. 키퍼 지침의 'NPC와의 사이에 남을 일' 줄을 relationEvents·confront로 바꿨다(사용자 승인).
 
 ## 2026-11-25 — 2차-A: 부위 부상, 치료 실패, 피로·허기 보상, 소지품, 달빛, 발작, 행운 굴림, CoC 보완, 진행 흐름
 
