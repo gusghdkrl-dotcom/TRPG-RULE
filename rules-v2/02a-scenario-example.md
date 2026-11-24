@@ -80,6 +80,16 @@
   {"name": "현상금 사냥꾼 무리", "from": "《죠스》(1975) 부두 장면", "behavior": "총과 다이너마이트를 들고 아무 배나 몰려나가 피를 뿌린다"}
  ],
  "coreExperience": {"what": "작은 배로 바다에 나가 보이지 않는 거대 상어를 쫓고, 부표로 붙들어 맞선다", "where": "애미티 앞바다"},
+ "genreFrame": {
+  "rules": [
+   {"id": "cre_senses", "how": "상어는 물속의 피 냄새와 첨벙대는 진동으로 먹이를 찾는다. 조용히 떠 있는 사람보다 허우적대는 사람이 먼저 물린다"},
+   {"id": "cre_territory", "how": "애미티 앞바다가 놈의 사냥터다. 얕은 해변에서 먼바다로 나갈수록, 배가 작을수록 놈의 영역이다"},
+   {"id": "cre_bigger", "how": "처음엔 물린 시체와 지느러미뿐이다. 배 옆에 떠오른 몸이 배보다 길다는 것을 알게 되는 건 나중이다"}],
+  "scenes": [
+   {"id": "cre_glimpse", "how": "해수욕장 수면 위로 지느러미만 스치고 사라진다"},
+   {"id": "cre_hide", "how": "뒤집힌 보트 밑에서 숨을 참고 그림자가 지나가길 기다린다"},
+   {"id": "cre_trap", "how": "압축 공기통을 물려 놓고 소총으로 맞힌다"}]
+ },
  "fanAssumptions": [
   {"id": "fa_culprit", "about": "culprit", "assumes": "사고를 덮는 건 본 시장 한 사람의 욕심이다"},
   {"id": "fa_solution", "about": "solution", "assumes": "베테랑 상어잡이와 큰 배로 나가 상어를 죽이면 끝난다"},
@@ -556,10 +566,23 @@
   "7월 초 여름밤은 9시에야 어두워진다",
   "연휴 내내 폭풍 주의보로 바다가 거칠다"
  ],
+ "map": {
+  "areas": [
+   {"id": "ar_amity", "name": "애미티 섬", "x": 55, "y": 50, "kind": "island", "note": "여름 휴양지. 연휴 손님으로 붐빈다"},
+   {"id": "ar_mainland", "name": "본토 항구", "x": 15, "y": 30, "kind": "town", "note": "페리로 40분"}],
+  "regions": [
+   {"id": "rg_town", "areaId": "ar_amity", "name": "애미티 시내", "open": true},
+   {"id": "rg_harbor", "areaId": "ar_amity", "name": "어항과 방파제", "open": false}],
+  "routes": [{"from": "ar_mainland", "to": "ar_amity", "how": "페리", "minutes": 40}]
+ },
  "locations": [
   {
    "id": "loc_outfall",
    "name": "냉동 창고 뒤 배출구",
+   "regionId": "rg_harbor",
+   "pos": {"x": 72, "y": 64},
+   "terrain": "shore",
+   "look": "생선 기름이 번들거리는 배출구와 빈 드럼통 더미",
    "connections": [
     {
      "to": "loc_jetty",
@@ -595,6 +618,7 @@
    "age": 67,
    "profession": "은퇴한 상어잡이",
    "appearance": "한쪽 귀가 없는 늙은 어부, 소금기에 하얗게 바랜 모자",
+   "looks": {"face": "깊게 팬 주름과 가는 눈", "hair": "짧게 깎은 흰 머리", "mark": "왼쪽 귀가 없다", "outfit": "소금기에 바랜 모자와 기름 먹인 작업복"},
    "knownBy": [
     "P1"
    ],
