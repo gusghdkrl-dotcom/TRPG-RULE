@@ -97,7 +97,10 @@
   {"id": "fa_ally", "about": "ally", "assumes": "해양 연구소 사람들은 진실 편이다"},
   {"id": "fa_final", "about": "finalThreat", "assumes": "마지막에는 거대 백상아리와 맞선다"}
  ],
- "sourceFinalThreat": {"what": "거대 백상아리", "entity": true, "why": "원작의 마지막 장면에서 사냥꾼들이 배 위에서 그 상어와 직접 맞선다"}
+ "sourceFinalThreat": {"what": "거대 백상아리", "entity": true, "why": "원작의 마지막 장면에서 사냥꾼들이 배 위에서 그 상어와 직접 맞선다"},
+ "sourcePeople": [{"name": "마틴 브로디", "from": "source", "kind": "person", "who": "뉴욕에서 온 지 얼마 안 된 애미티의 경찰서장. 물을 무서워한다", "type": "protector", "fate": "alive"}, {"name": "맷 후퍼", "from": "source", "kind": "person", "who": "해양학 연구소에서 온 젊은 상어 전문가", "type": "curious", "fate": "alive"}, {"name": "퀸트", "from": "source", "kind": "person", "who": "상어 사냥으로 먹고사는 늙은 뱃사람", "type": "fixer", "fate": "alive"}, {"name": "래리 본 시장", "from": "source", "kind": "person", "who": "여름 장사를 지키려는 애미티 시장", "type": "coverup", "fate": "alive"}, {"name": "크리시 왓킨스", "from": "source", "kind": "person", "who": "첫 희생자", "type": "easygoing", "fate": "gone"}, {"name": "애미티 상인", "from": "source", "kind": "group", "who": "여름 한 철 벌이에 한 해를 거는 가게 주인들"}, {"name": "피서객", "from": "source", "kind": "group", "who": "7월 4일 연휴에 몰려온 본토 사람들"}, {"name": "어부와 현상금 사냥꾼", "from": "source", "kind": "group", "who": "상금을 노리고 배를 끌고 나온 사람들"}, {"name": "해안 경비대원", "from": "world", "kind": "group", "who": "섬을 오가는 순찰정의 사람들"}],
+ "sourcePlaces": [{"name": "애미티 해수욕장", "from": "source"}, {"name": "오르카호", "from": "source"}, {"name": "애미티 부두", "from": "source"}, {"name": "시청 회의실", "from": "source"}, {"name": "연못 어귀", "from": "source"}, {"name": "등대 곶", "from": "world"}],
+ "sourceThings": [{"name": "노란 부표통", "from": "source"}, {"name": "상어 우리", "from": "source"}, {"name": "압축 공기 탱크", "from": "source"}, {"name": "현상금 벽보", "from": "source"}, {"name": "물린 서프보드", "from": "world"}]
 }
 ```
 
@@ -551,7 +554,28 @@
     "P1"
    ],
    "depth": "core",
-   "goal": "토미가 왜 사라졌는지 알면서 입을 다문 자기를 용서하고 싶다",
+   "basis": "어부와 현상금 사냥꾼",
+   "type": "fixer",
+   "typeLine": "상어는 자기만 안다고 믿는다. 누가 작살을 잘못 쥐면 말없이 빼앗아 고쳐 쥐여 준다",
+   "origin": {
+    "kind": "resident",
+    "since": "이 섬에서 나고 자랐다"
+   },
+   "incident": {
+    "exposure": "saw",
+    "line": "토미가 사라지기 전날 밤, 배출구 근처 물 위로 올라온 지느러미를 잔교 끝에서 봤다"
+   },
+   "want": {
+    "line": "토미 일을 신고하지 않은 걸 누구에게든 털어놓고 용서받는 것",
+    "about": "npc_tommy_mother",
+    "toward": "avoid",
+    "ifLeft": "토미 어머니가 잔교에 찾아오면 핼은 헛간 문을 걸고 나오지 않는다. 그녀는 문 앞에 꽃을 두고 간다"
+   },
+   "first": "낯선 사람이 잔교에 들어서면 그물 깁던 손을 멈추고 신발부터 본다. 뱃사람 신발이 아니면 다시 그물을 집는다",
+   "crisis": {
+    "does": "작살을 들고 물가로 먼저 뛰어든다. 남이 막아도 듣지 않는다",
+    "effect": "lead"
+   },
    "protects": [
     "자기 헛간의 작살과 드럼통",
     "토미 가족"
@@ -749,7 +773,8 @@
    "concealed": {
     "where": "냉동 창고 뒤 빈 드럼통 더미 맨 아래, 방수포 밑",
     "requires": "자정 배출 때 경비가 자리를 비우는 틈을 노리거나, 핼 마시가 위치를 알려 준다"
-   }
+   },
+   "ownerId": "npc_hal"
   }
  ],
  "kitMoments": [
@@ -803,7 +828,9 @@
    "foundAt": "loc_outfall",
    "points": "npc_dale",
    "refutedBy": "l3_tracklog",
-   "alsoUseful": "데일은 그 뱀상어의 배를 갈라 보자며 연구소 냉장 창고 열쇠를 빌려주고, 거기서 항적 기록 이야기를 꺼낸다"
+   "alsoUseful": "데일은 그 뱀상어의 배를 갈라 보자며 연구소 냉장 창고 열쇠를 빌려주고, 거기서 항적 기록 이야기를 꺼낸다",
+   "believedBy": "npc_dale",
+   "why": "자기 배로 그 뱀상어를 잡아 올린 날, 시장이 사진을 찍고 상금을 줬다. 아니라면 그 돈을 돌려줘야 한다"
   }
  ]
 }
