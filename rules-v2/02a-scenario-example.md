@@ -333,13 +333,121 @@
 
 ## 4. 세계 상세 발췌 — 《죠스》
 
-세계 상세는 장소 12곳, NPC 15명, 적 5종 이상이다. 아래는 종류마다 하나씩만 뽑았다. 나머지도 이만큼 구체적이어야 한다.
+세계 상세는 장소 12곳, NPC 15명, 적 5종 이상이다. 아래는 종류마다 하나씩만 뽑았다(문서는 2개 이상, 소소한 사건은 5개 이상이 필수라 그만큼 실었다). 나머지도 이만큼 구체적이어야 한다. 날씨(`weather`)는 필수, 물때(`tide`)·여닫는 시간(`hours`)·퍼즐(`puzzles`)은 원작에 맞을 때만 넣는다.
 
 ```json
 {
  "conditions": [
   "7월 초 여름밤은 9시에야 어두워진다",
   "연휴 내내 폭풍 주의보로 바다가 거칠다"
+ ],
+ "weather": {
+  "season": "summer",
+  "climate": "coast"
+ },
+ "tide": {
+  "highAt": "17:30"
+ },
+ "documents": [
+  {
+   "id": "doc_ledger_page",
+   "kind": "ledger",
+   "title": "냉동 창고 출하 장부의 한 장",
+   "author": "창고 주임의 글씨",
+   "date": "6월",
+   "body": "6월 3일 — 대구 240상자 출하. 잔여 폐기 0.\n6월 10일 — 고등어 310상자 출하. 잔여 폐기 0.\n6월 17일 — 출하 없음. 위생 처리비 입금(관광 기금).\n6월 24일 — 출하 없음. 위생 처리비 입금(관광 기금).\n\n연필로 덧쓴 글씨: 폐기는 0인데 드럼통은 왜 매주 비는가.",
+   "attach": {
+    "pathId": "l2_ledger"
+   }
+  },
+  {
+   "id": "doc_report_draft",
+   "kind": "note",
+   "title": "찢긴 보고서 초안",
+   "author": "D. 코빈",
+   "pieces": [
+    {
+     "body": "…표지를 단 개체는 5월 말부터 항구 입구를 떠나지 않았다. 먹이가 매일 같은 자리에서 나오기 때문으로 보인다. 결론:",
+     "attach": {
+      "locationId": "loc_outfall"
+     }
+    },
+    {
+     "body": "이 개체는 항구에 머문다. 배출이 계속되는 한 떠나지 않을 것이다. (이 문단 전체에 붉은 줄이 그어져 있다.)",
+     "attach": {
+      "pathId": "l3_tracklog"
+     }
+    }
+   ],
+   "completes": "l2_dale"
+  }
+ ],
+ "incidents": [
+  {
+   "id": "inc_gulls",
+   "text": "갈매기 떼가 생선 상자를 쪼다가 한꺼번에 날아오른다.",
+   "where": [
+    "shore",
+    "dock"
+   ],
+   "when": "day"
+  },
+  {
+   "id": "inc_radio",
+   "text": "잔교 끝 낚시꾼의 라디오에서 야구 중계가 지직거린다.",
+   "where": [
+    "dock"
+   ]
+  },
+  {
+   "id": "inc_truck",
+   "text": "아이스크림 트럭의 종소리가 해변 쪽에서 가까워졌다 멀어진다.",
+   "when": "day"
+  },
+  {
+   "id": "inc_flags",
+   "text": "연휴 깃발 줄이 바람에 한 번 크게 펄럭인다.",
+   "where": [
+    "road",
+    "dock",
+    "shore"
+   ]
+  },
+  {
+   "id": "inc_compressor",
+   "text": "냉동 창고 압축기가 덜컹 멈췄다가 다시 돈다.",
+   "where": [
+    "loc_outfall"
+   ]
+  },
+  {
+   "id": "inc_bell",
+   "text": "항로 부표의 종이 밤바다에서 느리게 울린다.",
+   "where": [
+    "shore",
+    "dock",
+    "water"
+   ],
+   "when": "night"
+  }
+ ],
+ "puzzles": [
+  {
+   "id": "pz_locker",
+   "kind": "lock",
+   "title": "주임의 사물함 자물쇠",
+   "prompt": "사물함 문 안쪽에 분필로 적힌 글: '첫 배가 들어온 해, 거꾸로.'\n벽의 액자에는 '크레인 수산 — 1948년 첫 출하'라고 적혀 있다.",
+   "answer": [
+    "8491"
+   ],
+   "hint": "액자의 연도를 뒤에서부터 읽는다.",
+   "attach": {
+    "locationId": "loc_outfall"
+   },
+   "reward": {
+    "pathId": "l2_ledger"
+   }
+  }
  ],
  "map": {
   "areas": [
@@ -394,6 +502,10 @@
    },
    "terrain": "shore",
    "look": "생선 기름이 번들거리는 배출구와 빈 드럼통 더미",
+   "ambience": {
+    "calm": "seaside_day",
+    "dread": "harbor_storm"
+   },
    "connections": [
     {
      "to": "loc_jetty",
