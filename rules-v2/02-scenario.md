@@ -255,6 +255,7 @@ PC에게 처지를 부여할 뿐, 무엇을 할지는 정하지 않는다. 비�
 - `map.routes`: 지역 사이 길 {from, to, how, minutes}(배 40분 등).
 - 장소마다 `regionId`, `pos{x,y}`(실제 방향과 거리대로, 0~100), `terrain`, `look`(가 본 뒤 지도 장소 카드에 뜨는 한 줄)을 단다. 잠긴 곳은 `locked{what, ways}`(여는 방법), 숨은 곳은 `hidden`(발견해야 지도에 생김), 처음부터 아는 PC는 `knownAtStart`(생략하면 시작 구역의 장소는 모두가 안다). 안에 무엇이 있는지는 정본에 정하되 지도에는 PC가 보거나 들은 것만 뜬다.
 
+- 세계의 날씨 `weather`를 정한다(엔진 반려). 원작을 대표하는 날씨면 `{fixed:'짙은 안개'}`처럼 **고정**하고(끝까지 안 바뀐다), 아니면 `{season, climate}`만 적는다(season: spring·summer·autumn·winter / climate: coast·inland·mountain·desert·tropic·polar. 엔진이 몇 시간마다 한 단계씩 바꾼다). 지역이 바뀌는 이야기는 구역마다 `map.regions[].weather`를 따로 준다. 날씨는 `conditions`에 쓰지 않는다. 이야기에 꼭 필요한 날씨(결전의 폭풍)는 고정으로 잡는다. 효과는 05 14절.
 - 장소마다 환경음 `ambience{calm, dread}`을 고른다(엔진 목록에서, 그 장소의 실제 모습과 날씨에 맞게. 예: 폭풍 치는 부두 `coast_storm`, 비 오는 부엌 `inn_rain`, 위협의 흔적이 보인 뒤는 `dread`). 카드가 그 장소에 있는 동안 반복해 깐다(엔진 반려).
 
 ### 장소
