@@ -41,6 +41,10 @@
    "senses": "물속 진동, 피 냄새",
    "attack": "물어 물속으로 끌고 들어간다",
    "weakness": "드럼통 부표가 박히면 잠수하지 못하고 수면에 드러난다",
+   "memory": "피 냄새가 남은 물길은 하루 넘게 다시 찾아온다",
+   "giveUp": "냄새가 끊기고 먹이가 없으면 반나절 뒤 사람 많은 물가로 옮겨 간다",
+   "blockedBy": "뭍, 썰물 때 드러난 모래톱, 촘촘한 그물",
+   "signature": "부표가 끌려가듯 물살을 거슬러 움직이고, 물린 자리는 반달 모양 이빨 자국이 줄지어 남는다",
    "chasePattern": "지느러미만 보이며 원을 좁히다가 아래에서 단번에 올라온다"
   }
  ],
@@ -119,7 +123,7 @@
 
 ## 2. 시나리오 뼈대 — 《죠스》
 
-**가정:** 엔진이 추첨한 연결 이유는 P1 `loved_one`(소중한 사람), P2 `profession`(직업상 일)이다. `pcSlots`는 추첨 결과를 그대로 따른다.
+**가정:** 엔진이 추첨한 계기는 P1 `loved_one`(소중한 사람), P2 `profession`(직업상 일)이다. 주연 관계는 끈 판(처음 보는 사이)이라 `leadsTogether`가 없다. `pcSlots`는 추첨 결과를 그대로 따르고, 자리마다 풀어야 할 질문의 조각(1·2층)과 완전한 답(3층)을 진상 단서에 박는다.
 
 ```json
 {
@@ -133,9 +137,9 @@
   "goal": "7월 4일 연휴가 끝나기 전에 상어를 항구로 끌어들이는 배출과 그것을 덮는 거래를 끊고, 상어를 처치하거나 섬에서 떼어 내 어항 사람들을 살린다.",
   "alreadyLost": "어제 새벽 굴을 따던 소년 토미 피어스가 방파제에서 사라졌다. 의회는 익사로 처리하고 수색을 끝냈다.",
   "ifUnchecked": [
-   {"atMinute": 720, "afterMajor": 2, "happens": "새벽 조개잡이 배가 항구 입구에서 뒤집혀 선원 한 명이 끌려간다. 의회는 '보트 사고'로 발표한다.", "pcImpact": "어항 사람들이 입을 닫고 PC에게 배를 빌려주지 않는다."},
-   {"atMinute": 1800, "afterMajor": 4, "happens": "7월 4일 북쪽 해변 수영 대회가 강행되고, 물에 들어간 아이 둘이 다친다.", "pcImpact": "해안 경비대가 몰려와 북쪽 바다 출입을 막고, 의회는 PC들을 소동의 원인으로 지목한다."},
-   {"atMinute": 2880, "afterMajor": 6, "happens": "상어가 페리 잔교 아래까지 들어와 대기줄 끝의 사람들을 덮치고 페리 운항이 끊긴다.", "pcImpact": "섬을 떠날 길이 바다뿐인데, 그 바다에 상어가 있다."}
+   {"atMinute": 720, "afterMajor": 2, "happens": "새벽 조개잡이 배가 항구 입구에서 뒤집혀 선원 한 명이 끌려간다. 의회는 '보트 사고'로 발표한다.", "pcImpact": "어항 사람들이 입을 닫고 PC에게 배를 빌려주지 않는다.", "deepens": {"where": "항구 입구 바깥 물길과 뒤집힌 배 주변", "danger": "물에 빠진 사람을 건지려면 상어의 물길에 들어가야 한다"}, "ifCut": {"cutBy": "새벽 조개잡이 배들의 출항을 막는다", "keeps": "선원이 끌려가지 않는다", "continuesVia": "th_council"}},
+   {"atMinute": 1800, "afterMajor": 4, "happens": "7월 4일 북쪽 해변 수영 대회가 강행되고, 물에 들어간 아이 둘이 다친다.", "pcImpact": "해안 경비대가 몰려와 북쪽 바다 출입을 막고, 의회는 PC들을 소동의 원인으로 지목한다.", "deepens": {"where": "북쪽 해변 수영 대회장과 그 앞 모래톱", "danger": "얕은 물에 모인 사람들 사이로 등지느러미가 들어온다"}, "ifCut": {"cutBy": "대회 전에 해변 출입을 막을 증거를 경비대에 넘긴다", "keeps": "아이들이 다치지 않는다", "continuesVia": "th_hunters"}},
+   {"atMinute": 2880, "afterMajor": 6, "happens": "상어가 페리 잔교 아래까지 들어와 대기줄 끝의 사람들을 덮치고 페리 운항이 끊긴다.", "pcImpact": "섬을 떠날 길이 바다뿐인데, 그 바다에 상어가 있다.", "deepens": {"where": "페리 잔교 밑과 배출구 안쪽 수로(원작의 상어가 드나든 곳)", "danger": "잔교 기둥 사이에서 상어와 마주한다"}, "ifCut": {"cutBy": "대기줄을 언덕으로 옮기고 잔교를 닫는다", "keeps": "잔교 습격이 일어나지 않는다", "continuesVia": "th_shark"}}
   ]
  },
  "stage": {"name": "애미티섬 북쪽 쿼호그 어항", "areaIds": ["loc_breakwater", "loc_outfall", "loc_jetty", "loc_ferry_pier", "loc_harbor_mouth", "loc_sandbar"],
@@ -171,26 +175,29 @@
  "threats": [
   {"id": "th_shark", "name": "백상아리", "tier": 2, "roles": ["chase"],
    "stages": [
-    {"id": "th_shark_s1", "order": 1, "anchor": "start", "windowMinMinutes": 60, "windowMaxMinutes": 240, "does": "항구 입구에 지느러미가 보이고, 작은 배 주위를 맴돌다 사라진다", "omens": ["갈매기 떼가 한곳에 내려앉았다 흩어진다", "부표 줄이 물살과 반대로 끌려간다"], "reach": {"how": "물가와 배 위의 사람이 목격한다", "targets": ["loc_harbor_mouth", "loc_breakwater"]}, "responses": ["물가에서 물러난다", "배를 잔교에 묶고 기다린다", "지느러미가 간 방향을 기록한다"]},
-    {"id": "th_shark_s2", "order": 2, "anchor": "prevStage", "windowMinMinutes": 300, "windowMaxMinutes": 900, "does": "방파제 아래와 잔교 밑까지 들어와 물에 다리를 담근 사람을 노린다", "omens": ["잔교 기둥에 붙은 따개비가 한 줄로 긁혀 떨어져 있다", "밤에 배출구 쪽 물이 크게 출렁인다"], "reach": {"how": "물가에 있는 사람을 덮친다", "targets": ["loc_breakwater", "loc_jetty", "loc_outfall"]}, "responses": ["물에서 나온다", "다친 사람을 물가에서 끌어올린다", "배출구 근처에 사람을 들이지 않는다"]},
-    {"id": "th_shark_s3", "order": 3, "anchor": "prevStage", "windowMinMinutes": 600, "windowMaxMinutes": 1200, "does": "작은 배를 아래에서 들이받아 뒤집고, 물에 빠진 사람을 끌고 간다", "omens": ["배 밑바닥을 무언가가 길게 긁는 소리", "드럼통 하나가 물속으로 끌려갔다가 멀리서 떠오른다"], "reach": {"how": "항구 안의 작은 배를 들이받는다", "targets": ["loc_harbor_mouth", "loc_jetty"]}, "responses": ["배를 잔교에 붙인다", "물에 빠진 사람에게 구명 고리를 던진다", "작살과 부표를 준비한다"]},
-    {"id": "th_shark_s4", "order": 4, "anchor": "prevStage", "windowMinMinutes": 600, "windowMaxMinutes": 1200, "does": "페리 잔교 아래까지 들어와 대기줄 끝의 사람들을 덮친다", "omens": ["페리 잔교 아래 물이 검붉게 흐려진다", "잔교 끝 기둥이 한 번 크게 흔들린다"], "reach": {"how": "잔교 위의 사람을 물로 끌어내린다", "targets": ["loc_ferry_pier"]}, "responses": ["대기줄을 잔교 안쪽으로 물린다", "잔교 끝을 막는다", "미끼로 상어를 다른 곳으로 끈다"]}
+    {"id": "th_shark_s1", "order": 1, "anchor": "start", "windowMinMinutes": 60, "windowMaxMinutes": 240, "does": "항구 입구에 지느러미가 보이고, 작은 배 주위를 맴돌다 사라진다", "omens": ["갈매기 떼가 한곳에 내려앉았다 흩어진다", "부표 줄이 물살과 반대로 끌려간다"], "reach": {"how": "물가와 배 위의 사람이 목격한다", "targets": ["loc_harbor_mouth", "loc_breakwater"]}, "responses": ["물가에서 물러난다", "배를 잔교에 묶고 기다린다", "지느러미가 간 방향을 기록한다"], "ifCut": {"cutBy": "항구 입구에 그물을 치고 배출구 냄새를 끊는다", "keeps": "작은 배가 입구에서 습격당하지 않는다", "continuesVia": "th_hunters"}},
+    {"id": "th_shark_s2", "order": 2, "anchor": "prevStage", "windowMinMinutes": 300, "windowMaxMinutes": 900, "does": "방파제 아래와 잔교 밑까지 들어와 물에 다리를 담근 사람을 노린다", "omens": ["잔교 기둥에 붙은 따개비가 한 줄로 긁혀 떨어져 있다", "밤에 배출구 쪽 물이 크게 출렁인다"], "reach": {"how": "물가에 있는 사람을 덮친다", "targets": ["loc_breakwater", "loc_jetty", "loc_outfall"]}, "responses": ["물에서 나온다", "다친 사람을 물가에서 끌어올린다", "배출구 근처에 사람을 들이지 않는다"], "ifCut": {"cutBy": "방파제와 잔교의 물가 출입을 막고 사람을 물러나게 한다", "keeps": "물에 발을 담근 사람이 끌려가지 않는다", "continuesVia": "th_council"}},
+    {"id": "th_shark_s3", "order": 3, "anchor": "prevStage", "windowMinMinutes": 600, "windowMaxMinutes": 1200, "does": "작은 배를 아래에서 들이받아 뒤집고, 물에 빠진 사람을 끌고 간다", "omens": ["배 밑바닥을 무언가가 길게 긁는 소리", "드럼통 하나가 물속으로 끌려갔다가 멀리서 떠오른다"], "reach": {"how": "항구 안의 작은 배를 들이받는다", "targets": ["loc_harbor_mouth", "loc_jetty"]}, "responses": ["배를 잔교에 붙인다", "물에 빠진 사람에게 구명 고리를 던진다", "작살과 부표를 준비한다"], "ifCut": {"cutBy": "작은 배 출항을 모두 묶어 둔다", "keeps": "배가 뒤집혀 사람이 빠지는 일이 멈춘다", "continuesVia": "th_hunters"}},
+    {"id": "th_shark_s4", "order": 4, "anchor": "prevStage", "windowMinMinutes": 600, "windowMaxMinutes": 1200, "does": "페리 잔교 아래까지 들어와 대기줄 끝의 사람들을 덮친다", "omens": ["페리 잔교 아래 물이 검붉게 흐려진다", "잔교 끝 기둥이 한 번 크게 흔들린다"], "reach": {"how": "잔교 위의 사람을 물로 끌어내린다", "targets": ["loc_ferry_pier"]}, "responses": ["대기줄을 잔교 안쪽으로 물린다", "잔교 끝을 막는다", "미끼로 상어를 다른 곳으로 끈다"], "ifCut": {"cutBy": "페리 대기줄을 잔교에서 언덕 위 창고로 옮긴다", "keeps": "잔교 습격이 일어나지 않고 페리 운항이 이어진다", "continuesVia": "th_council"}}
    ],
-   "traits": {"senses": "물속 진동, 피 냄새", "attacks": ["물어 끌고 들어가기", "배 들이받기"], "weakness": "드럼통 부표가 박히면 잠수하지 못한다", "chasePattern": "물속에서는 사람보다 훨씬 빠르다. 물 밖으로는 쫓지 못한다", "learnableLimits": ["물 밖으로 나오지 못한다", "썰물 모래톱에서는 등이 드러난다"]}},
+   "traits": {"senses": "물속 진동, 피 냄새", "attacks": ["물어 끌고 들어가기", "배 들이받기"], "weakness": "드럼통 부표가 박히면 잠수하지 못한다", "chasePattern": "물속에서는 사람보다 훨씬 빠르다. 물 밖으로는 쫓지 못한다", "learnableLimits": ["물 밖으로 나오지 못한다", "썰물 모래톱에서는 등이 드러난다"]},
+   "outOfReach": "물에서 서너 걸음 떨어진 뭍과 언덕 위 창고, 북쪽 모래톱의 썰물 때 마른 땅까지는 오지 못한다", "grammar": {"chase": {"follows": "물속 진동과 피 냄새의 띠"}}},
   {"id": "th_council", "name": "의회의 입막음", "tier": 1, "roles": ["guard"],
    "stages": [
-    {"id": "th_council_s1", "order": 1, "anchor": "start", "windowMinMinutes": 120, "windowMaxMinutes": 600, "does": "보안관 대리 보이드가 부두에서 상어 얘기를 하는 사람을 쫓아내고, 섬 신문은 익사 기사를 낸다", "omens": ["잔교 게시판의 '수영 주의' 쪽지가 떼어져 있다", "상점 주인들이 PC를 보면 말을 멈춘다"], "reach": {"how": "질문하는 사람을 막고 소문을 끊는다", "targets": ["loc_jetty", "npc_boyd"]}, "responses": ["증거를 숨긴다", "의회 밖의 사람을 찾는다", "보이드에게 따로 말을 건다"]},
-    {"id": "th_council_s2", "order": 2, "anchor": "prevStage", "windowMinMinutes": 600, "windowMaxMinutes": 1200, "does": "냉동 창고 앞에 경비를 세우고 사무실 장부를 치운다", "omens": ["창고 사무실 창에 늦게까지 불이 켜져 있다", "트럭이 상자를 싣고 페리 잔교로 간다"], "reach": {"how": "창고 출입을 막는다", "targets": ["loc_outfall"]}, "responses": ["장부가 실린 트럭을 쫓는다", "다른 날 밤에 숨어 들어간다", "크레인에게 거래를 건다"]},
-    {"id": "th_council_s3", "order": 3, "anchor": "prevStage", "windowMinMinutes": 900, "windowMaxMinutes": 1800, "does": "PC를 '관광 방해'로 유치장에 넣고 페리 표를 빼앗으려 한다", "omens": ["보이드가 PC의 숙소 앞에 차를 세워 둔다", "섬 신문에 '외지인 소동' 기사가 실린다"], "reach": {"how": "PC를 붙잡아 가둔다", "targets": ["P1", "P2", "loc_ferry_pier"]}, "responses": ["브로디 서장에게 직접 증거를 넘긴다", "숨는다", "의회 회의장에 증거를 들고 나선다"]}
+    {"id": "th_council_s1", "order": 1, "anchor": "start", "windowMinMinutes": 120, "windowMaxMinutes": 600, "does": "보안관 대리 보이드가 부두에서 상어 얘기를 하는 사람을 쫓아내고, 섬 신문은 익사 기사를 낸다", "omens": ["잔교 게시판의 '수영 주의' 쪽지가 떼어져 있다", "상점 주인들이 PC를 보면 말을 멈춘다"], "reach": {"how": "질문하는 사람을 막고 소문을 끊는다", "targets": ["loc_jetty", "npc_boyd"]}, "responses": ["증거를 숨긴다", "의회 밖의 사람을 찾는다", "보이드에게 따로 말을 건다"], "ifCut": {"cutBy": "신문사에 이빨 조각과 사진을 먼저 넘긴다", "keeps": "부두 사람들이 상어 이야기를 할 수 있게 된다", "continuesVia": "th_shark"}},
+    {"id": "th_council_s2", "order": 2, "anchor": "prevStage", "windowMinMinutes": 600, "windowMaxMinutes": 1200, "does": "냉동 창고 앞에 경비를 세우고 사무실 장부를 치운다", "omens": ["창고 사무실 창에 늦게까지 불이 켜져 있다", "트럭이 상자를 싣고 페리 잔교로 간다"], "reach": {"how": "창고 출입을 막는다", "targets": ["loc_outfall"]}, "responses": ["장부가 실린 트럭을 쫓는다", "다른 날 밤에 숨어 들어간다", "크레인에게 거래를 건다"], "ifCut": {"cutBy": "장부를 치우기 전에 사무실에서 빼낸다", "keeps": "배출 거래의 증거가 PC 손에 남는다", "continuesVia": "th_hunters"}},
+    {"id": "th_council_s3", "order": 3, "anchor": "prevStage", "windowMinMinutes": 900, "windowMaxMinutes": 1800, "does": "PC를 '관광 방해'로 유치장에 넣고 페리 표를 빼앗으려 한다", "omens": ["보이드가 PC의 숙소 앞에 차를 세워 둔다", "섬 신문에 '외지인 소동' 기사가 실린다"], "reach": {"how": "PC를 붙잡아 가둔다", "targets": ["P1", "P2", "loc_ferry_pier"]}, "responses": ["브로디 서장에게 직접 증거를 넘긴다", "숨는다", "의회 회의장에 증거를 들고 나선다"], "ifCut": {"cutBy": "해안 경비대 무전으로 체포 전에 외부에 알린다", "keeps": "유치장에 갇히지 않고 페리 표도 지킨다", "continuesVia": "th_shark"}}
    ],
-   "traits": {"senses": "소문과 신고", "attacks": ["체포", "증거 압수"], "weakness": "여러 사람 앞에서 증거가 드러나면 버티지 못한다", "chasePattern": "차와 무전으로 섬 안을 돈다", "learnableLimits": ["브로디 서장은 의회 편이 아니다"]}},
+   "traits": {"senses": "소문과 신고", "attacks": ["체포", "증거 압수"], "weakness": "여러 사람 앞에서 증거가 드러나면 버티지 못한다", "chasePattern": "차와 무전으로 섬 안을 돈다", "learnableLimits": ["브로디 서장은 의회 편이 아니다"]},
+   "outOfReach": "해안 경비대 초소와 본토 신문사 지국 안에서는 보안관 대리가 손을 못 쓴다", "grammar": {"guard": {"protects": "냉동 창고와 관광 기금 장부", "boundary": "창고 철문과 의회 사무실 문턱"}}},
   {"id": "th_hunters", "name": "현상금 낚시꾼들", "tier": 1, "roles": ["patrol"],
    "stages": [
-    {"id": "th_hunters_s1", "order": 1, "anchor": "start", "windowMinMinutes": 180, "windowMaxMinutes": 480, "does": "현상금이 붙자 외지 낚시꾼들이 잔교에 몰려 미끼 피를 물에 뿌린다", "omens": ["잔교에 피 묻은 미끼 통이 줄지어 놓인다", "낯선 배들이 항구 입구에 닻을 내린다"], "reach": {"how": "잔교와 항구를 차지한다", "targets": ["loc_jetty", "loc_harbor_mouth"]}, "responses": ["낚시꾼들에게 물가가 위험하다고 알린다", "미끼 피를 치운다", "그들 배를 빌린다"]},
-    {"id": "th_hunters_s2", "order": 2, "anchor": "prevStage", "windowMinMinutes": 300, "windowMaxMinutes": 900, "does": "총과 다이너마이트를 든 무리가 밤 부두를 돌며 움직이는 것마다 쏜다", "omens": ["밤 부두에 총성이 한 번 울린다", "다이너마이트 포장지가 잔교에 흩어져 있다"], "reach": {"how": "밤 부두의 사람을 위협한다", "targets": ["loc_jetty", "loc_ferry_pier"]}, "responses": ["불빛을 끄고 피한다", "무리의 우두머리와 말한다", "그들이 잡은 엉뚱한 상어를 확인한다"]},
-    {"id": "th_hunters_s3", "order": 3, "anchor": "prevStage", "windowMinMinutes": 600, "windowMaxMinutes": 1200, "does": "작은 배로 몰려나가다 한 척이 뒤집히고 물에 빠진 사람이 생긴다", "omens": ["항구 입구에 배 여러 척이 엉켜 있다", "누군가 구명 고리를 찾는 고함"], "reach": {"how": "항구 안에 물에 빠진 사람을 만든다", "targets": ["loc_harbor_mouth"]}, "responses": ["물에 빠진 사람을 건진다", "배들을 항구 밖으로 물린다"]}
+    {"id": "th_hunters_s1", "order": 1, "anchor": "start", "windowMinMinutes": 180, "windowMaxMinutes": 480, "does": "현상금이 붙자 외지 낚시꾼들이 잔교에 몰려 미끼 피를 물에 뿌린다", "omens": ["잔교에 피 묻은 미끼 통이 줄지어 놓인다", "낯선 배들이 항구 입구에 닻을 내린다"], "reach": {"how": "잔교와 항구를 차지한다", "targets": ["loc_jetty", "loc_harbor_mouth"]}, "responses": ["낚시꾼들에게 물가가 위험하다고 알린다", "미끼 피를 치운다", "그들 배를 빌린다"], "ifCut": {"cutBy": "현상금이 가짜라는 소문을 낸다", "keeps": "잔교에 미끼 피가 뿌려지지 않는다", "continuesVia": "th_shark"}},
+    {"id": "th_hunters_s2", "order": 2, "anchor": "prevStage", "windowMinMinutes": 300, "windowMaxMinutes": 900, "does": "총과 다이너마이트를 든 무리가 밤 부두를 돌며 움직이는 것마다 쏜다", "omens": ["밤 부두에 총성이 한 번 울린다", "다이너마이트 포장지가 잔교에 흩어져 있다"], "reach": {"how": "밤 부두의 사람을 위협한다", "targets": ["loc_jetty", "loc_ferry_pier"]}, "responses": ["불빛을 끄고 피한다", "무리의 우두머리와 말한다", "그들이 잡은 엉뚱한 상어를 확인한다"], "ifCut": {"cutBy": "다이너마이트 상자를 먼저 치운다", "keeps": "밤 부두의 총격과 폭발이 멈춘다", "continuesVia": "th_council"}},
+    {"id": "th_hunters_s3", "order": 3, "anchor": "prevStage", "windowMinMinutes": 600, "windowMaxMinutes": 1200, "does": "작은 배로 몰려나가다 한 척이 뒤집히고 물에 빠진 사람이 생긴다", "omens": ["항구 입구에 배 여러 척이 엉켜 있다", "누군가 구명 고리를 찾는 고함"], "reach": {"how": "항구 안에 물에 빠진 사람을 만든다", "targets": ["loc_harbor_mouth"]}, "responses": ["물에 빠진 사람을 건진다", "배들을 항구 밖으로 물린다"], "ifCut": {"cutBy": "작은 배들이 나가기 전에 연료를 빼 둔다", "keeps": "낚시꾼 배가 뒤집혀 사람이 빠지지 않는다", "continuesVia": "th_shark"}}
    ],
-   "traits": {"senses": "소문, 피 냄새 나는 물", "attacks": ["엽총", "다이너마이트"], "weakness": "현상금이 사라지거나 엉뚱한 상어를 잡으면 흩어진다", "chasePattern": "작은 배로 무리 지어 움직인다", "learnableLimits": ["밤에는 술에 취해 엉뚱한 곳을 쏜다"]}}
+   "traits": {"senses": "소문, 피 냄새 나는 물", "attacks": ["엽총", "다이너마이트"], "weakness": "현상금이 사라지거나 엉뚱한 상어를 잡으면 흩어진다", "chasePattern": "작은 배로 무리 지어 움직인다", "learnableLimits": ["밤에는 술에 취해 엉뚱한 곳을 쏜다"]},
+   "outOfReach": "페리 잔교 너머 마을 언덕과 교회 마당에는 오지 않는다", "grammar": {"patrol": {"route": "잔교에서 방파제를 거쳐 배출구까지 밤 부두를 돈다", "gaps": "새벽 세 시 무렵 술집으로 몰려가 한 시간쯤 비운다"}}}
  ],
  "encounterPool": [
   {"id": "pool_tiger", "kind": "enemy", "ref": "en_tiger", "locations": ["loc_jetty"], "maxCount": 1},
@@ -205,12 +212,22 @@
   ]
  },
  "pcSlots": [
-  {"slot": "P1", "hookType": "loved_one", "situation": "P1의 조카 토미 피어스가 어제 새벽 방파제에서 굴을 따다 사라졌다. 의회는 익사로 처리하고 수색을 끝냈다.", "alreadyTouched": "토미의 빈 굴 바구니를 돌려받았는데, 끈 한쪽이 톱니에 썰린 것처럼 끊겨 있다."},
-  {"slot": "P2", "hookType": "profession", "situation": "P2는 본토 보험사에서 냉동 창고 화재보험 갱신 실사를 나왔다. 연휴 안에 실사를 끝내야 회사가 페리 표를 내준다.", "alreadyTouched": "창고 냉동기 가동 기록과 실제 생선 입고량이 맞지 않는다."}
+  {"slot": "P1", "hookType": "loved_one", "situation": "P1의 조카 토미 피어스가 어제 새벽 방파제에서 굴을 따다 사라졌다. 의회는 익사로 처리하고 수색을 끝냈다.", "alreadyTouched": "토미의 빈 굴 바구니를 돌려받았는데, 끈 한쪽이 톱니에 썰린 것처럼 끊겨 있다.",
+   "question": {"asks": "토미를 데려간 것은 무엇이고, 왜 하필 방파제 안쪽까지 들어왔나", "fragmentPathIds": ["l1_tooth", "l1_pile_marks", "l2_outfall"], "answerPathId": "l3_tracklog"}},
+  {"slot": "P2", "hookType": "profession", "situation": "P2는 본토 보험사에서 냉동 창고 화재보험 갱신 실사를 나왔다. 연휴 안에 실사를 끝내야 회사가 페리 표를 내준다.", "alreadyTouched": "창고 냉동기 가동 기록과 실제 생선 입고량이 맞지 않는다.",
+   "question": {"asks": "냉동기 기록과 입고량은 왜 맞지 않고, 그 차이는 어디로 흘러가나", "fragmentPathIds": ["l2_ledger", "l2_fund_stub", "l1_fin"], "answerPathId": "l3_hal"}}
  ],
+ "sourceKnowledge": [
+  {"approach": "identity", "gain": "상어라고 곧장 말하면 핼 마시가 일찍 귀를 기울인다", "stillNeeds": "의회가 믿게 하려면 이빨 조각 같은 물증이 따로 있어야 한다"},
+  {"approach": "expert", "gain": "해양 연구소 조교 데일을 일찍 찾으면 상어의 습성을 빨리 안다", "stillNeeds": "데일의 지워진 결론을 되살릴 기록을 찾아야 한다"},
+  {"approach": "direct", "gain": "원작처럼 배를 타고 바로 사냥에 나서면 상어를 일찍 본다", "stillNeeds": "이번 상어는 배출 냄새를 따라 항구 안에 있어 먼바다에서는 못 잡는다"},
+  {"approach": "knownFix", "gain": "원작의 압축 공기통 수법은 상어를 한 번 크게 다치게 한다", "stillNeeds": "공기통은 냉동 창고 안에 있고, 끝내려면 모래톱에서 부표를 박아야 한다"}
+ ],
+ "questionsMeet": "찌꺼기가 상어를 항구 안에 붙잡아 두었고(P2의 답), 찌꺼기가 끊기면 상어는 사람 많은 물가로 간다(P1의 답). 둘을 합쳐야 배출만 끊으면 해변이 위험해진다는 핵심에 닿는다.",
  "finalBoss": {
   "id": "boss_shark", "form": "entity", "threatId": "th_shark", "tier": 2,
   "learnFrom": ["th_shark_s1", "th_shark_s3", "l1_fin", "l3_hal"],
+  "reuses": [{"ref": "l3_sandbar", "how": "썰물 시각을 알아 둔 모래톱으로 상어를 끌어올려 등이 드러나게 한다"}, {"ref": "l2_outfall", "how": "배출구 찌꺼기를 미끼 띠로 다시 흘려 상어를 모래톱 쪽으로 이끈다"}, {"ref": "th_shark_s2", "how": "방파제 밑까지 들어오던 길목을 알기에, 부표를 실은 배를 그 물길 밖에 둔다"}],
   "gimmick": {"what": "다치면 깊이 잠수해 숨을 돌리고, 배 바로 밑에서 다시 올라온다", "effect": "깊은 물에서 작살 몇 번 맞혀 봐야 사라졌다 돌아오고, 작은 배는 아래에서 들이받혀 뒤집힌다"},
   "phases": [
    {"trigger": "피 냄새 띠를 따라 모래톱 근처에 처음 올라올 때", "change": "배 주위를 돌며 미끼만 채 가고 사람을 떠본다"},
@@ -265,6 +282,7 @@
  "threatId": "th_house",
  "tier": 3,
  "learnFrom": ["th_house_s2", "l2_letters", "l3_contract"],
+ "reuses": [{"ref": "l2_letters", "how": "앞에서 읽은 편지 속 이름들을 소리 내어 부르며 서로를 한 방에 붙잡아 둔다"}, {"ref": "l3_contract", "how": "계약서의 조건대로 새벽 햇빛이 드는 동쪽 방까지 버틴다"}],
  "gimmick": {
   "what": "집이 밤마다 방과 복도의 이어짐을 바꾸고, 일행 중 가장 외로운 사람을 골라 '여기 남으라'고 부른다",
   "effect": "길을 외워도 소용없다. 부름에 대답한 사람은 스스로 서재 탑의 철제 계단을 오르고, 붙잡으러 간 사람까지 함께 위험해진다"
@@ -784,7 +802,15 @@
    },
    "tier2Banish": "부표 셋이 박히고 크게 다치면 깊은 바다로 물러나 다시 돌아오지 않는다",
    "origin": "source",
-   "basis": "거대 백상아리"
+   "basis": "거대 백상아리",
+   "memory": "피 냄새가 남은 물길은 하루 넘게 다시 돌아와 맴돈다",
+   "giveUp": "냄새가 끊기고 먹이가 없으면 반나절 뒤 사람 많은 물가로 옮겨 간다",
+   "blockedBy": "뭍, 썰물에 드러난 모래톱, 촘촘한 그물",
+   "signature": "부표가 물살을 거슬러 끌려가고, 물린 자리에 반달 모양 이빨 자국이 줄지어 남는다",
+   "weakness": {
+    "what": "굶은 채 얕은 모래톱으로 올라오면 등이 드러나 부표를 박을 수 있다",
+    "learnFrom": ["l3_hal", "l3_sandbar", "th_shark.th_shark_s2"]
+   }
   }
  ],
  "items": [
@@ -799,6 +825,11 @@
    "concealed": {
     "where": "냉동 창고 뒤 빈 드럼통 더미 맨 아래, 방수포 밑",
     "requires": "자정 배출 때 경비가 자리를 비우는 틈을 노리거나, 핼 마시가 위치를 알려 준다"
+   },
+   "lies": {
+    "kind": "noisy",
+    "how": "빈 드럼통 더미를 무너뜨려야 맨 아래 세 개가 나온다. 쇠통 구르는 소리가 부두 끝까지 울린다",
+    "quietBy": ["밧줄로 위의 통을 하나씩 매달아 내리기", "자정 배출 소음에 맞춰 끌어내기"]
    },
    "ownerId": "npc_hal"
   }
@@ -934,7 +965,14 @@
  "aftermath": {
   "reactions": "에드나는 루시를 품에 안고 밤새 장롱 문에 의자를 괴어 둔다. 이웃들은 아침부터 펠로스네 집 앞을 일부러 돌아서 간다.",
   "relationships": "에드나는 그동안 숨겨 온 손녀 이야기를 PC들에게 처음 털어놓는다. 대신 교구 신부에게는 더 말을 아낀다."
- }
+ },
+ "pcRoles": [
+  {"slot": "P1", "does": "장롱 문을 붙잡아 루시가 들어갈 시간을 늦춘다(시간)"},
+  {"slot": "P2", "does": "부엌의 에드나를 데려와 루시가 따르는 할머니 목소리로 부르게 한다(사람)"}
+ ],
+ "onlyOne": {"choices": ["npc_lucy", "npc_edna"], "why": "장롱이 루시를 끌어당기는 순간 에드나가 계단에서 발을 헛디딘다. 팔은 둘, 손은 한 사람에게만 닿는다"},
+ "ifFailed": "루시를 놓쳐도 우물가로 이어지는 젖은 발자국이 남아, 다음 날 아침 우물에서 루시를 되찾을 길이 열린다.",
+ "reusedLater": "장롱 바닥의 아이 신발은 최종장에서 그 아이의 혼을 이름으로 불러 밧세바의 손을 놓게 하는 데 쓰인다."
 }
 ```
 
@@ -946,6 +984,9 @@
 - 적·이성 판정을 개수에 맞춰 채우지 않았다. 이 사건의 공포(아이를 지키는 일)에 맞는 위험 하나와 이성 판정 하나다.
 - `pcTest`가 P1의 결점(먼저 몸이 나가는 성격)을 실제 선택으로 건다. 두 길 모두 대가가 있고, 고르는 건 플레이어다.
 - `aftermath`가 사건 뒤 사람들이 어떻게 달라졌는지 보여 준다(만남 → 이상한 일 → 추리 → 각자의 대응 → 결과 → 달라진 관계의 마지막 칸).
+- `pcRoles`로 두 주연이 같은 위기에서 서로 다른 것을 바꾼다(시간·사람). 직업이 아니라 그 자리의 위치·관계로 나뉜다.
+- `onlyOne`이 한 명만 구할 수 있는 순간을 준비해 둔다. 누구를 붙잡을지는 플레이어가 고르고, 다른 쪽 사람과의 관계가 내려갈 수 있다.
+- `ifFailed`와 `reusedLater`: 실패해도 길이 남고, 여기서 얻은 것이 최종장에서 다시 쓰인다.
 
 ### 합류 사건의 나쁜 예와 고친 예
 
@@ -966,3 +1007,8 @@
 **키퍼 전용 연결:** 사라진 상자는 노크로스 신부가 옮겼고, 안에 1863년 세례 기록이 있다. 어머니가 돌보는 가족도 그 기록에 연결돼 있다. 어머니를 잠시 대피시키는 성취는 실제 안전과 시간을 주지만, 해당 가문의 연결을 끊으려면 준비된 최종 시련에서 기록의 진상을 이용해야 한다. 이 사실을 시작 자료에 그대로 공개하지 않는다.
 
 좋은 점: 일자리만이 아니라 소중한 사람의 위험과 위협의 원인이 같은 사건에 걸려 있다. 진상이 열릴수록 그가 지키려던 것과 밝혀야 할 것이 부딪친다.
+
+**사연 · 동기 · 대가로 나누면** (02 5절, 엔진이 뽑은 대가가 '소중한 사람의 죽음'인 경우):
+- **사연:** 기록 상자를 옮기다 다리가 막혀 갇혔고, 상자 하나가 없어졌다. 어머니는 손뼉 소리가 들리는 집에서 간병 중이다.
+- **동기:** ① 질문(각본에서 정함) "사라진 상자에는 무엇이 들었고, 누가 왜 가져갔나" — 그 기록에 어머니가 돌보는 가문의 이름이 있다. ② 끝내야 할 일: 그 가문과 기록의 연결을 끊는다. 최종 시련에서 기록의 진상을 써야만 끊긴다. ③ 오늘: "해 뜨기 전에 와 줘"가 어머니의 마지막 부탁이었다.
+- **대가:** 진실도 해결도 못 하고 나가면, 어머니가 그 집에서 마지막 손뼉 소리를 들은 사람이 된다. 조짐: 위협 2단계에 어머니의 전화가 끊기고, 3단계에 그 집 창문이 안에서 하나씩 닫힌다.
