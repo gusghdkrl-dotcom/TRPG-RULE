@@ -4,6 +4,12 @@
 
 [AGENTS.md](../AGENTS.md)는 필수 참조 진입점, 이 문서는 공통 규정, [EDITING.md](EDITING.md)는 파일별 배치와 편집·검증의 상세 절차다. 과거 브랜치·DEVLOG·설계 초안은 이력이며 최신 원문을 대신하지 않는다. 이 규정은 개발 작업용으로, 게임용 프로젝트 인스트럭션이나 배포 ZIP에 추가하지 않는다.
 
+## 판본별 적용 범위
+
+현재 사용자 지정 MCP v2 작업선은 `docs/restructure-decisions-20261122`의 `rules-v2/`다. `main` 최신 HEAD도 확인하되 구판 규칙·템플릿·배포를 v2 실행 권위로 섞지 않는다. 아래 `rules/*.md`·프로젝트 지침·템플릿의 역할 원칙은 v2의 담당 원문·`rules-v2/PROJECT_INSTRUCTIONS.md`·엔진 도구 스키마에 대응한다. v2 생성 폼의 실제 계약은 trpg-engine v2 스키마와 `keeperNext`이며 구판 Markdown 폼을 복사하지 않는다.
+
+v2 변경은 `python3 scripts/rulebook.py check-v2`와 `export-v2`로 검사·배포하고 `dist/TRPG-RULE-v2-project.zip`을 소스와 같은 커밋에 넣는다. 판본별 고정 주소와 manifest를 확인한다. 기존 `check`·`export`·`dist/TRPG-RULE-project.zip`은 구판용으로 보존하며 v2 검사 통과의 증거가 아니다. [EDITING.md](EDITING.md)의 구판 명령·main 반영 절차도 v2에는 이 작업선·명령·ZIP으로 대응한다. 개발 문서·실제 비공개 정본/세이브는 공통 ZIP에서 제외한다.
+
 ## 1. 최신 기준과 실제 문제 확인
 
 - GitHub `main`의 실제 최신 HEAD와 작업 트리의 기준 커밋을 확인한다. 오래된 로컬 파일로 최근 패치를 덮어쓰지 않는다.
@@ -49,6 +55,8 @@
 - 정적 검사·가상 경로/수치 검토·실제 서버 왕복·실전 AI 진행·응답 시간 실측을 구별해 기록한다. 실측하지 않은 속도 개선과 플레이하지 않은 품질은 미검증으로 남긴다.
 
 ## 6. 배포와 완료 보고
+
+- **사용자 전달 기본값은 수정·추가된 게임 파일만 담은 변경 ZIP**이다. ZIP 최상위에 수정·추가된 게임 파일만 넣고 폴더, 패치 가이드, SHA/manifest, RULESET 등 판본 메타데이터, 전체 룰북·중첩 전체 ZIP·변경 없는 파일은 넣지 않는다. 삭제·이름 변경 등 필요한 교체 안내는 채팅으로만 짧게 전하고, 기본 전달 주소는 GitHub 다운로드 링크로 한다. 전체본은 명시적으로 요청할 때만 전달한다. 저장소의 최신 전체 배포 ZIP·식별자·manifest 관리는 아래 절차대로 계속하며, 사용자용 변경 ZIP과 구별한다. 개발 문서는 GitHub에서 관리하고 게임 프로젝트 업로드 파일에 섞지 않는다.
 
 - 게임용 소스·템플릿·승인 자산/ZIP 생성 로직이 바뀌면 `check` 뒤 `python3 scripts/rulebook.py export`를 실행한다. 가능한 한 소스/폼과 `dist/TRPG-RULE-project.zip`을 같은 커밋에 넣고 ZIP 실제 원문·`RULESET.json`/`RULESET.md`·SHA256 manifest 일치를 확인한다. README 고정 다운로드 주소를 유지한다.
 - 개발 지침·문서·DEVLOG만 바뀌고 배포 입력이 같으면 ZIP을 불필요하게 재생성하지 않는다. 기존 배포가 원문보다 뒤처져 있다면 그 사실을 이번 문서 변경으로 해결됐다고 표시하지 않는다.

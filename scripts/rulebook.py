@@ -244,5 +244,9 @@ def stats():
     print(json.dumps({'original_characters':baseline['characters'],'current_game_documents_characters':current,'reduction_percent':round((1-current/baseline['characters'])*100,1),'project_instruction_characters':len((ROOT/'PROJECT_INSTRUCTIONS.md').read_text()),'rules':len(registry())},ensure_ascii=False,indent=2))
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['check','deep-check','export','stats']);a=ap.parse_args()
-    {'check':check,'deep-check':validate,'export':export,'stats':stats}[a.action]()
+    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['check','deep-check','export','stats','check-v2','export-v2']);a=ap.parse_args()
+    if a.action in {'check-v2','export-v2'}:
+        import rulebook_v2
+        {'check-v2':rulebook_v2.check,'export-v2':rulebook_v2.export}[a.action]()
+    else:
+        {'check':check,'deep-check':validate,'export':export,'stats':stats}[a.action]()
